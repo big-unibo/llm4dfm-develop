@@ -1,25 +1,18 @@
-# BIG - Project template (your repo name here)
+# BIG - LLM 4 DFM
 
 [![build](https://github.com/big-unibo/experimental-project/actions/workflows/build.yml/badge.svg)](https://github.com/big-unibo/experimental-project/actions/workflows/build.yml)
 
-## How to run the project
-
-- Change `rootProject.name` in `settings.gradle` accordingly to the project name
-- The project *must* build with Gradle (i.e., `./gradlew` produces a successful build)
-- Once completed, `./gradlew` creates `build/libs/*.jar` files. To execute Spark code
-    - If *no* external library is needed, `spark-submit` the jar (i.e., `project-name.jar`)
-    - If external libraries are needed, `spark-submit` the fat jar (i.e., `project-name-all.jar`)
-
 ## Project structure
 
-    datasets/   -- where datasets are stored (heavy datasets cannot be committed)
+    datasets/   -- where datasets/exercises are stored
+        *-text.yml              -- input of the exercise
+        *-ground-truth.yml      -- expected result
+    inputs/     -- where input prompts are stored
+        prompts-v*.yml           -- list of prompts by model
     outputs/    -- where generated datasets are stored (should not be committed)
     results/    -- where experiment/thesis results are stored (must be committed)
+        *-result-[model].yml    -- obtained result from [model]
     src/        -- source code
-
-## Working on this project
-
-Import this project as Gradle project (this is tested with IntelliJ IDEA).
 
 ### Guidelines
 

@@ -1,0 +1,26 @@
+- dependencies:
+    -
+        - from: name,surname,number,year,...
+        - to: name,surname,number,year
+        - properties: optional,multiple
+        - role: birthdate
+    -
+
+- fact: name of the table 
+
+- measures:
+    - 
+        - name: position
+        - operators-allowed-on-dimension:
+            - nome_dimensione: sum,avg,min,...
+            - nome_dimensione: sum,avg,min,...
+        - classification: flow,unit,level
+    - 
+        - name: time
+        
+- attributes:
+    - 
+        - name: grandprix
+        - properties: optional,shared,descriptive,convergence,cross-dimensional,is-dimension
+    - 
+        - name: driver
