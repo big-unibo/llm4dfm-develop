@@ -1,26 +1,26 @@
-- dependencies:
-    -
-        - from: name,surname,number,year,...
-        - to: name,surname,number,year
-        - properties: optional,multiple
-        - role: birthdate
-    -
-
-- fact: name of the table 
-
-- measures:
-    - 
-        - name: position
-        - operators-allowed-on-dimension:
-            - nome_dimensione: sum,avg,min,...
-            - nome_dimensione: sum,avg,min,...
-        - classification: flow,unit,level
-    - 
-        - name: time
-        
-- attributes:
-    - 
-        - name: grandprix
-        - properties: optional,shared,descriptive,convergence,cross-dimensional,is-dimension
-    - 
-        - name: driver
+- dependencies: # list of the edges
+    - # unnamed container of an edge between two attributes
+        - from: name,surname,number,year # comma-separated list of attribute names identifying an attribute
+        - to: name,surname # comma-separated list of attribute names identifying an attribute
+        - role: birthdate # optional, in case of shared nodes
+        - properties: multiple # optional, comma-separated list of specializations of the edge in the DFM; values: optional, multiple
+        - refinements: pruned # optional, comma-separated list of refinements; values: pruned, switched (if, originally, the "from" was the "to"), created (if it didn't exist in the data)
+    - ...
+- fact: # the fact
+    - table-name: Arrivals # name of the table corresponding to the fact
+    - key: Date,CircuitName,Name,Surname,Number,Year # comma-separated list of attribute names identifying the root of the attribute tree
+- measures: # list of measures
+    - # unnamed container of a measure
+        - name: position # name of the measure
+        - dimensions-with-additivity: # optional list of attribute names (if composite, they are comma-separated) corresponding to the dimensions over which the measure is additive
+            - name,surname
+            - grandprix 
+        - classification: flow # values: flow (always additive), level (additive on non-temporal dimensions), unit (never additive)
+    - ...
+- attributes: # list of attributes
+    - # unnamed container of an attribute
+        - name: grandprix # comma-separated list of attribute names identifying an attribute 
+        - properties: # optional, comma-separated list of specializations of the attribute in the DFM; values: poptional, shared, descriptive, convergence, cross-dimensional, is-dimension (if the attribute is directly connected to the fact)
+        - refinements: pruned,created # optional, comma-separated list of refinements; values: pruned, created (if it didn't exist in the data)
+        - alias: GrandPrix # optional new name of the attribute
+    - ...
