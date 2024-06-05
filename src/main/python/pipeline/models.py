@@ -19,8 +19,12 @@ def load_model_and_tokenizer(model_name, key, quantization):
         case _:
             m_name = ''
     return (AutoModelForCausalLM.from_pretrained(m_name,
-                                                 trust_remote_code=True,
-                                                 quantization_config=bnb_config,
-                                                 device_map='auto',
-                                                 token=key),
-            AutoTokenizer.from_pretrained(m_name, token=key))
+                                                 # trust_remote_code=True,
+                                                 # quantization_config=bnb_config,
+                                                 # device_map='auto',
+                                                 # token=key
+                                                 ),
+            AutoTokenizer.from_pretrained(m_name,
+                                          # token=key
+                                          )
+            )

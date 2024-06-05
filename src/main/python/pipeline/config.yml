@@ -2,7 +2,7 @@ use: 'import'
 
 model_import:
   name: 'falcon'
-  key: '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' # huggingface key
+  key: '' # huggingface key
   # pretrained: true
   temperature: 0.7
   tokenizer:
