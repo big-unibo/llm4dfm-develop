@@ -7,7 +7,6 @@ load_dotenv()
 
 save_directory = os.getenv('SAVE_MODELS')
 
-
 def load_model_and_tokenizer(model_name, key, quantization):
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,  # 4-bit quantization
