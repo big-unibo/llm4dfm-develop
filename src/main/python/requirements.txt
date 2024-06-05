@@ -11,4 +11,5 @@ pyyaml==6.0.1
 torch
 openai==1.30.5
 transformers==4.41.2
+packaging
 flash_attn
