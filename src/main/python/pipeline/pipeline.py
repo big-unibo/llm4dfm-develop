@@ -1,8 +1,7 @@
 from tqdm import tqdm
 import openai
-from models import load_model_and_tokenizer
-from utils import (load_yaml_conf, load_prompts, load_text_exercise, model_import_batch, model_api_batch, store_output,
-                   concat_input_text_and_prompts)
+from models import load_model_and_tokenizer, model_import_batch, model_api_batch
+from utils import (load_yaml_conf, load_prompts, load_text_exercise, store_output, concat_input_text_and_prompts)
 from pathlib import Path
 
 model_config = load_yaml_conf(f'{Path().absolute()}/pipeline/config.yml')

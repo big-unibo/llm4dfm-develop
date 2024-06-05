@@ -51,24 +51,26 @@ def add_property_if_present(dict_to_store, props, dict_property):
 # configs useful in place of print results for import model
 def config_to_print_import_model(configs) -> dict:
     conf_to_print = {}
-    add_property_if_present(conf_to_print, ['name',
-                                            'temperature',
-                                            'tokenizer'
-                                            ], configs)
+    add_property_if_present(conf_to_print, [
+        'name',
+        'temperature',
+        'tokenizer'
+    ], configs)
     return conf_to_print
 
 
 # configs useful in place of print results for apis model
 def config_to_print_api_model(configs) -> dict:
     conf_to_print = {}
-    add_property_if_present(conf_to_print, ['name',
-                                            'temperature',
-                                            'tokenizer',
-                                            'max_tokens',
-                                            'role',
-                                            'n_responses',
-                                            'stop'
-                                            ], configs)
+    add_property_if_present(conf_to_print, [
+        'name',
+        'temperature',
+        'tokenizer',
+        'max_tokens',
+        'role',
+        'n_responses',
+        'stop'
+    ], configs)
     return conf_to_print
 
 
@@ -82,36 +84,3 @@ def store_output(model, imported, configurations, model_output, ex_name):
 
     with open(f'{outputs}{ex_name}-{model}-{get_timestamp()}.yml', 'w') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False)
-
-
-# compute a batch given a model, a tokenizer and input_text, returning results
-def model_import_batch(model, tokenizer, text) -> str:
-    encoded = tokenizer.apply_chat_template(text, return_tensors="pt")
-
-    generated_ids = model.generate(encoded, max_new_tokens=1000, do_sample=True)
-    decoded = tokenizer.batch_decode(generated_ids)
-
-    # with torch.no_grad():
-    #     model_outputs = model.generate(**text_to_use)
-
-    # generated_text = tokenizer.decode(model_outputs[0], skip_special_tokens=True)
-
-    return decoded
-
-
-# compute a batch given apis and configurations
-def model_api_batch(openai, config, text) -> str:
-    response = openai.ChatCompletion.create(
-        model=config['name'],
-        messages=[
-            {'role': config['role'], 'content': text},  # TODO check if role should be inserted in input
-        ],
-        max_tokens=config['max_tokens'],
-        n=config['n_responses'],
-        stop=config['stop'],
-        temperature=config['temperature'],
-    )
-
-    output_message = response['choices'][0]['message']['content']  # TODO works only with gpt ?
-
-    return output_message
