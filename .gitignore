@@ -474,4 +474,4 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,linux,gradle,eclipse,windows,intellij,python,venv,maven,libreoffice,microsoftoffice
 
 # Models imported
-*/models_saved/*
+models_saved/*
