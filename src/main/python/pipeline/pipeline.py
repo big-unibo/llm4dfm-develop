@@ -20,6 +20,8 @@ if model_config['use'] == 'import':
 
     model_outputs = []
 
+    print(inputs_list)
+
     # batch text and prompts
     for i in tqdm(inputs_list, desc=f'Prompt {config["name"]}'):
         model_outputs.append(model_import_batch(model, tokenizer, inputs_list[i]))
