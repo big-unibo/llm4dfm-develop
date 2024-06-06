@@ -54,7 +54,7 @@ def config_to_print_import_model(configs) -> dict:
     add_property_if_present(conf_to_print, [
         'name',
         'temperature',
-        'tokenizer'
+        'tokenizer',
     ], configs)
     return conf_to_print
 
@@ -78,9 +78,9 @@ def config_to_print_api_model(configs) -> dict:
 # output is a list of outputs
 def store_output(model, imported, configurations, model_output, ex_name):
     results_output = {
-        'config': config_to_print_import_model(configurations) if imported else config_to_print_api_model(configurations),
+        'config': config_to_print_import_model(configurations[model]) if imported else config_to_print_api_model(configurations[model]),
         'output': model_output
     }
 
-    with open(f'{outputs}{ex_name}-{model}-{get_timestamp()}.yml', 'w') as outfile:
+    with open(f'{outputs}{ex_name}-{configurations['exercise']['prompt_version']}-{model}-{get_timestamp()}.yml', 'w') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False)
