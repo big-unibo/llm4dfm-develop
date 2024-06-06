@@ -33,6 +33,7 @@ def load_text_exercise(ex_name):
 def load_prompts(version, model_name):
     with open(f'{inputs}prompts-{version}.yml', 'r') as file:
         ex_prompts = yaml.safe_load(file)
+    print(ex_prompts)
     return ex_prompts[model_name]
 
 
