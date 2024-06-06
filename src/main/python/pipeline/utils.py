@@ -82,5 +82,7 @@ def store_output(model, imported, configurations, model_output, ex_name):
         'output': model_output
     }
 
-    with open(f'{outputs}{ex_name}-{configurations['exercise']['prompt_version']}-{model}-{get_timestamp()}.yml', 'w') as outfile:
+    prompt_version = configurations['exercise']['prompt_version']
+
+    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False)
