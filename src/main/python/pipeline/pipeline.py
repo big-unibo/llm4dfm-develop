@@ -23,7 +23,8 @@ if model_config['use'] == 'import':
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(inputs_list)) as bar_batch:
         for i in inputs_list:
-            model_outputs.append(model_import_batch(model, tokenizer, inputs_list[i]))
+            print(i)
+            model_outputs.append(model_import_batch(model, tokenizer, i))
             bar_batch.update(1)
 
     # store output
@@ -44,8 +45,10 @@ elif model_config['use'] == 'api':
     openai.api_key = config['key']
 
     # batch text and prompts
-    for i in tqdm(inputs_list, desc=f'Prompt {config["name"]}'):
-        model_outputs.append(model_api_batch(openai, config, inputs_list[i]))
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(inputs_list)) as bar_batch:
+        for i in inputs_list:
+            model_outputs.append(model_api_batch(openai, config, i))
+            bar_batch.update(1)
 
     # store output
     store_output(config['name'], True, model_config, model_outputs, model_config['exercise']['name'])
