@@ -14,7 +14,7 @@ if model_config['use'] == 'import':
 
     # load text exercise and prompts
     exercise_text = load_text_exercise(model_config['exercise']['name'])
-    prompts_text = load_prompts(model_config['exercise']['name'], config['name'])
+    prompts_text = load_prompts(model_config['exercise']['prompt_version'], config['name'])
     # concat text exercise and prompts
     inputs_list = concat_input_text_and_prompts(exercise_text, prompts_text)
 
