@@ -4,7 +4,7 @@ model_import:
   name: 'falcon'
   key: '' # huggingface key
   # pretrained: true
-  temperature: 0.7
+  temperature: 0.7 # not using at the moment TODO check if it's supported
   tokenizer:
     name: 'falcon'
   quantization: False
