@@ -19,7 +19,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
         case 'llama-3':
             m_name = 'meta-llama/Meta-Llama-3-8B'
         case 'llama-2':
-            m_name = 'meta-llama/Llama-2-7b'
+            m_name = 'meta-llama/Llama-2-7b-hf'
         case 'falcon':
             m_name = 'tiiuae/falcon-11B'
         case 'mistral':
