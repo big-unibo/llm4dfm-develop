@@ -30,8 +30,8 @@ def load_text_exercise(ex_name):
 
 
 # return prompts of exercise as a dict given ex_name and model_name
-def load_prompts(ex_name, model_name):
-    with open(f'{inputs}prompts-v{ex_name}.yml', 'r') as file:
+def load_prompts(version, model_name):
+    with open(f'{inputs}prompts-{version}.yml', 'r') as file:
         ex_prompts = yaml.safe_load(file)
     return ex_prompts[model_name]
 

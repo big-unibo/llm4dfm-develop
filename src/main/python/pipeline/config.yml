@@ -25,3 +25,5 @@ model_api:
 
 exercise:
   name: 'exercise-2.3-original'
+  prompt_version: 'v1'
+
