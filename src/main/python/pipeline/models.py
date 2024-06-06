@@ -20,7 +20,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
         case 'falcon':
             m_name = 'tiiuae/falcon-11B'
         case 'mistral':
-            m_name = 'mistralai/Mistral-7B-Instruct-v0.1',
+            m_name = 'mistralai/Mistral-7B-Instruct-v0.1'
         case _:
             m_name = ''
 
@@ -45,10 +45,10 @@ def load_model_and_tokenizer(model_name, key, quantization):
                                                      # trust_remote_code=True,
                                                      # quantization_config=bnb_config,
                                                      # device_map='auto',
-                                                     # token=key
+                                                     token=key
                                                      )
         tokenizer = AutoTokenizer.from_pretrained(m_name,
-                                                  # token=key
+                                                  token=key
                                                   )
 
         # Save the model and tokenizer
