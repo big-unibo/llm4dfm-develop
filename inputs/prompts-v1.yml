@@ -1,4 +1,4 @@
-- chatgpt:
+chatgpt:
   - |
     You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
     i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
@@ -8,7 +8,7 @@
     
     The source relational schema is described below.
 
-- llama-2:
+llama-2:
   - |
     You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
     i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
@@ -18,7 +18,7 @@
     
     The source relational schema is described below.
 
-- falcon:
+falcon:
   - |
     You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
     i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
@@ -28,7 +28,7 @@
     
     The source relational schema is described below.
 
-- mistral:
+mistral:
   - |
     You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
     i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
