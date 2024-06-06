@@ -17,7 +17,9 @@ def load_model_and_tokenizer(model_name, key, quantization):
     ) if quantization else ''
     match model_name:
         case 'llama-3':
-            m_name = 'meta-llama/Meta-Llama-3-8B'  # meta-llama/Llama-2-7b-chat-hf
+            m_name = 'meta-llama/Meta-Llama-3-8B'
+        case 'llama-2':
+            m_name = 'meta-llama/Llama-2-7b'
         case 'falcon':
             m_name = 'tiiuae/falcon-11B'
         case 'mistral':
