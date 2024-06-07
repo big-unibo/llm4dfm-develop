@@ -26,7 +26,7 @@ if model_config['use'] == 'import':
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts_text)) as bar_batch:
-        for idx, input_text in prompts_text:
+        for input_text in prompts_text:
             chat.append(get_chat_entry('user', input_text))
             model_output = model_import_batch(model, tokenizer, chat)
             model_outputs.append(model_output)
