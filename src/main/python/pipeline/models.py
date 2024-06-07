@@ -61,10 +61,9 @@ def load_model_and_tokenizer(model_name, key, quantization):
     return model, tokenizer
 
 
-# TODO text is a chat now
 # compute a batch given a model, a tokenizer and input_text, returning results
-def model_import_batch(model, tokenizer, text) -> str:
-    encoded = tokenizer.apply_chat_template(text, tokenize=False, return_tensors="pt")
+def model_import_batch(model, tokenizer, chat) -> str:
+    encoded = tokenizer.apply_chat_template(chat, tokenize=False, return_tensors="pt")
 
     generated_ids = model.generate(**encoded, max_new_tokens=1000, do_sample=True)
     decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
@@ -83,12 +82,10 @@ def model_import_batch(model, tokenizer, text) -> str:
 
 # TODO text is a chat now
 # compute a batch given apis and configurations
-def model_api_batch(openai, config, text) -> str:
+def model_api_batch(openai, config, chat) -> str:
     response = openai.ChatCompletion.create(
         model=config['name'],
-        messages=[
-            {'role': config['role'], 'content': text},  # TODO check if role should be inserted in input
-        ],
+        messages=chat,
         max_tokens=config['max_tokens'],
         n=config['n_responses'],
         stop=config['stop'],

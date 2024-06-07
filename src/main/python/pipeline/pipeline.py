@@ -28,6 +28,7 @@ if model_config['use'] == 'import':
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts_text)) as bar_batch:
         for input_text in prompts_text:
             chat.append(get_chat_entry('user', input_text))
+            chat.append(get_chat_entry('assistant', 'Sure'))
             print(f'[pipeline] before batching chat: {chat}')
             model_output = model_import_batch(model, tokenizer, chat)
             print(f'[pipeline] after batching output: {model_output}')
@@ -44,20 +45,24 @@ elif model_config['use'] == 'api':
 
     # load text exercise and prompts
     exercise_text = load_text_exercise(model_config['exercise']['name'])
-    prompts_text = load_prompts(model_config['exercise']['name'], config['name'])
-    model_outputs = []
+    prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])
+    system_text = prompts['system'] if 'system' in prompts else ''
+    prompts_text = prompts['chat']
 
-    # TODO check if it works with a chat or just plain text
-    # concat text exercise and prompts
-    inputs_list = [] # concat_input_text_and_prompts(exercise_text, prompts_text)
+    model_outputs = []
+    chat = []
 
     openai.api_key = config['key']
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(inputs_list)) as bar_batch:
-        for i in inputs_list:
-            model_outputs.append(model_api_batch(openai, config, i))
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts_text)) as bar_batch:
+        for input_text in prompts_text:
+            chat.append(get_chat_entry('user', input_text))
+            print(f'[pipeline] before batching chat: {chat}')
+            model_output = model_api_batch(openai, config, chat)
+            print(f'[pipeline] after batching output: {model_output}')
+            model_outputs.append(model_output)
+            chat.append(get_chat_entry('assistant', model_output))
             bar_batch.update(1)
-
     # store output
     store_output(config['name'], True, model_config, model_outputs, model_config['exercise']['name'])
