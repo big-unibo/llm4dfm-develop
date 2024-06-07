@@ -1,12 +1,12 @@
 use: 'import'
 
 model_import:
-  name: 'mistral'
+  name: 'llama-2'
   key: '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' # huggingface key
   # pretrained: true
   temperature: 0.7 # not using at the moment TODO check if it's supported
   tokenizer:
-    name: 'mistral'
+    name: 'llama-2'
   quantization: False
   #training:
   #  output_dir: ''

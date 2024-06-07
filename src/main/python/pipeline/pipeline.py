@@ -15,7 +15,7 @@ if model_config['use'] == 'import':
     # load text exercise and prompts
     exercise_text = load_text_exercise(model_config['exercise']['name'])
     prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])
-    system_text = prompts['system'] if 'system' in prompts else ''
+    system_text = prompts['system'] if 'system' in prompts else ''  # TODO looks mistral doesn't work with system messages
     prompts_text = prompts['chat']
 
     model_outputs = []
