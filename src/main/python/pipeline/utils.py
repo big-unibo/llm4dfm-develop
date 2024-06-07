@@ -80,14 +80,16 @@ def config_to_print_api_model(configs) -> dict:
 
 
 # write model_output in file ex_name-model-timestamp.yml
-# output is a list of outputs
-def store_output(model, imported, configurations, model_output, ex_name):
+# model_output is the list of outputs
+def store_output(model_config, ex_config, model_output, imported):
     results_output = {
-        'config': config_to_print_import_model(configurations[model]) if imported else config_to_print_api_model(configurations[model]),
+        'config': config_to_print_import_model(model_config) if imported else config_to_print_api_model(model_config),
         'output': model_output
     }
 
-    prompt_version = configurations['exercise']['prompt_version']
+    prompt_version = ex_config['prompt_version']
+    ex_name = ex_config['name']
+    model = model_config['name']
 
     with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False)

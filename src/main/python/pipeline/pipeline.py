@@ -37,7 +37,7 @@ if model_config['use'] == 'import':
             bar_batch.update(1)
 
     # store output
-    store_output(config['name'], False, model_config, model_outputs, model_config['exercise']['name'])
+    store_output(config, model_config['exercise'], model_outputs, False)
 
 elif model_config['use'] == 'api':
 
@@ -65,4 +65,4 @@ elif model_config['use'] == 'api':
             chat.append(get_chat_entry('assistant', model_output))
             bar_batch.update(1)
     # store output
-    store_output(config['name'], True, model_config, model_outputs, model_config['exercise']['name'])
+    store_output(config, model_config['exercise'], model_outputs, True)

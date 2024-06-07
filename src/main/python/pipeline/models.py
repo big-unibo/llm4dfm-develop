@@ -1,5 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from torch import bfloat16
+import torch
 import os
 from dotenv import load_dotenv
 
@@ -9,6 +10,7 @@ save_directory = os.getenv('SAVE_MODELS')
 
 
 def load_model_and_tokenizer(model_name, key, quantization):
+    # TODO work on quantization
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,  # 4-bit quantization
         bnb_4bit_quant_type='nf4',  # Normalized float 4
@@ -48,7 +50,8 @@ def load_model_and_tokenizer(model_name, key, quantization):
                                                      # trust_remote_code=True,
                                                      # quantization_config=bnb_config,
                                                      # device_map='auto',
-                                                     token=key
+                                                     token=key,
+                                                     # load_in_8bit = True
                                                      )
         tokenizer = AutoTokenizer.from_pretrained(m_name,
                                                   token=key
@@ -65,22 +68,17 @@ def load_model_and_tokenizer(model_name, key, quantization):
 def model_import_batch(model, tokenizer, chat) -> str:
     encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
     print(f'[models] -> before generation, encodes: {encoded}')
-    generated_ids = model.generate(**encoded, max_new_tokens=4000, do_sample=True)
+    with torch.no_grad():
+        generated_ids = model.generate(encoded, max_new_tokens=4000, do_sample=True)
     decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
     decoded_with_batch = tokenizer.batch_decode(generated_ids)
 
     print(f'[models] -> decoded_decode: {decoded_with_decode}')
     print(f'[models] -> decoded_batch: {decoded_with_batch}')
 
-    # with torch.no_grad():
-    #     model_outputs = model.generate(**text_to_use)
-
-    # generated_text = tokenizer.decode(model_outputs[0], skip_special_tokens=True)
-
     return decoded_with_decode
 
 
-# TODO text is a chat now
 # compute a batch given apis and configurations
 def model_api_batch(openai, config, chat) -> str:
     response = openai.ChatCompletion.create(
