@@ -1,39 +1,43 @@
 chatgpt:
-  - |
-    You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
-    i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
-    corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
-    The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
-    and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
-    
-    The source relational schema is described below.
+  system:
+    - You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion,
+      i.e., starting from a source relational schema.
+  chat:
+    - The first step is to create a directed acyclic graph where each node corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
+      The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
+      and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
+      
+      The source relational schema is described below.
 
 llama-2:
-  - |
-    You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
-    i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
-    corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
-    The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
-    and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
-    
-    The source relational schema is described below.
+  system:
+    - You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion,
+      i.e., starting from a source relational schema.
+  chat:
+    - The first step is to create a directed acyclic graph where each node corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
+      The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
+      and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
+
+      The source relational schema is described below.
 
 falcon:
-  - |
-    You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
-    i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
-    corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
-    The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
-    and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
-    
-    The source relational schema is described below.
+  system:
+    - You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion,
+      i.e., starting from a source relational schema.
+  chat:
+    - The first step is to create a directed acyclic graph where each node corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
+      The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
+      and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
+
+      The source relational schema is described below.
 
 mistral:
-  - |
-    You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion, 
-    i.e., starting from a source relational schema. To this end, the first step is to create a directed acyclic graph where each node 
-    corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
-    The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
-    and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
-    
-    The source relational schema is described below.
+  system:
+    - You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion,
+      i.e., starting from a source relational schema.
+  chat:
+    - The first step is to create a directed acyclic graph where each node corresponds to a (simple or composite) attribute of the source schema and each arc corresponds to a functional dependency.
+      The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
+      and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
+
+      The source relational schema is described below.

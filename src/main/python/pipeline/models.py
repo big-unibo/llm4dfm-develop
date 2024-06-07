@@ -61,12 +61,15 @@ def load_model_and_tokenizer(model_name, key, quantization):
     return model, tokenizer
 
 
+# TODO text is a chat now
 # compute a batch given a model, a tokenizer and input_text, returning results
 def model_import_batch(model, tokenizer, text) -> str:
-    encoded = tokenizer.apply_chat_template(text, return_tensors="pt")
+    encoded = tokenizer.apply_chat_template(text, tokenize=False, return_tensors="pt")
 
     generated_ids = model.generate(encoded, max_new_tokens=1000, do_sample=True)
     decoded = tokenizer.batch_decode(generated_ids)
+
+    print(f'[models.py] -> decoded: {decoded}')
 
     # with torch.no_grad():
     #     model_outputs = model.generate(**text_to_use)
@@ -76,6 +79,7 @@ def model_import_batch(model, tokenizer, text) -> str:
     return decoded
 
 
+# TODO text is a chat now
 # compute a batch given apis and configurations
 def model_api_batch(openai, config, text) -> str:
     response = openai.ChatCompletion.create(

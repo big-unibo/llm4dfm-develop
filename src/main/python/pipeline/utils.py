@@ -36,9 +36,14 @@ def load_prompts(version, model_name):
     return ex_prompts[model_name]
 
 
-# given ex_text and a list of prompts, return an ordered list with ex_text first
-def concat_input_text_and_prompts(text, prompts) -> list:
-    return list((text, *prompts))
+# return a new chat (list of dict {'role': role, 'content': content}) entry
+def get_chat_entry(entry_role, entry_content):
+    return {'role': entry_role, 'content': entry_content}
+
+
+# given system_text, ex_text and a list of prompts, return an ordered list with the same order
+def concat_system_input_text_and_prompts(system_text, text, prompts) -> list:
+    return list((system_text, text, *prompts))
 
 
 # add properties to dict_to_store as property:dict_property[property] if present
