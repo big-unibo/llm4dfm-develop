@@ -66,17 +66,19 @@ def load_model_and_tokenizer(model_name, key, quantization):
 def model_import_batch(model, tokenizer, text) -> str:
     encoded = tokenizer.apply_chat_template(text, tokenize=False, return_tensors="pt")
 
-    generated_ids = model.generate(encoded, max_new_tokens=1000, do_sample=True)
-    decoded = tokenizer.batch_decode(generated_ids)
+    generated_ids = model.generate(**encoded, max_new_tokens=1000, do_sample=True)
+    decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+    decoded_with_batch = tokenizer.batch_decode(generated_ids)
 
-    print(f'[models.py] -> decoded: {decoded}')
+    print(f'[models] -> decoded_decode: {decoded_with_decode}')
+    print(f'[models] -> decoded_batch: {decoded_with_batch}')
 
     # with torch.no_grad():
     #     model_outputs = model.generate(**text_to_use)
 
     # generated_text = tokenizer.decode(model_outputs[0], skip_special_tokens=True)
 
-    return decoded
+    return decoded_with_decode
 
 
 # TODO text is a chat now
