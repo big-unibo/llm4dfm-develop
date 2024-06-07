@@ -65,7 +65,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
 def model_import_batch(model, tokenizer, chat) -> str:
     encoded = tokenizer.apply_chat_template(chat, tokenize=False, return_tensors="pt")
 
-    generated_ids = model.generate(**encoded, max_new_tokens=1000, do_sample=True)
+    generated_ids = model.generate(encoded, max_new_tokens=4000, do_sample=True)
     decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
     decoded_with_batch = tokenizer.batch_decode(generated_ids)
 
