@@ -13,7 +13,7 @@ inputs = os.getenv('INPUTS')
 
 # datetime object containing current date and time
 def get_timestamp():
-    return datetime.now().strftime('%Y/%m/%d-%H:%M:%S')
+    return datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
 
 
 # return yaml configurations as dict
@@ -91,5 +91,5 @@ def store_output(model_config, ex_config, model_output, imported):
     ex_name = ex_config['name']
     model = model_config['name']
 
-    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w') as outfile:
+    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w+') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False)
