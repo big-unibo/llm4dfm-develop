@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 save_directory = os.getenv('SAVE_MODELS')
+DEBUG = os.getenv('DEBUG')
 
 
 def load_model_and_tokenizer(model_name, key, quantization):
@@ -67,14 +68,14 @@ def load_model_and_tokenizer(model_name, key, quantization):
 # compute a batch given a model, a tokenizer and input_text, returning results
 def model_import_batch(model, tokenizer, chat) -> str:
     encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
-    print(f'[models] -> before generation, encodes: {encoded}')
     with torch.no_grad():
         generated_ids = model.generate(encoded, max_new_tokens=4000, do_sample=True)
     decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
     decoded_with_batch = tokenizer.batch_decode(generated_ids)
 
-    print(f'[models] -> decoded_decode: {decoded_with_decode}')
-    print(f'[models] -> decoded_batch: {decoded_with_batch}')
+    if DEBUG:
+        print(f'[models] -> decoded_decode: {decoded_with_decode}')
+        print(f'[models] -> decoded_batch: {decoded_with_batch}')
 
     return decoded_with_decode
 
@@ -91,5 +92,6 @@ def model_api_batch(openai, config, chat) -> str:
     )
 
     output_message = response['choices'][0]['message']['content']  # TODO works only with gpt ?
-
+    if DEBUG:
+        print(f'[models] -> output_message: {output_message}')
     return output_message

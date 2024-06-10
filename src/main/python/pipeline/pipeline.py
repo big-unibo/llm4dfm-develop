@@ -3,6 +3,12 @@ import openai
 from models import load_model_and_tokenizer, model_import_batch, model_api_batch
 from utils import (load_yaml_conf, load_prompts, load_text_exercise, store_output, get_chat_entry)
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+DEBUG = os.getenv('DEBUG')
 
 model_config = load_yaml_conf(f'{Path().absolute()}/pipeline/config.yml')
 
@@ -29,12 +35,12 @@ if model_config['use'] == 'import':
         for input_text in prompts_text:
             chat.append(get_chat_entry('user', input_text))
             chat.append(get_chat_entry('assistant', 'Sure'))
-            print(f'[pipeline] before batching chat: {chat}')
             model_output = model_import_batch(model, tokenizer, chat)
-            print(f'[pipeline] after batching output: {model_output}')
             model_outputs.append(model_output)
             chat.append(get_chat_entry('assistant', model_output))
             bar_batch.update(1)
+    if DEBUG:
+        print(f'[pipeline] whole chat: {chat}')
 
     # store output
     store_output(config, model_config['exercise'], model_outputs, False)
@@ -58,9 +64,11 @@ elif model_config['use'] == 'api':
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts_text)) as bar_batch:
         for input_text in prompts_text:
             chat.append(get_chat_entry('user', input_text))
-            print(f'[pipeline] before batching chat: {chat}')
+            if DEBUG:
+                print(f'[pipeline] before batching chat: {chat}')
             model_output = model_api_batch(openai, config, chat)
-            print(f'[pipeline] after batching output: {model_output}')
+            if DEBUG:
+                print(f'[pipeline] after batching output: {model_output}')
             model_outputs.append(model_output)
             chat.append(get_chat_entry('assistant', model_output))
             bar_batch.update(1)
