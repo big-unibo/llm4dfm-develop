@@ -52,7 +52,10 @@ def load_model_and_tokenizer(model_name, key, quantization):
                                                      quantization_config=bnb_config,
                                                      # device_map='auto',
                                                      token=key,
-                                                     )
+                                                     ) if quantization else (AutoModelForCausalLM.
+                                                                             from_pretrained(m_name,
+                                                                                             token=key,
+                                                                                             ))
         tokenizer = AutoTokenizer.from_pretrained(m_name,
                                                   token=key
                                                   )
