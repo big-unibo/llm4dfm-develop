@@ -7,7 +7,7 @@ model_import:
   temperature: 0.7 # not using at the moment TODO check if it's supported
   tokenizer:
     name: 'llama-2'
-  quantization: False
+  quantization: true
   #training:
   #  output_dir: ''
   #  epochs: ''

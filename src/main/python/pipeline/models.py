@@ -49,10 +49,9 @@ def load_model_and_tokenizer(model_name, key, quantization):
         # Download and load the model and tokenizer from Hugging Face
         model = AutoModelForCausalLM.from_pretrained(m_name,
                                                      # trust_remote_code=True,
-                                                     # quantization_config=bnb_config,
+                                                     quantization_config=bnb_config,
                                                      # device_map='auto',
                                                      token=key,
-                                                     # load_in_8bit = True
                                                      )
         tokenizer = AutoTokenizer.from_pretrained(m_name,
                                                   token=key
