@@ -27,6 +27,12 @@ if model_config['use'] == 'import':
     model_outputs = []
     chat = []
 
+    for ex_text in exercise_text:
+        if is_model_supporting_system_chat(config['name']):
+            chat.append(get_chat_entry('system', ex_text))
+        else:
+            chat.append(get_chat_entry('user', ex_text))
+
     for sys_text in system_text:
         if is_model_supporting_system_chat(config['name']):
             chat.append(get_chat_entry('system', sys_text))
@@ -62,6 +68,12 @@ elif model_config['use'] == 'api':
     chat = []
 
     openai.api_key = config['key']
+
+    for ex_text in exercise_text:
+        if is_model_supporting_system_chat(config['name']):
+            chat.append(get_chat_entry('system', ex_text))
+        else:
+            chat.append(get_chat_entry('user', ex_text))
 
     for sys_text in system_text:
         if is_model_supporting_system_chat(config['name']):
