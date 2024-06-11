@@ -1,6 +1,6 @@
 from tqdm import tqdm
 import openai
-from models import load_model_and_tokenizer, model_import_batch, model_api_batch
+from models import load_model_and_tokenizer, model_import_batch, model_api_batch, is_model_supporting_system_chat
 from utils import (load_yaml_conf, load_prompts, load_text_exercise, store_output, get_chat_entry)
 from pathlib import Path
 from dotenv import load_dotenv
@@ -21,14 +21,17 @@ if model_config['use'] == 'import':
     # load text exercise and prompts
     exercise_text = load_text_exercise(model_config['exercise']['name'])
     prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])
-    system_text = prompts['system'] if 'system' in prompts else ''  # TODO looks mistral doesn't work with system messages
+    system_text = prompts['system'] if 'system' in prompts else ''
     prompts_text = prompts['chat']
 
     model_outputs = []
     chat = []
 
     for sys_text in system_text:
-        chat.append(get_chat_entry('system', sys_text))
+        if is_model_supporting_system_chat(config['name']):
+            chat.append(get_chat_entry('system', sys_text))
+        else:
+            chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts_text)) as bar_batch:
@@ -59,6 +62,12 @@ elif model_config['use'] == 'api':
     chat = []
 
     openai.api_key = config['key']
+
+    for sys_text in system_text:
+        if is_model_supporting_system_chat(config['name']):
+            chat.append(get_chat_entry('system', sys_text))
+        else:
+            chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts_text)) as bar_batch:

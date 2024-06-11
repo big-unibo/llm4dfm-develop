@@ -9,6 +9,8 @@ load_dotenv()
 save_directory = os.getenv('SAVE_MODELS')
 DEBUG = os.getenv('DEBUG')
 
+models_not_supporting_system_chat = ['mistral']
+
 
 def load_model_and_tokenizer(model_name, key, quantization):
     # TODO work on quantization
@@ -65,6 +67,11 @@ def load_model_and_tokenizer(model_name, key, quantization):
         tokenizer.save_pretrained(model_directory)
 
     return model, tokenizer
+
+
+# use to build a working chat
+def is_model_supporting_system_chat(model_name):
+    return model_name not in models_not_supporting_system_chat
 
 
 # compute a batch given a model, a tokenizer and input_text, returning results
