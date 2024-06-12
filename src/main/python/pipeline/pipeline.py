@@ -23,19 +23,18 @@ if model_config['use'] == 'import':
     prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])['chat']
 
     for sys_text in system_text:
-    #     if is_model_supporting_system_chat(config['name']):
-    #         chat.append(get_chat_entry('system', sys_text))
-    #     else:
-    #         chat.append(get_chat_entry('user', sys_text))
-        chat.append(sys_text)
+        if is_model_supporting_system_chat(config['name']):
+            chat.append(get_chat_entry('system', sys_text))
+        else:
+            chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
-        print(f'[pipeline] batching chat: {chat}')
+        if model_config['debug_prints']:
+            print(f'[pipeline] batching chat: {chat}')
         model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
-        chat.append(model_output)  # get_chat_entry('assistant', model_output))
-        print(f'[pipeline] chat: {chat}\n output: {model_output}')
+        chat.append(get_chat_entry('assistant', model_output))
         bar_batch.update(1)
 
         for input_text in prompts:
@@ -44,8 +43,9 @@ if model_config['use'] == 'import':
             model_outputs.append(model_output)
             chat.append(get_chat_entry('assistant', model_output))
             bar_batch.update(1)
+
     if model_config['debug_prints']:
-        print(f'[pipeline] whole chat: {chat}')
+        print(f'[pipeline] chat: {chat}\n output: {model_output}')
 
     chat_input = [sentence for sentence in chat if sentence['role'] == 'system' or sentence['role'] == 'user']
 
