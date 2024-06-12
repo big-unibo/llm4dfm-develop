@@ -23,16 +23,18 @@ if model_config['use'] == 'import':
     prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])['chat']
 
     for sys_text in system_text:
-        if is_model_supporting_system_chat(config['name']):
-            chat.append(get_chat_entry('system', sys_text))
-        else:
-            chat.append(get_chat_entry('user', sys_text))
+    #     if is_model_supporting_system_chat(config['name']):
+    #         chat.append(get_chat_entry('system', sys_text))
+    #     else:
+    #         chat.append(get_chat_entry('user', sys_text))
+        chat.append(sys_text)
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+1) as bar_batch:
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
         model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
-        chat.append(get_chat_entry('assistant', model_output))
+        chat.append(model_output)  # get_chat_entry('assistant', model_output))
+        print(f'[pipeline] chat: {chat}\n output: {model_output}')
         bar_batch.update(1)
 
         for input_text in prompts:
@@ -69,7 +71,7 @@ elif model_config['use'] == 'api':
             chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+1) as bar_batch:
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
         model_output = model_api_batch(openai, config, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
         chat.append(get_chat_entry('assistant', model_output))
