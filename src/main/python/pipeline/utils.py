@@ -26,6 +26,8 @@ def load_text_and_first_prompt(ex_name, version, model_name):
     ex_text = load_text_exercise(ex_name)
     prompts = load_prompts(version, model_name)['context']
 
+    print(f'[utils] ex_text: {ex_text}, prompts: {prompts}')
+    print(f'[utils] joined: {'\n'.join([prompts, ex_text])}')
     return '\n'.join([prompts, ex_text])
 
 
