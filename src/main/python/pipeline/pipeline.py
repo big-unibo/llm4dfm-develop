@@ -31,6 +31,7 @@ if model_config['use'] == 'import':
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
+        print(f'[pipeline] batching chat: {chat}')
         model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
         chat.append(model_output)  # get_chat_entry('assistant', model_output))
