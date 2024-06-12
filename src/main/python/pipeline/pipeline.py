@@ -18,15 +18,15 @@ if model_config['use'] == 'import':
     model_outputs = []
     chat = []
 
-    system_text = load_text_and_first_prompt(model_config['exercise']['name'], model_config['exercise']['prompt_version'], config['name'])
+    system_text = load_text_and_first_prompt(model_config['exercise']['name'], model_config['exercise'][
+        'prompt_version'], config['name'])
 
     prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])['chat']
 
-    for sys_text in system_text:
-        if is_model_supporting_system_chat(config['name']):
-            chat.append(get_chat_entry('system', sys_text))
-        else:
-            chat.append(get_chat_entry('user', sys_text))
+    if is_model_supporting_system_chat(config['name']):
+        chat.append(get_chat_entry('system', system_text))
+    else:
+        chat.append(get_chat_entry('user', system_text))
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
@@ -65,11 +65,10 @@ elif model_config['use'] == 'api':
 
     prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])['chat']
 
-    for sys_text in system_text:
-        if is_model_supporting_system_chat(config['name']):
-            chat.append(get_chat_entry('system', sys_text))
-        else:
-            chat.append(get_chat_entry('user', sys_text))
+    if is_model_supporting_system_chat(config['name']):
+        chat.append(get_chat_entry('system', sys_text))
+    else:
+        chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
     with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
