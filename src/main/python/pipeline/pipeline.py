@@ -29,7 +29,7 @@ if model_config['use'] == 'import':
             chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)+1) as bar_batch:
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+1) as bar_batch:
         model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
         chat.append(get_chat_entry('assistant', model_output))
@@ -69,7 +69,7 @@ elif model_config['use'] == 'api':
             chat.append(get_chat_entry('user', sys_text))
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)+1) as bar_batch:
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+1) as bar_batch:
         model_output = model_api_batch(openai, config, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
         chat.append(get_chat_entry('assistant', model_output))
