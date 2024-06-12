@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 save_directory = os.getenv('SAVE_MODELS')
-DEBUG = os.getenv('DEBUG')
 
 models_not_supporting_system_chat = ['mistral']
 
@@ -75,14 +74,14 @@ def is_model_supporting_system_chat(model_name):
 
 
 # compute a batch given a model, a tokenizer and input_text, returning results
-def model_import_batch(model, tokenizer, chat) -> str:
+def model_import_batch(model, tokenizer, chat, debug_print) -> str:
     encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
     with torch.no_grad():
         generated_ids = model.generate(encoded, max_new_tokens=4000, do_sample=True, pad_token_id=tokenizer.eos_token_id)
     decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
     decoded_with_batch = tokenizer.batch_decode(generated_ids)
 
-    if DEBUG:
+    if debug_print:
         print(f'[models] -> decoded_decode: {decoded_with_decode}')
         print(f'[models] -> decoded_batch: {decoded_with_batch}')
 
@@ -90,7 +89,7 @@ def model_import_batch(model, tokenizer, chat) -> str:
 
 
 # compute a batch given apis and configurations
-def model_api_batch(openai, config, chat) -> str:
+def model_api_batch(openai, config, chat, debug_print) -> str:
     response = openai.ChatCompletion.create(
         model=config['name'],
         messages=chat,
@@ -101,6 +100,6 @@ def model_api_batch(openai, config, chat) -> str:
     )
 
     output_message = response['choices'][0]['message']['content']  # TODO works only with gpt ?
-    if DEBUG:
+    if debug_print:
         print(f'[models] -> output_message: {output_message}')
     return output_message

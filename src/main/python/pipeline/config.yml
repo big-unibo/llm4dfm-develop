@@ -26,3 +26,5 @@ model_api:
 exercise:
   name: 'exercise-2.3-sql'
   prompt_version: 'v1'
+
+debug_prints: true

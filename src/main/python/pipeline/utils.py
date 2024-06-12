@@ -22,11 +22,18 @@ def load_yaml_conf(yaml_file) -> dict:
         return yaml.safe_load(file)
 
 
+def load_text_and_first_prompt(ex_name, version, model_name):
+    ex_text = load_text_exercise(ex_name)
+    prompts = load_prompts(version, model_name)['context']
+
+    return '\n'.join([prompts, ex_text])
+
+
 # return the text of exercise given ex_name
 def load_text_exercise(ex_name):
     with open(f'{datasets}{ex_name}-text.yml', 'r') as file:
         ex_text = yaml.safe_load(file)
-    return ex_text
+    return ex_text['text']
 
 
 # return prompts of exercise as a dict given ex_name and model_name
@@ -58,7 +65,7 @@ def config_to_print_import_model(configs) -> dict:
     conf_to_print = {}
     add_property_if_present(conf_to_print, [
         'name',
-        'temperature',
+        # 'temperature',
         'tokenizer',
     ], configs)
     return conf_to_print
@@ -81,10 +88,11 @@ def config_to_print_api_model(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, ex_config, model_output, imported):
+def store_output(model_config, ex_config, model_input, model_output, imported):
     results_output = {
         'config': config_to_print_import_model(model_config) if imported else config_to_print_api_model(model_config),
-        'output': model_output
+        # 'input': model_input,
+        'output': model_output,
     }
 
     prompt_version = ex_config['prompt_version']
