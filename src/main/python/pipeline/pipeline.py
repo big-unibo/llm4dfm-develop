@@ -21,27 +21,24 @@ if model_config['use'] == 'import':
     system_text = load_text_and_first_prompt(model_config['exercise']['name'], model_config['exercise'][
         'prompt_version'], config['name'])
 
-    prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])['chat']
+    chat.append(get_chat_entry('system', system_text, config['name']))
 
-    if is_model_supporting_system_chat(config['name']):
-        chat.append(get_chat_entry('system', system_text))
-    else:
-        chat.append(get_chat_entry('user', system_text))
+    prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])[1:]
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+1) as bar_batch:
         if model_config['debug_prints']:
             print(f'[pipeline] batching chat: {chat}')
         model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
-        chat.append(get_chat_entry('assistant', model_output))
+        chat.append(get_chat_entry('assistant', model_output, config['name']))
         bar_batch.update(1)
 
-        for input_text in prompts:
-            chat.append(get_chat_entry('user', input_text))
+        for prompt in prompts:
+            chat.append(get_chat_entry(prompt['role'], prompt['content'], config['name']))
             model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
             model_outputs.append(model_output)
-            chat.append(get_chat_entry('assistant', model_output))
+            chat.append(get_chat_entry('assistant', model_output, config['name']))
             bar_batch.update(1)
 
     if model_config['debug_prints']:
@@ -60,32 +57,29 @@ elif model_config['use'] == 'api':
     model_outputs = []
     chat = []
 
-    system_text = load_text_and_first_prompt(model_config['exercise']['name'],
-                                             model_config['exercise']['prompt_version'], config['name'])
+    system_text = load_text_and_first_prompt(model_config['exercise']['name'], model_config['exercise'][
+        'prompt_version'], config['name'])
 
-    prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])['chat']
+    chat.append(get_chat_entry('system', system_text, config['name']))
 
-    if is_model_supporting_system_chat(config['name']):
-        chat.append(get_chat_entry('system', sys_text))
-    else:
-        chat.append(get_chat_entry('user', sys_text))
+    prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])[1:]
 
     # batch text and prompts
-    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+len(system_text)) as bar_batch:
+    with tqdm(desc=f'Prompt {config["name"]}', total=len(prompts or [])+1) as bar_batch:
         model_output = model_api_batch(openai, config, chat, model_config['debug_prints'])
         model_outputs.append(model_output)
-        chat.append(get_chat_entry('assistant', model_output))
+        chat.append(get_chat_entry('assistant', model_output, config['name']))
         bar_batch.update(1)
 
-        for input_text in prompts:
-            chat.append(get_chat_entry('user', input_text))
+        for prompt in prompts:
+            chat.append(get_chat_entry(prompt['role'], prompt['content'], config['name']))
             if model_config['debug_prints']:
                 print(f'[pipeline] before batching chat: {chat}')
             model_output = model_api_batch(openai, config, chat, model_config['debug_prints'])
             if model_config['debug_prints']:
                 print(f'[pipeline] after batching output: {model_output}')
             model_outputs.append(model_output)
-            chat.append(get_chat_entry('assistant', model_output))
+            chat.append(get_chat_entry('assistant', model_output, config['name']))
             bar_batch.update(1)
 
     chat_input = [sentence for sentence in chat if sentence['role'] == 'system' or sentence['role'] == 'user']

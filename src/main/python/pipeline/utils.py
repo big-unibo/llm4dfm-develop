@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import yaml
 from datetime import datetime
+from models import is_model_supporting_system_chat
 
 load_dotenv()
 
@@ -24,9 +25,9 @@ def load_yaml_conf(yaml_file) -> dict:
 
 def load_text_and_first_prompt(ex_name, version, model_name):
     ex_text = load_text_exercise(ex_name)
-    prompts = load_prompts(version, model_name)['context']
+    prompts = load_prompts(version, model_name)[0]
 
-    return '\n'.join([prompts, ex_text])
+    return '\n'.join([prompts['content'], ex_text])
 
 
 # return the text of exercise given ex_name
@@ -44,7 +45,10 @@ def load_prompts(version, model_name):
 
 
 # return a new chat (list of dict {'role': role, 'content': content}) entry
-def get_chat_entry(entry_role, entry_content):
+def get_chat_entry(entry_role, entry_content, model):
+    if entry_role == 'system':
+        if not is_model_supporting_system_chat(model):
+            return {'role': 'user', 'content': entry_content}
     return {'role': entry_role, 'content': entry_content}
 
 
