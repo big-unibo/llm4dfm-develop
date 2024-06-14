@@ -28,6 +28,17 @@ llama-3:
       The output I expect is in YAML format; every functional dependency is an empty item containing a "from" tag, listing the defining attribute(s),
       and a "to" tag, listing the defined attribute(s); all items are listed inside a "dependencies" tag.
       The source relational schema is described below.
+  - role: user
+    content: |
+      The first step is to create a directed acyclic graph where each node corresponds
+      to a (simple or composite) attribute of the source schema and each arc corresponds
+      to a functional dependency.
+    
+      The output I expect is in YAML format; every functional dependency is an empty item
+      containing a "from" tag, listing the defining attribute(s),
+    
+      and a "to" tag, listing the defined attribute(s); all items are listed inside a
+      "dependencies" tag.
 
 falcon:
   - role: system

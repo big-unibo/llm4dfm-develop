@@ -27,6 +27,12 @@
     - how to run the project
 - Check the output of `./gradlew` to look for warnings (especially in code style)
 
+
+##### Project structure
+
+- The pipeline 
+
+
 #### Dataset conventions
 
 - All datasets must be named as follows: `ProjectName-par1_val1-...-parN_valN.csv`
