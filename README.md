@@ -30,8 +30,43 @@
 
 ##### Project structure
 
-- The pipeline 
+All first-step pipeline files are collected in pipeline module.
 
+- `models.py   -- contains model's utils`
+- `pipeline.py -- contains the process of importing and batching`
+- `utils.py    -- contains general utils`
+- `.env        -- contains information about program's paths`
+- `config.yml  -- contains configuration of the run`
+
+##### Algorithmic parameters
+
+The following parameters can be configured in `config.yml` file.
+
+- `use -- the model to use between import and api`
+
+Imported model
+
+- `name -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
+- `key   -- the huggingface key, required for some models`
+- `temperature   -- not supported at the moment, not sure if import models can use it`
+- `tokenizer: -name   -- model's tokenizer name, usually the same as the model`
+
+Api model
+
+- `name        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
+- `key         -- the authenitcation key`
+- `max_tokens: -- it's the maximum length of the generated output`
+- `n_response: -- regulates number of responses the model generates`
+- `stop        -- set the stop character(s, if list) that terminate the response when encountered`
+
+Exercise
+
+- `name           -- the exercise name (part before -text.yml)`
+- `prompt_version -- the prompt version (part between prompts-v and .yml)`
+
+General
+
+- `debug_prints   -- enable output prints during execution`
 
 #### Dataset conventions
 
