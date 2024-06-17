@@ -48,8 +48,11 @@ Imported model
 
 - `name -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
 - `key   -- the huggingface key, required for some models`
-- `temperature   -- not supported at the moment, not sure if import models can use it`
 - `tokenizer: -name   -- model's tokenizer name, usually the same as the model`
+- `temperature: -- threshold between 0 and 1 that specifies willing to generate more random answers as growing to 1`
+- `max_new_tokens: -- limit the maximum number of tokens generated in a single call`
+- `do_sample: -- boolean, if set specifies to generate more creative output`
+- `top_p: -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1`
 
 Api model
 

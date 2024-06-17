@@ -9,8 +9,7 @@ load_dotenv()
 save_directory = os.getenv('SAVE_MODELS')
 
 models_not_supporting_system_chat = ['mistral']
-
-apply_chat_template = True
+models_supporting_chat_template = ['llama-3']  # TODO check for other models' chat template
 
 
 def load_model_and_tokenizer(model_name, key, quantization):
@@ -67,7 +66,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
         model.save_pretrained(model_directory)
         tokenizer.save_pretrained(model_directory)
 
-    if apply_chat_template:
+    if model_name in models_supporting_chat_template:
         chat_template = {
             "bos_token_id": tokenizer.bos_token_id,
             "eos_token_id": tokenizer.eos_token_id,
@@ -86,19 +85,32 @@ def is_model_supporting_system_chat(model_name):
     return model_name not in models_not_supporting_system_chat
 
 
-# compute a batch given a model, a tokenizer and input_text, returning results
-def model_import_batch(model, tokenizer, chat, debug_print) -> str:
+# compute a batch given a model, a tokenizer, configurations and input_text, returning results
+def model_import_batch(model, tokenizer, chat, config, debug_print) -> str:
     encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
+
+    terminators = [
+        tokenizer.eos_token_id,
+        tokenizer.convert_tokens_to_ids("<|eot_id|>")
+    ]
+
     with torch.no_grad():
-        generated_ids = model.generate(encoded, max_new_tokens=4000, do_sample=True, pad_token_id=tokenizer.eos_token_id)
-    decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-    decoded_with_batch = tokenizer.batch_decode(generated_ids)
+        generated_ids = model.generate(
+            encoded,
+            max_new_tokens=config['max_new_tokens'],
+            eos_token_id=terminators,
+            do_sample=config['do_sample'],
+            temperature=config['temperature'],
+            top_p=config['top_p'],
+        )
+    # decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+    decoded_with_batch = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
 
     if debug_print:
-        print(f'[models] -> decoded_decode: {decoded_with_decode}')
+        # print(f'[models] -> decoded_decode: {decoded_with_decode}')
         print(f'[models] -> decoded_batch: {decoded_with_batch}')
 
-    return decoded_with_decode
+    return decoded_with_batch
 
 
 # compute a batch given apis and configurations
