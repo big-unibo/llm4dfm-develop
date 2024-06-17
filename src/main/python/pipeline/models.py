@@ -92,7 +92,7 @@ def model_import_batch(model, tokenizer, chat, config, debug_print) -> str:
     terminators = [
         tokenizer.eos_token_id,
         tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ]
+    ] if config['name'] in models_supporting_chat_template else []
 
     with torch.no_grad():
         generated_ids = model.generate(
@@ -100,6 +100,13 @@ def model_import_batch(model, tokenizer, chat, config, debug_print) -> str:
             max_new_tokens=config['max_new_tokens'],
             eos_token_id=terminators,
             do_sample=config['do_sample'],
+            temperature=config['temperature'],
+            top_p=config['top_p'],
+        ) if config['name'] in models_supporting_chat_template else model.generate(
+            encoded,
+            max_new_tokens=config['max_new_tokens'],
+            do_sample=config['do_sample'],
+            pad_token_id=tokenizer.eos_token_id,
             temperature=config['temperature'],
             top_p=config['top_p'],
         )

@@ -6,7 +6,7 @@ model_import:
   # pretrained: true
   temperature: 0.2
   max_new_tokens: 4000
-  do_sample: false
+  do_sample: true
   top_p: 0.9
   tokenizer:
     name: 'llama-3'
