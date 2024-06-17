@@ -36,7 +36,7 @@ if model_config['use'] == 'import':
 
         for prompt in prompts:
             chat.append(get_chat_entry(prompt['role'], prompt['content'], config['name']))
-            model_output = model_import_batch(model, tokenizer, chat, model_config['debug_prints'])
+            model_output = model_import_batch(model, tokenizer, chat, config, model_config['debug_prints'])
             model_outputs.append(model_output)
             chat.append(get_chat_entry('assistant', model_output, config['name']))
             bar_batch.update(1)
