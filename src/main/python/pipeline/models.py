@@ -10,6 +10,8 @@ save_directory = os.getenv('SAVE_MODELS')
 
 models_not_supporting_system_chat = ['mistral']
 
+apply_chat_template = True
+
 
 def load_model_and_tokenizer(model_name, key, quantization):
     # TODO work on quantization
@@ -64,6 +66,17 @@ def load_model_and_tokenizer(model_name, key, quantization):
         # Save the model and tokenizer
         model.save_pretrained(model_directory)
         tokenizer.save_pretrained(model_directory)
+
+    if apply_chat_template:
+        chat_template = {
+            "bos_token_id": tokenizer.bos_token_id,
+            "eos_token_id": tokenizer.eos_token_id,
+            "pad_token_id": tokenizer.pad_token_id,
+            "prefix": "<|startoftext|>",
+            "suffix": "<|endoftext|>",
+        }
+        tokenizer.add_special_tokens(chat_template)
+        model.resize_token_embeddings(len(tokenizer))  # Your interaction code here
 
     return model, tokenizer
 
