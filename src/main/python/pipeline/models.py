@@ -81,7 +81,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
     chat_template = get_chat_template(model_name, tokenizer)
     if chat_template:
         tokenizer.add_special_tokens(chat_template)
-        model.resize_token_embeddings(len(tokenizer))  # Your interaction code here
+        model.resize_token_embeddings(len(tokenizer))
 
     return model, tokenizer
 

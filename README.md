@@ -48,18 +48,19 @@ Imported model
 
 - `name -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
 - `key   -- the huggingface key, required for some models`
-- `tokenizer: -name   -- model's tokenizer name, usually the same as the model`
-- `temperature: -- threshold between 0 and 1 that specifies willing to generate more random answers as growing to 1 *if used do_sample need to be true`
-- `max_new_tokens: -- limit the maximum number of tokens generated in a single call`
-- `do_sample: -- boolean, if set specifies to generate more creative output`
-- `top_p: -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample need to be true`
+- `tokenizer -name   -- model's tokenizer name, usually the same as the model`
+- `temperature -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
+- `max_new_tokens -- limit the maximum number of tokens generated in a single call`
+- `do_sample -- boolean, if set specifies to generate more creative output`
+- `top_p -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true`
 
 Api model
 
 - `name        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
 - `key         -- the authenitcation key`
-- `max_tokens: -- it's the maximum length of the generated output`
-- `n_response: -- regulates number of responses the model generates`
+- `max_tokens -- it's the maximum length of the generated output`
+- `n_response -- regulates number of responses the model generates`
+- `temperature -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
 - `stop        -- set the stop character(s, if list) that terminate the response when encountered`
 
 Exercise
@@ -70,6 +71,10 @@ Exercise
 General
 
 - `debug_prints   -- enable output prints during execution`
+
+##### Run the project
+
+In order to run the project, once in `src/main/python/` directory run `python pipeline/pipeline.py` 
 
 #### Dataset conventions
 
@@ -92,6 +97,7 @@ All Python dependencies must be managed through virtual environments. See [here]
     cd src/main/python
     python -m venv venv
     pip install -r requirements.txt
+    As faced a couple times, seems the package packaging has to be installed as pip install --upgrade packaging by itself, as well as torch
 
 To activate venv in Windows (with bash shell; e.g., git bash)
 
