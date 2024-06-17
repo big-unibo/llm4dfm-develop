@@ -9,7 +9,22 @@ load_dotenv()
 save_directory = os.getenv('SAVE_MODELS')
 
 models_not_supporting_system_chat = ['mistral']
-models_supporting_chat_template = ['llama-3']  # TODO check for other models' chat template
+models_supporting_terminators = ['llama-3']
+
+
+def get_chat_template(model_name, tokenizer):
+    # TODO check for other models' chat template
+    match model_name:
+        case 'llama-3':
+            return {
+                "bos_token_id": tokenizer.bos_token_id,
+                "eos_token_id": tokenizer.eos_token_id,
+                "pad_token_id": tokenizer.pad_token_id,
+                "prefix": "<|startoftext|>",
+                "suffix": "<|endoftext|>",
+            }
+        case _:
+            return {}
 
 
 def load_model_and_tokenizer(model_name, key, quantization):
@@ -19,7 +34,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
         bnb_4bit_quant_type='nf4',  # Normalized float 4
         bnb_4bit_use_double_quant=True,  # Second quantization after the first
         bnb_4bit_compute_dtype=bfloat16  # Computation type
-    ) if quantization else ''
+    ) if quantization else None
     match model_name:
         case 'llama-3':
             m_name = 'meta-llama/Meta-Llama-3-8B'
@@ -54,10 +69,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
                                                      quantization_config=bnb_config,
                                                      # device_map='auto',
                                                      token=key,
-                                                     ) if quantization else (AutoModelForCausalLM.
-                                                                             from_pretrained(m_name,
-                                                                                             token=key,
-                                                                                             ))
+                                                     )
         tokenizer = AutoTokenizer.from_pretrained(m_name,
                                                   token=key
                                                   )
@@ -66,14 +78,8 @@ def load_model_and_tokenizer(model_name, key, quantization):
         model.save_pretrained(model_directory)
         tokenizer.save_pretrained(model_directory)
 
-    if model_name in models_supporting_chat_template:
-        chat_template = {
-            "bos_token_id": tokenizer.bos_token_id,
-            "eos_token_id": tokenizer.eos_token_id,
-            "pad_token_id": tokenizer.pad_token_id,
-            "prefix": "<|startoftext|>",
-            "suffix": "<|endoftext|>",
-        }
+    chat_template = get_chat_template(model_name, tokenizer)
+    if chat_template:
         tokenizer.add_special_tokens(chat_template)
         model.resize_token_embeddings(len(tokenizer))  # Your interaction code here
 
@@ -89,24 +95,26 @@ def is_model_supporting_system_chat(model_name):
 def model_import_batch(model, tokenizer, chat, config, debug_print) -> str:
     encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
 
-    terminators = [
-        tokenizer.eos_token_id,
-        tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ] if config['name'] in models_supporting_chat_template else []
+    # Default values
+    pad_token_id = None
+    eos_token_id = None
+
+    # Check if the model supports eos_token_id
+    if config['name'] in models_supporting_terminators:
+        eos_token_id = [
+            tokenizer.eos_token_id,
+            tokenizer.convert_tokens_to_ids("<|eot_id|>")
+        ]
+    else:
+        pad_token_id = tokenizer.eos_token_id
 
     with torch.no_grad():
         generated_ids = model.generate(
             encoded,
             max_new_tokens=config['max_new_tokens'],
-            eos_token_id=terminators,
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
             do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-        ) if config['name'] in models_supporting_chat_template else model.generate(
-            encoded,
-            max_new_tokens=config['max_new_tokens'],
-            do_sample=config['do_sample'],
-            pad_token_id=tokenizer.eos_token_id,
             temperature=config['temperature'],
             top_p=config['top_p'],
         )
