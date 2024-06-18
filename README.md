@@ -97,6 +97,7 @@ All Python dependencies must be managed through virtual environments. See [here]
     cd src/main/python
     python -m venv venv
     pip install -r requirements.txt
+    Given some versioning errors during installations, suggested and stable CUDA 11.8 version is preferred, torch, torchvision and torchaudio versions are binded to that CUDA version
     As faced a couple times, seems the package packaging has to be installed as pip install --upgrade packaging by itself, as well as torch
 
 To activate venv in Windows (with bash shell; e.g., git bash)
