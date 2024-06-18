@@ -79,7 +79,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
         case 'gpt':
             return generate_with_gtp_api
         case _:
-            return lambda chat: chat
+            raise Exception("Not implemented yet")
 
 
 class Model:
@@ -99,7 +99,7 @@ class Model:
     def batch(self, prompt):
         if self.config['debug_prints']:
             print(f'[models] -> batching: {prompt}')
-        self.chat.append(get_chat_entry(prompt.role, prompt.content, self.name))
+        self.chat.append(get_chat_entry(prompt['role'], prompt['content'], self.name))
         model_output = self.generate(self.chat)
         self.chat.append(get_chat_entry('assistant', model_output, self.name))
         return model_output
