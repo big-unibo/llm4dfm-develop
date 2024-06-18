@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 from typing import Callable, List
 import openai
 
-from src.main.python.pipeline.utils import get_chat_entry
-
 load_dotenv()
 
 save_directory = os.getenv('SAVE_MODELS')
@@ -32,7 +30,8 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         pad_token_id = tokenizer.eos_token_id
 
     def generate_with_import(chat):
-
+        if debug_print:
+            print(f'[models] batching chat: {chat}')
         encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
 
         with torch.no_grad():
@@ -105,6 +104,14 @@ class Model:
         self.chat = []
 
 
+# return a new chat (list of dict {'role': role, 'content': content}) entry
+def get_chat_entry(entry_role, entry_content, model):
+    if entry_role == 'system':
+        if not is_model_supporting_system_chat(model):
+            return {'role': 'user', 'content': entry_content}
+    return {'role': entry_role, 'content': entry_content}
+
+
 def get_chat_template(model_name, tokenizer):
     # TODO check for other models' chat template
     match model_name:
@@ -138,7 +145,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
         case 'mistral':
             m_name = 'mistralai/Mistral-7B-Instruct-v0.1'
         case _:
-            m_name = ''
+            raise Exception("Model not found")
 
     if not os.path.exists(save_directory):
         os.makedirs(save_directory)

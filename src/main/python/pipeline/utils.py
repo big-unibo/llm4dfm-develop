@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 import yaml
 from datetime import datetime
-from models import is_model_supporting_system_chat
 
 load_dotenv()
 
@@ -42,14 +41,6 @@ def load_prompts(version, model_name):
     with open(f'{inputs}prompts-{version}.yml', 'r') as file:
         ex_prompts = yaml.safe_load(file)
     return ex_prompts[model_name]
-
-
-# return a new chat (list of dict {'role': role, 'content': content}) entry
-def get_chat_entry(entry_role, entry_content, model):
-    if entry_role == 'system':
-        if not is_model_supporting_system_chat(model):
-            return {'role': 'user', 'content': entry_content}
-    return {'role': entry_role, 'content': entry_content}
 
 
 # add properties to dict_to_store as property:dict_property[property] if present

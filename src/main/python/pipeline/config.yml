@@ -1,7 +1,7 @@
 use: 'import'
 
 model_import:
-  name: 'llama-3'
+  name: 'falcon'
   key: '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' # huggingface key
   # pretrained: true
   temperature: 0.2
@@ -9,7 +9,7 @@ model_import:
   do_sample: true
   top_p: 0.9
   tokenizer:
-    name: 'llama-3'
+    name: 'falcon'
   quantization: false
   #training:
   #  output_dir: ''
