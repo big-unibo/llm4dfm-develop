@@ -87,6 +87,8 @@ class Model:
     def __init__(self, use, name, config, key, debug_print, quantization=False):
         self.chat = []
         self.name = name
+        self.config = config
+        self.config['debug_prints'] = debug_print
         if use == 'import':
             self.model, self.tokenizer = load_model_and_tokenizer(name, key, quantization)
             self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print)
@@ -95,6 +97,8 @@ class Model:
             self.generate = load_generate_api_function(name, self.model, config, debug_print)
 
     def batch(self, prompt):
+        if self.config['debug_prints']:
+            print(f'[models] -> batching: {prompt}')
         self.chat.append(get_chat_entry(prompt.role, prompt.content, self.name))
         model_output = self.generate(self.chat)
         self.chat.append(get_chat_entry('assistant', model_output, self.name))
