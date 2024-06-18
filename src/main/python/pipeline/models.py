@@ -3,6 +3,10 @@ from torch import bfloat16
 import torch
 import os
 from dotenv import load_dotenv
+from typing import Callable, List
+import openai
+
+from src.main.python.pipeline.utils import get_chat_entry
 
 load_dotenv()
 
@@ -10,6 +14,95 @@ save_directory = os.getenv('SAVE_MODELS')
 
 models_not_supporting_system_chat = ['mistral']
 models_supporting_terminators = ['llama-3']
+
+
+def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
+
+    # Default values
+    pad_token_id = None
+    eos_token_id = None
+
+    # Check if the model supports eos_token_id
+    if config['name'] in models_supporting_terminators:
+        eos_token_id = [
+            tokenizer.eos_token_id,
+            tokenizer.convert_tokens_to_ids("<|eot_id|>")
+        ]
+    else:
+        pad_token_id = tokenizer.eos_token_id
+
+    def generate_with_import(chat):
+
+        encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
+
+        with torch.no_grad():
+            generated_ids = model.generate(
+                encoded,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+            )
+        decoded_with_batch = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+
+        if debug_print:
+            print(f'[models] -> decoded_batch: {decoded_with_batch}')
+
+        return decoded_with_batch
+
+    match name:
+        case 'falcon':
+            return generate_with_import
+        case _:
+            return generate_with_import
+
+
+def load_generate_api_function(name, model, config, debug_print) -> Callable[[List[str]], str]:
+    def generate_with_gtp_api(chat):
+        if debug_print:
+            print(f'[models] batching chat: {chat}')
+        response = model.ChatCompletion.create(
+            model=config['name'],
+            messages=chat,
+            max_tokens=config['max_tokens'],
+            n=config['n_responses'],
+            stop=config['stop'],
+            temperature=config['temperature'],
+        )
+        output_message = response['choices'][0]['message']['content']  # TODO works only with gpt ?
+        if debug_print:
+            print(f'[models] -> output_message: {output_message}')
+        return output_message
+
+    match name:
+        case 'gpt':
+            return generate_with_gtp_api
+        case _:
+            return lambda chat: chat
+
+
+class Model:
+
+    def __init__(self, use, name, config, key, debug_print, quantization=False):
+        self.chat = []
+        self.name = name
+        if use == 'import':
+            self.model, self.tokenizer = load_model_and_tokenizer(name, key, quantization)
+            self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print)
+        elif use == 'api':
+            self.model = load_model_api(name, key)
+            self.generate = load_generate_api_function(name, self.model, config, debug_print)
+
+    def batch(self, prompt):
+        self.chat.append(get_chat_entry(prompt.role, prompt.content, self.name))
+        model_output = self.generate(self.chat)
+        self.chat.append(get_chat_entry('assistant', model_output, self.name))
+        return model_output
+
+    def refresh_session(self):
+        self.chat = []
 
 
 def get_chat_template(model_name, tokenizer):
@@ -86,60 +179,12 @@ def load_model_and_tokenizer(model_name, key, quantization):
     return model, tokenizer
 
 
+def load_model_api(name, key):
+    if name == 'gpt':
+        openai.api_key = key
+        return openai
+
+
 # use to build a working chat
 def is_model_supporting_system_chat(model_name):
     return model_name not in models_not_supporting_system_chat
-
-
-# compute a batch given a model, a tokenizer, configurations and input_text, returning results
-def model_import_batch(model, tokenizer, chat, config, debug_print) -> str:
-    encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
-
-    # Default values
-    pad_token_id = None
-    eos_token_id = None
-
-    # Check if the model supports eos_token_id
-    if config['name'] in models_supporting_terminators:
-        eos_token_id = [
-            tokenizer.eos_token_id,
-            tokenizer.convert_tokens_to_ids("<|eot_id|>")
-        ]
-    else:
-        pad_token_id = tokenizer.eos_token_id
-
-    with torch.no_grad():
-        generated_ids = model.generate(
-            encoded,
-            max_new_tokens=config['max_new_tokens'],
-            eos_token_id=eos_token_id,
-            pad_token_id=pad_token_id,
-            do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-        )
-    # decoded_with_decode = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-    decoded_with_batch = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
-
-    if debug_print:
-        # print(f'[models] -> decoded_decode: {decoded_with_decode}')
-        print(f'[models] -> decoded_batch: {decoded_with_batch}')
-
-    return decoded_with_batch
-
-
-# compute a batch given apis and configurations
-def model_api_batch(openai, config, chat, debug_print) -> str:
-    response = openai.ChatCompletion.create(
-        model=config['name'],
-        messages=chat,
-        max_tokens=config['max_tokens'],
-        n=config['n_responses'],
-        stop=config['stop'],
-        temperature=config['temperature'],
-    )
-
-    output_message = response['choices'][0]['message']['content']  # TODO works only with gpt ?
-    if debug_print:
-        print(f'[models] -> output_message: {output_message}')
-    return output_message

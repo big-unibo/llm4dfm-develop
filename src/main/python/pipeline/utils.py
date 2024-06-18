@@ -52,11 +52,6 @@ def get_chat_entry(entry_role, entry_content, model):
     return {'role': entry_role, 'content': entry_content}
 
 
-# given system_text, ex_text and a list of prompts, return an ordered list with the same order
-def concat_system_input_text_and_prompts(system_text, text, prompts) -> list:
-    return list((system_text, text, *prompts))
-
-
 # add properties to dict_to_store as property:dict_property[property] if present
 def add_property_if_present(dict_to_store, props, dict_property):
     for prop in props:
@@ -69,8 +64,12 @@ def config_to_print_import_model(configs) -> dict:
     conf_to_print = {}
     add_property_if_present(conf_to_print, [
         'name',
-        # 'temperature',
+        'temperature',
         'tokenizer',
+        'max_new_tokens',
+        'do_sample',
+        'top_p',
+        'quantization',
     ], configs)
     return conf_to_print
 
@@ -83,7 +82,6 @@ def config_to_print_api_model(configs) -> dict:
         'temperature',
         'tokenizer',
         'max_tokens',
-        'role',
         'n_responses',
         'stop'
     ], configs)
