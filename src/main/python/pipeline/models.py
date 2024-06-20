@@ -5,6 +5,8 @@ import os
 from dotenv import load_dotenv
 from typing import Callable, List
 import openai
+import google.generativeai as genai
+from utils import load_text_exercise, load_prompts
 
 load_dotenv()
 
@@ -15,7 +17,6 @@ models_supporting_terminators = ['llama-3']
 
 
 def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
-
     # Default values
     pad_token_id = None
     eos_token_id = None
@@ -70,16 +71,48 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
             stop=config['stop'],
             temperature=config['temperature'],
         )
-        output_message = response['choices'][0]['message']['content']  # TODO works only with gpt ?
+        output_message = response['choices'][0]['message']['content']
         if debug_print:
             print(f'[models] -> output_message: {output_message}')
+        return output_message
+
+    # Gemini send prompt through chat, parent function's signature model is the chat required by the model to prompt
+    def generate_with_gemini_api(chat):
+        if debug_print:
+            print(f'[models] batching chat: {chat}')
+
+        text_response = []
+
+        responses = model.send_message(
+            chat[-1]['content'],  # TODO check if only last sentence should be passed, and seems
+            # it doesn't support role chat
+            generation_config=genai.types.GenerationConfig(
+                candidate_count=config['n_responses'],
+                stop_sequences=config['stop'],
+                max_output_tokens=config['max_tokens'],
+                top_p=config['top_p'],
+                top_k=config['top_k'],
+                temperature=config['temperature'],
+            )
+        )
+
+        for chunk in responses:
+            text_response.append(chunk.text)
+
+        output_message = "".join(text_response)
+
+        if debug_print:
+            print(f'[models] -> output_message: {output_message}')
+
         return output_message
 
     match name:
         case 'gpt':
             return generate_with_gtp_api
+        case 'gemini':
+            return generate_with_gemini_api
         case _:
-            raise Exception("Not implemented yet")
+            raise Exception("Generate function for this model not implemented yet")
 
 
 class Model:
@@ -94,6 +127,8 @@ class Model:
             self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print)
         elif use == 'api':
             self.model = load_model_api(name, key)
+            if 'gemini' in self.config['name']:
+                self.model = self.model.start_chat(history=[])
             self.generate = load_generate_api_function(name, self.model, config, debug_print)
 
     def batch(self, prompt):
@@ -106,6 +141,13 @@ class Model:
 
     def refresh_session(self):
         self.chat = []
+
+
+def load_text_and_first_prompt(ex_name, version, model_name):
+    ex_text = load_text_exercise(ex_name)
+    prompts = load_prompts(version, model_name)[0]
+
+    return get_chat_entry('system', '\n'.join([prompts['content'], ex_text]), model_name)
 
 
 # return a new chat (list of dict {'role': role, 'content': content}) entry
@@ -194,8 +236,11 @@ def load_model_api(name, key):
     if name == 'gpt':
         openai.api_key = key
         return openai
+    if name == 'gemini':
+        genai.configure(api_key=key)
+        return genai.GenerativeModel('gemini-1.5-flash')
 
 
-# use to build a working chat
+# Check if model supports system role in chat
 def is_model_supporting_system_chat(model_name):
     return model_name not in models_not_supporting_system_chat

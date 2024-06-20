@@ -22,13 +22,6 @@ def load_yaml_conf(yaml_file) -> dict:
         return yaml.safe_load(file)
 
 
-def load_text_and_first_prompt(ex_name, version, model_name):
-    ex_text = load_text_exercise(ex_name)
-    prompts = load_prompts(version, model_name)[0]
-
-    return {'role': 'system', 'content': '\n'.join([prompts['content'], ex_text])}
-
-
 # return the text of exercise given ex_name
 def load_text_exercise(ex_name):
     with open(f'{datasets}{ex_name}-text.yml', 'r') as file:

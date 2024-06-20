@@ -1,7 +1,7 @@
-use: 'import'
+use: 'api' # import or api
 
 model_import:
-  name: 'falcon'
+  name: 'llama-2'
   key: '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' # huggingface key
   # pretrained: true
   temperature: 0.2
@@ -9,7 +9,7 @@ model_import:
   do_sample: true
   top_p: 0.9
   tokenizer:
-    name: 'falcon'
+    name: 'llama-2'
   quantization: false
   #training:
   #  output_dir: ''
@@ -18,12 +18,14 @@ model_import:
 
 
 model_api:
-  name: 'gpt-3.5-turbo'
-  key: '' # legacy only
-  max_tokens: ''
+  name: 'gemini'
+  key: 'AIzaSyDwGHqgxy9PJXBvpwklfp-eI_VdjBRj9B4'
+  max_tokens:
   n_responses: 1
   temperature: 0.7
   stop:
+  top_p: 0.6
+  top_k: 5 # Only a gemini parameter?
 
 exercise:
   name: 'exercise-2.3-sql'

@@ -1,12 +1,9 @@
 from pathlib import Path
-
 from tqdm import tqdm
-
-from models import Model
-from utils import load_yaml_conf, load_prompts, store_output, load_text_and_first_prompt
+from models import Model, load_text_and_first_prompt
+from utils import load_yaml_conf, load_prompts, store_output
 
 model_config = load_yaml_conf(f'{Path().absolute()}/pipeline/config.yml')
-
 
 if model_config['use'] == 'import':
     config = model_config['model_import']
