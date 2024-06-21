@@ -1,4 +1,4 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, pipeline
 from torch import bfloat16
 import torch
 import os
@@ -63,13 +63,14 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
     def generate_with_gtp_api(chat):
         if debug_print:
             print(f'[models] batching chat: {chat}')
-        response = model.ChatCompletion.create(
-            model=config['name'],
+        response = model.chat.completions.create(
+            model='gpt-3.5-turbo', # config['name'],
             messages=chat,
             max_tokens=config['max_tokens'],
             n=config['n_responses'],
             stop=config['stop'],
             temperature=config['temperature'],
+            top_p=config['top_p'],
         )
         output_message = response['choices'][0]['message']['content']
         if debug_print:
@@ -106,11 +107,32 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
 
         return output_message
 
+    def generate_with_huggingface_api(chat):
+        if debug_print:
+            print(f'[models] batching chat: {chat}')
+
+        generation_config = {
+            "max_length": config['max_tokens'],
+            "num_return_sequences": config['n_responses'],
+            "temperature": config['temperature'],
+            "top_k": config['top_k'],
+            "top_p": config['top_p'],
+        }
+
+        generated_text = model(chat[-1], **generation_config)
+
+        if debug_print:
+            print(f'[models] -> output_message: {generated_text}')
+
+        return generated_text
+
     match name:
         case 'gpt':
             return generate_with_gtp_api
         case 'gemini':
             return generate_with_gemini_api
+        case 'mistral':
+            return generate_with_huggingface_api
         case _:
             raise Exception("Generate function for this model not implemented yet")
 
@@ -233,12 +255,20 @@ def load_model_and_tokenizer(model_name, key, quantization):
 
 
 def load_model_api(name, key):
-    if name == 'gpt':
-        openai.api_key = key
-        return openai
-    if name == 'gemini':
-        genai.configure(api_key=key)
-        return genai.GenerativeModel('gemini-1.5-flash')
+    match name:
+        case 'gpt':
+            openai.api_key = key
+            return openai
+        case 'gemini':
+            genai.configure(api_key=key)
+            return genai.GenerativeModel('gemini-1.5-flash')
+        case 'mistral':
+            pipe = pipeline("conversational",
+                            model="mistralai/Mistral-7B-v0.3",
+                            use_auth_token=True)  # To use it, it's required huggingface cli login
+            return pipe
+        case _:
+            raise Exception("Model not found")
 
 
 # Check if model supports system role in chat

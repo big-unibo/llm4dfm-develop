@@ -1,4 +1,4 @@
-chatgpt:
+gpt:
   - role: system
     content: |
       You are a data warehouse designer and your task is to create the conceptual schema for a multidimensional cube in a data-driven fashion,

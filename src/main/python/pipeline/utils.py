@@ -13,7 +13,7 @@ inputs = os.getenv('INPUTS')
 
 # datetime object containing current date and time
 def get_timestamp():
-    return datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+    return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
 
 
 # return yaml configurations as dict
@@ -67,7 +67,9 @@ def config_to_print_api_model(configs) -> dict:
         'tokenizer',
         'max_tokens',
         'n_responses',
-        'stop'
+        'stop',
+        'top_p',
+        'top_k',
     ], configs)
     return conf_to_print
 
