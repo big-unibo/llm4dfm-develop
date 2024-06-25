@@ -11,6 +11,11 @@ results = os.getenv('RESULTS')
 inputs = os.getenv('INPUTS')
 
 
+# TODO integrate log in every debug string
+def log(message):
+    print(f'{os.path.basename(__file__)} - {message}')
+
+
 # datetime object containing current date and time
 def get_timestamp():
     return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
@@ -63,6 +68,8 @@ def config_to_print_api_model(configs) -> dict:
     conf_to_print = {}
     add_property_if_present(conf_to_print, [
         'name',
+        'version',
+        'api_version'
         'temperature',
         'tokenizer',
         'max_tokens',

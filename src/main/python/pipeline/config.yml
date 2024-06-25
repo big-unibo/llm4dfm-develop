@@ -2,7 +2,6 @@ use: 'api' # import or api
 
 model_import:
   name: 'llama-2'
-  key: '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' # huggingface key
   # pretrained: true
   temperature: 0.2
   max_new_tokens: 4000
@@ -19,7 +18,8 @@ model_import:
 
 model_api:
   name: 'gpt'
-  key: 'sk-proj-cSQOZnY8X9SAWwB3j2s1T3BlbkFJQbmiCT8x7Bb2u17p3Hc2'
+  version: '3.5-turbo' # Used with GPT only up to now
+  api_version: '2024-02-15-preview' # Used with GPT only up to now
   max_tokens:
   n_responses: 1
   temperature: 0.7

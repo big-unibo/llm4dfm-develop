@@ -7,6 +7,8 @@ from typing import Callable, List
 import openai
 import google.generativeai as genai
 from utils import load_text_exercise, load_prompts
+import requests
+import json
 
 load_dotenv()
 
@@ -63,19 +65,50 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
     def generate_with_gtp_api(chat):
         if debug_print:
             print(f'[models] batching chat: {chat}')
-        response = model.chat.completions.create(
-            model='gpt-3.5-turbo', # config['name'],
-            messages=chat,
-            max_tokens=config['max_tokens'],
-            n=config['n_responses'],
-            stop=config['stop'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
+        # TODO can this configuration be more modular?
+        endpoint = os.getenv(f'ENDPOINT-{name}')
+        api_version = config['api_version']
+        deployment_name = os.getenv(f'DEPLOYMENT-NAME-{name}')
+
+        headers = {
+            "Content-Type": "application/json",
+            "api-key": config['key']
+        }
+
+        data = {
+            'messages': chat,
+            'max_tokens': config['max_tokens'],
+            'n': config['n_responses'],
+            'stop': config['stop'],
+            'temperature': config['temperature'],
+            'top_p': config['top_p'],
+        }
+
+        response = requests.post(
+            f"{endpoint}openai/deployments/{deployment_name}/chat/completions?api-version={api_version}",
+            headers=headers,
+            data=json.dumps(data)
         )
-        output_message = response['choices'][0]['message']['content']
-        if debug_print:
-            print(f'[models] -> output_message: {output_message}')
-        return output_message
+        if response.status_code == 200:
+            # Parse and print the response
+            result = response.json()
+            if debug_print:
+                print(f'[models] -> output_message: {result}')
+            return result['choices'][0]['message']['content']
+        else:
+            print(f"Request failed with status code {response.status_code}: {response.text}")
+
+        # Standard API call
+        # model.chat.completions.create(
+        #    model='-'.join((config['name'], config['version'])),
+        #    messages=chat,
+        #    max_tokens=config['max_tokens'],
+        #    n=config['n_responses'],
+        #    stop=config['stop'],
+        #    temperature=config['temperature'],
+        #    top_p=config['top_p'],
+        # )
+        # output_message = response#['choices'][0]['message']['content']
 
     # Gemini send prompt through chat, parent function's signature model is the chat required by the model to prompt
     def generate_with_gemini_api(chat):
@@ -84,8 +117,8 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
 
         text_response = []
 
-        responses = model.send_message(
-            chat[-1]['content'],  # TODO check if only last sentence should be passed, and seems
+        responses = (model.send_message(
+            chat[-1]['content'],  # TODO check if only last sentence should be passed
             # it doesn't support role chat
             generation_config=genai.types.GenerationConfig(
                 candidate_count=config['n_responses'],
@@ -95,7 +128,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
                 top_k=config['top_k'],
                 temperature=config['temperature'],
             )
-        )
+        ))
 
         for chunk in responses:
             text_response.append(chunk.text)
@@ -154,8 +187,6 @@ class Model:
             self.generate = load_generate_api_function(name, self.model, config, debug_print)
 
     def batch(self, prompt):
-        if self.config['debug_prints']:
-            print(f'[models] -> batching: {prompt}')
         self.chat.append(get_chat_entry(prompt['role'], prompt['content'], self.name))
         model_output = self.generate(self.chat)
         self.chat.append(get_chat_entry('assistant', model_output, self.name))
@@ -165,11 +196,17 @@ class Model:
         self.chat = []
 
 
+# Load first prompt as system, providing scenario
+# Then load text exercise and second prompt as user
+# Return as list
 def load_text_and_first_prompt(ex_name, version, model_name):
     ex_text = load_text_exercise(ex_name)
-    prompts = load_prompts(version, model_name)[0]
+    prompts = load_prompts(version, model_name)
+    scenario_prompt = prompts[0]
+    second_prompt = prompts[1]
 
-    return get_chat_entry('system', '\n'.join([prompts['content'], ex_text]), model_name)
+    return [scenario_prompt, get_chat_entry(second_prompt['role'], '\n'.join([second_prompt['content'], ex_text]),
+                                            model_name)]
 
 
 # return a new chat (list of dict {'role': role, 'content': content}) entry

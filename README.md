@@ -38,6 +38,24 @@ All first-step pipeline files are collected in pipeline module.
 - `.env        -- contains information about program's paths`
 - `config.yml  -- contains configuration of the run`
 
+##### Authentication key
+
+Authentication key must be stored in `src/main/resources/credentials.yml`,
+an example of how the config is structured it is can be found in `src/main/resources/credentials-example.yml`.
+
+##### Configuration parameters
+
+Inside `pipeline` module, a `.env` file must be provided with following configurations:
+- `DATASETS   -- path to folder containing exercise texts`
+- `OUTPUTS    -- path to folder in which outpust are stored`
+- `RESULTS   -- path to folder in which results are stored`
+- `INPUTS   -- path to folder containing exercise prompts`
+- `SAVE_MODELS   -- path to folder in which store imported models`
+
+If using Azure to interact with model's API, these configurations must be provided too
+- `ENDPOINT-{model-name}`
+- `DEPLOYMENT-NAME-{model-name}`
+
 ##### Algorithmic parameters
 
 The following parameters can be configured in `config.yml` file.
@@ -47,21 +65,24 @@ The following parameters can be configured in `config.yml` file.
 Imported model
 
 - `name -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
-- `key   -- the huggingface key, required for some models`
 - `tokenizer -name   -- model's tokenizer name, usually the same as the model`
 - `temperature -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
 - `max_new_tokens -- limit the maximum number of tokens generated in a single call`
 - `do_sample -- boolean, if set specifies to generate more creative output`
 - `top_p -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true`
+- `quantization -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy`
 
 Api model
 
 - `name        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
-- `key         -- the authenitcation key`
+- `version     -- model's version if present [actually working only for gpt]`
+- `api_version     -- api model's version`
 - `max_tokens -- it's the maximum length of the generated output`
 - `n_response -- regulates number of responses the model generates`
 - `temperature -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
 - `stop        -- set the stop character(s, if list) that terminate the response when encountered`
+- `top_p -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1`
+- `top_k -- threshold between 1 and 40 that specifies the number of tokens (with the highest probability) considered for the next generation. Less randomness for lower values`
 
 Exercise
 

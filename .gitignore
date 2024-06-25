@@ -1,4 +1,5 @@
 outputs/*.csv
+outputs/*.yml
 results/dummy.pdf
 metastore_db/
 **/credentials.yml
