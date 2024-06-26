@@ -18,6 +18,10 @@ models_not_supporting_system_chat = ['mistral']
 models_supporting_terminators = ['llama-3']
 
 
+def log(message):
+    print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
+
+
 def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
     # Default values
     pad_token_id = None
@@ -34,7 +38,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
 
     def generate_with_import(chat):
         if debug_print:
-            print(f'[models] batching chat: {chat}')
+            log(f'Batching chat: {chat}')
         encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
 
         with torch.no_grad():
@@ -50,7 +54,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         decoded_with_batch = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
 
         if debug_print:
-            print(f'[models] -> decoded_batch: {decoded_with_batch}')
+            log(f'Decoded_batch: {decoded_with_batch}')
 
         return decoded_with_batch
 
@@ -64,7 +68,8 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
 def load_generate_api_function(name, model, config, debug_print) -> Callable[[List[str]], str]:
     def generate_with_gtp_api(chat):
         if debug_print:
-            print(f'[models] batching chat: {chat}')
+            log(f'Batching chat: {chat}')
+
         # TODO can this configuration be more modular?
         endpoint = os.getenv(f'ENDPOINT-{name}')
         api_version = config['api_version']
@@ -93,10 +98,10 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
             # Parse and print the response
             result = response.json()
             if debug_print:
-                print(f'[models] -> output_message: {result}')
+                log(f'Output_message: {result}')
             return result['choices'][0]['message']['content']
         else:
-            print(f"Request failed with status code {response.status_code}: {response.text}")
+            log(f"Request failed with status code {response.status_code}: {response.text}")
 
         # Standard API call
         # model.chat.completions.create(
@@ -113,7 +118,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
     # Gemini send prompt through chat, parent function's signature model is the chat required by the model to prompt
     def generate_with_gemini_api(chat):
         if debug_print:
-            print(f'[models] batching chat: {chat}')
+            log(f'Batching chat: {chat}')
 
         text_response = []
 
@@ -136,13 +141,13 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
         output_message = "".join(text_response)
 
         if debug_print:
-            print(f'[models] -> output_message: {output_message}')
+            log(f'Output_message: {output_message}')
 
         return output_message
 
     def generate_with_huggingface_api(chat):
         if debug_print:
-            print(f'[models] batching chat: {chat}')
+            log(f'Batching chat: {chat}')
 
         generation_config = {
             "max_length": config['max_tokens'],
@@ -155,7 +160,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
         generated_text = model(chat[-1], **generation_config)
 
         if debug_print:
-            print(f'[models] -> output_message: {generated_text}')
+            log(f'Output_message: {generated_text}')
 
         return generated_text
 

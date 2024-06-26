@@ -1,10 +1,16 @@
 from pathlib import Path
 from tqdm import tqdm
 from models import Model, load_text_and_first_prompt
-from utils import load_yaml_conf, load_prompts, store_output
+from utils import load_yaml, load_prompts, store_output
+import os
 
-model_config = load_yaml_conf(f'{Path().absolute()}/pipeline/config.yml')
-key_config = load_yaml_conf(f'{Path().absolute()}/../resources/credentials.yml')
+
+def log(message):
+    print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
+
+
+model_config = load_yaml(f'{Path().absolute()}/pipeline/first-step-config.yml')
+key_config = load_yaml(f'{Path().absolute()}/../resources/credentials.yml')
 
 if model_config['use'] == 'import':
     config = model_config['model_import']
@@ -27,9 +33,10 @@ else:
 
 model_outputs = []
 prompts = []
+exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # As new indication, load context prompt and then text exercise and first prompt together
-prompts.extend(load_text_and_first_prompt(model_config['exercise']['name'], model_config['exercise'][
+prompts.extend(load_text_and_first_prompt(exercise, model_config['exercise'][
     'prompt_version'], config['name']))
 # After, load remaining prompts
 prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[2:])
@@ -42,7 +49,7 @@ with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):
         bar_batch.update(1)
 
 if model_config['debug_prints']:
-    print(f'[pipeline] chat: {model.chat}\n output: {model_output}')
+    log(f'Chat: {model.chat}\nOutput: {model_output}')
 
 chat_input = [sentence for sentence in model.chat if sentence['role'] == 'system' or sentence['role'] == 'user']
 

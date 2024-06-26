@@ -28,7 +28,8 @@ model_api:
   top_k: 5 # Only a gemini parameter?
 
 exercise:
-  name: 'exercise-2.3-sql'
+  name: 'exercise-2.3'
+  version: 'sql'
   prompt_version: 'v1'
 
 debug_prints: true

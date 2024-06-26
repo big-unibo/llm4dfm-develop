@@ -33,10 +33,10 @@
 All first-step pipeline files are collected in pipeline module.
 
 - `models.py   -- contains model's utils`
-- `pipeline.py -- contains the process of importing and batching`
+- `first-step.py -- contains the process of importing and batching`
 - `utils.py    -- contains general utils`
 - `.env        -- contains information about program's paths`
-- `config.yml  -- contains configuration of the run`
+- `first-step-config.yml  -- contains configuration of the run`
 
 ##### Authentication key
 
@@ -58,7 +58,7 @@ If using Azure to interact with model's API, these configurations must be provid
 
 ##### Algorithmic parameters
 
-The following parameters can be configured in `config.yml` file.
+The following parameters can be configured in `first-step-config.yml` file.
 
 - `use -- the model to use between import and api`
 
@@ -95,7 +95,7 @@ General
 
 ##### Run the project
 
-In order to run the project, once in `src/main/python/` directory run `python pipeline/pipeline.py` 
+In order to run the project, once in `src/main/python/` directory run `python pipeline/first-step.py` 
 
 #### Dataset conventions
 
@@ -118,7 +118,7 @@ All Python dependencies must be managed through virtual environments. See [here]
     cd src/main/python
     python -m venv venv
     pip install -r requirements.txt
-    Given some versioning errors during installations, suggested and stable CUDA 11.8 version is preferred,  
+    Given some versioning errors during installations, suggested and stable CUDA version is 11.8,  
       torch, torchvision and torchaudio versions are binded to that CUDA version
     As faced a couple times, seems the package flash_attn has to be installed as pip install flash_attn --no-build-isolation by itself
 

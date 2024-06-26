@@ -11,9 +11,8 @@ results = os.getenv('RESULTS')
 inputs = os.getenv('INPUTS')
 
 
-# TODO integrate log in every debug string
 def log(message):
-    print(f'{os.path.basename(__file__)} - {message}')
+    print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
 
 
 # datetime object containing current date and time
@@ -22,7 +21,7 @@ def get_timestamp():
 
 
 # return yaml configurations as dict
-def load_yaml_conf(yaml_file) -> dict:
+def load_yaml(yaml_file) -> dict:
     with open(yaml_file, 'r') as file:
         return yaml.safe_load(file)
 
@@ -32,6 +31,13 @@ def load_text_exercise(ex_name):
     with open(f'{datasets}{ex_name}-text.yml', 'r') as file:
         ex_text = yaml.safe_load(file)
     return ex_text['text']
+
+
+# return the ground truth of exercise given ex_name
+def load_ground_truth_exercise(ex_name):
+    with open(f'{datasets}{ex_name}-ground-truth.yml', 'r') as file:
+        ex_ground_truth = yaml.safe_load(file)
+    return ex_ground_truth['text']
 
 
 # return prompts of exercise as a dict given ex_name and model_name
@@ -91,7 +97,7 @@ def store_output(model_config, ex_config, model_input, model_output, imported):
     }
 
     prompt_version = ex_config['prompt_version']
-    ex_name = ex_config['name']
+    ex_name = '-'.join((ex_config['name'], ex_config['version']))
     model = model_config['name']
 
     with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w+') as outfile:
