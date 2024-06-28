@@ -1,6 +1,6 @@
 from pathlib import Path
 from tqdm import tqdm
-from models import Model, load_text_and_first_prompt
+from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from utils import load_yaml, load_prompts, store_output
 import os
 
@@ -41,9 +41,17 @@ prompts.extend(load_text_and_first_prompt(exercise, model_config['exercise'][
 # After, load remaining prompts
 prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[2:])
 
+# Used to allow models without chat structure constraints (i.e. after each system or user input require an assistant
+# message, so one batch at a time) to batch first system and user input in a single batch
+first_batch = 2 if is_model_without_chat_constraints(config['name']) else 1
+
 # batch text and prompts
 with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):
-    for prompt in prompts:
+    print(prompts)
+    model_output = model.batch(prompts[:first_batch])
+    model_outputs.append(model_output)
+    bar_batch.update(first_batch)
+    for prompt in prompts[first_batch:]:
         model_output = model.batch(prompt)
         model_outputs.append(model_output)
         bar_batch.update(1)

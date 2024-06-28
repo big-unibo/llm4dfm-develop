@@ -1,11 +1,12 @@
 exercise:
+  full_name: # Can specify exercise full name, without .yml extensions
   name: 'exercise-2.3'
-  version: 'sql'
-  prompt_version: 'v1'
+  v: 'sql'
+  prompt_v: 'v1'
 
 model:
   name: 'gpt'
-  version: '3.5-turbo' # Optional
+  v: '' # Optional
 
 output:
   latest: true

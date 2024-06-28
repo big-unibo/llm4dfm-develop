@@ -9,6 +9,7 @@ import google.generativeai as genai
 from utils import load_text_exercise, load_prompts
 import requests
 import json
+import yaml
 
 load_dotenv()
 
@@ -16,6 +17,7 @@ save_directory = os.getenv('SAVE_MODELS')
 
 models_not_supporting_system_chat = ['mistral']
 models_supporting_terminators = ['llama-3']
+models_without_constraints_chat = ['gpt']
 
 
 def log(message):
@@ -192,8 +194,18 @@ class Model:
             self.generate = load_generate_api_function(name, self.model, config, debug_print)
 
     def batch(self, prompt):
-        self.chat.append(get_chat_entry(prompt['role'], prompt['content'], self.name))
-        model_output = self.generate(self.chat)
+        debug = False
+        # Prompt can be list if it's the first input
+        if type(prompt) is list:
+            for p in prompt:
+                self.chat.append(get_chat_entry(p['role'], p['content'], self.name))
+        else:
+            self.chat.append(get_chat_entry(prompt['role'], prompt['content'], self.name))
+        model_output = self.generate(self.chat) if not debug else 'prova'
+        try:
+            model_output = yaml.safe_load(model_output)
+        except yaml.YAMLError as _:
+            pass
         self.chat.append(get_chat_entry('assistant', model_output, self.name))
         return model_output
 
@@ -316,3 +328,7 @@ def load_model_api(name, key):
 # Check if model supports system role in chat
 def is_model_supporting_system_chat(model_name):
     return model_name not in models_not_supporting_system_chat
+
+
+def is_model_without_chat_constraints(model_name):
+    return model_name in models_without_constraints_chat
