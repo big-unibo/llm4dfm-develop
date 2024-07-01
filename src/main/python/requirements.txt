@@ -19,3 +19,6 @@ accelerate
 bitsandbytes
 google-generativeai
 google-cloud-aiplatform
+networkx
+matplotlib
+pygraphviz
