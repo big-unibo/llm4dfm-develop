@@ -58,22 +58,22 @@ for d in tp_list:
     dep_dict = dict()
     for key, value in d.items():
         dep_dict[key] = value
-        G.add_node(value)
-    G.add_edge(dep_dict['from'], dep_dict['to'], color=tp_color)
+        G.add_node(value.replace(',', '\n'))
+    G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=tp_color)
 
 for d in fn_list:
     dep_dict = dict()
     for key, value in d.items():
         dep_dict[key] = value
-        G.add_node(value)
-    G.add_edge(dep_dict['from'], dep_dict['to'], color=fn_color)
+        G.add_node(value.replace(',', '\n'))
+    G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=fn_color)
 
 for d in fp_list:
     dep_dict = dict()
     for key, value in d.items():
         dep_dict[key] = value
-        G.add_node(value)
-    G.add_edge(dep_dict['from'], dep_dict['to'], color=fp_color)
+        G.add_node(value.replace(',', '\n'))
+    G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=fp_color)
 
 
 # Draw the graph
@@ -84,16 +84,12 @@ edges = G.edges()
 colors = [G[u][v]['color'] for u,v in edges]
 
 # Draw nodes and edges
-nx.draw(G, pos, edge_color=colors, with_labels=True, node_color='lightblue', node_size=1000,
-        font_size=8, font_weight='bold', arrows=True)
+nx.draw(G, pos, edge_color=colors, with_labels=True, node_color='white', node_size=1000,
+        font_size=10, font_weight='bold', arrows=True)
 
 # Draw edge labels
 edge_labels = nx.get_edge_attributes(G, 'label')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
-
-# TODO not working
-plt.text(0.5, 1.05, f'TP: {tp_count}\nFN: {fn_count}\nFP: {fp_count}', horizontalalignment='center',
-         fontsize=14, transform=plt.gca().transAxes)
 
 # Display the graph
 plt.title("Graph Visualization")
