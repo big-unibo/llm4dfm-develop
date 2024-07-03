@@ -3,14 +3,12 @@ exercise:
   name: 'exercise-2.3'
   v: 'sql'
   prompt_v: 'v1'
+  latest: true # Optional in case of full_name
+  timestamp: # Optional in case of full_name
 
 model:
   name: 'gpt'
   v: '' # Optional
-
-output:
-  latest: true
-  timestamp:
 
 visualization:
   node_color: true

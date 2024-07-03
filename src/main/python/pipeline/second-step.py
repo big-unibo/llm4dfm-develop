@@ -8,13 +8,12 @@ input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
 
 ex_config = input_config['exercise']
 model_config = input_config['model']
-output_config = input_config['output']
 
 ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
                                  model_config['name'], model_config['v'],
-                                 output_config['latest'], output_config['timestamp'], ex_config['full_name'])
+                                 ex_config['latest'], ex_config['timestamp'], ex_config['full_name'])
 
-ground_truth = load_ground_truth_exercise(input_config['exercise']['name'])
+ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
 
 dep_output = ex_output['output'][0]['dependencies']
 

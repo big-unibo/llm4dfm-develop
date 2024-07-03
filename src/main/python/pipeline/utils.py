@@ -35,12 +35,17 @@ def load_text_exercise(ex_name):
 
 
 # return the ground truth of exercise given ex_name
-def load_ground_truth_exercise(ex_name):
-    with open(f'{datasets}{ex_name}-ground-truth.yml', 'r') as file:
+def load_ground_truth_exercise(ex_name, full_name=''):
+    if full_name:
+        file_name = '-'.join(full_name.split('-')[:2])
+    else:
+        file_name = ex_name
+    with open(f'{datasets}{file_name}-ground-truth.yml', 'r') as file:
         ex_ground_truth = yaml.safe_load(file)
     return ex_ground_truth
 
 
+# load output exercise used in second-step and its filename (used after to store the image)
 def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
                          full_name=''):
     if full_name:
@@ -149,16 +154,6 @@ def config_to_print_api_model(configs) -> dict:
         'top_k',
     ], configs)
     return conf_to_print
-
-
-# def multiline_str_representer(dumper, data):
-#     if '\n' in data:
-#         return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
-#     return dumper.represent_scalar('tag:yaml.org,2002:str', data)
-#
-#
-# # Register the custom representer for strings
-# yaml.add_representer(str, multiline_str_representer)
 
 
 # write model_output in file ex_name-model-timestamp.yml

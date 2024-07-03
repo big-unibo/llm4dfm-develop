@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from dotenv import load_dotenv
 import os
 
@@ -20,6 +22,7 @@ def clean_gt_dependencies(deps):
     return transformed
 
 
+# Remove in output eventual explicit tables name (TABLE.attribute -> attribute) for matching
 def remove_explicit_tables_to_output(dependency_value):
     def remove_first_part(input_string):
         if '.' in input_string:
@@ -30,9 +33,11 @@ def remove_explicit_tables_to_output(dependency_value):
     return ''.join([remove_first_part(word) for word in dependency_value.split(' ')])
 
 
+# Dependencies to consider in second step
 def is_a_valid_role_dependency(dependency_key):
     return dependency_key in ['from', 'to']
 
 
-def store_image(plt, name, format):
-    plt.savefig(f'{outputs}{name}.{format}', format=format)
+# Used to store graph image
+def store_image(plt, name, img_format):
+    plt.savefig(f'{outputs}{Path(name).stem}.{img_format}', format=img_format)

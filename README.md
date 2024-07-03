@@ -34,9 +34,12 @@ All first-step pipeline files are collected in pipeline module.
 
 - `models.py   -- contains model's utils`
 - `first-step.py -- contains the process of importing and batching`
-- `utils.py    -- contains general utils`
-- `.env        -- contains information about program's paths`
 - `first-step-config.yml  -- contains configuration of the run`
+- `utils.py    -- contains general utils`
+- `second-step.py -- contains the process of visualization of the output`
+- `second-step-config.yml  -- contains configuration of the second step`
+- `ssutils.py    -- contains utils used in second step`
+- `.env        -- contains information about program's paths`
 
 ##### Authentication key
 
@@ -57,6 +60,8 @@ If using Azure to interact with model's API, these configurations must be provid
 - `DEPLOYMENT-NAME-{model-name}`
 
 ##### Algorithmic parameters
+
+###### First step
 
 The following parameters can be configured in `first-step-config.yml` file.
 
@@ -93,9 +98,41 @@ General
 
 - `debug_prints   -- enable output prints during execution`
 
+###### Second step
+
+Exercise
+
+Given that it's required to read both ground-truth and model output, to make it easier to configure, different ways can be used to state the exercise to read:
+
+- `full_name           -- the output exercise full name (part before -text.yml)\n ** If provided, no further options of the exercise have to be passed`
+- `name -- the exercise name (exercise-*.*)`
+- `v           -- the exercise version (sql, original-text, ...)`
+- `prompt_v -- the prompt version of the output exercise (v*)`
+- `latest           -- boolean that enable the retrieval of latest timestamp matching previous configurations`
+- `timestamp -- if not latest, provide the timestamp in format YYYY-MM-DDTHH-mm_ss`
+
+Model
+
+- `name -- model name `
+- `v           -- model version, **use only if present in file name`
+
+Visualization
+
+Configurations which regulate graph visualization.
+
+- `node_color -- boolean, enable node colors (default green if TP, grey if FN, red if FP)`
+- `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
+- `k           -- regulates distance between nodes`
+- `arrowsize -- regulates edge's arrow pointer dimension`
+- `image`
+  - `generate -- boolean, enable image generation`
+  - `format -- the image export format`
+- `show_graph -- boolean, enable graph visualization`
+
 ##### Run the project
 
-In order to run the project, once in `src/main/python/` directory run `python pipeline/first-step.py` 
+In order to run the first step, once in `src/main/python/` directory run `python pipeline/first-step.py` 
+In order to run the second step, once in `src/main/python/` directory run `python pipeline/second-step.py` 
 
 #### Dataset conventions
 
