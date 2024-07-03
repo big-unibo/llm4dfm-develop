@@ -41,7 +41,7 @@ def load_ground_truth_exercise(ex_name):
     return ex_ground_truth
 
 
-def load_output_exercise(ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
+def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
                          full_name=''):
     if full_name:
         exercise = full_name
@@ -101,7 +101,7 @@ def load_output_exercise(ex_name, version, prompt_version, model_name, model_ver
 
     with open(f'{outputs}{exercise}', 'r') as file:
         ex_output = yaml.safe_load(file)
-    return ex_output
+    return ex_output, exercise
 
 
 # return prompts of exercise as a dict given ex_name and model_name

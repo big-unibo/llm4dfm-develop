@@ -1,6 +1,6 @@
 from pathlib import Path
-from utils import load_yaml, load_ground_truth_exercise, load_output_exercise
-from ssutils import clean_gt_dependencies, remove_explicit_tables_to_output, is_a_valid_role_dependency
+from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
+from ssutils import clean_gt_dependencies, remove_explicit_tables_to_output, is_a_valid_role_dependency, store_image
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -10,7 +10,7 @@ ex_config = input_config['exercise']
 model_config = input_config['model']
 output_config = input_config['output']
 
-ex_output = load_output_exercise(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
+ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
                                  model_config['name'], model_config['v'],
                                  output_config['latest'], output_config['timestamp'], ex_config['full_name'])
 
@@ -48,44 +48,38 @@ fp_count = len(fp)
 
 # Visualization
 
-# Create a directed graph
 G = nx.DiGraph()
 
 tp_color, fn_color, fp_color = 'green', 'grey', 'red'
 
+inserted_nodes = []
+
 # Add nodes and edges from the dictionaries
-for d in tp_list:
-    dep_dict = dict()
-    for key, value in d.items():
-        dep_dict[key] = value
-        G.add_node(value.replace(',', '\n'))
-    G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=tp_color)
-
-for d in fn_list:
-    dep_dict = dict()
-    for key, value in d.items():
-        dep_dict[key] = value
-        G.add_node(value.replace(',', '\n'))
-    G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=fn_color)
-
-for d in fp_list:
-    dep_dict = dict()
-    for key, value in d.items():
-        dep_dict[key] = value
-        G.add_node(value.replace(',', '\n'))
-    G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=fp_color)
-
+for dep_list in [tp_list, fn_list, fp_list]:
+    for dep in dep_list:
+        dep_dict = dict()
+        color = tp_color if dep in tp_list else fn_color if dep in fn_list else fp_color if dep in fp_list else \
+            'black'
+        for key, value in dep.items():
+            dep_dict[key] = value
+            if value not in inserted_nodes:
+                G.add_node(value.replace(',', '\n'), color=color)
+                inserted_nodes.append(value)
+        G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=color)
 
 # Draw the graph
-pos = nx.spring_layout(G, seed=42)  # positions for all nodes
+k = input_config['visualization']['k']
+arrowsize = input_config['visualization']['arrowsize']
+pos = nx.spring_layout(G, seed=42, k=k)  # positions for all nodes
 plt.figure(figsize=(10, 8))
 
-edges = G.edges()
-colors = [G[u][v]['color'] for u,v in edges]
+edge_colors = [G[u][v]['color'] for u, v in G.edges()] if input_config['visualization']['edge_color'] else None
+node_colors = [G.nodes[n]['color'] for n in G.nodes()] if input_config['visualization']['node_color'] else None
 
 # Draw nodes and edges
-nx.draw(G, pos, edge_color=colors, with_labels=True, node_color='white', node_size=1000,
-        font_size=10, font_weight='bold', arrows=True)
+nx.draw(G, pos, edge_color=edge_colors, node_color=node_colors,
+        with_labels=True, node_size=1000,
+        font_size=10, font_weight='bold', arrows=True, arrowsize=arrowsize)
 
 # Draw edge labels
 edge_labels = nx.get_edge_attributes(G, 'label')
@@ -93,4 +87,12 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
 
 # Display the graph
 plt.title("Graph Visualization")
-plt.show()
+
+if input_config['visualization']['image']['generate']:
+    store_image(plt, ex_name, input_config['visualization']['image']['format'])
+
+if input_config['visualization']['show_graph']:
+    plt.show()
+else:
+    # Close the plot
+    plt.close()

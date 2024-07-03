@@ -11,3 +11,13 @@ model:
 output:
   latest: true
   timestamp:
+
+visualization:
+  node_color: true
+  edge_color: true
+  k: 2.0 # Regulates distance between nodes
+  arrowsize: 20 # Regulates edges' arrow pointer dimension
+  image:
+    generate: true # Generates the image
+    format: 'png'
+  show_graph: true # Regulates graph plot
