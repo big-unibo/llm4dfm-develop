@@ -122,7 +122,7 @@ Configurations which regulate graph visualization.
 
 - `node_color -- boolean, enable node colors (default green if TP, grey if FN, red if FP)`
 - `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
-- `k           -- regulates distance between nodes`
+- `dag_graph           -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
 - `arrowsize -- regulates edge's arrow pointer dimension`
 - `font_size -- regulates font dimension`
 - `node_size -- regulates node dimension`

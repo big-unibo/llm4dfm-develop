@@ -13,7 +13,6 @@ model:
 visualization:
   node_color: true
   edge_color: true
-  k: 3.0 # Regulates distance between nodes
   arrow_size: 15 # Regulates edges' arrow pointer dimension
   font_size: 8
   node_size: 500
@@ -21,3 +20,4 @@ visualization:
     generate: true # Generates the image
     format: 'png'
   show_graph: true # Regulates graph plot
+  dag_graph: true # Regulates if the graph to show not visualize auto dependencies (change node color to yellow)
