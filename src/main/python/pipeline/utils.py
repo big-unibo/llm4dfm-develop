@@ -49,7 +49,7 @@ def load_ground_truth_exercise(ex_name, full_name=''):
 def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
                          full_name=''):
     if full_name:
-        exercise = full_name
+        exercise = full_name + '.yml'
     else:
         # List all files in the directory
         files = os.listdir(outputs)
@@ -100,9 +100,9 @@ def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, 
             if not timestamp:
                 raise Exception("No timestamp provided, can't find any file.")
             if model_version:
-                exercise = '-'.join((ex_name, version, prompt_version, model_name, model_version, timestamp))
+                exercise = '-'.join((ex_name, version, prompt_version, model_name, model_version, timestamp)) + '.yml'
             else:
-                exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp))
+                exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp)) + '.yml'
 
     with open(f'{outputs}{exercise}', 'r') as file:
         ex_output = yaml.safe_load(file)

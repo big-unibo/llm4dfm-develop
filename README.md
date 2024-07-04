@@ -124,6 +124,8 @@ Configurations which regulate graph visualization.
 - `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
 - `k           -- regulates distance between nodes`
 - `arrowsize -- regulates edge's arrow pointer dimension`
+- `font_size -- regulates font dimension`
+- `node_size -- regulates node dimension`
 - `image`
   - `generate -- boolean, enable image generation`
   - `format -- the image export format`

@@ -1,10 +1,10 @@
 exercise:
-  full_name: # Can specify exercise full name, without .yml extensions
+  full_name: # 'exercise-2.3-sql-v1-gpt-2024-06-28T11-28-14'# Can specify exercise full name, without .yml extensions
   name: 'exercise-2.3'
   v: 'sql'
   prompt_v: 'v1'
-  latest: true # Optional in case of full_name
-  timestamp: # Optional in case of full_name
+  latest: #true # Optional in case of full_name
+  timestamp: '2024-06-28T11-28-14' # Optional in case of full_name
 
 model:
   name: 'gpt'
@@ -13,8 +13,10 @@ model:
 visualization:
   node_color: true
   edge_color: true
-  k: 2.0 # Regulates distance between nodes
-  arrowsize: 20 # Regulates edges' arrow pointer dimension
+  k: 3.0 # Regulates distance between nodes
+  arrow_size: 15 # Regulates edges' arrow pointer dimension
+  font_size: 8
+  node_size: 500
   image:
     generate: true # Generates the image
     format: 'png'
