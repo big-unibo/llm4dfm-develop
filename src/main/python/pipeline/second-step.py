@@ -4,7 +4,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import networkx as nx
 
-from ssutils import remove_explicit_tables_to_output, is_a_valid_role_dependency, store_image
+from ssutils import preprocess_dependencies_attributes, is_a_valid_role_dependency, store_image
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
@@ -23,11 +23,11 @@ dep_output = ex_output['output']['dependencies']
 dep_gt = ground_truth['dependencies']
 
 set_gt = set(
-    frozenset((key, remove_explicit_tables_to_output(value))
+    frozenset((key, value)
               for key, value in d.items() if is_a_valid_role_dependency(key))
     for d in dep_gt)
 set_output = set(
-    frozenset((key, remove_explicit_tables_to_output(value))
+    frozenset((key, value)
               for key, value in d.items())
     for d in dep_output)
 
@@ -79,10 +79,10 @@ for dep_list in [tp_list, fn_list, fp_list]:
             # a dependency (green)
             else:
                 if dep in fp_list:
-                    G.nodes[value.replace(',', '\n')]['color'] = tp_color
+                    G.nodes[preprocess_dependencies_attributes(value)]['color'] = tp_color
         # If it's not auto dependency can be added
         if not input_config['visualization']['dag_graph'] or dep_dict['from'] != dep_dict['to']:
-            G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=color)
+            G.add_edge(preprocess_dependencies_attributes(dep_dict['from']), preprocess_dependencies_attributes(dep_dict['to']), color=color)
         # Otherwise it's not added and color is changed to yellow, given that graph visualization is based on DAG
         else:
             G.nodes[dep_dict['from'].replace(',', '\n')]['color'] = dep_loop_color

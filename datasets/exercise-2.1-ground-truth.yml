@@ -1,25 +1,71 @@
 dependencies:
-  - from: PurchCode
-    to: Amount,Number,Exchange
-  - from: PurchCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Date
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Amount
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Currency
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Exchange
+  - from: PURCHASES.PurchCode
     to: CREDIT_CARD.CCNumber
-  - from: PurchCode
+  - from: PURCHASES.PurchCode
     to: STORES.StoreCode
   - from: CREDIT_CARD.CCNumber
     to: CARD_TYPES.TypeCode
   - from: CREDIT_CARD.CCNumber
     to: HOLDERS.HolderCode
   - from: CREDIT_CARD.CCNumber
-    to: ExpirationDate,CreditLimit
+    to: CREDIT_CARD.ExpirationDate
+  - from: CREDIT_CARD.CCNumber
+    to: CREDIT_CARD.CreditLimit
   - from: HOLDERS.HolderCode
-    to: FirstName,LastName,BirthDate,Job,IncomeRange,Quality
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
   - from: CARD_TYPES.TypeCode
-    to: Network,IssuingBank,Address,Country,CardName,Color
+    to: CARD_TYPES.Network
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.IssuingBank
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Address
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Country
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.CardName
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Color
   - from: STORES.StoreCode
-    to: Name,Address,Country,Area,WebSite,Email,Type
-  - from: Address
-    to: Country
-  - from: Country
-    to: Area
-  - from: Job,IncomeRange
-    to: Quality
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.StoreCode
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  - from: CARD_TYPES.Address
+    to: CARD_TYPES.Country
+  - from: STORES.Address
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: HOLDERS.Job,HOLDERS.IncomeRange
+    to: HOLDERS.Quality
+  - from: HOLDERS.Job,HOLDERS.IncomeRange
+    to: HOLDERS.Job
+  - from: HOLDERS.Job,HOLDERS.IncomeRange
+    to: HOLDERS.IncomeRange
+  - from: CARD_TYPES.IssuingBank
+    to: CARD_TYPES.Address

@@ -9,16 +9,20 @@ outputs = os.getenv('OUTPUTS')
 results = os.getenv('RESULTS')
 inputs = os.getenv('INPUTS')
 
-# TODO fix this
-# Remove in output eventual explicit tables name (TABLE.attribute -> attribute) for matching
-def remove_explicit_tables_to_output(dependency_value):
+
+# Process attributes tables name (TABLE.attribute -> attribute) for matching
+def preprocess_dependencies_attributes(dependency_value):
+
+    # Summarize tables names if presents
     def remove_first_part(input_string):
         if '.' in input_string:
-            position = input_string.find('.')
-            return input_string[position + 1:]
+            table_name, attribute = input_string.split('.')[0], input_string.split('.')[1]
+            # Pick only 2 char for each table name part (i.e. RACING_STABLES -> RA_ST)
+            table_name = '_'.join([tb_n[:2] for tb_n in table_name.split('_')])
+            return '.'.join([table_name, attribute])
         return input_string
 
-    return ''.join([remove_first_part(word) for word in dependency_value.split(' ')])
+    return '\n'.join([remove_first_part(word) for word in dependency_value.split(',')])
 
 
 # Dependencies to consider in second step
