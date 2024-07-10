@@ -1,156 +1,111 @@
-- dependencies:
-    -
-        - from: Date,CircuitName,Name,Surname,Number,Year
-        - to: Date,CircuitName
-    -
-        - from: Date,CircuitName
-        - to: Date
-        - role: arrival
-    -
-        - from: Date
-        - to: Month
-        - refinements: created
-    -
-        - from: Month
-        - to: GPYear
-        - refinements: created
-    -
-        - from: Date,CircuitName
-        - to: CircuitName
-    -
-        - from: Date,CircuitName
-        - to: NumberOfLaps
-    -
-        - from: CircuitName
-        - to: Description
-    -
-        - from: CircuitName
-        - to: Length
-    -
-        - from: CircuitName
-        - to: City
-    -
-        - from: Date,CircuitName,Name,Surname,Number,Year
-        - to: Position
-    -
-        - from: Date,CircuitName,Name,Surname,Number,Year
-        - to: Time
-    -
-        - from: Date,CircuitName,Name,Surname,Number,Year
-        - to: Name,Surname,Number,Year
-    -
-        - from: Name,Surname,Number,Year
-        - to: Year
-        - refinements: pruned
-    -
-        - from: Name,Surname,Number,Year
-        - to: Date
-        - role: to
-        - refinements: pruned
-    -
-        - from: Name,Surname,Number,Year
-        - to: Date
-        - role: from
-        - refinements: pruned
-    -
-        - from: Name,Surname,Number,Year
-        - to: Name,Surname
-    -
-        - from: Name,Surname,Number,Year
-        - to: Number
-    -
-        - from: Name,Surname
-        - to: Date
-        - role: birth
-        - refinements: pruned
-    -
-        - from: Name,Surname
-        - to: Comments
-    -
-        - from: Name,Surname
-        - to: Name
-    -
-        - from: Name,Surname
-        - to: Surname
-    -
-        - from: Number
-        - to: StableName
-    -
-        - from: StableName
-        - to: MainAddress
-    -
-        - from: StableName
-        - to: Manager
-- fact: 
-    - table-name: Arrivals
-    - key: Date,CircuitName,Name,Surname,Number,Year
-- measures:
-    - 
-        - name: Position
-        - classification: unit
-        - dimensions-with-additivity:
-    - 
-        - name: Time
-        - classification: unit
-        - dimensions-with-additivity:
-- attributes:
-    - 
-        - name: Date,CircuitName
-        - properties: is-dimension
-        - refinements: renamed
-        - alias: GrandPrix
-    - 
-        - name: Date
-    - 
-        - name: Month
-        - refinements: created
-    - 
-        - name: GPYear
-        - refinements: created
-    - 
-        - name: CircuitName
-        - alias: Circuit
-    - 
-        - name: Description
-        - properties: 
-        - refinements: pruned
-    - 
-        - name: Length
-        - properties: descriptive
-    - 
-        - name: City
-    - 
-        - name: NumberOfLaps
-        - properties: descriptive
-    - 
-        - name: Name,Surname,Number,Year
-        - refinements: pruned
-    - 
-        - name: Year
-        - refinements: pruned
-    - 
-        - name: Name,Surname
-        - properties: is-dimension
-        - alias: Driver
-    - 
-        - name: Comments
-        - refinements: pruned
-    - 
-        - name: Name
-        - refinements: pruned
-    - 
-        - name: Surname
-        - refinements: pruned
-    - 
-        - name: Number
-        - properties: is-dimension
-        - alias: CarNumber
-    - 
-        - name: StableName
-        - alias: Stable
-    - 
-        - name: MainAddress
-        - refinements: pruned
-    - 
-        - name: Manager
-        - properties: descriptive
+dependencies:
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName,ARRIVALS.Name,ARRIVALS.Surname,ARRIVALS.Number,ARRIVALS.Year
+    to: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
+  - from: Date,CircuitName
+    to: Date
+    role: arrival
+  - from: Date
+    to: Month
+    refinements: created
+  - from: Month
+    to: GPYear
+    refinements: created
+  - from: Date,CircuitName
+    to: CircuitName
+  - from: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
+    to: NumberOfLaps
+  - from: RACING_CIRCUITS.CircuitName
+    to: Description
+  - from: RACING_CIRCUITS.CircuitName
+    to: Length
+  - from: RACING_CIRCUITS.CircuitName
+    to: City
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName,ARRIVALS.Name,ARRIVALS.Surname,ARRIVALS.Number,ARRIVALS.Year
+    to: Position
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName,ARRIVALS.Name,ARRIVALS.Surname,ARRIVALS.Number,ARRIVALS.Year
+    to: Time
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName,ARRIVALS.Name,ARRIVALS.Surname,ARRIVALS.Number,ARRIVALS.Year
+    to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: Year
+    refinements: pruned
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: Date
+    role: to
+    refinements: pruned
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: Date
+    role: from
+    refinements: pruned
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: Name,Surname
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: CARS.Number
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: Date
+    role: birth
+    refinements: pruned
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: Comments
+  - from: Name,Surname
+    to: Name
+  - from: Name,Surname
+    to: Surname
+  - from: CARS.Number
+    to: RACING_STABLES.StableName
+  - from: RACING_STABLES.StableName
+    to: MainAddress
+  - from: RACING_STABLES.StableName
+    to: Manager
+fact:
+  table-name: Arrivals
+  key: Date,CircuitName,Name,Surname,Number,Year
+measures:
+  - name: Position
+    classification: unit
+    dimensions-with-additivity:
+  - name: Time
+    classification: unit
+    dimensions-with-additivity:
+attributes:
+  - name: Date,CircuitName
+    properties: is-dimension
+    refinements: renamed
+    alias: GrandPrix
+  - name: Date
+  - name: Month
+    refinements: created
+  - name: GPYear
+    refinements: created
+  - name: CircuitName
+    alias: Circuit
+  - name: Description
+    properties:
+    refinements: pruned
+  - name: Length
+    properties: descriptive
+  - name: City
+  - name: NumberOfLaps
+    properties: descriptive
+  - name: Name,Surname,Number,Year
+    refinements: pruned
+  - name: Year
+    refinements: pruned
+  - name: Name,Surname
+    properties: is-dimension
+    alias: Driver
+  - name: Comments
+    refinements: pruned
+  - name: Name
+    refinements: pruned
+  - name: Surname
+    refinements: pruned
+  - name: Number
+    properties: is-dimension
+    alias: CarNumber
+  - name: StableName
+    alias: Stable
+  - name: MainAddress
+    refinements: pruned
+  - name: Manager
+    properties: descriptive

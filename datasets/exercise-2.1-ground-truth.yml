@@ -1,0 +1,25 @@
+dependencies:
+  - from: PurchCode
+    to: Amount,Number,Exchange
+  - from: PurchCode
+    to: CREDIT_CARD.CCNumber
+  - from: PurchCode
+    to: STORES.StoreCode
+  - from: CREDIT_CARD.CCNumber
+    to: CARD_TYPES.TypeCode
+  - from: CREDIT_CARD.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDIT_CARD.CCNumber
+    to: ExpirationDate,CreditLimit
+  - from: HOLDERS.HolderCode
+    to: FirstName,LastName,BirthDate,Job,IncomeRange,Quality
+  - from: CARD_TYPES.TypeCode
+    to: Network,IssuingBank,Address,Country,CardName,Color
+  - from: STORES.StoreCode
+    to: Name,Address,Country,Area,WebSite,Email,Type
+  - from: Address
+    to: Country
+  - from: Country
+    to: Area
+  - from: Job,IncomeRange
+    to: Quality

@@ -9,18 +9,7 @@ outputs = os.getenv('OUTPUTS')
 results = os.getenv('RESULTS')
 inputs = os.getenv('INPUTS')
 
-
-# Given a different format ground-truth and model-output, uniform it
-def clean_gt_dependencies(deps):
-    transformed = []
-    for item in deps:
-        combined_dict = {}
-        for sub_item in item:
-            combined_dict.update(sub_item)
-        transformed.append(combined_dict)
-    return transformed
-
-
+# TODO fix this
 # Remove in output eventual explicit tables name (TABLE.attribute -> attribute) for matching
 def remove_explicit_tables_to_output(dependency_value):
     def remove_first_part(input_string):

@@ -1,10 +1,11 @@
-from pathlib import Path
-from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
-from ssutils import clean_gt_dependencies, remove_explicit_tables_to_output, is_a_valid_role_dependency, store_image
-import networkx as nx
-import matplotlib.pyplot as plt
 import collections
-import pygraphviz
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import networkx as nx
+
+from ssutils import remove_explicit_tables_to_output, is_a_valid_role_dependency, store_image
+from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
 
@@ -17,14 +18,13 @@ ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config[
 
 ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
 
-dep_output = ex_output['output'][0]['dependencies']
+dep_output = ex_output['output']['dependencies']
 
-# Given a different format ground-truth and model-output, uniform it
-dep_gt_dirty = ground_truth[0]['dependencies']
-dep_gt = clean_gt_dependencies(dep_gt_dirty)
+dep_gt = ground_truth['dependencies']
 
 set_gt = set(
-    frozenset((key, value) for key, value in d.items() if is_a_valid_role_dependency(key))
+    frozenset((key, remove_explicit_tables_to_output(value))
+              for key, value in d.items() if is_a_valid_role_dependency(key))
     for d in dep_gt)
 set_output = set(
     frozenset((key, remove_explicit_tables_to_output(value))
@@ -50,7 +50,7 @@ fp_count = len(fp)
 
 # print(f"TP: {tp_count}\nFN: {fn_count}\nFP: {fp_count}")
 
-fact = ground_truth[1]['fact'][1]['key']
+fact = ground_truth['fact']['key']
 
 # Visualization
 
@@ -81,7 +81,7 @@ for dep_list in [tp_list, fn_list, fp_list]:
                 if dep in fp_list:
                     G.nodes[value.replace(',', '\n')]['color'] = tp_color
         # If it's not auto dependency can be added
-        if not input_config['visualization']['dag_visualization'] or dep_dict['from'] != dep_dict['to']:
+        if not input_config['visualization']['dag_graph'] or dep_dict['from'] != dep_dict['to']:
             G.add_edge(dep_dict['from'].replace(',', '\n'), dep_dict['to'].replace(',', '\n'), color=color)
         # Otherwise it's not added and color is changed to yellow, given that graph visualization is based on DAG
         else:
@@ -89,7 +89,7 @@ for dep_list in [tp_list, fn_list, fp_list]:
 
 arrow_size = input_config['visualization']['arrow_size']
 
-if input_config['visualization']['dag_visualization']:
+if input_config['visualization']['dag_graph']:
     if not nx.is_directed_acyclic_graph(G):
         raise Exception('Graph is not DAG, change visualization')
     pos = nx.nx_agraph.graphviz_layout(G, prog='dot')

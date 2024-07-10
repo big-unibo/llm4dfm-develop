@@ -20,4 +20,4 @@ visualization:
     generate: true # Generates the image
     format: 'png'
   show_graph: true # Regulates graph plot
-  dag_graph: true # Regulates if the graph to show not visualize auto dependencies (change node color to yellow)
+  dag_graph: true # Regulates if the graph to show won't visualize auto dependencies (change node color to yellow)
