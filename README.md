@@ -122,7 +122,6 @@ Configurations which regulate graph visualization.
 
 - `node_color -- boolean, enable node colors (default green if TP, grey if FN, red if FP)`
 - `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
-- `dag_graph           -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
 - `arrowsize -- regulates edge's arrow pointer dimension`
 - `font_size -- regulates font dimension`
 - `node_size -- regulates node dimension`
@@ -130,6 +129,8 @@ Configurations which regulate graph visualization.
   - `generate -- boolean, enable image generation`
   - `format -- the image export format`
 - `show_graph -- boolean, enable graph visualization`
+- `dag_graph  -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
+- `table_names  -- boolean, if true table names are considered for comparing, and node attributes are shown with table name otherwise they aren't considered and tables names are not shown in DAG`
 
 ##### Run the project
 

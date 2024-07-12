@@ -21,3 +21,4 @@ visualization:
     format: 'png'
   show_graph: true # Regulates graph plot
   dag_graph: true # Regulates if the graph to show won't visualize auto dependencies (change node color to yellow)
+  table_names: true # Regulates if table names are considered for comparing, and node attributes are shown with table name or not

@@ -22,6 +22,8 @@ dep_output = ex_output['output']['dependencies']
 
 dep_gt = ground_truth['dependencies']
 
+tables = []
+
 set_gt = set(
     frozenset((key, value)
               for key, value in d.items() if is_a_valid_role_dependency(key))
@@ -30,6 +32,44 @@ set_output = set(
     frozenset((key, value)
               for key, value in d.items())
     for d in dep_output)
+
+all_tables_gt = set(
+    val.split('.')[0].replace(' ', '')
+    for subset in set_gt
+    for _, value in subset
+    for val in value.split(',')
+    if '.' in val
+)
+
+all_tables_out = set(
+    val.split('.')[0].replace(' ', '')
+    for subset in set_output
+    for _, value in subset
+    for val in value.split(',')
+    if '.' in val
+)
+
+short_names = dict()
+
+# Initialize a set to keep track of the used two-letter values
+used_names = set()
+
+# Iterate over each value in the set
+for table in all_tables_gt.union(all_tables_out):
+    # Get the first two letters of the value
+    new_name = '_'.join([short[:2] for short in table.split('_')])
+    i = 0
+    inserted = False
+    while not inserted:
+        if new_name not in used_names:
+            inserted = True
+            short_names[table] = new_name
+            used_names.add(new_name)
+        else:
+            if i > 0:
+                new_name = new_name[:-len(str(i))]
+            new_name = new_name + str(i)
+            i += 1
 
 tp = set_gt & set_output
 fn = set_gt - tp
@@ -70,22 +110,26 @@ for dep_list in [tp_list, fn_list, fp_list]:
             'black'
         for key, value in dep.items():
             dep_dict[key] = value
-            # A node must be added only one time
-            if value not in inserted_nodes:
-                G.add_node(value.replace(',', '\n'), color=color)
-                inserted_nodes.append(value)
+
+            value_preprocessed = preprocess_dependencies_attributes(value, input_config['visualization']['table_names'], short_names)
+
+            if value_preprocessed not in inserted_nodes:
+                G.add_node(value_preprocessed, color=color)
+                inserted_nodes.append(value_preprocessed)
             # If already present, in case of dependency in false positive (red one), if already considered
             # in false negative (grey), must be converted to true positive since it's been detected as
             # a dependency (green)
             else:
                 if dep in fp_list:
-                    G.nodes[preprocess_dependencies_attributes(value)]['color'] = tp_color
+                    G.nodes[value_preprocessed]['color'] = tp_color
+        from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualization']['table_names'], short_names)
+        to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualization']['table_names'], short_names)
         # If it's not auto dependency can be added
-        if not input_config['visualization']['dag_graph'] or dep_dict['from'] != dep_dict['to']:
-            G.add_edge(preprocess_dependencies_attributes(dep_dict['from']), preprocess_dependencies_attributes(dep_dict['to']), color=color)
+        if not input_config['visualization']['dag_graph'] or from_preprocessed != to_preprocessed:
+            G.add_edge(from_preprocessed, to_preprocessed, color=color)
         # Otherwise it's not added and color is changed to yellow, given that graph visualization is based on DAG
         else:
-            G.nodes[dep_dict['from'].replace(',', '\n')]['color'] = dep_loop_color
+            G.nodes[from_preprocessed]['color'] = dep_loop_color
 
 arrow_size = input_config['visualization']['arrow_size']
 
@@ -109,6 +153,12 @@ nx.draw(G, pos, edge_color=edge_colors, node_color=node_colors,
 # Draw edge labels
 edge_labels = nx.get_edge_attributes(G, 'label')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
+
+legend_items = [plt.Line2D([0], [0], color='w', label=f'{full_name}: {short_name}')
+                for full_name, short_name in short_names.items()]
+
+plt.legend(handles=legend_items, title="Tables convention", fontsize='small', title_fontsize='medium',
+           labelspacing=0.3, handletextpad=0.4, loc='upper left')
 
 # Display the graph
 plt.title("Graph Visualization")

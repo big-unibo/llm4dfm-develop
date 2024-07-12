@@ -11,16 +11,15 @@ inputs = os.getenv('INPUTS')
 
 
 # Process attributes tables name (TABLE.attribute -> attribute) for matching
-def preprocess_dependencies_attributes(dependency_value):
+def preprocess_dependencies_attributes(dependency_value, keep_tables, new_names):
 
     # Summarize tables names if presents
-    def remove_first_part(input_string):
-        if '.' in input_string:
-            table_name, attribute = input_string.split('.')[0], input_string.split('.')[1]
-            # Pick only 2 char for each table name part (i.e. RACING_STABLES -> RA_ST)
-            table_name = '_'.join([tb_n[:2] for tb_n in table_name.split('_')])
-            return '.'.join([table_name, attribute])
-        return input_string
+    def remove_first_part(single_dependency):
+        if '.' in single_dependency:
+            table_name, attribute = single_dependency.split('.')[0].replace(' ', ''), single_dependency.split('.')[1]
+            table_name = new_names[table_name] if table_name in new_names else table_name
+            return '.'.join([table_name, attribute]) if keep_tables else attribute
+        return single_dependency
 
     return '\n'.join([remove_first_part(word) for word in dependency_value.split(',')])
 
