@@ -154,13 +154,13 @@ nx.draw(G, pos, edge_color=edge_colors, node_color=node_colors,
 edge_labels = nx.get_edge_attributes(G, 'label')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
 
-legend_items = [plt.Line2D([0], [0], color='w', label=f'{full_name}: {short_name}')
-                for full_name, short_name in short_names.items()]
+if input_config['visualization']['table_names']:
+    legend_items = [plt.Line2D([0], [0], color='w', label=f'{full_name}: {short_name}')
+                    for full_name, short_name in short_names.items()]
+    plt.legend(handles=legend_items, title="Tables convention", fontsize='small', title_fontsize='medium',
+               labelspacing=0.3, handletextpad=0.4, loc='upper left')
 
-plt.legend(handles=legend_items, title="Tables convention", fontsize='small', title_fontsize='medium',
-           labelspacing=0.3, handletextpad=0.4, loc='upper left')
-
-# Display the graph
+# Display the grap
 plt.title("Graph Visualization")
 
 if input_config['visualization']['image']['generate']:
