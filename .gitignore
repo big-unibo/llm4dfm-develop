@@ -1,6 +1,8 @@
 outputs/*.csv
+outputs/*.yml
 results/dummy.pdf
 metastore_db/
+**/credentials.yml
 
 # These are useless since we use gradle import
 .idea/
@@ -472,3 +474,6 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,linux,gradle,eclipse,windows,intellij,python,venv,maven,libreoffice,microsoftoffice
+
+# Models imported
+**/models_saved/

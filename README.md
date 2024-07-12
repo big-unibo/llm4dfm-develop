@@ -27,6 +27,116 @@
     - how to run the project
 - Check the output of `./gradlew` to look for warnings (especially in code style)
 
+
+##### Project structure
+
+All first-step pipeline files are collected in pipeline module.
+
+- `models.py   -- contains model's utils`
+- `first-step.py -- contains the process of importing and batching`
+- `first-step-config.yml  -- contains configuration of the run`
+- `utils.py    -- contains general utils`
+- `second-step.py -- contains the process of visualization of the output`
+- `second-step-config.yml  -- contains configuration of the second step`
+- `ssutils.py    -- contains utils used in second step`
+- `.env        -- contains information about program's paths`
+
+##### Authentication key
+
+Authentication key must be stored in `src/main/resources/credentials.yml`,
+an example of how the config is structured it is can be found in `src/main/resources/credentials-example.yml`.
+
+##### Configuration parameters
+
+Inside `pipeline` module, a `.env` file must be provided with following configurations:
+- `DATASETS   -- path to folder containing exercise texts`
+- `OUTPUTS    -- path to folder in which outpust are stored`
+- `RESULTS   -- path to folder in which results are stored`
+- `INPUTS   -- path to folder containing exercise prompts`
+- `SAVE_MODELS   -- path to folder in which store imported models`
+
+If using Azure to interact with model's API, these configurations must be provided too
+- `ENDPOINT-{model-name}`
+- `DEPLOYMENT-NAME-{model-name}`
+
+##### Algorithmic parameters
+
+###### First step
+
+The following parameters can be configured in `first-step-config.yml` file.
+
+- `use -- the model to use between import and api`
+
+Imported model
+
+- `name -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
+- `tokenizer -name   -- model's tokenizer name, usually the same as the model`
+- `temperature -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
+- `max_new_tokens -- limit the maximum number of tokens generated in a single call`
+- `do_sample -- boolean, if set specifies to generate more creative output`
+- `top_p -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true`
+- `quantization -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy`
+
+Api model
+
+- `name        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
+- `version     -- model's version if present [actually working only for gpt]`
+- `api_version     -- api model's version`
+- `max_tokens -- it's the maximum length of the generated output`
+- `n_response -- regulates number of responses the model generates`
+- `temperature -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
+- `stop        -- set the stop character(s, if list) that terminate the response when encountered`
+- `top_p -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1`
+- `top_k -- threshold between 1 and 40 that specifies the number of tokens (with the highest probability) considered for the next generation. Less randomness for lower values`
+
+Exercise
+
+- `name           -- the exercise name (part before -text.yml)`
+- `prompt_version -- the prompt version (part between prompts-v and .yml)`
+
+General
+
+- `debug_prints   -- enable output prints during execution`
+
+###### Second step
+
+Exercise
+
+Given that it's required to read both ground-truth and model output, to make it easier to configure, different ways can be used to state the exercise to read:
+
+- `full_name           -- the output exercise full name (part before -text.yml)\n ** If provided, no further options of the exercise have to be passed`
+- `name -- the exercise name (exercise-*.*)`
+- `v           -- the exercise version (sql, original-text, ...)`
+- `prompt_v -- the prompt version of the output exercise (v*)`
+- `latest           -- boolean that enable the retrieval of latest timestamp matching previous configurations`
+- `timestamp -- if not latest, provide the timestamp in format YYYY-MM-DDTHH-mm_ss`
+
+Model
+
+- `name -- model name `
+- `v           -- model version, **use only if present in file name`
+
+Visualization
+
+Configurations which regulate graph visualization.
+
+- `node_color -- boolean, enable node colors (default green if TP, grey if FN, red if FP)`
+- `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
+- `arrowsize -- regulates edge's arrow pointer dimension`
+- `font_size -- regulates font dimension`
+- `node_size -- regulates node dimension`
+- `image`
+  - `generate -- boolean, enable image generation`
+  - `format -- the image export format`
+- `show_graph -- boolean, enable graph visualization`
+- `dag_graph  -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
+- `table_names  -- boolean, if true table names are considered for comparing, and node attributes are shown with table name otherwise they aren't considered and tables names are not shown in DAG`
+
+##### Run the project
+
+In order to run the first step, once in `src/main/python/` directory run `python pipeline/first-step.py` 
+In order to run the second step, once in `src/main/python/` directory run `python pipeline/second-step.py` 
+
 #### Dataset conventions
 
 - All datasets must be named as follows: `ProjectName-par1_val1-...-parN_valN.csv`
@@ -48,6 +158,9 @@ All Python dependencies must be managed through virtual environments. See [here]
     cd src/main/python
     python -m venv venv
     pip install -r requirements.txt
+    Given some versioning errors during installations, suggested and stable CUDA version is 11.8,  
+      torch, torchvision and torchaudio versions are binded to that CUDA version
+    As faced a couple times, seems the package flash_attn has to be installed as pip install flash_attn --no-build-isolation by itself
 
 To activate venv in Windows (with bash shell; e.g., git bash)
 
