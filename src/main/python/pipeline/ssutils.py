@@ -29,6 +29,13 @@ def is_a_valid_role_dependency(dependency_key):
     return dependency_key in ['from', 'to']
 
 
+# Filter dict of ground truth if created
+def is_a_valid_dependency(dependency_dict):
+    if 'refinements' in dependency_dict:
+        return dependency_dict['refinements'] != 'created'
+    return True
+
+
 # Used to store graph image
 def store_image(plt, name, img_format):
     plt.savefig(f'{outputs}{Path(name).stem}.{img_format}', format=img_format)

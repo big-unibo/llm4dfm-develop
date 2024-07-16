@@ -3,8 +3,9 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import networkx as nx
+import matplotlib.lines as mlines
 
-from ssutils import preprocess_dependencies_attributes, is_a_valid_role_dependency, store_image
+from ssutils import preprocess_dependencies_attributes, is_a_valid_role_dependency, is_a_valid_dependency, store_image
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
@@ -27,9 +28,9 @@ tables = []
 set_gt = set(
     frozenset((key, value)
               for key, value in d.items() if is_a_valid_role_dependency(key))
-    for d in dep_gt)
+    for d in dep_gt if is_a_valid_dependency(d))
 set_output = set(
-    frozenset((key, value)
+    frozenset((key, value.replace(' ', ''))
               for key, value in d.items())
     for d in dep_output)
 
@@ -87,6 +88,16 @@ fp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
 tp_count = len(tp)
 fn_count = len(fn)
 fp_count = len(fp)
+
+precision = tp_count / (tp_count + fp_count)
+recall = tp_count / (tp_count + fn_count)
+f1 = 2*((precision*recall)/(precision+recall))
+
+metrics = {
+    'precision': round(precision * 100, 2),
+    'recall': round(recall * 100, 2),
+    'f1': round(f1 * 100, 2)
+}
 
 # print(f"TP: {tp_count}\nFN: {fn_count}\nFP: {fp_count}")
 
@@ -157,6 +168,9 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
 if input_config['visualization']['table_names']:
     legend_items = [plt.Line2D([0], [0], color='w', label=f'{full_name}: {short_name}')
                     for full_name, short_name in short_names.items()]
+    legend_items.append(mlines.Line2D([], [], color='black', linestyle='-', linewidth=2))
+    legend_items.extend([plt.Line2D([0], [0], color='w', label=f'{label}: {str(value)}%')
+     for label, value in metrics.items()])
     plt.legend(handles=legend_items, title="Tables convention", fontsize='small', title_fontsize='medium',
                labelspacing=0.3, handletextpad=0.4, loc='upper left')
 
