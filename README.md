@@ -55,9 +55,9 @@ Inside `pipeline` module, a `.env` file must be provided with following configur
 - `INPUTS   -- path to folder containing exercise prompts`
 - `SAVE_MODELS   -- path to folder in which store imported models`
 
-If using Azure to interact with model's API, these configurations must be provided too
-- `ENDPOINT-{model-name}`
-- `DEPLOYMENT-NAME-{model-name}`
+If using Azure to interact with model's API, these configurations must be provided too (model_name must be uppercase)
+- `ENDPOINT_{model-name}`
+- `DEPLOYMENT_NAME_{model-name}`
 
 ##### Algorithmic parameters
 

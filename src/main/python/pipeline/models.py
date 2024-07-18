@@ -73,9 +73,9 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
             log(f'Batching chat: {chat}')
 
         # TODO can this configuration be more modular?
-        endpoint = os.getenv(f'ENDPOINT-{name}')
+        endpoint = os.getenv(f'ENDPOINT_{name.upper()}')
         api_version = config['api_version']
-        deployment_name = os.getenv(f'DEPLOYMENT-NAME-{name}')
+        deployment_name = os.getenv(f'DEPLOYMENT_NAME_{name.upper()}')
 
         headers = {
             "Content-Type": "application/json",

@@ -1,0 +1,36 @@
+text: |
+    The following logical schema describes an operational database for motor races.
+    
+    CREATE TABLE SUPPLIERS ( 
+    SupplierName VARCHAR(50) PRIMARY KEY,
+    SupplierCity VARCHAR(50),
+    SupplierAddress VARCHAR(100)
+    );
+
+    CREATE TABLE SUPPLIES (
+    Brand VARCHAR(50) PRIMARY KEY,
+    SupplierName VARCHAR(50),
+    FOREIGN KEY (SupplierName) REFERENCES SUPPLIERS(SupplierName)
+    );
+
+    CREATE TABLE COMPUTER (
+    CodComputer INT PRIMARY KEY,
+    Brand VARCHAR(50),
+    Model VARCHAR(50),
+    FOREIGN KEY (Brand) REFERENCES SUPPLIES(Brand)
+    );
+
+    CREATE TABLE SOFTWARE (
+    CodSoftw INT PRIMARY KEY,
+    SoftwareDescription VARCHAR(100),
+    Type VARCHAR(50)
+    );
+
+    CREATE TABLE INSTALLATIONS (
+    CodComputer INT,
+    CodSoftw INT,
+    InstallationDate DATE,
+    PRIMARY KEY (CodComputer, CodSoftw),
+    FOREIGN KEY (CodComputer) REFERENCES COMPUTER(CodComputer),
+    FOREIGN KEY (CodSoftw) REFERENCES SOFTWARE(CodSoftw)
+    );
