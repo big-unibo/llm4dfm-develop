@@ -6,7 +6,7 @@ import networkx as nx
 import matplotlib.lines as mlines
 
 from ssutils import (preprocess_dependencies_attributes, is_a_valid_role_dependency, is_a_valid_dependency,
-                     store_image, short_names_from_tables)
+                     store_image, short_names_from_tables, get_clean_table_attribute)
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
@@ -26,49 +26,62 @@ dep_gt = ground_truth['dependencies']
 
 tables = []
 
-set_gt = set(
-    frozenset((key, value)
+edges_set_gt = set(
+    frozenset((key, get_clean_table_attribute(value))
               for key, value in d.items() if is_a_valid_role_dependency(key))
     for d in dep_gt if is_a_valid_dependency(d))
-set_output = set(
-    frozenset((key, value.replace(' ', ''))
+edges_set_output = set(
+    frozenset((key, get_clean_table_attribute(value))
               for key, value in d.items())
     for d in dep_output)
 
+nodes_set_gt = set(
+    get_clean_table_attribute(entry[1])
+    for fr_set in edges_set_gt
+    for entry in fr_set
+)
 
-# Extract tables name to obtain short names
-short_names = short_names_from_tables(set_gt, set_output)
+nodes_set_output = set(
+    get_clean_table_attribute(entry[1])
+    for fr_set in edges_set_output
+    for entry in fr_set
+)
 
-tp = set_gt & set_output
-fn = set_gt - tp
-fp = set_output - tp
+tp_edges = edges_set_gt & edges_set_output
+fn_edges = edges_set_gt - tp_edges
+fp_edges = edges_set_output - tp_edges
 
-tp_list = [collections.OrderedDict(sorted(fs)) for fs in tp]
-tp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
-fn_list = [collections.OrderedDict(sorted(fs)) for fs in fn]
-fn_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
-fp_list = [collections.OrderedDict(sorted(fs)) for fs in fp]
-fp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
+tp_nodes = nodes_set_gt & nodes_set_output
+fn_nodes = nodes_set_gt - tp_nodes
+fp_nodes = nodes_set_output - tp_nodes
 
-# print(f'TP: {tp_list}\n\nFN: {fn_list}\n\nFP: {fp_list}')
+tp_edges_count = len(tp_edges)
+fn_edges_count = len(fn_edges)
+fp_edges_count = len(fp_edges)
 
-tp_count = len(tp)
-fn_count = len(fn)
-fp_count = len(fp)
+tp_nodes_count = len(tp_nodes)
+fn_nodes_count = len(fn_nodes)
+fp_nodes_count = len(fp_nodes)
 
-precision = tp_count / (tp_count + fp_count)
-recall = tp_count / (tp_count + fn_count)
-f1 = 2*((precision*recall)/(precision+recall)) if precision+recall != 0 else 0
+precision_edges = tp_edges_count / (tp_edges_count + fp_edges_count)
+recall_edges = tp_edges_count / (tp_edges_count + fn_edges_count)
+f1_edges = 2 * ((precision_edges * recall_edges) / (precision_edges + recall_edges)) if precision_edges + recall_edges != 0 else 0
+
+precision_nodes = tp_nodes_count / (tp_nodes_count + fp_nodes_count)
+recall_nodes = tp_nodes_count / (tp_nodes_count + fn_nodes_count)
+f1_nodes = 2 * ((precision_nodes * recall_nodes) / (precision_nodes + recall_nodes)) if precision_nodes + recall_nodes != 0 else 0
 
 metrics = {
-    'precision': round(precision * 100, 2),
-    'recall': round(recall * 100, 2),
-    'f1': round(f1 * 100, 2)
+    'precision_edges': round(precision_edges * 100, 2),
+    'recall_edges': round(recall_edges * 100, 2),
+    'f1_edges': round(f1_edges * 100, 2),
+    'precision_nodes': round(precision_nodes * 100, 2),
+    'recall_nodes': round(recall_nodes * 100, 2),
+    'f1_nodes': round(f1_nodes * 100, 2),
 }
 
-# print(f"TP: {tp_count}\nFN: {fn_count}\nFP: {fp_count}")
-
-fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
+# TODO add fact visualization
+# fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
 
 # Visualization
 
@@ -79,12 +92,22 @@ dep_loop_color = 'yellow'
 
 inserted_nodes = []
 
+# Extract tables name to obtain short names
+short_names = short_names_from_tables(edges_set_gt, edges_set_output)
+
+# List of edges classified to color correctly
+tp_edges_list = [collections.OrderedDict(sorted(fs)) for fs in tp_edges]
+tp_edges_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
+fn_edges_list = [collections.OrderedDict(sorted(fs)) for fs in fn_edges]
+fn_edges_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
+fp_edges_list = [collections.OrderedDict(sorted(fs)) for fs in fp_edges]
+fp_edges_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
 
 # Add nodes and edges from the dictionaries
-for dep_list in [tp_list, fn_list, fp_list]:
+for dep_list in [tp_edges_list, fn_edges_list, fp_edges_list]:
     for dep in dep_list:
         dep_dict = dict()
-        color = tp_color if dep in tp_list else fn_color if dep in fn_list else fp_color if dep in fp_list else \
+        color = tp_color if dep in tp_edges_list else fn_color if dep in fn_edges_list else fp_color if dep in fp_edges_list else \
             'black'
         for key, value in dep.items():
             dep_dict[key] = value
@@ -98,7 +121,7 @@ for dep_list in [tp_list, fn_list, fp_list]:
             # in false negative (grey), must be converted to true positive since it's been detected as
             # a dependency (green)
             else:
-                if dep in fp_list:
+                if dep in fp_edges_list:
                     G.nodes[value_preprocessed]['color'] = tp_color
         from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualization']['table_names'], short_names)
         to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualization']['table_names'], short_names)

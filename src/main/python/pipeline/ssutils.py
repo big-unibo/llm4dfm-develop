@@ -36,6 +36,29 @@ def is_a_valid_dependency(dependency_dict):
     return True
 
 
+# Turns a table attribute to first letter capitalized to obtain a uniform comparison between gt and output
+def get_clean_table_attribute(table_attr):
+    if ',' in table_attr:
+        new_val = ''
+        for attrs in table_attr.split(','):
+            if '.' in attrs:
+                attr_split = attrs.split('.')
+                val = attr_split[0] + '.' + attr_split[1][0].upper() + attr_split[1][1:]
+            else:
+                val = attrs.capitalize()
+            if new_val == '':
+                new_val += val
+            else:
+                new_val += ',' + val
+    else:
+        if '.' in table_attr:
+            attr_split = table_attr.split('.')
+            new_val = attr_split[0] + '.' + attr_split[1][0].upper() + attr_split[1][1:]
+        else:
+            new_val = table_attr[0].upper() + table_attr[1:]
+    return new_val.replace(' ', '')
+
+
 # Given gt and output as set, return short table names composed of 2 letters and a digit only if 2 letters appears in
 # more than 1 table name
 # e.g. if there is SUPPLY and SUPPLIER -> SU and SU1
@@ -78,6 +101,7 @@ def short_names_from_tables(gt, output):
                 new_name = new_name + str(i)
                 i += 1
     return short_names
+
 
 # Used to store graph image
 def store_image(plt, name, img_format):
