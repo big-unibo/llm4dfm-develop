@@ -30,6 +30,6 @@ model_api:
 exercise:
   name: 'exercise-1.4'
   version: 'sql'
-  prompt_version: 'v1'
+  prompt_version: 'v2'
 
-debug_prints: true
+debug_prints: false

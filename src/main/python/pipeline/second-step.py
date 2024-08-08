@@ -19,7 +19,7 @@ ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config[
 
 ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
 
-dep_output = ex_output['output']['dependencies']
+dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
 
 dep_gt = ground_truth['dependencies']
 
@@ -91,7 +91,7 @@ fp_count = len(fp)
 
 precision = tp_count / (tp_count + fp_count)
 recall = tp_count / (tp_count + fn_count)
-f1 = 2*((precision*recall)/(precision+recall))
+f1 = 2*((precision*recall)/(precision+recall)) if precision+recall != 0 else 0
 
 metrics = {
     'precision': round(precision * 100, 2),
@@ -101,7 +101,7 @@ metrics = {
 
 # print(f"TP: {tp_count}\nFN: {fn_count}\nFP: {fp_count}")
 
-fact = ground_truth['fact']['key']
+fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
 
 # Visualization
 
