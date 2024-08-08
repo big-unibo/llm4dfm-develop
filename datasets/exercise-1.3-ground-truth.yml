@@ -1,0 +1,57 @@
+dependencies:
+  - from: CONTENT.CodC
+    to: CONTENT.Title
+  - from: CONTENT.CodC
+    to: CONTENT.Director
+  - from: CONTENT.CodC
+    to: CONTENT.Genre
+  - from: CONTENT.CodC
+    to: CONTENT.Plot
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: USER.Account
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: FILM.CodC
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: FILM_VIEWING.Date
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: FILM_VIEWING.StartTime
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: FILM_VIEWING.ViewingDuration
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: FILM_VIEWING.VisionCompletedYN
+  - from: FILM_VIEWING.Account,FILM_VIEWING.CodC,FILM_VIEWING.Date,FILM_VIEWING.StartTime
+    to: FILM_VIEWING.DeviceType
+  - from: USER.Account
+    to: USER.Name
+  - from: USER.Account
+    to: USER.AdultYN
+  - from: FILM.CodC
+    to: CONTENT.CodC
+  - from: FILM.CodC
+    to: FILM.Duration
+  - from: EPISODE_VIEWING.Account,EPISODE_VIEWING.CodC,EPISODE_VIEWING.SeasonNumber,EPISODE_VIEWING.EpisodeNumber,EPISODE_VIEWING.Date,EPISODE_VIEWING.StartTime
+    to: USER.Account
+  - from: EPISODE_VIEWING.Account,EPISODE_VIEWING.CodC,EPISODE_VIEWING.SeasonNumber,EPISODE_VIEWING.EpisodeNumber,EPISODE_VIEWING.Date,EPISODE_VIEWING.StartTime
+    to: EPISODE.CodC,EPISODE.SeasonNumber,EPISODE.EpisodeNumber
+  - from: EPISODE_VIEWING.Account,EPISODE_VIEWING.CodC,EPISODE_VIEWING.SeasonNumber,EPISODE_VIEWING.EpisodeNumber,EPISODE_VIEWING.Date,EPISODE_VIEWING.StartTime
+    to: EPISODE_VIEWING.ViewingDuration
+  - from: EPISODE_VIEWING.Account,EPISODE_VIEWING.CodC,EPISODE_VIEWING.SeasonNumber,EPISODE_VIEWING.EpisodeNumber,EPISODE_VIEWING.Date,EPISODE_VIEWING.StartTime
+    to: EPISODE_VIEWING.VisionCompletedYN
+  - from: EPISODE_VIEWING.Account,EPISODE_VIEWING.CodC,EPISODE_VIEWING.SeasonNumber,EPISODE_VIEWING.EpisodeNumber,EPISODE_VIEWING.Date,EPISODE_VIEWING.StartTime
+    to: EPISODE_VIEWING.DeviceType
+  - from: EPISODE.CodC,EPISODE.SeasonNumber,EPISODE.EpisodeNumber
+    to: SEASON.CodC,SEASON.SeasonNumber
+  - from: EPISODE.CodC,EPISODE.SeasonNumber,EPISODE.EpisodeNumber
+    to: EPISODE.Title
+  - from: EPISODE.CodC,EPISODE.SeasonNumber,EPISODE.EpisodeNumber
+    to: EPISODE.Duration
+  - from: SEASON.CodC,SEASON.SeasonNumber
+    to: SERIES.CodC
+  - from: SERIES.CodC,SERIES.TotalNumberOfEpisodes
+    to: CONTENT.CodC
+  - from: SERIES.CodC,SERIES.TotalNumberOfEpisodes
+    to: SERIES.NumberOfSeasons
+  - from: ACTOR_IN_CONTENT.CodC,ACTOR_IN_CONTENT.Actorname
+    to: CONTENT.CodC
+  - from: ACTOR_IN_CONTENT.CodC,ACTOR_IN_CONTENT.Actorname
+    to: ACTOR.Actorname

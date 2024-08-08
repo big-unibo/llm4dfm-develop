@@ -36,6 +36,49 @@ def is_a_valid_dependency(dependency_dict):
     return True
 
 
+# Given gt and output as set, return short table names composed of 2 letters and a digit only if 2 letters appears in
+# more than 1 table name
+# e.g. if there is SUPPLY and SUPPLIER -> SU and SU1
+def short_names_from_tables(gt, output):
+    # Extract tables name to obtain short names
+
+    all_tables_gt = set(
+        val.split('.')[0].replace(' ', '')
+        for subset in gt
+        for _, value in subset
+        for val in value.split(',')
+        if '.' in val
+    )
+    all_tables_out = set(
+        val.split('.')[0].replace(' ', '')
+        for subset in output
+        for _, value in subset
+        for val in value.split(',')
+        if '.' in val
+    )
+
+    short_names = dict()
+    # Initialize a set to keep track of the used two-letter values
+    used_names = set()
+
+    # Iterate over each value in the set
+    for table in all_tables_gt.union(all_tables_out):
+        # Get the first two letters of the value
+        new_name = '_'.join([short[:2] for short in table.split('_')])
+        i = 0
+        inserted = False
+        while not inserted:
+            if new_name not in used_names:
+                inserted = True
+                short_names[table] = new_name
+                used_names.add(new_name)
+            else:
+                if i > 0:
+                    new_name = new_name[:-len(str(i))]
+                new_name = new_name + str(i)
+                i += 1
+    return short_names
+
 # Used to store graph image
 def store_image(plt, name, img_format):
     plt.savefig(f'{outputs}{Path(name).stem}.{img_format}', format=img_format)

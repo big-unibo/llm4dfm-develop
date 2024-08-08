@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import matplotlib.lines as mlines
 
-from ssutils import preprocess_dependencies_attributes, is_a_valid_role_dependency, is_a_valid_dependency, store_image
+from ssutils import (preprocess_dependencies_attributes, is_a_valid_role_dependency, is_a_valid_dependency,
+                     store_image, short_names_from_tables)
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
@@ -34,43 +35,9 @@ set_output = set(
               for key, value in d.items())
     for d in dep_output)
 
-all_tables_gt = set(
-    val.split('.')[0].replace(' ', '')
-    for subset in set_gt
-    for _, value in subset
-    for val in value.split(',')
-    if '.' in val
-)
 
-all_tables_out = set(
-    val.split('.')[0].replace(' ', '')
-    for subset in set_output
-    for _, value in subset
-    for val in value.split(',')
-    if '.' in val
-)
-
-short_names = dict()
-
-# Initialize a set to keep track of the used two-letter values
-used_names = set()
-
-# Iterate over each value in the set
-for table in all_tables_gt.union(all_tables_out):
-    # Get the first two letters of the value
-    new_name = '_'.join([short[:2] for short in table.split('_')])
-    i = 0
-    inserted = False
-    while not inserted:
-        if new_name not in used_names:
-            inserted = True
-            short_names[table] = new_name
-            used_names.add(new_name)
-        else:
-            if i > 0:
-                new_name = new_name[:-len(str(i))]
-            new_name = new_name + str(i)
-            i += 1
+# Extract tables name to obtain short names
+short_names = short_names_from_tables(set_gt, set_output)
 
 tp = set_gt & set_output
 fn = set_gt - tp

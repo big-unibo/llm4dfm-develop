@@ -1,0 +1,11 @@
+text: |
+    The following logical schema describes an operational database for airport transactions.
+  
+    PURCHASE(PurchaseCode,Date,TotalAmount,BuyerCode:PERSON) 
+    AIRPORT(AirportCode,Name,City)
+    TICKET(TicketCode,(Date,RouteCode):FLIGHT,PurchaseCode:PURCHASE,PassengerCode:PERSON,FlightAmount,TaxAmount,NumberOfBags,PriorityYN) 
+    BOARDING_CARD(BoardingCardCode,TicketCode:TICKET,Seat) 
+    PERSON(PersonCode,Name,Surname,DateOfBirth,CityOfResidence,DocumentId,DocumentType,Telephone,Email) 
+    AIRPLANE_TYPE(AirplaneTypeCode,Name,NumberOfSeats) 
+    ROUTE(RouteCode,DepartureAirportCode: AIRPORT,ArrivalAirportCode:AIRPORT,DepartureTime,ArrivalTime) 
+    FLIGHT(Date,RouteCode:ROUTE,AirplaneType:AIRPLANE_TYPE,DelayInDeparture,DelayInArrival,CancelledYN)

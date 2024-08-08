@@ -16,17 +16,18 @@
 
 ### Guidelines
 
-#### Code
+### Required configuration parameters
 
-- Add as many *useful* comments as possible
-- Delete all *useless* code / resources
-- Test *early*, Test *often*, Test *everything* you can
-- Write a proper `README.md` (i.e., override this one) that explains:
-    - the project structure
-    - the algorithmic parameters
-    - how to run the project
-- Check the output of `./gradlew` to look for warnings (especially in code style)
+Inside `pipeline` module, a `.env` file must be provided with following configurations:
+- `DATASETS   -- path to folder containing exercise texts`
+- `OUTPUTS    -- path to folder in which outpust are stored`
+- `RESULTS   -- path to folder in which results are stored`
+- `INPUTS   -- path to folder containing exercise prompts`
+- `SAVE_MODELS   -- path to folder in which store imported models`
 
+If using Azure to interact with model's API, these configurations must be provided too (model_name must be uppercase)
+- `ENDPOINT_{model-name}`
+- `DEPLOYMENT_NAME_{model-name}`
 
 ##### Project structure
 
@@ -46,19 +47,6 @@ All first-step pipeline files are collected in pipeline module.
 Authentication key must be stored in `src/main/resources/credentials.yml`,
 an example of how the config is structured it is can be found in `src/main/resources/credentials-example.yml`.
 
-##### Configuration parameters
-
-Inside `pipeline` module, a `.env` file must be provided with following configurations:
-- `DATASETS   -- path to folder containing exercise texts`
-- `OUTPUTS    -- path to folder in which outpust are stored`
-- `RESULTS   -- path to folder in which results are stored`
-- `INPUTS   -- path to folder containing exercise prompts`
-- `SAVE_MODELS   -- path to folder in which store imported models`
-
-If using Azure to interact with model's API, these configurations must be provided too (model_name must be uppercase)
-- `ENDPOINT_{model-name}`
-- `DEPLOYMENT_NAME_{model-name}`
-
 ##### Algorithmic parameters
 
 ###### First step
@@ -66,6 +54,10 @@ If using Azure to interact with model's API, these configurations must be provid
 The following parameters can be configured in `first-step-config.yml` file.
 
 - `use -- the model to use between import and api`
+
+#### Note
+
+**Import model has been momentarily deleted**
 
 Imported model
 
@@ -158,9 +150,6 @@ All Python dependencies must be managed through virtual environments. See [here]
     cd src/main/python
     python -m venv venv
     pip install -r requirements.txt
-    Given some versioning errors during installations, suggested and stable CUDA version is 11.8,  
-      torch, torchvision and torchaudio versions are binded to that CUDA version
-    As faced a couple times, seems the package flash_attn has to be installed as pip install flash_attn --no-build-isolation by itself
 
 To activate venv in Windows (with bash shell; e.g., git bash)
 

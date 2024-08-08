@@ -8,17 +8,9 @@ seaborn==0.13.2
 tqdm==4.65.2
 python-dotenv
 pyyaml==6.0.1
-torch==2.3.0
-torchvision==0.18.0
-torchaudio==2.3.0
 openai==1.30.5
 transformers==4.41.2
-packaging
-flash_attn
-accelerate
-bitsandbytes
 google-generativeai
-google-cloud-aiplatform
 networkx
 matplotlib
 pygraphviz

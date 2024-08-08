@@ -1,0 +1,12 @@
+text: |
+    The following logical schema describes an operational database for train routes.
+  
+    TICKETS(TicketCode,CustomerCode:CUSTOMERS,PurchaseDate,TotalPrice)
+    CUSTOMERS(CustomerCode,Name,Surname,DocumentId,BirthDate,BirthCity)
+    TRIPS(TrainCode:TRAINS,Date,Status)
+    TRAIN_TYPE(TrainTypeCode,TrainType,Capacity)
+    ROUTES(RouteCode,DepartureStationCode:STATIONS,ArrivalStationCode:STATIONS,DistanceKm,Duration,Fare)
+    ROUTES_IN_TICKETS(TicketCode:TICKETS,(TrainCode,Date,RouteCode):ROUTES_IN_TRIPS,Price)
+    ROUTES_IN_TRIPS((TrainCode,Date):TRIPS,RouteCode:ROUTES,Sequence)
+    TRAINS(TrainCode,TrainTypeCode:TRAIN_TYPE)
+    STATIONS(StationCode,Name,Location,City,Region)

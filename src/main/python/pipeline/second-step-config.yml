@@ -2,9 +2,9 @@ exercise:
   full_name: # 'exercise-2.3-sql-v1-gpt-2024-06-28T11-28-14'# Can specify exercise full name, without .yml extensions
   name: 'exercise-1.4'
   v: 'sql'
-  prompt_v: 'v1'
+  prompt_v: 'v2'
   latest: true # Optional in case of full_name
-  timestamp: '2024-06-28T11-28-14' # Optional in case of full_name
+  timestamp: '2024-06-28T11-28-14' # Optional in case of latest or full_name provided
 
 model:
   name: 'gpt'
