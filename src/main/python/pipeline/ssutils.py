@@ -1,6 +1,8 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import collections
+import yaml
 
 load_dotenv()
 
@@ -22,6 +24,23 @@ def preprocess_dependencies_attributes(dependency_value, keep_tables, new_names)
         return single_dependency
 
     return '\n'.join([remove_first_part(word) for word in dependency_value.split(',')])
+
+
+# Load edges from dependency set filtering for valid role dependency
+def load_edges(dependency_set):
+    return set(
+        frozenset((key, get_clean_table_attribute(value))
+                  for key, value in d.items() if is_a_valid_role_dependency(key))
+        for d in dependency_set if is_a_valid_dependency(d))
+
+
+# Load nodes cleaned from edges set
+def load_nodes(edges_set):
+    return set(
+        get_clean_table_attribute(entry[1])
+        for fr_set in edges_set
+        for entry in fr_set
+    )
 
 
 # Dependencies to consider in second step
@@ -103,6 +122,43 @@ def short_names_from_tables(gt, output):
     return short_names
 
 
+# Calculates metrics from ground_truth set and generated set
+def get_metrics(ground_truth, generated):
+    tp = ground_truth & generated
+    fn = ground_truth - tp
+    fp = generated - tp
+
+    tp_count = len(tp)
+    fn_count = len(fn)
+    fp_count = len(fp)
+
+    precision = tp_count / (tp_count + fp_count)
+    recall = tp_count / (tp_count + fn_count)
+    f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
+
+    return precision, recall, f1
+
+
+# Build list of edges of type from -> to
+def get_tp_fn_fp_edges_to_list(ground_truth, generated):
+    tp = ground_truth & generated
+    fn = ground_truth - tp
+    fp = generated - tp
+    tp_list = [collections.OrderedDict(sorted(fs)) for fs in tp]
+    tp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
+    fn_list = [collections.OrderedDict(sorted(fs)) for fs in fn]
+    fn_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
+    fp_list = [collections.OrderedDict(sorted(fs)) for fs in fp]
+    fp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
+
+    return tp_list, fn_list, fp_list
+
+
 # Used to store graph image
 def store_image(plt, name, img_format):
     plt.savefig(f'{outputs}{Path(name).stem}.{img_format}', format=img_format)
+
+
+def update_output_with_metrics(file, result_with_metrics):
+    with open(f'{outputs}{file}', 'w+') as outfile:
+        yaml.dump(result_with_metrics, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)
