@@ -36,12 +36,12 @@ precision_edges, recall_edges, f1_edges = get_metrics(edges_set_gt, edges_set_ou
 precision_nodes, recall_nodes, f1_nodes = get_metrics(nodes_set_gt, nodes_set_output)
 
 metrics = {
-    'Edges': {
+    'edges': {
         'precision': round(precision_edges * 100, 2),
         'recall': round(recall_edges * 100, 2),
         'f1': round(f1_edges * 100, 2),
     },
-    'Nodes': {
+    'nodes': {
         'precision': round(precision_nodes * 100, 2),
         'recall': round(recall_nodes * 100, 2),
         'f1': round(f1_nodes * 100, 2),
@@ -124,7 +124,7 @@ if input_config['visualization']['table_names']:
                     for full_name, short_name in short_names.items()]
     for component in metrics:
         legend_items.append(mlines.Line2D([], [], color='black', linestyle='-', linewidth=2))
-        legend_items.extend([plt.Line2D([0], [0], color='w', label=f'{component}:')])
+        legend_items.extend([plt.Line2D([0], [0], color='w', label=f'{component.capitalize()}:')])
         for sub_metrics in metrics[component]:
             legend_items.extend([plt.Line2D([0], [0], color='w', label=f'{sub_metrics}: {metrics[component][sub_metrics]}%')])
     plt.legend(handles=legend_items, title="Tables convention", fontsize='small', title_fontsize='medium',
