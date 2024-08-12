@@ -3,11 +3,17 @@ from tqdm import tqdm
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from utils import load_yaml, load_prompts, store_output
 import os
+import argparse
 
 
 def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
 
+
+parser = argparse.ArgumentParser(description="Process some configuration.")
+parser.add_argument('--exercise', help='Exercise to use')
+parser.add_argument('--p_version', help='Prompt version to use')
+args = parser.parse_args()
 
 model_config = load_yaml(f'{Path().absolute()}/pipeline/first-step-config.yml')
 key_config = load_yaml(f'{Path().absolute()}/../resources/credentials.yml')
@@ -34,11 +40,23 @@ else:
 
 model_outputs = []
 prompts = []
-exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
+
+# Check if the --exercise argument is passed
+if args.exercise:
+    if len(args.exercise.split('/')) > 0:
+        exercise = args.exercise.split('/')[-1]
+    else:
+        exercise = args.exercise
+    exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
+    ex_name = '-'.join(exercise.split('-')[:2])
+    model_config['exercise']['name'] = ex_name
+    if args.p_version:
+        model_config['exercise']['prompt_version'] = args.p_version
+else:
+    exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # As new indication, load context prompt and then text exercise and first prompt together
-prompts.extend(load_text_and_first_prompt(exercise, model_config['exercise'][
-    'prompt_version'], config['name']))
+prompts.extend(load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name']))
 # After, load remaining prompts
 prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[2:])
 

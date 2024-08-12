@@ -129,6 +129,20 @@ Configurations which regulate graph visualization.
 In order to run the first step, once in `src/main/python/` directory run `python pipeline/first-step.py` 
 In order to run the second step, once in `src/main/python/` directory run `python pipeline/second-step.py` 
 
+###### Automatic run
+
+Automatic full step run could be achieved by running `./pipeline/automatic-run.sh` after granted execution privileges,
+by means of `chmod 700 ./pipeline/automatic-run.sh`.
+Run configuration:
+- `number_of_runs -- set number of runs, 1 by default`
+- `file_version -- set file version [sql, original], sql by default`
+- `prompt_version -- set prompt version [v1, v2], v2 by default`
+- `<ex1>, ..., <fileN> -- set exercises to run, all files matching previous configurations by default`
+
+Example of run
+
+`./pipeline/automatic-run.sh 1 sql v2 1.4 1.1`
+
 #### Dataset conventions
 
 - All datasets must be named as follows: `ProjectName-par1_val1-...-parN_valN.csv`

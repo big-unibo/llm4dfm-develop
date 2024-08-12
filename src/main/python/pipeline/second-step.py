@@ -3,13 +3,36 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import networkx as nx
 import matplotlib.lines as mlines
+import argparse
 
 from ssutils import (preprocess_dependencies_attributes, load_edges, load_nodes, store_image, short_names_from_tables,
                      get_metrics, get_tp_fn_fp_edges_to_list, update_output_with_metrics)
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
+parser = argparse.ArgumentParser(description="Process some configuration.")
+parser.add_argument('--exercise', help='Exercise to use')
+parser.add_argument('--p_version', help='Prompt version to use')
+args = parser.parse_args()
+
 # Load config
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
+
+# Check if the --exercise argument is passed
+if args.exercise:
+    if len(args.exercise.split('/')) > 0:
+        exercise = args.exercise.split('/')[-1]
+    else:
+        exercise = args.exercise
+    exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
+    ex_name = '-'.join(exercise.split('-')[:2])
+
+    input_config['exercise']['full_name'] = ''
+    input_config['exercise']['latest'] = True
+    input_config['exercise']['name'] = ex_name
+    input_config['visualization']['show_graph'] = False
+    if args.p_version:
+        input_config['exercise']['prompt_v'] = args.p_version
+
 ex_config = input_config['exercise']
 model_config = input_config['model']
 
