@@ -1,0 +1,6 @@
+text: |
+  Decision-makers are interested in analyzing the amount and exchange of purchases made in stores using
+  credit cards on a day-by-day basis. A store has a name, an address, a type, and is located in a country
+  of an area. Credit cards have a type, a holder, an expiration date, and a credit limit. Each card type
+  is described by a circuit, an issuing bank (with its address and country), by a card name, and by a color.
+  A holder has a first name, a last name, an age, a job, and an income range.

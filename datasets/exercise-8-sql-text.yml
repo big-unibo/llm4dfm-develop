@@ -1,0 +1,38 @@
+text: |
+  The following logical schema describes an operational database for purchases.
+  
+  CREATE TABLE TYPES ( 
+    typeId INT PRIMARY KEY, 
+    typeName VARCHAR(100) 
+  ); 
+
+  CREATE TABLE ARTICLES ( 
+      artId INT PRIMARY KEY, 
+      artName VARCHAR(100), 
+      unitPrice FLOAT,
+      type INT,
+      FOREIGN KEY (type) REFERENCES TYPES(typeId)
+  );
+  CREATE TABLE REGIONS (
+      regId INT PRIMARY KEY,
+      regionName VARCHAR(100),
+      state VARCHAR(100),
+      country VARCHAR(100)
+  );
+  CREATE TABLE STORES (
+      storeId INT PRIMARY KEY,
+      storeName VARCHAR(100),
+      storeAddress VARCHAR(100),
+      region INT,
+      FOREIGN KEY (region) REFERENCES REGIONS(regId)
+  );
+  CREATE TABLE PURCHASE (
+      storeId INT,
+      artId INT,
+      date DATE,
+      quantity INT,
+      revenue FLOAT,
+      PRIMARY KEY (storeId, artId, date),
+      FOREIGN KEY (artId) REFERENCES ARTICLES(artId),
+      FOREIGN KEY (storeId) REFERENCES STORES(storeId)
+  );

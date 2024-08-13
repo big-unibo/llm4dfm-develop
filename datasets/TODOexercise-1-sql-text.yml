@@ -1,0 +1,78 @@
+text: |
+    The following logical schema describes an operational database for train routes.
+  
+    CREATE TABLE CUSTOMERS (
+    CustomerCode INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Surname VARCHAR(50),
+    DocumentId VARCHAR(20),
+    BirthDate DATE,
+    BirthCity VARCHAR(50) 
+    );
+    
+    CREATE TABLE TICKETS (
+    TicketCode INT PRIMARY KEY,
+    CustomerCode INT,
+    PurchaseDate DATE,
+    TotalPrice DECIMAL(10, 2),
+    FOREIGN KEY (CustomerCode) REFERENCES CUSTOMERS(CustomerCode)
+    );
+    
+    CREATE TABLE TRAIN_TYPE (
+    TrainTypeCode INT PRIMARY KEY,
+    TrainType VARCHAR(50),
+    Capacity INT
+    );
+    
+    CREATE TABLE STATIONS (
+    StationCode INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Location VARCHAR(50),
+    City VARCHAR(50),
+    Region VARCHAR(50)
+    );
+    
+    CREATE TABLE TRAINS (
+    TrainCode INT PRIMARY KEY,
+    TrainTypeCode INT,
+    FOREIGN KEY (TrainTypeCode) REFERENCES TRAIN_TYPE(TrainTypeCode)
+    );
+     
+    CREATE TABLE TRIPS (
+    TrainCode INT,
+    Date DATE,
+    Status VARCHAR(20),
+    PRIMARY KEY (TrainCode, Date),
+    FOREIGN KEY (TrainCode) REFERENCES TRAINS(TrainCode)
+    );
+     
+    CREATE TABLE ROUTES (
+    RouteCode INT PRIMARY KEY,
+    DepartureStationCode INT,
+    ArrivalStationCode INT,
+    DistanceKm DECIMAL(10, 2),
+    Duration TIME, Fare DECIMAL(10, 2),
+    FOREIGN KEY (DepartureStationCode) REFERENCES STATIONS(StationCode),
+    FOREIGN KEY (ArrivalStationCode) REFERENCES STATIONS(StationCode)
+    );
+    
+    CREATE TABLE ROUTES_IN_TRIPS (
+    TrainCode INT,
+    Date DATE,
+    RouteCode INT,
+    Sequence INT,
+    PRIMARY KEY (TrainCode, Date, RouteCode),
+    FOREIGN KEY (TrainCode, Date) REFERENCES TRIPS(TrainCode, Date),
+    FOREIGN KEY (RouteCode) REFERENCES ROUTES(RouteCode)
+    );
+    
+    CREATE TABLE ROUTES_IN_TICKETS (
+    TicketCode INT,
+    TrainCode INT,
+    Date DATE,
+    RouteCode INT,
+    Price DECIMAL(10, 2),
+    PRIMARY KEY (TicketCode, TrainCode, Date, RouteCode),
+    FOREIGN KEY (TicketCode) REFERENCES TICKETS(TicketCode),
+    FOREIGN KEY (TrainCode, Date, RouteCode) REFERENCES ROUTES_IN_TRIPS(TrainCode, Date, RouteCode)
+    ); 

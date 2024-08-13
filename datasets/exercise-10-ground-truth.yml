@@ -1,0 +1,95 @@
+supply_driven:
+  fact:
+    name: ARRIVALS
+  measures:
+    - name: ARRIVALS.Position
+    - name: ARRIVALS.Time
+    - name: ARRIVALS.Score
+    - name: GRAND_PRIXS.NumberOfLaps
+    - name: RACING_CIRCUITS.Length
+  dependencies:
+    - from: ARRIVALS
+      to: GRAND_PRIXS.NumberOfLaps
+    - from: ARRIVALS
+      to: RACING_CIRCUITS.Length
+    - from: ARRIVALS
+      to: ARRIVALS.Time
+    - from: ARRIVALS
+      to: ARRIVALS.Score
+    - from: ARRIVALS
+      to: ARRIVALS.Position
+    - from: ARRIVALS
+      to: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
+    - from: ARRIVALS
+      to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+    - from: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
+      to: GRAND_PRIXS.Date
+    - from: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
+      to: RACING_CIRCUITS.CircuitName
+    - from: RACING_CIRCUITS.CircuitName
+      to: RACING_CIRCUITS.City
+    - from: RACING_CIRCUITS.CircuitName
+      to: RACING_CIRCUITS.Description
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+      to: DRIVERS.Name,DRIVERS.Surname
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+      to: CARS.Number
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+      to: DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+      to: DRIVES.FromDate
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+      to: DRIVES.ToDate
+    - from: DRIVERS.Name,DRIVERS.Surname
+      to: DRIVERS.Name
+    - from: DRIVERS.Name,DRIVERS.Surname
+      to: DRIVERS.Surname
+    - from: DRIVERS.Name,DRIVERS.Surname
+      to: DRIVERS.BirthDate
+    - from: CARS.Number
+      to: RACING_STABLES.StableName
+    - from: RACING_STABLES.StableName
+      to: RACING_STABLES.MainAddress
+    - from: RACING_STABLES.StableName
+      to: RACING_STABLES.Manager
+demand_driven:
+  fact:
+    name: ARRIVALS
+  measures:
+    - name: Position
+    - name: Time
+    - name: Score
+    - name: NumberOfLaps
+  dependencies:
+    - from: ARRIVALS
+      to: NumberOfLaps
+    - from: ARRIVALS
+      to: Time
+    - from: ARRIVALS
+      to: Score
+    - from: ARRIVALS
+      to: Position
+    - from: ARRIVALS
+      to: Circuit
+    - from: ARRIVALS
+      to: Driver
+    - from: ARRIVALS
+      to: Date
+    - from: ARRIVALS
+      to: Car
+    - from: Circuit
+      to: City
+    - from: Circuit
+      to: Length
+    - from: Driver
+      to: Name
+    - from: Driver
+      to: Surname
+    - from: Driver
+      to: Age
+    - from: Car
+      to: Stable
+    - from: Stable
+      to: MainAddress
+    - from: Stable
+      to: Manager

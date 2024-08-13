@@ -1,0 +1,11 @@
+text: |
+  The following logical schema describes an operational database for rentals.
+  
+  RENTAL_OFFICES(OfficeName,City,Area,State,Country) 
+  CARS(Plate,Category,Model,Brand,Fuel,RegistrationDate) 
+  HAVE_OPTIONAL(Plate:CARS,Optional) 
+  RENTALS(Plate:CARS,PickupDate,DropoffDate,PickupPlace:RENTAL_OFFICES,DropoffPlace:RENTAL_OFFICES,Miles)
+  DRIVERS(LicenseNumber,LicenseExpiration,DriverName,Birthdate)
+  DRIVE(LicenseNumber:DRIVERS,(Plate,PickupDate):RENTALS)
+  INSURANCES(Risk,(Plate,PickupDate):RENTALS,Cost)
+  PAYMENTS((Plate,PickupDate):RENTALS,Amount,Discount,PaymentMode)

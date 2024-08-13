@@ -1,0 +1,8 @@
+text: |
+  The following logical schema describes an operational database for installations.
+  
+  COMPUTER(CodComputer,Brand:SUPPLIES,Model)
+  SUPPLIES(Brand,SupplierName:SUPPLIERS)
+  SUPPLIERS(SupplierName,SupplierCity,SupplierAddress)
+  INSTALLATIONS(CodComputer:COMPUTER,CodSoftw:SOFTWARE,InstallationDate)
+  SOFTWARE(CodSoftw,SoftwareDescription,Type)

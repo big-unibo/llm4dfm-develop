@@ -1,0 +1,6 @@
+text: |
+  Decision-makers are interested in analyzing the daily presences of members at a crossfit box for trainings.
+  Members have a name and a surname, an address, a postal code, and live in a city;
+  they are described by their weight and height. Crossfit tranings follow a workout-of-the-day (WOD),
+  which is different every day; WODs have different types. On each day, the WOD is repeated several times
+  at different hours with different instructors.

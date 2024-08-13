@@ -1,0 +1,5 @@
+text: |
+  Decision-makers are interested in analyzing the quantity, revenue, and unit price of purchases
+  of articles made in stores on a day-by-day basis. A store has a name, an address, and is located
+  in a region of a state (each state is part of one country). Articles are described by their names
+  and their types.

@@ -1,0 +1,8 @@
+text: |
+  The following logical schema describes an operational database for credit card purchases.
+  
+  PURCHASES(PurchaseCode,Date,Amount,Currency,Exchange,CCNumber:CREDIT_CARDS,StoreCode:STORES)
+  CREDIT_CARDS(CCNumber,TypeCode:CARD_TYPES,HolderCode:HOLDERS,ExpirationDate,CreditLimit)
+  HOLDERS(HolderCode,FirstName,LastName,BirthDate,Job,IncomeRange,Quality)
+  CARD_TYPES(TypeCode,Circuit,IssuingBank,Address,Country,CardName,Color)
+  STORES(StoreCode,Name,Address,Country,Area,WebSite,Email,Type)  

@@ -141,7 +141,7 @@ Run configuration:
 
 Example of run
 
-`./pipeline/automatic-run.sh 1 sql v2 1.4 1.1`
+`./pipeline/automatic-run.sh 1 sql v2 4 1`
 
 #### Dataset conventions
 

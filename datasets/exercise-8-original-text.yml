@@ -1,0 +1,8 @@
+text: |
+  The following logical schema describes an operational database for purchases.
+  
+  TYPES(typeId,typeName) 
+  ARTICLES(artId,artName,unitPrice,type:TYPES) 
+  REGIONS(regId,regionName,state,country) 
+  STORES(storeId,storeName,storeAddress,region:REGIONS) 
+  PURCHASE(storeId:STORES,artId:ARTICLES,date,quantity,revenue) 

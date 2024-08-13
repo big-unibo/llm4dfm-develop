@@ -1,33 +1,29 @@
 text: |
-    The following logical schema describes an operational database for credit card payments.
+    The following logical schema describes an operational database for motor races.
     
-    CREATE TABLE PURCHASES (
-    PurchCode VARCHAR(100) PRIMARY KEY,
-    Date DATE,
-    Amount FLOAT,
-    Currency TEXT,
-    Exchange FLOAT,
-    FOREIGN KEY (CCNumber) REFERENCES CREDIT_CARDS(CCNumber),
-    FOREIGN KEY (StoreCode) REFERENCES STORES(StoreCode),
+    CREATE TABLE RACING_CIRCUITS (
+    CircuitName VARCHAR(100) PRIMARY KEY,
+    City VARCHAR(100),
+    Length FLOAT,
+    Description TEXT
     );
     
-    CREATE TABLE CREDIT_CARDS (
-    CCNumber
-    Date DATE PRIMARY KEY,
+    CREATE TABLE GRAND_PRIXS (
+    Date DATE,
     CircuitName VARCHAR(100),
     NumberOfLaps INT,
+    PRIMARY KEY (Date, CircuitName)
     FOREIGN KEY (CircuitName) REFERENCES RACING_CIRCUITS(CircuitName)
     );
     
-    CREATE TABLE DRIVERS (
+    CREATE TABLE DRIVERS ( 
     Name VARCHAR(100),
     Surname VARCHAR(100),
     BirthDate DATE,
-    Comments TEXT,
     PRIMARY KEY (Name, Surname)
     );
     
-    CREATE TABLE RACING_STABLES (
+    CREATE TABLE RACING_STABLES (  
     StableName VARCHAR(100) PRIMARY KEY,
     MainAddress VARCHAR(100),
     Manager VARCHAR(100)
@@ -60,14 +56,8 @@ text: |
     Year INT,
     Position INT,
     Time TIME,
+    Score INT,
     PRIMARY KEY (Date, CircuitName, Name, Surname, Number, Year),
     FOREIGN KEY (Date, CircuitName) REFERENCES GRAND_PRIXS(Date, CircuitName),
     FOREIGN KEY (Name, Surname, Number, Year) REFERENCES DRIVES(Name, Surname, Number, Year)
-    );
-    
-    CREATE TABLE SCORES (
-    Year INT,
-    Position INT,
-    Score INT,
-    PRIMARY KEY (Year, Position)
     );

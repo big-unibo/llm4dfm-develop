@@ -32,10 +32,12 @@ if args.exercise:
     input_config['visualization']['show_graph'] = False
     if args.p_version:
         input_config['exercise']['prompt_v'] = args.p_version
+    # TODO add exercise version to set in bash
+
 
 ex_config = input_config['exercise']
 model_config = input_config['model']
-
+# TODO check how exercise is loaded
 # Load exercise
 ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
                                  model_config['name'], model_config['v'],

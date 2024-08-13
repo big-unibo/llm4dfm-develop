@@ -1,0 +1,57 @@
+supply_driven:
+  fact:
+    name: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+  measures:
+  dependencies:
+    - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierAddress
+demand_driven:
+  fact:
+    name: SoftwareInstallations
+  measures:
+    - name: InstallationsCount
+  dependencies:
+    - from: SoftwareInstallations
+      to: InstallationsCount
+    - from: SoftwareInstallations
+      to: Day
+    - from: SoftwareInstallations
+      to: Computer
+    - from: SoftwareInstallations
+      to: Software
+    - from: Day
+      to: Month
+    - from: Month
+      to: Year
+    - from: Computer
+      to: Model
+    - from: Computer
+      to: Brand
+    - from: Brand
+      to: Supplier
+    - from: Supplier
+      to: City
+    - from: Supplier
+      to: Address
+    - from: Software
+      to: Description
+    - from: Software
+      to: Type

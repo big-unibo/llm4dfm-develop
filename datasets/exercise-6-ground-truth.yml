@@ -1,0 +1,69 @@
+supply_driven:
+  fact:
+    name: PRESENCE
+  measures:
+    - name: WOD.numberOfRounds
+  dependencies:
+    - from: PRESENCE
+      to: WOD.numberOfRounds
+    - from: PRESENCE
+      to: MEMBERS.FiscalCode
+    - from: PRESENCE
+      to: WORKOUTS.date,WORKOUTS.time
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.name
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.surname
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.gender
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.address
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.postalCode
+    - from: MEMBERS.postalCode
+      to: MEMBERS.city
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.height
+    - from: MEMBERS.FiscalCode
+      to: MEMBERS.weight
+    - from: WORKOUTS.date,WORKOUTS.time
+      to: WORKOUTS.time
+    - from: WORKOUTS.date,WORKOUTS.time
+      to: WORKOUTS.instructor
+    - from: WORKOUTS.date,WORKOUTS.time
+      to: WOD.date
+    - from: WOD.date
+      to: WOD.name
+    - from: WOD.date
+      to: WOD.WODtype
+demand_driven:
+  fact:
+    name: DailyPresences
+  measures:
+  dependencies:
+    - from: DailyPresences
+      to: Member
+    - from: DailyPresences
+      to: WOD
+    - from: DailyPresences
+      to: Hour
+    - from: DailyPresences
+      to: Day
+    - from: DailyPresences
+      to: Instructor
+    - from: Member
+      to: Name
+    - from: Member
+      to: Surname
+    - from: Member
+      to: Weight
+    - from: Member
+      to: Height
+    - from: Member
+      to: Address
+    - from: Address
+      to: PostalCode
+    - from: PostalCode
+      to: City
+    - from: WOD
+      to: WODType
