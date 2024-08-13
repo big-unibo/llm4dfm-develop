@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import matplotlib.lines as mlines
 import argparse
+import traceback
 
 from ssutils import (preprocess_dependencies_attributes, load_edges, load_nodes, store_image, short_names_from_tables,
                      get_metrics, get_tp_fn_fp_edges_to_list, update_output_with_metrics)
@@ -12,6 +13,7 @@ from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_an
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--exercise', help='Exercise to use')
 parser.add_argument('--p_version', help='Prompt version to use')
+parser.add_argument('--exercise_version', help='Exercise version to use')
 args = parser.parse_args()
 
 # Load config
@@ -32,20 +34,31 @@ if args.exercise:
     input_config['visualization']['show_graph'] = False
     if args.p_version:
         input_config['exercise']['prompt_v'] = args.p_version
-    # TODO add exercise version to set in bash
-
+    if args.exercise_version:
+        input_config['exercise']['v'] = args.exercise_version
 
 ex_config = input_config['exercise']
 model_config = input_config['model']
-# TODO check how exercise is loaded
+
 # Load exercise
 ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
                                  model_config['name'], model_config['v'],
                                  ex_config['latest'], ex_config['timestamp'], ex_config['full_name'])
 ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
 
+if ex_config['v'] == 'demand':
+    ground_truth = ground_truth['demand_driven']
+else:
+    ground_truth = ground_truth['supply_driven']
+
 # Extract dependencies
-dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
+try:
+    dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
+except Exception as e:
+    print("An error occurred:", e)
+    traceback.print_exc()
+    exit(1)
+
 dep_gt = ground_truth['dependencies']
 
 # Load edges

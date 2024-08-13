@@ -13,6 +13,7 @@ def log(message):
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--exercise', help='Exercise to use')
 parser.add_argument('--p_version', help='Prompt version to use')
+parser.add_argument('--exercise_version', help='Exercise version to use')
 args = parser.parse_args()
 
 model_config = load_yaml(f'{Path().absolute()}/pipeline/first-step-config.yml')
@@ -52,13 +53,15 @@ if args.exercise:
     model_config['exercise']['name'] = ex_name
     if args.p_version:
         model_config['exercise']['prompt_version'] = args.p_version
+    if args.exercise_version:
+        model_config['exercise']['version'] = args.exercise_version
 else:
     exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # As new indication, load context prompt and then text exercise and first prompt together
 prompts.extend(load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name']))
 # After, load remaining prompts
-prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[2:])
+prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[len(prompts):])
 
 # Used to allow models without chat structure constraints (i.e. after each system or user input require an assistant
 # message, so one batch at a time) to batch first system and user input in a single batch

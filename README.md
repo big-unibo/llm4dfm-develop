@@ -136,12 +136,12 @@ by means of `chmod 700 ./pipeline/automatic-run.sh`.
 Run configuration:
 - `number_of_runs -- set number of runs, 1 by default`
 - `file_version -- set file version [sql, original], sql by default`
-- `prompt_version -- set prompt version [v1, v2], v2 by default`
+- `prompt_version -- set prompt version [v1, v2, v3], v3 by default`
 - `<ex1>, ..., <fileN> -- set exercises to run, all files matching previous configurations by default`
 
 Example of run
 
-`./pipeline/automatic-run.sh 1 sql v2 4 1`
+`./pipeline/automatic-run.sh 1 sql v3 4 1`
 
 #### Dataset conventions
 
