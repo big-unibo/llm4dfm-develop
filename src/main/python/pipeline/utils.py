@@ -104,7 +104,7 @@ def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, 
             else:
                 exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp)) + '.yml'
 
-    with open(f'{outputs}{exercise}', 'r') as file:
+    with open(f'{outputs}{exercise}', 'r', errors='ignore') as file:
         ex_output = yaml.safe_load(file)
     return ex_output, exercise
 

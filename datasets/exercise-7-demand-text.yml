@@ -1,0 +1,8 @@
+text: |
+  
+  Decision-makers are interested in analyzing the rentals made in a car rental company.
+  Each rental is quantitatively described by an amount, a discount, an insurance cost (one for each risk),
+  and a number of miles travelled. A rental is done for a car (identified by its plate), has a pickup
+  and a dropoff date, and a pickup and a dropoff office. A car has a registration date, a fuel type,
+  and belongs to a category; it has a model which is manufactured by a brand. Offices are located in cities;
+  each city is in a state that belongs to a country. Countries are grouped into areas.

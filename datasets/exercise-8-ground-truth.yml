@@ -1,0 +1,72 @@
+supply_driven:
+  fact:
+    name: PURCHASE
+  measures:
+    - name: PURCHASE.quantity
+    - name: PURCHASE.revenue
+    - name: ARTICLES.unitPrice
+  dependencies:
+    - from: TYPES.typeId
+      to: TYPES.typeName
+    - from: ARTICLES.artId
+      to: ARTICLES.artName
+    - from: ARTICLES.artId
+      to: TYPES.typeId
+    - from: REGIONS.regId
+      to: REGIONS.regionName
+    - from: REGIONS.regId
+      to: REGIONS.state
+    - from: REGIONS.state
+      to: REGIONS.country
+    - from: STORES.storeId
+      to: STORES.storeName
+    - from: STORES.storeId
+      to: STORES.storeAddress
+    - from: STORES.storeId
+      to: REGIONS.regId
+    - from: PURCHASE
+      to: PURCHASE.quantity
+    - from: PURCHASE
+      to: PURCHASE.revenue
+    - from: PURCHASE
+      to: ARTICLES.unitPrice
+    - from: PURCHASE
+      to: ARTICLES.artId
+    - from: PURCHASE
+      to: STORES.storeId
+    - from: PURCHASE
+      to: PURCHASE.date
+demand_driven:
+  fact:
+    name: PURCHASE
+  measures:
+    - name: quantity
+    - name: revenue
+    - name: unitPrice
+  dependencies:
+    - from: article
+      to: articleName
+    - from: article
+      to: type
+    - from: store
+      to: storeName
+    - from: store
+      to: address
+    - from: store
+      to: region
+    - from: region
+      to: state
+    - from: state
+      to: country
+    - from: PURCHASE
+      to: quantity
+    - from: PURCHASE
+      to: revenue
+    - from: PURCHASE
+      to: unitPrice
+    - from: PURCHASE
+      to: article
+    - from: PURCHASE
+      to: store
+    - from: PURCHASE
+      to: date

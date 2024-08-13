@@ -1,0 +1,74 @@
+text: |
+  The following logical schema describes an operational database for rentals.
+  
+  CREATE TABLE RENTAL_OFFICES (
+  OfficeName VARCHAR(255) PRIMARY KEY,
+  City VARCHAR(255),
+  Area VARCHAR(255),
+  State VARCHAR(255),
+  Country VARCHAR(255)
+  ); 
+
+  CREATE TABLE CARS (
+  Plate VARCHAR(255) PRIMARY KEY,
+  Category VARCHAR(255),
+  Model VARCHAR(255),
+  Brand VARCHAR(255),
+  Fuel VARCHAR(255),
+  RegistrationDate DATE
+  ); 
+
+  CREATE TABLE HAVE_OPTIONAL (
+  Plate VARCHAR(255),
+  Optional VARCHAR(255),
+  PRIMARY KEY (Plate, Optional),
+  FOREIGN KEY (Plate) REFERENCES CARS(Plate)
+  ); 
+
+  CREATE TABLE RENTALS (
+  Plate VARCHAR(255),
+  PickupDate DATE,
+  DropoffDate DATE,
+  PickupPlace VARCHAR(255),
+  DropoffPlace VARCHAR(255),
+  Miles INT,
+  PRIMARY KEY (Plate, PickupDate),
+  FOREIGN KEY (Plate) REFERENCES CARS(Plate),
+  FOREIGN KEY (PickupPlace) REFERENCES RENTAL_OFFICES(OfficeName),
+  FOREIGN KEY (DropoffPlace) REFERENCES RENTAL_OFFICES(OfficeName)
+  ); 
+
+  CREATE TABLE DRIVERS (
+  LicenseNumber VARCHAR(255) PRIMARY KEY,
+  LicenseExpiration DATE,
+  DriverName VARCHAR(255),
+  Birthdate DATE
+  ); 
+
+  CREATE TABLE DRIVE (
+  LicenseNumber VARCHAR(255),
+  Plate VARCHAR(255),
+  PickupDate DATE,
+  PRIMARY KEY (LicenseNumber, Plate, PickupDate),
+  FOREIGN KEY (LicenseNumber) REFERENCES DRIVERS(LicenseNumber),
+  FOREIGN KEY (Plate, PickupDate) REFERENCES RENTALS(Plate, PickupDate)
+  ); 
+
+  CREATE TABLE INSURANCES (
+  Risk VARCHAR(255),
+  Plate VARCHAR(255),
+  PickupDate DATE,
+  Cost DECIMAL(10, 2),
+  PRIMARY KEY (Risk, Plate, PickupDate),
+  FOREIGN KEY (Plate, PickupDate) REFERENCES RENTALS(Plate, PickupDate)
+  ); 
+
+  CREATE TABLE PAYMENTS (
+  Plate VARCHAR(255),
+  PickupDate DATE,
+  Amount DECIMAL(10, 2),
+  Discount DECIMAL(10, 2),
+  PaymentMode VARCHAR(255),
+  PRIMARY KEY (Plate, PickupDate),
+  FOREIGN KEY (Plate, PickupDate) REFERENCES RENTALS(Plate, PickupDate)
+  ); 

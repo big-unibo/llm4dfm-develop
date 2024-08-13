@@ -1,0 +1,122 @@
+supply_driven:
+  fact:
+    name: PURCHASES
+  measures:
+    - name: PURCHASES.Amount
+    - name: PURCHASES.Exchange
+  dependencies:
+    - from: PURCHASES
+      to: PURCHASES.Amount
+    - from: PURCHASES
+      to: PURCHASES.Exchange
+    - from: PURCHASES
+      to: CREDIT_CARDS.CCNumber
+    - from: PURCHASES
+      to: STORES.StoreCode
+    - from: PURCHASES
+      to: PURCHASES.Currency
+    - from: PURCHASES
+      to: PURCHASES.Date
+    - from: CREDIT_CARDS.CCNumber
+      to: CARD_TYPES.TypeCode
+    - from: CREDIT_CARDS.CCNumber
+      to: HOLDERS.HolderCode
+    - from: CREDIT_CARDS.CCNumber
+      to: CREDIT_CARDS.ExpirationDate
+    - from: CREDIT_CARDS.CCNumber
+      to: CREDIT_CARDS.CreditLimit
+    - from: CARD_TYPES.TypeCode
+      to: CARD_TYPES.Circuit
+    - from: CARD_TYPES.TypeCode
+      to: CARD_TYPES.IssuingBank
+    - from: CARD_TYPES.IssuingBank
+      to: CARD_TYPES.Address
+    - from: CARD_TYPES.IssuingBank
+      to: CARD_TYPES.Country
+    - from: CARD_TYPES.TypeCode
+      to: CARD_TYPES.CardName
+    - from: CARD_TYPES.TypeCode
+      to: CARD_TYPES.Color
+    - from: HOLDERS.HolderCode
+      to: HOLDERS.FirstName
+    - from: HOLDERS.HolderCode
+      to: HOLDERS.LastName
+    - from: HOLDERS.HolderCode
+      to: HOLDERS.BirthDate
+    - from: HOLDERS.HolderCode
+      to: HOLDERS.Job
+    - from: HOLDERS.HolderCode
+      to: HOLDERS.IncomeRange
+    - from: HOLDERS.HolderCode
+      to: HOLDERS.Quality
+    - from: STORES.StoreCode
+      to: STORES.Name
+    - from: STORES.StoreCode
+      to: STORES.Address
+    - from: STORES.StoreCode
+      to: STORES.Country
+    - from: STORES.Country
+      to: STORES.Area
+    - from: STORES.StoreCode
+      to: STORES.WebSite
+    - from: STORES.StoreCode
+      to: STORES.Email
+    - from: STORES.StoreCode
+      to: STORES.Type
+demand_driven:
+  fact:
+    name: Purchase
+  measures:
+    - name: amount
+    - name: exchange
+  dependencies:
+    - from: Purchase
+      to: store
+    - from: Purchase
+      to: credit_card
+    - from: Purchase
+      to: day
+    - from: Purchase
+      to: amount
+    - from: Purchase
+      to: exchange
+    - from: store
+      to: name
+    - from: store
+      to: address
+    - from: store
+      to: store_type
+    - from: store
+      to: country
+    - from: country
+      to: area
+    - from: holder
+      to: first_name
+    - from: holder
+      to: last_name
+    - from: holder
+      to: age
+    - from: holder
+      to: job
+    - from: holder
+      to: income_range
+    - from: credit_card
+      to: credit_card_type
+    - from: credit_card
+      to: holder
+    - from: credit_card
+      to: expiration_date
+    - from: credit_card
+      to: credit_limit
+    - from: credit_card_type
+      to: issuing_bank
+    - from: credit_card_type
+      to: circuit
+    - from: issuing_bank
+      to: address
+    - from: issuing_bank
+      to: country
+    - from: credit_card_type
+      to: color
+    - from: credit_card_type
+      to: card_name

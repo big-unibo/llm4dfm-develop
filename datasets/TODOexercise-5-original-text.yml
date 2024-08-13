@@ -1,0 +1,9 @@
+text: |
+  The following logical schema describes an operational database for recruitments.
+  
+  DEPARTMENTS(departmentCode,departmentName,divCode:DIVISIONS) 
+  DIVISIONS(divCode,divisionName,managerCode:STAFF) 
+  STAFF(employeeCode,name,surname,gender,qualification:QUALIFICATIONS,currentDepartment:DEPARTMENTS) 
+  QUALIFICATIONS(qualification) 
+  RECRUITMENTS(employeeCode:STAFF,department:DEPARTMENTS,recruitmentDate) 
+  TRANSFERS(employeeCode:RECRUITMENTS,date,fromDepartment:DEPARTMENTS,toDepartment:DEPARTMENTS,reason)

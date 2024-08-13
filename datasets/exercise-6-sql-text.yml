@@ -1,0 +1,65 @@
+text: |
+  The following logical schema describes an operational database for gym.
+
+  CREATE TABLE MEMBERS ( 
+  FiscalCode CHAR(10) PRIMARY KEY,
+  name VARCHAR(50),
+  surname VARCHAR(50),
+  gender CHAR(1),
+  address VARCHAR(100),
+  postalCode CHAR(10),
+  city VARCHAR(50),
+  height DECIMAL(5, 2),
+  weight DECIMAL(5, 2),
+  );
+
+  CREATE TABLE EXERCISES (
+  exerciseId INT PRIMARY KEY,
+  name VARCHAR(50),
+  exerciseType VARCHAR(50),
+  );
+
+  CREATE TABLE MAXIMUM_WEIGHTS (
+  FiscalCode CHAR(10),
+  exerciseId INT,
+  weight DECIMAL(5, 2),
+  date DATE,
+  PRIMARY KEY (FiscalCode, exerciseId, date),
+  FOREIGN KEY (FiscalCode) REFERENCES MEMBERS(FiscalCode) 
+  FOREIGN KEY (exerciseId) REFERENCES EXERCISES(exerciseId)
+  );
+
+  CREATE TABLE WOD (
+  date DATE PRIMARY KEY,
+  name VARCHAR(50),
+  WODtype VARCHAR(50),
+  numberOfRounds INT,
+  );
+
+  CREATE TABLE EXERCISE_IN_WOD (
+  date DATE,
+  exerciseId INT,
+  positionInSequence INT,
+  numberOfRepetitions INT,
+  PRIMARY KEY (date, exerciseId, positionInSequence),
+  FOREIGN KEY (date) REFERENCES WOD(date),
+  FOREIGN KEY (exerciseId) REFERENCES EXERCISES(exerciseId)
+  );
+
+  CREATE TABLE WORKOUTS (
+  date DATE,
+  time TIME,
+  instructor VARCHAR(50),
+  PRIMARY KEY (date, time),
+  FOREIGN KEY (date) REFERENCES WOD(date)
+  );
+
+  CREATE TABLE PRESENCE (
+  FiscalCode CHAR(10),
+  date DATE,
+  time TIME,
+  PRIMARY KEY (FiscalCode, date, time),
+  FOREIGN KEY (FiscalCode) REFERENCES MEMBERS(FiscalCode) 
+  FOREIGN KEY (date) REFERENCES WORKOUTS(date),
+  FOREIGN KEY (time) REFERENCES WORKOUTS(time)
+  );

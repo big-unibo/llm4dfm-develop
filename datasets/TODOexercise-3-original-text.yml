@@ -1,0 +1,13 @@
+text: |
+    The following logical schema describes an operational database for airport transactions.
+  
+    USER(Account,Name,AdultYN)
+    CONTENT(CodC,Title,Director,Genre,Plot) 
+    ACTOR(Actorname) 
+    ACTOR_IN_CONTENT(CodC:CONTENT,Actorname:ACTOR) 
+    FILM(CodC: CONTENT,Duration) 
+    SERIES(CodC:CONTENT,NumberOfSeasons,TotalNumberOfEpisodes) 
+    SEASON(CodC:SERIES,SeasonNumber) 
+    EPISODE((CodC,SeasonNumber):SEASON,EpisodeNumber,Title,Duration) 
+    FILM_VIEWING(Account:USER,CodC:FILM,Date,StartTime,ViewingDuration,VisionCompletedYN,DeviceType) 
+    EPISODE_VIEWING(Account:USER,(CodC,SeasonNumber,EpisodeNumber):EPISODE,Date,StartTime,ViewingDuration,VisionCompletedYN,DeviceType)

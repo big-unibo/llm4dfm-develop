@@ -1,0 +1,10 @@
+text: |
+  The following logical schema describes an operational database for gym.
+  
+  MEMBERS(FiscalCode,name,surname,gender,address,postalCode,city,height,weight)
+  EXERCISES(exerciseId,name,exerciseType)
+  MAXIMUM_WEIGHTS(FiscalCode:MEMBERS,exerciseId:EXERCISES,weight,date)
+  WOD(date,name,WODtype,numberOfRounds)
+  EXERCISE_IN_WOD(date:WOD,exerciseId:EXERCISES,positionInSequence,numberOfRepetitions)
+  WORKOUTS(date:WOD,time,instructor)
+  PRESENCE(FiscalCode:MEMBERS,(date,time):WORKOUTS)

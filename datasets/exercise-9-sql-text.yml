@@ -1,0 +1,55 @@
+text: |
+    The following logical schema describes an operational database for credit card payments.
+    
+    CREATE TABLE HOLDERS (
+    HolderCode INT PRIMARY KEY,
+    FirstName VARCHAR(100),
+    LastName VARCHAR(100),
+    BirthDate DATE,
+    Job VARCHAR(100),
+    IncomeRange VARCHAR(100),
+    Quality VARCHAR(100)
+    );
+    
+    CREATE TABLE CARD_TYPES (
+    TypeCode INT PRIMARY KEY,
+    Circuit VARCHAR(100),
+    IssuingBank VARCHAR(100),
+    Address VARCHAR(100),
+    Country VARCHAR(100),
+    CardName VARCHAR(100),
+    Color VARCHAR(100)
+    );
+    
+    CREATE TABLE STORES (
+    StoreCode INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Address VARCHAR(100),
+    Country VARCHAR(100),
+    Area VARCHAR(100),
+    WebSite VARCHAR(100),
+    Email VARCHAR(100),
+    Type VARCHAR(100)
+    );
+    
+    CREATE TABLE CREDIT_CARDS (
+    CCNumber INT PRIMARY KEY,
+    TypeCode INT,
+    HolderCode INT,
+    ExpirationDate DATE,
+    CreditLimit FLOAT,
+    FOREIGN KEY (TypeCode) REFERENCES CARD_TYPES(TypeCode),
+    FOREIGN KEY (HolderCode) REFERENCES HOLDERS(HolderCode)
+    );
+    
+    CREATE TABLE PURCHASES (
+    PurchCode INT PRIMARY KEY,
+    Date DATE,
+    Amount FLOAT,
+    Currency VARCHAR(10),
+    Exchange FLOAT,
+    CCNumber INT,
+    StoreCode INT,
+    FOREIGN KEY (CCNumber) REFERENCES CREDIT_CARDS(CCNumber),
+    FOREIGN KEY (StoreCode) REFERENCES STORES(StoreCode)
+    );

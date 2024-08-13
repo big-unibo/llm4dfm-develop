@@ -1,96 +1,93 @@
-import collections
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import networkx as nx
+import matplotlib.lines as mlines
+import argparse
+import traceback
 
-from ssutils import preprocess_dependencies_attributes, is_a_valid_role_dependency, store_image
+from ssutils import (preprocess_dependencies_attributes, load_edges, load_nodes, store_image, short_names_from_tables,
+                     get_metrics, get_tp_fn_fp_edges_to_list, update_output_with_metrics)
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
+parser = argparse.ArgumentParser(description="Process some configuration.")
+parser.add_argument('--exercise', help='Exercise to use')
+parser.add_argument('--p_version', help='Prompt version to use')
+parser.add_argument('--exercise_version', help='Exercise version to use')
+args = parser.parse_args()
+
+# Load config
 input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
+
+# Check if the --exercise argument is passed
+if args.exercise:
+    if len(args.exercise.split('/')) > 0:
+        exercise = args.exercise.split('/')[-1]
+    else:
+        exercise = args.exercise
+    exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
+    ex_name = '-'.join(exercise.split('-')[:2])
+
+    input_config['exercise']['full_name'] = ''
+    input_config['exercise']['latest'] = True
+    input_config['exercise']['name'] = ex_name
+    input_config['visualization']['show_graph'] = False
+    if args.p_version:
+        input_config['exercise']['prompt_v'] = args.p_version
+    if args.exercise_version:
+        input_config['exercise']['v'] = args.exercise_version
 
 ex_config = input_config['exercise']
 model_config = input_config['model']
 
+# Load exercise
 ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
                                  model_config['name'], model_config['v'],
                                  ex_config['latest'], ex_config['timestamp'], ex_config['full_name'])
-
 ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
 
-dep_output = ex_output['output']['dependencies']
+if ex_config['v'] == 'demand':
+    ground_truth = ground_truth['demand_driven']
+else:
+    ground_truth = ground_truth['supply_driven']
+
+# Extract dependencies
+try:
+    dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
+except Exception as e:
+    print("An error occurred:", e)
+    traceback.print_exc()
+    exit(1)
 
 dep_gt = ground_truth['dependencies']
 
-tables = []
+# Load edges
+edges_set_gt = load_edges(dep_gt)
+edges_set_output = load_edges(dep_output)
 
-set_gt = set(
-    frozenset((key, value)
-              for key, value in d.items() if is_a_valid_role_dependency(key))
-    for d in dep_gt)
-set_output = set(
-    frozenset((key, value)
-              for key, value in d.items())
-    for d in dep_output)
+# Load nodes
+nodes_set_gt = load_nodes(edges_set_gt)
+nodes_set_output = load_nodes(edges_set_output)
 
-all_tables_gt = set(
-    val.split('.')[0].replace(' ', '')
-    for subset in set_gt
-    for _, value in subset
-    for val in value.split(',')
-    if '.' in val
-)
+# Calculate metrics for edges and ground truth
+precision_edges, recall_edges, f1_edges = get_metrics(edges_set_gt, edges_set_output)
+precision_nodes, recall_nodes, f1_nodes = get_metrics(nodes_set_gt, nodes_set_output)
 
-all_tables_out = set(
-    val.split('.')[0].replace(' ', '')
-    for subset in set_output
-    for _, value in subset
-    for val in value.split(',')
-    if '.' in val
-)
+metrics = {
+    'edges': {
+        'precision': round(precision_edges * 100, 2),
+        'recall': round(recall_edges * 100, 2),
+        'f1': round(f1_edges * 100, 2),
+    },
+    'nodes': {
+        'precision': round(precision_nodes * 100, 2),
+        'recall': round(recall_nodes * 100, 2),
+        'f1': round(f1_nodes * 100, 2),
+    }
+}
 
-short_names = dict()
-
-# Initialize a set to keep track of the used two-letter values
-used_names = set()
-
-# Iterate over each value in the set
-for table in all_tables_gt.union(all_tables_out):
-    # Get the first two letters of the value
-    new_name = '_'.join([short[:2] for short in table.split('_')])
-    i = 0
-    inserted = False
-    while not inserted:
-        if new_name not in used_names:
-            inserted = True
-            short_names[table] = new_name
-            used_names.add(new_name)
-        else:
-            if i > 0:
-                new_name = new_name[:-len(str(i))]
-            new_name = new_name + str(i)
-            i += 1
-
-tp = set_gt & set_output
-fn = set_gt - tp
-fp = set_output - tp
-
-tp_list = [collections.OrderedDict(sorted(fs)) for fs in tp]
-tp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
-fn_list = [collections.OrderedDict(sorted(fs)) for fs in fn]
-fn_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
-fp_list = [collections.OrderedDict(sorted(fs)) for fs in fp]
-fp_list.sort(key=lambda dependency: (dependency['from'], dependency['to']))
-
-# print(f'TP: {tp_list}\n\nFN: {fn_list}\n\nFP: {fp_list}')
-
-tp_count = len(tp)
-fn_count = len(fn)
-fp_count = len(fp)
-
-# print(f"TP: {tp_count}\nFN: {fn_count}\nFP: {fp_count}")
-
-fact = ground_truth['fact']['key']
+# TODO add fact visualization
+# fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
 
 # Visualization
 
@@ -99,14 +96,19 @@ G = nx.DiGraph()
 tp_color, fn_color, fp_color = 'green', 'grey', 'red'
 dep_loop_color = 'yellow'
 
+# Extract tables name to obtain short names
+short_names = short_names_from_tables(edges_set_gt, edges_set_output)
+
+# List of edges classified to color correctly
+tp_edges_list, fn_edges_list, fp_edges_list = get_tp_fn_fp_edges_to_list(edges_set_gt, edges_set_output)
+
 inserted_nodes = []
 
-
 # Add nodes and edges from the dictionaries
-for dep_list in [tp_list, fn_list, fp_list]:
+for dep_list in [tp_edges_list, fn_edges_list, fp_edges_list]:
     for dep in dep_list:
         dep_dict = dict()
-        color = tp_color if dep in tp_list else fn_color if dep in fn_list else fp_color if dep in fp_list else \
+        color = tp_color if dep in tp_edges_list else fn_color if dep in fn_edges_list else fp_color if dep in fp_edges_list else \
             'black'
         for key, value in dep.items():
             dep_dict[key] = value
@@ -120,7 +122,7 @@ for dep_list in [tp_list, fn_list, fp_list]:
             # in false negative (grey), must be converted to true positive since it's been detected as
             # a dependency (green)
             else:
-                if dep in fp_list:
+                if dep in fp_edges_list:
                     G.nodes[value_preprocessed]['color'] = tp_color
         from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualization']['table_names'], short_names)
         to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualization']['table_names'], short_names)
@@ -137,6 +139,7 @@ if input_config['visualization']['dag_graph']:
     if not nx.is_directed_acyclic_graph(G):
         raise Exception('Graph is not DAG, change visualization')
     pos = nx.nx_agraph.graphviz_layout(G, prog='dot')
+
 else:
     pos = nx.shell_layout(G)
 
@@ -157,6 +160,11 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
 if input_config['visualization']['table_names']:
     legend_items = [plt.Line2D([0], [0], color='w', label=f'{full_name}: {short_name}')
                     for full_name, short_name in short_names.items()]
+    for component in metrics:
+        legend_items.append(mlines.Line2D([], [], color='black', linestyle='-', linewidth=2))
+        legend_items.extend([plt.Line2D([0], [0], color='w', label=f'{component.capitalize()}:')])
+        for sub_metrics in metrics[component]:
+            legend_items.extend([plt.Line2D([0], [0], color='w', label=f'{sub_metrics}: {metrics[component][sub_metrics]}%')])
     plt.legend(handles=legend_items, title="Tables convention", fontsize='small', title_fontsize='medium',
                labelspacing=0.3, handletextpad=0.4, loc='upper left')
 
@@ -171,3 +179,7 @@ if input_config['visualization']['show_graph']:
 else:
     # Close the plot
     plt.close()
+
+if 'metrics' not in ex_output:
+    ex_output['metrics'] = metrics
+    update_output_with_metrics(ex_name, ex_output)

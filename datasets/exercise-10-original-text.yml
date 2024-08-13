@@ -1,0 +1,9 @@
+text: |
+    The following logical schema describes an operational database for motor races.
+    
+    RACING_CIRCUITS(CircuitName,City,Length,Description)
+    GRAND_PRIXS(Date,CircuitName:RACING_CIRCUITS,NumberOfLaps)
+    DRIVERS(Name,Surname,BirthDate)
+    RACING_STABLES(StableName,MainAddress,Manager)
+    CARS(Number,StableName:RACING_STABLES) DRIVES((Name,Surname):DRIVERS,Number:CARS,Year,FromDate,ToDate)
+    ARRIVALS((Date,CircuitName):GRAND_PRIXS,(Name,Surname,Number,Year):DRIVES,Position,Time,Score)
