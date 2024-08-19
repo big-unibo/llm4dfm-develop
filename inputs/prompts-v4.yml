@@ -1,7 +1,10 @@
 gpt:
   - role: system
     content: |
-      You are a data warehouse designer. Set the temperature to 0.1. Carry out supply-driven conceptual
+      You are a data warehouse designer. Set the temperature to 0.1.
+  - role: user
+    content: |
+      Carry out supply-driven conceptual
       design of a multidimensional cube using the DFM (Dimensional Fact Model), starting from the following
       source relational schema. The output I expect is a DFM schema in YAML formatted as follows:
       (1) the fact is a "fact" tag including a "name" tag; (2) all measures are listed inside a "measures"
