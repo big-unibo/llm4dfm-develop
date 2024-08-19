@@ -59,9 +59,12 @@ except:
 
 dep_gt = ground_truth['dependencies']
 
+dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
+dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
+
 # Load edges
-edges_set_gt = load_edges(dep_gt)
-edges_set_output = load_edges(dep_output)
+edges_set_gt = load_edges(dep_gt_to_use)
+edges_set_output = load_edges(dep_output_to_use)
 
 # Load nodes
 nodes_set_gt = load_nodes(edges_set_gt)

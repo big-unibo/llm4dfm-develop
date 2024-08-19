@@ -23,13 +23,13 @@ def get_timestamp():
 
 # return yaml configurations as dict
 def load_yaml(yaml_file) -> dict:
-    with open(yaml_file, 'r') as file:
+    with open(yaml_file, 'r', encoding='utf-8') as file:
         return yaml.safe_load(file)
 
 
 # return the text of exercise given ex_name
 def load_text_exercise(ex_name):
-    with open(f'{datasets}{ex_name}-text.yml', 'r') as file:
+    with open(f'{datasets}{ex_name}-text.yml', 'r', encoding='utf-8') as file:
         ex_text = yaml.safe_load(file)
     return ex_text['text']
 
@@ -40,7 +40,7 @@ def load_ground_truth_exercise(ex_name, full_name=''):
         file_name = '-'.join(full_name.split('-')[:2])
     else:
         file_name = ex_name
-    with open(f'{datasets}{file_name}-ground-truth.yml', 'r') as file:
+    with open(f'{datasets}{file_name}-ground-truth.yml', 'r', encoding='utf-8') as file:
         ex_ground_truth = yaml.safe_load(file)
     return ex_ground_truth
 
@@ -104,14 +104,14 @@ def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, 
             else:
                 exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp)) + '.yml'
 
-    with open(f'{outputs}{exercise}', 'r', errors='ignore') as file:
+    with open(f'{outputs}{exercise}', 'r', encoding='utf-8') as file:
         ex_output = yaml.safe_load(file)
     return ex_output, exercise
 
 
 # return prompts of exercise as a dict given ex_name and model_name
 def load_prompts(version, model_name):
-    with open(f'{inputs}prompts-{version}.yml', 'r') as file:
+    with open(f'{inputs}prompts-{version}.yml', 'r', encoding='utf-8') as file:
         ex_prompts = yaml.safe_load(file)
     return ex_prompts[model_name]
 
