@@ -160,5 +160,5 @@ def store_image(plt, name, img_format):
 
 
 def update_output_with_metrics(file, result_with_metrics):
-    with open(f'{outputs}{file}', 'w+') as outfile:
+    with open(f'{outputs}{file}', 'w+', encoding='utf-8') as outfile:
         yaml.dump(result_with_metrics, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)

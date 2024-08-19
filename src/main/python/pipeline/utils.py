@@ -169,5 +169,5 @@ def store_output(model_config, ex_config, model_input, model_output, imported):
     ex_name = '-'.join((ex_config['name'], ex_config['version']))
     model = model_config['name']
 
-    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w+') as outfile:
+    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w+', encoding='utf-8') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)

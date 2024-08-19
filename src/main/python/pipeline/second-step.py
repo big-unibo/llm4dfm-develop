@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import matplotlib.lines as mlines
 import argparse
-import traceback
 
 from ssutils import (preprocess_dependencies_attributes, load_edges, load_nodes, store_image, short_names_from_tables,
                      get_metrics, get_tp_fn_fp_edges_to_list, update_output_with_metrics)
@@ -126,7 +125,8 @@ for dep_list in [tp_edges_list, fn_edges_list, fp_edges_list]:
             # a dependency (green)
             else:
                 if dep in fp_edges_list:
-                    G.nodes[value_preprocessed]['color'] = tp_color
+                    if value_preprocessed in nodes_set_gt:
+                        G.nodes[value_preprocessed]['color'] = tp_color
         from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualization']['table_names'], short_names)
         to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualization']['table_names'], short_names)
         # If it's not auto dependency can be added
