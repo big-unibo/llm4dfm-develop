@@ -59,13 +59,14 @@ else:
     exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # As new indication, load context prompt and then text exercise and first prompt together
-prompts.extend(load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name']))
+first_prompt = load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name'])
+prompts.extend(first_prompt)
 # After, load remaining prompts
-prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[len(prompts):])
+prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['name'])[len(first_prompt):])
 
 # Used to allow models without chat structure constraints (i.e. after each system or user input require an assistant
 # message, so one batch at a time) to batch first system and user input in a single batch
-first_batch = 2 if is_model_without_chat_constraints(config['name']) else 1
+first_batch = len(first_prompt) if is_model_without_chat_constraints(config['name']) else 1
 
 # batch text and prompts
 with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):

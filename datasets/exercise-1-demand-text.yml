@@ -1,0 +1,4 @@
+text: |
+  Decision-makers are interested in analyzing the softwares installed on computers in a laboratory
+  on a daily basis. Each computer has a model and a brand, each brand is supplied by a supplier who
+  lives in a city at a given address. A software has a description and a type.

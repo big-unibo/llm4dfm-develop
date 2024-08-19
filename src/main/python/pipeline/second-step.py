@@ -54,9 +54,8 @@ else:
 # Extract dependencies
 try:
     dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
-except Exception as e:
-    print("An error occurred:", e)
-    traceback.print_exc()
+except:
+    print("Dependencies were not correctly generated")
     exit(1)
 
 dep_gt = ground_truth['dependencies']
@@ -85,6 +84,10 @@ metrics = {
         'f1': round(f1_nodes * 100, 2),
     }
 }
+
+if 'metrics' not in ex_output:
+    ex_output['metrics'] = metrics
+    update_output_with_metrics(ex_name, ex_output)
 
 # TODO add fact visualization
 # fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
@@ -179,7 +182,3 @@ if input_config['visualization']['show_graph']:
 else:
     # Close the plot
     plt.close()
-
-if 'metrics' not in ex_output:
-    ex_output['metrics'] = metrics
-    update_output_with_metrics(ex_name, ex_output)
