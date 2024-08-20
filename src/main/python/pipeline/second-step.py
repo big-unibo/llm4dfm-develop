@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import matplotlib.lines as mlines
 import argparse
-import traceback
 
 from ssutils import (preprocess_dependencies_attributes, load_edges, load_nodes, store_image, short_names_from_tables,
                      get_metrics, get_tp_fn_fp_edges_to_list, update_output_with_metrics)
@@ -54,16 +53,18 @@ else:
 # Extract dependencies
 try:
     dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
-except Exception as e:
-    print("An error occurred:", e)
-    traceback.print_exc()
+except:
+    print("Dependencies were not correctly generated")
     exit(1)
 
 dep_gt = ground_truth['dependencies']
 
+dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
+dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
+
 # Load edges
-edges_set_gt = load_edges(dep_gt)
-edges_set_output = load_edges(dep_output)
+edges_set_gt = load_edges(dep_gt_to_use)
+edges_set_output = load_edges(dep_output_to_use)
 
 # Load nodes
 nodes_set_gt = load_nodes(edges_set_gt)
@@ -85,6 +86,10 @@ metrics = {
         'f1': round(f1_nodes * 100, 2),
     }
 }
+
+if 'metrics' not in ex_output:
+    ex_output['metrics'] = metrics
+    update_output_with_metrics(ex_name, ex_output)
 
 # TODO add fact visualization
 # fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
@@ -123,7 +128,8 @@ for dep_list in [tp_edges_list, fn_edges_list, fp_edges_list]:
             # a dependency (green)
             else:
                 if dep in fp_edges_list:
-                    G.nodes[value_preprocessed]['color'] = tp_color
+                    if value_preprocessed in nodes_set_gt:
+                        G.nodes[value_preprocessed]['color'] = tp_color
         from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualization']['table_names'], short_names)
         to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualization']['table_names'], short_names)
         # If it's not auto dependency can be added
@@ -179,7 +185,3 @@ if input_config['visualization']['show_graph']:
 else:
     # Close the plot
     plt.close()
-
-if 'metrics' not in ex_output:
-    ex_output['metrics'] = metrics
-    update_output_with_metrics(ex_name, ex_output)

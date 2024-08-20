@@ -1,5 +1,5 @@
 text: |
-  The following logical schema describes an operational database for gym.
+  The following logical schema describes an operational database for a gym.
 
   CREATE TABLE MEMBERS ( 
   FiscalCode CHAR(10) PRIMARY KEY,

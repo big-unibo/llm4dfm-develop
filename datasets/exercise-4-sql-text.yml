@@ -1,40 +1,63 @@
 text: |
-    The following logical schema describes an operational database for installations.
+    The following logical schema describes an operational database for motor races.
     
-    CREATE TABLE SUPPLIERS (
-    SupplierName VARCHAR(50) PRIMARY KEY, 
-    SupplierCity VARCHAR(50), 
-    SupplierAddress VARCHAR(100) 
-    ); 
+    CREATE TABLE RACING_CIRCUITS (
+    CircuitName VARCHAR(100) PRIMARY KEY,
+    City VARCHAR(100),
+    Length FLOAT,
+    Description TEXT
+    );
     
-     
-    CREATE TABLE SUPPLIES ( 
-    Brand VARCHAR(50) PRIMARY KEY, 
-    SupplierName VARCHAR(50), 
-    FOREIGN KEY (SupplierName) REFERENCES SUPPLIERS(SupplierName) 
-    ); 
+    CREATE TABLE GRAND_PRIXS (
+    Date DATE,
+    CircuitName VARCHAR(100),
+    NumberOfLaps INT,
+    PRIMARY KEY (Date, CircuitName)
+    FOREIGN KEY (CircuitName) REFERENCES RACING_CIRCUITS(CircuitName)
+    );
     
-     
-    CREATE TABLE COMPUTER ( 
-    CodComputer INT PRIMARY KEY, 
-    Brand VARCHAR(50), 
-    Model VARCHAR(50), 
-    FOREIGN KEY (Brand) REFERENCES SUPPLIES(Brand) 
-    ); 
+    CREATE TABLE DRIVERS ( 
+    Name VARCHAR(100),
+    Surname VARCHAR(100),
+    BirthDate DATE,
+    PRIMARY KEY (Name, Surname)
+    );
     
-     
-    CREATE TABLE SOFTWARE ( 
-    CodSoftw INT PRIMARY KEY, 
-    SoftwareDescription VARCHAR(100), 
-    Type VARCHAR(50) 
-    ); 
+    CREATE TABLE RACING_STABLES (  
+    StableName VARCHAR(100) PRIMARY KEY,
+    MainAddress VARCHAR(100),
+    Manager VARCHAR(100)
+    );
     
-     
-    CREATE TABLE INSTALLATIONS ( 
-    CodComputer INT, 
-    CodSoftw INT, 
-    InstallationDate DATE, 
-    PRIMARY KEY (CodComputer, CodSoftw), 
-    FOREIGN KEY (CodComputer) REFERENCES COMPUTER(CodComputer), 
-    FOREIGN KEY (CodSoftw) REFERENCES SOFTWARE(CodSoftw) 
+    CREATE TABLE CARS (
+    Number INT PRIMARY KEY,
+    StableName VARCHAR(100),
+    FOREIGN KEY (StableName) REFERENCES RACING_STABLES(StableName)
+    );
+    
+    CREATE TABLE DRIVES (
+    Name VARCHAR(100),
+    Surname VARCHAR(100),
+    Number INT,
+    Year INT,
+    FromDate DATE,
+    ToDate DATE,
+    PRIMARY KEY (Name, Surname, Number, Year),
+    FOREIGN KEY (Name, Surname) REFERENCES DRIVERS(Name, Surname),
+    FOREIGN KEY (Number) REFERENCES CARS(Number)
+    );
+    
+    CREATE TABLE ARRIVALS (
+    Date DATE,
+    CircuitName VARCHAR(100),
+    Name VARCHAR(100),
+    Surname VARCHAR(100),
+    Number INT,
+    Year INT,
+    Position INT,
+    Time TIME,
+    Score INT,
+    PRIMARY KEY (Date, CircuitName, Name, Surname, Number, Year),
+    FOREIGN KEY (Date, CircuitName) REFERENCES GRAND_PRIXS(Date, CircuitName),
+    FOREIGN KEY (Name, Surname, Number, Year) REFERENCES DRIVES(Name, Surname, Number, Year)
     );

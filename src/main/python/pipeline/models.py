@@ -227,7 +227,7 @@ def load_text_and_first_prompt(ex_name, version, model_name):
         return [scenario_prompt, get_chat_entry(second_prompt['role'], '\n'.join([second_prompt['content'], ex_text]),
                                             model_name)]
     else:
-        return [scenario_prompt]
+        return [scenario_prompt, get_chat_entry('user', ex_text, model_name)]
 
 
 # return a new chat (list of dict {'role': role, 'content': content}) entry

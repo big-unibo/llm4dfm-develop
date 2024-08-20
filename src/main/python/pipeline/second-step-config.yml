@@ -1,8 +1,8 @@
 exercise:
   full_name: # 'exercise-2.3-sql-v1-gpt-2024-06-28T11-28-14'# Can specify exercise full name, without .yml extensions
-  name: 'exercise-4'
-  v: 'sql'
-  prompt_v: 'v2'
+  name: 'exercise-1'
+  v: 'demand'
+  prompt_v: 'demand'
   latest: true # Optional in case of full_name
   timestamp: '2024-06-28T11-28-14' # Optional in case of latest or full_name provided
 
@@ -19,6 +19,6 @@ visualization:
   image:
     generate: true # Generates the image
     format: 'png'
-  show_graph: true # Regulates graph plot
+  show_graph: false # Regulates graph plot
   dag_graph: true # Regulates if the graph to show won't visualize auto dependencies (change node color to yellow)
   table_names: true # Regulates if table names are considered for comparing, and node attributes are shown with table name or not

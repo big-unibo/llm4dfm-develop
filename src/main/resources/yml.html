@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Comparison</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        #network {
+            width: 80%;
+            height: 600px;
+            border: 1px solid black;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .textarea-container {
+            width: 40%;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+        #results {
+            width: 18%;
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 10px;
+        }
+        #results table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #results th, #results td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        #results th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form id="yamlConfigForm">
+            <div>
+                <label for="file_yaml_llm">File LLM:</label>
+                <input type="file" id="file_yaml_llm" name="file_yaml_llm" placeholder="Select LLM file yaml">
+            </div>
+            <div>
+                <label for="file_yaml_gt">File ground-truth:</label>
+                <input type="file" id="file_yaml_gt" name="file_yaml_gt" placeholder="Select GT file yaml">
+                <label for="demand_driven">Demand driven?</label>
+                <input type="checkbox" id="demand_driven" name="demand_driven">
+            </div>
+        </form>
+    </div>
+    <div class="textarea-container">
+        <h2>YAML LLM</h2>
+        <textarea id="yaml_llm" rows="10" cols="30">
+dependencies:
+  - from: node1
+    to: node2
+  - from: node2
+    to: node3
+fact:
+  name: node1
+measures:
+  - name: node2
+        </textarea>
+    </div>
+    <div class="textarea-container">
+        <h2>YAML Ground Truth</h2>
+        <textarea id="yaml_gt" rows="10" cols="30">
+dependencies:
+  - from: node2
+    to: node3
+  - from: node3
+    to: node4
+fact:
+  name: node2
+measures:
+  - name: node3
+        </textarea>
+    </div>
+    <div>
+        <button onclick="drawGraph('first')">Draw LLM</button>
+        <button onclick="drawGraph('second')">Draw Ground Truth</button>
+        <button onclick="compareGraphs()">Compare</button>
+        <p>
+            If drawing:
+            - WHITE: the fact
+            - ORANGE: the measures
+            - BLUE: dimensions
+            - GREY: everything else
+        </p>
+        <p>
+            If comparing:
+            - GREEN: true positive (found in both LLM and Ground Truth)
+            - RED: false positive (found by LMM, but not in Ground Truth)
+            - GREY: false negative (not found by LLM, but in Ground Truth)
+        </p>
+    </div>
+    <h2>Graph</h2>
+    <div id="network"></div>
+    <div id="results"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Select the file input element
+            const fileInputLLM = document.getElementById('file_yaml_llm');
+            const fileInputGT = document.getElementById('file_yaml_gt');
+            const isDemandDrivenElem = document.getElementById('demand_driven');
+
+            // Add event listener to handle file selection
+            fileInputLLM.addEventListener('change', function(event) {
+                // Get the selected file
+                const file = event.target.files[0];
+                if (file) {
+                    // Create a FileReader object
+                    const reader = new FileReader();
+
+                    // Define what to do when the file is read successfully
+                    reader.onload = function(e) {
+                        const fileContent = e.target.result;
+                        const yamlData = parseYAML(fileContent);
+
+
+                        if (yamlData) {
+                            let text_loaded = ""
+                            text_loaded = jsyaml.dump(yamlData.output[0]);
+                            document.getElementById('yaml_llm').value = text_loaded;
+                        }
+                    };
+                    reader.readAsText(file)
+                } else {
+                    console.log('No file selected');
+                }
+            });
+
+            fileInputGT.addEventListener('change', function(event) {
+                const isDemandDrive = isDemandDrivenElem.checked;
+
+                const file = event.target.files[0];
+
+                if (file) {
+                    // Create a FileReader object
+                    const reader = new FileReader();
+
+                    // Define what to do when the file is read successfully
+                    reader.onload = function(e) {
+                        const fileContent = e.target.result;
+                        const yamlData = parseYAML(fileContent);
+
+                        if (yamlData) {
+                            let text_loaded = ""
+                            if (isDemandDrive) {
+                                text_loaded = jsyaml.dump(yamlData.demand_driven);
+                            } else {
+                                text_loaded = jsyaml.dump(yamlData.supply_driven);
+                            }
+                            document.getElementById('yaml_gt').value = text_loaded;
+                        }
+                    };
+                    reader.readAsText(file)
+                } else {
+                }
+            });
+
+            isDemandDrivenElem.addEventListener('change', function() {
+                // Trigger the file input's change event manually
+                const event = new Event('change');
+                fileInputGT.dispatchEvent(event);
+            });
+        });
+
+        function parseYAML(input) {
+            try {
+                return jsyaml.load(input);
+            } catch (e) {
+                console.error(e);
+                return null;
+            }
+        }
+
+        function extractGraphData(yaml) {
+            const nodes = new Map();
+            const edges = new Set();
+            let factNode = null;
+            const measures = new Set();
+
+            if (yaml) {
+                // Handle dependencies
+                if (yaml.dependencies) {
+                    yaml.dependencies.forEach(dep => {
+                        if (!dep.refinements || dep.refinements !== 'created') {
+                            edges.add({ from: dep.from, to: dep.to });
+                            nodes.set(dep.from, { id: dep.from });
+                            nodes.set(dep.to, { id: dep.to });
+                        }
+                    });
+                }
+
+                // Handle fact
+                if (yaml.fact && yaml.fact.name) {
+                    factNode = yaml.fact.name;
+                    nodes.set(factNode, { id: factNode, tag: 'fact' });
+                }
+
+                // Handle measures
+                if (yaml.measures) {
+                    yaml.measures.forEach(measure => {
+                        measures.add(measure.name);
+                        nodes.set(measure.name, { id: measure.name, tag: 'measure' });
+                    });
+                }
+
+                // Derive dimensions
+                if (factNode) {
+                    edges.forEach(edge => {
+                        if (edge.from === factNode && !measures.has(edge.to)) {
+                            nodes.set(edge.to, { id: edge.to, tag: 'dimension' });
+                        }
+                    });
+                }
+            }
+            return { nodes: Array.from(nodes.values()), edges: Array.from(edges) };
+        }
+
+        function getColorByTag(tag) {
+            switch(tag) {
+                case 'fact': return 'white';
+                case 'measure': return 'orange';
+                case 'dimension': return 'lightblue';
+                default: return 'lightgrey';
+            }
+        }
+
+        function drawGraph(which) {
+            const yaml = which === 'first' ? document.getElementById('yaml_llm').value : document.getElementById('yaml_gt').value;
+            const graph = extractGraphData(parseYAML(yaml));
+
+            // Clear existing network
+            const container = document.getElementById('network');
+            container.innerHTML = '';
+
+            const nodes = [];
+            const edges = [];
+
+            graph.nodes.forEach(node => {
+                nodes.push({ id: node.id, label: polishNodeName(node.id), color: { border: 'black', background: getColorByTag(node.tag) }, title: node.id });
+            });
+
+            graph.edges.forEach(edge => {
+                edges.push({ from: edge.from, to: edge.to, color: 'black' });
+            });
+
+            const data = {
+                nodes: new vis.DataSet(nodes),
+                edges: new vis.DataSet(edges)
+            };
+            const options = {
+                edges: {
+                    color: { color: 'black' }, // Default edge color
+                    arrows: { to: { enabled: true, scaleFactor: 0.5 } }
+                },
+                layout: {
+                    hierarchical: false
+                }
+            };
+            new vis.Network(container, data, options);
+        }
+
+        function compareGraphs() {
+            const yaml1 = document.getElementById('yaml_llm').value;
+            const yaml2 = document.getElementById('yaml_gt').value;
+
+            const graph1 = extractGraphData(parseYAML(yaml_llm));
+            const graph2 = extractGraphData(parseYAML(yaml_gt));
+
+            // Clear existing network
+            const container = document.getElementById('network');
+            container.innerHTML = '';
+
+            const nodes = [];
+            const edges = [];
+
+            const allNodes = new Map();
+            graph2.nodes.forEach(node => allNodes.set(node.id.toLowerCase(), { ...node, casedname: node.id, color: 'red' }));
+            graph1.nodes.forEach(node => {
+                if (allNodes.has(node.id.toLowerCase())) {
+                    allNodes.get(node.id.toLowerCase()).color = 'lightgreen';
+                } else {
+                    allNodes.set(node.id.toLowerCase(), { ...node, casedname: node.id, color: 'lightgrey' });
+                }
+            });
+
+            const allEdges = new Map();
+            graph2.edges.forEach(edge => allEdges.set(JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase() }), 'red'));
+            graph1.edges.forEach(edge => {
+                const edgeStr = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase() });
+                if (allEdges.has(edgeStr)) {
+                    allEdges.set(edgeStr, 'lightgreen');
+                } else {
+                    allEdges.set(edgeStr, 'lightgrey');
+                }
+            });
+
+            let truePositiveNodes = 0;
+            let falsePositiveNodes = 0;
+            let falseNegativeNodes = 0;
+            let truePositiveEdges = 0;
+            let falsePositiveEdges = 0;
+            let falseNegativeEdges = 0;
+
+            allNodes.forEach((node, id) => {
+                nodes.push({ id: node.id.toLowerCase(), label: polishNodeName(node.casedname), color: { border: 'black', background: node.color }, title: node.id });
+                if (node.color === 'lightgreen') truePositiveNodes++;
+                if (node.color === 'red') falsePositiveNodes++;
+                if (node.color === 'lightgrey') falseNegativeNodes++;
+            });
+
+            allEdges.forEach((color, edgeStr) => {
+                const edge = JSON.parse(edgeStr);
+                edges.push({ from: edge.from, to: edge.to, color: { color: color } });
+                if (color === 'lightgreen') truePositiveEdges++;
+                if (color === 'red') falsePositiveEdges++;
+                if (color === 'lightgrey') falseNegativeEdges++;
+            });
+
+            const data = {
+                nodes: new vis.DataSet(nodes),
+                edges: new vis.DataSet(edges)
+            };
+            const options = {
+                edges: {
+                    arrows: { to: { enabled: true, scaleFactor: 0.5 } }
+                },
+                layout: {
+                    hierarchical: false
+                }
+            };
+            new vis.Network(container, data, options);
+
+            // Calculate metrics
+            const precisionNodes = truePositiveNodes / (truePositiveNodes + falsePositiveNodes);
+            const recallNodes = truePositiveNodes / (truePositiveNodes + falseNegativeNodes);
+            const f1Nodes = 2 * (precisionNodes * recallNodes) / (precisionNodes + recallNodes);
+
+            const precisionEdges = truePositiveEdges / (truePositiveEdges + falsePositiveEdges);
+            const recallEdges = truePositiveEdges / (truePositiveEdges + falseNegativeEdges);
+            const f1Edges = 2 * (precisionEdges * recallEdges) / (precisionEdges + recallEdges);
+
+            // Display metrics
+            document.getElementById('results').innerHTML = `
+                <h3>Comparison Results</h3>
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Nodes</th>
+                        <th>Edges</th>
+                    </tr>
+                    <tr>
+                        <td>True Positives</td>
+                        <td>${truePositiveNodes}</td>
+                        <td>${truePositiveEdges}</td>
+                    </tr>
+                    <tr>
+                        <td>False Positives</td>
+                        <td>${falsePositiveNodes}</td>
+                        <td>${falsePositiveEdges}</td>
+                    </tr>
+                    <tr>
+                        <td>False Negatives</td>
+                        <td>${falseNegativeNodes}</td>
+                        <td>${falseNegativeEdges}</td>
+                    </tr>
+                    <tr>
+                        <td>Precision</td>
+                        <td>${precisionNodes.toFixed(2)}</td>
+                        <td>${precisionEdges.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Recall</td>
+                        <td>${recallNodes.toFixed(2)}</td>
+                        <td>${recallEdges.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>F1-Measure</td>
+                        <td>${f1Nodes.toFixed(2)}</td>
+                        <td>${f1Edges.toFixed(2)}</td>
+                    </tr>
+                </table>
+
+            `;
+        }
+
+        function polishNodeName(name) {
+            return name.split(',').map(part => {
+                const [prefix, suffix] = part.trim().split('.');
+                if (suffix) {
+                    const polishedPrefix = prefix.length > 4 ? prefix.slice(0, 4) : prefix;
+                    const polishedSuffix = suffix.length > 10 ? suffix.slice(0, 10) : suffix;
+                    return `${polishedPrefix}.${polishedSuffix}`;
+                } else {
+                    const polishedPrefix = prefix.length > 10 ? prefix.slice(0, 10) : prefix;
+                    return polishedPrefix;
+                }
+            }).join('\n');
+        }
+    </script>
+</body>
+</html>

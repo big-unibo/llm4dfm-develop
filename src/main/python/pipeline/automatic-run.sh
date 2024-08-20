@@ -2,7 +2,7 @@
 
 ARGS=$#
 n_runs=0
-prompt_version=v3
+prompt_version=v4
 FIRST_STEP="./pipeline/first-step.py"
 SECOND_STEP="./pipeline/second-step.py"
 
