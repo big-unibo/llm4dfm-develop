@@ -215,8 +215,10 @@ measures:
                 // Handle measures
                 if (yaml.measures) {
                     yaml.measures.forEach(measure => {
-                        measures.add(measure.name);
-                        nodes.set(measure.name, { id: measure.name, tag: 'measure' });
+                        if (measure.name) {
+                            measures.add(measure.name);
+                            nodes.set(measure.name, {id: measure.name, tag: 'measure'});
+                        }
                     });
                 }
 
@@ -350,11 +352,23 @@ measures:
             // Calculate metrics
             const precisionNodes = truePositiveNodes / (truePositiveNodes + falsePositiveNodes);
             const recallNodes = truePositiveNodes / (truePositiveNodes + falseNegativeNodes);
-            const f1Nodes = 2 * (precisionNodes * recallNodes) / (precisionNodes + recallNodes);
+            let f1Nodes
+
+            if (precisionNodes !== 0 || recallNodes !== 0) {
+                f1Nodes = 2 * (precisionNodes * recallNodes) / (precisionNodes + recallNodes);
+            } else {
+                f1Nodes = 0
+            }
 
             const precisionEdges = truePositiveEdges / (truePositiveEdges + falsePositiveEdges);
             const recallEdges = truePositiveEdges / (truePositiveEdges + falseNegativeEdges);
-            const f1Edges = 2 * (precisionEdges * recallEdges) / (precisionEdges + recallEdges);
+            let f1Edges
+
+            if (precisionEdges !== 0 || recallEdges !== 0) {
+                f1Edges = 2 * (precisionEdges * recallEdges) / (precisionEdges + recallEdges);
+            } else {
+                f1Edges = 0
+            }
 
             // Display metrics
             document.getElementById('results').innerHTML = `
