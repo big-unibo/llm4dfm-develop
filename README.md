@@ -205,4 +205,6 @@ Example of run:
 `./pipeline/automatic-run.sh 1 sql v3 4 1`
 
 Output:
-Generate one output file for each run on each file as described before.
+Generate one output file for each run on each file as described before. 
+
+*Not fully working yet* - Additionally, a csv file `outputs/automatic_run/output.csv` is enriched with run configurations, output and metrics.

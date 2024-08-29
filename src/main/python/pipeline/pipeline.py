@@ -4,7 +4,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
-from utils import load_yaml, load_prompts, store_output, load_ground_truth_exercise
+from utils import load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output, get_timestamp
 from graph_utils import load_edges, load_nodes, get_metrics
 
 def log(message):
@@ -43,6 +43,7 @@ prompts = []
 
 # Check if the --exercise argument is passed
 if args.exercise:
+    automatic_run = True
     if len(args.exercise.split('/')) > 0:
         exercise = args.exercise.split('/')[-1]
     else:
@@ -55,6 +56,7 @@ if args.exercise:
     if args.exercise_version:
         model_config['exercise']['version'] = args.exercise_version
 else:
+    automatic_run = False
     exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # As new indication, load context prompt and then text exercise and first prompt together
@@ -128,5 +130,10 @@ metrics = {
     }
 }
 
+ts = get_timestamp()
+
 # store output
-store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics)
+store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)
+
+if automatic_run:
+    store_automatic_output(config, model_outputs, model_config['use'] == 'import', metrics, ts)

@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import yaml
 from datetime import datetime
 import re
+import csv
 
 load_dotenv()
 
@@ -10,6 +11,7 @@ datasets = os.getenv('DATASETS')
 outputs = os.getenv('OUTPUTS')
 results = os.getenv('RESULTS')
 inputs = os.getenv('INPUTS')
+auto_outputs = os.getenv('AUTO_OUTPUTS')
 
 
 def log(message):
@@ -158,7 +160,7 @@ def config_to_print_api_model(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, ex_config, model_output, imported, metrics):
+def store_output(model_config, ex_config, model_output, imported, metrics, timestamp):
     results_output = {
         'config': config_to_print_import_model(model_config) if imported else config_to_print_api_model(model_config),
         'output': model_output,
@@ -169,5 +171,30 @@ def store_output(model_config, ex_config, model_output, imported, metrics):
     ex_name = '-'.join((ex_config['name'], ex_config['version']))
     model = model_config['label'] if model_config['label'] != '' else model_config['name']
 
-    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{get_timestamp()}.yml', 'w+', encoding='utf-8') as outfile:
+    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{timestamp}.yml', 'w+', encoding='utf-8') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)
+
+def store_automatic_output(model_config, model_output, imported, metrics, timestamp):
+    data = {"timestamp": timestamp}
+
+    for key, value in config_to_print_import_model(model_config).items() if imported else config_to_print_api_model(model_config).items():
+        data[f"config_{key}"] = value
+
+    data['fact'] = model_output[0]['fact']['name']
+
+    data['measures'] = [measure['name'] for measure in model_output[0]['measures']]
+
+    data['dependencies'] = [dependency for dependency in model_output[0]['dependencies']]
+
+    for elem in metrics:
+        for met, val in metrics[elem].items():
+            data[f"{elem}_{met}"] = val
+
+    with open(f'{auto_outputs}output.csv', "a+", newline="") as csv_file:
+        # TODO check if headers already written and output only values in that case
+
+        fieldnames = ["timestamp"] + list(data.keys())[1:]  # Make sure 'timestamp' is the first column
+        writer = csv.writer(csv_file)
+        # writer.writerow(fieldnames)
+        for key, value in data.items():
+            writer.writerow([key, value])
