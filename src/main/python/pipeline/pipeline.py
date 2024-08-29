@@ -1,10 +1,11 @@
-from pathlib import Path
-from tqdm import tqdm
-from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
-from utils import load_yaml, load_prompts, store_output
 import os
 import argparse
+from pathlib import Path
+from tqdm import tqdm
 
+from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
+from utils import load_yaml, load_prompts, store_output, load_ground_truth_exercise
+from graph_utils import load_edges, load_nodes, get_metrics
 
 def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
@@ -16,7 +17,7 @@ parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
 args = parser.parse_args()
 
-model_config = load_yaml(f'{Path().absolute()}/pipeline/first-step-config.yml')
+model_config = load_yaml(f'{Path().absolute()}/../resources/pipeline-config.yml')
 key_config = load_yaml(f'{Path().absolute()}/../resources/credentials.yml')
 
 if model_config['use'] == 'import':
@@ -31,9 +32,7 @@ if model_config['use'] == 'import':
 elif model_config['use'] == 'api':
 
     config = model_config['model_api']
-
     config['key'] = key_config[config['name']]['key']
-
     model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'])
 
 else:
@@ -83,7 +82,51 @@ with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):
 if model_config['debug_prints']:
     log(f'Chat: {model.chat}\nOutput: {model_output}')
 
-chat_input = [sentence for sentence in model.chat if sentence['role'] == 'system' or sentence['role'] == 'user']
+# Calculate metrics
+
+ground_truth = load_ground_truth_exercise(model_config['exercise']['name'])
+
+if model_config['exercise']['version'] == 'demand':
+    ground_truth = ground_truth['demand_driven']
+else:
+    ground_truth = ground_truth['supply_driven']
+
+# Extract dependencies
+try:
+    dep_output = model_outputs['dependencies'] if model_outputs is dict else model_outputs[0]['dependencies']
+except:
+    print("Dependencies were not correctly generated")
+    exit(1)
+
+dep_gt = ground_truth['dependencies']
+
+dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
+dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
+
+# Load edges
+edges_set_gt = load_edges(dep_gt_to_use)
+edges_set_output = load_edges(dep_output_to_use)
+
+# Load nodes
+nodes_set_gt = load_nodes(edges_set_gt)
+nodes_set_output = load_nodes(edges_set_output)
+
+# Calculate metrics for edges and ground truth
+precision_edges, recall_edges, f1_edges = get_metrics(edges_set_gt, edges_set_output)
+precision_nodes, recall_nodes, f1_nodes = get_metrics(nodes_set_gt, nodes_set_output)
+
+metrics = {
+    'edges': {
+        'precision': round(precision_edges * 100, 2),
+        'recall': round(recall_edges * 100, 2),
+        'f1': round(f1_edges * 100, 2),
+    },
+    'nodes': {
+        'precision': round(precision_nodes * 100, 2),
+        'recall': round(recall_nodes * 100, 2),
+        'f1': round(f1_nodes * 100, 2),
+    }
+}
 
 # store output
-store_output(config, model_config['exercise'], chat_input, model_outputs, model_config['use'] == 'import')
+store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics)

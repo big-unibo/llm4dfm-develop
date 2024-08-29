@@ -3,8 +3,8 @@
 ARGS=$#
 n_runs=0
 prompt_version=v4
-FIRST_STEP="./pipeline/first-step.py"
-SECOND_STEP="./pipeline/second-step.py"
+PY_PROG="../python/pipeline/pipeline.py"
+# VIS_PROG="../python/pipeline/visualisation.py"
 
 # Define the components of the regex pattern as variables
 ex_dir="../../../datasets/"
@@ -35,7 +35,7 @@ if [ "$ARGS" -lt 4 ]; then
     if [ -f "$ex" ]; then
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i on $ex"
-        python3 -W ignore "$FIRST_STEP" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version"
+        python3 -W ignore "$PY_PROG" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version"
       done
     fi
   done
@@ -47,7 +47,7 @@ else
   for part_file in "$@"; do
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i:"
-        python3 -W ignore "$FIRST_STEP" --exercise "$ex_dir$ex_prefix$part_file-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version"
+        python3 -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$part_file-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version"
       done
   done
 fi
