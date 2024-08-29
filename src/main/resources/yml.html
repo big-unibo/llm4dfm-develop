@@ -199,7 +199,7 @@ measures:
                 if (yaml.dependencies) {
                     yaml.dependencies.forEach(dep => {
                         if (!dep.refinements || dep.refinements !== 'created') {
-                            edges.add({ from: dep.from, to: dep.to });
+                            edges.add({ from: dep.from, to: dep.to, role: dep.role });
                             nodes.set(dep.from, { id: dep.from });
                             nodes.set(dep.to, { id: dep.to });
                         }
@@ -259,7 +259,7 @@ measures:
             });
 
             graph.edges.forEach(edge => {
-                edges.push({ from: edge.from, to: edge.to, color: 'black' });
+                edges.push({ from: edge.from, to: edge.to, color: 'black', title: edge.role });
             });
 
             const data = {
@@ -303,9 +303,9 @@ measures:
             });
 
             const allEdges = new Map();
-            graph2.edges.forEach(edge => allEdges.set(JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase() }), 'red'));
+            graph2.edges.forEach(edge => allEdges.set(JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: edge.role }), 'red'));
             graph1.edges.forEach(edge => {
-                const edgeStr = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase() });
+                const edgeStr = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: edge.role });
                 if (allEdges.has(edgeStr)) {
                     allEdges.set(edgeStr, 'lightgreen');
                 } else {
