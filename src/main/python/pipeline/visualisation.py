@@ -5,8 +5,9 @@ import networkx as nx
 import matplotlib.lines as mlines
 import argparse
 
-from ssutils import (preprocess_dependencies_attributes, load_edges, load_nodes, store_image, short_names_from_tables,
-                     get_metrics, get_tp_fn_fp_edges_to_list, update_output_with_metrics)
+from graph_utils import load_edges, load_nodes
+from visualisation_utils import (preprocess_dependencies_attributes, store_image, short_names_from_tables,
+                                 get_tp_fn_fp_edges_to_list)
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -16,7 +17,7 @@ parser.add_argument('--exercise_version', help='Exercise version to use')
 args = parser.parse_args()
 
 # Load config
-input_config = load_yaml(f'{Path().absolute()}/pipeline/second-step-config.yml')
+input_config = load_yaml(f'{Path().absolute()}/../resources/visualisation-config.yml')
 
 # Check if the --exercise argument is passed
 if args.exercise:
@@ -30,7 +31,7 @@ if args.exercise:
     input_config['exercise']['full_name'] = ''
     input_config['exercise']['latest'] = True
     input_config['exercise']['name'] = ex_name
-    input_config['visualization']['show_graph'] = False
+    input_config['visualisation']['show_graph'] = False
     if args.p_version:
         input_config['exercise']['prompt_v'] = args.p_version
     if args.exercise_version:
@@ -44,6 +45,8 @@ ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config[
                                  model_config['name'], model_config['v'],
                                  ex_config['latest'], ex_config['timestamp'], ex_config['full_name'])
 ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
+
+metrics = ex_config['metrics']
 
 if ex_config['v'] == 'demand':
     ground_truth = ground_truth['demand_driven']
@@ -70,31 +73,10 @@ edges_set_output = load_edges(dep_output_to_use)
 nodes_set_gt = load_nodes(edges_set_gt)
 nodes_set_output = load_nodes(edges_set_output)
 
-# Calculate metrics for edges and ground truth
-precision_edges, recall_edges, f1_edges = get_metrics(edges_set_gt, edges_set_output)
-precision_nodes, recall_nodes, f1_nodes = get_metrics(nodes_set_gt, nodes_set_output)
-
-metrics = {
-    'edges': {
-        'precision': round(precision_edges * 100, 2),
-        'recall': round(recall_edges * 100, 2),
-        'f1': round(f1_edges * 100, 2),
-    },
-    'nodes': {
-        'precision': round(precision_nodes * 100, 2),
-        'recall': round(recall_nodes * 100, 2),
-        'f1': round(f1_nodes * 100, 2),
-    }
-}
-
-if 'metrics' not in ex_output:
-    ex_output['metrics'] = metrics
-    update_output_with_metrics(ex_name, ex_output)
-
-# TODO add fact visualization
+# TODO add fact visualisation
 # fact = ground_truth['fact']['key'] if 'fact' in ground_truth else ''
 
-# Visualization
+# Visualisation
 
 G = nx.DiGraph()
 
@@ -118,7 +100,7 @@ for dep_list in [tp_edges_list, fn_edges_list, fp_edges_list]:
         for key, value in dep.items():
             dep_dict[key] = value
 
-            value_preprocessed = preprocess_dependencies_attributes(value, input_config['visualization']['table_names'], short_names)
+            value_preprocessed = preprocess_dependencies_attributes(value, input_config['visualisation']['table_names'], short_names)
 
             if value_preprocessed not in inserted_nodes:
                 G.add_node(value_preprocessed, color=color)
@@ -130,40 +112,39 @@ for dep_list in [tp_edges_list, fn_edges_list, fp_edges_list]:
                 if dep in fp_edges_list:
                     if value_preprocessed in nodes_set_gt:
                         G.nodes[value_preprocessed]['color'] = tp_color
-        from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualization']['table_names'], short_names)
-        to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualization']['table_names'], short_names)
+        from_preprocessed = preprocess_dependencies_attributes(dep_dict['from'], input_config['visualisation']['table_names'], short_names)
+        to_preprocessed = preprocess_dependencies_attributes(dep_dict['to'], input_config['visualisation']['table_names'], short_names)
         # If it's not auto dependency can be added
-        if not input_config['visualization']['dag_graph'] or from_preprocessed != to_preprocessed:
+        if not input_config['visualisation']['dag_graph'] or from_preprocessed != to_preprocessed:
             G.add_edge(from_preprocessed, to_preprocessed, color=color)
-        # Otherwise it's not added and color is changed to yellow, given that graph visualization is based on DAG
+        # Otherwise it's not added and color is changed to yellow, given that graph visualisation is based on DAG
         else:
             G.nodes[from_preprocessed]['color'] = dep_loop_color
 
-arrow_size = input_config['visualization']['arrow_size']
+arrow_size = input_config['visualisation']['arrow_size']
 
-if input_config['visualization']['dag_graph']:
-    if not nx.is_directed_acyclic_graph(G):
-        raise Exception('Graph is not DAG, change visualization')
-    pos = nx.nx_agraph.graphviz_layout(G, prog='dot')
-
-else:
-    pos = nx.shell_layout(G)
+# if input_config['visualisation']['dag_graph']:
+#     if not nx.is_directed_acyclic_graph(G):
+#         raise Exception('Graph is not DAG, change visualisation')
+#    pos = nx.nx_agraph.graphviz_layout(G, prog='dot')
+# else:
+pos = nx.shell_layout(G)
 
 plt.figure(figsize=(12, 8))
 
-edge_colors = [G[u][v]['color'] for u, v in G.edges()] if input_config['visualization']['edge_color'] else None
-node_colors = [G.nodes[n]['color'] for n in G.nodes()] if input_config['visualization']['node_color'] else None
+edge_colors = [G[u][v]['color'] for u, v in G.edges()] if input_config['visualisation']['edge_color'] else None
+node_colors = [G.nodes[n]['color'] for n in G.nodes()] if input_config['visualisation']['node_color'] else None
 
 # Draw nodes and edges
 nx.draw(G, pos, edge_color=edge_colors, node_color=node_colors,
-        with_labels=True, node_size=input_config['visualization']['node_size'],
-        font_size=input_config['visualization']['font_size'], font_weight='bold', arrows=True, arrowsize=arrow_size)
+        with_labels=True, node_size=input_config['visualisation']['node_size'],
+        font_size=input_config['visualisation']['font_size'], font_weight='bold', arrows=True, arrowsize=arrow_size)
 
 # Draw edge labels
 edge_labels = nx.get_edge_attributes(G, 'label')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
 
-if input_config['visualization']['table_names']:
+if input_config['visualisation']['table_names']:
     legend_items = [plt.Line2D([0], [0], color='w', label=f'{full_name}: {short_name}')
                     for full_name, short_name in short_names.items()]
     for component in metrics:
@@ -175,12 +156,11 @@ if input_config['visualization']['table_names']:
                labelspacing=0.3, handletextpad=0.4, loc='upper left')
 
 # Display the grap
-plt.title("Graph Visualization")
+plt.title("Graph Visualisation")
 
-if input_config['visualization']['image']['generate']:
-    store_image(plt, ex_name, input_config['visualization']['image']['format'])
+store_image(plt, ex_name, input_config['visualisation']['image']['format'])
 
-if input_config['visualization']['show_graph']:
+if input_config['visualisation']['show_graph']:
     plt.show()
 else:
     # Close the plot

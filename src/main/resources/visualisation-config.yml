@@ -1,5 +1,5 @@
 exercise:
-  full_name: # 'exercise-2.3-sql-v1-gpt-2024-06-28T11-28-14'# Can specify exercise full name, without .yml extensions
+  full_name: exercise-1-demand-demand-gpt-2024-08-19T18-58-36 # 'exercise-2.3-sql-v1-gpt-2024-06-28T11-28-14'# Can specify exercise full name, without .yml extensions
   name: 'exercise-1'
   v: 'demand'
   prompt_v: 'demand'
@@ -7,17 +7,16 @@ exercise:
   timestamp: '2024-06-28T11-28-14' # Optional in case of latest or full_name provided
 
 model:
-  name: 'gpt'
+  name: 'gpt3-5'
   v: '' # Optional
 
-visualization:
+visualisation:
   node_color: true
   edge_color: true
   arrow_size: 15 # Regulates edges' arrow pointer dimension
   font_size: 8
   node_size: 500
   image:
-    generate: true # Generates the image
     format: 'png'
   show_graph: false # Regulates graph plot
   dag_graph: true # Regulates if the graph to show won't visualize auto dependencies (change node color to yellow)
