@@ -1,0 +1,51 @@
+text: |
+  The following logical schema describes an operational database for recruitments.
+  
+  CREATE TABLE QUALIFICATIONS (
+  qualification VARCHAR(50) PRIMARY KEY 
+  ); 
+  
+  CREATE TABLE DEPARTMENTS ( 
+  departmentCode INT PRIMARY KEY, 
+  departmentName VARCHAR(100), 
+  divCode INT, 
+  FOREIGN KEY (divCode) REFERENCES DIVISIONS(divCode) 
+  ); 
+
+  CREATE TABLE DIVISIONS ( 
+  divCode INT PRIMARY KEY, 
+  divisionName VARCHAR(100), 
+  managerCode INT, 
+  FOREIGN KEY (managerCode) REFERENCES STAFF(employeeCode) 
+  ); 
+
+  CREATE TABLE STAFF ( 
+  employeeCode INT PRIMARY KEY, 
+  name VARCHAR(100), 
+  surname VARCHAR(100), 
+  gender CHAR(1), 
+  qualification VARCHAR(50), 
+  currentDepartment INT, 
+  FOREIGN KEY (qualification) REFERENCES QUALIFICATIONS(qualification), 
+  FOREIGN KEY (currentDepartment) REFERENCES DEPARTMENTS(departmentCode) 
+  ); 
+
+  CREATE TABLE RECRUITMENTS ( 
+  employeeCode INT PRIMARY KEY, 
+  department INT, 
+  recruitmentDate DATE, 
+  FOREIGN KEY (employeeCode) REFERENCES STAFF(employeeCode), 
+  FOREIGN KEY (department) REFERENCES DEPARTMENTS(departmentCode) 
+  );  
+
+  CREATE TABLE TRANSFERS ( 
+  employeeCode INT, 
+  date DATE, 
+  fromDepartment INT, 
+  toDepartment INT, 
+  reason TEXT, 
+  PRIMARY KEY (employeeCode, date), 
+  FOREIGN KEY (employeeCode) REFERENCES RECRUITMENTS(employeeCode), 
+  FOREIGN KEY (fromDepartment) REFERENCES DEPARTMENTS(departmentCode), 
+  FOREIGN KEY (toDepartment) REFERENCES DEPARTMENTS(departmentCode) 
+  ); 

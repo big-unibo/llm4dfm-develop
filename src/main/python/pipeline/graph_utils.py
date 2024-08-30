@@ -64,4 +64,4 @@ def get_metrics(ground_truth, generated):
     recall = tp_count / (tp_count + fn_count)
     f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
 
-    return precision, recall, f1
+    return precision, recall, f1, tp_count, fn_count, fp_count

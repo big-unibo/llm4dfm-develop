@@ -114,16 +114,22 @@ nodes_set_gt = load_nodes(edges_set_gt)
 nodes_set_output = load_nodes(edges_set_output)
 
 # Calculate metrics for edges and ground truth
-precision_edges, recall_edges, f1_edges = get_metrics(edges_set_gt, edges_set_output)
-precision_nodes, recall_nodes, f1_nodes = get_metrics(nodes_set_gt, nodes_set_output)
+precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges  = get_metrics(edges_set_gt, edges_set_output)
+precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics(nodes_set_gt, nodes_set_output)
 
 metrics = {
     'edges': {
+        'tp': tp_edges,
+        'fn': fn_edges,
+        'fp': fp_edges,
         'precision': round(precision_edges * 100, 2),
         'recall': round(recall_edges * 100, 2),
         'f1': round(f1_edges * 100, 2),
     },
     'nodes': {
+        'tp': tp_nodes,
+        'fn': fn_nodes,
+        'fp': fp_nodes,
         'precision': round(precision_nodes * 100, 2),
         'recall': round(recall_nodes * 100, 2),
         'f1': round(f1_nodes * 100, 2),
@@ -136,4 +142,4 @@ ts = get_timestamp()
 store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)
 
 if automatic_run:
-    store_automatic_output(config, model_outputs, model_config['use'] == 'import', metrics, ts)
+    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)

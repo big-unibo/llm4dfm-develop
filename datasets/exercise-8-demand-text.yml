@@ -1,0 +1,10 @@
+text: |
+  Decision-makers are interested in analyzing the check-ins made by passengers for flights, in terms of the
+  numer of bags boarded, the ticket amount, the tax amount, and the total amount. Passengers are described by
+  their name, surname, birthdate, city of residence, document id, document type, telephone number, email address,
+  and gender. A check-in is made by a passenger for a seat at a given time and corresponds to a ticket number.
+  A ticket is purchased on a given date by a passenger (not necessarily the same who checked-in) and can be priority
+  or not; it covers a flight (which may have a delay in departure and arrival, and may even be cancelled) made on a
+  route on a given date. A route is characterized by the departure and arrival airports and time, and is operated by
+  an airline using an airplane type with a given number of seats. Airlines are identified by a code and have a name 
+  and a nation. Airports have a unique code and a name, and are located in a city belonging to a nation.

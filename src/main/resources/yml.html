@@ -279,8 +279,8 @@ measures:
         }
 
         function compareGraphs() {
-            const yaml1 = document.getElementById('yaml_llm').value;
-            const yaml2 = document.getElementById('yaml_gt').value;
+            const yaml2 = document.getElementById('yaml_llm').value;
+            const yaml1 = document.getElementById('yaml_gt').value;
 
             const graph1 = extractGraphData(parseYAML(yaml1));
             const graph2 = extractGraphData(parseYAML(yaml2));
