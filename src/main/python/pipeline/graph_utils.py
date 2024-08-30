@@ -49,9 +49,30 @@ def is_a_valid_dependency(dependency_dict):
         return dependency_dict['refinements'] != 'created'
     return True
 
+# Calculates metrics from ground_truth set and generated set
+def get_metrics_nodes(dep_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
+    tp_dep = dep_gt & dep_generated
+    fn_dep = dep_gt - tp_dep
+    fp_dep = dep_generated - tp_dep
+
+    tp_meas = measure_gt & measure_generated
+    fn_meas = measure_gt - tp_meas
+    fp_meas = measure_generated - tp_meas
+
+    tp_fact = 1 if fact_gt == fact_generated else 0
+
+    tp_count = len(tp_dep) + len(tp_meas) + tp_fact
+    fn_count = len(fn_dep) + len(fn_meas) + tp_fact
+    fp_count = len(fp_dep)
+
+    precision = tp_count / (tp_count + fp_count)
+    recall = tp_count / (tp_count + fn_count)
+    f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
+
+    return precision, recall, f1, tp_count, fn_count, fp_count
 
 # Calculates metrics from ground_truth set and generated set
-def get_metrics(ground_truth, generated):
+def get_metrics_edges(ground_truth, generated):
     tp = ground_truth & generated
     fn = ground_truth - tp
     fp = generated - tp
