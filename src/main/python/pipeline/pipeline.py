@@ -99,12 +99,17 @@ try:
     meas_output = model_outputs['measures'] if model_outputs is dict else model_outputs[0]['measures']
     fact_output = model_outputs['fact'] if model_outputs is dict else model_outputs[0]['fact']
 except:
-    print("Dependencies were not correctly generated")
+    print("Output not correctly generated")
     exit(1)
 
 dep_gt = ground_truth['dependencies']
 meas_gt = ground_truth['measures']
 fact_gt = ground_truth['fact']
+
+if not meas_output:
+    meas_output = set()
+if not meas_gt:
+    meas_gt = set()
 
 dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
 dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
