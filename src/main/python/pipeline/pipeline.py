@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from utils import load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output, get_timestamp
-from graph_utils import load_edges, load_nodes, get_metrics
+from graph_utils import load_edges, load_nodes, get_metrics_edges, get_metrics_nodes
 
 def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
@@ -96,14 +96,29 @@ else:
 # Extract dependencies
 try:
     dep_output = model_outputs['dependencies'] if model_outputs is dict else model_outputs[0]['dependencies']
+    meas_output = model_outputs['measures'] if model_outputs is dict else model_outputs[0]['measures']
+    fact_output = model_outputs['fact'] if model_outputs is dict else model_outputs[0]['fact']
 except:
-    print("Dependencies were not correctly generated")
+    print("Output not correctly generated")
     exit(1)
 
 dep_gt = ground_truth['dependencies']
+meas_gt = ground_truth['measures']
+fact_gt = ground_truth['fact']
+
+if not meas_output:
+    meas_output = set()
+if not meas_gt:
+    meas_gt = set()
 
 dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
 dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
+
+meas_output_to_use = {v.lower() for d in meas_output for _, v in d.items()}
+meas_gt_to_use = {v.lower() for d in meas_gt for _, v in d.items()}
+
+fact_output_to_use = fact_output['name'].lower()
+fact_gt_to_use = fact_gt['name'].lower()
 
 # Load edges
 edges_set_gt = load_edges(dep_gt_to_use)
@@ -114,16 +129,22 @@ nodes_set_gt = load_nodes(edges_set_gt)
 nodes_set_output = load_nodes(edges_set_output)
 
 # Calculate metrics for edges and ground truth
-precision_edges, recall_edges, f1_edges = get_metrics(edges_set_gt, edges_set_output)
-precision_nodes, recall_nodes, f1_nodes = get_metrics(nodes_set_gt, nodes_set_output)
+precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges  = get_metrics_edges(edges_set_gt, edges_set_output)
+precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(nodes_set_gt, nodes_set_output, meas_gt_to_use, meas_output_to_use, fact_gt_to_use, fact_output_to_use)
 
 metrics = {
     'edges': {
+        'tp': tp_edges,
+        'fn': fn_edges,
+        'fp': fp_edges,
         'precision': round(precision_edges * 100, 2),
         'recall': round(recall_edges * 100, 2),
         'f1': round(f1_edges * 100, 2),
     },
     'nodes': {
+        'tp': tp_nodes,
+        'fn': fn_nodes,
+        'fp': fp_nodes,
         'precision': round(precision_nodes * 100, 2),
         'recall': round(recall_nodes * 100, 2),
         'f1': round(f1_nodes * 100, 2),
@@ -136,4 +157,4 @@ ts = get_timestamp()
 store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)
 
 if automatic_run:
-    store_automatic_output(config, model_outputs, model_config['use'] == 'import', metrics, ts)
+    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)

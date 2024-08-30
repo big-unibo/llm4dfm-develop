@@ -1,0 +1,94 @@
+text: |
+  The following logical schema describes an operational database for airport transactions.
+  
+  CREATE TABLE PERSON (
+  personCode INT PRIMARY KEY,
+  name VARCHAR(100),
+  surname VARCHAR(100),
+  birthdate DATE,
+  cityOfResidence VARCHAR(100),
+  documentId VARCHAR(50),
+  documentType VARCHAR(50),
+  telephone VARCHAR(20),
+  email VARCHAR(100),
+  gender CHAR(1)
+  );
+  
+  CREATE TABLE PURCHASE (
+  purchaseCode INT PRIMARY KEY,
+  date DATE,
+  totalAmount DECIMAL(10, 2),
+  buyerCode INT,
+  FOREIGN KEY (buyerCode) REFERENCES PERSON(personCode)
+  );
+  
+  CREATE TABLE AIRPORT (
+  airportCode INT PRIMARY KEY,
+  name VARCHAR(100),
+  city VARCHAR(100),
+  nation VARCHAR(100)
+  );
+
+  CREATE TABLE AIRLINE (
+  airlineCode INT PRIMARY KEY,
+  airlineName VARCHAR(100),
+  nation VARCHAR(100)
+  );
+  
+  CREATE TABLE AIRPLANE_TYPE (
+  airplaneType INT PRIMARY KEY,
+  name VARCHAR(100),
+  numberOfSeats INT
+  );
+  
+  CREATE TABLE ROUTE (
+  route INT PRIMARY KEY,
+  airlineCode INT,
+  departure INT,
+  arrival INT,
+  departureTime TIME,
+  arrivalTime TIME,
+  airplaneType INT,
+  FOREIGN KEY (airlineCode) REFERENCES COMPANY(airlineCode),
+  FOREIGN KEY (departure) REFERENCES AIRPORT(airportCode),
+  FOREIGN KEY (arrival) REFERENCES AIRPORT(airportCode),
+  FOREIGN KEY (airplaneType) REFERENCES AIRPLANE_TYPE(airplaneType)
+  );
+  
+  CREATE TABLE FLIGHT (
+  date DATE,
+  route INT,
+  delayInDeparture TIME,
+  delayInArrival TIME,
+  cancelledYN CHAR(1),
+  PRIMARY KEY (date, route),
+  FOREIGN KEY (route) REFERENCES ROUTE(route)
+  );
+  
+  CREATE TABLE TICKET (
+  ticketNumber INT PRIMARY KEY,
+  date DATE,
+  route INT,
+  purchaseCode INT,
+  flightAmount DECIMAL(10, 2),
+  taxAmount DECIMAL(10, 2),
+  priorityYN CHAR(1),
+  FOREIGN KEY (date, route) REFERENCES FLIGHT(date, route),
+  FOREIGN KEY (purchaseCode) REFERENCES PURCHASE(purchaseCode)  
+  );
+
+  CREATE TABLE BOARDING_CARD (
+  boardingCardCode INT PRIMARY KEY,
+  ticketNumber INT,
+  passengerCode INT,
+  seat VARCHAR(10),
+  FOREIGN KEY (ticketNumber) REFERENCES TICKET(ticketNumber),
+  FOREIGN KEY (passengerCode) REFERENCES PERSON(personCode)
+  );
+  
+  CREATE TABLE CHECK_IN (
+  boardingCardCode INT PRIMARY KEY,
+  checkInTime TIME,
+  numberOfBags INT,
+  FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  );

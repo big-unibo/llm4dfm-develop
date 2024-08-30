@@ -1,0 +1,177 @@
+supply_driven:
+  fact:
+    name: CHECK_IN
+  measures:
+    - name: CHECK_IN.numberOfBags
+    - name: TICKET.flightAmount
+    - name: TICKET.taxAmount
+    - name: PURCHASE.totalAmount
+  dependencies:
+    - from: CHECK_IN
+      to: CHECK_IN.checkInTime
+    - from: CHECK_IN
+      to: CHECK_IN.numberOfBags
+    - from: CHECK_IN
+      to: TICKET.ticketNumber
+    - from: CHECK_IN
+      to: CHECK_IN.seat
+    - from: CHECK_IN
+      to: PERSON.personCode
+    - from: PERSON.personCode
+      to: PERSON.name
+    - from: PERSON.personCode
+      to: PERSON.surname
+    - from: PERSON.personCode
+      to: PERSON.birthdate
+    - from: PERSON.personCode
+      to: PERSON.cityOfResidence
+    - from: PERSON.personCode
+      to: PERSON.documentId
+    - from: PERSON.personCode
+      to: PERSON.documentType
+    - from: PERSON.personCode
+      to: PERSON.telephone
+    - from: PERSON.personCode
+      to: PERSON.email
+    - from: PERSON.personCode
+      to: PERSON.gender
+    - from: TICKET.ticketNumber
+      to: FLIGHT.date,FLIGHT.route
+    - from: CHECK_IN
+      to: TICKET.flightAmount
+    - from: CHECK_IN
+      to: TICKET.taxAmount
+    - from: TICKET.ticketNumber
+      to: TICKET.priorityYN
+    - from: TICKET.ticketNumber
+      to: PURCHASE.purchaseCode
+    - from: PURCHASE.purchaseCode
+      to: PURCHASE.date
+    - from: CHECK_IN
+      to: PURCHASE.totalAmount
+    - from: PURCHASE.purchaseCode
+      to: PERSON.personCode
+      role: buyerCode
+    - from: FLIGHT.date,FLIGHT.route
+      to: FLIGHT.delayInDeparture
+    - from: FLIGHT.date,FLIGHT.route
+      to: FLIGHT.date
+    - from: FLIGHT.date,FLIGHT.route
+      to: FLIGHT.delayInArrival
+    - from: FLIGHT.date,FLIGHT.route
+      to: FLIGHT.cancelledYN
+    - from: FLIGHT.date,FLIGHT.route
+      to: ROUTE.route
+    - from: ROUTE.route
+      to: ROUTE.arrivalTime
+    - from: ROUTE.route
+      to: ROUTE.departureTime
+    - from: ROUTE.route
+      to: AIRLINE.airlineCode
+    - from: ROUTE.route
+      to: AIRPORT.airportCode
+      role: departure
+    - from: ROUTE.route
+      to: AIRPORT.airportCode
+      role: arrival
+    - from: ROUTE.route
+      to: AIRPLANE_TYPE.airplaneType
+    - from: AIRPORT.airportCode
+      to: AIRPORT.name
+    - from: AIRPORT.airportCode
+      to: AIRPORT.city
+    - from: AIRPORT.city
+      to: AIRPORT.nation
+    - from: AIRLINE.airlineCode
+      to: AIRLINE.airlineName
+    - from: AIRLINE.airlineCode
+      to: AIRLINE.nation
+    - from: AIRPLANE_TYPE.airplaneType
+      to: AIRPLANE_TYPE.name
+    - from: AIRPLANE_TYPE.airplaneType
+      to: AIRPLANE_TYPE.numberOfSeats
+demand_driven:
+  fact:
+    name: check_in
+  measures:
+    - name: number_of_bags
+    - name: ticket_amount
+    - name: tax_amount
+    - name: total_amount
+  dependencies:
+    - from: check_in
+      to: number_of_bags
+    - from: check_in
+      to: ticket_amount
+    - from: check_in
+      to: tax_amount
+    - from: check_in
+      to: total_amount
+    - from: check_in
+      to: ticket_number
+    - from: ticket_number
+      to: purchase_date
+    - from: ticket_number
+      to: passenger_id
+    - from: passenger_id
+      to: name
+    - from: passenger_id
+      to: surname
+    - from: passenger_id
+      to: birthdate
+    - from: passenger_id
+      to: city_of_residence
+    - from: passenger_id
+      to: document_id
+    - from: passenger_id
+      to: document_type
+    - from: passenger_id
+      to: telephone_number
+    - from: passenger_id
+      to: email_address
+    - from: passenger_id
+      to: gender
+    - from: check_in
+      to: seat
+    - from: check_in
+      to: time
+    - from: ticket_number
+      to: ticket_priority
+    - from: ticket_number
+      to: flight_id
+    - from: flight_id
+      to: flight_date
+    - from: flight_id
+      to: delay_departure
+    - from: flight_id
+      to: delay_arrival
+    - from: flight_id
+      to: cancelled
+    - from: flight_id
+      to: route_id
+    - from: route_id
+      to: airport_code
+      role: departure
+    - from: route_id
+      to: airport_code
+      role: arrival
+    - from: route_id
+      to: departure_time
+    - from: route_id
+      to: arrival_time
+    - from: route_id
+      to: airline_code
+    - from: airline_code
+      to: airline_name
+    - from: airline_code
+      to: airline_nation
+    - from: route_id
+      to: airplane_type
+    - from: airplane_type
+      to: number_of_seats
+    - from: airport_code
+      to: airport_name
+    - from: airport_code
+      to: city
+    - from: city
+      to: nation

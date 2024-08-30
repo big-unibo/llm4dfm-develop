@@ -49,9 +49,45 @@ def is_a_valid_dependency(dependency_dict):
         return dependency_dict['refinements'] != 'created'
     return True
 
+# Calculates metrics from ground_truth set and generated set
+def get_metrics_nodes(dep_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
+    tp_dep = {dep.lower() for dep in dep_gt & dep_generated}
+    fn_dep = {dep.lower() for dep in dep_gt - tp_dep}
+    fp_dep = {dep.lower() for dep in dep_generated - tp_dep}
+
+    tp_meas = {mes.lower() for mes in measure_gt & measure_generated}
+    fn_meas = {mes.lower() for mes in measure_gt - tp_meas}
+    fp_meas = {mes.lower() for mes in measure_generated - tp_meas}
+
+    fact_gt_use = fact_gt.lower()
+    fact_generated_use = fact_generated.lower()
+
+    tp = tp_dep.union(tp_meas)
+    fn = fn_dep.union(fn_meas)
+    fp = fp_dep.union(fp_meas)
+
+    if fact_gt_use == fact_generated_use:
+        tp.add(fact_gt_use)
+    else:
+        fn.add(fact_gt_use)
+        fp.add(fact_generated_use)
+
+    # Remove intersection
+    fn -= tp
+    fp -= tp
+
+    tp_count = len(tp)
+    fn_count = len(fn)
+    fp_count = len(fp)
+
+    precision = tp_count / (tp_count + fp_count)
+    recall = tp_count / (tp_count + fn_count)
+    f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
+
+    return precision, recall, f1, tp_count, fn_count, fp_count
 
 # Calculates metrics from ground_truth set and generated set
-def get_metrics(ground_truth, generated):
+def get_metrics_edges(ground_truth, generated):
     tp = ground_truth & generated
     fn = ground_truth - tp
     fp = generated - tp
@@ -64,4 +100,4 @@ def get_metrics(ground_truth, generated):
     recall = tp_count / (tp_count + fn_count)
     f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
 
-    return precision, recall, f1
+    return precision, recall, f1, tp_count, fn_count, fp_count

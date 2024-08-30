@@ -1,13 +1,13 @@
 supply_driven:
   fact:
-    name: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    name: INSTALLATIONS
   measures:
   dependencies:
-    - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - from: INSTALLATIONS
       to: INSTALLATIONS.InstallationDate
-    - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - from: INSTALLATIONS
       to: COMPUTER.CodComputer
-    - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - from: INSTALLATIONS
       to: SOFTWARE.CodSoftw
     - from: COMPUTER.CodComputer
       to: COMPUTER.Model

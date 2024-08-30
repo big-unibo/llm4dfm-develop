@@ -175,8 +175,13 @@ def store_output(model_config, ex_config, model_output, imported, metrics, times
     with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{timestamp}.yml', 'w+', encoding='utf-8') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)
 
-def store_automatic_output(model_config, model_output, imported, metrics, timestamp):
-    data = {"timestamp": timestamp}
+def store_automatic_output(model_config, ex_config, model_output, imported, metrics, timestamp):
+    data = dict()
+
+    for key, value in ex_config.items():
+        data[f"ex_{key}"] = value
+
+    data["timestamp"] = timestamp
 
     for key, value in config_to_print_import_model(model_config).items() if imported else config_to_print_api_model(model_config).items():
         data[f"config_{key}"] = value

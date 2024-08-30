@@ -4,6 +4,7 @@ ARGS=$#
 n_runs=0
 prompt_version=v4
 PY_PROG="../python/pipeline/pipeline.py"
+t_sleep=6
 # VIS_PROG="../python/pipeline/visualisation.py"
 
 # Define the components of the regex pattern as variables
@@ -24,8 +25,6 @@ fi
 
 echo "Runs: $n_runs, Exercise version: $ex_version, Prompt version: $prompt_version"
 
-
-
 # Combine the variables to form the full pattern
 regex="$ex_dir$ex_prefix*$ex_version*"
 
@@ -36,7 +35,9 @@ if [ "$ARGS" -lt 4 ]; then
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i on $ex"
         python3 -W ignore "$PY_PROG" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version"
-        sleep 1
+        if [ "$i" != "$n_runs" ]; then
+          sleep $t_sleep
+        fi
       done
     fi
   done
@@ -49,7 +50,9 @@ else
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i:"
         python3 -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$part_file-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version"
-        sleep 1
+        if [ "$i" != "$n_runs" ]; then
+          sleep $t_sleep
+        fi
       done
   done
 fi

@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from typing import Callable, List
 import openai
 import google.generativeai as genai
+import time
 from utils import load_text_exercise, load_prompts
 import requests
 import json
@@ -104,7 +105,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
                 log(f'Output_message: {result}')
             return result['choices'][0]['message']['content']
         else:
-            log(f"Request failed with status code {response.status_code}: {response.text}")
+            raise Exception(f"Request failed with status code {response.status_code}: {response.text}")
 
         # Standard API call
         # model.chat.completions.create(
@@ -196,20 +197,29 @@ class Model:
             self.generate = load_generate_api_function(name, self.model, config, debug_print)
 
     def batch(self, prompt):
-        debug = False
+        batched = False
+        wait = 3
+        m_output = ''
         # Prompt can be list if it's the first input
         if type(prompt) is list:
             for p in prompt:
                 self.chat.append(get_chat_entry(p['role'], p['content'], self.name))
         else:
             self.chat.append(get_chat_entry(prompt['role'], prompt['content'], self.name))
-        model_output = self.generate(self.chat) if not debug else 'prova'
+        while not batched:
+            try:
+                m_output = self.generate(self.chat)
+                batched = True
+            except Exception as e:
+                print(f'Model batch error [{e}] trying in {wait} seconds')
+                time.sleep(wait)
+                wait += 1
         try:
-            model_output = yaml.safe_load(model_output)
+            m_output = yaml.safe_load(m_output)
         except yaml.YAMLError as _:
             pass
-        self.chat.append(get_chat_entry('assistant', model_output, self.name))
-        return model_output
+        self.chat.append(get_chat_entry('assistant', m_output, self.name))
+        return m_output
 
     def refresh_session(self):
         self.chat = []

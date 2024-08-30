@@ -6,4 +6,4 @@ text: |
   STAFF(employeeCode,name,surname,gender,qualification:QUALIFICATIONS,currentDepartment:DEPARTMENTS) 
   QUALIFICATIONS(qualification) 
   RECRUITMENTS(employeeCode:STAFF,department:DEPARTMENTS,recruitmentDate) 
-  TRANSFERS(employeeCode:RECRUITMENTS,date,fromDepartment:DEPARTMENTS,toDepartment:DEPARTMENTS,reason)
+  TRANSFERS(employeeCode:RECRUITMENTS,date,fromDepartment:DEPARTMENTS,toDepartment:DEPARTMENTS,reason) 

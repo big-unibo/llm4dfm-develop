@@ -1,0 +1,79 @@
+supply_driven:
+  fact:
+    name: TRANSFERS
+  dependencies:
+    - from: TRANSFERS
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: fromDepartment
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: toDepartment
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: department
+    - from: TRANSFERS
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      to: TRANSFERS.recrutimentDate
+    - from: STAFF.employeeCode
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      to: DEPARTMENTS.departmentCode
+      role: currentDepartment
+    - from: DEPARTMENTS.departmentCode
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      to: STAFF.employeeCode
+      role: managerCode
+demand_driven:
+  fact:
+    name: StaffTransfer
+  dependencies:
+    - from: StaffTransfer
+      to: TransferDate
+    - from: StaffTransfer
+      to: DepartmentCode
+      role: to
+    - from: StaffTransfer
+      to: DepartmentCode
+      role: from
+    - from: StaffTransfer
+      to: Reason
+    - from: StaffTransfer
+      to: EmployeeCode
+    - from: DepartmentCode
+      to: DepartmentName
+    - from: DepartmentCode
+      to: DivisionCode
+    - from: DivisionCode
+      to: DivisionName
+    - from: DivisionCode
+      to: EmployeeCode
+      role: manager
+    - from: EmployeeCode
+      to: EmployeeName
+    - from: EmployeeCode
+      to: EmployeeSurname
+    - from: EmployeeCode
+      to: Gender
+    - from: EmployeeCode
+      to: Qualification
+    - from: EmployeeCode
+      to: RecruitmentDate
+    - from: EmployeeCode
+      to: DepartmentCode
+      role: current
