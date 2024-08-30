@@ -4,6 +4,7 @@ import yaml
 from datetime import datetime
 import re
 import csv
+import pandas as pd
 
 load_dotenv()
 
@@ -145,10 +146,10 @@ def config_to_print_api_model(configs) -> dict:
     conf_to_print = {}
     add_property_if_present(conf_to_print, [
         'name',
+        'label',
         'version',
-        'api_version'
+        'api_version',
         'temperature',
-        'tokenizer',
         'max_tokens',
         'n_responses',
         'stop',
@@ -190,11 +191,28 @@ def store_automatic_output(model_config, model_output, imported, metrics, timest
         for met, val in metrics[elem].items():
             data[f"{elem}_{met}"] = val
 
-    with open(f'{auto_outputs}output.csv', "a+", newline="") as csv_file:
-        # TODO check if headers already written and output only values in that case
+    file_path = f'{auto_outputs}output.csv'
 
-        fieldnames = ["timestamp"] + list(data.keys())[1:]  # Make sure 'timestamp' is the first column
+    write_headers = False
+    headers = ["timestamp"] + list(data.keys())[1:]  # Make sure 'timestamp' is the first column
+
+    try:
+        # Attempt to read the first row (headers) from the CSV file
+        with open(file_path, 'r') as file:
+            reader = csv.reader(file)
+            existing_headers = next(reader)  # Read the first row (headers)
+
+        # Check if the existing headers match the desired headers
+        # TODO what to do in this case?
+        if existing_headers != headers:
+            print("Headers do not match. Writing data anyway.")
+    except:
+        write_headers = True
+
+    with open(f'{auto_outputs}output.csv', "a+", newline="") as csv_file:
         writer = csv.writer(csv_file)
-        # writer.writerow(fieldnames)
-        for key, value in data.items():
-            writer.writerow([key, value])
+
+        if write_headers:
+            headers = ["timestamp"] + list(data.keys())[1:]  # Make sure 'timestamp' is the first column
+            writer.writerow(headers)
+        writer.writerow(list(data.values()))
