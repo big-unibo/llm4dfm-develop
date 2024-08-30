@@ -109,8 +109,8 @@ fact_gt = ground_truth['fact']
 dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
 dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
 
-meas_output_to_use = [{v.lower() for _, v in d.items()} for d in meas_output]
-meas_gt_to_use = [{v.lower() for _, v in d.items()} for d in meas_gt]
+meas_output_to_use = {v.lower() for d in meas_output for _, v in d.items()}
+meas_gt_to_use = {v.lower() for d in meas_gt for _, v in d.items()}
 
 fact_output_to_use = fact_output['name'].lower()
 fact_gt_to_use = fact_gt['name'].lower()
@@ -125,7 +125,7 @@ nodes_set_output = load_nodes(edges_set_output)
 
 # Calculate metrics for edges and ground truth
 precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges  = get_metrics_edges(edges_set_gt, edges_set_output)
-precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_edges(nodes_set_gt, nodes_set_output)#, meas_gt_to_use, meas_output_to_use, fact_gt_to_use, fact_output_to_use)
+precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(nodes_set_gt, nodes_set_output, meas_gt_to_use, meas_output_to_use, fact_gt_to_use, fact_output_to_use)
 
 metrics = {
     'edges': {

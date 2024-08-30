@@ -51,19 +51,38 @@ def is_a_valid_dependency(dependency_dict):
 
 # Calculates metrics from ground_truth set and generated set
 def get_metrics_nodes(dep_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
+    print(f'dep - gt: {dep_gt} {len(dep_gt)}\n')
+    print(f'dep - out: {dep_generated} {len(dep_generated)}\n')
+
     tp_dep = dep_gt & dep_generated
     fn_dep = dep_gt - tp_dep
     fp_dep = dep_generated - tp_dep
+
+    print(f'tp {tp_dep} {len(tp_dep)}')
+    print(f'fn {fn_dep} {len(fn_dep)}')
+    print(f'fp {fp_dep} {len(fp_dep)}\n')
+
+    print(f'meas - gt: {measure_gt} {len(measure_gt)}\n')
+    print(f'meas - out: {measure_generated} {len(measure_generated)}\n')
 
     tp_meas = measure_gt & measure_generated
     fn_meas = measure_gt - tp_meas
     fp_meas = measure_generated - tp_meas
 
+    print(f'tp {tp_meas} {len(tp_meas)}')
+    print(f'fn {fn_meas} {len(fn_meas)}')
+    print(f'fp {fp_meas} {len(fp_meas)}\n')
+
     tp_fact = 1 if fact_gt == fact_generated else 0
 
+    print(f'fact gt {fact_gt} generated {fact_generated} -> {tp_fact}')
+
+    # JS consider valid the PURCHASE given that it's correctly fact, but not found in deps
+    # JS doesn't consider overlapping in measures and dependencies
+
     tp_count = len(tp_dep) + len(tp_meas) + tp_fact
-    fn_count = len(fn_dep) + len(fn_meas) + tp_fact
-    fp_count = len(fp_dep)
+    fn_count = len(fn_dep) + len(fn_meas) + (1 - tp_fact)
+    fp_count = len(fp_dep) + len(fp_meas) + (1 - tp_fact)
 
     precision = tp_count / (tp_count + fp_count)
     recall = tp_count / (tp_count + fn_count)
