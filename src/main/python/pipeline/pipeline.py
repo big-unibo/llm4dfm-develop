@@ -4,7 +4,8 @@ from pathlib import Path
 from tqdm import tqdm
 
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
-from utils import load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output, get_timestamp
+from utils import (load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
+                   get_timestamp, output_as_valid_yaml)
 from graph_utils import load_edges, load_nodes, get_metrics_edges, get_metrics_nodes
 
 def log(message):
@@ -12,6 +13,7 @@ def log(message):
 
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
+
 parser.add_argument('--exercise', help='Exercise to use')
 parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
@@ -80,6 +82,8 @@ with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):
         model_output = model.batch(prompt)
         model_outputs.append(model_output)
         bar_batch.update(1)
+
+model_outputs = output_as_valid_yaml(model_outputs)
 
 if model_config['debug_prints']:
     log(f'Chat: {model.chat}\nOutput: {model_output}')

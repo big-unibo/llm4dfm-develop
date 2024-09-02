@@ -119,6 +119,13 @@ def load_prompts(version, model_name):
     return ex_prompts[model_name]
 
 
+# Map output to a valid yaml as dict
+def output_as_valid_yaml(model_outputs):
+    return [yaml.safe_load(out.replace('`', '').replace('yaml', '')
+                           .replace('`', '').replace('\\n', '\r\n')) if isinstance(out, str)
+                            else out for out in model_outputs]
+
+
 # add properties to dict_to_store as property:dict_property[property] if present
 def add_property_if_present(dict_to_store, props, dict_property):
     for prop in props:
@@ -147,7 +154,7 @@ def config_to_print_api_model(configs) -> dict:
     add_property_if_present(conf_to_print, [
         'name',
         'label',
-        'version',
+        'deployment',
         'api_version',
         'temperature',
         'max_tokens',
