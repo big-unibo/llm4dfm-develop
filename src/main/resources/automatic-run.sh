@@ -34,7 +34,7 @@ if [ "$ARGS" -lt 4 ]; then
     if [ -f "$ex" ]; then
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i on $ex"
-        python3 -W ignore "$PY_PROG" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version"
+        python -W ignore "$PY_PROG" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version"
         if [ "$i" != "$n_runs" ]; then
           sleep $t_sleep
         fi
@@ -49,7 +49,7 @@ else
   for part_file in "$@"; do
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i:"
-        python3 -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$part_file-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version"
+        python -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$part_file-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version"
         if [ "$i" != "$n_runs" ]; then
           sleep $t_sleep
         fi

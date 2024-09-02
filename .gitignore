@@ -3,8 +3,8 @@ outputs/*.yml
 results/dummy.pdf
 metastore_db/
 **/credentials.yml
-**/resources/pipeline-config.yml
-**/resources/visualisation-config.yml
+**/pipeline-config.yml
+**/visualisation-config.yml
 **/.env
 
 # These are useless since we use gradle import
