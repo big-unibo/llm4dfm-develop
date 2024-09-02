@@ -74,10 +74,9 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
         if debug_print:
             log(f'Batching chat: {chat}')
 
-        # TODO can this configuration be more modular?
         endpoint = os.getenv(f'ENDPOINT_{name.upper()}')
         api_version = config['api_version']
-        deployment_name = os.getenv(f'DEPLOYMENT_NAME_{name.upper()}')
+        deployment_name = config['deployment']
 
         headers = {
             "Content-Type": "application/json",
@@ -106,18 +105,6 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
             return result['choices'][0]['message']['content']
         else:
             raise Exception(f"Request failed with status code {response.status_code}: {response.text}")
-
-        # Standard API call
-        # model.chat.completions.create(
-        #    model='-'.join((config['name'], config['version'])),
-        #    messages=chat,
-        #    max_tokens=config['max_tokens'],
-        #    n=config['n_responses'],
-        #    stop=config['stop'],
-        #    temperature=config['temperature'],
-        #    top_p=config['top_p'],
-        # )
-        # output_message = response#['choices'][0]['message']['content']
 
     # Gemini send prompt through chat, parent function's signature model is the chat required by the model to prompt
     def generate_with_gemini_api(chat):

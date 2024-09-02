@@ -67,7 +67,6 @@ Inside `pipeline` module, a `.env` file must be provided with following configur
 
 If using Azure to interact with model's API, these configurations must be provided too (model_name must be uppercase)
 - `ENDPOINT_{model-name}`
-- `DEPLOYMENT_NAME_{model-name}`
 
 ### Authentication key
 
@@ -98,7 +97,7 @@ Api model
 
 - `name        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
 - `label     -- model's name used in output file name generated, if not specified it uses name`
-- `version     -- model's version if present [actually working only for gpt]`
+- `deployment     -- Deployment name for azure distribution [test-gpt-35, test-gpt-4o]`
 - `api_version     -- api model's version`
 - `max_tokens -- it's the maximum length of the generated output`
 - `n_response -- regulates number of responses the model generates`
