@@ -61,6 +61,7 @@ To activate venv in Linux
 Inside `pipeline` module, a `.env` file must be provided with following configurations:
 - `DATASETS   -- path to folder containing exercise texts`
 - `OUTPUTS    -- path to folder in which outpust are stored`
+- `AUTO_OUTPUTS    -- path to folder in which outpust of automatic runs are stored`
 - `RESULTS   -- path to folder in which results are stored`
 - `INPUTS   -- path to folder containing exercise prompts`
 - `SAVE_MODELS   -- path to folder in which store imported models`
@@ -206,4 +207,4 @@ Example of run:
 Output:
 Generate one output file for each run on each file as described before. 
 
-*Not fully working yet* - Additionally, a csv file `outputs/automatic_run/output.csv` is enriched with run configurations, output and metrics.
+Additionally, a csv file `outputs/output.csv` is enriched with run configurations, output and metrics.
