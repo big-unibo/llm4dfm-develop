@@ -1,4 +1,4 @@
-**/outputs/*.csv
+outputs/*.csv
 outputs/*.yml
 results/dummy.pdf
 metastore_db/
@@ -6,6 +6,7 @@ metastore_db/
 **/pipeline-config.yml
 **/visualisation-config.yml
 **/.env
+**/automatic_run/*.csv
 
 # These are useless since we use gradle import
 .idea/
