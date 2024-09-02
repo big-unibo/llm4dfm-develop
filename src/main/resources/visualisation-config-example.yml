@@ -1,0 +1,23 @@
+exercise:
+  full_name: # Optional 'exercise-2.3-sql-v1-gpt-2024-06-28T11-28-14'# Can specify exercise full name, without .yml extensions
+  name: 'exercise-1'
+  v: 'demand'
+  prompt_v: 'demand'
+  latest: true # Optional in case of full_name
+  timestamp: '2024-06-28T11-28-14' # Optional in case of latest or full_name provided
+
+model:
+  name: 'gpt3-5'
+  v: '' # Optional
+
+visualisation:
+  node_color: true
+  edge_color: true
+  arrow_size: 15 # Regulates edges' arrow pointer dimension
+  font_size: 8
+  node_size: 500
+  image:
+    format: 'png'
+  show_graph: false # Regulates graph plot
+  dag_graph: true # Regulates if the graph to show won't visualize auto dependencies (change node color to yellow)
+  table_names: true # Regulates if table names are considered for comparing, and node attributes are shown with table name or not
