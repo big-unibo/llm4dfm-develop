@@ -1,6 +1,7 @@
 supply_driven:
   fact:
     name: TRANSFERS
+  measures:
   dependencies:
     - from: TRANSFERS
       to: STAFF.employeeCode
@@ -42,6 +43,7 @@ supply_driven:
 demand_driven:
   fact:
     name: StaffTransfer
+  measures:
   dependencies:
     - from: StaffTransfer
       to: TransferDate
