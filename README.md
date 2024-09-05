@@ -111,7 +111,7 @@ Exercise
 
 - `name           -- the exercise name (part before version, exercise-N)`
 - `version           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
-- `prompt_version -- the prompt version (part between prompts-v and .yml)`
+- `prompt_version -- the prompt version (part between prompts- and .yml)`
 
 General
 
@@ -127,14 +127,14 @@ Given that it's required to read both ground-truth and model output, to make it 
 
 - `full_name           -- the output exercise full name (part before -text.yml)\n ** If provided, no further options of the exercise have to be passed`
 - `name -- the exercise name (exercise-*.*)`
-- `v           -- the exercise version (sql, original-text, ...)`
-- `prompt_v -- the prompt version of the output exercise (v*)`
+- `v           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
+- `prompt_v -- the prompt version (part between prompts- and .yml)`
 - `latest           -- boolean that enable the retrieval of latest timestamp matching previous configurations`
 - `timestamp -- if not latest, provide the timestamp in format YYYY-MM-DDTHH-mm_ss`
 
 Model
 
-- `name -- model name `
+- `name -- model's label name`
 - `v           -- model version, **use only if present in file name`
 
 Visualization
@@ -152,6 +152,15 @@ Configurations which regulate graph visualization.
 - `dag_graph  -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
 - `table_names  -- boolean, if true table names are considered for comparing, and node attributes are shown with table name otherwise they aren't considered and tables names are not shown in DAG`
 
+#### CSV Graph
+
+The following parameters can be configured in `src/main/resources/visualisation-config.yml` file, under the `csv_graph` section.
+
+- `v -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
+- `prompt_v -- the prompt version (part between prompts-v and .yml)`
+- `model -- model's label name`
+- `runs -- number of runs`
+- `label -- the optional label set for the automatic run`
 
 ## Usage
 
@@ -193,13 +202,14 @@ Configurations which regulate graph visualization.
 
 ### Automatic run
 
-Automatic full step run could be achieved by running `./pipeline/automatic-run.sh` after granted execution privileges,
-by means of `chmod 700 ./pipeline/automatic-run.sh`.
+Automatic full step run could be achieved by running `../resources/automatic-run.sh` from `src/main/python/` directory,
+after granted execution privileges, by means of `chmod 700 ../resources/automatic-run.sh`.
 Run configuration:
 - `number_of_runs -- set number of runs, 1 by default`
 - `file_version -- set file version [sql, original, demand], sql by default`
 - `prompt_version -- set prompt version [v1, v2, v3, v4, demand], v4 by default`
-- `<ex1> ... <fileN> -- set exercises to run, all files matching previous configurations by default`
+- `"<ex1> ... <fileN>" -- set exercises to run, all files matching previous configurations by default`
+- `label -- an optional label used in csv output generated, empty string by default`
 
 Example of run:
 `./pipeline/automatic-run.sh 1 sql v3 4 1`
@@ -207,4 +217,16 @@ Example of run:
 Output:
 Generate one output file for each run on each file as described before. 
 
-Additionally, a csv file `outputs/output.csv` is enriched with run configurations, output and metrics.
+Additionally, a csv file [if label is set `outputs/[{label}]output-{file_version}-{prompt_version}-{model}.csv`, else  is enriched with run configurations, output and metrics.
+
+### CSV graph visualisation
+
+Graph generation could be achieved by run `python pipeline/csv_graph.py` from `src/main/python/` directory.
+Configuration can be set via `src/main/resources/visualisation-config.yml` file, under the `csv_graph` section.
+Parameters can also be passed as argument in execution, overwriting the ones defined via file.
+
+Example of run:
+`python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
+
+Output:
+Generate one pdf file with the same name of the csv file found, containing graphs about precision, recall and f1-measure. 

@@ -1,0 +1,130 @@
+supply_driven:
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  dependencies:
+    - from: ROUTES_IN_TICKETS
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      to: CUSTOMERS.Surame
+    - from: CUSTOMERS.CustomerCode
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      to: STATIONS.StationCode
+      role: DepartureStationCode
+    - from: ROUTES.RouteCode
+      to: STATIONS.StationCode
+      role: ArrivalStationCode
+    - from: ROUTES_IN_TICKETS
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      to: STATIONS.City
+    - from: STATIONS.City
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      to: TRAIN_TYPE.TrainType
+demand_driven:
+  fact:
+    name: TicketAnalysis
+  measures:
+    - name: price
+    - name: distance
+    - name: base_fare
+    - name: time_duration
+  dependencies:
+    - from: route
+      to: station_name
+      role: departure
+    - from: route
+      to: station_name
+      role: arrival
+    - from: station_name
+      to: location
+    - from: location
+      to: city
+    - from: city
+      to: region
+    - from: trip
+      to: status
+    - from: trip
+      to: train_code
+    - from: trip
+      to: date
+    - from: train_code
+      to: train_type
+    - from: train_type
+      to: capacity
+    - from: ticket
+      to: customer_code
+    - from: ticket
+      to: date
+      role: purchase
+    - from: customer_code
+      to: customer_name
+    - from: customer_code
+      to: customer_surname
+    - from: customer_code
+      to: customer_birthdate
+    - from: customer_code
+      to: customer_city_of_birth
+    - from: customer_code
+      to: customer_document_id
+    - from: TicketAnalysis
+      to: ticket
+    - from: TicketAnalysis
+      to: route
+    - from: TicketAnalysis
+      to: trip
+    - from: TicketAnalysis
+      to: price
+    - from: TicketAnalysis
+      to: distance
+    - from: TicketAnalysis
+      to: base_fare
+    - from: TicketAnalysis
+      to: time_duration

@@ -9,7 +9,7 @@ text: |
     BirthDate DATE,
     BirthCity VARCHAR(50) 
     );
-    
+     
     CREATE TABLE TICKETS (
     TicketCode INT PRIMARY KEY,
     CustomerCode INT,
@@ -17,13 +17,13 @@ text: |
     TotalPrice DECIMAL(10, 2),
     FOREIGN KEY (CustomerCode) REFERENCES CUSTOMERS(CustomerCode)
     );
-    
+     
     CREATE TABLE TRAIN_TYPE (
     TrainTypeCode INT PRIMARY KEY,
     TrainType VARCHAR(50),
     Capacity INT
     );
-    
+     
     CREATE TABLE STATIONS (
     StationCode INT PRIMARY KEY,
     Name VARCHAR(50),
@@ -31,13 +31,13 @@ text: |
     City VARCHAR(50),
     Region VARCHAR(50)
     );
-    
+     
     CREATE TABLE TRAINS (
     TrainCode INT PRIMARY KEY,
     TrainTypeCode INT,
     FOREIGN KEY (TrainTypeCode) REFERENCES TRAIN_TYPE(TrainTypeCode)
     );
-     
+    
     CREATE TABLE TRIPS (
     TrainCode INT,
     Date DATE,
@@ -45,7 +45,7 @@ text: |
     PRIMARY KEY (TrainCode, Date),
     FOREIGN KEY (TrainCode) REFERENCES TRAINS(TrainCode)
     );
-     
+    
     CREATE TABLE ROUTES (
     RouteCode INT PRIMARY KEY,
     DepartureStationCode INT,
@@ -75,4 +75,4 @@ text: |
     PRIMARY KEY (TicketCode, TrainCode, Date, RouteCode),
     FOREIGN KEY (TicketCode) REFERENCES TICKETS(TicketCode),
     FOREIGN KEY (TrainCode, Date, RouteCode) REFERENCES ROUTES_IN_TRIPS(TrainCode, Date, RouteCode)
-    ); 
+    );

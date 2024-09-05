@@ -17,6 +17,9 @@ parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--exercise', help='Exercise to use')
 parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
+parser.add_argument('--label', help='Output label to use')
+parser.add_argument('--runs', help='Number of executions, used in output name')
+
 args = parser.parse_args()
 
 model_config = load_yaml(f'{Path().absolute()}/../resources/pipeline-config.yml')
@@ -57,9 +60,13 @@ if args.exercise:
         model_config['exercise']['prompt_version'] = args.p_version
     if args.exercise_version:
         model_config['exercise']['version'] = args.exercise_version
+    label = args.label
+    n_runs = str(args.runs)
 else:
     automatic_run = False
     exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
+    label = ''
+    n_runs = ''
 
 # As new indication, load context prompt and then text exercise and first prompt together
 first_prompt = load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name'])
@@ -136,22 +143,24 @@ nodes_set_output = load_nodes(edges_set_output)
 precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges  = get_metrics_edges(edges_set_gt, edges_set_output)
 precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(nodes_set_gt, nodes_set_output, meas_gt_to_use, meas_output_to_use, fact_gt_to_use, fact_output_to_use)
 
+decimals = 4
+
 metrics = {
     'edges': {
         'tp': tp_edges,
         'fn': fn_edges,
         'fp': fp_edges,
-        'precision': round(precision_edges * 100, 2),
-        'recall': round(recall_edges * 100, 2),
-        'f1': round(f1_edges * 100, 2),
+        'precision': round(precision_edges, decimals),
+        'recall': round(recall_edges, decimals),
+        'f1': round(f1_edges, decimals),
     },
     'nodes': {
         'tp': tp_nodes,
         'fn': fn_nodes,
         'fp': fp_nodes,
-        'precision': round(precision_nodes * 100, 2),
-        'recall': round(recall_nodes * 100, 2),
-        'f1': round(f1_nodes * 100, 2),
+        'precision': round(precision_nodes, decimals),
+        'recall': round(recall_nodes, decimals),
+        'f1': round(f1_nodes, decimals),
     }
 }
 
@@ -161,4 +170,4 @@ ts = get_timestamp()
 store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)
 
 if automatic_run:
-    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)
+    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, label, n_runs)

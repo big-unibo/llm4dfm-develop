@@ -4,7 +4,6 @@ import yaml
 from datetime import datetime
 import re
 import csv
-import pandas as pd
 
 load_dotenv()
 
@@ -28,6 +27,11 @@ def get_timestamp():
 def load_yaml(yaml_file) -> dict:
     with open(yaml_file, 'r', encoding='utf-8') as file:
         return yaml.safe_load(file)
+
+def load_csv(file_name):
+    with open(f'{outputs}{file_name}.csv', 'r', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        return [row for row in reader]
 
 
 # return the text of exercise given ex_name
@@ -182,7 +186,10 @@ def store_output(model_config, ex_config, model_output, imported, metrics, times
     with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{timestamp}.yml', 'w+', encoding='utf-8') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)
 
-def store_automatic_output(model_config, ex_config, model_output, imported, metrics, timestamp):
+def enrich_label(label):
+    return f'[{label}]'
+
+def store_automatic_output(model_config, ex_config, model_output, imported, metrics, timestamp, label, n_runs):
     data = dict()
 
     for key, value in ex_config.items():
@@ -203,14 +210,20 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
         for met, val in metrics[elem].items():
             data[f"{elem}_{met}"] = val
 
-    file_path = f'{auto_outputs}output.csv'
+    prompt_version = ex_config['prompt_version']
+    model = model_config['label'] if model_config['label'] != '' else model_config['name']
+    if label:
+        label = enrich_label(label)
+    if n_runs:
+        n_runs = f'-{n_runs}'
+    f_name = f'{label}output-{ex_config['version']}-{prompt_version}-{model}{n_runs}.csv'
 
     write_headers = False
-    headers = ["timestamp"] + list(data.keys())[1:]  # Make sure 'timestamp' is the first column
+    headers = list(data.keys())
 
     try:
         # Attempt to read the first row (headers) from the CSV file
-        with open(file_path, 'r') as file:
+        with open(f'{auto_outputs}{f_name}', 'r+') as file:
             reader = csv.reader(file)
             existing_headers = next(reader)  # Read the first row (headers)
 
@@ -221,10 +234,10 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
     except:
         write_headers = True
 
-    with open(f'{auto_outputs}output.csv', "a+", newline="") as csv_file:
+    with open(f'{auto_outputs}{f_name}', "a+", newline="") as csv_file:
         writer = csv.writer(csv_file)
 
         if write_headers:
-            headers = ["timestamp"] + list(data.keys())[1:]  # Make sure 'timestamp' is the first column
+            headers = list(data.keys())
             writer.writerow(headers)
         writer.writerow(list(data.values()))

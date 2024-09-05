@@ -1,0 +1,8 @@
+text: |
+    Decision-makers are interested in analyzing the train tickets, specifically, the single routes in each ticket.
+  Each route in ticket has a price, a distance (in km), a base fare, and a time duration. A ticket is purchased on
+  a given date by a customer, who in turn is identified by a code and described by name, surname, birthdate, city
+  of birth, and document id. A route departs from a station and arrives in another station; each station has a unique
+  name, a location in a city belonging to a region. Within a ticket, a route is covered by a trip, made by a train on
+  a given date, which has a status (e.g., delayed). A train has a unique code and is of a given type, with a specific
+  capacity.

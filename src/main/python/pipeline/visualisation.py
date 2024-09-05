@@ -12,7 +12,7 @@ from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_an
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--exercise', help='Exercise to use')
-parser.add_argument('--p_version', help='Prompt version to use')
+parser.add_argument('--prompt_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
 args = parser.parse_args()
 
@@ -32,8 +32,8 @@ if args.exercise:
     input_config['exercise']['latest'] = True
     input_config['exercise']['name'] = ex_name
     input_config['visualisation']['show_graph'] = False
-    if args.p_version:
-        input_config['exercise']['prompt_v'] = args.p_version
+    if args.prompt_version:
+        input_config['exercise']['prompt_v'] = args.prompt_version
     if args.exercise_version:
         input_config['exercise']['v'] = args.exercise_version
 

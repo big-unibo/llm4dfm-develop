@@ -1,4 +1,6 @@
-
+import matplotlib.pyplot as plt
+import numpy as np
+from utils import auto_outputs
 
 # Load edges from dependency set filtering for valid role dependency
 def load_edges(dependency_set):
@@ -101,3 +103,85 @@ def get_metrics_edges(ground_truth, generated):
     f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
 
     return precision, recall, f1, tp_count, fn_count, fp_count
+
+def plot_csv_metrics(data, file_name):
+    # Function to calculate average
+    def calculate_average(values):
+        values = [float(v) for v in values]
+        return sum(values) / len(values)
+
+    # Prepare data for plotting
+    exercises = list(data.keys())
+    edges_precision_avg = [calculate_average(data[ex]['edges_precision']) for ex in exercises]
+    edges_recall_avg = [calculate_average(data[ex]['edges_recall']) for ex in exercises]
+    nodes_precision_avg = [calculate_average(data[ex]['nodes_precision']) for ex in exercises]
+    nodes_recall_avg = [calculate_average(data[ex]['nodes_recall']) for ex in exercises]
+    edges_f1 = [list(map(float, data[ex]['edges_f1'])) for ex in exercises]
+    nodes_f1 = [list(map(float, data[ex]['nodes_f1'])) for ex in exercises]
+
+    ex_indexes = [ex.split('-')[-1] for ex in exercises]
+
+    # Set up the figure and subplots
+    fig, axs = plt.subplots(2, 3, figsize=(14, 10))
+
+    bar_width = 0.35
+    index = np.arange(len(exercises))
+
+    prec_color = 'black'
+    rec_color = 'red'
+    f1_edges_color = 'red'
+    f1_nodes_color = 'black'
+
+    # Plot 1: Avg Precision and Recall for Edges
+    axs[0, 0].bar(index - bar_width / 2, edges_precision_avg, bar_width, label='Precision', color=prec_color)
+    axs[0, 0].bar(index + bar_width / 2, edges_recall_avg, bar_width, label='Recall', color=rec_color)
+    axs[0, 0].set_xlabel('Exercise')
+    axs[0, 0].set_ylabel('Average Score')
+    axs[0, 0].set_title('Average Precision and Recall for Edges')
+    axs[0, 0].set_xticks(index)
+    axs[0, 0].set_xticklabels(ex_indexes)
+    axs[0, 0].legend()
+
+    # Plot 2: Avg Precision and Recall for Nodes
+    axs[0, 1].bar(index - bar_width / 2, nodes_precision_avg, bar_width, label='Precision', color=prec_color)
+    axs[0, 1].bar(index + bar_width / 2, nodes_recall_avg, bar_width, label='Recall', color=rec_color)
+    axs[0, 1].set_xlabel('Exercise')
+    axs[0, 1].set_ylabel('Average Score')
+    axs[0, 1].set_title('Average Precision and Recall for Nodes')
+    axs[0, 1].set_xticks(index)
+    axs[0, 1].set_xticklabels(ex_indexes)
+    axs[0, 1].legend()
+
+    # Calculate average F1 scores for the line chart
+    edges_f1_avg = [calculate_average(data[ex]['edges_f1']) for ex in exercises]
+    nodes_f1_avg = [calculate_average(data[ex]['nodes_f1']) for ex in exercises]
+
+    # Plot 3: Line chart of Avg F1 Scores for Edges and Nodes
+    axs[0, 2].plot(ex_indexes, edges_f1_avg, color=f1_edges_color, label='Avg F1 of Edges')
+    axs[0, 2].plot(ex_indexes, nodes_f1_avg, color=f1_nodes_color, label='Avg F1 of Nodes')
+    axs[0, 2].set_xlabel('Exercise')
+    axs[0, 2].set_ylabel('Average F1 Score')
+    axs[0, 2].set_title('Average F1 Score for Edges and Nodes')
+    axs[0, 2].legend()
+
+    # Plot 4: Boxplot of F1 Measure for Edges
+    axs[1, 0].boxplot(edges_f1, labels=ex_indexes)
+    axs[1, 0].set_xlabel('Exercise')
+    axs[1, 0].set_ylabel('F1 Score')
+    axs[1, 0].set_title('Boxplot of F1 Measure for Edges')
+
+    # Plot 5: Boxplot of F1 Measure for Nodes
+    axs[1, 1].boxplot(nodes_f1, labels=ex_indexes)
+    axs[1, 1].set_xlabel('Exercise')
+    axs[1, 1].set_ylabel('F1 Score')
+    axs[1, 1].set_title('Boxplot of F1 Measure for Nodes')
+
+    # Hide the empty subplot (bottom right)
+    axs[1, 2].axis('off')
+
+    # Save the figure as a PDF
+    plt.savefig(f"{auto_outputs}{file_name}.pdf", format='pdf')
+
+    # Adjust layout
+    plt.tight_layout()
+    plt.show()
