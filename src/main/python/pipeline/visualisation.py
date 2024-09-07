@@ -11,6 +11,7 @@ from visualisation_utils import (preprocess_dependencies_attributes, store_image
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
+parser.add_argument('--dir_label', help='Directory to use')
 parser.add_argument('--exercise', help='Exercise to use')
 parser.add_argument('--prompt_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
@@ -32,21 +33,23 @@ if args.exercise:
     input_config['exercise']['latest'] = True
     input_config['exercise']['name'] = ex_name
     input_config['visualisation']['show_graph'] = False
-    if args.prompt_version:
-        input_config['exercise']['prompt_v'] = args.prompt_version
-    if args.exercise_version:
-        input_config['exercise']['v'] = args.exercise_version
+if args.dir_label:
+    input_config['exercise']['dir_label'] = args.dir_label
+if args.prompt_version:
+    input_config['exercise']['prompt_v'] = args.prompt_version
+if args.exercise_version:
+    input_config['exercise']['v'] = args.exercise_version
 
 ex_config = input_config['exercise']
 model_config = input_config['model']
 
 # Load exercise
-ex_output, ex_name = load_output_exercise_and_name(ex_config['name'], ex_config['v'], ex_config['prompt_v'],
+ex_output, ex_name = load_output_exercise_and_name(ex_config['dir_label'], ex_config['name'], ex_config['v'], ex_config['prompt_v'],
                                  model_config['name'], model_config['v'],
                                  ex_config['latest'], ex_config['timestamp'], ex_config['full_name'])
 ground_truth = load_ground_truth_exercise(ex_config['name'], ex_config['full_name'])
 
-metrics = ex_config['metrics']
+metrics = ex_output['metrics']
 
 if ex_config['v'] == 'demand':
     ground_truth = ground_truth['demand_driven']
@@ -158,7 +161,7 @@ if input_config['visualisation']['table_names']:
 # Display the grap
 plt.title("Graph Visualisation")
 
-store_image(plt, ex_name, input_config['visualisation']['image']['format'])
+store_image(plt, ex_name, ex_config['dir_label'], input_config['visualisation']['image']['format'])
 
 if input_config['visualisation']['show_graph']:
     plt.show()

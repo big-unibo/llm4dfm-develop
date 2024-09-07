@@ -1,10 +1,12 @@
 #!/bin/bash
 
 ARGS=$#
-n_runs=0
 prompt_version=v4
-label=""
+model=""
+model_label=""
+dir_label=""
 PY_PROG="../python/pipeline/pipeline.py"
+GRAPH_PROG="../python/pipeline/csv_graph.py"
 t_sleep=6
 # VIS_PROG="../python/pipeline/visualisation.py"
 
@@ -23,40 +25,49 @@ fi
 if [ -n "$3" ]; then
   prompt_version=$3
 fi
-if [ -n "$5" ]; then
-  label=$5
+if [ -n "$4" ]; then
+  model=$4
+fi
+if [ -n "$6" ]; then
+  model_label=$6
+fi
+if [ -n "$7" ]; then
+  dir_label=$7
+else
+  dir_label=$(date +"%Y-%m-%d_%H-%M-%S")
 fi
 
-
-echo "Runs: $n_runs, Exercise version: $ex_version, Prompt version: $prompt_version"
+echo "Runs: $n_runs, Exercise version: $ex_version, Prompt version: $prompt_version, Model: $model, Model label: $model_label, Label directory: $dir_label"
 
 # Combine the variables to form the full pattern
 regex="$ex_dir$ex_prefix*$ex_version*"
 
 # If no file given, look for the match ones
-if [ "$ARGS" -lt 4 ] || [ -z "$4" ]; then
+if [ "$ARGS" -lt 5 ] || [ -z "$5" ]; then
   for ex in $regex; do
     if [ -f "$ex" ]; then
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i on $ex"
-        python -W ignore "$PY_PROG" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version" --label "$label" --runs "$n_runs"
+        python -W ignore "$PY_PROG" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_label "$model_label" --dir_label "$dir_label"
         if [ "$i" != "$n_runs" ]; then
           sleep $t_sleep
         fi
       done
     fi
   done
+  python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
 else
-  exercises="$4"
+  exercises="$5"
   IFS=' ' read -r -a ex_nums <<< "$exercises"
   for ex_num in "${ex_nums[@]}"; do
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i:"
-        python -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$ex_num-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version" --label "$label" --runs "$n_runs"
+        python -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$ex_num-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_label "$model_label" --dir_label "$dir_label"
         if [ "$i" != "$n_runs" ]; then
           sleep $t_sleep
         fi
       done
   done
+  python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
 fi
 

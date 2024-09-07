@@ -17,7 +17,6 @@ auto_outputs = os.getenv('AUTO_OUTPUTS')
 def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
 
-
 # datetime object containing current date and time
 def get_timestamp():
     return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
@@ -30,6 +29,11 @@ def load_yaml(yaml_file) -> dict:
 
 def load_csv(file_name):
     with open(f'{outputs}{file_name}.csv', 'r', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        return [row for row in reader]
+
+def load_full_path_csv(path):
+    with open(f'{path}', 'r', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         return [row for row in reader]
 
@@ -53,13 +57,13 @@ def load_ground_truth_exercise(ex_name, full_name=''):
 
 
 # load output exercise used in second-step and its filename (used after to store the image)
-def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
+def load_output_exercise_and_name(dir_name, ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
                          full_name=''):
     if full_name:
         exercise = full_name + '.yml'
     else:
         # List all files in the directory
-        files = os.listdir(outputs)
+        files = os.listdir(f'{outputs}{dir_name}/')
 
         if latest:
             exercise_pattern = re.compile(
@@ -111,7 +115,7 @@ def load_output_exercise_and_name(ex_name, version, prompt_version, model_name, 
             else:
                 exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp)) + '.yml'
 
-    with open(f'{outputs}{exercise}', 'r', encoding='utf-8') as file:
+    with open(f'{outputs}{dir_name}/{exercise}', 'r', encoding='utf-8') as file:
         ex_output = yaml.safe_load(file)
     return ex_output, exercise
 
@@ -172,7 +176,7 @@ def config_to_print_api_model(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, ex_config, model_output, imported, metrics, timestamp):
+def store_output(model_config, ex_config, model_output, imported, metrics, timestamp, dir_label):
     results_output = {
         'config': config_to_print_import_model(model_config) if imported else config_to_print_api_model(model_config),
         'output': model_output,
@@ -183,13 +187,19 @@ def store_output(model_config, ex_config, model_output, imported, metrics, times
     ex_name = '-'.join((ex_config['name'], ex_config['version']))
     model = model_config['label'] if model_config['label'] != '' else model_config['name']
 
-    with open(f'{outputs}{ex_name}-{prompt_version}-{model}-{timestamp}.yml', 'w+', encoding='utf-8') as outfile:
+    os.makedirs(f'{outputs}{dir_label}', exist_ok=True)
+
+    with open(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}.yml', 'w+', encoding='utf-8') as outfile:
         yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)
 
-def enrich_label(label):
-    return f'[{label}]'
+def get_output_file_name(ex_version, prompt_version, model):
+    return f'output-{ex_version}-{prompt_version}-{model}.csv'
 
-def store_automatic_output(model_config, ex_config, model_output, imported, metrics, timestamp, label, n_runs):
+def get_output_file_path(ex_version, prompt_version, model, label_dir):
+    f_name = f'output-{ex_version}-{prompt_version}-{model}.csv'
+    return f'{auto_outputs}{label_dir}/{f_name}'
+
+def store_automatic_output(model_config, ex_config, model_output, imported, metrics, timestamp, label_dir):
     data = dict()
 
     for key, value in ex_config.items():
@@ -212,18 +222,15 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
 
     prompt_version = ex_config['prompt_version']
     model = model_config['label'] if model_config['label'] != '' else model_config['name']
-    if label:
-        label = enrich_label(label)
-    if n_runs:
-        n_runs = f'-{n_runs}'
-    f_name = f'{label}output-{ex_config['version']}-{prompt_version}-{model}{n_runs}.csv'
+
+    file_path = get_output_file_path(ex_config['version'], prompt_version, model, label_dir)
 
     write_headers = False
     headers = list(data.keys())
 
     try:
         # Attempt to read the first row (headers) from the CSV file
-        with open(f'{auto_outputs}{f_name}', 'r+') as file:
+        with open(f'{file_path}', 'r+') as file:
             reader = csv.reader(file)
             existing_headers = next(reader)  # Read the first row (headers)
 
@@ -234,9 +241,11 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
     except:
         write_headers = True
 
-    with open(f'{auto_outputs}{f_name}', "a+", newline="") as csv_file:
-        writer = csv.writer(csv_file)
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
+    with open(f'{file_path}', "a+", newline="") as csv_file:
+        writer = csv.writer(csv_file)
         if write_headers:
             headers = list(data.keys())
             writer.writerow(headers)

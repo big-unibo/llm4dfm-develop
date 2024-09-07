@@ -19,6 +19,7 @@ All pipeline python files are collected in `src/main/python/pipeline` module.
 - `models.py   -- contains model's utils`
 - `pipeline.py -- contains the process of importing, batching and calculating metrixs`
 - `utils.py    -- contains general utils`
+- `csv_graph.py    -- contains the process which generates graphs`
 - `visualisation.py -- contains the process of visualization of the output`
 - `visualisation_utils.py    -- contains utils used in visualisation`
 - `graph_utils.py    -- contains utils used to work with graph, such as metrics calculation`
@@ -27,7 +28,8 @@ All pipeline python files are collected in `src/main/python/pipeline` module.
 Configuration files, script to automate run are collected in `src/resources` module.
 
 - `pipeline-config.yml  -- contains configuration of the run`
-- `visualisation-config.yml  -- contains configuration of the second step`
+- `credentials.yml  -- contains configuration of the second step`
+- `visualisation-config.yml  -- contains configuration of visualisation and csv graph generation`
 - `automatic-run.sh  -- script to automate runs`
 - `yml.html  -- script to compare ground-truth and output via visualisation`
 
@@ -118,13 +120,19 @@ General
 - `use -- the model to use between import and api`
 - `debug_prints   -- enable output prints during execution`
 
+Output
+
+- `dir_label -- the label used in output directory name`
+
 #### Visualisation
 
 The following parameters can be configured in `src/main/resources/visualisation-config.yml` file.
 
 Exercise
+
 Given that it's required to read both ground-truth and model output, to make it easier to configure, different ways can be used to state the exercise to read.
 
+- `dir_label -- directory name in which look for ex`
 - `full_name           -- the output exercise full name (part before -text.yml)\n ** If provided, no further options of the exercise have to be passed`
 - `name -- the exercise name (exercise-*.*)`
 - `v           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
@@ -139,8 +147,6 @@ Model
 
 Visualization
 
-Configurations which regulate graph visualization.
-
 - `node_color -- boolean, enable node colors (default green if TP, grey if FN, red if FP)`
 - `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
 - `arrowsize -- regulates edge's arrow pointer dimension`
@@ -152,24 +158,23 @@ Configurations which regulate graph visualization.
 - `dag_graph  -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
 - `table_names  -- boolean, if true table names are considered for comparing, and node attributes are shown with table name otherwise they aren't considered and tables names are not shown in DAG`
 
-#### CSV Graph
+#### CSV-Graph
 
 The following parameters can be configured in `src/main/resources/visualisation-config.yml` file, under the `csv_graph` section.
 
 - `v -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
 - `prompt_v -- the prompt version (part between prompts-v and .yml)`
-- `model -- model's label name`
-- `runs -- number of runs`
-- `label -- the optional label set for the automatic run`
+- `model_label -- model's label name`
+- `dir_label -- directory in which store file name`
 
 ## Usage
 
 ### Single run
 
 - Setup [authentication](#authentication-key)
-- Configure [pipeline](#Pipeline) and [visualisation](#Visualisation)
-- Run `python pipeline/pipeline.py` from `src/main/python/` directory 
-  If no Exceptions raised, in `outputs` directory a new file with name `{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
+- Configure [pipeline](#Pipeline), [visualisation](#Visualisation) and [graph](#CSV-Graph)
+- Run `python pipeline/pipeline.py` from `src/main/python/` directory.
+  If no Exceptions raised, in `outputs` directory a new directory with inside a file `/{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
   - config:
     - name: gpt
     - version: 3.5-turbo
@@ -197,8 +202,13 @@ The following parameters can be configured in `src/main/resources/visualisation-
       - recall: [0.0 - 1]
       - f1: [0.0 - 1]
   
-- Run `python pipeline/visualisation.py` from `src/main/python/` directory
-  If no Exceptions raised, in `outputs` directory a new file with name `{exercise name matching config}.{visualisation.image.format}` is generated as graph representation, labeling green nodes and edges for true positive, red for false positive and grey for false negative.
+- Run `python pipeline/visualisation.py` from `src/main/python/` directory.
+  If no Exceptions raised, in `outputs/{dir_label}/` directory a new file with name `{exercise name matching config}.{visualisation.image.format}` is generated as graph representation, labeling green nodes and edges for true positive, red for false positive and grey for false negative.
+
+- Run `python pipeline/csv_graph.py` from `src/main/python/` directory.
+  If no Exceptions raised, in `outputs/{dir_label}/` directory a new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{dir_label}/` directory.
+Example of run:
+`python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
 
 ### Automatic run
 
@@ -208,25 +218,18 @@ Run configuration:
 - `number_of_runs -- set number of runs, 1 by default`
 - `file_version -- set file version [sql, original, demand], sql by default`
 - `prompt_version -- set prompt version [v1, v2, v3, v4, demand], v4 by default`
+- `model -- model to use in run`
 - `"<ex1> ... <fileN>" -- set exercises to run, all files matching previous configurations by default`
-- `label -- an optional label used in csv output generated, empty string by default`
+- `model_label -- an optional model label used in yml output generated, empty string by default, if empty model name is used`
+- `dir_label -- an optional label used in output directory generated, if not provided a timestamp is generated`
+
+All configurations specified as argument **override** the provided by configuration file ones.
+If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
 Example of run:
-`./pipeline/automatic-run.sh 1 sql v3 4 1`
+`../resources/automatic-run.sh 1 sql v4 gpt "1 2 3 4 5 6 7 8 9" gpt4o test`
 
 Output:
-Generate one output file for each run on each file as described before. 
-
-Additionally, a csv file [if label is set `outputs/[{label}]output-{file_version}-{prompt_version}-{model}.csv`, else  is enriched with run configurations, output and metrics.
-
-### CSV graph visualisation
-
-Graph generation could be achieved by run `python pipeline/csv_graph.py` from `src/main/python/` directory.
-Configuration can be set via `src/main/resources/visualisation-config.yml` file, under the `csv_graph` section.
-Parameters can also be passed as argument in execution, overwriting the ones defined via file.
-
-Example of run:
-`python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
-
-Output:
-Generate one pdf file with the same name of the csv file found, containing graphs about precision, recall and f1-measure. 
+Generate one output file for each run on each file as described before inside `outputs/{dir_label}/`.
+Additionally, a csv file `outputs/{dir_label}/output-{file_version}-{prompt_version}-{model_label}.csv` is generated if not present, else is enriched with run output.
+Moreover, `pipeline/csv_graph.py` is run too, generating graphs.

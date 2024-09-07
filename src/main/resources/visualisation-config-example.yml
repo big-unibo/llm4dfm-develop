@@ -6,6 +6,13 @@ exercise:
   latest: true # Optional in case of full_name
   timestamp: '2024-06-28T11-28-14' # Optional in case of latest or full_name provided
 
+csv_graph:
+  prompt_v: 'v4'
+  v: 'sql'
+  model: 'gpt4o'
+  model_label:
+  dir_label:
+
 model:
   name: 'gpt3-5'
   v: '' # Optional

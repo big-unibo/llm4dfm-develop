@@ -2,7 +2,6 @@ import os
 import argparse
 from pathlib import Path
 from tqdm import tqdm
-
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from utils import (load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
                    get_timestamp, output_as_valid_yaml)
@@ -13,12 +12,12 @@ def log(message):
 
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
-
 parser.add_argument('--exercise', help='Exercise to use')
 parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
-parser.add_argument('--label', help='Output label to use')
-parser.add_argument('--runs', help='Number of executions, used in output name')
+parser.add_argument('--model', help='Model used')
+parser.add_argument('--model_label', help='Model label to use')
+parser.add_argument('--dir_label', help='Directory label to use')
 
 args = parser.parse_args()
 
@@ -35,8 +34,11 @@ if model_config['use'] == 'import':
     #               model_config['debug_prints'], config['quantization'])
 
 elif model_config['use'] == 'api':
-
     config = model_config['model_api']
+    if args.model:
+        automatic_run = True
+        config['name'] = args.model
+
     config['key'] = key_config[config['name']]['key']
     model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'])
 
@@ -45,6 +47,9 @@ else:
 
 model_outputs = []
 prompts = []
+
+automatic_run = False
+exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # Check if the --exercise argument is passed
 if args.exercise:
@@ -56,17 +61,18 @@ if args.exercise:
     exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
     ex_name = '-'.join(exercise.split('-')[:2])
     model_config['exercise']['name'] = ex_name
-    if args.p_version:
-        model_config['exercise']['prompt_version'] = args.p_version
-    if args.exercise_version:
-        model_config['exercise']['version'] = args.exercise_version
-    label = args.label
-    n_runs = str(args.runs)
-else:
-    automatic_run = False
-    exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
-    label = ''
-    n_runs = ''
+if args.p_version:
+    automatic_run = True
+    model_config['exercise']['prompt_version'] = args.p_version
+if args.exercise_version:
+    automatic_run = True
+    model_config['exercise']['version'] = args.exercise_version
+if args.model_label:
+    automatic_run = True
+    config['label'] = args.model_label
+if args.dir_label:
+    automatic_run = True
+    model_config['output']['dir_label'] = args.dir_label
 
 # As new indication, load context prompt and then text exercise and first prompt together
 first_prompt = load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name'])
@@ -167,7 +173,7 @@ metrics = {
 ts = get_timestamp()
 
 # store output
-store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts)
+store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
 
 if automatic_run:
-    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, label, n_runs)
+    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])

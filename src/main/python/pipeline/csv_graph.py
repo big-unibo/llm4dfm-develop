@@ -1,46 +1,35 @@
 from pathlib import Path
 import argparse
-from utils import load_csv, load_yaml, enrich_label
+import os
+from utils import load_full_path_csv, load_yaml, get_output_file_path, get_output_file_name
 from graph_utils import plot_csv_metrics
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
-parser.add_argument('--exercise_v', help='Exercise version to use')
 parser.add_argument('--prompt_version', help='Prompt version to use')
-parser.add_argument('--model', help='Model to use')
-parser.add_argument('--runs', help='Number of executions done')
-parser.add_argument('--label', help='Label to use')
+parser.add_argument('--exercise_v', help='Exercise version to use')
+parser.add_argument('--model_label', help='Model label to use')
+parser.add_argument('--dir_label', help='Directory label to use')
 args = parser.parse_args()
 
 # Load config
 input_config = load_yaml(f'{Path().absolute()}/../resources/visualisation-config.yml')['csv_graph']
 
 # Check if the --exercise argument is passed
-if args.exercise_v:
-    input_config['v'] = args.exercise_v
 if args.prompt_version:
     input_config['prompt_v'] = args.prompt_version
-if args.model:
-    input_config['model'] = args.model
-if args.runs:
-    input_config['runs'] = args.runs
-if args.label:
-    input_config['label'] = args.label
+if args.exercise_v:
+    input_config['v'] = args.exercise_v
+if args.model_label:
+    input_config['model_label'] = args.model_label
+if args.dir_label:
+    input_config['dir_label'] = args.dir_label
 
-if input_config['label']:
-    input_config['label'] = enrich_label(input_config["label"])
-else:
-    input_config['label'] = ''
-if input_config['runs']:
-    input_config['runs'] = f'-{input_config["runs"]}'
-else:
-    input_config['runs'] = ''
-
-f_name = f'{input_config["label"]}output-{input_config['v']}-{input_config["prompt_v"]}-{input_config["model"]}{input_config["runs"]}'
+file_path = get_output_file_path(input_config['v'], input_config['prompt_v'], input_config['model_label'], input_config['dir_label'])
 
 try:
-    csv_file = load_csv(f_name)
+    csv_file = load_full_path_csv(file_path)
 except:
-    print(f'File {f_name}.csv not found')
+    print(f'File {file_path} not found')
     exit(1)
 
 metrics_template = ['edges_precision', 'edges_recall', 'edges_f1', 'nodes_precision', 'nodes_recall', 'nodes_f1',]
@@ -55,4 +44,4 @@ for row in csv_file:
     for metr in metrics[ex]:
         metrics[ex][metr].append(row[metr])
 
-plot_csv_metrics(metrics, f_name)
+plot_csv_metrics(metrics, Path(file_path).parent)
