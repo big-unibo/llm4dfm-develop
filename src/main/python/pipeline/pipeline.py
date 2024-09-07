@@ -4,7 +4,7 @@ from pathlib import Path
 from tqdm import tqdm
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from utils import (load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
-                   get_timestamp, output_as_valid_yaml)
+                   get_timestamp, output_as_valid_yaml, get_dir_label_name)
 from graph_utils import load_edges, load_nodes, get_metrics_edges, get_metrics_nodes
 
 def log(message):
@@ -73,6 +73,8 @@ if args.model_label:
 if args.dir_label:
     automatic_run = True
     model_config['output']['dir_label'] = args.dir_label
+
+model_config['output']['dir_label'] = get_dir_label_name(model_config['exercise']['version'], model_config['exercise']['prompt_version'], config['label'], model_config['output']['dir_label'])
 
 # As new indication, load context prompt and then text exercise and first prompt together
 first_prompt = load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name'])

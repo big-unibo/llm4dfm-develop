@@ -87,5 +87,4 @@ def get_tp_fn_fp_edges_to_list(ground_truth, generated):
 
 # Used to store graph image
 def store_image(plt, name, dir_name, img_format):
-    print(f'{outputs}{dir_name}/{Path(name).stem}.{img_format}')
     plt.savefig(f'{outputs}{dir_name}/{Path(name).stem}.{img_format}', format=img_format)

@@ -1,7 +1,7 @@
 from pathlib import Path
 import argparse
-import os
-from utils import load_full_path_csv, load_yaml, get_output_file_path, get_output_file_name
+
+from utils import load_full_path_csv, load_yaml, get_output_file_path, get_dir_label_name
 from graph_utils import plot_csv_metrics
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -24,6 +24,7 @@ if args.model_label:
 if args.dir_label:
     input_config['dir_label'] = args.dir_label
 
+input_config['dir_label'] = get_dir_label_name(input_config['v'], input_config['prompt_v'], input_config['model_label'], input_config['dir_label'])
 file_path = get_output_file_path(input_config['v'], input_config['prompt_v'], input_config['model_label'], input_config['dir_label'])
 
 try:

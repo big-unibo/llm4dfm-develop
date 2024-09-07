@@ -8,7 +8,7 @@ import argparse
 from graph_utils import load_edges, load_nodes
 from visualisation_utils import (preprocess_dependencies_attributes, store_image, short_names_from_tables,
                                  get_tp_fn_fp_edges_to_list)
-from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name
+from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name, get_dir_label_name
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--dir_label', help='Directory to use')
@@ -39,6 +39,8 @@ if args.prompt_version:
     input_config['exercise']['prompt_v'] = args.prompt_version
 if args.exercise_version:
     input_config['exercise']['v'] = args.exercise_version
+
+input_config['exercise']['dir_label'] = get_dir_label_name(input_config['exercise']['v'], input_config['exercise']['prompt_v'], input_config['model']['name'], input_config['exercise']['dir_label'])
 
 ex_config = input_config['exercise']
 model_config = input_config['model']

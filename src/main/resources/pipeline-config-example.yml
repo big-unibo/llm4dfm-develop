@@ -17,8 +17,8 @@ use: 'api' # import or api
 
 model_api:
   name: 'gpt'
-  label: 'gpt3-5' # [gpt3-5, gpt4o]
-  deployment: 'test-gpt-35' # Deployment name for azure distribution [test-gpt-35, test-gpt-4o]
+  label: 'gpt4o' # [gpt3-5, gpt4o]
+  deployment: 'test-gpt-4o' # Deployment name for azure distribution [test-gpt-35, test-gpt-4o]
   api_version: '2024-04-01-preview' # Used with GPT only up to now [2024-02-15-preview, 2024-04-01-preview]
   max_tokens:
   n_responses: 1
@@ -26,6 +26,9 @@ model_api:
   stop:
   top_p: 0.9
   top_k: 5 # Only a gemini parameter?
+
+output:
+  dir_label: 'test'
 
 exercise:
   name: 'exercise-1'

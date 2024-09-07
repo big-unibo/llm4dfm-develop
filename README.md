@@ -174,7 +174,7 @@ The following parameters can be configured in `src/main/resources/visualisation-
 - Setup [authentication](#authentication-key)
 - Configure [pipeline](#Pipeline), [visualisation](#Visualisation) and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `src/main/python/` directory.
-  If no Exceptions raised, in `outputs` directory a new directory with inside a file `/{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
+  If no Exceptions raised, in `outputs` directory a new directory with inside a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
   - config:
     - name: gpt
     - version: 3.5-turbo
@@ -203,10 +203,10 @@ The following parameters can be configured in `src/main/resources/visualisation-
       - f1: [0.0 - 1]
   
 - Run `python pipeline/visualisation.py` from `src/main/python/` directory.
-  If no Exceptions raised, in `outputs/{dir_label}/` directory a new file with name `{exercise name matching config}.{visualisation.image.format}` is generated as graph representation, labeling green nodes and edges for true positive, red for false positive and grey for false negative.
+  If no Exceptions raised, in `outputs/{exercise-v}-{exercise-prompt_v}-{model-name}-{exercise-dir_label}/` directory a new file with name `{exercise name matching config}.{visualisation.image.format}` is generated as graph representation, labeling green nodes and edges for true positive, red for false positive and grey for false negative.
 
 - Run `python pipeline/csv_graph.py` from `src/main/python/` directory.
-  If no Exceptions raised, in `outputs/{dir_label}/` directory a new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{dir_label}/` directory.
+  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory a new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
 Example of run:
 `python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
 
@@ -230,6 +230,6 @@ Example of run:
 `../resources/automatic-run.sh 1 sql v4 gpt "1 2 3 4 5 6 7 8 9" gpt4o test`
 
 Output:
-Generate one output file for each run on each file as described before inside `outputs/{dir_label}/`.
-Additionally, a csv file `outputs/{dir_label}/output-{file_version}-{prompt_version}-{model_label}.csv` is generated if not present, else is enriched with run output.
+Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
+Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.

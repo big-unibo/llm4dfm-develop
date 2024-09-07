@@ -21,6 +21,8 @@ def log(message):
 def get_timestamp():
     return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
 
+def get_dir_label_name(ex_version, prompt_version, model_label, dir_label):
+    return f"{ex_version}-{prompt_version}-{model_label}-{dir_label}"
 
 # return yaml configurations as dict
 def load_yaml(yaml_file) -> dict:
