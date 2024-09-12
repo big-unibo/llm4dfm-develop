@@ -7,6 +7,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+
     <style>
         #network {
             width: 80%;
@@ -14,6 +18,8 @@
             border: 1px solid black;
             display: inline-block;
             vertical-align: top;
+            resize: both;
+            overflow: auto;
         }
         .textarea-container {
             width: 40%;
@@ -64,14 +70,19 @@
         <h2>YAML LLM</h2>
         <textarea id="yaml_llm" rows="10" cols="30">
 dependencies:
-  - from: node1
-    to: node2
-  - from: node2
-    to: node3
+- from: node1
+  to: node2
+- from: node1
+  to: node3
+- from: node1
+  to: node4
+- from: node4
+  to: node5
 fact:
   name: node1
 measures:
-  - name: node2
+- name: node2
+- name: node3          
         </textarea>
     </div>
     <div class="textarea-container">
@@ -107,6 +118,7 @@ measures:
         </p>
     </div>
     <h2>Graph</h2>
+    <!-- <button onclick="exportGraphToPDF()">Export Graph to PDF</button> -->
     <div id="network"></div>
     <div id="results"></div>
 
@@ -253,13 +265,58 @@ measures:
 
             const nodes = [];
             const edges = [];
+            let factNodeId = null;
 
+            // First, identify the fact node
             graph.nodes.forEach(node => {
-                nodes.push({ id: node.id, label: polishNodeName(node.id), color: { border: 'black', background: getColorByTag(node.tag) }, title: node.id });
+                if (node.tag === 'fact') {
+                    factNodeId = node.id;
+                }
             });
 
+            graph.nodes.forEach(node => {
+                if (node.tag === 'fact') {
+                    // Get the measure nodes as strings and list them inside the fact node
+                    const measureList = Array.from(graph.nodes.filter(n => n.tag === 'measure').map(n => polishNodeName(n.id))).join('\n');
+
+                    // Display the fact node as a square, uppercase, and underlined
+                    nodes.push({
+                        id: node.id,
+                        label: `${node.id.toUpperCase()}\n\n${measureList}`,  // Combine fact and measures
+                        shape: 'box',  // Shape as square
+                        font: {
+                            color: 'black',
+                            size: 14,
+                            face: 'arial'
+                        },
+                        color: { border: 'black', background: 'white' }, // White square
+                        shapeProperties: { borderRadius: 0 }, // Sharp corners
+                        title: node.id
+                    });
+                } else if (node.tag === 'dimension' && node.id !== factNodeId) {
+                    // For dimension nodes (directly connected to fact) set them to light blue
+                    nodes.push({
+                        id: node.id,
+                        label: polishNodeName(node.id),
+                        color: { border: 'black', background: 'lightblue' }, // Lightblue for dimensions
+                        title: node.id
+                    });
+                } else if (node.tag !== 'measure') {
+                    // For all other nodes (non-measures), set background to white
+                    nodes.push({
+                        id: node.id,
+                        label: polishNodeName(node.id),
+                        color: { border: 'black', background: 'white' },  // Set background to white for other nodes
+                        title: node.id
+                    });
+                }
+            });
+
+            // Add edges for non-measure related nodes (since measure edges are ignored)
             graph.edges.forEach(edge => {
-                edges.push({ from: edge.from, to: edge.to, color: 'black', title: edge.role });
+                if (edge.role !== 'measure') {
+                    edges.push({ from: edge.from, to: edge.to, color: 'black', title: edge.role });
+                }
             });
 
             const data = {
@@ -268,7 +325,7 @@ measures:
             };
             const options = {
                 edges: {
-                    color: { color: 'black' }, // Default edge color
+                    color: { color: 'black' },
                     arrows: { to: { enabled: true, scaleFactor: 0.5 } }
                 },
                 layout: {
@@ -277,6 +334,7 @@ measures:
             };
             new vis.Network(container, data, options);
         }
+
 
         function compareGraphs() {
             const yaml2 = document.getElementById('yaml_llm').value;
@@ -419,14 +477,33 @@ measures:
                 const [prefix, suffix] = part.trim().split('.');
                 if (suffix) {
                     const polishedPrefix = prefix.length > 4 ? prefix.slice(0, 4) : prefix;
-                    const polishedSuffix = suffix.length > 10 ? suffix.slice(0, 10) : suffix;
-                    return `${polishedPrefix}.${polishedSuffix}`;
+                    //const polishedSuffix = suffix.length > 10 ? suffix.slice(0, 10) : suffix;
+                    return `${polishedPrefix.toUpperCase()}.${suffix}`;
                 } else {
-                    const polishedPrefix = prefix.length > 10 ? prefix.slice(0, 10) : prefix;
-                    return polishedPrefix;
+                    // const polishedPrefix = prefix.length > 10 ? prefix.slice(0, 10) : prefix;
+                    return prefix;
                 }
             }).join('\n');
         }
+
+        function exportGraphToPDF() {
+            html2canvas(document.getElementById('network'), {
+                useCORS: true,  // Enable cross-origin images if needed
+            }).then(function(canvas) {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('landscape');
+                
+                // Add the image to the PDF
+                const imgWidth = 280;
+                const pageHeight = pdf.internal.pageSize.height;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                const position = 10;
+
+                pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                pdf.save('graph.pdf');
+            });
+        }
+
     </script>
 </body>
 </html>
