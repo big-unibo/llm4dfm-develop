@@ -193,27 +193,12 @@ measures:
 
         function parseYAML(input) {
             try {
-                return removeWhitespacesFromValues(jsyaml.load(input));
+                return jsyaml.load(input);
             } catch (e) {
                 console.error(e);
                 return null;
             }
         }
-
-        function removeWhitespacesFromValues(obj) {
-            // Recursively traverse the object
-            for (let key in obj) {
-                if (typeof obj[key] === 'object' && obj[key] !== null) {
-                    // If the value is an object or array, recurse
-                    removeWhitespacesFromValues(obj[key]);
-                } else if (typeof obj[key] === 'string') {
-                    // If the value is a string, remove all whitespaces
-                    obj[key] = obj[key].replace(/\s+/g, '');
-                }
-            }
-            return obj;
-        }
-
 
         function extractGraphData(yaml) {
             const nodes = new Map();
@@ -284,7 +269,6 @@ measures:
 
             // First, identify the fact node
             graph.nodes.forEach(node => {
-                node.id = node.id.replace(/\s/g,'')
                 if (node.tag === 'fact') {
                     factNodeId = node.id;
                 }
@@ -365,13 +349,6 @@ measures:
 
             const nodes = [];
             const edges = [];
-
-            graph1.nodes.forEach(node => {
-                node.id = node.id.replace(/\s/g,'')
-            })
-            graph2.nodes.forEach(node => {
-                node.id = node.id.replace(/\s/g,'')
-            })
 
             const allNodes = new Map();
             graph2.nodes.forEach(node => allNodes.set(node.id.toLowerCase(), { ...node, casedname: node.id, color: 'red' }));
