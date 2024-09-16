@@ -186,6 +186,7 @@ class Model:
     def batch(self, prompt):
         batched = False
         wait = 3
+        max_tries = 5
         m_output = ''
         # Prompt can be list if it's the first input
         if type(prompt) is list:
@@ -193,7 +194,7 @@ class Model:
                 self.chat.append(get_chat_entry(p['role'], p['content'], self.name))
         else:
             self.chat.append(get_chat_entry(prompt['role'], prompt['content'], self.name))
-        while not batched:
+        while not batched and max_tries>0:
             try:
                 m_output = self.generate(self.chat)
                 batched = True
@@ -201,6 +202,7 @@ class Model:
                 print(f'Model batch error [{e}] trying in {wait} seconds')
                 time.sleep(wait)
                 wait += 1
+                max_tries -= 1
         try:
             m_output = yaml.safe_load(m_output)
         except yaml.YAMLError as _:

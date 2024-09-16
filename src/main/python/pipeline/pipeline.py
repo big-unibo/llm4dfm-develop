@@ -98,7 +98,13 @@ with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):
         model_outputs.append(model_output)
         bar_batch.update(1)
 
-model_outputs = output_as_valid_yaml(model_outputs)
+try:
+    model_outputs = output_as_valid_yaml(model_outputs)
+except:
+    store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', {}, get_timestamp(), model_config['output']['dir_label'])
+    print("Output not correctly generated")
+    exit(1)
+
 
 if model_config['debug_prints']:
     log(f'Chat: {model.chat}\nOutput: {model_output}')
@@ -118,6 +124,7 @@ try:
     meas_output = model_outputs['measures'] if model_outputs is dict else model_outputs[0]['measures']
     fact_output = model_outputs['fact'] if model_outputs is dict else model_outputs[0]['fact']
 except:
+    store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', {}, get_timestamp(), model_config['output']['dir_label'])
     print("Output not correctly generated")
     exit(1)
 
