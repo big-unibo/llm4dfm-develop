@@ -110,7 +110,6 @@ if model_config['debug_prints']:
     log(f'Chat: {model.chat}\nOutput: {model_output}')
 
 # Calculate metrics
-
 ground_truth = load_ground_truth_exercise(model_config['exercise']['name'])
 
 if model_config['exercise']['version'] == 'demand':
@@ -118,66 +117,57 @@ if model_config['exercise']['version'] == 'demand':
 else:
     ground_truth = ground_truth['supply_driven']
 
-# Extract dependencies
-try:
-    dep_output = model_outputs['dependencies'] if model_outputs is dict else model_outputs[0]['dependencies']
-    meas_output = model_outputs['measures'] if model_outputs is dict else model_outputs[0]['measures']
-    fact_output = model_outputs['fact'] if model_outputs is dict else model_outputs[0]['fact']
-except:
-    store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', {}, get_timestamp(), model_config['output']['dir_label'])
-    print("Output not correctly generated")
-    exit(1)
+metrics = []
 
 dep_gt = ground_truth['dependencies']
-meas_gt = ground_truth['measures']
+meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
 fact_gt = ground_truth['fact']
 
-if not meas_output:
-    meas_output = set()
-if not meas_gt:
-    meas_gt = set()
-
-dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
 dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
-
-meas_output_to_use = {v.lower() for d in meas_output for _, v in d.items()}
 meas_gt_to_use = {v.lower() for d in meas_gt for _, v in d.items()}
-
-fact_output_to_use = fact_output['name'].lower()
 fact_gt_to_use = fact_gt['name'].lower()
-
-# Load edges
 edges_set_gt = load_edges(dep_gt_to_use)
-edges_set_output = load_edges(dep_output_to_use)
-
-# Load nodes
 nodes_set_gt = load_nodes(edges_set_gt)
-nodes_set_output = load_nodes(edges_set_output)
 
-# Calculate metrics for edges and ground truth
-precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges  = get_metrics_edges(edges_set_gt, edges_set_output)
-precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(nodes_set_gt, nodes_set_output, meas_gt_to_use, meas_output_to_use, fact_gt_to_use, fact_output_to_use)
-
-decimals = 4
-
-metrics = {
-    'edges': {
-        'tp': tp_edges,
-        'fn': fn_edges,
-        'fp': fp_edges,
-        'precision': round(precision_edges, decimals),
-        'recall': round(recall_edges, decimals),
-        'f1': round(f1_edges, decimals),
-    },
-    'nodes': {
-        'tp': tp_nodes,
-        'fn': fn_nodes,
-        'fp': fp_nodes,
-        'precision': round(precision_nodes, decimals),
-        'recall': round(recall_nodes, decimals),
-        'f1': round(f1_nodes, decimals),
-    }
-}
+for i, output in enumerate(model_outputs):
+    try:
+        dep_output, meas_output, fact_output = model_outputs[i]['dependencies'], model_outputs[i]['measures'] if model_outputs[i]['measures'] else set(), model_outputs[i]['fact']
+        dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
+        meas_output_to_use = {v.lower() for d in meas_output for _, v in d.items()}
+        fact_output_to_use = fact_output['name'].lower()
+        edges_set_output = load_edges(dep_output_to_use)
+        nodes_set_output = load_nodes(edges_set_output)
+        # Calculate metrics for edges and ground truth
+        precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges = get_metrics_edges(edges_set_gt,
+                                                                                                  edges_set_output)
+        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(nodes_set_gt,
+                                                                                                  nodes_set_output,
+                                                                                                  meas_gt_to_use,
+                                                                                                  meas_output_to_use,
+                                                                                                  fact_gt_to_use,
+                                                                                                  fact_output_to_use)
+        decimals = 4
+        metrics.insert(i, {
+            'edges': {
+                'tp': tp_edges,
+                'fn': fn_edges,
+                'fp': fp_edges,
+                'precision': round(precision_edges, decimals),
+                'recall': round(recall_edges, decimals),
+                'f1': round(f1_edges, decimals),
+            },
+            'nodes': {
+                'tp': tp_nodes,
+                'fn': fn_nodes,
+                'fp': fp_nodes,
+                'precision': round(precision_nodes, decimals),
+                'recall': round(recall_nodes, decimals),
+                'f1': round(f1_nodes, decimals),
+            }
+        })
+    except:
+        metrics.insert(i, {})
+        print(f"Output {i}-th not correctly generated, skipped")
 
 ts = get_timestamp()
 

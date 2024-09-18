@@ -60,7 +60,7 @@ else:
 
 # Extract dependencies
 try:
-    dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][0]['dependencies']
+    dep_output = ex_output['output']['dependencies'] if ex_output['output'] is dict else ex_output['output'][-1]['dependencies']
 except:
     print("Dependencies were not correctly generated")
     exit(1)
