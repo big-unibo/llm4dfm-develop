@@ -221,7 +221,7 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
 
         data['fact'] = model_output[i]['fact']['name']
 
-        data['measures'] = [measure['name'] for measure in model_output[i]['measures']]
+        data['measures'] = [measure['name'] for measure in model_output[i]['measures']] if model_output[i]['measures'] else None
 
         data['dependencies'] = [dependency for dependency in model_output[i]['dependencies']]
 
