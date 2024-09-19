@@ -205,54 +205,57 @@ def get_output_file_path(ex_version, prompt_version, model, label_dir):
     f_name = f'output-{ex_version}-{prompt_version}-{model}.csv'
     return f'{auto_outputs}{label_dir}/{f_name}'
 
-def store_automatic_output(model_config, ex_config, model_output, imported, metrics, timestamp, label_dir):
-    data = dict()
+def store_automatic_output(model_config, ex_config, model_output, imported, metrics_list, timestamp, label_dir):
+    for i, metrics in enumerate(metrics_list):
+        data = dict()
 
-    for key, value in ex_config.items():
-        data[f"ex_{key}"] = value
+        for key, value in ex_config.items():
+            data[f"ex_{key}"] = value
 
-    data["timestamp"] = timestamp
+        data["timestamp"] = timestamp
 
-    for key, value in config_to_print_import_model(model_config).items() if imported else config_to_print_api_model(model_config).items():
-        data[f"config_{key}"] = value
+        data['index'] = i+1
 
-    data['fact'] = model_output[0]['fact']['name']
+        for key, value in config_to_print_import_model(model_config).items() if imported else config_to_print_api_model(model_config).items():
+            data[f"config_{key}"] = value
 
-    data['measures'] = [measure['name'] for measure in model_output[0]['measures']]
+        data['fact'] = model_output[i]['fact']['name']
 
-    data['dependencies'] = [dependency for dependency in model_output[0]['dependencies']]
+        data['measures'] = [measure['name'] for measure in model_output[i]['measures']] if model_output[i]['measures'] else None
 
-    for elem in metrics:
-        for met, val in metrics[elem].items():
-            data[f"{elem}_{met}"] = val
+        data['dependencies'] = [dependency for dependency in model_output[i]['dependencies']]
 
-    prompt_version = ex_config['prompt_version']
-    model = model_config['label'] if model_config['label'] != '' else model_config['name']
+        for elem in metrics:
+            for met, val in metrics[elem].items():
+                data[f"{elem}_{met}"] = val
 
-    file_path = get_output_file_path(ex_config['version'], prompt_version, model, label_dir)
+        prompt_version = ex_config['prompt_version']
+        model = model_config['label'] if model_config['label'] != '' else model_config['name']
 
-    write_headers = False
-    headers = list(data.keys())
+        file_path = get_output_file_path(ex_config['version'], prompt_version, model, label_dir)
 
-    try:
-        # Attempt to read the first row (headers) from the CSV file
-        with open(f'{file_path}', 'r+') as file:
-            reader = csv.reader(file)
-            existing_headers = next(reader)  # Read the first row (headers)
+        write_headers = False
+        headers = list(data.keys())
 
-        # Check if the existing headers match the desired headers
-        # TODO what to do in this case?
-        if existing_headers != headers:
-            print("Headers do not match. Writing data anyway.")
-    except:
-        write_headers = True
+        try:
+            # Attempt to read the first row (headers) from the CSV file
+            with open(f'{file_path}', 'r+') as file:
+                reader = csv.reader(file)
+                existing_headers = next(reader)  # Read the first row (headers)
 
-    # Ensure the directory exists
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            # Check if the existing headers match the desired headers
+            # TODO what to do in this case?
+            if existing_headers != headers:
+                print("Headers do not match. Writing data anyway.")
+        except:
+            write_headers = True
 
-    with open(f'{file_path}', "a+", newline="") as csv_file:
-        writer = csv.writer(csv_file)
-        if write_headers:
-            headers = list(data.keys())
-            writer.writerow(headers)
-        writer.writerow(list(data.values()))
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+        with open(f'{file_path}', "a+", newline="") as csv_file:
+            writer = csv.writer(csv_file)
+            if write_headers:
+                headers = list(data.keys())
+                writer.writerow(headers)
+            writer.writerow(list(data.values()))

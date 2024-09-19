@@ -121,9 +121,6 @@ def plot_csv_metrics(data, file_name, label):
 
     ex_indexes = [ex.split('-')[-1] for ex in exercises]
 
-    # Set up the figure and subplots
-    fig, axs = plt.subplots(2, 3, figsize=(14, 10))
-
     bar_width = 0.35
     index = np.arange(len(exercises))
 
@@ -201,6 +198,8 @@ def plot_csv_metrics(data, file_name, label):
 
 
 
+    # Set up the figure and subplots
+    # fig, axs = plt.subplots(2, 3, figsize=(14, 10))
     # # Plot 1: Avg Precision and Recall for Edges
     # axs[0, 0].bar(index - bar_width / 2, edges_precision_avg, bar_width, label='Precision', color=prec_color)
     # axs[0, 0].bar(index + bar_width / 2, edges_recall_avg, bar_width, label='Recall', color=rec_color)

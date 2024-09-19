@@ -145,7 +145,7 @@ measures:
 
                         if (yamlData) {
                             let text_loaded = ""
-                            text_loaded = jsyaml.dump(yamlData.output[0]);
+                            text_loaded = jsyaml.dump(yamlData.output[yamlData.output.length-1]);
                             document.getElementById('yaml_llm').value = text_loaded;
                         }
                     };
