@@ -103,7 +103,7 @@ gpt:
         - from: PURCHASE
           to: PURCHASE.date
 
-      Please double-check that: (i) the dependency graph is connected; (ii) functional dependencies are 
+      Please double-check that: (i) the dependency graph is fully connected; (ii) functional dependencies are 
       directed from the determinant attribute(s) (e.g., city) to the dependent attributes(s) (e.g., country);
       (iii) all FDs are returned (i.e., all attributes from the original schema are included).
 
