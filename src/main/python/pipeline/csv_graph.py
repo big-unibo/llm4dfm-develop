@@ -45,4 +45,4 @@ for row in csv_file:
     for metr in metrics[ex]:
         metrics[ex][metr].append(row[metr])
 
-plot_csv_metrics(metrics, Path(file_path).parent)
+plot_csv_metrics(metrics, Path(file_path).parent, input_config['dir_label'])

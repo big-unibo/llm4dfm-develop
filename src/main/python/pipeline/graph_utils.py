@@ -104,7 +104,7 @@ def get_metrics_edges(ground_truth, generated):
 
     return precision, recall, f1, tp_count, fn_count, fp_count
 
-def plot_csv_metrics(data, file_name):
+def plot_csv_metrics(data, file_name, label):
     # Function to calculate average
     def calculate_average(values):
         values = [float(v) for v in values]
@@ -146,7 +146,7 @@ def plot_csv_metrics(data, file_name):
     ax1.set_ylim(ax_limits)
     ax1.legend()
     fig1.tight_layout()
-    fig1.savefig(f"{file_name}/graph-precision_recall_edges.pdf", format='pdf')
+    fig1.savefig(f"{file_name}/{label}-graph-precision_recall_edges.pdf", format='pdf')
 
     # Plot 2: Avg Precision and Recall for Nodes
     fig2, ax2 = plt.subplots()
@@ -160,7 +160,7 @@ def plot_csv_metrics(data, file_name):
     ax2.set_ylim(ax_limits)
     ax2.legend()
     fig2.tight_layout()
-    fig2.savefig(f"{file_name}/graph-precision_recall_nodes.pdf", format='pdf')
+    fig2.savefig(f"{file_name}/{label}-graph-precision_recall_nodes.pdf", format='pdf')
 
     # Calculate average F1 scores for the line chart
     edges_f1_avg = [calculate_average(data[ex]['edges_f1']) for ex in exercises]
@@ -176,7 +176,7 @@ def plot_csv_metrics(data, file_name):
     ax3.set_ylim(ax_limits)
     ax3.legend()
     fig3.tight_layout()
-    fig3.savefig(f"{file_name}/graph-f1_scores_edges_nodes.pdf", format='pdf')
+    fig3.savefig(f"{file_name}/{label}-graph-f1_scores_edges_nodes.pdf", format='pdf')
 
     # Plot 4: Boxplot of F1 Measure for Edges
     fig4, ax4 = plt.subplots()
@@ -186,7 +186,7 @@ def plot_csv_metrics(data, file_name):
     ax4.set_ylim(ax_limits)
     ax4.set_title('Boxplot of F1 Measure for Edges')
     fig4.tight_layout()
-    fig4.savefig(f"{file_name}/graph-boxplot_f1_edges.pdf", format='pdf')
+    fig4.savefig(f"{file_name}/{label}-graph-boxplot_f1_edges.pdf", format='pdf')
 
     # Plot 5: Boxplot of F1 Measure for Nodes
     fig5, ax5 = plt.subplots()
@@ -196,7 +196,10 @@ def plot_csv_metrics(data, file_name):
     ax5.set_ylim(ax_limits)
     ax5.set_title('Boxplot of F1 Measure for Nodes')
     fig5.tight_layout()
-    fig5.savefig(f"{file_name}/graph-boxplot_f1_nodes.pdf", format='pdf')
+    fig5.savefig(f"{file_name}/{label}-graph-boxplot_f1_nodes.pdf", format='pdf')
+
+
+
 
     # # Plot 1: Avg Precision and Recall for Edges
     # axs[0, 0].bar(index - bar_width / 2, edges_precision_avg, bar_width, label='Precision', color=prec_color)
@@ -208,7 +211,7 @@ def plot_csv_metrics(data, file_name):
     # axs[0, 0].set_xticklabels(ex_indexes)
     # axs[0, 0].set_ylim(ax_limits)
     # axs[0, 0].legend()
-    #
+    
     # # Plot 2: Avg Precision and Recall for Nodes
     # axs[0, 1].bar(index - bar_width / 2, nodes_precision_avg, bar_width, label='Precision', color=prec_color)
     # axs[0, 1].bar(index + bar_width / 2, nodes_recall_avg, bar_width, label='Recall', color=rec_color)
@@ -219,11 +222,11 @@ def plot_csv_metrics(data, file_name):
     # axs[0, 1].set_xticklabels(ex_indexes)
     # axs[0, 1].set_ylim(ax_limits)
     # axs[0, 1].legend()
-    #
+    
     # # Calculate average F1 scores for the line chart
     # edges_f1_avg = [calculate_average(data[ex]['edges_f1']) for ex in exercises]
     # nodes_f1_avg = [calculate_average(data[ex]['nodes_f1']) for ex in exercises]
-    #
+    
     # # Plot 3: Line chart of Avg F1 Scores for Edges and Nodes
     # axs[0, 2].plot(ex_indexes, edges_f1_avg, color=f1_edges_color, label='Avg F1 of Edges')
     # axs[0, 2].plot(ex_indexes, nodes_f1_avg, color=f1_nodes_color, label='Avg F1 of Nodes')

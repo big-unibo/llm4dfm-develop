@@ -43,7 +43,9 @@ gpt:
       listing the coarser attribute(s); 
       (4) the "dependencies" list also includes an item from the fact to each dimension, and one from 
       the fact to each measure; 
-      (5) if a dependency is from and/or to a combination of attributes, they should be comma-separated.
+      (5) if a dependency is from and/or to a combination of attributes, they should be comma-separated;
+      (6) all attributes and measure names must be prefixed by the name (in uppercases) of the table 
+      they belong to (for instance, PERSON.Address).
 
       For instance, let this relational schema be given:
 

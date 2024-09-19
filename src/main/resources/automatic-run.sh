@@ -7,7 +7,7 @@ model_label=""
 dir_label=""
 PY_PROG="../python/pipeline/pipeline.py"
 GRAPH_PROG="../python/pipeline/csv_graph.py"
-t_sleep=6
+t_sleep=0
 # VIS_PROG="../python/pipeline/visualisation.py"
 
 # Define the components of the regex pattern as variables

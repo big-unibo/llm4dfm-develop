@@ -193,12 +193,27 @@ measures:
 
         function parseYAML(input) {
             try {
-                return jsyaml.load(input);
+                return removeWhitespacesFromValues(jsyaml.load(input));
             } catch (e) {
                 console.error(e);
                 return null;
             }
         }
+
+        function removeWhitespacesFromValues(obj) {
+            // Recursively traverse the object
+            for (let key in obj) {
+                if (typeof obj[key] === 'object' && obj[key] !== null) {
+                    // If the value is an object or array, recurse
+                    removeWhitespacesFromValues(obj[key]);
+                } else if (typeof obj[key] === 'string') {
+                    // If the value is a string, remove all whitespaces
+                    obj[key] = obj[key].replace(/\s+/g, '').replaceAll('_','');
+                }
+            }
+            return obj;
+        }
+
 
         function extractGraphData(yaml) {
             const nodes = new Map();
@@ -211,6 +226,8 @@ measures:
                 if (yaml.dependencies) {
                     yaml.dependencies.forEach(dep => {
                         if (!dep.refinements || dep.refinements !== 'created') {
+                            dep.from = "n_" + dep.from;
+                            dep.to = "n_" + dep.to;
                             edges.add({ from: dep.from, to: dep.to, role: dep.role });
                             nodes.set(dep.from, { id: dep.from });
                             nodes.set(dep.to, { id: dep.to });
@@ -220,7 +237,7 @@ measures:
 
                 // Handle fact
                 if (yaml.fact && yaml.fact.name) {
-                    factNode = yaml.fact.name;
+                    factNode = "n_" + yaml.fact.name;
                     nodes.set(factNode, { id: factNode, tag: 'fact' });
                 }
 
@@ -228,6 +245,7 @@ measures:
                 if (yaml.measures) {
                     yaml.measures.forEach(measure => {
                         if (measure.name) {
+                            measure.name = "n_" + measure.name;
                             measures.add(measure.name);
                             nodes.set(measure.name, {id: measure.name, tag: 'measure'});
                         }
@@ -244,6 +262,13 @@ measures:
                 }
             }
             return { nodes: Array.from(nodes.values()), edges: Array.from(edges) };
+        }
+
+        function getNodeTitle(title){
+            if(title.startsWith("n_"))
+                return title.slice(2);
+            else 
+                return title;
         }
 
         function getColorByTag(tag) {
@@ -269,6 +294,7 @@ measures:
 
             // First, identify the fact node
             graph.nodes.forEach(node => {
+                node.id = node.id.replace(/\s/g,'')
                 if (node.tag === 'fact') {
                     factNodeId = node.id;
                 }
@@ -282,7 +308,7 @@ measures:
                     // Display the fact node as a square, uppercase, and underlined
                     nodes.push({
                         id: node.id,
-                        label: `${node.id.toUpperCase()}\n\n${measureList}`,  // Combine fact and measures
+                        label: `${getNodeTitle(node.id).toUpperCase()}\n\n${measureList}`,  // Combine fact and measures
                         shape: 'box',  // Shape as square
                         font: {
                             color: 'black',
@@ -291,7 +317,7 @@ measures:
                         },
                         color: { border: 'black', background: 'white' }, // White square
                         shapeProperties: { borderRadius: 0 }, // Sharp corners
-                        title: node.id
+                        title: getNodeTitle(node.id)
                     });
                 } else if (node.tag === 'dimension' && node.id !== factNodeId) {
                     // For dimension nodes (directly connected to fact) set them to light blue
@@ -299,7 +325,7 @@ measures:
                         id: node.id,
                         label: polishNodeName(node.id),
                         color: { border: 'black', background: 'lightblue' }, // Lightblue for dimensions
-                        title: node.id
+                        title: getNodeTitle(node.id)
                     });
                 } else if (node.tag !== 'measure') {
                     // For all other nodes (non-measures), set background to white
@@ -307,7 +333,7 @@ measures:
                         id: node.id,
                         label: polishNodeName(node.id),
                         color: { border: 'black', background: 'white' },  // Set background to white for other nodes
-                        title: node.id
+                        title: getNodeTitle(node.id)
                     });
                 }
             });
@@ -350,6 +376,13 @@ measures:
             const nodes = [];
             const edges = [];
 
+            graph1.nodes.forEach(node => {
+                node.id = node.id.replace(/\s/g,'')
+            })
+            graph2.nodes.forEach(node => {
+                node.id = node.id.replace(/\s/g,'')
+            })
+
             const allNodes = new Map();
             graph2.nodes.forEach(node => allNodes.set(node.id.toLowerCase(), { ...node, casedname: node.id, color: 'red' }));
             graph1.nodes.forEach(node => {
@@ -379,7 +412,7 @@ measures:
             let falseNegativeEdges = 0;
 
             allNodes.forEach((node, id) => {
-                nodes.push({ id: node.id.toLowerCase(), label: polishNodeName(node.casedname), color: { border: 'black', background: node.color }, title: node.id });
+                nodes.push({ id: node.id.toLowerCase(), label: polishNodeName(node.casedname), color: { border: 'black', background: node.color }, title: getNodeTitle(node.id) });
                 if (node.color === 'lightgreen') truePositiveNodes++;
                 if (node.color === 'red') falsePositiveNodes++;
                 if (node.color === 'lightgrey') falseNegativeNodes++;
@@ -473,6 +506,9 @@ measures:
         }
 
         function polishNodeName(name) {
+            if(name.startsWith("n_")){
+                name = name.slice(2);
+            }
             return name.split(',').map(part => {
                 const [prefix, suffix] = part.trim().split('.');
                 if (suffix) {
