@@ -235,26 +235,25 @@ def plot_csv_metrics(data, file_name, label):
     # axs[0, 2].set_title('Average F1 Score for Edges and Nodes')
     # axs[0, 2].set_ylim(ax_limits)
     # axs[0, 2].legend()
-    #
+    
     # # Plot 4: Boxplot of F1 Measure for Edges
     # axs[1, 0].boxplot(edges_f1, labels=ex_indexes)
     # axs[1, 0].set_xlabel('Exercise')
     # axs[1, 0].set_ylabel('F1 Score')
     # axs[1, 0].set_ylim(ax_limits)
     # axs[1, 0].set_title('Boxplot of F1 Measure for Edges')
-    #
+    
     # # Plot 5: Boxplot of F1 Measure for Nodes
     # axs[1, 1].boxplot(nodes_f1, labels=ex_indexes)
     # axs[1, 1].set_xlabel('Exercise')
     # axs[1, 1].set_ylabel('F1 Score')
     # axs[1, 1].set_ylim(ax_limits)
     # axs[1, 1].set_title('Boxplot of F1 Measure for Nodes')
-    #
+    
     # # Hide the empty subplot (bottom right)
     # axs[1, 2].axis('off')
-    # # Save the figure as a PDF
-    # plt.savefig(f"{file_name}/my-graph.pdf", format='pdf')
-    #
+    # plt.savefig(f"{file_name}.pdf", format='pdf')
+    
     # # Adjust layout
     # plt.tight_layout()
     # plt.show()

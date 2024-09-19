@@ -192,7 +192,7 @@ def store_output(model_config, ex_config, model_output, imported, metrics, times
     os.makedirs(f'{outputs}{dir_label}', exist_ok=True)
 
     error = ""
-    if not metrics:
+    if metrics=={}:
         error = "-error"
 
     with open(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}.yml', 'w+', encoding='utf-8') as outfile:
