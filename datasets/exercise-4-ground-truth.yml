@@ -21,7 +21,7 @@ supply_driven:
     - from: ARRIVALS
       to: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
     - from: ARRIVALS
-      to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+      to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
     - from: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
       to: GRAND_PRIXS.Date
     - from: GRAND_PRIXS.Date,GRAND_PRIXS.CircuitName
@@ -30,15 +30,15 @@ supply_driven:
       to: RACING_CIRCUITS.City
     - from: RACING_CIRCUITS.CircuitName
       to: RACING_CIRCUITS.Description
-    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
       to: DRIVERS.Name,DRIVERS.Surname
-    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
       to: CARS.Number
-    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
       to: DRIVES.Year
-    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
       to: DRIVES.FromDate
-    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Name,DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
       to: DRIVES.ToDate
     - from: DRIVERS.Name,DRIVERS.Surname
       to: DRIVERS.Name
@@ -54,29 +54,29 @@ supply_driven:
       to: RACING_STABLES.Manager
 demand_driven:
   fact:
-    name: ARRIVALS
+    name: ARRIVAL
   measures:
     - name: Position
     - name: Time
     - name: Score
     - name: NumberOfLaps
   dependencies:
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: NumberOfLaps
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: Time
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: Score
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: Position
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: Circuit
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: Driver
-    - from: ARRIVALS
+    - from: ARRIVAL
       to: Date
-    - from: ARRIVALS
-      to: Car
+    - from: ARRIVAL
+      to: CarNumber
     - from: Circuit
       to: City
     - from: Circuit
@@ -87,7 +87,7 @@ demand_driven:
       to: Surname
     - from: Driver
       to: Age
-    - from: Car
+    - from: CarNumber
       to: Stable
     - from: Stable
       to: MainAddress

@@ -25,22 +25,15 @@ supply_driven:
       to: SUPPLIERS.SupplierAddress
 demand_driven:
   fact:
-    name: SoftwareInstallations
+    name: INSTALLATION
   measures:
-    - name: InstallationsCount
   dependencies:
-    - from: SoftwareInstallations
-      to: InstallationsCount
-    - from: SoftwareInstallations
-      to: Day
-    - from: SoftwareInstallations
+    - from: INSTALLATION
+      to: Date
+    - from: INSTALLATION
       to: Computer
-    - from: SoftwareInstallations
+    - from: INSTALLATION
       to: Software
-    - from: Day
-      to: Month
-    - from: Month
-      to: Year
     - from: Computer
       to: Model
     - from: Computer

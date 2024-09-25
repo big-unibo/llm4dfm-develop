@@ -65,58 +65,59 @@ supply_driven:
       to: STORES.Type
 demand_driven:
   fact:
-    name: Purchase
+    name: PURCHASE
   measures:
     - name: amount
     - name: exchange
   dependencies:
-    - from: Purchase
+    - from: PURCHASE
       to: store
-    - from: Purchase
-      to: credit_card
-    - from: Purchase
-      to: day
-    - from: Purchase
+    - from: PURCHASE
+      to: creditCard
+    - from: PURCHASE
+      to: date
+    - from: PURCHASE
       to: amount
-    - from: Purchase
+    - from: PURCHASE
       to: exchange
     - from: store
-      to: name
+      to: storeName
     - from: store
-      to: address
+      to: storeAddress
     - from: store
-      to: store_type
+      to: storeType
     - from: store
       to: country
     - from: country
       to: area
     - from: holder
-      to: first_name
+      to: firstName
     - from: holder
-      to: last_name
+      to: lastName
     - from: holder
       to: age
     - from: holder
       to: job
     - from: holder
-      to: income_range
-    - from: credit_card
-      to: credit_card_type
-    - from: credit_card
+      to: incomeRange
+    - from: creditCard
+      to: creditCardType
+    - from: creditCard
       to: holder
-    - from: credit_card
-      to: expiration_date
-    - from: credit_card
-      to: credit_limit
-    - from: credit_card_type
-      to: issuing_bank
-    - from: credit_card_type
+    - from: creditCard
+      to: date
+      role: expiration
+    - from: creditCard
+      to: creditLimit
+    - from: creditCardType
+      to: issuingBank
+    - from: creditCardType
       to: circuit
-    - from: issuing_bank
-      to: address
-    - from: issuing_bank
+    - from: issuingBank
+      to: issuingBankAddress
+    - from: issuingBank
       to: country
-    - from: credit_card_type
+    - from: creditCardType
       to: color
-    - from: credit_card_type
-      to: card_name
+    - from: creditCardType
+      to: creditCardName

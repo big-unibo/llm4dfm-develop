@@ -23,7 +23,7 @@ supply_driven:
     - from: CUSTOMERS.CustomerCode
       to: CUSTOMERS.Name
     - from: CUSTOMERS.CustomerCode
-      to: CUSTOMERS.Surame
+      to: CUSTOMERS.Surname
     - from: CUSTOMERS.CustomerCode
       to: CUSTOMERS.DocumentId
     - from: CUSTOMERS.CustomerCode

@@ -42,20 +42,20 @@ supply_driven:
       role: managerCode
 demand_driven:
   fact:
-    name: StaffTransfer
+    name: TRANSFER
   measures:
   dependencies:
-    - from: StaffTransfer
-      to: TransferDate
-    - from: StaffTransfer
+    - from: TRANSFER
+      to: Date
+    - from: TRANSFER
       to: DepartmentCode
       role: to
-    - from: StaffTransfer
+    - from: TRANSFER
       to: DepartmentCode
       role: from
-    - from: StaffTransfer
+    - from: TRANSFER
       to: Reason
-    - from: StaffTransfer
+    - from: TRANSFER
       to: EmployeeCode
     - from: DepartmentCode
       to: DepartmentName
@@ -75,7 +75,8 @@ demand_driven:
     - from: EmployeeCode
       to: Qualification
     - from: EmployeeCode
-      to: RecruitmentDate
+      to: Date
+      role: Recruitment
     - from: EmployeeCode
       to: DepartmentCode
       role: current

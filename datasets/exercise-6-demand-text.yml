@@ -1,6 +1,2 @@
 text: |
-  Decision-makers are interested in analyzing the transfers of staff from one department to another on a
-  daily basis. Each transfer has a reason. Each staff member has an employee code, a name, a surname,
-  a gender, a qualification; besides, he/she is described by their recruitment date and their current department.
-  A department has a code and a name, and it belongs to one division. A division, in turn, has a code, a name, and
-  a manager (who is a staff member).
+  Decision-makers are interested in analyzing the transfers of staff from one department to another on a daily basis. Each transfer has a reason. Each employee has a unique code, a name, a surname, a gender, a qualification; besides, employees are described by their recruitment date and their current department. A department has a unique code and a name, and it belongs to one division. A division, in turn, has a unique code, a name, and a manager (who is an employee).

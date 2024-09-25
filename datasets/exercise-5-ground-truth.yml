@@ -38,18 +38,18 @@ supply_driven:
       to: WOD.WODtype
 demand_driven:
   fact:
-    name: DailyPresences
+    name: PRESENCE
   measures:
   dependencies:
-    - from: DailyPresences
+    - from: PRESENCE
       to: Member
-    - from: DailyPresences
+    - from: PRESENCE
       to: WOD
-    - from: DailyPresences
+    - from: PRESENCE
       to: Hour
-    - from: DailyPresences
-      to: Day
-    - from: DailyPresences
+    - from: PRESENCE
+      to: Date
+    - from: PRESENCE
       to: Instructor
     - from: Member
       to: Name
