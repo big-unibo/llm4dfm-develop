@@ -5,7 +5,7 @@ from tqdm import tqdm
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from utils import (load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
                    get_timestamp, output_as_valid_yaml, get_dir_label_name)
-from graph_utils import load_edges, load_nodes, get_metrics_edges, get_metrics_nodes
+from metrics import MetricsCalculator
 
 def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
@@ -23,6 +23,8 @@ args = parser.parse_args()
 
 model_config = load_yaml(f'{Path().absolute()}/../resources/pipeline-config.yml')
 key_config = load_yaml(f'{Path().absolute()}/../resources/credentials.yml')
+
+# Model loading
 
 if model_config['use'] == 'import':
     raise Exception('import not supported')
@@ -45,11 +47,9 @@ elif model_config['use'] == 'api':
 else:
     raise Exception("No models")
 
-model_outputs = []
-prompts = []
+# Argument parsing
 
 automatic_run = False
-exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 
 # Check if the --exercise argument is passed
 if args.exercise:
@@ -61,6 +61,8 @@ if args.exercise:
     exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
     ex_name = '-'.join(exercise.split('-')[:2])
     model_config['exercise']['name'] = ex_name
+else:
+    exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
 if args.p_version:
     automatic_run = True
     model_config['exercise']['prompt_version'] = args.p_version
@@ -76,6 +78,10 @@ if args.dir_label:
 
 model_config['output']['dir_label'] = get_dir_label_name(model_config['exercise']['version'], model_config['exercise']['prompt_version'], config['label'], model_config['output']['dir_label'])
 
+# Load prompts
+
+model_outputs = []
+prompts = []
 # As new indication, load context prompt and then text exercise and first prompt together
 first_prompt = load_text_and_first_prompt(exercise, model_config['exercise']['prompt_version'], config['name'])
 prompts.extend(first_prompt)
@@ -86,7 +92,8 @@ prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['
 # message, so one batch at a time) to batch first system and user input in a single batch
 first_batch = len(first_prompt) if is_model_without_chat_constraints(config['name']) else 1
 
-# batch text and prompts
+# Batch text and prompts
+
 with (tqdm(desc=f'Prompt {config["name"]}', total=len(prompts)) as bar_batch):
     if model_config['debug_prints']:
         print(prompts)
@@ -123,48 +130,12 @@ dep_gt = ground_truth['dependencies']
 meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
 fact_gt = ground_truth['fact']
 
-dep_gt_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_gt]
-meas_gt_to_use = {v.lower() for d in meas_gt for _, v in d.items()}
-fact_gt_to_use = fact_gt['name'].lower()
-edges_set_gt = load_edges(dep_gt_to_use)
-nodes_set_gt = load_nodes(edges_set_gt)
+metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt)
 
 for i, output in enumerate(model_outputs):
     try:
         dep_output, meas_output, fact_output = model_outputs[i]['dependencies'], model_outputs[i]['measures'] if model_outputs[i]['measures'] else set(), model_outputs[i]['fact']
-        dep_output_to_use = [{k.lower(): v.lower() for k, v in d.items()} for d in dep_output]
-        meas_output_to_use = {v.lower() for d in meas_output for _, v in d.items()}
-        fact_output_to_use = fact_output['name'].lower()
-        edges_set_output = load_edges(dep_output_to_use)
-        nodes_set_output = load_nodes(edges_set_output)
-        # Calculate metrics for edges and ground truth
-        precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges = get_metrics_edges(edges_set_gt,
-                                                                                                  edges_set_output)
-        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(nodes_set_gt,
-                                                                                                  nodes_set_output,
-                                                                                                  meas_gt_to_use,
-                                                                                                  meas_output_to_use,
-                                                                                                  fact_gt_to_use,
-                                                                                                  fact_output_to_use)
-        decimals = 4
-        metrics.insert(i, {
-            'edges': {
-                'tp': tp_edges,
-                'fn': fn_edges,
-                'fp': fp_edges,
-                'precision': round(precision_edges, decimals),
-                'recall': round(recall_edges, decimals),
-                'f1': round(f1_edges, decimals),
-            },
-            'nodes': {
-                'tp': tp_nodes,
-                'fn': fn_nodes,
-                'fp': fp_nodes,
-                'precision': round(precision_nodes, decimals),
-                'recall': round(recall_nodes, decimals),
-                'f1': round(f1_nodes, decimals),
-            }
-        })
+        metrics.insert(i, metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
     except:
         metrics.insert(i, {})
         print(f"Output {i}-th not correctly generated, skipped")

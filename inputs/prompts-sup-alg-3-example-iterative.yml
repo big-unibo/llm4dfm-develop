@@ -107,28 +107,36 @@ gpt:
       --- EXPAND TYPES: One arc is added to G, from TYPES.typeId to TYPES.typeName. There are no foreign keys in TYPES, so no more calls to EXPAND are done here.
 
       Return only the YAML without any further information/explanation.
+  - role: user
+    content: |
+      Let's go with the next step.
       
-      
-      3. REARRANGE G: In some cases, some additional FDs may be inferred having some knowledge of the 
+      REARRANGE G: In some cases, some additional FDs may be inferred having some knowledge of the 
       application domain. For instance, for geographical data, it often is city->region, region->state, 
       state->country, country->area (while normally it is not address->city). As another examples, 
       the model of a car normally functionally determines its brand. In this case, you should 
       add these FDs to G and remove those transitively implied.
       
-      4. RENAME THE FACT: Take the root of the tree, K, and rename it to the name of the relation chosen as a fact.
+      With reference to the example shown before, since we believe that REGIONS.state-> REGIONS.country,
+      add this arc and remove the transitive one from REGIONS.regId to REGIONS.country.
       
-      5. CHOOSE MEASURES: Label as measures the numerical attributes.
+      Return only the YAML without any further information/explanation.
+  - role: user
+    content: |
+      Let's go with the next step.
       
-
+      RENAME THE FACT: Take the root of the tree, K, and rename it to the name of the relation chosen as a fact.
       
-
+      With reference to the example shown before, rename the root (storeId, artId, date) to PURCHASE.
       
-
-      3. REARRANGE G: Since we believe that REGIONS.state-> REGIONS.country, add this arc and remove the transitive one from REGIONS.regId to REGIONS.country.
-
-      4. RENAME THE FACT: Rename the root (storeId, artId, date) to PURCHASE.
-
-      5. CHOOSE MEASURES: quantity and revenue are numerical, so label them as measures.
+      Return only the YAML without any further information/explanation.
+  - role: user
+    content: |
+      Let's go with the next step.
+      
+      CHOOSE MEASURES: Label as measures the numerical attributes.
+      
+      With reference to the example shown before, quantity and revenue are numerical, so label them as measures.
 
       The YAML expression of the DFM schema obtained in the end is the following:
 

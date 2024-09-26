@@ -1,0 +1,113 @@
+common:
+  equals:
+  - Date:
+    - day
+  - firstName:
+    - name
+  - lastName:
+    - surname
+  ignore:
+  - count
+  - month, year
+
+1:
+  equals:
+  - INSTALLATION:
+    - INSTALLATIONS
+    - SoftwareInstallations
+  - InstallationsCount:
+    - []
+
+2:
+  equals:
+  - storeAddress:
+    - address
+
+3:
+  equals:
+  - Name:
+    - storeName
+  - Address:
+    - storeAddress
+  - creditCardType:
+    - cardType
+    - type
+  - bankCountry:
+    - country
+    - issuingBankCountry
+  - issuingBankAddress:
+    - bankAddress
+  - cardName:
+    - creditCardName
+
+4:
+  equals:
+  - ARRIVALS:
+    - ARRIVAL
+  - Laps:
+    - numberOfLaps
+  - driverName:
+    - name
+  - driverSurname:
+    - surname
+  - mainAddress:
+    - address
+    - stableAddress
+  - age:
+    - driverAge
+
+5:
+  equals:
+  - PRESENCE:
+    - DailyPresence
+    - PRESENCES
+  - memberName:
+    - name
+  - memberSurname:
+    - surname
+  - type:
+    - WODType
+
+6:
+  equals:
+  - staffTransfer:
+    - TRANSFER:TRANSFERS
+  - staff:
+    - employee
+  - employeeName:
+    - name
+  - employeeSurname:
+    - surname
+
+7:
+  equals:
+  - RENTAL:
+    - RENTALS
+  - Plate:
+    - carPlate
+
+8:
+  equals:
+  - numberOfBags:
+    - bagsBoarded
+  - name:
+    - passengerName
+  - surname:
+    - passengerSurname
+  - gender:
+    - passengerGender
+  - time:
+    - checkinTime
+  - departureDelay:
+    - delayDeparture
+  - arrivalDelay:
+    - delayArrival
+
+9:
+  equals:
+  - ROUTE:
+    - ROUTE_IN_TICKET
+  - Capacity:
+    - trainCapacity
+  - Birthdate:
+    - customerBirthdate

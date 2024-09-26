@@ -5,7 +5,7 @@ import networkx as nx
 import matplotlib.lines as mlines
 import argparse
 
-from graph_utils import load_edges, load_nodes
+from metrics import load_edges, load_nodes
 from visualisation_utils import (preprocess_dependencies_attributes, store_image, short_names_from_tables,
                                  get_tp_fn_fp_edges_to_list)
 from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name, get_dir_label_name
