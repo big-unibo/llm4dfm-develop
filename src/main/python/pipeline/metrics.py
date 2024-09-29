@@ -1,3 +1,8 @@
+import argparse
+from pathlib import Path
+
+from utils import load_ground_truth_exercise, load_output_exercise, load_yaml, append_metrics
+
 # Turns a table attribute to first letter capitalized to obtain a uniform comparison between gt and output
 def get_clean_table_attribute(table_attr):
     if ',' in table_attr:
@@ -173,3 +178,65 @@ class MetricsCalculator:
          self.out_edges_set,
          self.out_nodes_set) = _calc_preprocess(self.out_raw['dependencies'], self.out_raw['measures'],
                                                     self.out_raw['fact'])
+
+if __name__ == '__main__':
+
+    # Load config
+    input_config = load_yaml(f'{Path().absolute()}/../resources/metrics-config.yml')
+
+    parser = argparse.ArgumentParser(description="Process some configuration.")
+    parser.add_argument('--exercise', help='Exercise to use')
+    parser.add_argument('--exercise_gt', help='Exercise gt to use')
+    parser.add_argument('--dir', help='Directory containing ex inside output')
+    parser.add_argument('--demand', help='State if exercise is demand driven')
+    args = parser.parse_args()
+
+    ex_config = input_config['exercise']
+
+    if args.exercise:
+        ex_config['name'] = args.exercise
+    if args.exercise_gt:
+        ex_config['gt'] = args.exercise_gt
+    if args.dir:
+        ex_config['dir'] = args.dir
+    if args.demand:
+        ex_config['demand'] = args.demand
+    # Load exercise
+    ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
+
+    # Calculate metrics
+    ground_truth = load_ground_truth_exercise(ex_config['gt'])
+
+    if ex_config['demand']:
+        ground_truth = ground_truth['demand_driven']
+    else:
+        ground_truth = ground_truth['supply_driven']
+
+    metrics = []
+
+    dep_gt = ground_truth['dependencies']
+    meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
+    fact_gt = ground_truth['fact']
+
+    metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt)
+
+    outputs_to_use = []
+
+    if isinstance(ex_output, dict):
+        if 'output' in ex_output:
+            outputs_to_use = ex_output['output']
+        else:
+            if isinstance(ex_output, list):
+                outputs_to_use = ex_output
+            else:
+                outputs_to_use.append(ex_output)
+
+    for i, output in enumerate(outputs_to_use):
+        try:
+            dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else set(), output['fact']
+            metrics.insert(i, metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
+        except:
+            metrics.insert(i, {})
+            print(f"Output {i}-th not correctly generated, skipped")
+
+    append_metrics(ex_config['dir'], ex_config['name'], metrics)

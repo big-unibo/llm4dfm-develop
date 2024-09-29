@@ -134,7 +134,7 @@ metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt)
 
 for i, output in enumerate(model_outputs):
     try:
-        dep_output, meas_output, fact_output = model_outputs[i]['dependencies'], model_outputs[i]['measures'] if model_outputs[i]['measures'] else set(), model_outputs[i]['fact']
+        dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else set(), output['fact']
         metrics.insert(i, metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
     except:
         metrics.insert(i, {})

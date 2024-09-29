@@ -29,22 +29,21 @@ def load_yaml(yaml_file) -> dict:
     with open(yaml_file, 'r', encoding='utf-8') as file:
         return yaml.safe_load(file)
 
+def write_yaml(yaml_file, data):
+    with open(yaml_file, 'w+', encoding='utf-8') as file:
+        yaml.dump(data, file)
+
 def load_csv(file_name):
-    with open(f'{outputs}{file_name}.csv', 'r', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return [row for row in reader]
+    return load_full_path_csv(f'{outputs}{file_name}.csv')
 
 def load_full_path_csv(path):
     with open(f'{path}', 'r', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         return [row for row in reader]
 
-
 # return the text of exercise given ex_name
 def load_text_exercise(ex_name):
-    with open(f'{datasets}{ex_name}-text.yml', 'r', encoding='utf-8') as file:
-        ex_text = yaml.safe_load(file)
-    return ex_text['text']
+    return load_yaml(f'{datasets}{ex_name}-text.yml')['text']
 
 
 # return the ground truth of exercise given ex_name
@@ -53,9 +52,14 @@ def load_ground_truth_exercise(ex_name, full_name=''):
         file_name = '-'.join(full_name.split('-')[:2])
     else:
         file_name = ex_name
-    with open(f'{datasets}{file_name}-ground-truth.yml', 'r', encoding='utf-8') as file:
-        ex_ground_truth = yaml.safe_load(file)
-    return ex_ground_truth
+    return load_yaml(f'{datasets}{file_name}-ground-truth.yml')
+
+
+# load output exercise used in second-step and its filename (used after to store the image)
+def load_output_exercise(dir_name, full_name):
+    exercise = full_name + '.yml'
+
+    return load_yaml(f'{outputs}{dir_name}/{exercise}')
 
 
 # load output exercise used in second-step and its filename (used after to store the image)
@@ -117,16 +121,12 @@ def load_output_exercise_and_name(dir_name, ex_name, version, prompt_version, mo
             else:
                 exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp)) + '.yml'
 
-    with open(f'{outputs}{dir_name}/{exercise}', 'r', encoding='utf-8') as file:
-        ex_output = yaml.safe_load(file)
-    return ex_output, exercise
+    return load_yaml(f'{outputs}{dir_name}/{exercise}'), exercise
 
 
 # return prompts of exercise as a dict given ex_name and model_name
 def load_prompts(version, model_name):
-    with open(f'{inputs}prompts-{version}.yml', 'r', encoding='utf-8') as file:
-        ex_prompts = yaml.safe_load(file)
-    return ex_prompts[model_name]
+    return load_yaml(f'{inputs}prompts-{version}.yml')[model_name]
 
 
 # Map output to a valid yaml as dict
@@ -178,6 +178,13 @@ def config_to_print_api_model(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
+def append_metrics(dir_label, file, metrics):
+    old_yaml = load_yaml(f'{outputs}{dir_label}/{file}.yml')
+    old_yaml['metrics'] = metrics
+    write_yaml(f'{outputs}{dir_label}/{file}.yml', old_yaml)
+
+# write model_output in file ex_name-model-timestamp.yml
+# model_output is the list of outputs
 def store_output(model_config, ex_config, model_output, imported, metrics, timestamp, dir_label):
     results_output = {
         'config': config_to_print_import_model(model_config) if imported else config_to_print_api_model(model_config),
@@ -195,8 +202,7 @@ def store_output(model_config, ex_config, model_output, imported, metrics, times
     if metrics=={}:
         error = "-error"
 
-    with open(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}.yml', 'w+', encoding='utf-8') as outfile:
-        yaml.dump(results_output, outfile, default_flow_style=False, sort_keys=False, allow_unicode=True)
+    write_yaml(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}.yml', results_output)
 
 def get_output_file_name(ex_version, prompt_version, model):
     return f'output-{ex_version}-{prompt_version}-{model}.csv'

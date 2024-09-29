@@ -1,0 +1,5 @@
+exercise:
+  dir: 'LLM-rizzi'
+  name: 'rq4-tc1-ste'
+  demand: true
+  gt: 'exercise-1'
