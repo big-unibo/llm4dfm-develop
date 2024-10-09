@@ -1,0 +1,157 @@
+demand:
+  common:
+    equals:
+    - Date:
+      - day
+    - firstName:
+      - name
+    - lastName:
+      - surname
+    ignore:
+    - count
+    - month
+    - year
+
+supply:
+  common:
+    equals: []
+    ignore: []
+
+1:
+  demand:
+    equals:
+    - INSTALLATION:
+      - INSTALLATIONS
+      - SoftwareInstallations
+    ignore:
+    - InstallationsCount
+  supply:
+    equals: []
+    ignore: []
+
+2:
+  demand:
+    equals:
+    - storeAddress:
+      - address
+  supply:
+    equals: []
+    ignore: []
+
+3:
+  demand:
+    equals:
+    - Name:
+      - storeName
+    - Address:
+      - storeAddress
+    - creditCardType:
+      - cardType
+      - type
+    - bankCountry:
+      - country
+      - issuingBankCountry
+    - issuingBankAddress:
+      - bankAddress
+    - cardName:
+      - creditCardName
+  supply:
+    equals: []
+    ignore: []
+
+4:
+  demand:
+    equals:
+    - ARRIVALS:
+      - ARRIVAL
+    - Laps:
+      - numberOfLaps
+    - driverName:
+      - name
+    - driverSurname:
+      - surname
+    - mainAddress:
+      - address
+      - stableAddress
+    - age:
+      - driverAge
+  supply:
+    equals: []
+    ignore: []
+
+5:
+  demand:
+    equals:
+    - PRESENCE:
+      - DailyPresence
+      - PRESENCES
+    - memberName:
+      - name
+    - memberSurname:
+      - surname
+    - type:
+      - WODType
+  supply:
+    equals: []
+    ignore: []
+
+6:
+  demand:
+    equals:
+    - staffTransfer:
+      - TRANSFER
+      - TRANSFERS
+    - staff:
+      - employee
+    - employeeName:
+      - name
+    - employeeSurname:
+      - surname
+  supply:
+    equals: []
+    ignore: []
+
+7:
+  demand:
+    equals:
+    - RENTAL:
+      - RENTALS
+    - Plate:
+      - carPlate
+  supply:
+    equals: []
+    ignore: []
+
+8:
+  demand:
+    equals:
+    - numberOfBags:
+      - bagsBoarded
+    - name:
+      - passengerName
+    - surname:
+      - passengerSurname
+    - gender:
+      - passengerGender
+    - time:
+      - checkinTime
+    - departureDelay:
+      - delayDeparture
+    - arrivalDelay:
+      - delayArrival
+  supply:
+    equals: []
+    ignore: []
+
+9:
+  demand:
+    equals:
+    - ROUTE:
+      - ROUTE_IN_TICKET
+    - Capacity:
+      - trainCapacity
+    - Birthdate:
+      - customerBirthdate
+  supply:
+    equals: []
+    ignore: []

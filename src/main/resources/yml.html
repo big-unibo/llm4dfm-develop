@@ -144,9 +144,16 @@ measures:
 
 
                         if (yamlData) {
-                            let text_loaded = ""
-                            text_loaded = jsyaml.dump(yamlData.output[yamlData.output.length-1]);
-                            document.getElementById('yaml_llm').value = text_loaded;
+                            let text_loaded_out = ""
+                            if (yamlData.hasOwnProperty('output_preprocessed')) {
+                                text_loaded_out = jsyaml.dump(yamlData.output_preprocessed[yamlData.output_preprocessed.length-1]);
+                            } else {
+                                text_loaded_out = jsyaml.dump(yamlData.output[yamlData.output.length-1]);
+                            }
+                            document.getElementById('yaml_llm').value = text_loaded_out;
+                            if (yamlData.hasOwnProperty('gt_preprocessed')) {
+                                document.getElementById('yaml_gt').value = jsyaml.dump(yamlData.gt_preprocessed);
+                            }
                         }
                     };
                     reader.readAsText(file)
