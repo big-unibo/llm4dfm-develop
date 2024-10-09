@@ -70,20 +70,20 @@ supply_driven:
       to: TRAIN_TYPE.TrainType
 demand_driven:
   fact:
-    name: TicketAnalysis
+    name: ROUTE_IN_TICKET
   measures:
     - name: price
     - name: distance
-    - name: base_fare
-    - name: time_duration
+    - name: baseFare
+    - name: timeDuration
   dependencies:
     - from: route
-      to: station_name
+      to: stationName
       role: departure
     - from: route
-      to: station_name
+      to: stationName
       role: arrival
-    - from: station_name
+    - from: stationName
       to: location
     - from: location
       to: city
@@ -92,39 +92,40 @@ demand_driven:
     - from: trip
       to: status
     - from: trip
-      to: train_code
+      to: trainCode
     - from: trip
       to: date
-    - from: train_code
-      to: train_type
-    - from: train_type
+    - from: trainCode
+      to: trainType
+    - from: trainType
       to: capacity
     - from: ticket
-      to: customer_code
+      to: customerCode
     - from: ticket
       to: date
       role: purchase
-    - from: customer_code
-      to: customer_name
-    - from: customer_code
-      to: customer_surname
-    - from: customer_code
-      to: customer_birthdate
-    - from: customer_code
-      to: customer_city_of_birth
-    - from: customer_code
-      to: customer_document_id
-    - from: TicketAnalysis
+    - from: customerCode
+      to: customerName
+    - from: customerCode
+      to: customerSurname
+    - from: customerCode
+      to: customerBirthdate
+    - from: customerCode
+      to: city
+      role: birth
+    - from: customerCode
+      to: documentId
+    - from: ROUTE_IN_TICKET
       to: ticket
-    - from: TicketAnalysis
+    - from: ROUTE_IN_TICKET
       to: route
-    - from: TicketAnalysis
+    - from: ROUTE_IN_TICKET
       to: trip
-    - from: TicketAnalysis
+    - from: ROUTE_IN_TICKET
       to: price
-    - from: TicketAnalysis
+    - from: ROUTE_IN_TICKET
       to: distance
-    - from: TicketAnalysis
-      to: base_fare
-    - from: TicketAnalysis
-      to: time_duration
+    - from: ROUTE_IN_TICKET
+      to: baseFare
+    - from: ROUTE_IN_TICKET
+      to: timeDuration

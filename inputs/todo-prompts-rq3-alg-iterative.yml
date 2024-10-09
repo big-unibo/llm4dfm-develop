@@ -10,7 +10,7 @@ gpt:
       corresponds to a functional dependency (FD).
 
       The output I expect is a DFM schema in YAML formatted as follows: 
-      (1) the fact is a “fact” tag including a “name” tag; 
+      (1) the fact is a "fact" tag including a "name" tag; 
       (2) all measures are listed inside a "measures" tag, each is an empty item containing a "name" tag; 
       (3) all functional dependencies between attributes in a hierarchy are listed inside a "dependencies" tag: 
       each is an empty item containing a "from" tag, listing the finer attribute(s), and a "to" tag, 
