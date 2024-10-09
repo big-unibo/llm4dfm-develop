@@ -307,12 +307,15 @@ if __name__ == '__main__':
     if 'gt_preprocessed' not in ex_output:
         print('using standard ground truth')
     # Calculate metrics
-    ground_truth = ex_output['gt_preprocessed'] if 'gt_preprocessed' in ex_output else load_ground_truth_exercise(ex_config['gt'])
 
-    # if ex_config['demand']:
-    #     ground_truth = ground_truth['demand_driven']
-    # else:
-    #     ground_truth = ground_truth['supply_driven']
+    if 'gt_preprocessed' in ex_output:
+        ground_truth = ex_output['gt_preprocessed']
+    else:
+        ground_truth = load_ground_truth_exercise(ex_config['gt'])
+        if ex_config['demand']:
+            ground_truth = ground_truth['demand_driven']
+        else:
+            ground_truth = ground_truth['supply_driven']
 
     metrics = []
 
