@@ -17,7 +17,9 @@
 All pipeline python files are collected in `src/main/python/pipeline` module.
 
 - `models.py   -- contains model's utils`
-- `pipeline.py -- contains the process of importing, batching and calculating metrixs`
+- `pipeline.py -- contains the whole process of importing, batching, querying and storing metrics`
+- `metrics.py -- contains the process of calculating metrics`
+- `preprocess.py -- contains the preprocessing phase`
 - `utils.py    -- contains general utils`
 - `csv_graph.py    -- contains the process which generates graphs`
 - `visualisation.py -- contains the process of visualization of the output`
@@ -28,6 +30,8 @@ All pipeline python files are collected in `src/main/python/pipeline` module.
 Configuration files, script to automate run are collected in `src/resources` module.
 
 - `pipeline-config.yml  -- contains configuration of the run`
+- `metrics-config.yml -- contains configuration of metrics`
+- `preprocess.yml -- contains preprocessing rules to apply`
 - `credentials.yml  -- contains configuration of the second step`
 - `visualisation-config.yml  -- contains configuration of visualisation and csv graph generation`
 - `automatic-run.sh  -- script to automate runs`
@@ -167,6 +171,15 @@ The following parameters can be configured in `src/main/resources/visualisation-
 - `model_label -- model's label name`
 - `dir_label -- directory in which store file name`
 
+#### Calculate metrics
+
+The following parameters can be configured in `src/main/resources/metrics-config.yml` file, under the `exercise` section.
+
+- `dir -- the exercise's directory inside outputs folder`
+- `name -- the exercise name without .yml extension`
+- `demand -- whether it's a demand driven exercise [true, false]`
+- `gt -- the ground truth's exercise`
+
 ## Usage
 
 ### Single run
@@ -185,22 +198,78 @@ The following parameters can be configured in `src/main/resources/visualisation-
     - top_k: 5
   - output:
     - fact:
-      - name: FACT_NAME
-    - measures:
-      - name: MEASURE_NAME
-    - dependencies:
+      name: FACT_NAME
+      measures:
+      - name: MEASURE1_NAME
+      - name: MEASURE2_NAME
+      dependencies:
+      - from: TABLE1.Attr
+      - to: TABLE2.Attr
+      - ...
+    - fact:
+      name: FACT_NAME
+      measures:
+      - name: MEASURE1_NAME
+      - name: MEASURE2_NAME
+      dependencies:
+      - from: TABLE1.Attr
+      - to: TABLE2.Attr
+      - ...
+  - output_preprocessed:
+    - fact:
+      name: FACT_NAME
+      measures:
+      - name: MEASURE1_NAME
+      - name: MEASURE2_NAME
+      dependencies:
+      - from: TABLE1.Attr
+      - to: TABLE2.Attr
+      - ...
+    - fact:
+      name: FACT_NAME
+      measures:
+      - name: MEASURE1_NAME
+      - name: MEASURE2_NAME
+      dependencies:
+      - from: TABLE1.Attr
+      - to: TABLE2.Attr
+      - ...
+  - gt_preprocessed:
+    - fact:
+      name: FACT_NAME
+      measures:
+      - name: MEASURE1_NAME
+      - name: MEASURE2_NAME
+      dependencies:
+      - from: TABLE1.Attr
+      - to: TABLE2.Attr
+      - ...
+    - fact:
+      name: FACT_NAME
+      measures:
+      - name: MEASURE1_NAME
+      - name: MEASURE2_NAME
+      dependencies:
       - from: TABLE1.Attr
       - to: TABLE2.Attr
       - ...
   - metrics:
     - edges:
-      - precision: [0.0 - 1]
-      - recall: [0.0 - 1]
-      - f1: [0.0 - 1]
-    - nodes:
-      - precision: [0.0 - 1]
-      - recall: [0.0 - 1]
-      - f1: [0.0 - 1]
+        precision: [0.0 - 1]
+        recall: [0.0 - 1]
+        f1: [0.0 - 1]
+      nodes:
+        precision: [0.0 - 1]
+        recall: [0.0 - 1]
+        f1: [0.0 - 1]
+    - edges:
+        precision: [0.0 - 1]
+        recall: [0.0 - 1]
+        f1: [0.0 - 1]
+      nodes:
+        precision: [0.0 - 1]
+        recall: [0.0 - 1]
+        f1: [0.0 - 1]
   
 - Run `python pipeline/visualisation.py` from `src/main/python/` directory.
   If no Exceptions raised, in `outputs/{exercise-v}-{exercise-prompt_v}-{model-name}-{exercise-dir_label}/` directory a new file with name `{exercise name matching config}.{visualisation.image.format}` is generated as graph representation, labeling green nodes and edges for true positive, red for false positive and grey for false negative.
@@ -209,6 +278,9 @@ The following parameters can be configured in `src/main/resources/visualisation-
   If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory a new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
 Example of run:
 `python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
+  
+- Run `python pipeline/metrics.py` from `src/main/python/` directory.
+  If no Exceptions raised, in selected exercise file, metrics section is added/overridden. In case preprocessed ground truth and output are not present, standard ones are used.
 
 ### Automatic run
 

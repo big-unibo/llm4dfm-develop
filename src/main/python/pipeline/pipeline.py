@@ -3,8 +3,10 @@ import argparse
 from pathlib import Path
 from tqdm import tqdm
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
-from utils import (load_yaml, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
-                   get_timestamp, output_as_valid_yaml, get_dir_label_name)
+from preprocess import preprocess
+
+from utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
+                   get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num)
 from metrics import MetricsCalculator
 
 def log(message):
@@ -21,8 +23,8 @@ parser.add_argument('--dir_label', help='Directory label to use')
 
 args = parser.parse_args()
 
-model_config = load_yaml(f'{Path().absolute()}/../resources/pipeline-config.yml')
-key_config = load_yaml(f'{Path().absolute()}/../resources/credentials.yml')
+model_config = load_yaml_from_resources('pipeline-config')
+key_config = load_yaml_from_resources('credentials')
 
 # Model loading
 
@@ -116,34 +118,54 @@ except:
 if model_config['debug_prints']:
     log(f'Chat: {model.chat}\nOutput: {model_output}')
 
-# Calculate metrics
+# Load and preprocess ground-truth
+
 ground_truth = load_ground_truth_exercise(model_config['exercise']['name'])
 
-if model_config['exercise']['version'] == 'demand':
+is_demand = model_config['exercise']['version'] == 'demand'
+
+if is_demand:
     ground_truth = ground_truth['demand_driven']
 else:
     ground_truth = ground_truth['supply_driven']
 
+# Extracting ex number as last digit in exercise name
+ex_num = extract_ex_num(model_config['exercise']['name'])
+
+gt_prep = dict()
+gt_prep['dependencies'], gt_prep['measures'], gt_prep['fact'] = preprocess(ex_num, ground_truth['dependencies'],
+                                                     ground_truth['measures'] if ground_truth['measures'] else set(),
+                                                     ground_truth['fact'], is_demand)
+
+# Calculate metrics
+
 metrics = []
 
-dep_gt = ground_truth['dependencies']
-meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
-fact_gt = ground_truth['fact']
+dep_gt = gt_prep['dependencies']
+meas_gt = gt_prep['measures']
+fact_gt = gt_prep['fact']
 
-metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt)
+metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
+
+output_preprocessed = []
 
 for i, output in enumerate(model_outputs):
     try:
-        dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else set(), output['fact']
+        dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
+                                                     output['measures'] if output['measures'] else set(),
+                                                     output['fact'], is_demand)
+        output_preprocessed.append({'dependencies': dep_output,'measures': meas_output,'fact': fact_output})
         metrics.insert(i, metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
     except:
         metrics.insert(i, {})
         print(f"Output {i}-th not correctly generated, skipped")
 
+# Store results
+
 ts = get_timestamp()
 
 # store output
-store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
+store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_prep, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
 
 if automatic_run:
     store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])

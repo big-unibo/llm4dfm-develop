@@ -1,7 +1,9 @@
 import argparse
-from pathlib import Path
+from copy import deepcopy
 
-from utils import load_ground_truth_exercise, load_output_exercise, load_yaml, append_metrics
+from utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, append_metrics, \
+    extract_ex_num, label_edges
+
 
 # Turns a table attribute to first letter capitalized to obtain a uniform comparison between gt and output
 def get_clean_table_attribute(table_attr):
@@ -74,13 +76,60 @@ def get_metrics_nodes(dep_gt, dep_generated, measure_gt, measure_generated, fact
     fn -= tp
     fp -= tp
 
+    # print(f'\nNodes\n\nTP: {tp}\n\nLenTP: {len(tp)}\n\nFN: {fn}\n\nLenFN: {len(fn)}\n\nFP: {fp}\n\nLenFP: {len(fp)}\n\n\n\n')
+
     return _calc_metrics(tp, fn, fp)
 
 
-def get_metrics_edges(ground_truth, generated):
-    tp = ground_truth & generated
-    fn = ground_truth - tp
-    fp = generated - tp
+def get_edges_indexes(gt, out):
+    tp_idx, fn_idx, fp_idx = set(), set(), set()
+
+    gt_used = set()
+
+    for idx_out, edges_list_out in enumerate(out):
+        inserted = False
+        for idx_gt, edges_list_gt in enumerate(gt):
+            if edges_list_out[0] == edges_list_gt[0] and edges_list_out[1] == edges_list_gt[1]:
+                gt_used.add(idx_gt)
+                inserted = True
+                tp_idx.add(idx_out)
+                break
+        if not inserted:
+            fp_idx.add(idx_out)
+
+    for idx, edges_list_gt in enumerate(gt):
+        if idx not in gt_used:
+            fn_idx.add(idx)
+
+    return tp_idx, fp_idx, fn_idx, gt_used
+
+
+def get_metrics_edges(gt, generated):
+    tp, fn, fp = [], [], []
+    tp_idx, fn_idx, fp_idx = set(), set(), set()
+
+    gt_used = set()
+
+    for idx_out, edges_list_out in enumerate(generated):
+        inserted = False
+        for idx_gt, edges_list_gt in enumerate(gt):
+            if edges_list_out[0] == edges_list_gt[0] and edges_list_out[1] == edges_list_gt[1]:
+                gt_used.add(idx_gt)
+                inserted = True
+                tp_idx.add(idx_out)
+                tp.append([edges_list_out[0], edges_list_out[1]])
+                break
+        if not inserted:
+            fp_idx.add(idx_out)
+            fp.append([edges_list_out[0], edges_list_out[1]])
+
+    for idx, edges_list_gt in enumerate(gt):
+        if idx not in gt_used:
+            fn.append([edges_list_gt[0], edges_list_gt[1]])
+            fn_idx.add(idx)
+
+    # print(generated, ground_truth)
+    # print(tp_idx, fp_idx, fn_idx, gt_used)
 
     return _calc_metrics(tp, fn, fp)
 
@@ -91,7 +140,6 @@ def load_edges(dependency_set):
                   for key, value in d.items() if is_a_valid_role_dependency(key))
         for d in dependency_set if is_a_valid_dependency(d))
 
-
 def load_nodes(edges_set):
     return set(
         get_clean_table_attribute(entry[1])
@@ -99,20 +147,12 @@ def load_nodes(edges_set):
         for entry in fr_set
     )
 
-
-def _calc_preprocess(dependencies, measures, fact):
-    dep_preprocessed = [{k.lower(): v.lower() for k, v in d.items()} for d in dependencies]
-    meas_preprocessed = {v.lower() for d in measures for _, v in d.items()}
-    fact_preprocessed = fact['name'].lower()
-    edges_set = load_edges(dep_preprocessed)
-    nodes_set = load_nodes(edges_set)
-
-    return dep_preprocessed, meas_preprocessed, fact_preprocessed, edges_set, nodes_set
-
+def _load_nodes(dependencies):
+    return set(node for sublist in dependencies for subset in sublist for node in subset)
 
 class MetricsCalculator:
 
-    def __init__(self, gt_fact, gt_measures, gt_dependencies, demand=False):
+    def __init__(self, gt_fact, gt_measures, gt_dependencies, ex_number, demand=False):
         self.gt_raw = dict()
         self.out_raw = dict()
         self.gt_preprocessed = dict()
@@ -121,6 +161,7 @@ class MetricsCalculator:
         self.out_preprocessed = dict()
         self.out_edges_set = set()
         self.out_nodes_set = set()
+        self.ex_number = ex_number
         self._load_gt(gt_fact, gt_measures, gt_dependencies)
         self.demand = demand
 
@@ -128,6 +169,12 @@ class MetricsCalculator:
         self.gt_raw['fact'] = gt_fact
         self.gt_raw['measures'] = gt_measures
         self.gt_raw['dependencies'] = gt_dependencies
+
+    def _load_gt_ex(self, gt_fact, gt_measures, gt_dependencies, ex_number):
+        self.gt_raw['fact'] = gt_fact
+        self.gt_raw['measures'] = gt_measures
+        self.gt_raw['dependencies'] = gt_dependencies
+        self.ex_number = ex_number
 
     def calculate_metrics(self, out_fact, out_measures, out_dependencies):
         self.out_raw['fact'] = out_fact
@@ -164,25 +211,78 @@ class MetricsCalculator:
             }
         }
 
+    def calculate_metrics_nodes(self, out_fact, out_measures, out_dependencies):
+        self.out_raw['fact'] = out_fact
+        self.out_raw['measures'] = out_measures
+        self.out_raw['dependencies'] = out_dependencies
+
+        self._preprocess()
+
+        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(self.gt_nodes_set,
+                                                                                                  self.out_nodes_set,
+                                                                                                  self.gt_preprocessed['measures'],
+                                                                                                  self.out_preprocessed['measures'],
+                                                                                                  self.gt_preprocessed['fact'],
+                                                                                                  self.out_preprocessed['fact'])
+        decimals = 4
+        return {
+            'tp': tp_nodes,
+            'fn': fn_nodes,
+            'fp': fp_nodes,
+            'precision': round(precision_nodes, decimals),
+            'recall': round(recall_nodes, decimals),
+            'f1': round(f1_nodes, decimals),
+        }
+
+
+    def calculate_metrics_from_preprocessed_edges(self, tp_idx, fp_idx, fn_idx):
+        precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges = _calc_metrics(tp_idx, fp_idx, fn_idx)
+        decimals = 4
+        return {
+            'tp': tp_edges,
+            'fn': fn_edges,
+            'fp': fp_edges,
+            'precision': round(precision_edges, decimals),
+            'recall': round(recall_edges, decimals),
+            'f1': round(f1_edges, decimals),
+        }
+
+    def calculate_idx(self, out_fact, out_measures, out_dependencies):
+        self.out_raw['fact'] = out_fact
+        self.out_raw['measures'] = out_measures
+        self.out_raw['dependencies'] = out_dependencies
+
+        self._preprocess()
+
+        return get_edges_indexes(self.gt_edges_set, self.out_edges_set)
+
 
     def _preprocess(self):
         (self.gt_preprocessed['dependencies'],
          self.gt_preprocessed['measures'],
          self.gt_preprocessed['fact'],
          self.gt_edges_set,
-         self.gt_nodes_set) = _calc_preprocess(self.gt_raw['dependencies'], self.gt_raw['measures'], self.gt_raw['fact'])
-
+         self.gt_nodes_set) = self._calc_preprocess(self.gt_raw['dependencies'], self.gt_raw['measures'], self.gt_raw['fact'])
         (self.out_preprocessed['dependencies'],
          self.out_preprocessed['measures'],
          self.out_preprocessed['fact'],
          self.out_edges_set,
-         self.out_nodes_set) = _calc_preprocess(self.out_raw['dependencies'], self.out_raw['measures'],
+         self.out_nodes_set) = self._calc_preprocess(self.out_raw['dependencies'], self.out_raw['measures'],
                                                     self.out_raw['fact'])
+
+    def _calc_preprocess(self, dependencies, measures, fact):
+        dep_preprocessed = [[set(v.split(',')) for v in d.values()] for d in dependencies]
+        meas_preprocessed = {v.lower() for d in measures for _, v in d.items()}
+        fact_preprocessed = fact['name'].lower()
+        edges_set = dep_preprocessed
+        nodes_set = _load_nodes(edges_set)
+
+        return dep_preprocessed, meas_preprocessed, fact_preprocessed, edges_set, nodes_set
 
 if __name__ == '__main__':
 
     # Load config
-    input_config = load_yaml(f'{Path().absolute()}/../resources/metrics-config.yml')
+    input_config = load_yaml_from_resources('metrics-config')
 
     parser = argparse.ArgumentParser(description="Process some configuration.")
     parser.add_argument('--exercise', help='Exercise to use')
@@ -204,13 +304,15 @@ if __name__ == '__main__':
     # Load exercise
     ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
 
+    if 'gt_preprocessed' not in ex_output:
+        print('using standard ground truth')
     # Calculate metrics
-    ground_truth = load_ground_truth_exercise(ex_config['gt'])
+    ground_truth = ex_output['gt_preprocessed'] if 'gt_preprocessed' in ex_output else load_ground_truth_exercise(ex_config['gt'])
 
-    if ex_config['demand']:
-        ground_truth = ground_truth['demand_driven']
-    else:
-        ground_truth = ground_truth['supply_driven']
+    # if ex_config['demand']:
+    #     ground_truth = ground_truth['demand_driven']
+    # else:
+    #     ground_truth = ground_truth['supply_driven']
 
     metrics = []
 
@@ -218,25 +320,56 @@ if __name__ == '__main__':
     meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
     fact_gt = ground_truth['fact']
 
-    metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt)
+    # Extracting ex number as last digit in exercise name
+    ex_num = extract_ex_num(ex_config['name'])
+
+    metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, ex_config['demand'])
 
     outputs_to_use = []
 
     if isinstance(ex_output, dict):
-        if 'output' in ex_output:
-            outputs_to_use = ex_output['output']
+        if 'output_preprocessed' in ex_output:
+            outputs_to_use = ex_output['output_preprocessed']
         else:
-            if isinstance(ex_output, list):
-                outputs_to_use = ex_output
+            print('using standard output')
+            if 'output' in ex_output:
+                outputs_to_use = ex_output['output']
             else:
-                outputs_to_use.append(ex_output)
+                if isinstance(ex_output, list):
+                    outputs_to_use = ex_output
+                else:
+                    outputs_to_use.append(ex_output)
 
-    for i, output in enumerate(outputs_to_use):
+    for i, output in enumerate(deepcopy(outputs_to_use)):
         try:
             dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else set(), output['fact']
-            metrics.insert(i, metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
-        except:
-            metrics.insert(i, {})
+
+            work_with_index = False
+
+            if work_with_index:
+                print(output['dependencies'])
+
+                tp_idx, fp_idx, fn_idx, gt_used = metric_calc.calculate_idx(fact_output, meas_output, dep_output)
+                step_metric = {'edges': metric_calc.calculate_metrics_from_preprocessed_edges(tp_idx, fp_idx, fn_idx),
+                               'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
+                metrics.append(step_metric)
+
+                for idx, dep in outputs_to_use[i]['dependencies']:
+                    if idx in tp_idx:
+                        dep['label'] = 'tp'
+                    elif idx in fp_idx:
+                        dep['label'] = 'fp'
+                    else:
+                        dep['label'] = 'error'
+
+
+
+                label_edges(outputs_to_use[i], ground_truth, tp_idx, fp_idx, fn_idx, gt_used)
+            else:
+                metrics.append(metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
+        except Exception as e:
+            print(e)
+            metrics.append({})
             print(f"Output {i}-th not correctly generated, skipped")
 
     append_metrics(ex_config['dir'], ex_config['name'], metrics)

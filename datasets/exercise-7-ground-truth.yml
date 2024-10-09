@@ -42,7 +42,7 @@ supply_driven:
     - from: CARS.Plate
       to: CARS.Fuel
     - from: CARS.Plate
-      to: CARS. RegistrationDate
+      to: CARS.RegistrationDate
     - from: RENTAL_OFFICES.OfficeName
       to: RENTAL_OFFICES.City
     - from: RENTAL_OFFICES.City

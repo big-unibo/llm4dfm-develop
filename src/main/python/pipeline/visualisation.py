@@ -8,7 +8,7 @@ import argparse
 from metrics import load_edges, load_nodes
 from visualisation_utils import (preprocess_dependencies_attributes, store_image, short_names_from_tables,
                                  get_tp_fn_fp_edges_to_list)
-from utils import load_yaml, load_ground_truth_exercise, load_output_exercise_and_name, get_dir_label_name
+from utils import load_yaml_from_resources, load_ground_truth_exercise, load_output_exercise_and_name, get_dir_label_name
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--dir_label', help='Directory to use')
@@ -18,7 +18,7 @@ parser.add_argument('--exercise_version', help='Exercise version to use')
 args = parser.parse_args()
 
 # Load config
-input_config = load_yaml(f'{Path().absolute()}/../resources/visualisation-config.yml')
+input_config = load_yaml_from_resources('visualisation-config')
 
 # Check if the --exercise argument is passed
 if args.exercise:

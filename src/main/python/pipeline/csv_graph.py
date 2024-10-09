@@ -1,7 +1,7 @@
 from pathlib import Path
 import argparse
 
-from utils import load_full_path_csv, load_yaml, get_output_file_path, get_dir_label_name
+from utils import load_full_path_csv, load_yaml_from_resources, get_output_file_path, get_dir_label_name
 from graph_utils import plot_csv_metrics
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -12,7 +12,7 @@ parser.add_argument('--dir_label', help='Directory label to use')
 args = parser.parse_args()
 
 # Load config
-input_config = load_yaml(f'{Path().absolute()}/../resources/visualisation-config.yml')['csv_graph']
+input_config = load_yaml_from_resources('visualisation-config')['csv_graph']
 
 # Check if the --exercise argument is passed
 if args.prompt_version:
