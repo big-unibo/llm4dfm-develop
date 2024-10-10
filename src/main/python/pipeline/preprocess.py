@@ -1,6 +1,5 @@
 from utils import load_yaml_from_resources
 
-
 def _process(coll, ignore, dicts):
     dep = []
     for d in coll:
@@ -46,8 +45,6 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
 
         frag_dep = {'from': dep['from'].split(','),
                     'to': dep['to'].split(',')}
-        if 'role' in dep:
-            frag_dep['role'] = dep['role']
         if demand:
             # if demand check attributes, so split on '.'
             dep_from = '.'.join(_process([single_part for item in frag_dep['from'] for single_part in item.split('.')],
@@ -59,6 +56,9 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
             dep_from = ','.join(_process([item for item in frag_dep['from']], ignore_to_check, eq_dicts_to_check))
             dep_to = ','.join(_process([item for item in frag_dep['to']], ignore_to_check, eq_dicts_to_check))
         if dep_from and dep_to:
-            dep_preprocessed.append({'from': dep_from, 'to': dep_to})
+            if 'role' in dep:
+                dep_preprocessed.append({'from': dep_from, 'to': dep_to, 'role': dep['role']})
+            else:
+                dep_preprocessed.append({'from': dep_from, 'to': dep_to})
 
     return dep_preprocessed, measures, fact

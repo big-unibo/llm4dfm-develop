@@ -14,16 +14,27 @@ results = os.getenv('RESULTS')
 inputs = os.getenv('INPUTS')
 auto_outputs = os.getenv('AUTO_OUTPUTS')
 
-
-def log(message):
-    print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
+# General utils
 
 # datetime object containing current date and time
 def get_timestamp():
     return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
 
+# Standard names utils
+
 def get_dir_label_name(ex_version, prompt_version, model_label, dir_label):
     return f"{ex_version}-{prompt_version}-{model_label}-{dir_label}"
+
+# Extract exercise number based on last digit of exercise name
+def extract_ex_num(ex_name):
+    numbers = re.findall(r'\d+', ex_name)  # Find all sequences of digits
+    if numbers:
+        return int(numbers[-1])
+    else:
+        print("No exercise numbers in exercise name.")
+        return None
+
+# Yaml utils
 
 # return yaml configurations as dict
 def load_yaml(yaml_file) -> dict:
@@ -38,9 +49,6 @@ def write_yaml(yaml_file, data):
     with open(f'{yaml_file}.yml', 'w+', encoding='utf-8') as file:
         yaml.dump(data, file)
 
-def load_csv(file_name):
-    return load_full_path_csv(f'{outputs}{file_name}.csv')
-
 def load_full_path_csv(path):
     with open(f'{path}', 'r', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -50,7 +58,6 @@ def load_full_path_csv(path):
 def load_text_exercise(ex_name):
     return load_yaml(f'{datasets}{ex_name}-text')['text']
 
-
 # return the ground truth of exercise given ex_name
 def load_ground_truth_exercise(ex_name, full_name=''):
     if full_name:
@@ -59,87 +66,13 @@ def load_ground_truth_exercise(ex_name, full_name=''):
         file_name = ex_name
     return load_yaml(f'{datasets}{file_name}-ground-truth')
 
-
-# load output exercise used in second-step and its filename (used after to store the image)
-def load_output_exercise(dir_name, full_name):
-    return load_yaml(f'{outputs}{dir_name}/{full_name}')
-
-
-# load output exercise used in second-step and its filename (used after to store the image)
-def load_output_exercise_and_name(dir_name, ex_name, version, prompt_version, model_name, model_version, latest=True, timestamp='',
-                         full_name=''):
-    if full_name:
-        exercise = full_name + '.yml'
-    else:
-        # List all files in the directory
-        files = os.listdir(f'{outputs}{dir_name}/')
-
-        if latest:
-            exercise_pattern = re.compile(
-                rf'(?P<ex_name>{ex_name})-'
-                rf'(?P<version>{version})-'
-                rf'(?P<prompt_version>{prompt_version})-'
-                rf'(?P<model_name>{model_name})-'
-                rf'(?P<model_version>{model_version})-'
-            ) if model_version else re.compile(
-                rf'(?P<ex_name>{ex_name})-'
-                rf'(?P<version>{version})-'
-                rf'(?P<prompt_version>{prompt_version})-'
-                rf'(?P<model_name>{model_name})-'
-            )
-
-            # Regex pattern to extract date from file name
-            date_pattern = re.compile(r'(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2})')
-
-            # Function to extract date from file name and convert to datetime object
-            def extract_date(file_name):
-                match = date_pattern.search(file_name)
-                if match:
-                    date_str = match.group(1)
-                    return datetime.strptime(date_str, '%Y-%m-%dT%H-%M-%S')
-                return None
-
-            # Initialize variables to track the latest file and its date
-            latest_file = None
-            latest_date = None
-
-            # Iterate over files and find the latest one based on date
-            for file_matching in [file for file in files if exercise_pattern.match(file)]:
-                file_date = extract_date(file_matching)
-                if file_date:
-                    if latest_date is None or file_date > latest_date:
-                        latest_date = file_date
-                        latest_file = file_matching
-
-            # Output the latest file
-            if latest_file:
-                exercise = latest_file
-            else:
-                raise Exception("No valid files found.")
-        else:
-            if not timestamp:
-                raise Exception("No timestamp provided, can't find any file.")
-            if model_version:
-                exercise = '-'.join((ex_name, version, prompt_version, model_name, model_version, timestamp)) + '.yml'
-            else:
-                exercise = '-'.join((ex_name, version, prompt_version, model_name, timestamp)) + '.yml'
-
-    return load_yaml(f'{outputs}{dir_name}/{exercise}'), exercise
-
-
 # return prompts of exercise as a dict given ex_name and model_name
 def load_prompts(version, model_name):
     return load_yaml(f'{inputs}prompts-{version}')[model_name]
 
-
-# Extract exercise number based on last digit of exercise name
-def extract_ex_num(ex_name):
-    numbers = re.findall(r'\d+', ex_name)  # Find all sequences of digits
-    if numbers:
-        return int(numbers[-1])
-    else:
-        print("No exercise numbers in exercise name.")
-        return None
+# load output exercise used in second-step and its filename (used after to store the image)
+def load_output_exercise(dir_name, full_name):
+    return load_yaml(f'{outputs}{dir_name}/{full_name}')
 
 
 def label_edges(out, gt, tp_idx, fp_idx, fn_idx, gt_used):
@@ -151,6 +84,9 @@ def output_as_valid_yaml(model_outputs):
     return [yaml.safe_load(out.replace('`', '').replace('yaml', '')
                            .replace('`', '').replace('\\n', '\r\n')) if isinstance(out, str)
                             else out for out in model_outputs]
+
+
+# Store output utils
 
 
 # add properties to dict_to_store as property:dict_property[property] if present
@@ -222,9 +158,6 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
         error = "-error"
 
     write_yaml(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}', results_output)
-
-def get_output_file_name(ex_version, prompt_version, model):
-    return f'output-{ex_version}-{prompt_version}-{model}.csv'
 
 def get_output_file_path(ex_version, prompt_version, model, label_dir):
     f_name = f'output-{ex_version}-{prompt_version}-{model}.csv'

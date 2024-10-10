@@ -69,6 +69,22 @@ def log(message):
 #             return generate_with_import
 
 
+def load_model_api(name, key):
+    match name:
+        case 'gpt':
+            openai.api_key = key
+            return openai
+        case 'gemini':
+            genai.configure(api_key=key)
+            return genai.GenerativeModel('gemini-1.5-flash')
+        case 'mistral':
+            pipe = pipeline("conversational",
+                            model="mistralai/Mistral-7B-v0.3",
+                            use_auth_token=True)  # To use it, it's required huggingface cli login
+            return pipe
+        case _:
+            raise Exception("Model not found")
+
 def load_generate_api_function(name, model, config, debug_print) -> Callable[[List[str]], str]:
     def generate_with_gtp_api(chat):
         if debug_print:
@@ -310,22 +326,6 @@ def get_chat_entry(entry_role, entry_content, model):
 #
 #     return model, tokenizer
 
-
-def load_model_api(name, key):
-    match name:
-        case 'gpt':
-            openai.api_key = key
-            return openai
-        case 'gemini':
-            genai.configure(api_key=key)
-            return genai.GenerativeModel('gemini-1.5-flash')
-        case 'mistral':
-            pipe = pipeline("conversational",
-                            model="mistralai/Mistral-7B-v0.3",
-                            use_auth_token=True)  # To use it, it's required huggingface cli login
-            return pipe
-        case _:
-            raise Exception("Model not found")
 
 
 # Check if model supports system role in chat

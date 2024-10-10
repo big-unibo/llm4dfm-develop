@@ -5,8 +5,13 @@ import numpy as np
 def plot_csv_metrics(data, file_name, label):
     # Function to calculate average
     def calculate_average(values):
-        values = [float(v) for v in values]
-        return sum(values) / len(values)
+        values_converted = []
+        for i, value in enumerate(values):
+            try:
+                values_converted.append(float(value))
+            except:
+                print(f'Error while converting {i}-th value {value} to float, skipped')
+        return sum(values_converted) / len(values_converted)
 
     # Prepare data for plotting
     exercises = list(data.keys())

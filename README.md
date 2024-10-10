@@ -22,8 +22,6 @@ All pipeline python files are collected in `src/main/python/pipeline` module.
 - `preprocess.py -- contains the preprocessing phase`
 - `utils.py    -- contains general utils`
 - `csv_graph.py    -- contains the process which generates graphs`
-- `visualisation.py -- contains the process of visualization of the output`
-- `visualisation_utils.py    -- contains utils used in visualisation`
 - `graph_utils.py    -- contains utils used to work with graph, such as metrics calculation`
 - `.env        -- contains information about program's paths`
 
@@ -33,7 +31,7 @@ Configuration files, script to automate run are collected in `src/resources` mod
 - `metrics-config.yml -- contains configuration of metrics`
 - `preprocess.yml -- contains preprocessing rules to apply`
 - `credentials.yml  -- contains configuration of the second step`
-- `visualisation-config.yml  -- contains configuration of visualisation and csv graph generation`
+- `csv-graph-config.yml  -- contains configuration of csv-based graph generation`
 - `automatic-run.sh  -- script to automate runs`
 - `yml.html  -- script to compare ground-truth and output via visualisation`
 
@@ -128,43 +126,9 @@ Output
 
 - `dir_label -- the label used in output directory name`
 
-#### Visualisation
-
-The following parameters can be configured in `src/main/resources/visualisation-config.yml` file.
-
-Exercise
-
-Given that it's required to read both ground-truth and model output, to make it easier to configure, different ways can be used to state the exercise to read.
-
-- `dir_label -- directory name in which look for ex`
-- `full_name           -- the output exercise full name (part before -text.yml)\n ** If provided, no further options of the exercise have to be passed`
-- `name -- the exercise name (exercise-*.*)`
-- `v           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
-- `prompt_v -- the prompt version (part between prompts- and .yml)`
-- `latest           -- boolean that enable the retrieval of latest timestamp matching previous configurations`
-- `timestamp -- if not latest, provide the timestamp in format YYYY-MM-DDTHH-mm_ss`
-
-Model
-
-- `name -- model's label name`
-- `v           -- model version, **use only if present in file name`
-
-Visualization
-
-- `node_color -- boolean, enable node colors (default green if TP, grey if FN, red if FP)`
-- `edge_color -- boolean, enable edge colors (default green if TP, grey if FN, red if FP)`
-- `arrowsize -- regulates edge's arrow pointer dimension`
-- `font_size -- regulates font dimension`
-- `node_size -- regulates node dimension`
-- `image`
-  - `format -- the image export format`
-- `show_graph -- boolean, enable graph visualization`
-- `dag_graph  -- boolean, if true avoid auto dependency visualization, enabling DAG visualization, and color nodes differently in case of auto dependencies`
-- `table_names  -- boolean, if true table names are considered for comparing, and node attributes are shown with table name otherwise they aren't considered and tables names are not shown in DAG`
-
 #### CSV-Graph
 
-The following parameters can be configured in `src/main/resources/visualisation-config.yml` file, under the `csv_graph` section.
+The following parameters can be configured in `src/main/resources/csv-graph-config.yml` file.
 
 - `v -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
 - `prompt_v -- the prompt version (part between prompts-v and .yml)`
@@ -185,7 +149,7 @@ The following parameters can be configured in `src/main/resources/metrics-config
 ### Single run
 
 - Setup [authentication](#authentication-key)
-- Configure [pipeline](#Pipeline), [visualisation](#Visualisation) and [graph](#CSV-Graph)
+- Configure [pipeline](#Pipeline), and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `src/main/python/` directory.
   If no Exceptions raised, in `outputs` directory a new directory with inside a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
   - config:
@@ -270,9 +234,6 @@ The following parameters can be configured in `src/main/resources/metrics-config
         precision: [0.0 - 1]
         recall: [0.0 - 1]
         f1: [0.0 - 1]
-  
-- Run `python pipeline/visualisation.py` from `src/main/python/` directory.
-  If no Exceptions raised, in `outputs/{exercise-v}-{exercise-prompt_v}-{model-name}-{exercise-dir_label}/` directory a new file with name `{exercise name matching config}.{visualisation.image.format}` is generated as graph representation, labeling green nodes and edges for true positive, red for false positive and grey for false negative.
 
 - Run `python pipeline/csv_graph.py` from `src/main/python/` directory.
   If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory a new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.

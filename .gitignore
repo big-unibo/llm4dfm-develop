@@ -3,7 +3,7 @@ results/dummy.pdf
 metastore_db/
 **/credentials.yml
 **/pipeline-config.yml
-**/visualisation-config.yml
+**/csv-graph-config.yml
 **/metrics-config.yml
 **/.env
 **/automatic_run/*.csv

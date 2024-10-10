@@ -12,9 +12,10 @@ parser.add_argument('--dir_label', help='Directory label to use')
 args = parser.parse_args()
 
 # Load config
-input_config = load_yaml_from_resources('visualisation-config')['csv_graph']
+input_config = load_yaml_from_resources('csv-graph-config')
 
-# Check if the --exercise argument is passed
+# Parse args
+
 if args.prompt_version:
     input_config['prompt_v'] = args.prompt_version
 if args.exercise_v:

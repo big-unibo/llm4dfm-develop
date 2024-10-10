@@ -1,4 +1,3 @@
-import os
 import argparse
 from pathlib import Path
 from tqdm import tqdm
@@ -8,9 +7,6 @@ from preprocess import preprocess
 from utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
                    get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num)
 from metrics import MetricsCalculator
-
-def log(message):
-    print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
 
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -116,7 +112,7 @@ except:
 
 
 if model_config['debug_prints']:
-    log(f'Chat: {model.chat}\nOutput: {model_output}')
+    print(f'Chat: {model.chat}\nOutput: {model_outputs}')
 
 # Load and preprocess ground-truth
 
