@@ -1,4 +1,6 @@
 import os
+from copy import deepcopy
+
 from dotenv import load_dotenv
 import yaml
 from datetime import datetime
@@ -76,7 +78,23 @@ def load_output_exercise(dir_name, full_name):
 
 
 def label_edges(out, gt, tp_idx, fp_idx, fn_idx, gt_used):
-    return None
+    out_to_return = deepcopy(out)
+    gt_to_return = deepcopy(gt)
+    for idx, dep in enumerate(out_to_return['dependencies']):
+        if idx in tp_idx:
+            dep['label'] = 'tp'
+        elif idx in fp_idx:
+            dep['label'] = 'fp'
+        else:
+            dep['label'] = 'error'
+    for idx, dep in enumerate(gt_to_return['dependencies']):
+        if idx in gt_used:
+            dep['label'] = 'tp'
+        elif idx in fn_idx:
+            dep['label'] = 'fn'
+        else:
+            dep['label'] = 'error'
+    return out_to_return, gt_to_return
 
 
 # Map output to a valid yaml as dict
@@ -128,14 +146,6 @@ def config_to_print_api_model(configs) -> dict:
     ], configs)
     return conf_to_print
 
-
-# write model_output in file ex_name-model-timestamp.yml
-# model_output is the list of outputs
-def append_metrics(dir_label, file, metrics):
-    old_yaml = load_yaml(f'{outputs}{dir_label}/{file}')
-    old_yaml['metrics'] = metrics
-    write_yaml(f'{outputs}{dir_label}/{file}', old_yaml)
-
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
 def store_output(model_config, ex_config, model_output, output_preprocessed, gt_preprocessed, imported, metrics, timestamp, dir_label):
@@ -158,6 +168,15 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
         error = "-error"
 
     write_yaml(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}', results_output)
+
+
+# write model_output in file ex_name-model-timestamp.yml
+# model_output is the list of outputs
+def store_additional_properties(dir_label, ex_name, props):
+    prev_out = load_yaml(f'{outputs}{dir_label}/{ex_name}')
+    for prop in props:
+        prev_out[prop] = props[prop]
+    write_yaml(f'{outputs}{dir_label}/{ex_name}', prev_out)
 
 def get_output_file_path(ex_version, prompt_version, model, label_dir):
     f_name = f'output-{ex_version}-{prompt_version}-{model}.csv'

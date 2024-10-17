@@ -1,0 +1,89 @@
+config:
+  name: gpt
+  label: gpt4o
+  deployment: gpt-4o
+  api_version: 2024-04-01-preview
+  temperature: 0.1
+  max_tokens: 1000
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+output:
+- fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  - name: ROUTES.DistanceKm
+  - name: TRAIN_TYPE.Capacity
+  dependencies:
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.TrainType
+  - from: TRAINS.TrainCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    to: STATIONS.Region
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    to: ROUTES.Fare
+  - from: TRIPS.TrainCode, TRIPS.Date
+    to: TRIPS.Status
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES_IN_TRIPS.Sequence
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES.DistanceKm
+  - from: ROUTES_IN_TICKETS
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES.RouteCode
+metrics:
+- edges:
+    tp: 17
+    fn: 11
+    fp: 10
+    precision: 0.6296
+    recall: 0.6071
+    f1: 0.6182
+  nodes:
+    tp: 28
+    fn: 1
+    fp: 2
+    precision: 0.9333
+    recall: 0.9655
+    f1: 0.9492

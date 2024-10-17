@@ -1,9 +1,11 @@
 import argparse
+import traceback
 from copy import deepcopy
 
-from utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, append_metrics, \
-    extract_ex_num, label_edges
+from utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
+    extract_ex_num, label_edges, store_additional_properties
 
+from preprocess import preprocess
 
 def _calc_metrics(tp, fn, fp):
     tp_count = len(tp)
@@ -16,92 +18,8 @@ def _calc_metrics(tp, fn, fp):
 
     return precision, recall, f1, tp_count, fn_count, fp_count
 
-
-def get_metrics_nodes(dep_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
-    tp_dep = {dep.lower() for dep in dep_gt & dep_generated}
-    fn_dep = {dep.lower() for dep in dep_gt - tp_dep}
-    fp_dep = {dep.lower() for dep in dep_generated - tp_dep}
-
-    tp_meas = {mes.lower() for mes in measure_gt & measure_generated}
-    fn_meas = {mes.lower() for mes in measure_gt - tp_meas}
-    fp_meas = {mes.lower() for mes in measure_generated - tp_meas}
-
-    fact_gt_use = fact_gt.lower()
-    fact_generated_use = fact_generated.lower()
-
-    tp = tp_dep.union(tp_meas)
-    fn = fn_dep.union(fn_meas)
-    fp = fp_dep.union(fp_meas)
-
-    if fact_gt_use == fact_generated_use:
-        tp.add(fact_gt_use)
-    else:
-        fn.add(fact_gt_use)
-        fp.add(fact_generated_use)
-
-    # Remove intersection
-    fn -= tp
-    fp -= tp
-
-    # print(f'\nNodes\n\nTP: {tp}\n\nLenTP: {len(tp)}\n\nFN: {fn}\n\nLenFN: {len(fn)}\n\nFP: {fp}\n\nLenFP: {len(fp)}\n\n\n\n')
-
-    return _calc_metrics(tp, fn, fp)
-
-
-def get_edges_indexes(gt, out):
-    tp_idx, fn_idx, fp_idx = set(), set(), set()
-
-    gt_used = set()
-
-    for idx_out, edges_list_out in enumerate(out):
-        inserted = False
-        for idx_gt, edges_list_gt in enumerate(gt):
-            if edges_list_out[0] == edges_list_gt[0] and edges_list_out[1] == edges_list_gt[1]:
-                gt_used.add(idx_gt)
-                inserted = True
-                tp_idx.add(idx_out)
-                break
-        if not inserted:
-            fp_idx.add(idx_out)
-
-    for idx, edges_list_gt in enumerate(gt):
-        if idx not in gt_used:
-            fn_idx.add(idx)
-
-    return tp_idx, fp_idx, fn_idx, gt_used
-
-
-def get_metrics_edges(gt, generated):
-    tp, fn, fp = [], [], []
-    tp_idx, fn_idx, fp_idx = set(), set(), set()
-
-    gt_used = set()
-
-    for idx_out, edges_list_out in enumerate(generated):
-        inserted = False
-        for idx_gt, edges_list_gt in enumerate(gt):
-            if edges_list_out[0] == edges_list_gt[0] and edges_list_out[1] == edges_list_gt[1]:
-                gt_used.add(idx_gt)
-                inserted = True
-                tp_idx.add(idx_out)
-                tp.append([edges_list_out[0], edges_list_out[1]])
-                break
-        if not inserted:
-            fp_idx.add(idx_out)
-            fp.append([edges_list_out[0], edges_list_out[1]])
-
-    for idx, edges_list_gt in enumerate(gt):
-        if idx not in gt_used:
-            fn.append([edges_list_gt[0], edges_list_gt[1]])
-            fn_idx.add(idx)
-
-    # print(generated, ground_truth)
-    # print(tp_idx, fp_idx, fn_idx, gt_used)
-
-    return _calc_metrics(tp, fn, fp)
-
 def _load_nodes(dependencies):
-    return set(node for sublist in dependencies for subset in sublist for node in subset)
+    return set(','.join(subset) for sublist in dependencies for subset in sublist[:2])
 
 class MetricsCalculator:
 
@@ -123,46 +41,82 @@ class MetricsCalculator:
         self.gt_raw['measures'] = gt_measures
         self.gt_raw['dependencies'] = gt_dependencies
 
-    def _load_gt_ex(self, gt_fact, gt_measures, gt_dependencies, ex_number):
-        self.gt_raw['fact'] = gt_fact
-        self.gt_raw['measures'] = gt_measures
-        self.gt_raw['dependencies'] = gt_dependencies
-        self.ex_number = ex_number
-
-    def calculate_metrics(self, out_fact, out_measures, out_dependencies):
+    def get_edges_idx(self, out_fact, out_measures, out_dependencies):
         self.out_raw['fact'] = out_fact
         self.out_raw['measures'] = out_measures
         self.out_raw['dependencies'] = out_dependencies
 
         self._preprocess()
 
-        precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges = get_metrics_edges(self.gt_edges_set,
-                                                                                                  self.out_edges_set)
-        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(self.gt_nodes_set,
-                                                                                                  self.out_nodes_set,
-                                                                                                  self.gt_preprocessed['measures'],
-                                                                                                  self.out_preprocessed['measures'],
-                                                                                                  self.gt_preprocessed['fact'],
-                                                                                                  self.out_preprocessed['fact'])
-        decimals = 4
-        return {
-            'edges': {
-                'tp': tp_edges,
-                'fn': fn_edges,
-                'fp': fp_edges,
-                'precision': round(precision_edges, decimals),
-                'recall': round(recall_edges, decimals),
-                'f1': round(f1_edges, decimals),
-            },
-            'nodes': {
-                'tp': tp_nodes,
-                'fn': fn_nodes,
-                'fp': fp_nodes,
-                'precision': round(precision_nodes, decimals),
-                'recall': round(recall_nodes, decimals),
-                'f1': round(f1_nodes, decimals),
-            }
-        }
+        return self._calculate_edges_indexes()
+
+    def _get_nodes(self, dep_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
+
+        tp, fn, fp, gt_used = set(), set(), set(), set()
+
+        dep_gt_to_iterate = deepcopy(dep_gt)
+
+        for dep in dep_generated:
+            inserted = False
+            for dp_gt in dep_gt_to_iterate:
+                if {dp.lower() for dp in dep.split(',')} == {dp.lower() for dp in dp_gt.split(',')}:
+                    inserted = True
+                    tp.add(dep)
+                    gt_used.add(dp_gt)
+                    break
+            if not inserted:
+                fp.add(dep)
+            else:
+                dep_gt_to_iterate.discard(dep)
+        for dp_gt in dep_gt:
+            if dp_gt not in gt_used:
+                fn.add(dp_gt)
+
+        meas_gt_to_iterate = deepcopy(measure_gt)
+
+        tp_meas, fn_meas, fp_meas, gt_meas_used = set(), set(), set(), set()
+
+        for meas in measure_generated:
+            inserted = False
+            for meas_gt in meas_gt_to_iterate:
+                if meas.lower() == meas_gt.lower():
+                    inserted = True
+                    tp_meas.add(meas)
+                    gt_meas_used.add(meas)
+                    break
+            if not inserted:
+                fp_meas.add(meas)
+            else:
+                meas_gt_to_iterate.discard(meas)
+        for me_gt in measure_gt:
+            if me_gt not in gt_meas_used:
+                fn.add(me_gt)
+
+        fact_gt_use = fact_gt.lower()
+        fact_generated_use = fact_generated.lower()
+
+        tp = tp.union(tp_meas)
+        fn = fn.union(fn_meas)
+        fp = fp.union(fp_meas)
+
+        if fact_gt_use == fact_generated_use:
+            tp.add(fact_generated)
+        else:
+            fn.add(fact_gt)
+            fp.add(fact_generated)
+
+        # Remove intersection
+        fn -= tp
+        fp -= tp
+
+        return tp, fp, fn
+
+    def get_nodes(self):
+        return self._get_nodes(self.gt_nodes_set, self.out_nodes_set,
+                                                      self.gt_preprocessed['measures'],
+                                                      self.out_preprocessed['measures'], self.gt_preprocessed['fact'],
+                                                      self.out_preprocessed['fact'])
+
 
     def calculate_metrics_nodes(self, out_fact, out_measures, out_dependencies):
         self.out_raw['fact'] = out_fact
@@ -171,12 +125,22 @@ class MetricsCalculator:
 
         self._preprocess()
 
-        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = get_metrics_nodes(self.gt_nodes_set,
-                                                                                                  self.out_nodes_set,
-                                                                                                  self.gt_preprocessed['measures'],
-                                                                                                  self.out_preprocessed['measures'],
-                                                                                                  self.gt_preprocessed['fact'],
-                                                                                                  self.out_preprocessed['fact'])
+        tp_nodes, fp_nodes, fn_nodes = self.get_nodes()
+
+        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = _calc_metrics(tp_nodes, fn_nodes, fp_nodes)
+
+        decimals = 4
+        return {
+            'tp': tp_nodes,
+            'fn': fn_nodes,
+            'fp': fp_nodes,
+            'precision': round(precision_nodes, decimals),
+            'recall': round(recall_nodes, decimals),
+            'f1': round(f1_nodes, decimals),
+        }
+
+    def calculate_metrics_from_preprocessed(self, tp, fp, fn):
+        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = _calc_metrics(tp, fp, fn)
         decimals = 4
         return {
             'tp': tp_nodes,
@@ -200,16 +164,6 @@ class MetricsCalculator:
             'f1': round(f1_edges, decimals),
         }
 
-    def calculate_idx(self, out_fact, out_measures, out_dependencies):
-        self.out_raw['fact'] = out_fact
-        self.out_raw['measures'] = out_measures
-        self.out_raw['dependencies'] = out_dependencies
-
-        self._preprocess()
-
-        return get_edges_indexes(self.gt_edges_set, self.out_edges_set)
-
-
     def _preprocess(self):
         (self.gt_preprocessed['dependencies'],
          self.gt_preprocessed['measures'],
@@ -224,13 +178,53 @@ class MetricsCalculator:
                                                     self.out_raw['fact'])
 
     def _calc_preprocess(self, dependencies, measures, fact):
-        dep_preprocessed = [[set(v.split(',')) for v in d.values()] for d in dependencies]
-        meas_preprocessed = {v.lower() for d in measures for _, v in d.items()}
-        fact_preprocessed = fact['name'].lower()
+
+        dep_preprocessed = []
+
+        for d in dependencies:
+            lab_list = [set(v.split(',')) for v in [d['from'], d['to']]]
+            if 'role' in d:
+                lab_list.append({d['role']})
+            dep_preprocessed.append(lab_list)
+
+        meas_preprocessed = {v for d in measures for _, v in d.items()}
+        fact_preprocessed = fact['name']
         edges_set = dep_preprocessed
         nodes_set = _load_nodes(edges_set)
 
         return dep_preprocessed, meas_preprocessed, fact_preprocessed, edges_set, nodes_set
+
+    def _calculate_edges_indexes(self):
+        tp_idx, fn_idx, fp_idx, gt_used = set(), set(), set(), set()
+
+        gt_to_iterate = [gt_to_use for gt_to_use in self.gt_edges_set]
+
+        for idx_out, edges_list_out in enumerate(self.out_edges_set):
+
+            inserted = False
+            elem_removed = None
+
+            for idx_gt, edges_list_gt in enumerate(gt_to_iterate):
+                set_out_to_use = [{node.lower() for node in subset} for subset in edges_list_out]
+                set_gt_to_use = [{node.lower() for node in subset} for subset in edges_list_gt]
+                if (set_out_to_use[0] == set_gt_to_use[0] and set_out_to_use[1] == set_gt_to_use[1] and
+                        ((len(set_out_to_use) == 2 and len(set_gt_to_use) == 2) or
+                         ((len(set_out_to_use) == 3 and len(set_gt_to_use) == 3) and set_out_to_use[2] == set_gt_to_use[2]))):
+                    gt_used.add(idx_gt)
+                    inserted = True
+                    elem_removed = edges_list_gt
+                    tp_idx.add(idx_out)
+                    break
+            if not inserted:
+                fp_idx.add(idx_out)
+            else:
+                gt_to_iterate.remove(elem_removed)
+
+        for idx, edges_list_gt in enumerate(self.gt_edges_set):
+            if idx not in gt_used:
+                fn_idx.add(idx)
+
+        return tp_idx, fp_idx, fn_idx, gt_used
 
 if __name__ == '__main__':
 
@@ -262,12 +256,20 @@ if __name__ == '__main__':
     if 'gt_preprocessed' in ex_output:
         ground_truth = ex_output['gt_preprocessed']
     else:
-        print('using standard ground truth')
+        print('Calculating ground truth preprocess')
         ground_truth = load_ground_truth_exercise(ex_config['gt'])
         if ex_config['demand']:
             ground_truth = ground_truth['demand_driven']
         else:
             ground_truth = ground_truth['supply_driven']
+
+        # Extracting ex number as last digit in exercise name
+        ex_num = extract_ex_num(ex_config['name'])
+
+        ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
+                                                                                   ground_truth['measures'] if
+                                                                                   ground_truth['measures'] else set(),
+                                                                                   ground_truth['fact'], ex_config['demand'])
 
     metrics = []
 
@@ -286,43 +288,46 @@ if __name__ == '__main__':
         if 'output_preprocessed' in ex_output:
             outputs_to_use = ex_output['output_preprocessed']
         else:
-            print('using standard output')
+            print('Calculating output preprocess')
             if 'output' in ex_output:
-                outputs_to_use = ex_output['output']
+                output_non_preprocessed = ex_output['output']
             else:
-                if isinstance(ex_output, list):
-                    outputs_to_use = ex_output
-                else:
-                    outputs_to_use.append(ex_output)
+                output_non_preprocessed = ex_output
 
-    for i, output in enumerate(deepcopy(outputs_to_use)):
+            for output in output_non_preprocessed:
+                try:
+                    dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
+                                                                      output['measures'] if output[
+                                                                          'measures'] else set(),
+                                                                      output['fact'], ex_config['demand'])
+                    outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
+                except:
+                    print(f"Output not correctly generated, skipped")
+    output_to_save = []
+    for i, output in enumerate(outputs_to_use):
         try:
             dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else set(), output['fact']
 
-            work_with_index = False
+            edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
+            tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
 
-            if work_with_index:
-                print(output['dependencies'])
+            step_metric = {'edges': metric_calc.calculate_metrics_from_preprocessed_edges(edges_tp_idx, edges_fp_idx, edges_fn_idx),
+                           'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
+            metrics.append(step_metric)
 
-                tp_idx, fp_idx, fn_idx, gt_used = metric_calc.calculate_idx(fact_output, meas_output, dep_output)
-                step_metric = {'edges': metric_calc.calculate_metrics_from_preprocessed_edges(tp_idx, fp_idx, fn_idx),
-                               'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
-                metrics.append(step_metric)
+            out, gt = label_edges(outputs_to_use[i], ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
 
-                for idx, dep in outputs_to_use[i]['dependencies']:
-                    if idx in tp_idx:
-                        dep['label'] = 'tp'
-                    elif idx in fp_idx:
-                        dep['label'] = 'fp'
-                    else:
-                        dep['label'] = 'error'
-
-                label_edges(outputs_to_use[i], ground_truth, tp_idx, fp_idx, fn_idx, gt_used)
-            else:
-                metrics.append(metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
-        except Exception as e:
-            print(e)
+            output_to_save.append({'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
+                                   'ground_truth_labels': gt, 'nodes': {'tp': list(tp_nodes), 'fp': list(fp_nodes),
+                                                                        'fn': list(fn_nodes)}})
+        except:
+            traceback.print_exc()
             metrics.append({})
             print(f"Output {i}-th not correctly generated, skipped")
 
-    append_metrics(ex_config['dir'], ex_config['name'], metrics)
+    props = dict()
+    props['gt_preprocessed'] = ground_truth
+    props['output_preprocessed'] = output_to_save
+    props['metrics'] = metrics
+    store_additional_properties(ex_config['dir'], ex_config['name'], props)
+

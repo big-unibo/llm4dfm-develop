@@ -1,0 +1,73 @@
+config:
+  name: gpt
+  label: gpt4o
+  deployment: gpt-4o
+  api_version: 2024-04-01-preview
+  temperature: 0.1
+  max_tokens: 1000
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+output:
+- fact:
+    name: RENTALS
+  measures:
+  - name: RENTALS.Miles
+  - name: INSURANCES.Cost
+  - name: PAYMENTS.Amount
+  - name: PAYMENTS.Discount
+  dependencies:
+  - from: RENTAL_OFFICES.OfficeName
+    to: RENTAL_OFFICES.City
+  - from: RENTAL_OFFICES.City
+    to: RENTAL_OFFICES.Area
+  - from: RENTAL_OFFICES.Area
+    to: RENTAL_OFFICES.State
+  - from: RENTAL_OFFICES.State
+    to: RENTAL_OFFICES.Country
+  - from: CARS.Plate
+    to: CARS.Category
+  - from: CARS.Plate
+    to: CARS.Model
+  - from: CARS.Model
+    to: CARS.Brand
+  - from: CARS.Plate
+    to: CARS.Fuel
+  - from: CARS.Plate
+    to: CARS.RegistrationDate
+  - from: RENTALS
+    to: RENTALS.Miles
+  - from: RENTALS
+    to: INSURANCES.Cost
+  - from: RENTALS
+    to: PAYMENTS.Amount
+  - from: RENTALS
+    to: PAYMENTS.Discount
+  - from: RENTALS
+    to: CARS.Plate
+  - from: RENTALS
+    to: RENTAL_OFFICES.OfficeName
+    role: PickupPlace
+  - from: RENTALS
+    to: RENTAL_OFFICES.OfficeName
+    role: DropoffPlace
+  - from: RENTALS
+    to: RENTALS.PickupDate
+  - from: RENTALS
+    to: RENTALS.DropoffDate
+metrics:
+- edges:
+    tp: 6
+    fn: 14
+    fp: 11
+    precision: 0.3529
+    recall: 0.3
+    f1: 0.3243
+  nodes:
+    tp: 17
+    fn: 4
+    fp: 1
+    precision: 0.9444
+    recall: 0.8095
+    f1: 0.8718

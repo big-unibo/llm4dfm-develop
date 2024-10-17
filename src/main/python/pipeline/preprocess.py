@@ -1,15 +1,15 @@
 from utils import load_yaml_from_resources
 
-def _process(coll, ignore, dicts):
+def _process(deps, ignore, substitutions):
     dep = []
-    for d in coll:
+    for d in deps:
         d = d.replace(' ', '')
         if d.lower() in ignore:
             print(f'{d} in ignore, breaking')
             dep = []
             break
         dep_to_add = d
-        for eq_dict in dicts:
+        for eq_dict in substitutions:
             if d.lower() in eq_dict.values():
                 for k, v in eq_dict.items():
                     if d.lower() in v:

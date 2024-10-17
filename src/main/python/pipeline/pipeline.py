@@ -1,11 +1,12 @@
 import argparse
 from pathlib import Path
 from tqdm import tqdm
+import traceback
 from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from preprocess import preprocess
 
 from utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
-                   get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num)
+                   get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num, label_edges)
 from metrics import MetricsCalculator
 
 
@@ -150,9 +151,22 @@ for i, output in enumerate(model_outputs):
         dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
                                                      output['measures'] if output['measures'] else set(),
                                                      output['fact'], is_demand)
-        output_preprocessed.append({'dependencies': dep_output,'measures': meas_output,'fact': fact_output})
-        metrics.insert(i, metric_calc.calculate_metrics(fact_output, meas_output, dep_output))
+        edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
+                                                                                      dep_output)
+        tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
+
+        step_metric = {
+            'edges': metric_calc.calculate_metrics_from_preprocessed_edges(edges_tp_idx, edges_fp_idx, edges_fn_idx),
+            'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
+        metrics.append(step_metric)
+
+        out, gt = label_edges(output, ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
+
+        output_preprocessed.append({'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
+                               'ground_truth_labels': gt, 'nodes': {'tp': list(tp_nodes), 'fp': list(fp_nodes),
+                                                                    'fn': list(fn_nodes)}})
     except:
+        traceback.print_exc()
         metrics.insert(i, {})
         print(f"Output {i}-th not correctly generated, skipped")
 
