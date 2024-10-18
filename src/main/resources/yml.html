@@ -59,6 +59,8 @@
                 <input type="file" id="file_yaml_llm" name="file_yaml_llm" placeholder="Select LLM file yaml">
                 <label for="new_comparison">New comparison?</label>
                 <input type="checkbox" id="new_comparison" name="new_comparison">
+                <label id="i-th-output-label" style="padding-left: 5%" for="i-th-output-selector">Output number </label>
+                <select id="i-th-output-selector"></select>
             </div>
             <div id="block_ground_truth">
                 <label for="file_yaml_gt">File ground-truth:</label>
@@ -132,14 +134,26 @@ measures:
             const fileInputGT = document.getElementById('file_yaml_gt');
             const isDemandDriven = document.getElementById('demand_driven');
             const isNewComparison = document.getElementById('new_comparison');
+            const ithOutSelector = document.getElementById('i-th-output-selector');
 
-            toggleButton('updated_compare')
+            let lastLLMFileSelected;
+
+            toggleButton('updated_compare');
+            hide('i-th-output-label');
+            hide('i-th-output-selector');
+
+            ithOutSelector.addEventListener('change', function() {
+                const event = new Event('change');
+                fileInputLLM.dispatchEvent(event);
+            });
 
             // Add event listener to handle file selection
             fileInputLLM.addEventListener('change', function(event) {
                 // Get the selected file
                 const file = event.target.files[0];
+
                 if (file) {
+
                     // Create a FileReader object
                     const reader = new FileReader();
 
@@ -148,22 +162,48 @@ measures:
                         const fileContent = e.target.result;
                         const yamlData = parseYAML(fileContent);
 
-
                         if (yamlData) {
-                            let text_loaded_out = ""
+                            let text_loaded_out = "";
+
+                            let max;
+                            let defaultSelect;
+
+                            const min = 1;
+
                             if (yamlData.hasOwnProperty('output_preprocessed')) {
-                                text_loaded_out = jsyaml.dump(yamlData.output_preprocessed[yamlData.output_preprocessed.length-1]);
+                                max = yamlData.output_preprocessed.length;
+
+                                if (lastLLMFileSelected && lastLLMFileSelected.name === file.name && ithOutSelector.value) {
+                                    defaultSelect = ithOutSelector.value;
+                                } else {
+                                    lastLLMFileSelected = file
+                                    defaultSelect = max;
+                                    populateDropdown(min, max, defaultSelect);
+                                }
+                                text_loaded_out = jsyaml.dump(yamlData.output_preprocessed[defaultSelect-1]);
                             } else {
-                                text_loaded_out = jsyaml.dump(yamlData.output[yamlData.output.length-1]);
+                                max = yamlData.output.length;
+                                if (lastLLMFileSelected && lastLLMFileSelected.name === file.name && ithOutSelector.value) {
+                                    defaultSelect = ithOutSelector.value;
+                                } else {
+                                    lastLLMFileSelected = file
+                                    defaultSelect = max;
+                                    populateDropdown(min, max, defaultSelect);
+                                }
+                                text_loaded_out = jsyaml.dump(yamlData.output[defaultSelect-1]);
+                            }
+                            if (max !== min) {
+                                show('i-th-output-label');
+                                show('i-th-output-selector');
                             }
                             document.getElementById('yaml_llm').value = text_loaded_out;
-                            if (yamlData.hasOwnProperty('gt_preprocessed')) {
-                                document.getElementById('yaml_gt').value = jsyaml.dump(yamlData.gt_preprocessed);
-                            }
+                        } else {
                         }
                     };
                     reader.readAsText(file)
                 } else {
+                    hide('i-th-output-label');
+                    hide('i-th-output-selector');
                 }
             });
 
@@ -173,6 +213,7 @@ measures:
                 const file = event.target.files[0];
 
                 if (file) {
+                    console.log(file)
                     // Create a FileReader object
                     const reader = new FileReader();
 
@@ -238,13 +279,19 @@ measures:
             document.getElementById(id).disabled = !document.getElementById(id).disabled;
         }
 
+        function hide(id) {
+            const element = document.getElementById(id)
+            element.hidden = true
+        }
+
+        function show(id) {
+            const element = document.getElementById(id)
+            element.hidden = false
+        }
+
         function toggleVisibility(id) {
             const element = document.getElementById(id)
-            if (element.style.display === "none") {
-                element.style.display = "flex";  // Show the element
-            } else {
-                element.style.display = "none";   // Hide the element
-            }
+            element.hidden = !element.hidden
         }
 
         function extractGraphData(yaml) {
@@ -472,6 +519,26 @@ measures:
             new vis.Network(container, data, options);
         }
 
+        // Function to populate the dropdown menu
+        function populateDropdown(min, max, selectedValue) {
+            const dropdown = document.getElementById('i-th-output-selector');
+
+            dropdown.innerHTML = '';
+
+            for (let i = min; i <= max; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+
+                // Set the option as selected if it matches the selectedValue
+                if (i === selectedValue) {
+                    option.selected = true;
+                }
+
+                dropdown.appendChild(option);
+            }
+        }
+
 
         function compareGraphs() {
             const yaml2 = document.getElementById('yaml_llm').value;
@@ -621,7 +688,7 @@ measures:
             const yaml = parseYAML(document.getElementById('yaml_llm').value);
 
             const graphOut = extractUpdatedGraphData(yaml, yaml.nodes);
-            const graphGt = extractUpdatedGraphData(yaml["ground_truth_labels"], yaml.nodes);
+            const graphGt = extractUpdatedGraphData(yaml.ground_truth_labels, yaml.nodes);
 
             // Clear existing network
             const container = document.getElementById('network');

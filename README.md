@@ -33,6 +33,7 @@ Configuration files, script to automate run are collected in `src/resources` mod
 - `credentials.yml  -- contains configuration of the second step`
 - `csv-graph-config.yml  -- contains configuration of csv-based graph generation`
 - `automatic-run.sh  -- script to automate runs`
+- `automatic-metrics.sh  -- script to automate metrics script`
 - `yml.html  -- script to compare ground-truth and output via visualisation`
 
 ## Installation
@@ -86,7 +87,7 @@ The following parameters can be configured in `src/main/resources/pipeline-confi
 
 #### Note
 
-**Import model has been momentarily deleted**
+**Import model has been momentarily removed**
 
 Imported model
 
@@ -135,7 +136,7 @@ The following parameters can be configured in `src/main/resources/csv-graph-conf
 - `model_label -- model's label name`
 - `dir_label -- directory in which store file name`
 
-#### Calculate metrics
+#### Metrics
 
 The following parameters can be configured in `src/main/resources/metrics-config.yml` file, under the `exercise` section.
 
@@ -151,7 +152,7 @@ The following parameters can be configured in `src/main/resources/metrics-config
 - Setup [authentication](#authentication-key)
 - Configure [pipeline](#Pipeline), and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `src/main/python/` directory.
-  If no Exceptions raised, in `outputs` directory a new directory with inside a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
+  If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
   - config:
     - name: gpt
     - version: 3.5-turbo
@@ -162,8 +163,8 @@ The following parameters can be configured in `src/main/resources/metrics-config
     - top_k: 5
   - output:
     - fact:
-      name: FACT_NAME
-      measures:
+        name: FACT_NAME
+      measures: 
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
       dependencies:
@@ -187,8 +188,20 @@ The following parameters can be configured in `src/main/resources/metrics-config
       - name: MEASURE2_NAME
       dependencies:
       - from: TABLE1.Attr
-      - to: TABLE2.Attr
+        label: tp
+        to: TABLE2.Attr
       - ...
+      ground_truth_labels:
+        dependencies:
+        - from: TABLE1.Attr
+          label: tp
+          to: TABLE2.Attr
+        - ...
+        fact:
+          name: FACT_NAME
+        measures:
+        - name: MEASURE1_NAME
+        - name: MEASURE2_NAME
     - fact:
       name: FACT_NAME
       measures:
@@ -196,8 +209,20 @@ The following parameters can be configured in `src/main/resources/metrics-config
       - name: MEASURE2_NAME
       dependencies:
       - from: TABLE1.Attr
-      - to: TABLE2.Attr
+        label: tp
+        to: TABLE2.Attr
       - ...
+      ground_truth_labels:
+        dependencies:
+        - from: TABLE1.Attr
+          label: tp
+          to: TABLE2.Attr
+        - ...
+        fact:
+          name: FACT_NAME
+        measures:
+        - name: MEASURE1_NAME
+        - name: MEASURE2_NAME
   - gt_preprocessed:
     - fact:
       name: FACT_NAME

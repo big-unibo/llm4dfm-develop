@@ -174,6 +174,7 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
 # model_output is the list of outputs
 def store_additional_properties(dir_label, ex_name, props):
     prev_out = load_yaml(f'{outputs}{dir_label}/{ex_name}')
+
     for prop in props:
         prev_out[prop] = props[prop]
     write_yaml(f'{outputs}{dir_label}/{ex_name}', prev_out)

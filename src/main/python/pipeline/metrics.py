@@ -27,10 +27,10 @@ class MetricsCalculator:
         self.gt_raw = dict()
         self.out_raw = dict()
         self.gt_preprocessed = dict()
-        self.gt_edges_set = set()
+        self.gt_edges_list = list()
         self.gt_nodes_set = set()
         self.out_preprocessed = dict()
-        self.out_edges_set = set()
+        self.out_edges_list = list()
         self.out_nodes_set = set()
         self.ex_number = ex_number
         self._load_gt(gt_fact, gt_measures, gt_dependencies)
@@ -168,12 +168,12 @@ class MetricsCalculator:
         (self.gt_preprocessed['dependencies'],
          self.gt_preprocessed['measures'],
          self.gt_preprocessed['fact'],
-         self.gt_edges_set,
+         self.gt_edges_list,
          self.gt_nodes_set) = self._calc_preprocess(self.gt_raw['dependencies'], self.gt_raw['measures'], self.gt_raw['fact'])
         (self.out_preprocessed['dependencies'],
          self.out_preprocessed['measures'],
          self.out_preprocessed['fact'],
-         self.out_edges_set,
+         self.out_edges_list,
          self.out_nodes_set) = self._calc_preprocess(self.out_raw['dependencies'], self.out_raw['measures'],
                                                     self.out_raw['fact'])
 
@@ -189,27 +189,28 @@ class MetricsCalculator:
 
         meas_preprocessed = {v for d in measures for _, v in d.items()}
         fact_preprocessed = fact['name']
-        edges_set = dep_preprocessed
-        nodes_set = _load_nodes(edges_set)
+        edges_list = dep_preprocessed
+        nodes_set = _load_nodes(edges_list)
 
-        return dep_preprocessed, meas_preprocessed, fact_preprocessed, edges_set, nodes_set
+        return dep_preprocessed, meas_preprocessed, fact_preprocessed, edges_list, nodes_set
 
     def _calculate_edges_indexes(self):
         tp_idx, fn_idx, fp_idx, gt_used = set(), set(), set(), set()
 
-        gt_to_iterate = [gt_to_use for gt_to_use in self.gt_edges_set]
+        gt_to_iterate = [gt_to_use for gt_to_use in self.gt_edges_list]
 
-        for idx_out, edges_list_out in enumerate(self.out_edges_set):
+        for idx_out, edges_list_out in enumerate(self.out_edges_list):
 
             inserted = False
             elem_removed = None
 
-            for idx_gt, edges_list_gt in enumerate(gt_to_iterate):
+            for edges_list_gt in gt_to_iterate:
                 set_out_to_use = [{node.lower() for node in subset} for subset in edges_list_out]
                 set_gt_to_use = [{node.lower() for node in subset} for subset in edges_list_gt]
                 if (set_out_to_use[0] == set_gt_to_use[0] and set_out_to_use[1] == set_gt_to_use[1] and
                         ((len(set_out_to_use) == 2 and len(set_gt_to_use) == 2) or
                          ((len(set_out_to_use) == 3 and len(set_gt_to_use) == 3) and set_out_to_use[2] == set_gt_to_use[2]))):
+                    idx_gt = self.gt_edges_list.index(edges_list_gt)
                     gt_used.add(idx_gt)
                     inserted = True
                     elem_removed = edges_list_gt
@@ -220,7 +221,7 @@ class MetricsCalculator:
             else:
                 gt_to_iterate.remove(elem_removed)
 
-        for idx, edges_list_gt in enumerate(self.gt_edges_set):
+        for idx, edges_list_gt in enumerate(self.gt_edges_list):
             if idx not in gt_used:
                 fn_idx.add(idx)
 
@@ -330,4 +331,3 @@ if __name__ == '__main__':
     props['output_preprocessed'] = output_to_save
     props['metrics'] = metrics
     store_additional_properties(ex_config['dir'], ex_config['name'], props)
-
