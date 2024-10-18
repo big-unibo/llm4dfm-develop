@@ -57,8 +57,10 @@
             <div>
                 <label for="file_yaml_llm">File LLM:</label>
                 <input type="file" id="file_yaml_llm" name="file_yaml_llm" placeholder="Select LLM file yaml">
+                <label for="new_comparison">New comparison?</label>
+                <input type="checkbox" id="new_comparison" name="new_comparison">
             </div>
-            <div>
+            <div id="block_ground_truth">
                 <label for="file_yaml_gt">File ground-truth:</label>
                 <input type="file" id="file_yaml_gt" name="file_yaml_gt" placeholder="Select GT file yaml">
                 <label for="demand_driven">Demand driven?</label>
@@ -86,7 +88,7 @@ measures:
         </textarea>
     </div>
     <div class="textarea-container">
-        <h2>YAML Ground Truth</h2>
+        <h2 id="yaml_gt_title">YAML Ground Truth</h2>
         <textarea id="yaml_gt" rows="10" cols="30">
 dependencies:
   - from: node2
@@ -102,7 +104,8 @@ measures:
     <div>
         <button onclick="drawGraph('first')">Draw LLM</button>
         <button onclick="drawGraph('second')">Draw Ground Truth</button>
-        <button onclick="compareGraphs()">Compare</button>
+        <button id="old_compare" onclick="compareGraphs()">Compare</button>
+        <button id="updated_compare" onclick="compareUpdatedGraphs()">Compare updated</button>
         <p>
             If drawing:
             - WHITE: the fact
@@ -113,7 +116,7 @@ measures:
         <p>
             If comparing:
             - GREEN: true positive (found in both LLM and Ground Truth)
-            - RED: false positive (found by LMM, but not in Ground Truth)
+            - RED: false positive (found by LLM, but not in Ground Truth)
             - GREY: false negative (not found by LLM, but in Ground Truth)
         </p>
     </div>
@@ -127,7 +130,10 @@ measures:
             // Select the file input element
             const fileInputLLM = document.getElementById('file_yaml_llm');
             const fileInputGT = document.getElementById('file_yaml_gt');
-            const isDemandDrivenElem = document.getElementById('demand_driven');
+            const isDemandDriven = document.getElementById('demand_driven');
+            const isNewComparison = document.getElementById('new_comparison');
+
+            toggleButton('updated_compare')
 
             // Add event listener to handle file selection
             fileInputLLM.addEventListener('change', function(event) {
@@ -158,12 +164,11 @@ measures:
                     };
                     reader.readAsText(file)
                 } else {
-                    console.log('No file selected');
                 }
             });
 
             fileInputGT.addEventListener('change', function(event) {
-                const isDemandDrive = isDemandDrivenElem.checked;
+                const isDemandDrive = isDemandDriven.checked;
 
                 const file = event.target.files[0];
 
@@ -191,10 +196,18 @@ measures:
                 }
             });
 
-            isDemandDrivenElem.addEventListener('change', function() {
+            isDemandDriven.addEventListener('change', function() {
                 // Trigger the file input's change event manually
                 const event = new Event('change');
                 fileInputGT.dispatchEvent(event);
+            });
+
+            isNewComparison.addEventListener('change', function() {
+                toggleVisibility("block_ground_truth");
+                toggleVisibility('yaml_gt');
+                toggleVisibility('yaml_gt_title');
+                toggleButton('updated_compare');
+                toggleButton('old_compare');
             });
         });
 
@@ -221,6 +234,18 @@ measures:
             return obj;
         }
 
+        function toggleButton(id) {
+            document.getElementById(id).disabled = !document.getElementById(id).disabled;
+        }
+
+        function toggleVisibility(id) {
+            const element = document.getElementById(id)
+            if (element.style.display === "none") {
+                element.style.display = "flex";  // Show the element
+            } else {
+                element.style.display = "none";   // Hide the element
+            }
+        }
 
         function extractGraphData(yaml) {
             const nodes = new Map();
@@ -241,6 +266,8 @@ measures:
                         }
                     });
                 }
+
+
 
                 // Handle fact
                 if (yaml.fact && yaml.fact.name) {
@@ -264,6 +291,83 @@ measures:
                     edges.forEach(edge => {
                         if (edge.from === factNode && !measures.has(edge.to)) {
                             nodes.set(edge.to, { id: edge.to, tag: 'dimension' });
+                        }
+                    });
+                }
+            }
+            return { nodes: Array.from(nodes.values()), edges: Array.from(edges) };
+        }
+
+        function compareStrings(str1, str2) {
+            const normalize = (str) => {
+                return str
+                    .toLowerCase() // Convert to lowercase
+                    .split(',') // Split by commas
+                    .map(item => item.split('.').reverse().join('.')) // Reverse object and property order
+                    .sort() // Sort alphabetically
+                    .join(','); // Join back with commas
+            };
+            return normalize(str1) === normalize(str2);
+        }
+
+        function findNodeLabel(nodes, node) {
+            for (const [key, list] of Object.entries(nodes)) {
+                for (const item of list) {
+                    if (compareStrings(item, node)) { // in case compare doesn't work (item === node) {
+                        return key;
+                    }
+                }
+            }
+            return null;  // Return null if not found in any list
+        }
+
+        function extractUpdatedGraphData(yaml, nodesToCheck) {
+            const nodes = new Map();
+            const edges = new Set();
+            let factNode = null;
+            const measures = new Set();
+
+            if (yaml) {
+                // Handle dependencies
+                if (yaml.dependencies) {
+                    yaml.dependencies.forEach(dep => {
+                        if (!dep.refinements || dep.refinements !== 'created') {
+                            const fromLabel = findNodeLabel(nodesToCheck, dep.from)
+                            const toLabel = findNodeLabel(nodesToCheck, dep.to)
+                            dep.from = "n_" + dep.from;
+                            dep.to = "n_" + dep.to;
+                            edges.add({ from: dep.from, to: dep.to, role: dep.role, label: dep.label });
+                            nodes.set(dep.from, { id: dep.from, label: fromLabel });
+                            nodes.set(dep.to, { id: dep.to, label: toLabel });
+                        }
+                    });
+                }
+
+                // Handle fact
+                if (yaml.fact && yaml.fact.name) {
+                    const factLabel = findNodeLabel(nodesToCheck, yaml.fact.name)
+                    factNode = "n_" + yaml.fact.name;
+                    nodes.set(factNode, { id: factNode, tag: 'fact', label: factLabel });
+                }
+
+                // Handle measures
+                if (yaml.measures) {
+                    yaml.measures.forEach(measure => {
+                        if (measure.name) {
+                            const measureLabel = findNodeLabel(nodesToCheck, measure.name);
+                            measure.name = "n_" + measure.name;
+                            measures.add(measure.name);
+                            nodes.set(measure.name, {id: measure.name, tag: 'measure', label: measureLabel});
+                        }
+                    });
+                }
+
+                // Derive dimensions
+                if (factNode) {
+                    edges.forEach(edge => {
+                        if (edge.from === factNode && !measures.has(edge.to)) {
+                            const measureLabel = findNodeLabel(nodesToCheck, edge.to.replace("n_", ""));
+                            nodes.set(edge.to, { id: edge.to, tag: 'dimension', label: measureLabel });
                         }
                     });
                 }
@@ -408,6 +512,165 @@ measures:
                     allEdges.set(edgeStr, 'lightgreen');
                 } else {
                     allEdges.set(edgeStr, 'lightgrey');
+                }
+            });
+
+            let truePositiveNodes = 0;
+            let falsePositiveNodes = 0;
+            let falseNegativeNodes = 0;
+            let truePositiveEdges = 0;
+            let falsePositiveEdges = 0;
+            let falseNegativeEdges = 0;
+
+            allNodes.forEach((node, id) => {
+                nodes.push({ id: node.id.toLowerCase(), label: polishNodeName(node.casedname), color: { border: 'black', background: node.color }, title: getNodeTitle(node.id) });
+                if (node.color === 'lightgreen') truePositiveNodes++;
+                if (node.color === 'red') falsePositiveNodes++;
+                if (node.color === 'lightgrey') falseNegativeNodes++;
+            });
+
+            allEdges.forEach((color, edgeStr) => {
+                const edge = JSON.parse(edgeStr);
+                edges.push({ from: edge.from, to: edge.to, color: { color: color } });
+                if (color === 'lightgreen') truePositiveEdges++;
+                if (color === 'red') falsePositiveEdges++;
+                if (color === 'lightgrey') falseNegativeEdges++;
+            });
+
+            const data = {
+                nodes: new vis.DataSet(nodes),
+                edges: new vis.DataSet(edges)
+            };
+            const options = {
+                edges: {
+                    arrows: { to: { enabled: true, scaleFactor: 0.5 } }
+                },
+                layout: {
+                    hierarchical: false
+                }
+            };
+            new vis.Network(container, data, options);
+
+            // Calculate metrics
+            const precisionNodes = truePositiveNodes / (truePositiveNodes + falsePositiveNodes);
+            const recallNodes = truePositiveNodes / (truePositiveNodes + falseNegativeNodes);
+            let f1Nodes
+
+            if (precisionNodes !== 0 || recallNodes !== 0) {
+                f1Nodes = 2 * (precisionNodes * recallNodes) / (precisionNodes + recallNodes);
+            } else {
+                f1Nodes = 0
+            }
+
+            const precisionEdges = truePositiveEdges / (truePositiveEdges + falsePositiveEdges);
+            const recallEdges = truePositiveEdges / (truePositiveEdges + falseNegativeEdges);
+            let f1Edges
+
+            if (precisionEdges !== 0 || recallEdges !== 0) {
+                f1Edges = 2 * (precisionEdges * recallEdges) / (precisionEdges + recallEdges);
+            } else {
+                f1Edges = 0
+            }
+
+            // Display metrics
+            document.getElementById('results').innerHTML = `
+                <h3>Comparison Results</h3>
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Nodes</th>
+                        <th>Edges</th>
+                    </tr>
+                    <tr>
+                        <td>True Positives</td>
+                        <td>${truePositiveNodes}</td>
+                        <td>${truePositiveEdges}</td>
+                    </tr>
+                    <tr>
+                        <td>False Positives</td>
+                        <td>${falsePositiveNodes}</td>
+                        <td>${falsePositiveEdges}</td>
+                    </tr>
+                    <tr>
+                        <td>False Negatives</td>
+                        <td>${falseNegativeNodes}</td>
+                        <td>${falseNegativeEdges}</td>
+                    </tr>
+                    <tr>
+                        <td>Precision</td>
+                        <td>${precisionNodes.toFixed(2)}</td>
+                        <td>${precisionEdges.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Recall</td>
+                        <td>${recallNodes.toFixed(2)}</td>
+                        <td>${recallEdges.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>F1-Measure</td>
+                        <td>${f1Nodes.toFixed(2)}</td>
+                        <td>${f1Edges.toFixed(2)}</td>
+                    </tr>
+                </table>
+
+            `;
+        }
+
+        function compareUpdatedGraphs() {
+
+            const yaml = parseYAML(document.getElementById('yaml_llm').value);
+
+            const graphOut = extractUpdatedGraphData(yaml, yaml.nodes);
+            const graphGt = extractUpdatedGraphData(yaml["ground_truth_labels"], yaml.nodes);
+
+            // Clear existing network
+            const container = document.getElementById('network');
+            container.innerHTML = '';
+
+            const nodes = [];
+            const edges = [];
+
+            graphOut.nodes.forEach(node => {
+                node.id = node.id.replace(/\s/g,'')
+            })
+            graphGt.nodes.forEach(node => {
+                node.id = node.id.replace(/\s/g,'')
+            })
+
+            const colorMap = {
+                fn: "lightgrey",
+                fp: "red",
+                tp: "lightgreen"
+            };
+
+            const allNodes = new Map();
+            graphOut.nodes.forEach(node => {
+                if (!allNodes.has(node.id.toLowerCase())) {
+                    const color = colorMap[node.label] || "black";
+                    allNodes.set(node.id.toLowerCase(), {...node, casedname: node.id, color: color});
+                }
+            });
+            graphGt.nodes.forEach(node => {
+                if (!allNodes.has(node.id.toLowerCase())) {
+                    const color = colorMap[node.label] || "black";
+                    allNodes.set(node.id.toLowerCase(), {...node, casedname: node.id, color: color});
+                }
+            });
+
+            const allEdges = new Map();
+            graphOut.edges.forEach(edge => {
+                const color = colorMap[edge.label] || "black";
+                allEdges.set(JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: edge.role }), color)
+            });
+            graphGt.edges.forEach(edge => {
+                const edgeStr = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: edge.role });
+                if (!allEdges.has(edgeStr)) {
+                    const color = colorMap[edge.label] || "black";
+                    allEdges.set(JSON.stringify({
+                        from: edge.from.toLowerCase(),
+                        to: edge.to.toLowerCase(),
+                        title: edge.role
+                    }), color)
                 }
             });
 
