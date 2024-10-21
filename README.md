@@ -291,3 +291,8 @@ Output:
 Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
 Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
+
+## Tests
+
+To execute the tests' suite, from `src/main/python/` directory, run `source venv/bin/activate` and then 
+`export PYTHONPATH=src/main/python:$PYTHONPATH`; then select the desired suite with `python tests/{test-dir}/{test-file.py}`.

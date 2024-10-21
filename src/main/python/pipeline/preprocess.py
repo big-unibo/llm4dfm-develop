@@ -1,4 +1,4 @@
-from utils import load_yaml_from_resources
+from .utils import load_yaml_from_resources
 
 def _process(deps, ignore, substitutions):
     dep = []

@@ -2,10 +2,10 @@ import argparse
 import traceback
 from copy import deepcopy
 
-from utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
+from .utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
     extract_ex_num, label_edges, store_additional_properties
 
-from preprocess import preprocess
+from .preprocess import preprocess
 
 def _calc_metrics(tp, fn, fp):
     tp_count = len(tp)
@@ -117,6 +117,17 @@ class MetricsCalculator:
                                                       self.out_preprocessed['measures'], self.gt_preprocessed['fact'],
                                                       self.out_preprocessed['fact'])
 
+    def calculate_metrics_from_preprocessed(self, tp, fp, fn):
+        precision, recall, f1, tp, fn, fp = _calc_metrics(tp, fp, fn)
+        decimals = 4
+        return {
+            'tp': tp,
+            'fn': fn,
+            'fp': fp,
+            'precision': round(precision, decimals),
+            'recall': round(recall, decimals),
+            'f1': round(f1, decimals),
+        }
 
     def calculate_metrics_nodes(self, out_fact, out_measures, out_dependencies):
         self.out_raw['fact'] = out_fact
@@ -127,42 +138,7 @@ class MetricsCalculator:
 
         tp_nodes, fp_nodes, fn_nodes = self.get_nodes()
 
-        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = _calc_metrics(tp_nodes, fn_nodes, fp_nodes)
-
-        decimals = 4
-        return {
-            'tp': tp_nodes,
-            'fn': fn_nodes,
-            'fp': fp_nodes,
-            'precision': round(precision_nodes, decimals),
-            'recall': round(recall_nodes, decimals),
-            'f1': round(f1_nodes, decimals),
-        }
-
-    def calculate_metrics_from_preprocessed(self, tp, fp, fn):
-        precision_nodes, recall_nodes, f1_nodes, tp_nodes, fn_nodes, fp_nodes = _calc_metrics(tp, fp, fn)
-        decimals = 4
-        return {
-            'tp': tp_nodes,
-            'fn': fn_nodes,
-            'fp': fp_nodes,
-            'precision': round(precision_nodes, decimals),
-            'recall': round(recall_nodes, decimals),
-            'f1': round(f1_nodes, decimals),
-        }
-
-
-    def calculate_metrics_from_preprocessed_edges(self, tp_idx, fp_idx, fn_idx):
-        precision_edges, recall_edges, f1_edges, tp_edges, fn_edges, fp_edges = _calc_metrics(tp_idx, fp_idx, fn_idx)
-        decimals = 4
-        return {
-            'tp': tp_edges,
-            'fn': fn_edges,
-            'fp': fp_edges,
-            'precision': round(precision_edges, decimals),
-            'recall': round(recall_edges, decimals),
-            'f1': round(f1_edges, decimals),
-        }
+        return self.calculate_metrics_from_preprocessed(tp_nodes, fp_nodes, fn_nodes)
 
     def _preprocess(self):
         (self.gt_preprocessed['dependencies'],
@@ -312,7 +288,7 @@ if __name__ == '__main__':
             edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
             tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
 
-            step_metric = {'edges': metric_calc.calculate_metrics_from_preprocessed_edges(edges_tp_idx, edges_fp_idx, edges_fn_idx),
+            step_metric = {'edges': metric_calc.calculate_metrics_from_preprocessed(edges_tp_idx, edges_fp_idx, edges_fn_idx),
                            'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
             metrics.append(step_metric)
 

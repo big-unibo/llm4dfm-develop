@@ -8,10 +8,11 @@ from typing import Callable, List
 import openai
 import google.generativeai as genai
 import time
-from utils import load_text_exercise, load_prompts
 import requests
 import json
 import yaml
+
+from .utils import load_text_exercise, load_prompts
 
 load_dotenv()
 

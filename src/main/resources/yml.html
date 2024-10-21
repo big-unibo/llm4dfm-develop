@@ -192,7 +192,7 @@ measures:
                                 }
                                 text_loaded_out = jsyaml.dump(yamlData.output[defaultSelect-1]);
                             }
-                            if (max !== min) {
+                            if (max !== 1) {
                                 show('i-th-output-label');
                                 show('i-th-output-selector');
                             }
@@ -213,7 +213,6 @@ measures:
                 const file = event.target.files[0];
 
                 if (file) {
-                    console.log(file)
                     // Create a FileReader object
                     const reader = new FileReader();
 

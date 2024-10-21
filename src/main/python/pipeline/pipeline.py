@@ -2,12 +2,12 @@ import argparse
 from pathlib import Path
 from tqdm import tqdm
 import traceback
-from models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
-from preprocess import preprocess
+from pipeline.models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
+from .preprocess import preprocess
 
-from utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
+from .utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
                    get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num, label_edges)
-from metrics import MetricsCalculator
+from .metrics import MetricsCalculator
 
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -50,7 +50,6 @@ else:
 
 automatic_run = False
 
-# Check if the --exercise argument is passed
 if args.exercise:
     automatic_run = True
     if len(args.exercise.split('/')) > 0:
@@ -90,6 +89,7 @@ prompts.extend(load_prompts(model_config['exercise']['prompt_version'], config['
 # Used to allow models without chat structure constraints (i.e. after each system or user input require an assistant
 # message, so one batch at a time) to batch first system and user input in a single batch
 first_batch = len(first_prompt) if is_model_without_chat_constraints(config['name']) else 1
+
 
 # Batch text and prompts
 
@@ -156,7 +156,7 @@ for i, output in enumerate(model_outputs):
         tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
 
         step_metric = {
-            'edges': metric_calc.calculate_metrics_from_preprocessed_edges(edges_tp_idx, edges_fp_idx, edges_fn_idx),
+            'edges': metric_calc.calculate_metrics_from_preprocessed(edges_tp_idx, edges_fp_idx, edges_fn_idx),
             'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
         metrics.append(step_metric)
 
