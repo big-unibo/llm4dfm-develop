@@ -13,7 +13,7 @@ datasets = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('DATA
 outputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('OUTPUTS')}'
 results = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('RESULTS')}'
 inputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('INPUTS')}'
-auto_outputs = os.getenv('AUTO_OUTPUTS')
+auto_outputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('AUTO_OUTPUTS')}'
 
 # TODO is there a way to index better?
 resources = f'{os.path.dirname(os.path.abspath(__file__))}/../resources/'
@@ -232,6 +232,9 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
                 print("Headers do not match. Writing data anyway.")
         except:
             write_headers = True
+
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
         with open(f'{file_path}', "a+", newline="") as csv_file:
             writer = csv.writer(csv_file)

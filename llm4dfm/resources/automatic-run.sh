@@ -1,12 +1,14 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 ARGS=$#
 prompt_version=v4
 model="gpt"
 model_label="gpt4o"
 dir_label=""
-PY_PROG="llm4dfm/pipeline/pipeline.py"
-GRAPH_PROG="llm4dfm/pipeline/csv_graph.py"
+PY_PROG="$SCRIPT_DIR/../pipeline/pipeline.py"
+GRAPH_PROG="$SCRIPT_DIR/../pipeline/csv_graph.py"
 t_sleep=0
 n_runs=1
 
