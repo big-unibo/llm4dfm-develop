@@ -1,0 +1,58 @@
+[tool.poetry]
+packages = [
+    { include = "llm4dfm" },
+    { include = "tests" },
+]
+name = "llm4dfm"
+version = "0.1.0"
+description = ""
+authors = ["Luca Rubboli <luca.rubboli2@studio.unibo.it>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "1.26.4"
+pandas = "2.2.2"
+scikit-learn = "1.5.0"
+scipy = "1.13.1"
+notebook = "7.2.0"
+matplotlib = "^3.9.2"
+seaborn = "^0.13.2"
+tqdm = "^4.66.5"
+python-dotenv = "^1.0.1"
+PyYAML = "^6.0.2"
+openai = "1.30.5"
+transformers = "4.41.2"
+google-generativeai = "^0.8.3"
+networkx = "^3.4.1"
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.4.0"
+mypy = "^1.10.1"
+poethepoet = "^0.28.0"
+poetry = "^1.8.3"
+pytest = "^8.2.2"
+
+[tool.poe.tasks]
+automatic_run = "./llm4dfm/resources/automatic-run.sh"
+automatic_metrics = "./llm4dfm/resources/automatic-metrics.sh"
+test = "python -m unittest discover -v -s tests -p '*.py'"
+coverage = "coverage run -m unittest discover -v -s tests -p '*.py'"
+coverage-report = "coverage report -m"
+coverage-html = "coverage html"
+mypy = "mypy llm4dfm tests"
+compile = "python -m compileall llm4dfm tests"
+
+[tool.poetry.scripts]
+# llm4dfm = "llm4dfm:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[tool.mypy]
+ignore_missing_imports = true
