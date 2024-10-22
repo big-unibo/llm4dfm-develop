@@ -1,3 +1,4 @@
+import traceback
 from pathlib import Path
 import argparse
 
@@ -15,7 +16,6 @@ args = parser.parse_args()
 input_config = load_yaml_from_resources('csv-graph-config')
 
 # Parse args
-
 if args.prompt_version:
     input_config['prompt_v'] = args.prompt_version
 if args.exercise_v:
@@ -31,6 +31,7 @@ file_path = get_output_file_path(input_config['v'], input_config['prompt_v'], in
 try:
     csv_file = load_full_path_csv(file_path)
 except:
+    traceback.print_exc()
     print(f'File {file_path} not found')
     exit(1)
 

@@ -178,4 +178,4 @@ ts = get_timestamp()
 store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_prep, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
 
 if automatic_run:
-    store_automatic_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
+    store_automatic_output(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])

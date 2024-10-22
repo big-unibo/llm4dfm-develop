@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PY_PROG="../pipeline/metrics.py"
+PY_PROG="llm4dfm/pipeline/metrics.py"
 dir='LLM-rizzi'
 demand=true
 

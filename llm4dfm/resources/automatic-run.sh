@@ -10,8 +10,6 @@ GRAPH_PROG="llm4dfm/pipeline/csv_graph.py"
 t_sleep=0
 n_runs=1
 
-# VIS_PROG="../python/pipeline/visualisation.py"
-
 # Define the components of the regex pattern as variables
 ex_dir="../datasets/"
 ex_prefix="exercise-"

@@ -6,18 +6,17 @@ import yaml
 from datetime import datetime
 import re
 import csv
-from pathlib import Path
 
 load_dotenv()
 
-datasets = os.getenv('DATASETS')
-outputs = os.getenv('OUTPUTS')
-results = os.getenv('RESULTS')
-inputs = os.getenv('INPUTS')
+datasets = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('DATASETS')}'
+outputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('OUTPUTS')}'
+results = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('RESULTS')}'
+inputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('INPUTS')}'
 auto_outputs = os.getenv('AUTO_OUTPUTS')
 
 # TODO is there a way to index better?
-resources = f'{Path().absolute()}/llm4dfm/resources/'
+resources = f'{os.path.dirname(os.path.abspath(__file__))}/../resources/'
 
 # General utils
 
@@ -186,7 +185,7 @@ def get_output_file_path(ex_version, prompt_version, model, label_dir):
     f_name = f'output-{ex_version}-{prompt_version}-{model}.csv'
     return f'{auto_outputs}{label_dir}/{f_name}'
 
-def store_automatic_output(model_config, ex_config, model_output, imported, metrics_list, timestamp, label_dir):
+def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, timestamp, label_dir):
     for i, metrics in enumerate(metrics_list):
         data = dict()
 
@@ -200,11 +199,14 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
         for key, value in config_to_print_import_model(model_config).items() if imported else config_to_print_api_model(model_config).items():
             data[f"config_{key}"] = value
 
-        data['fact'] = model_output[i]['fact']['name']
+        data['fact'] = output_preprocessed[i]['fact']['name']
 
-        data['measures'] = [measure['name'] for measure in model_output[i]['measures']] if model_output[i]['measures'] else None
+        data['measures'] = [measure['name'] for measure in output_preprocessed[i]['measures']] if output_preprocessed[i]['measures'] else None
 
-        data['dependencies'] = [dependency for dependency in model_output[i]['dependencies']]
+        data['dependencies'] = [dependency for dependency in output_preprocessed[i]['dependencies']]
+
+        for node in output_preprocessed[i]['nodes']:
+            data[f'node_{node}'] = output_preprocessed[i]['nodes'][node]
 
         for elem in metrics:
             for met, val in metrics[elem].items():
@@ -230,9 +232,6 @@ def store_automatic_output(model_config, ex_config, model_output, imported, metr
                 print("Headers do not match. Writing data anyway.")
         except:
             write_headers = True
-
-        # Ensure the directory exists
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
         with open(f'{file_path}', "a+", newline="") as csv_file:
             writer = csv.writer(csv_file)
