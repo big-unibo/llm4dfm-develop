@@ -87,9 +87,6 @@ class MyTestCase(unittest.TestCase):
             store_test_output(output_generated[file], file)
 
         for file in metrics_gt.keys():
-            print(file)
-            print(f'GT: {metrics_gt[file]}')
-            print(f'Calculated: {metrics_calculated[file]}')
             self.assertEqual(metrics_gt[file], metrics_calculated[file])  # add assertion here
 
 if __name__ == '__main__':
