@@ -7,7 +7,7 @@ metastore_db/
 **/metrics-config.yml
 **/.env
 **/automatic_run/*.csv
-tests/*/generated
+tests/*/generated/*
 
 # These are useless since we use gradle import
 .idea/
