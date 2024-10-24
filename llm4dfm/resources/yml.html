@@ -438,8 +438,21 @@ measures:
         }
 
         function drawGraph(which) {
-            const yaml = which === 'first' ? document.getElementById('yaml_llm').value : document.getElementById('yaml_gt').value;
-            const graph = extractGraphData(parseYAML(yaml));
+            let yaml;
+            let graph;
+            if (which === 'first') {
+                yaml = document.getElementById('yaml_llm').value;
+                graph = extractGraphData(parseYAML(yaml));
+            } else {
+                const yamlLlm = document.getElementById('yaml_llm').value;
+
+                if (parseYAML(yamlLlm).hasOwnProperty('ground_truth_labels')) {
+                    graph = extractGraphData(parseYAML(yamlLlm).ground_truth_labels);
+                } else {
+                    const yamlGt = document.getElementById('yaml_gt').value;
+                    graph = extractGraphData(parseYAML(yamlGt));
+                }
+            }
 
             // Clear existing network
             const container = document.getElementById('network');
