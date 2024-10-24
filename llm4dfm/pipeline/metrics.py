@@ -245,13 +245,13 @@ if __name__ == '__main__':
 
         ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
                                                                                    ground_truth['measures'] if
-                                                                                   ground_truth['measures'] else set(),
+                                                                                   ground_truth['measures'] else dict(),
                                                                                    ground_truth['fact'], ex_config['demand'])
 
     metrics = []
 
     dep_gt = ground_truth['dependencies']
-    meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
+    meas_gt = ground_truth['measures'] if ground_truth['measures'] else dict()
     fact_gt = ground_truth['fact']
 
     # Extracting ex number as last digit in exercise name
@@ -275,7 +275,7 @@ if __name__ == '__main__':
                 try:
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
                                                                       output['measures'] if output[
-                                                                          'measures'] else set(),
+                                                                          'measures'] else dict(),
                                                                       output['fact'], ex_config['demand'])
                     outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
                 except:
@@ -284,7 +284,7 @@ if __name__ == '__main__':
     output_to_save = []
     for i, output in enumerate(outputs_to_use):
         try:
-            dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else set(), output['fact']
+            dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else dict(), output['fact']
 
             edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
             tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()

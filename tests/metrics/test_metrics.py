@@ -38,12 +38,12 @@ class MyTestCase(unittest.TestCase):
 
                 ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = (
                     preprocess(ex_num, ground_truth['dependencies'], ground_truth['measures'] if ground_truth['measures'] else
-                    set(), ground_truth['fact'], is_demand))
+                    dict(), ground_truth['fact'], is_demand))
 
             #print(ground_truth)
 
             dep_gt = ground_truth['dependencies']
-            meas_gt = ground_truth['measures'] if ground_truth['measures'] else set()
+            meas_gt = ground_truth['measures'] if ground_truth['measures'] else dict()
             fact_gt = ground_truth['fact']
 
             metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
@@ -54,7 +54,7 @@ class MyTestCase(unittest.TestCase):
             for i, output in enumerate(ex_output['output']):
                 try:
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
-                                                                      output['measures'] if output['measures'] else set(),
+                                                                      output['measures'] if output['measures'] else dict(),
                                                                       output['fact'], is_demand)
                     edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
                                                                                                   dep_output)
