@@ -6,7 +6,7 @@ from llm4dfm.pipeline.metrics import MetricsCalculator
 from llm4dfm.pipeline.preprocess import preprocess
 from tests.metrics.utils import load_metrics_datasets, get_info_from_filename, load_exercise, store_test_output
 
-class MyTestCase(unittest.TestCase):
+class MetricsTest(unittest.TestCase):
 
     def test_metrics(self):
         files = load_metrics_datasets()

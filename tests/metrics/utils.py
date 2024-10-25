@@ -7,7 +7,7 @@ test_path = os.path.dirname(os.path.realpath(__file__))
 
 metrics_dataset_directory = os.path.join(test_path, 'dataset')
 
-metrics_output = './tests/metrics/generated/'
+metrics_output = os.path.join(test_path, 'generated')
 
 def load_metrics_datasets():
     file_dir = Path(metrics_dataset_directory).resolve()
