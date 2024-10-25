@@ -1,0 +1,24 @@
+output:
+- fact:
+    name: INSTALLATIONS
+  measures: []
+  dependencies:
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+metrics:
+- edges:
+    tp: 1
+    fn: 9
+    fp: 1
+    precision: 0.5
+    recall: 0.1
+    f1: 0.1667
+  nodes:
+    tp: 3
+    fn: 8
+    fp: 0
+    precision: 1.0
+    recall: 0.2727
+    f1: 0.4286

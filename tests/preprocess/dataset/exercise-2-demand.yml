@@ -3,8 +3,10 @@ output:
   - from: Day, SurName
     to: softWareInstallation
   - from: address
-    to: mytest
+    to: mytest2
   - from: regular
+    to: myregular
+  - from: count
     to: myregular
   - from: regular
     to: myregular
@@ -17,10 +19,10 @@ output:
   - name: Height
 expected:
 - dependencies:
-  - from: Day, SurName
+  - from: Date,lastName
     to: softWareInstallation
   - from: storeAddress
-    to: mytest
+    to: mytest2
   - from: regular
     to: myregular
   - from: regular
@@ -28,7 +30,7 @@ expected:
   - from: regular1,regular2
     to: myregular12
   fact:
-    name: INSTALLATION
+    name: INSTALLATIONS
   measures:
   - name: Weight
   - name: Height

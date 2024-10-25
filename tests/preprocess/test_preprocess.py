@@ -34,8 +34,6 @@ class PreprocessTest(unittest.TestCase):
         for file in output_generated.keys():
             store_test_output(output_generated[file], file)
 
-
-
         for idx, file in enumerate(output_expected.keys()):
             self.assertEqual(output_expected[file], output_generated[file])  # add assertion here
 

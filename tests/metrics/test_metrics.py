@@ -40,8 +40,6 @@ class MetricsTest(unittest.TestCase):
                     preprocess(ex_num, ground_truth['dependencies'], ground_truth['measures'] if ground_truth['measures'] else
                     dict(), ground_truth['fact'], is_demand))
 
-            #print(ground_truth)
-
             dep_gt = ground_truth['dependencies']
             meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
             fact_gt = ground_truth['fact']
@@ -50,6 +48,8 @@ class MetricsTest(unittest.TestCase):
 
             metrics_list = []
             output_preprocessed = []
+
+            print(ex_output)
 
             for i, output in enumerate(ex_output['output']):
                 try:

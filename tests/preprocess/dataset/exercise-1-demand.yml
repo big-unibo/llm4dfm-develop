@@ -1,9 +1,9 @@
 output:
 - dependencies:
   - from: Day, SurName
-    to: softWareInstallation
+    to: softWareInstallations
   fact:
-    name: INSTALLATIONS
+    name: softWareInstallations
   measures: []
 expected:
 - dependencies:

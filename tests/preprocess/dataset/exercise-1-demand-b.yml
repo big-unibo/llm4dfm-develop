@@ -10,5 +10,5 @@ expected:
   - from: Days,INSTALLATION
     to: firstName
   fact:
-    name: surname
+    name: lastName
   measures: []
