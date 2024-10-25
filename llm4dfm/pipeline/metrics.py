@@ -7,7 +7,7 @@ from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exerc
 
 from llm4dfm.pipeline.preprocess import preprocess
 
-def _calc_metrics(tp, fn, fp):
+def _calc_metrics(tp, fp, fn):
     tp_count = len(tp)
     fn_count = len(fn)
     fp_count = len(fp)
@@ -245,13 +245,13 @@ if __name__ == '__main__':
 
         ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
                                                                                    ground_truth['measures'] if
-                                                                                   ground_truth['measures'] else dict(),
+                                                                                   ground_truth['measures'] else list(),
                                                                                    ground_truth['fact'], ex_config['demand'])
 
     metrics = []
 
     dep_gt = ground_truth['dependencies']
-    meas_gt = ground_truth['measures'] if ground_truth['measures'] else dict()
+    meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
     fact_gt = ground_truth['fact']
 
     # Extracting ex number as last digit in exercise name
@@ -275,7 +275,7 @@ if __name__ == '__main__':
                 try:
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
                                                                       output['measures'] if output[
-                                                                          'measures'] else dict(),
+                                                                          'measures'] else list(),
                                                                       output['fact'], ex_config['demand'])
                     outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
                 except:
@@ -284,7 +284,7 @@ if __name__ == '__main__':
     output_to_save = []
     for i, output in enumerate(outputs_to_use):
         try:
-            dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else dict(), output['fact']
+            dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else list(), output['fact']
 
             edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
             tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()

@@ -4,7 +4,7 @@ import traceback
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, extract_ex_num, label_edges
 from llm4dfm.pipeline.metrics import MetricsCalculator
 from llm4dfm.pipeline.preprocess import preprocess
-from tests.metrics.utils import load_metrics_datasets, get_info_from_filename, load_exercise, store_test_output
+from tests.metrics.metrics_utils import load_metrics_datasets, get_info_from_filename, load_exercise, store_test_output
 
 class MetricsTest(unittest.TestCase):
 
@@ -43,7 +43,7 @@ class MetricsTest(unittest.TestCase):
             #print(ground_truth)
 
             dep_gt = ground_truth['dependencies']
-            meas_gt = ground_truth['measures'] if ground_truth['measures'] else dict()
+            meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
             fact_gt = ground_truth['fact']
 
             metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
@@ -54,7 +54,7 @@ class MetricsTest(unittest.TestCase):
             for i, output in enumerate(ex_output['output']):
                 try:
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
-                                                                      output['measures'] if output['measures'] else dict(),
+                                                                      output['measures'] if output['measures'] else list(),
                                                                       output['fact'], is_demand)
                     edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
                                                                                                   dep_output)
@@ -86,7 +86,7 @@ class MetricsTest(unittest.TestCase):
         for file in output_generated.keys():
             store_test_output(output_generated[file], file)
 
-        for file in metrics_gt.keys():
+        for idx, file in enumerate(metrics_gt.keys()):
             self.assertEqual(metrics_gt[file], metrics_calculated[file])  # add assertion here
 
 if __name__ == '__main__':

@@ -131,7 +131,7 @@ ex_num = extract_ex_num(model_config['exercise']['name'])
 
 gt_prep = dict()
 gt_prep['dependencies'], gt_prep['measures'], gt_prep['fact'] = preprocess(ex_num, ground_truth['dependencies'],
-                                                     ground_truth['measures'] if ground_truth['measures'] else dict(),
+                                                     ground_truth['measures'] if ground_truth['measures'] else list(),
                                                      ground_truth['fact'], is_demand)
 
 # Calculate metrics
@@ -149,7 +149,7 @@ output_preprocessed = []
 for i, output in enumerate(model_outputs):
     try:
         dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
-                                                     output['measures'] if output['measures'] else dict(),
+                                                     output['measures'] if output['measures'] else list(),
                                                      output['fact'], is_demand)
         edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
                                                                                       dep_output)

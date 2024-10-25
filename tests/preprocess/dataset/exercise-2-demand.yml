@@ -1,0 +1,34 @@
+output:
+- dependencies:
+  - from: Day, SurName
+    to: softWareInstallation
+  - from: address
+    to: mytest
+  - from: regular
+    to: myregular
+  - from: regular
+    to: myregular
+  - from: regular1, regular2
+    to: myregular12
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: Weight
+  - name: Height
+expected:
+- dependencies:
+  - from: Day, SurName
+    to: softWareInstallation
+  - from: storeAddress
+    to: mytest
+  - from: regular
+    to: myregular
+  - from: regular
+    to: myregular
+  - from: regular1,regular2
+    to: myregular12
+  fact:
+    name: INSTALLATION
+  measures:
+  - name: Weight
+  - name: Height

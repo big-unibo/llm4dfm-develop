@@ -1,0 +1,14 @@
+output:
+- dependencies:
+  - from: Day, SurName
+    to: softWareInstallation
+  fact:
+    name: INSTALLATIONS
+  measures: []
+expected:
+- dependencies:
+  - from: Date,lastName
+    to: INSTALLATION
+  fact:
+    name: INSTALLATION
+  measures: []
