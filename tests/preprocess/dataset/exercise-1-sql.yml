@@ -1,0 +1,54 @@
+output:
+- dependencies:
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  fact:
+    name: INSTALLATIONS
+  measures: []
+expected:
+- dependencies:
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  fact:
+    name: INSTALLATIONS
+  measures: []

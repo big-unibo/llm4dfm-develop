@@ -5,23 +5,19 @@ def _process(deps, ignore, substitutions):
     for d in deps:
         d = d.replace(' ', '')
         if d.lower() in ignore:
-            print(f'{d} in ignore, breaking')
             dep = []
             break
         dep_to_add = d
-        for eq_dict in substitutions:
-            if d.lower() in eq_dict.values():
-                for k, v in eq_dict.items():
-                    if d.lower() in v:
-                        dep_to_add = k
-                        break
-                print(f'Dep_from -> {d.lower()} changed to {dep_to_add}')
+        for word, sub_words in substitutions.items():
+            if d != word and d.lower() in sub_words:
+                dep_to_add = word
+                break
         dep.append(dep_to_add)
-
-    return dep
+    return ','.join(dep)
 
 
 def preprocess(ex_number, dependencies, measures, fact, demand):
+
     prep = load_yaml_from_resources('preprocess')
 
     key = 'demand' if demand else 'supply'
@@ -32,7 +28,7 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
     eq_common = prep['common']['equals'] if 'equals' in prep['common'] else []
     eq_ex = prep[ex_number]['equals'] if 'equals' in prep[ex_number] else []
     eq = eq_common + eq_ex
-    eq_dicts_to_check = [{key: [val.lower() for val in value] for key, value in my_dict.items()} for my_dict in eq]
+    eq_dicts_to_check = {key: [val.lower() for val in value] for my_dict in eq for key, value in my_dict.items()}
 
     ignore_common = prep['common']['ignore'] if 'ignore' in prep['common'] else []
     ignore_ex = prep[ex_number]['ignore'] if 'ignore' in prep[ex_number] else []
@@ -47,18 +43,27 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
                     'to': dep['to'].split(',')}
         if demand:
             # if demand check attributes, so split on '.'
-            dep_from = '.'.join(_process([single_part for item in frag_dep['from'] for single_part in item.split('.')],
-                                ignore_to_check, eq_dicts_to_check))
-            dep_to = '.'.join(_process([single_part for item in frag_dep['to'] for single_part in item.split('.')],
-                           ignore_to_check, eq_dicts_to_check))
+            dep_from = _process([single_part for item in frag_dep['from'] for single_part in item.split('.')],
+                                ignore_to_check, eq_dicts_to_check)
+            dep_to = _process([single_part for item in frag_dep['to'] for single_part in item.split('.')],
+                           ignore_to_check, eq_dicts_to_check)
         else:
             # if supply check the table name too, so not split on '.'
-            dep_from = ','.join(_process([item for item in frag_dep['from']], ignore_to_check, eq_dicts_to_check))
-            dep_to = ','.join(_process([item for item in frag_dep['to']], ignore_to_check, eq_dicts_to_check))
+            dep_from = _process([item for item in frag_dep['from']], ignore_to_check, eq_dicts_to_check)
+            dep_to = _process([item for item in frag_dep['to']], ignore_to_check, eq_dicts_to_check)
         if dep_from and dep_to:
             if 'role' in dep:
                 dep_preprocessed.append({'from': dep_from, 'to': dep_to, 'role': dep['role']})
             else:
                 dep_preprocessed.append({'from': dep_from, 'to': dep_to})
+
+    meas_preprocessed = []
+
+    for meas in measures:
+        meas_preprocessed.append({'name': _process([meas['name']], ignore_to_check, eq_dicts_to_check)})
+
+    measures = meas_preprocessed
+
+    fact = {'name': _process([fact['name']], ignore_to_check, eq_dicts_to_check)}
 
     return dep_preprocessed, measures, fact
