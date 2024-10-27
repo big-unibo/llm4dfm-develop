@@ -1,0 +1,34 @@
+output:
+- dependencies:
+  - from: storeName, storeNames
+    to: storeAddress
+  - from: cardType, bankCountry
+    to: type
+  - from: bankCountry, issuingBankCountry
+    to: bankAddress
+  - from: cardName, creditCardName
+    to: issuingBankCountry
+  - from: count, creditCardName
+    to: issuingBankCountry
+  fact:
+    name: issuingBankCountry
+  measures:
+  - name: cardType
+  - name: storeAddress
+expected:
+- dependencies:
+  - from: storeName,storeNames
+    to: storeAddress
+  - from: cardType,bankCountry
+    to: type
+  - from: bankCountry,issuingBankCountry
+    to: bankAddress
+  - from: cardName,creditCardName
+    to: issuingBankCountry
+  - from: count,creditCardName
+    to: issuingBankCountry
+  fact:
+    name: issuingBankCountry
+  measures:
+  - name: cardType
+  - name: storeAddress

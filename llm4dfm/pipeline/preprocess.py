@@ -16,6 +16,30 @@ def _process(deps, ignore, substitutions):
     return ','.join(dep)
 
 
+def get_dict_to_check(common, exercise):
+    #print(exercise)
+    common_values = [list_val for sub_dict in common for list_val in sub_dict.values()]
+    common_ex = [list_val for sub_dict in exercise for list_val in sub_dict.values()]
+
+    list_dict = exercise
+
+    for idx_list, common_values_list in enumerate(common_values):
+        idx_to_insert = []
+        for idx_val, common_val in enumerate(common_values_list):
+            insert = True
+            for common_ex_list in common_ex:
+                if common_val in common_ex_list:
+                    insert = False
+            if insert:
+                idx_to_insert.append(idx_val)
+        if len(idx_to_insert) > 0:
+            if len(idx_to_insert) == len(common_values_list):
+                list_dict.append(common[idx_list])
+    return {key: [val.lower() for val in value] for my_dict in list_dict for key, value in my_dict.items()}
+
+
+
+
 def preprocess(ex_number, dependencies, measures, fact, demand):
 
     prep = load_yaml_from_resources('preprocess')
@@ -27,8 +51,7 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
 
     eq_common = prep['common']['equals'] if 'equals' in prep['common'] else []
     eq_ex = prep[ex_number]['equals'] if 'equals' in prep[ex_number] else []
-    eq = eq_common + eq_ex
-    eq_dicts_to_check = {key: [val.lower() for val in value] for my_dict in eq for key, value in my_dict.items()}
+    eq_dicts_to_check = get_dict_to_check(eq_common, eq_ex)
 
     ignore_common = prep['common']['ignore'] if 'ignore' in prep['common'] else []
     ignore_ex = prep[ex_number]['ignore'] if 'ignore' in prep[ex_number] else []

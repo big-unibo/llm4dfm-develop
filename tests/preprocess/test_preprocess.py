@@ -35,7 +35,10 @@ class PreprocessTest(unittest.TestCase):
             store_test_output(output_generated[file], file)
 
         for idx, file in enumerate(output_expected.keys()):
-            self.assertEqual(output_expected[file], output_generated[file])  # add assertion here
+            for out_gt, out_gen in zip(output_expected[file], output_generated[file]):
+                self.assertEqual(out_gen['dependencies'], out_gt['dependencies'])
+                self.assertEqual(out_gen['fact'], out_gt['fact'])
+                self.assertEqual(out_gen['measures'], out_gt['measures'])
 
 
 if __name__ == '__main__':

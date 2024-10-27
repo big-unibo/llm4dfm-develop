@@ -1,0 +1,30 @@
+output:
+- dependencies:
+  - from: Day, count
+    to: softWareInstallations
+  - from: DailyPresence, PRESENCES
+    to: type
+  - from: arrival, name
+    to: stableAddress
+  - from: arrival, numberoflaps, year
+    to: stableAddress
+  - from: WODType
+    to: surname
+  fact:
+    name: memberName
+  measures: []
+expected:
+- dependencies:
+  - from: Day,count
+    to: softWareInstallations
+  - from: DailyPresence,PRESENCES
+    to: type
+  - from: arrival,name
+    to: stableAddress
+  - from: arrival,numberoflaps,year
+    to: stableAddress
+  - from: WODType
+    to: surname
+  fact:
+    name: memberName
+  measures: []

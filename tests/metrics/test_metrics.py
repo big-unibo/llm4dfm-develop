@@ -49,8 +49,6 @@ class MetricsTest(unittest.TestCase):
             metrics_list = []
             output_preprocessed = []
 
-            print(ex_output)
-
             for i, output in enumerate(ex_output['output']):
                 try:
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],

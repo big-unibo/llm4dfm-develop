@@ -302,12 +302,13 @@ measures:
             if (yaml) {
                 // Handle dependencies
                 if (yaml.dependencies) {
-                    const edgesUsed = Map();
+                    const edgesUsed = new Map();
                     yaml.dependencies.forEach(dep => {
                         if (!dep.refinements || dep.refinements !== 'created') {
                             dep.from = "n_" + dep.from;
                             dep.to = "n_" + dep.to;
                             let idForMultipleEdges = 0;
+                            const tupleKey = JSON.stringify([dep.from, dep.to]);
                             if (edgesUsed.has(tupleKey)) {
                                 idForMultipleEdges = edgesUsed.get(tupleKey)+1;
                                 edgesUsed.set(tupleKey, idForMultipleEdges);

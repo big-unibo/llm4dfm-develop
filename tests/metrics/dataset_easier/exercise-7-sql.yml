@@ -1,0 +1,68 @@
+output:
+- fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+    - name: INSURANCES.Cost
+    - name: PAYMENTS.Amount
+    - name: PAYMENTS.Discount
+  dependencies:
+    - from: INSURANCES
+      to: INSURANCES.Risk
+    - from: INSURANCES
+      to: INSURANCES.Cost
+    - from: INSURANCES
+      to: RENTALS.Plate,RENTALS.PickupDate
+    - from: INSURANCES
+      to: PAYMENTS.PaymentMode
+    - from: INSURANCES
+      to: PAYMENTS.Amount
+    - from: INSURANCES
+      to: PAYMENTS.Discount
+    - from: INSURANCES
+      to: RENTALS.Miles
+    - from: RENTALS.PickupDate,RENTALS.Plate
+      to: CARS.Plate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTALS.PickupDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTALS.DropoffDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTAL_OFFICES.OfficeName
+      role: PickupPlace
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTAL_OFFICES.OfficeName
+      role: DropoffPlace
+    - from: CARS.Plate
+      to: CARS.Category
+    - from: CARS.Plate
+      to: CARS.Model
+    - from: CARS.Model
+      to: CARS.Brand
+    - from: CARS.Plate
+      to: CARS.Fuel
+    - from: CARS.Plate
+      to: CARS.RegistrationDate
+    - from: RENTAL_OFFICES.OfficeName
+      to: RENTAL_OFFICES.City
+    - from: RENTAL_OFFICES.City
+      to: RENTAL_OFFICES.State
+    - from: RENTAL_OFFICES.State
+      to: RENTAL_OFFICES.Country
+    - from: RENTAL_OFFICES.Country
+      to: RENTAL_OFFICES.Area
+metrics:
+- edges:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 21
+  nodes:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 21

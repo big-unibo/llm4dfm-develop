@@ -1,0 +1,32 @@
+output:
+- dependencies:
+  - from: Day, month
+    to: softWareInstallations
+  - from: RENTALS
+    to: carPlate
+  - from: arrival, name
+    to: stableAddress
+  - from: arrival, numberoflaps, count
+    to: stableAddress
+  - from: carPlate, carPlate
+    to: surname
+  fact:
+    name: RENTALS
+  measures:
+    - name: TRANSFER
+expected:
+- dependencies:
+  - from: Day,month
+    to: softWareInstallations
+  - from: RENTALS
+    to: carPlate
+  - from: arrival,name
+    to: stableAddress
+  - from: arrival,numberoflaps,count
+    to: stableAddress
+  - from: carPlate,carPlate
+    to: surname
+  fact:
+    name: RENTALS
+  measures:
+    - name: TRANSFER
