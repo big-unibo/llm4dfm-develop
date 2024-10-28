@@ -1,0 +1,32 @@
+output:
+- dependencies:
+  - from: Day, month
+    to: softWareInstallations
+  - from: ROUTE_IN_TICKET, ROUTE, Capacity
+    to: delayArrival
+  - from: customerBirthdate, surname
+    to: trainCapacity
+  - from: arrival, numberoflaps, count
+    to: stableAddress
+  - from: Capacity, ROUTE_IN_TICKET
+    to: ROUTE
+  fact:
+    name: name
+  measures:
+    - name: customerBirthdate
+expected:
+- dependencies:
+  - from: Day,month
+    to: softWareInstallations
+  - from: ROUTE_IN_TICKET,ROUTE,Capacity
+    to: delayArrival
+  - from: customerBirthdate,surname
+    to: trainCapacity
+  - from: arrival,numberoflaps,count
+    to: stableAddress
+  - from: Capacity,ROUTE_IN_TICKET
+    to: ROUTE
+  fact:
+    name: name
+  measures:
+    - name: customerBirthdate

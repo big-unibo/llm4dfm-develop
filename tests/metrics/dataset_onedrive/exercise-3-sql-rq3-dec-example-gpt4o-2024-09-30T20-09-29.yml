@@ -1,0 +1,90 @@
+config:
+  name: gpt
+  label: gpt4o
+  deployment: gpt-4o
+  api_version: 2024-04-01-preview
+  temperature: 0.1
+  max_tokens: 1000
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+output:
+- fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDIT_CARDS.CreditLimit
+  dependencies:
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Circuit
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.IssuingBank
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Address
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Country
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.CardName
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Color
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.StoreCode
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  - from: CREDIT_CARDS.CCNumber
+    to: CREDIT_CARDS.TypeCode
+  - from: CREDIT_CARDS.CCNumber
+    to: CREDIT_CARDS.HolderCode
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDIT_CARDS.CreditLimit
+  - from: PURCHASES
+    to: CREDIT_CARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: PURCHASES
+    to: PURCHASES.Currency
+metrics:
+- edges:
+    tp: 22
+    fn: 7
+    fp: 6
+    precision: 0.7857
+    recall: 0.7586
+    f1: 0.7719
+  nodes:
+    tp: 29
+    fn: 1
+    fp: 2
+    precision: 0.9355
+    recall: 0.9667
+    f1: 0.9508

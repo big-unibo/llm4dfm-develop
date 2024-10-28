@@ -1,0 +1,32 @@
+output:
+- dependencies:
+  - from: Day, month
+    to: softWareInstallations
+  - from: time, checkinTime, delayDeparture
+    to: delayArrival
+  - from: passengerSurname, surname
+    to: numberOfBags
+  - from: arrival, numberoflaps, count
+    to: stableAddress
+  - from: bagsBoarded, passengerGender
+    to: checkinTime
+  fact:
+    name: checkinTime
+  measures:
+    - name: bagsBoarded
+expected:
+- dependencies:
+  - from: Day,month
+    to: softWareInstallations
+  - from: time,checkinTime,delayDeparture
+    to: delayArrival
+  - from: passengerSurname,surname
+    to: numberOfBags
+  - from: arrival,numberoflaps,count
+    to: stableAddress
+  - from: bagsBoarded,passengerGender
+    to: checkinTime
+  fact:
+    name: checkinTime
+  measures:
+    - name: bagsBoarded

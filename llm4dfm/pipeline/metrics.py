@@ -1,6 +1,5 @@
 import argparse
 import traceback
-from copy import deepcopy
 
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
     extract_ex_num, label_edges, store_additional_properties
@@ -50,13 +49,27 @@ class MetricsCalculator:
 
         return self._calculate_edges_indexes()
 
-    def _get_nodes(self, dep_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
+    def _get_deps_lowercase(self, deps):
+        dep_to_iterate = set()
+        dep_to_iterate_cache_lowercase = set()
+
+        for dep in deps:
+            if dep.lower() not in dep_to_iterate_cache_lowercase:
+                dep_to_iterate_cache_lowercase.add(dep.lower())
+                dep_to_iterate.add(dep)
+
+        return dep_to_iterate
+
+    def _get_nodes(self, deps_gt, dep_generated, measure_gt, measure_generated, fact_gt, fact_generated):
+
+        dep_gt_to_iterate = self._get_deps_lowercase(deps_gt)
+        dep_gen_to_iterate = self._get_deps_lowercase(dep_generated)
 
         tp, fn, fp, gt_used = set(), set(), set(), set()
+        fn_cache_lowercase = dict()
 
-        dep_gt_to_iterate = deepcopy(dep_gt)
 
-        for dep in dep_generated:
+        for dep in dep_gen_to_iterate:
             inserted = False
             for dp_gt in dep_gt_to_iterate:
                 if {dp.lower() for dp in dep.split(',')} == {dp.lower() for dp in dp_gt.split(',')}:
@@ -68,27 +81,34 @@ class MetricsCalculator:
                 fp.add(dep)
             else:
                 dep_gt_to_iterate.discard(dep)
-        for dp_gt in dep_gt:
+        for dp_gt in dep_gt_to_iterate:
             if dp_gt not in gt_used:
                 fn.add(dp_gt)
+                # Used to remove it in case it's present in measures set or fact
+                fn_cache_lowercase[dp_gt.lower()] = dp_gt
 
-        meas_gt_to_iterate = deepcopy(measure_gt)
+        meas_gt_to_iterate = self._get_deps_lowercase(measure_gt)
+        meas_gen_to_iterate = self._get_deps_lowercase(measure_generated)
 
         tp_meas, fn_meas, fp_meas, gt_meas_used = set(), set(), set(), set()
 
-        for meas in measure_generated:
+        for meas in meas_gen_to_iterate:
             inserted = False
             for meas_gt in meas_gt_to_iterate:
                 if meas.lower() == meas_gt.lower():
                     inserted = True
                     tp_meas.add(meas)
                     gt_meas_used.add(meas)
+                    if meas.lower() in fn_cache_lowercase:
+                        print(f'Measure {meas} was in fn')
+                        fn.remove(fn_cache_lowercase[meas.lower()])
+                        del fn_cache_lowercase[meas.lower()]
                     break
             if not inserted:
                 fp_meas.add(meas)
             else:
                 meas_gt_to_iterate.discard(meas)
-        for me_gt in measure_gt:
+        for me_gt in meas_gt_to_iterate:
             if me_gt not in gt_meas_used:
                 fn.add(me_gt)
 
@@ -101,6 +121,9 @@ class MetricsCalculator:
 
         if fact_gt_use == fact_generated_use:
             tp.add(fact_generated)
+            if fact_generated_use in fn_cache_lowercase:
+                fn.remove(fn_cache_lowercase[fact_generated_use])
+                del fn_cache_lowercase[fact_generated_use]
         else:
             fn.add(fact_gt)
             fp.add(fact_generated)
@@ -293,7 +316,9 @@ if __name__ == '__main__':
                            'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
             metrics.append(step_metric)
 
-            out, gt = label_edges(outputs_to_use[i], ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
+            output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
+
+            out, gt = label_edges(output_to_use, ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
 
             output_to_save.append({'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
                                    'ground_truth_labels': gt, 'nodes': {'tp': list(tp_nodes), 'fp': list(fp_nodes),

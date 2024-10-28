@@ -19,7 +19,7 @@ output:
   - from: SUPPLIERS.SupplierName
     to: SUPPLIERS.SupplierAddress
   - from: SUPPLIES.Brand
-    to: SUPPLIES.SupplierName
+    to: SUPPLIERS.SupplierName
   - from: COMPUTER.CodComputer
     to: COMPUTER.Brand
   - from: COMPUTER.CodComputer
@@ -34,40 +34,18 @@ output:
     to: SOFTWARE.CodSoftw
   - from: INSTALLATIONS
     to: INSTALLATIONS.InstallationDate
-- fact:
-    name: INSTALLATIONS
-  measures: []
-  dependencies:
-  - from: SUPPLIERS.SupplierName
-    to: SUPPLIERS.SupplierAddress
-  - from: SUPPLIERS.SupplierName
-    to: SUPPLIERS.SupplierAddress
 metrics:
 - edges:
-    tp: 8
-    fn: 2
-    fp: 2
-    precision: 0.8
-    recall: 0.8
-    f1: 0.8
+    tp: 9
+    fn: 1
+    fp: 1
+    precision: 0.9
+    recall: 0.9
+    f1: 0.9
   nodes:
     tp: 11
     fn: 0
-    fp: 2
-    precision: 0.8462
-    recall: 1.0
-    f1: 0.9167
-- edges:
-    tp: 1
-    fn: 9
     fp: 1
-    precision: 0.5
-    recall: 0.1
-    f1: 0.1667
-  nodes:
-    tp: 3
-    fn: 8
-    fp: 0
-    precision: 1.0
-    recall: 0.2727
-    f1: 0.4286
+    precision: 0.9167
+    recall: 1.0
+    f1: 0.9565

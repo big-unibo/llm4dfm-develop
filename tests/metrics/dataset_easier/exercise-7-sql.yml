@@ -1,0 +1,62 @@
+output:
+- fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: INSURANCES
+      to: INSURANCES.Risk
+    - from: INSURANCES
+      to: INSURANCES.Cost
+    - from: INSURANCES
+      to: RENTALS.Plate, RENTALS.PickupDate
+    - from: RENTALS.Plate, RENTALS.PickupDate
+      to: CARS.Plate
+    - from: RENTALS.PickupDate, RENTALS.Plate
+      to: CARS.Plate
+    - from: RENTALS.Plate, RENTALS.PickupDate
+      to: RENTALS.PickupDate
+- fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: INSURANCES
+      to: INSURANCES.Risk
+    - from: INSURANCES
+      to: INSURANCES.Cost
+    - from: INSURANCES
+      to: RENTALS.PickupDate, RENTALS.Plate
+    - from: RENTALS.Plate, RENTALS.PickupDate
+      to: CARS.Plate
+    - from: RENTALS.PickupDate, RENTALS.Plate
+      to: RENTALS.PickupDate
+metrics:
+- edges:
+    f1: 0.3704
+    fn: 16
+    fp: 1
+    precision: 0.8333
+    recall: 0.2381
+    tp: 5
+  nodes:
+    f1: 0.5
+    fn: 14
+    fp: 0
+    precision: 1.0
+    recall: 0.3333
+    tp: 7
+- edges:
+    f1: 0.3846
+    fn: 16
+    fp: 0
+    precision: 1.0
+    recall: 0.2381
+    tp: 5
+  nodes:
+    f1: 0.5
+    fn: 14
+    fp: 0
+    precision: 1.0
+    recall: 0.3333
+    tp: 7
