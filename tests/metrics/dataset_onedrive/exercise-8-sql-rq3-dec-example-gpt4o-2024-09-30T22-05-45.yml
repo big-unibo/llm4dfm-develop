@@ -1,0 +1,113 @@
+config:
+  name: gpt
+  label: gpt4o
+  deployment: gpt-4o
+  api_version: 2024-04-01-preview
+  temperature: 0.1
+  max_tokens: 1000
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+output:
+- fact:
+    name: TICKET
+  measures:
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: PURCHASE.totalAmount
+  - name: AIRPLANE_TYPE.numberOfSeats
+  dependencies:
+  - from: PERSON.personCode
+    to: PERSON.name
+  - from: PERSON.personCode
+    to: PERSON.surname
+  - from: PERSON.personCode
+    to: PERSON.birthdate
+  - from: PERSON.personCode
+    to: PERSON.cityOfResidence
+  - from: PERSON.personCode
+    to: PERSON.documentId
+  - from: PERSON.personCode
+    to: PERSON.documentType
+  - from: PERSON.personCode
+    to: PERSON.telephone
+  - from: PERSON.personCode
+    to: PERSON.email
+  - from: PERSON.personCode
+    to: PERSON.gender
+  - from: AIRPORT.airportCode
+    to: AIRPORT.name
+  - from: AIRPORT.airportCode
+    to: AIRPORT.city
+  - from: AIRPORT.airportCode
+    to: AIRPORT.nation
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.airlineName
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.nation
+  - from: AIRPLANE_TYPE.airplaneType
+    to: AIRPLANE_TYPE.name
+  - from: ROUTE.route
+    to: AIRLINE.airlineCode
+  - from: ROUTE.route
+    to: AIRPORT.departure
+    role: departure
+  - from: ROUTE.route
+    to: AIRPORT.arrival
+    role: arrival
+  - from: ROUTE.route
+    to: ROUTE.departureTime
+  - from: ROUTE.route
+    to: ROUTE.arrivalTime
+  - from: ROUTE.route
+    to: AIRPLANE_TYPE.airplaneType
+  - from: FLIGHT.date, FLIGHT.route
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date, FLIGHT.route
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date, FLIGHT.route
+    to: FLIGHT.cancelledYN
+  - from: TICKET
+    to: TICKET.flightAmount
+  - from: TICKET
+    to: TICKET.taxAmount
+  - from: TICKET
+    to: PURCHASE.totalAmount
+  - from: TICKET
+    to: AIRPLANE_TYPE.numberOfSeats
+  - from: TICKET
+    to: FLIGHT.date
+  - from: TICKET
+    to: ROUTE.route
+  - from: TICKET
+    to: PURCHASE.purchaseCode
+  - from: PURCHASE.purchaseCode
+    to: PURCHASE.date
+  - from: PURCHASE.purchaseCode
+    to: PERSON.buyerCode
+  - from: BOARDING_CARD.boardingCardCode
+    to: BOARDING_CARD.ticketNumber
+  - from: BOARDING_CARD.boardingCardCode
+    to: PERSON.passengerCode
+  - from: BOARDING_CARD.boardingCardCode
+    to: BOARDING_CARD.seat
+  - from: CHECK_IN.boardingCardCode
+    to: CHECK_IN.checkInTime
+  - from: CHECK_IN.boardingCardCode
+    to: CHECK_IN.numberOfBags
+metrics:
+- edges:
+    tp: 22
+    fn: 17
+    fp: 16
+    precision: 0.5789
+    recall: 0.5641
+    f1: 0.5714
+  nodes:
+    tp: 35
+    fn: 4
+    fp: 9
+    precision: 0.7955
+    recall: 0.8974
+    f1: 0.8434

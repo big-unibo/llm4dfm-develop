@@ -1,0 +1,1820 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES_IN_TRIPS.Sequence
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    role: DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.RouteCode
+    role: ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES.DistanceKm
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES.Duration
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES.Fare
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.Location
+    to: STATIONS.City
+  - from: STATIONS.City
+    to: STATIONS.Region
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Date
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Status
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.TrainType
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTES_IN_TICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+metrics:
+- edges:
+    f1: 0.3
+    fn: 23
+    fp: 5
+    precision: 0.5455
+    recall: 0.2069
+    tp: 6
+  nodes:
+    f1: 0.4545
+    fn: 19
+    fp: 5
+    precision: 0.6667
+    recall: 0.3448
+    tp: 10
+- edges:
+    f1: 0.3
+    fn: 23
+    fp: 5
+    precision: 0.5455
+    recall: 0.2069
+    tp: 6
+  nodes:
+    f1: 0.4545
+    fn: 19
+    fp: 5
+    precision: 0.6667
+    recall: 0.3448
+    tp: 10
+- edges:
+    f1: 0.5424
+    fn: 13
+    fp: 14
+    precision: 0.5333
+    recall: 0.5517
+    tp: 16
+  nodes:
+    f1: 0.8387
+    fn: 3
+    fp: 7
+    precision: 0.7879
+    recall: 0.8966
+    tp: 26
+- edges:
+    f1: 0.5667
+    fn: 12
+    fp: 14
+    precision: 0.5484
+    recall: 0.5862
+    tp: 17
+  nodes:
+    f1: 0.8387
+    fn: 3
+    fp: 7
+    precision: 0.7879
+    recall: 0.8966
+    tp: 26
+- edges:
+    f1: 0.5667
+    fn: 12
+    fp: 14
+    precision: 0.5484
+    recall: 0.5862
+    tp: 17
+  nodes:
+    f1: 0.8387
+    fn: 3
+    fp: 7
+    precision: 0.7879
+    recall: 0.8966
+    tp: 26
+- edges:
+    f1: 0.5667
+    fn: 12
+    fp: 14
+    precision: 0.5484
+    recall: 0.5862
+    tp: 17
+  nodes:
+    f1: 0.8387
+    fn: 3
+    fp: 7
+    precision: 0.7879
+    recall: 0.8966
+    tp: 26
+output:
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+      ROUTES_IN_TICKETS.RouteCode
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode, ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: TRIPS.TrainCode
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+      ROUTES_IN_TICKETS.RouteCode
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode, ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: TRIPS.TrainCode
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  root:
+  - ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+    ROUTES_IN_TICKETS.RouteCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+      ROUTES_IN_TICKETS.RouteCode
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode, ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: TRIPS.TrainCode
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  root:
+  - ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+    ROUTES_IN_TICKETS.RouteCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+      ROUTES_IN_TICKETS.RouteCode
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode, ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: TRIPS.TrainCode
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    to: STATIONS.Region
+  - from: STATIONS.City
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  root:
+  - ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+    ROUTES_IN_TICKETS.RouteCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+      ROUTES_IN_TICKETS.RouteCode
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode, ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: TRIPS.TrainCode
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    to: STATIONS.Region
+  - from: STATIONS.City
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  root:
+  - ROUTES_IN_TICKETS
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode, ROUTES_IN_TICKETS.TrainCode, ROUTES_IN_TICKETS.Date,
+      ROUTES_IN_TICKETS.RouteCode
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    to: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date, ROUTES_IN_TRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    to: ROUTES.DepartureStationCode, ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode, ROUTES_IN_TRIPS.Date
+    to: TRIPS.TrainCode, TRIPS.Date
+  - from: TRIPS.TrainCode
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    to: STATIONS.Region
+  - from: STATIONS.City
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: TRAIN_TYPE.Capacity
+  root:
+  - ROUTES_IN_TICKETS
+output_preprocessed:
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.RouteCode
+    label: fp
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    label: tp
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date
+    label: fp
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: TRIPS.TrainCode
+    label: fp
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: CUSTOMERS.CustomerCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TotalPrice
+  fact:
+    name: ROUTES_IN_TICKETS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: fn
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: tp
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: tp
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: fn
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: fn
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: fn
+      to: TRAIN_TYPE.TrainType
+    fact:
+      name: ROUTES_IN_TICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  nodes:
+    fn:
+    - STATIONS.City
+    - TRAIN_TYPE.Capacity
+    - STATIONS.StationCode
+    - STATIONS.Name
+    - ROUTES.Fare
+    - CUSTOMERS.BirthDate
+    - CUSTOMERS.BirthCity
+    - TRIPS.Status
+    - CUSTOMERS.DocumentId
+    - TRAIN_TYPE.TrainType
+    - CUSTOMERS.Surname
+    - TRIPS.Date
+    - STATIONS.Location
+    - STATIONS.Region
+    - ROUTES_IN_TRIPS.Sequence
+    - CUSTOMERS.Name
+    - ROUTES.Duration
+    - ROUTES.DistanceKm
+    - TICKETS.PurchaseDate
+    fp:
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode
+    - TRIPS.TrainCode
+    - ROUTES_IN_TICKETS.RouteCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.TicketCode
+    - ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+    - TRAINS.TrainTypeCode
+    tp:
+    - ROUTES_IN_TICKETS
+    - ROUTES_IN_TICKETS.Price
+    - ROUTES.RouteCode
+    - TICKETS.TotalPrice
+    - TICKETS.TicketCode
+    - TRIPS.TrainCode,TRIPS.Date
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.RouteCode
+    - TRAIN_TYPE.TrainTypeCode
+    - TRAINS.TrainCode
+    - CUSTOMERS.CustomerCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.RouteCode
+    label: fp
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    label: tp
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date
+    label: fp
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: TRIPS.TrainCode
+    label: fp
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: CUSTOMERS.CustomerCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TotalPrice
+  fact:
+    name: ROUTES_IN_TICKETS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: fn
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: tp
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: tp
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: fn
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: fn
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: fn
+      to: TRAIN_TYPE.TrainType
+    fact:
+      name: ROUTES_IN_TICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  nodes:
+    fn:
+    - STATIONS.City
+    - TRAIN_TYPE.Capacity
+    - STATIONS.StationCode
+    - STATIONS.Name
+    - ROUTES.Fare
+    - CUSTOMERS.BirthDate
+    - CUSTOMERS.BirthCity
+    - TRIPS.Status
+    - CUSTOMERS.DocumentId
+    - TRAIN_TYPE.TrainType
+    - CUSTOMERS.Surname
+    - TRIPS.Date
+    - STATIONS.Location
+    - STATIONS.Region
+    - ROUTES_IN_TRIPS.Sequence
+    - CUSTOMERS.Name
+    - ROUTES.Duration
+    - ROUTES.DistanceKm
+    - TICKETS.PurchaseDate
+    fp:
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode
+    - TRIPS.TrainCode
+    - ROUTES_IN_TICKETS.RouteCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.TicketCode
+    - ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+    - TRAINS.TrainTypeCode
+    tp:
+    - ROUTES_IN_TICKETS
+    - ROUTES_IN_TICKETS.Price
+    - ROUTES.RouteCode
+    - TICKETS.TotalPrice
+    - TICKETS.TicketCode
+    - TRIPS.TrainCode,TRIPS.Date
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.RouteCode
+    - TRAIN_TYPE.TrainTypeCode
+    - TRAINS.TrainCode
+    - CUSTOMERS.CustomerCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.RouteCode
+    label: fp
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    label: tp
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date
+    label: fp
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: TRIPS.TrainCode
+    label: fp
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: tp
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: tp
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: tp
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: fn
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.TrainType
+    fact:
+      name: ROUTES_IN_TICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  nodes:
+    fn:
+    - TRIPS.Status
+    - ROUTES_IN_TRIPS.Sequence
+    - TRIPS.Date
+    fp:
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode
+    - TRIPS.TrainCode
+    - ROUTES.DepartureStationCode
+    - ROUTES_IN_TICKETS.RouteCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.TicketCode
+    - ROUTES.ArrivalStationCode
+    - ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+    - TRAINS.TrainTypeCode
+    tp:
+    - STATIONS.City
+    - TRAIN_TYPE.Capacity
+    - ROUTES_IN_TICKETS
+    - STATIONS.StationCode
+    - ROUTES_IN_TICKETS.Price
+    - STATIONS.Name
+    - ROUTES.Fare
+    - TRIPS.TrainCode,TRIPS.Date
+    - CUSTOMERS.BirthDate
+    - TRAIN_TYPE.TrainTypeCode
+    - CUSTOMERS.BirthCity
+    - CUSTOMERS.Surname
+    - CUSTOMERS.DocumentId
+    - TRAINS.TrainCode
+    - TRAIN_TYPE.TrainType
+    - STATIONS.Location
+    - TICKETS.TotalPrice
+    - ROUTES.RouteCode
+    - STATIONS.Region
+    - TICKETS.TicketCode
+    - CUSTOMERS.Name
+    - ROUTES.Duration
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.RouteCode
+    - ROUTES.DistanceKm
+    - TICKETS.PurchaseDate
+    - CUSTOMERS.CustomerCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.RouteCode
+    label: fp
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    label: tp
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date
+    label: fp
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: TRIPS.TrainCode
+    label: fp
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.Region
+  - from: STATIONS.City
+    label: tp
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: tp
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: tp
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: tp
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: tp
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.TrainType
+    fact:
+      name: ROUTES_IN_TICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  nodes:
+    fn:
+    - TRIPS.Status
+    - ROUTES_IN_TRIPS.Sequence
+    - TRIPS.Date
+    fp:
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode
+    - TRIPS.TrainCode
+    - ROUTES.DepartureStationCode
+    - ROUTES_IN_TICKETS.RouteCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.TicketCode
+    - ROUTES.ArrivalStationCode
+    - ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+    - TRAINS.TrainTypeCode
+    tp:
+    - STATIONS.City
+    - TRAIN_TYPE.Capacity
+    - ROUTES_IN_TICKETS
+    - STATIONS.StationCode
+    - ROUTES_IN_TICKETS.Price
+    - STATIONS.Name
+    - ROUTES.Fare
+    - TRIPS.TrainCode,TRIPS.Date
+    - CUSTOMERS.BirthDate
+    - TRAIN_TYPE.TrainTypeCode
+    - CUSTOMERS.BirthCity
+    - CUSTOMERS.Surname
+    - CUSTOMERS.DocumentId
+    - TRAINS.TrainCode
+    - TRAIN_TYPE.TrainType
+    - STATIONS.Location
+    - TICKETS.TotalPrice
+    - ROUTES.RouteCode
+    - STATIONS.Region
+    - TICKETS.TicketCode
+    - CUSTOMERS.Name
+    - ROUTES.Duration
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.RouteCode
+    - ROUTES.DistanceKm
+    - TICKETS.PurchaseDate
+    - CUSTOMERS.CustomerCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.RouteCode
+    label: fp
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    label: tp
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date
+    label: fp
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: TRIPS.TrainCode
+    label: fp
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.Region
+  - from: STATIONS.City
+    label: tp
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: tp
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: tp
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: tp
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: tp
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.TrainType
+    fact:
+      name: ROUTES_IN_TICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  nodes:
+    fn:
+    - TRIPS.Status
+    - ROUTES_IN_TRIPS.Sequence
+    - TRIPS.Date
+    fp:
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode
+    - TRIPS.TrainCode
+    - ROUTES.DepartureStationCode
+    - ROUTES_IN_TICKETS.RouteCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.TicketCode
+    - ROUTES.ArrivalStationCode
+    - ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+    - TRAINS.TrainTypeCode
+    tp:
+    - STATIONS.City
+    - TRAIN_TYPE.Capacity
+    - ROUTES_IN_TICKETS
+    - STATIONS.StationCode
+    - ROUTES_IN_TICKETS.Price
+    - STATIONS.Name
+    - ROUTES.Fare
+    - TRIPS.TrainCode,TRIPS.Date
+    - CUSTOMERS.BirthDate
+    - TRAIN_TYPE.TrainTypeCode
+    - CUSTOMERS.BirthCity
+    - CUSTOMERS.Surname
+    - CUSTOMERS.DocumentId
+    - TRAINS.TrainCode
+    - TRAIN_TYPE.TrainType
+    - STATIONS.Location
+    - TICKETS.TotalPrice
+    - ROUTES.RouteCode
+    - STATIONS.Region
+    - TICKETS.TicketCode
+    - CUSTOMERS.Name
+    - ROUTES.Duration
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.RouteCode
+    - ROUTES.DistanceKm
+    - TICKETS.PurchaseDate
+    - CUSTOMERS.CustomerCode
+- dependencies:
+  - from: ROUTES_IN_TICKETS.TicketCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.RouteCode
+    label: fp
+    to: ROUTES_IN_TICKETS
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TICKETS.Price
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TotalPrice
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: TICKETS.TicketCode
+  - from: ROUTES_IN_TICKETS
+    label: tp
+    to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    label: tp
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+  - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date
+    label: fp
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: TRIPS.TrainCode
+    label: fp
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAIN_TYPE.TrainTypeCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    label: tp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthCity
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.TrainTypeCode
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.TrainType
+  - from: TRAIN_TYPE.TrainTypeCode
+    label: tp
+    to: TRAIN_TYPE.Capacity
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.DistanceKm
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Duration
+  - from: ROUTES.RouteCode
+    label: fp
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: STATIONS.StationCode
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.Region
+  - from: STATIONS.City
+    label: tp
+    to: STATIONS.Region
+  fact:
+    name: ROUTES_IN_TICKETS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TicketCode
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TICKETS.Price
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: tp
+      to: TICKETS.PurchaseDate
+    - from: ROUTES_IN_TICKETS
+      label: tp
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: tp
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthCity
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: fn
+      to: ROUTES_IN_TRIPS.Sequence
+    - from: ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.RouteCode
+      label: tp
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTES_IN_TICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: tp
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAIN_TYPE.TrainTypeCode
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.Capacity
+    - from: TRAIN_TYPE.TrainTypeCode
+      label: tp
+      to: TRAIN_TYPE.TrainType
+    fact:
+      name: ROUTES_IN_TICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTES_IN_TICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+  measures:
+  - name: ROUTES_IN_TICKETS.Price
+  - name: TICKETS.TotalPrice
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: TRAIN_TYPE.Capacity
+  nodes:
+    fn:
+    - TRIPS.Status
+    - ROUTES_IN_TRIPS.Sequence
+    - TRIPS.Date
+    fp:
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode
+    - TRIPS.TrainCode
+    - ROUTES.DepartureStationCode
+    - ROUTES_IN_TICKETS.RouteCode,ROUTES_IN_TICKETS.TrainCode,ROUTES_IN_TICKETS.Date,ROUTES_IN_TICKETS.TicketCode
+    - ROUTES.ArrivalStationCode
+    - ROUTES.DepartureStationCode,ROUTES.ArrivalStationCode
+    - TRAINS.TrainTypeCode
+    tp:
+    - STATIONS.City
+    - TRAIN_TYPE.Capacity
+    - ROUTES_IN_TICKETS
+    - STATIONS.StationCode
+    - ROUTES_IN_TICKETS.Price
+    - STATIONS.Name
+    - ROUTES.Fare
+    - TRIPS.TrainCode,TRIPS.Date
+    - CUSTOMERS.BirthDate
+    - TRAIN_TYPE.TrainTypeCode
+    - CUSTOMERS.BirthCity
+    - CUSTOMERS.Surname
+    - CUSTOMERS.DocumentId
+    - TRAINS.TrainCode
+    - TRAIN_TYPE.TrainType
+    - STATIONS.Location
+    - TICKETS.TotalPrice
+    - ROUTES.RouteCode
+    - STATIONS.Region
+    - TICKETS.TicketCode
+    - CUSTOMERS.Name
+    - ROUTES.Duration
+    - ROUTES_IN_TRIPS.Date,ROUTES_IN_TRIPS.TrainCode,ROUTES_IN_TRIPS.RouteCode
+    - ROUTES.DistanceKm
+    - TICKETS.PurchaseDate
+    - CUSTOMERS.CustomerCode

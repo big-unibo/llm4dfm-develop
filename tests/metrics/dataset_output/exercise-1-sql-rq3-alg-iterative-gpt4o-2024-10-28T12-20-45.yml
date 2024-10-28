@@ -1,0 +1,847 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0.3529
+    fn: 7
+    fp: 4
+    precision: 0.4286
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.5714
+    fn: 5
+    fp: 4
+    precision: 0.6
+    recall: 0.5455
+    tp: 6
+- edges:
+    f1: 0.3333
+    fn: 7
+    fp: 5
+    precision: 0.375
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.5714
+    fn: 5
+    fp: 4
+    precision: 0.6
+    recall: 0.5455
+    tp: 6
+- edges:
+    f1: 0.2727
+    fn: 7
+    fp: 9
+    precision: 0.25
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.5
+    fn: 5
+    fp: 7
+    precision: 0.4615
+    recall: 0.5455
+    tp: 6
+- edges:
+    f1: 0.2609
+    fn: 7
+    fp: 10
+    precision: 0.2308
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.56
+    fn: 4
+    fp: 7
+    precision: 0.5
+    recall: 0.6364
+    tp: 7
+- edges:
+    f1: 0.2609
+    fn: 7
+    fp: 10
+    precision: 0.2308
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.5833
+    fn: 4
+    fp: 6
+    precision: 0.5385
+    recall: 0.6364
+    tp: 7
+- edges:
+    f1: 0.2609
+    fn: 7
+    fp: 10
+    precision: 0.2308
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.5833
+    fn: 4
+    fp: 6
+    precision: 0.5385
+    recall: 0.6364
+    tp: 7
+output:
+- dependencies:
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierName
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+- dependencies:
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+- dependencies:
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: COMPUTER.CodComputer, SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Brand, COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription, SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+- dependencies:
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: COMPUTER.CodComputer, SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Brand, COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription, SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+- dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer, SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Brand, COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription, SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+- dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer, SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Brand, COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription, SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity, SUPPLIERS.SupplierAddress
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+output_preprocessed:
+- dependencies:
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierName
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: null
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+  nodes:
+    fn:
+    - SOFTWARE.SoftwareDescription
+    - SUPPLIERS.SupplierAddress
+    - SOFTWARE.Type
+    - SUPPLIERS.SupplierCity
+    - COMPUTER.Model
+    fp:
+    - INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - SUPPLIES.SupplierName
+    - COMPUTER.Brand
+    - SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    tp:
+    - SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierName
+    - INSTALLATIONS.InstallationDate
+    - COMPUTER.CodComputer
+    - INSTALLATIONS
+    - SUPPLIES.Brand
+- dependencies:
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: INSTALLATIONS
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: null
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+  nodes:
+    fn:
+    - SOFTWARE.SoftwareDescription
+    - SUPPLIERS.SupplierAddress
+    - SOFTWARE.Type
+    - SUPPLIERS.SupplierCity
+    - COMPUTER.Model
+    fp:
+    - INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - SUPPLIES.SupplierName
+    - COMPUTER.Brand
+    - SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    tp:
+    - SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierName
+    - INSTALLATIONS.InstallationDate
+    - COMPUTER.CodComputer
+    - INSTALLATIONS
+    - SUPPLIES.Brand
+- dependencies:
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: COMPUTER.CodComputer,SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    label: fp
+    to: COMPUTER.Brand,COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    label: fp
+    to: SOFTWARE.SoftwareDescription,SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: null
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+  nodes:
+    fn:
+    - SOFTWARE.SoftwareDescription
+    - SUPPLIERS.SupplierAddress
+    - SOFTWARE.Type
+    - SUPPLIERS.SupplierCity
+    - COMPUTER.Model
+    fp:
+    - INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - SOFTWARE.SoftwareDescription,SOFTWARE.Type
+    - COMPUTER.Brand
+    - SUPPLIES.SupplierName
+    - COMPUTER.Brand,COMPUTER.Model
+    - COMPUTER.CodComputer,SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    tp:
+    - SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierName
+    - INSTALLATIONS.InstallationDate
+    - COMPUTER.CodComputer
+    - INSTALLATIONS
+    - SUPPLIES.Brand
+- dependencies:
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: COMPUTER.CodComputer,SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    label: fp
+    to: COMPUTER.Brand,COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    label: fp
+    to: SOFTWARE.SoftwareDescription,SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: null
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+  nodes:
+    fn:
+    - SOFTWARE.SoftwareDescription
+    - SUPPLIERS.SupplierAddress
+    - SOFTWARE.Type
+    - SUPPLIERS.SupplierCity
+    fp:
+    - INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    - SOFTWARE.SoftwareDescription,SOFTWARE.Type
+    - COMPUTER.Brand
+    - SUPPLIES.SupplierName
+    - COMPUTER.Brand,COMPUTER.Model
+    - COMPUTER.CodComputer,SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    tp:
+    - SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierName
+    - INSTALLATIONS.InstallationDate
+    - COMPUTER.CodComputer
+    - COMPUTER.Model
+    - INSTALLATIONS
+    - SUPPLIES.Brand
+- dependencies:
+  - from: INSTALLATIONS
+    label: fp
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS
+    label: fp
+    to: COMPUTER.CodComputer,SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    label: fp
+    to: COMPUTER.Brand,COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    label: fp
+    to: SOFTWARE.SoftwareDescription,SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: null
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+  nodes:
+    fn:
+    - SOFTWARE.SoftwareDescription
+    - SUPPLIERS.SupplierAddress
+    - SOFTWARE.Type
+    - SUPPLIERS.SupplierCity
+    fp:
+    - SOFTWARE.SoftwareDescription,SOFTWARE.Type
+    - COMPUTER.Brand
+    - SUPPLIES.SupplierName
+    - COMPUTER.Brand,COMPUTER.Model
+    - COMPUTER.CodComputer,SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    tp:
+    - SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierName
+    - INSTALLATIONS.InstallationDate
+    - COMPUTER.CodComputer
+    - COMPUTER.Model
+    - INSTALLATIONS
+    - SUPPLIES.Brand
+- dependencies:
+  - from: INSTALLATIONS
+    label: fp
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: INSTALLATIONS
+    label: fp
+    to: COMPUTER.CodComputer,SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    label: fp
+    to: COMPUTER.Brand,COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    label: fp
+    to: SOFTWARE.SoftwareDescription,SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: null
+  measures:
+  - name: INSTALLATIONS.InstallationDate
+  nodes:
+    fn:
+    - SOFTWARE.SoftwareDescription
+    - SUPPLIERS.SupplierAddress
+    - SOFTWARE.Type
+    - SUPPLIERS.SupplierCity
+    fp:
+    - SOFTWARE.SoftwareDescription,SOFTWARE.Type
+    - COMPUTER.Brand
+    - SUPPLIES.SupplierName
+    - COMPUTER.Brand,COMPUTER.Model
+    - COMPUTER.CodComputer,SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierCity,SUPPLIERS.SupplierAddress
+    tp:
+    - SOFTWARE.CodSoftw
+    - SUPPLIERS.SupplierName
+    - INSTALLATIONS.InstallationDate
+    - COMPUTER.CodComputer
+    - COMPUTER.Model
+    - INSTALLATIONS
+    - SUPPLIES.Brand

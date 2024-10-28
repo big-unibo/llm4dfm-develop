@@ -38,7 +38,7 @@ class MetricsTest(unittest.TestCase):
 
                 ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = (
                     preprocess(ex_num, ground_truth['dependencies'], ground_truth['measures'] if ground_truth['measures'] else
-                    dict(), ground_truth['fact'], is_demand))
+                    list(), ground_truth['fact'], is_demand))
 
             dep_gt = ground_truth['dependencies']
             meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
@@ -65,7 +65,9 @@ class MetricsTest(unittest.TestCase):
                     metrics_calculated[file_name] = step_metric
                     metrics_list.append(step_metric)
 
-                    out, gt = label_edges(output, ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
+                    output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
+
+                    out, gt = label_edges(output_to_use, ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
 
                     output_preprocessed.append(
                         {'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
@@ -85,6 +87,8 @@ class MetricsTest(unittest.TestCase):
             store_test_output(output_generated[file], file)
 
         for idx, file in enumerate(metrics_gt.keys()):
+            print(file)
+            print(f'{metrics_gt[file]}\n{metrics_calculated[file]}\n')
             self.assertEqual(metrics_gt[file], metrics_calculated[file])  # add assertion here
 
 if __name__ == '__main__':

@@ -1,0 +1,67 @@
+config:
+  name: gpt
+  label: gpt4o
+  deployment: gpt-4o
+  api_version: 2024-04-01-preview
+  temperature: 0.1
+  max_tokens: 1000
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+output:
+- fact:
+    name: TRANSFERS
+  measures: []
+  dependencies:
+  - from: QUALIFICATIONS.qualification
+    to: QUALIFICATIONS.qualification
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    to: STAFF.managerCode
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    to: DEPARTMENTS.currentDepartment
+  - from: RECRUITMENTS.employeeCode
+    to: STAFF.employeeCode
+  - from: RECRUITMENTS.employeeCode
+    to: DEPARTMENTS.departmentCode
+  - from: RECRUITMENTS.employeeCode
+    to: RECRUITMENTS.recruitmentDate
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: DEPARTMENTS.fromDepartment
+  - from: TRANSFERS
+    to: DEPARTMENTS.toDepartment
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.employeeCode
+metrics:
+- edges:
+    tp: 9
+    fn: 5
+    fp: 9
+    precision: 0.5
+    recall: 0.6429
+    f1: 0.5625
+  nodes:
+    tp: 12
+    fn: 1
+    fp: 6
+    precision: 0.6667
+    recall: 0.9231
+    f1: 0.7742

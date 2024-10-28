@@ -1,0 +1,71 @@
+config:
+  name: gpt
+  label: gpt4o
+  deployment: gpt-4o
+  api_version: 2024-04-01-preview
+  temperature: 0.1
+  max_tokens: 1000
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+output:
+- fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MAXIMUM_WEIGHTS.weight
+  dependencies:
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.city
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.height
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.weight
+  - from: EXERCISES.exerciseId
+    to: EXERCISES.name
+  - from: EXERCISES.exerciseId
+    to: EXERCISES.exerciseType
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  - from: WORKOUTS.date, WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: EXERCISE_IN_WOD.date, EXERCISE_IN_WOD.exerciseId, EXERCISE_IN_WOD.positionInSequence
+    to: EXERCISE_IN_WOD.numberOfRepetitions
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date
+  - from: PRESENCE
+    to: WORKOUTS.time
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MAXIMUM_WEIGHTS.weight
+metrics:
+- edges:
+    tp: 12
+    fn: 4
+    fp: 7
+    precision: 0.6316
+    recall: 0.75
+    f1: 0.6857
+  nodes:
+    tp: 17
+    fn: 0
+    fp: 7
+    precision: 0.7083
+    recall: 1.0
+    f1: 0.8293

@@ -149,7 +149,7 @@ output_preprocessed = []
 for i, output in enumerate(model_outputs):
     try:
         dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
-                                                     output['measures'] if output['measures'] else list(),
+                                                     output['measures'] if 'measures' in output and output['measures'] else list(),
                                                      output['fact'], is_demand)
         edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
                                                                                       dep_output)
@@ -160,7 +160,9 @@ for i, output in enumerate(model_outputs):
             'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
         metrics.append(step_metric)
 
-        out, gt = label_edges(output, ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
+        output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
+
+        out, gt = label_edges(output_to_use, ground_truth, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
 
         output_preprocessed.append({'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
                                'ground_truth_labels': gt, 'nodes': {'tp': list(tp_nodes), 'fp': list(fp_nodes),

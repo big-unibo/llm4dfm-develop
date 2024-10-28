@@ -2,7 +2,7 @@ output:
 - dependencies:
   - from: storeName, storeNames, day
     to: storeAddress
-  - from: cardType, bankCountry
+  - from: CardType, bankCountry
     to: type
   - from: bankCountry, issuingBankCountry
     to: bankAddress
