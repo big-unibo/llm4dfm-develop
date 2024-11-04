@@ -57,8 +57,8 @@
             <div>
                 <label for="file_yaml_llm">File LLM:</label>
                 <input type="file" id="file_yaml_llm" name="file_yaml_llm" placeholder="Select LLM file yaml">
-                <label for="new_comparison">New comparison?</label>
-                <input type="checkbox" id="new_comparison" name="new_comparison">
+                <label for="old_comparison">Old comparison?</label>
+                <input type="checkbox" id="old_comparison" name="old_comparison">
                 <label id="i-th-output-label" style="padding-left: 5%" for="i-th-output-selector">Output number </label>
                 <select id="i-th-output-selector"></select>
             </div>
@@ -106,8 +106,7 @@ measures:
     <div>
         <button onclick="drawGraph('first')">Draw LLM</button>
         <button onclick="drawGraph('second')">Draw Ground Truth</button>
-        <button id="old_compare" onclick="compareGraphs()">Compare</button>
-        <button id="updated_compare" onclick="compareUpdatedGraphs()">Compare updated</button>
+        <button id="compare" onclick="compare()">Compare</button>
         <p>
             If drawing:
             - WHITE: the fact
@@ -128,19 +127,22 @@ measures:
     <div id="results"></div>
 
     <script>
+        let oldComparison = false;
         document.addEventListener('DOMContentLoaded', (event) => {
             // Select the file input element
             const fileInputLLM = document.getElementById('file_yaml_llm');
             const fileInputGT = document.getElementById('file_yaml_gt');
             const isDemandDriven = document.getElementById('demand_driven');
-            const isNewComparison = document.getElementById('new_comparison');
+            const isOldComparison = document.getElementById('old_comparison');
             const ithOutSelector = document.getElementById('i-th-output-selector');
 
             let lastLLMFileSelected;
 
-            toggleButton('updated_compare');
             hide('i-th-output-label');
             hide('i-th-output-selector');
+            toggleVisibility("block_ground_truth");
+            toggleVisibility('yaml_gt');
+            toggleVisibility('yaml_gt_title');
 
             ithOutSelector.addEventListener('change', function() {
                 const event = new Event('change');
@@ -242,12 +244,11 @@ measures:
                 fileInputGT.dispatchEvent(event);
             });
 
-            isNewComparison.addEventListener('change', function() {
+            isOldComparison.addEventListener('change', function() {
+                oldComparison = !oldComparison;
                 toggleVisibility("block_ground_truth");
                 toggleVisibility('yaml_gt');
                 toggleVisibility('yaml_gt_title');
-                toggleButton('updated_compare');
-                toggleButton('old_compare');
             });
         });
 
@@ -571,6 +572,13 @@ measures:
             }
         }
 
+        function compare() {
+            if (oldComparison) {
+                compareGraphs();
+            } else {
+                compareUpdatedGraphs();
+            }
+        }
 
         function compareGraphs() {
             const yaml2 = document.getElementById('yaml_llm').value;
