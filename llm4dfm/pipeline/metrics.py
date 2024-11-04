@@ -100,7 +100,6 @@ class MetricsCalculator:
                     tp_meas.add(meas)
                     gt_meas_used.add(meas)
                     if meas.lower() in fn_cache_lowercase:
-                        print(f'Measure {meas} was in fn')
                         fn.remove(fn_cache_lowercase[meas.lower()])
                         del fn_cache_lowercase[meas.lower()]
                     break
@@ -269,7 +268,7 @@ if __name__ == '__main__':
         ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
                                                                                    ground_truth['measures'] if
                                                                                    ground_truth['measures'] else list(),
-                                                                                   ground_truth['fact'], ex_config['demand'])
+                                                                                   ground_truth['fact'], ex_config['demand'], list())
 
     metrics = []
 
@@ -299,7 +298,7 @@ if __name__ == '__main__':
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
                                                                       output['measures'] if output[
                                                                           'measures'] else list(),
-                                                                      output['fact'], ex_config['demand'])
+                                                                      output['fact'], ex_config['demand'], ground_truth['dependencies'])
                     outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
                 except:
                     traceback.print_exc()

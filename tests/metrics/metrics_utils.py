@@ -5,7 +5,7 @@ from llm4dfm.pipeline.utils import load_yaml, write_yaml
 
 test_path = os.path.dirname(os.path.realpath(__file__))
 
-metrics_dataset_directory = os.path.join(test_path, 'dataset_onedrive')
+metrics_dataset_directory = os.path.join(test_path, 'dataset_easier')
 
 metrics_output = os.path.join(test_path, 'generated')
 

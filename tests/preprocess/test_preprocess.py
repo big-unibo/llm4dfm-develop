@@ -26,7 +26,7 @@ class PreprocessTest(unittest.TestCase):
             for out in ex_output['output']:
                 step_preprocessed = dict()
                 step_preprocessed['dependencies'], step_preprocessed['measures'], step_preprocessed['fact'] = preprocess(ex_num, out['dependencies'],
-                       out['measures'] if out['measures'] else list(), out['fact'], is_demand)
+                       out['measures'] if out['measures'] else list(), out['fact'], is_demand, list())
                 output_generated[file_name].append(step_preprocessed)
 
             output_expected[file_name] = ex_output['expected']
