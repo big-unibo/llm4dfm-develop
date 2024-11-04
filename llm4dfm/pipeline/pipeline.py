@@ -129,28 +129,30 @@ else:
 # Extracting ex number as last digit in exercise name
 ex_num = extract_ex_num(model_config['exercise']['name'])
 
-gt_prep = dict()
-gt_prep['dependencies'], gt_prep['measures'], gt_prep['fact'] = preprocess(ex_num, ground_truth['dependencies'],
-                                                     ground_truth['measures'] if ground_truth['measures'] else list(),
-                                                     ground_truth['fact'], is_demand)
+gt_preprocessed = dict()
+gt_preprocessed['dependencies'], gt_preprocessed['measures'], gt_preprocessed['fact'] = preprocess(ex_num, ground_truth['dependencies'],
+                                                                                                   ground_truth['measures'] if ground_truth['measures'] else list(),
+                                                                                                   ground_truth['fact'], is_demand, list())
 
 # Calculate metrics
 
 metrics = []
 
-dep_gt = gt_prep['dependencies']
-meas_gt = gt_prep['measures']
-fact_gt = gt_prep['fact']
+dep_gt = gt_preprocessed['dependencies']
+meas_gt = gt_preprocessed['measures']
+fact_gt = gt_preprocessed['fact']
 
 metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
 
 output_preprocessed = []
 
+print(f'OUTPUT: {model_outputs}')
+
 for i, output in enumerate(model_outputs):
     try:
         dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
                                                      output['measures'] if 'measures' in output and output['measures'] else list(),
-                                                     output['fact'], is_demand)
+                                                     output['fact'], is_demand, gt_preprocessed['dependencies'])
         edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
                                                                                       dep_output)
         tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
@@ -177,7 +179,7 @@ for i, output in enumerate(model_outputs):
 ts = get_timestamp()
 
 # store output
-store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_prep, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
+store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_preprocessed, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
 
 if automatic_run:
     store_automatic_output(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])

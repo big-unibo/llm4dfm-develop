@@ -17,7 +17,6 @@ def _process(deps, ignore, substitutions):
 
 
 def get_dict_to_check(common, exercise):
-    #print(exercise)
     common_values = [list_val for sub_dict in common for list_val in sub_dict.values()]
     common_ex = [list_val for sub_dict in exercise for list_val in sub_dict.values()]
 
@@ -38,9 +37,18 @@ def get_dict_to_check(common, exercise):
     return {key: [val.lower() for val in value] for my_dict in list_dict for key, value in my_dict.items()}
 
 
+# Need to search in both from and to
+def convert_same_nodes_different_order(node, node_preprocessed):
+    if (node != node_preprocessed and {node_prep for node_prep in node_preprocessed.split(',')} ==
+            {node_standard for node_standard in node.split(',')} and len(node_preprocessed.split(',')) ==
+            len(node.split(','))):
+        return node_preprocessed
+    else:
+        return node
 
 
-def preprocess(ex_number, dependencies, measures, fact, demand):
+# Convention to get output and ground truth following same order convention in nodes
+def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention_list):
 
     prep = load_yaml_from_resources('preprocess')
 
@@ -75,6 +83,20 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
             dep_from = _process([item for item in frag_dep['from']], ignore_to_check, eq_dicts_to_check)
             dep_to = _process([item for item in frag_dep['to']], ignore_to_check, eq_dicts_to_check)
         if dep_from and dep_to:
+            from_before = dep_from
+            to_before = dep_to
+            # Convert all the nodes which must be considered the same to the first occurrence of the node
+            for prep_dict in nodes_convention_list + dep_preprocessed:
+                dep_from = convert_same_nodes_different_order(dep_from, prep_dict['from'])
+                if from_before == dep_from:
+                    dep_from = convert_same_nodes_different_order(dep_from, prep_dict['to'])
+
+                dep_to = convert_same_nodes_different_order(dep_to, prep_dict['from'])
+                if to_before == dep_to:
+                    dep_to = convert_same_nodes_different_order(dep_to, prep_dict['to'])
+
+                if from_before != dep_from and to_before != dep_to:
+                    break
             if 'role' in dep:
                 dep_preprocessed.append({'from': dep_from, 'to': dep_to, 'role': dep['role']})
             else:
@@ -83,10 +105,14 @@ def preprocess(ex_number, dependencies, measures, fact, demand):
     meas_preprocessed = []
 
     for meas in measures:
-        meas_preprocessed.append({'name': _process([meas['name']], ignore_to_check, eq_dicts_to_check)})
+        meas_preprocessed.append({'name': f'{_process([meas['name']], ignore_to_check, eq_dicts_to_check)}'})
 
     measures = meas_preprocessed
 
-    fact = {'name': _process([fact['name']], ignore_to_check, eq_dicts_to_check)}
+    fact = {'name': f'{_process([fact['name']], ignore_to_check, eq_dicts_to_check)}'}
 
     return dep_preprocessed, measures, fact
+
+
+def preprocess_conjunct(output, gt):
+    return None

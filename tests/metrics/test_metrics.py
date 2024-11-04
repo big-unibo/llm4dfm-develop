@@ -38,7 +38,7 @@ class MetricsTest(unittest.TestCase):
 
                 ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = (
                     preprocess(ex_num, ground_truth['dependencies'], ground_truth['measures'] if ground_truth['measures'] else
-                    list(), ground_truth['fact'], is_demand))
+                    list(), ground_truth['fact'], is_demand, list()))
 
             dep_gt = ground_truth['dependencies']
             meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
@@ -53,7 +53,7 @@ class MetricsTest(unittest.TestCase):
                 try:
                     dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
                                                                       output['measures'] if output['measures'] else list(),
-                                                                      output['fact'], is_demand)
+                                                                      output['fact'], is_demand, ground_truth['dependencies'])
                     edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output,
                                                                                                   dep_output)
 
@@ -87,8 +87,6 @@ class MetricsTest(unittest.TestCase):
             store_test_output(output_generated[file], file)
 
         for idx, file in enumerate(metrics_gt.keys()):
-            print(file)
-            print(f'{metrics_gt[file]}\n{metrics_calculated[file]}\n')
             self.assertEqual(metrics_gt[file], metrics_calculated[file])  # add assertion here
 
 if __name__ == '__main__':

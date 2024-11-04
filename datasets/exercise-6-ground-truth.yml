@@ -12,14 +12,11 @@ supply_driven:
       to: DEPARTMENTS.departmentCode
       role: toDepartment
     - from: TRANSFERS
-      to: DEPARTMENTS.departmentCode
-      role: department
-    - from: TRANSFERS
       to: TRANSFERS.date
     - from: TRANSFERS
       to: TRANSFERS.reason
     - from: TRANSFERS
-      to: TRANSFERS.recrutimentDate
+      to: RECRUITMENTS.recruitmentDate
     - from: STAFF.employeeCode
       to: STAFF.name
     - from: STAFF.employeeCode
