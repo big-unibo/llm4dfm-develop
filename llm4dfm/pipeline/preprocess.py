@@ -55,7 +55,7 @@ def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention
     key = 'demand' if demand else 'supply'
 
     prep[ex_number] = prep[ex_number][key]
-    prep['common'] = prep[key]['common']
+    prep['common'] = prep['common'][key]
 
     eq_common = prep['common']['equals'] if 'equals' in prep['common'] else []
     eq_ex = prep[ex_number]['equals'] if 'equals' in prep[ex_number] else []

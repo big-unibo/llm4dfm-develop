@@ -43,11 +43,12 @@ All Java/Scala dependencies must be managed through Gradle (`build.gradle`). See
 
 > Software projects rarely work in isolation. In most cases, a project relies on reusable functionality in the form of libraries or is broken up into individual components to compose a modularized system. Dependency management is a technique for declaring, resolving and using dependencies required by the project in an automated fashion. Gradle has built-in support for dependency management and lives up to the task of fulfilling typical scenarios encountered in modern software projects. 
 
-All Python dependencies must be managed through virtual environments. See [here](https://docs.python.org/3/library/venv.html).
-
-> The .venv module provides support for creating lightweight "virtual environments" with their own site directories, optionally isolated from system site directories. Each virtual environment has its own Python binary (which matches the version of the binary that was used to create this environment) and can have its own independent set of installed Python packages in its site directories.
-
 Install Poetry if you don't have it yet
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -55,6 +56,18 @@ pip install -r requirements.txt
 Install the project's dependencies
 ```bash
 poetry install
+```
+
+### Venv
+
+All Python dependencies must be managed through virtual environments. See [here](https://docs.python.org/3/library/venv.html).
+
+> The .venv module provides support for creating lightweight "virtual environments" with their own site directories, optionally isolated from system site directories. Each virtual environment has its own Python binary (which matches the version of the binary that was used to create this environment) and can have its own independent set of installed Python packages in its site directories.
+
+In case .venv folder is not created, venv can be created through
+
+```bash
+python -m venv .venv
 ```
 
 To activate venv in Windows (with bash shell; e.g., git bash)
@@ -68,7 +81,6 @@ source .venv/bin/activate
 ```
 
 ## Configuration 
-
 
 ### Required configuration parameters
 
@@ -153,6 +165,38 @@ The following parameters can be configured in `llm4dfm/resources/metrics-config.
 - `name -- the exercise name without .yml extension`
 - `demand -- whether it's a demand driven exercise [true, false]`
 - `gt -- the ground truth's exercise`
+
+## Preprocessing
+
+In order to apply equality or ignore rules, `llm4dfm/resources/preprocess.yml` file has been provided.
+It is split in 2 sections, the first one is the common, that is applied to all exercises, and then rules for each exercise.
+
+Structure of each section is as follows:
+```
+1:
+  demand:
+    equals:
+    - item_to_keep_1:
+      - elem_1_equal_item_to_keep_1
+      - elem_2_equal_item_to_keep_1
+    - item_to_keep_2:
+      - elem_1_equal_item_to_keep_2
+      - elem_2_equal_item_to_keep_2
+    ignore:
+    - elem_to_ignore_1
+    - elem_to_ignore_2
+  supply:
+    equals:
+    - item_to_keep_1:
+      - elem_1_equal_item_to_keep_1
+      - elem_2_equal_item_to_keep_1
+    ignore: []
+```
+
+This state that in exercise 1 all elem_1_equal_item_to_keep_1 and elem_2_equal_item_to_keep_1 found in demand exercise
+will be preprocessed in item_to_keep_1 and so on, and all dependencies that will have elem_to_ignore_1 or elem_to_ignore_2
+will be ignored after preprocessing.
+Thesaurus rules are applied here.
 
 ## Usage
 
@@ -281,7 +325,9 @@ Example of run:
 
 ### Automatic run
 
-After activating venv from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
+First of all, execution privileges must be granted by means of `chmod 700 ./resources/automatic-run.sh`.
+
+After activating [venv](#Venv), a task triggered by
 `poetry poe automatic_run` run the pipeline with the following configurations:
 - `number_of_runs -- set number of runs, 1 by default`
 - `file_version -- set file version [sql, original, demand], sql by default`
@@ -291,18 +337,9 @@ After activating venv from `llm4dfm` root directory via `source .venv/bin/activa
 - `model_label -- an optional model label used in yml output generated, empty string by default, if empty model name is used`
 - `dir_label -- an optional label used in output directory generated, if not provided a timestamp is generated`
 
-This could also be achieved by running `./resources/automatic-run.sh` from `llm4dfm` directory,
-after granted execution privileges, by means of `chmod 700 ./resources/automatic-run.sh`.
-Run configuration:
-- `number_of_runs -- set number of runs, 1 by default`
-- `file_version -- set file version [sql, original, demand], sql by default`
-- `prompt_version -- set prompt version [v1, v2, v3, v4, demand], v4 by default`
-- `model -- model to use in run`
-- `"<ex1> ... <fileN>" -- set exercises to run, all files matching previous configurations by default`
-- `model_label -- an optional model label used in yml output generated, empty string by default, if empty model name is used`
-- `dir_label -- an optional label used in output directory generated, if not provided a timestamp is generated`
+This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
 
-All configurations specified as argument **override** the provided by configuration file ones.
+All configurations specified as argument **override** the ones provided by configuration file ones.
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
 Example of run:
@@ -318,7 +355,9 @@ Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
 
 **Still work in progress**
 
-After activating venv from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
+First of all, execution privileges must be granted by means of `chmod 700 ./resources/automatic_metrics.sh`.
+
+After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
 `poetry poe automatic_metrics` run the automatic metrics without configurations.
 
 ## Tests
