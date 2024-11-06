@@ -21,15 +21,19 @@ class MetricsTest(unittest.TestCase):
 
             metrics_gt[file_name] = ex_output['metrics']
 
-            exercise, version, prompt = get_info_from_filename(file_name)
-            ex_num = extract_ex_num(exercise)
-
-            is_demand = version == 'demand'
+            # Default configurations
+            ex_num, is_demand = '', False
 
             if 'gt_preprocessed' in ex_output:
                 ground_truth = ex_output['gt_preprocessed']
+            elif 'ground_truth' in ex_output:
+                    ground_truth = ex_output['ground_truth']
             else:
                 # print('Calculating ground truth preprocess')
+                exercise, version, prompt = get_info_from_filename(file_name)
+                ex_num = extract_ex_num(exercise)
+
+                is_demand = version == 'demand'
                 ground_truth = load_ground_truth_exercise(exercise)
                 if is_demand:
                     ground_truth = ground_truth['demand_driven']
@@ -43,6 +47,7 @@ class MetricsTest(unittest.TestCase):
             dep_gt = ground_truth['dependencies']
             meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
             fact_gt = ground_truth['fact']
+
 
             metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
 

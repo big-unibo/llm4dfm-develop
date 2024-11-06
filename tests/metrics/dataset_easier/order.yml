@@ -1,0 +1,54 @@
+# Test order mismatching
+ground_truth:
+  fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.PickupDate, RENTALS.Plate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: CARS.Plate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTALS.PickupDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTALS.DropoffDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTAL_OFFICES.OfficeName
+      role: PickupPlace
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTAL_OFFICES.OfficeName
+      role: DropoffPlace
+output:
+# Test order mismatching
+- fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Err
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.Plate, RENTALS.PickupDate
+    - from: RENTALS.Plate, RENTALS.PickupDate
+      to: CARS.Plate
+    - from: RENTALS.PickupDate, RENTALS.Plate
+      to: CARS.Plate
+    - from: RENTALS.Plate, RENTALS.PickupDate
+      to: RENTALS.PickupDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      to: RENTAL_OFFICES.OfficeName
+      role: Drop
+metrics:
+- edges:
+    f1: 0.3704
+    fn: 3
+    fp: 2
+    precision: 0.8333
+    recall: 0.2381
+    tp: 3
+  nodes:
+    f1: 0.5
+    fn: 2
+    fp: 1
+    precision: 1.0
+    recall: 0.3333
+    tp: 5

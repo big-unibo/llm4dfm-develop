@@ -11,8 +11,8 @@ def _calc_metrics(tp, fp, fn):
     fn_count = len(fn)
     fp_count = len(fp)
 
-    precision = tp_count / (tp_count + fp_count)
-    recall = tp_count / (tp_count + fn_count)
+    precision = tp_count / (tp_count + fp_count) if tp_count + fp_count > 0 else 0
+    recall = tp_count / (tp_count + fn_count) if tp_count + fn_count > 0 else 0
     f1 = 2 * ((precision * recall) / (precision + recall)) if precision + recall != 0 else 0
 
     return precision, recall, f1, tp_count, fn_count, fp_count
@@ -22,7 +22,7 @@ def _load_nodes(dependencies):
 
 class MetricsCalculator:
 
-    def __init__(self, gt_fact, gt_measures, gt_dependencies, ex_number, demand=False):
+    def __init__(self, gt_fact, gt_measures, gt_dependencies, ex_number='', demand=False):
         self.gt_raw = dict()
         self.out_raw = dict()
         self.gt_preprocessed = dict()

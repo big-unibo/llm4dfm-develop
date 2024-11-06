@@ -1,0 +1,16 @@
+ground_truth:
+  fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.Miles
+output:
+- fact:
+    name: RENTALS
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.Miles

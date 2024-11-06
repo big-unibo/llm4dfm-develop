@@ -1,0 +1,73 @@
+# Check nodes in both measures and dependencies, output with node only
+# in measure
+ground_truth:
+  fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.Miles
+output:
+# Check nodes in both measures and dependencies, output with node only
+# in measure
+- fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies: []
+- fact:
+    name: INSURANCES
+  measures: []
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.Miles
+- fact:
+    name: INSURANCES
+  measures: []
+  dependencies:
+    - from: INSURANCES
+      to: RENTALS.Err
+metrics:
+- edges:
+    f1: 0.0
+    fn: 1
+    fp: 0
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 2
+- edges:
+    f1: 1
+    fn: 0
+    fp: 0
+    precision: 1
+    recall: 1
+    tp: 1
+  nodes:
+    f1: 0.5
+    fn: 1
+    fp: 1
+    precision: 0.5
+    recall: 0.5
+    tp: 1
+- edges:
+    f1: 0
+    fn: 1
+    fp: 1
+    precision: 0
+    recall: 0
+    tp: 0
+  nodes:
+    f1: 0.5
+    fn: 1
+    fp: 1
+    precision: 0.5
+    recall: 0.5
+    tp: 1

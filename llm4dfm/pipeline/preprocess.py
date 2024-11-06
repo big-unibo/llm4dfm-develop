@@ -52,19 +52,23 @@ def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention
 
     prep = load_yaml_from_resources('preprocess')
 
-    key = 'demand' if demand else 'supply'
+    if ex_number in prep:
+        key = 'demand' if demand else 'supply'
 
-    prep[ex_number] = prep[ex_number][key]
-    prep['common'] = prep['common'][key]
+        prep[ex_number] = prep[ex_number][key]
+        prep['common'] = prep['common'][key]
 
-    eq_common = prep['common']['equals'] if 'equals' in prep['common'] else []
-    eq_ex = prep[ex_number]['equals'] if 'equals' in prep[ex_number] else []
-    eq_dicts_to_check = get_dict_to_check(eq_common, eq_ex)
+        eq_common = prep['common']['equals'] if 'equals' in prep['common'] else []
+        eq_ex = prep[ex_number]['equals'] if 'equals' in prep[ex_number] else []
+        eq_dicts_to_check = get_dict_to_check(eq_common, eq_ex)
 
-    ignore_common = prep['common']['ignore'] if 'ignore' in prep['common'] else []
-    ignore_ex = prep[ex_number]['ignore'] if 'ignore' in prep[ex_number] else []
-    ignore = ignore_common + ignore_ex
-    ignore_to_check = [ig.lower() for ig in ignore]
+        ignore_common = prep['common']['ignore'] if 'ignore' in prep['common'] else []
+        ignore_ex = prep[ex_number]['ignore'] if 'ignore' in prep[ex_number] else []
+        ignore = ignore_common + ignore_ex
+        ignore_to_check = [ig.lower() for ig in ignore]
+    else:
+        eq_dicts_to_check = dict()
+        ignore_to_check = []
 
     dep_preprocessed = []
 
@@ -112,7 +116,3 @@ def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention
     fact = {'name': f'{_process([fact['name']], ignore_to_check, eq_dicts_to_check)}'}
 
     return dep_preprocessed, measures, fact
-
-
-def preprocess_conjunct(output, gt):
-    return None

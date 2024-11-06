@@ -1,0 +1,95 @@
+# Test correct edges without roles, multiple edges with same role, roles
+# case sensitive
+ground_truth:
+  fact:
+    name: TRANSFERS
+  measures:
+  dependencies:
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: fromDepartment
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: toDepartment
+    - from: STAFF.employeeCode
+      to: DEPARTMENTS.departmentCode
+      role: currentDepartment
+    - from: DIVISIONS.divCode
+      to: STAFF.employeeCode
+      role: managerCode
+output:
+# Test correct edges without roles
+- fact:
+    name: TRANSFERS
+  measures:
+  dependencies:
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+    - from: STAFF.employeeCode
+      to: DEPARTMENTS.departmentCode
+    - from: DIVISIONS.divCode
+      to: STAFF.employeeCode
+# Test multiple correct edges with roles
+- fact:
+    name: TRANSFERS
+  measures:
+  dependencies:
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: fromDepartment
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: fromDepartment
+# Test roles case sensitives
+- fact:
+    name: TRANSFERS
+  measures:
+  dependencies:
+    - from: TRANSFERS
+      to: DEPARTMENTS.departmentCode
+      role: FroMDepartment
+metrics:
+- edges:
+    f1: 0.0
+    fn: 4
+    fp: 4
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 4
+- edges:
+    f1: 0.3333
+    fn: 3
+    fp: 1
+    precision: 0.5
+    recall: 0.25
+    tp: 1
+  nodes:
+    f1: 0.6667
+    fn: 2
+    fp: 0
+    precision: 1.0
+    recall: 0.5
+    tp: 2
+- edges:
+    f1: 0.4
+    fn: 3
+    fp: 0
+    precision: 1.0
+    recall: 0.25
+    tp: 1
+  nodes:
+    f1: 0.6667
+    fn: 2
+    fp: 0
+    precision: 1.0
+    recall: 0.5
+    tp: 2
