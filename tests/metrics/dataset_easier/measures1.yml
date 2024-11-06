@@ -11,6 +11,8 @@ ground_truth:
 output:
 # Check nodes in both measures and dependencies, output with node only
 # in measure
+# Per ogni attributo nelle dependencies, devo verificare se questo è il fatto della gt, se lo è e nell'output no allora
+# fp altrimenti tp, poi con le misure uguale, se non è in nessuno dei due allora controllo che sia nelle dependencies
 - fact:
     name: INSURANCES
   measures:
@@ -22,12 +24,6 @@ output:
   dependencies:
     - from: INSURANCES
       to: RENTALS.Miles
-- fact:
-    name: INSURANCES
-  measures: []
-  dependencies:
-    - from: INSURANCES
-      to: RENTALS.Err
 metrics:
 - edges:
     f1: 0.0
@@ -50,20 +46,6 @@ metrics:
     precision: 1
     recall: 1
     tp: 1
-  nodes:
-    f1: 0.5
-    fn: 1
-    fp: 1
-    precision: 0.5
-    recall: 0.5
-    tp: 1
-- edges:
-    f1: 0
-    fn: 1
-    fp: 1
-    precision: 0
-    recall: 0
-    tp: 0
   nodes:
     f1: 0.5
     fn: 1

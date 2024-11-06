@@ -306,8 +306,6 @@ measures:
                     const edgesUsed = new Map();
                     yaml.dependencies.forEach(dep => {
                         if (!dep.refinements || dep.refinements !== 'created') {
-                            dep.from = "n_" + dep.from;
-                            dep.to = "n_" + dep.to;
                             let idForMultipleEdges = 0;
                             const tupleKey = JSON.stringify([dep.from, dep.to]);
                             if (edgesUsed.has(tupleKey)) {
@@ -325,7 +323,7 @@ measures:
 
                 // Handle fact
                 if (yaml.fact && yaml.fact.name) {
-                    factNode = "n_" + yaml.fact.name;
+                    factNode = yaml.fact.name;
                     nodes.set(factNode, { id: factNode, tag: 'fact' });
                 }
 
@@ -333,7 +331,6 @@ measures:
                 if (yaml.measures) {
                     yaml.measures.forEach(measure => {
                         if (measure.name) {
-                            measure.name = "n_" + measure.name;
                             measures.add(measure.name);
                             nodes.set(measure.name, {id: measure.name, tag: 'measure'});
                         }
@@ -397,9 +394,6 @@ measures:
                             } else {
                                 edgesUsed.set(tupleKey, idForMultipleEdges);
                             }
-
-                            dep.from = "n_" + dep.from;
-                            dep.to = "n_" + dep.to;
                             edges.add({from: dep.from, to: dep.to, role: dep.role, label: dep.label, idMultiEdge: idForMultipleEdges});
                             edges.add({from: dep.from, to: dep.to, role: dep.role, label: dep.label, idMultiEdge: idForMultipleEdges});
                             nodes.set(dep.from, { id: dep.from, label: fromLabel });
@@ -411,7 +405,7 @@ measures:
                 // Handle fact
                 if (yaml.fact && yaml.fact.name) {
                     const factLabel = findNodeLabel(nodesToCheck, yaml.fact.name)
-                    factNode = "n_" + yaml.fact.name;
+                    factNode = yaml.fact.name;
                     nodes.set(factNode, { id: factNode, tag: 'fact', label: factLabel });
                 }
 
@@ -420,7 +414,6 @@ measures:
                     yaml.measures.forEach(measure => {
                         if (measure.name) {
                             const measureLabel = findNodeLabel(nodesToCheck, measure.name);
-                            measure.name = "n_" + measure.name;
                             measures.add(measure.name);
                             nodes.set(measure.name, {id: measure.name, tag: 'measure', label: measureLabel});
                         }
@@ -431,7 +424,7 @@ measures:
                 if (factNode) {
                     edges.forEach(edge => {
                         if (edge.from === factNode && !measures.has(edge.to)) {
-                            const measureLabel = findNodeLabel(nodesToCheck, edge.to.replace("n_", ""));
+                            const measureLabel = findNodeLabel(nodesToCheck, edge.to);
                             nodes.set(edge.to, { id: edge.to, tag: 'dimension', label: measureLabel, idMultiEdge: edge.idMultiEdge });
                         }
                     });
@@ -441,10 +434,7 @@ measures:
         }
 
         function getNodeTitle(title){
-            if(title.startsWith("n_"))
-                return title.slice(2);
-            else 
-                return title;
+            return title;
         }
 
         function getColorByTag(tag) {
@@ -882,9 +872,6 @@ measures:
         }
 
         function polishNodeName(name) {
-            if(name.startsWith("n_")){
-                name = name.slice(2);
-            }
             return name.split(',').map(part => {
                 const [prefix, suffix] = part.trim().split('.');
                 if (suffix) {
