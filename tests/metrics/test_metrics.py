@@ -92,7 +92,14 @@ class MetricsTest(unittest.TestCase):
             store_test_output(output_generated[file], file)
 
         for idx, file in enumerate(metrics_gt.keys()):
-            self.assertEqual(metrics_gt[file], metrics_calculated[file])  # add assertion here
+            for metr_dict_gt, metr_dict_calc in zip(metrics_gt[file], metrics_calculated[file]):
+                for comp in metr_dict_gt:
+                    for prop in ['tp', 'fp', 'fn']:
+                        try:
+                            self.assertEqual(metr_dict_gt[comp][prop], metr_dict_calc[comp][prop])
+                        except:
+                            print(f'\n[DEBUG] Error in {file} {comp}_{prop}: Gt={metr_dict_gt[comp][prop]}, Out={metr_dict_calc[comp][prop]}')
+                            raise AssertionError
 
 if __name__ == '__main__':
     unittest.main()

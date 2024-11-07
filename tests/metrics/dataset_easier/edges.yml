@@ -32,27 +32,15 @@ metrics:
     tp: 1
     fn: 1
     fp: 1
-    precision: 0.5
-    recall: 0.5
-    f1: 0.5
   nodes:
     tp: 3
     fn: 1
     fp: 0
-    precision: 1.0
-    recall: 0.75
-    f1: 0.8571
 - edges:
     tp: 2
     fn: 0
     fp: 0
-    precision: 1.0
-    recall: 1.0
-    f1: 1.0
   nodes:
     tp: 4
     fn: 0
     fp: 0
-    precision: 1.0
-    recall: 1.0
-    f1: 1.0

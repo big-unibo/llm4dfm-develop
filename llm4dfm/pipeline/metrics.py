@@ -64,6 +64,7 @@ class MetricsCalculator:
 
         dep_gt_to_iterate = self._get_deps_lowercase(deps_gt)
         dep_gen_to_iterate = self._get_deps_lowercase(dep_generated)
+        print(dep_gen_to_iterate)
 
         tp, fn, fp, gt_used = set(), set(), set(), set()
         fn_cache_lowercase = dict()
@@ -111,12 +112,12 @@ class MetricsCalculator:
             if me_gt not in gt_meas_used:
                 fn.add(me_gt)
 
-        fact_gt_use = fact_gt.lower()
-        fact_generated_use = fact_generated.lower()
-
         tp = tp.union(tp_meas)
         fn = fn.union(fn_meas)
         fp = fp.union(fp_meas)
+
+        fact_gt_use = fact_gt.lower()
+        fact_generated_use = fact_generated.lower()
 
         if fact_gt_use == fact_generated_use:
             tp.add(fact_generated)
