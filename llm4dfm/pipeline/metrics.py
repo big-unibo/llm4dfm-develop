@@ -64,71 +64,71 @@ class MetricsCalculator:
 
         dep_gt_to_iterate = self._get_deps_lowercase(deps_gt)
         dep_gen_to_iterate = self._get_deps_lowercase(dep_generated)
-        print(dep_gen_to_iterate)
+
+        # Starting from fact, then measures, to correctly classify dependencies attributes considering as fact or measures
 
         tp, fn, fp, gt_used = set(), set(), set(), set()
         fn_cache_lowercase = dict()
-
-
-        for dep in dep_gen_to_iterate:
-            inserted = False
-            for dp_gt in dep_gt_to_iterate:
-                if {dp.lower() for dp in dep.split(',')} == {dp.lower() for dp in dp_gt.split(',')}:
-                    inserted = True
-                    tp.add(dep)
-                    gt_used.add(dp_gt)
-                    break
-            if not inserted:
-                fp.add(dep)
-            else:
-                dep_gt_to_iterate.discard(dep)
-        for dp_gt in dep_gt_to_iterate:
-            if dp_gt not in gt_used:
-                fn.add(dp_gt)
-                # Used to remove it in case it's present in measures set or fact
-                fn_cache_lowercase[dp_gt.lower()] = dp_gt
-
-        meas_gt_to_iterate = self._get_deps_lowercase(measure_gt)
-        meas_gen_to_iterate = self._get_deps_lowercase(measure_generated)
-
-        tp_meas, fn_meas, fp_meas, gt_meas_used = set(), set(), set(), set()
-
-        for meas in meas_gen_to_iterate:
-            inserted = False
-            for meas_gt in meas_gt_to_iterate:
-                if meas.lower() == meas_gt.lower():
-                    inserted = True
-                    tp_meas.add(meas)
-                    gt_meas_used.add(meas)
-                    if meas.lower() in fn_cache_lowercase:
-                        fn.remove(fn_cache_lowercase[meas.lower()])
-                        del fn_cache_lowercase[meas.lower()]
-                    break
-            if not inserted:
-                fp_meas.add(meas)
-            else:
-                meas_gt_to_iterate.discard(meas)
-        for me_gt in meas_gt_to_iterate:
-            if me_gt not in gt_meas_used:
-                fn.add(me_gt)
-
-        tp = tp.union(tp_meas)
-        fn = fn.union(fn_meas)
-        fp = fp.union(fp_meas)
+        meas_or_fact_wrong = set()
 
         fact_gt_use = fact_gt.lower()
         fact_generated_use = fact_generated.lower()
 
         if fact_gt_use == fact_generated_use:
             tp.add(fact_generated)
-            if fact_generated_use in fn_cache_lowercase:
-                fn.remove(fn_cache_lowercase[fact_generated_use])
-                del fn_cache_lowercase[fact_generated_use]
         else:
             fn.add(fact_gt)
+            fn_cache_lowercase[fact_gt_use] = fact_gt
             fp.add(fact_generated)
+            meas_or_fact_wrong.add(fact_generated_use)
+            meas_or_fact_wrong.add(fact_gt_use)
 
-        # Remove intersection
+        meas_gt_to_iterate = self._get_deps_lowercase(measure_gt)
+        meas_gen_to_iterate = self._get_deps_lowercase(measure_generated)
+
+        gt_meas_used = set()
+
+        for meas in meas_gen_to_iterate:
+            inserted = False
+            for meas_gt in meas_gt_to_iterate:
+                if meas.lower() == meas_gt.lower():
+                    inserted = True
+                    tp.add(meas)
+                    gt_meas_used.add(meas)
+                    break
+            if not inserted:
+                fp.add(meas)
+                meas_or_fact_wrong.add(meas.lower())
+            else:
+                meas_gt_to_iterate.discard(meas)
+        for me_gt in meas_gt_to_iterate:
+            if me_gt not in gt_meas_used:
+                fn.add(me_gt)
+                fn_cache_lowercase[me_gt.lower()] = me_gt
+                meas_or_fact_wrong.add(me_gt.lower())
+
+        for dep in dep_gen_to_iterate:
+            inserted = False
+            if dep.lower() in fn_cache_lowercase or dep.lower() in meas_or_fact_wrong:
+                inserted = True
+                fp.add(dep)
+            if not inserted:
+                for dp_gt in dep_gt_to_iterate:
+                    if {dp.lower() for dp in dep.split(',')} == {dp.lower() for dp in dp_gt.split(',')}:
+                        inserted = True
+                        tp.add(dep)
+                        gt_used.add(dp_gt)
+                        break
+                if not inserted:
+                    fp.add(dep)
+                else:
+                    dep_gt_to_iterate.discard(dep)
+        for dp_gt in dep_gt_to_iterate:
+            if dp_gt not in gt_used:
+                fn.add(dp_gt)
+                # Used to remove it in case it's present in measures set or fact
+                fn_cache_lowercase[dp_gt.lower()] = dp_gt
+
         fn -= tp
         fp -= tp
 
@@ -181,7 +181,7 @@ class MetricsCalculator:
         dep_preprocessed = []
 
         for d in dependencies:
-            lab_list = [set(v.split(',')) for v in [d['from'], d['to']]]
+            lab_list = [set(v.replace(' ', '').split(',')) for v in [d['from'], d['to']]]
             if 'role' in d:
                 lab_list.append({d['role']})
             dep_preprocessed.append(lab_list)

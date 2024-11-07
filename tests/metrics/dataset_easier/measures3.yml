@@ -1,0 +1,25 @@
+ground_truth:
+  fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Miles
+  dependencies:
+    - from: RENTALS.Miles,RENTALS.Name
+      to: RENTALS.Surname
+output:
+- fact:
+    name: INSURANCES
+  measures:
+    - name: RENTALS.Id
+  dependencies:
+    - from: RENTALS.Miles,RENTALS.Name
+      to: RENTALS.Surname
+metrics:
+- edges:
+    fn: 0
+    fp: 0
+    tp: 1
+  nodes:
+    fn: 1
+    fp: 1
+    tp: 3
