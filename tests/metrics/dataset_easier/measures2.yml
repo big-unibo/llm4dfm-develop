@@ -1,3 +1,5 @@
+# Check uncorrected generated measure in measure
+# Check uncorrected generated measure in correct dependency
 ground_truth:
   fact:
     name: INSURANCES
@@ -7,11 +9,13 @@ ground_truth:
     - from: INSURANCES
       to: RENTALS.Miles
 output:
+# Check uncorrected generated measure in measure
 - fact:
     name: INSURANCES
   measures:
     - name: RENTALS.Miles
   dependencies: []
+# Check uncorrected generated measure in correct dependency
 - fact:
     name: INSURANCES
   measures:

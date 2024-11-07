@@ -1,3 +1,4 @@
+# Check measure not correctly detected but in a dependency node with other attributes
 ground_truth:
   fact:
     name: INSURANCES
@@ -7,6 +8,7 @@ ground_truth:
     - from: RENTALS.Miles,RENTALS.Name
       to: RENTALS.Surname
 output:
+# Check measure not correctly detected but in a dependency node with other attributes
 - fact:
     name: INSURANCES
   measures:

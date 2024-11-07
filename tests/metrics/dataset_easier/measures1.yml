@@ -1,5 +1,5 @@
-# Check nodes in both measures and dependencies, output with node only
-# in measure
+# Check nodes in both measures and dependencies, output with node only in measure
+# GT measure not classified correctly but in a correct dependency
 ground_truth:
   fact:
     name: INSURANCES
@@ -16,6 +16,7 @@ output:
   measures:
     - name: RENTALS.Miles
   dependencies: []
+# Check a GT measure not classified correctly but in a correct dependency
 - fact:
     name: INSURANCES
   measures: []

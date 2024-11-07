@@ -1,3 +1,4 @@
+# Test misclassified fact in dependencies
 ground_truth:
   fact:
     name: A
@@ -6,6 +7,7 @@ ground_truth:
     - from: A
       to: B
 output:
+# Test misclassified fact in dependencies
 - fact:
     name: B
   measures: []
