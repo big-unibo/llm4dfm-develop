@@ -1,5 +1,5 @@
-demand:
-  common:
+common:
+  demand:
     equals:
     - Date:
       - day
@@ -11,9 +11,7 @@ demand:
     - count
     - month
     - year
-
-supply:
-  common:
+  supply:
     equals: []
     ignore: []
 

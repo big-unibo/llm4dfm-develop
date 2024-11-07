@@ -1,0 +1,23 @@
+ground_truth:
+  fact:
+    name: A
+  measures: []
+  dependencies:
+    - from: A
+      to: B
+output:
+- fact:
+    name: B
+  measures: []
+  dependencies:
+    - from: A
+      to: B
+metrics:
+- edges:
+    fn: 0
+    fp: 0
+    tp: 1
+  nodes:
+    fn: 2
+    fp: 2
+    tp: 0

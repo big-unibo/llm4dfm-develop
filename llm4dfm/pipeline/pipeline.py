@@ -146,8 +146,6 @@ metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
 
 output_preprocessed = []
 
-print(f'OUTPUT: {model_outputs}')
-
 for i, output in enumerate(model_outputs):
     try:
         dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],

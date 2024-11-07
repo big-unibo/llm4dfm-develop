@@ -57,8 +57,8 @@
             <div>
                 <label for="file_yaml_llm">File LLM:</label>
                 <input type="file" id="file_yaml_llm" name="file_yaml_llm" placeholder="Select LLM file yaml">
-                <label for="new_comparison">New comparison?</label>
-                <input type="checkbox" id="new_comparison" name="new_comparison">
+                <label for="old_comparison">Old comparison?</label>
+                <input type="checkbox" id="old_comparison" name="old_comparison">
                 <label id="i-th-output-label" style="padding-left: 5%" for="i-th-output-selector">Output number </label>
                 <select id="i-th-output-selector"></select>
             </div>
@@ -106,8 +106,7 @@ measures:
     <div>
         <button onclick="drawGraph('first')">Draw LLM</button>
         <button onclick="drawGraph('second')">Draw Ground Truth</button>
-        <button id="old_compare" onclick="compareGraphs()">Compare</button>
-        <button id="updated_compare" onclick="compareUpdatedGraphs()">Compare updated</button>
+        <button id="compare" onclick="compare()">Compare</button>
         <p>
             If drawing:
             - WHITE: the fact
@@ -128,19 +127,22 @@ measures:
     <div id="results"></div>
 
     <script>
+        let oldComparison = false;
         document.addEventListener('DOMContentLoaded', (event) => {
             // Select the file input element
             const fileInputLLM = document.getElementById('file_yaml_llm');
             const fileInputGT = document.getElementById('file_yaml_gt');
             const isDemandDriven = document.getElementById('demand_driven');
-            const isNewComparison = document.getElementById('new_comparison');
+            const isOldComparison = document.getElementById('old_comparison');
             const ithOutSelector = document.getElementById('i-th-output-selector');
 
             let lastLLMFileSelected;
 
-            toggleButton('updated_compare');
             hide('i-th-output-label');
             hide('i-th-output-selector');
+            toggleVisibility("block_ground_truth");
+            toggleVisibility('yaml_gt');
+            toggleVisibility('yaml_gt_title');
 
             ithOutSelector.addEventListener('change', function() {
                 const event = new Event('change');
@@ -242,12 +244,11 @@ measures:
                 fileInputGT.dispatchEvent(event);
             });
 
-            isNewComparison.addEventListener('change', function() {
+            isOldComparison.addEventListener('change', function() {
+                oldComparison = !oldComparison;
                 toggleVisibility("block_ground_truth");
                 toggleVisibility('yaml_gt');
                 toggleVisibility('yaml_gt_title');
-                toggleButton('updated_compare');
-                toggleButton('old_compare');
             });
         });
 
@@ -305,8 +306,6 @@ measures:
                     const edgesUsed = new Map();
                     yaml.dependencies.forEach(dep => {
                         if (!dep.refinements || dep.refinements !== 'created') {
-                            dep.from = "n_" + dep.from;
-                            dep.to = "n_" + dep.to;
                             let idForMultipleEdges = 0;
                             const tupleKey = JSON.stringify([dep.from, dep.to]);
                             if (edgesUsed.has(tupleKey)) {
@@ -322,11 +321,9 @@ measures:
                     });
                 }
 
-
-
                 // Handle fact
                 if (yaml.fact && yaml.fact.name) {
-                    factNode = "n_" + yaml.fact.name;
+                    factNode = yaml.fact.name;
                     nodes.set(factNode, { id: factNode, tag: 'fact' });
                 }
 
@@ -334,7 +331,6 @@ measures:
                 if (yaml.measures) {
                     yaml.measures.forEach(measure => {
                         if (measure.name) {
-                            measure.name = "n_" + measure.name;
                             measures.add(measure.name);
                             nodes.set(measure.name, {id: measure.name, tag: 'measure'});
                         }
@@ -398,9 +394,6 @@ measures:
                             } else {
                                 edgesUsed.set(tupleKey, idForMultipleEdges);
                             }
-
-                            dep.from = "n_" + dep.from;
-                            dep.to = "n_" + dep.to;
                             edges.add({from: dep.from, to: dep.to, role: dep.role, label: dep.label, idMultiEdge: idForMultipleEdges});
                             edges.add({from: dep.from, to: dep.to, role: dep.role, label: dep.label, idMultiEdge: idForMultipleEdges});
                             nodes.set(dep.from, { id: dep.from, label: fromLabel });
@@ -412,7 +405,7 @@ measures:
                 // Handle fact
                 if (yaml.fact && yaml.fact.name) {
                     const factLabel = findNodeLabel(nodesToCheck, yaml.fact.name)
-                    factNode = "n_" + yaml.fact.name;
+                    factNode = yaml.fact.name;
                     nodes.set(factNode, { id: factNode, tag: 'fact', label: factLabel });
                 }
 
@@ -421,7 +414,6 @@ measures:
                     yaml.measures.forEach(measure => {
                         if (measure.name) {
                             const measureLabel = findNodeLabel(nodesToCheck, measure.name);
-                            measure.name = "n_" + measure.name;
                             measures.add(measure.name);
                             nodes.set(measure.name, {id: measure.name, tag: 'measure', label: measureLabel});
                         }
@@ -432,7 +424,7 @@ measures:
                 if (factNode) {
                     edges.forEach(edge => {
                         if (edge.from === factNode && !measures.has(edge.to)) {
-                            const measureLabel = findNodeLabel(nodesToCheck, edge.to.replace("n_", ""));
+                            const measureLabel = findNodeLabel(nodesToCheck, edge.to);
                             nodes.set(edge.to, { id: edge.to, tag: 'dimension', label: measureLabel, idMultiEdge: edge.idMultiEdge });
                         }
                     });
@@ -442,10 +434,7 @@ measures:
         }
 
         function getNodeTitle(title){
-            if(title.startsWith("n_"))
-                return title.slice(2);
-            else 
-                return title;
+            return title;
         }
 
         function getColorByTag(tag) {
@@ -571,6 +560,13 @@ measures:
             }
         }
 
+        function compare() {
+            if (oldComparison) {
+                compareGraphs();
+            } else {
+                compareUpdatedGraphs();
+            }
+        }
 
         function compareGraphs() {
             const yaml2 = document.getElementById('yaml_llm').value;
@@ -876,9 +872,6 @@ measures:
         }
 
         function polishNodeName(name) {
-            if(name.startsWith("n_")){
-                name = name.slice(2);
-            }
             return name.split(',').map(part => {
                 const [prefix, suffix] = part.trim().split('.');
                 if (suffix) {

@@ -1,0 +1,46 @@
+# Test multiple same edges, perfect ground truth
+ground_truth:
+  fact:
+    name: INSTALLATIONS
+  measures:
+  dependencies:
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierAddress
+output:
+# Test multiple same edges
+- fact:
+    name: INSTALLATIONS
+  measures: []
+  dependencies:
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierAddress
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierAddress
+# Test ground truth
+- fact:
+    name: INSTALLATIONS
+  measures:
+  dependencies:
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      to: SUPPLIERS.SupplierAddress
+metrics:
+- edges:
+    tp: 1
+    fn: 1
+    fp: 1
+  nodes:
+    tp: 3
+    fn: 1
+    fp: 0
+- edges:
+    tp: 2
+    fn: 0
+    fp: 0
+  nodes:
+    tp: 4
+    fn: 0
+    fp: 0
