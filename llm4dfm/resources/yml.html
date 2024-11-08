@@ -197,6 +197,9 @@ measures:
                             if (max !== 1) {
                                 show('i-th-output-label');
                                 show('i-th-output-selector');
+                            } else {
+                                hide('i-th-output-label');
+                                hide('i-th-output-selector');
                             }
                             document.getElementById('yaml_llm').value = text_loaded_out;
                         } else {
@@ -361,10 +364,21 @@ measures:
             return normalize(str1) === normalize(str2);
         }
 
+        function isItemWrongMeasOrFact(map, item) {
+            const fpArray = map.fp || [];
+            const fnArray = map.fn || [];
+
+            return fpArray.includes(item) && fnArray.includes(item);
+        }
+
         function findNodeLabel(nodesGT, node) {
+            if (isItemWrongMeasOrFact(nodesGT, node)) {
+                return "fn_fp";
+            }
+
             for (const [key, list] of Object.entries(nodesGT)) {
                 for (const item of list) {
-                    if (compareStrings(item, node)) { // in case compare doesn't work (item === node) {
+                    if (compareStrings(item, node)) {
                         return key
                     }
                 }
@@ -735,7 +749,8 @@ measures:
             const colorMap = {
                 fn: "lightgrey",
                 fp: "red",
-                tp: "lightgreen"
+                tp: "lightgreen",
+                fn_fp: "yellow", // Represents both the unlabeled or mislabeled measures and facts
             };
 
             const allNodes = new Map();
@@ -782,6 +797,10 @@ measures:
                 if (node.color === 'lightgreen') truePositiveNodes++;
                 if (node.color === 'red') falsePositiveNodes++;
                 if (node.color === 'lightgrey') falseNegativeNodes++;
+                if (node.color === 'yellow') {
+                    falseNegativeNodes++;
+                    falsePositiveNodes++;
+                }
             });
 
             allEdges.forEach((color, edgeStr) => {
