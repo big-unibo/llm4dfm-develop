@@ -1,3 +1,4 @@
+import traceback
 import unittest
 
 from llm4dfm.pipeline.preprocess import preprocess
@@ -34,11 +35,17 @@ class PreprocessTest(unittest.TestCase):
         for file in output_generated.keys():
             store_test_output(output_generated[file], file)
 
-        for idx, file in enumerate(output_expected.keys()):
-            for out_gt, out_gen in zip(output_expected[file], output_generated[file]):
-                self.assertEqual(out_gen['dependencies'], out_gt['dependencies'])
-                self.assertEqual(out_gen['fact'], out_gt['fact'])
-                self.assertEqual(out_gen['measures'], out_gt['measures'])
+        for file in output_expected.keys():
+            for idx, (out_gt, out_gen) in enumerate(zip(output_expected[file], output_generated[file])):
+                try:
+                    self.assertEqual(out_gen['dependencies'], out_gt['dependencies'])
+                    self.assertEqual(out_gen['fact'], out_gt['fact'])
+                    self.assertEqual(out_gen['measures'], out_gt['measures'])
+                except:
+                    print(
+                        f'\n[DEBUG] Error in file *{file}* {idx}-th output')
+                    traceback.print_exc()
+                    raise AssertionError
 
 
 if __name__ == '__main__':

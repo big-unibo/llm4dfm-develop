@@ -75,11 +75,11 @@ class MetricsCalculator:
         fact_generated_use = fact_generated.lower()
 
         if fact_gt_use == fact_generated_use:
-            tp.add(fact_generated)
+            tp.add(fact_generated_use)
         else:
-            fn.add(fact_gt)
+            fn.add(fact_gt_use)
             fn_cache_lowercase[fact_gt_use] = fact_gt
-            fp.add(fact_generated)
+            fp.add(fact_generated_use)
             meas_or_fact_wrong.add(fact_generated_use)
             meas_or_fact_wrong.add(fact_gt_use)
 
@@ -93,17 +93,17 @@ class MetricsCalculator:
             for meas_gt in meas_gt_to_iterate:
                 if meas.lower() == meas_gt.lower():
                     inserted = True
-                    tp.add(meas)
+                    tp.add(meas.lower())
                     gt_meas_used.add(meas)
                     break
             if not inserted:
-                fp.add(meas)
+                fp.add(meas.lower())
                 meas_or_fact_wrong.add(meas.lower())
             else:
                 meas_gt_to_iterate.discard(meas)
         for me_gt in meas_gt_to_iterate:
             if me_gt not in gt_meas_used:
-                fn.add(me_gt)
+                fn.add(me_gt.lower())
                 fn_cache_lowercase[me_gt.lower()] = me_gt
                 meas_or_fact_wrong.add(me_gt.lower())
 
@@ -111,21 +111,21 @@ class MetricsCalculator:
             inserted = False
             if dep.lower() in fn_cache_lowercase or dep.lower() in meas_or_fact_wrong:
                 inserted = True
-                fp.add(dep)
+                fp.add(dep.lower())
             if not inserted:
                 for dp_gt in dep_gt_to_iterate:
                     if {dp.lower() for dp in dep.split(',')} == {dp.lower() for dp in dp_gt.split(',')}:
                         inserted = True
-                        tp.add(dep)
+                        tp.add(dep.lower())
                         gt_used.add(dp_gt)
                         break
                 if not inserted:
-                    fp.add(dep)
+                    fp.add(dep.lower())
                 else:
                     dep_gt_to_iterate.discard(dep)
         for dp_gt in dep_gt_to_iterate:
             if dp_gt not in gt_used:
-                fn.add(dp_gt)
+                fn.add(dp_gt.lower())
                 # Used to remove it in case it's present in measures set or fact
                 fn_cache_lowercase[dp_gt.lower()] = dp_gt
 
