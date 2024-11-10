@@ -18,13 +18,13 @@ expected:
 - dependencies:
   - from: Day,month
     to: softWareInstallations
-  - from: ROUTE_IN_TICKET,ROUTE,Capacity
+  - from: ROUTEINTICKET,ROUTE,Capacity
     to: delayArrival
   - from: customerBirthdate,surname
     to: trainCapacity
   - from: arrival,numberoflaps,count
     to: stableAddress
-  - from: Capacity,ROUTE_IN_TICKET
+  - from: Capacity,ROUTEINTICKET
     to: ROUTE
   fact:
     name: name

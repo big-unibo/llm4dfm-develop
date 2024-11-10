@@ -1,0 +1,17 @@
+# Test measures to be ignored correctly
+output:
+- dependencies:
+  - from: Days, Installations
+    to: name
+  fact:
+    name: surname
+  measures:
+  - name: count
+  - name: month
+expected:
+- dependencies:
+  - from: Days,Installations
+    to: firstName
+  fact:
+    name: lastName
+  measures: []

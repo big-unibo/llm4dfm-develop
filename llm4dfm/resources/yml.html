@@ -313,10 +313,8 @@ measures:
                             const tupleKey = JSON.stringify([dep.from, dep.to]);
                             if (edgesUsed.has(tupleKey)) {
                                 idForMultipleEdges = edgesUsed.get(tupleKey)+1;
-                                edgesUsed.set(tupleKey, idForMultipleEdges);
-                            } else {
-                                edgesUsed.set(tupleKey, idForMultipleEdges);
                             }
+                            edgesUsed.set(tupleKey, idForMultipleEdges);
                             edges.add({ from: dep.from, to: dep.to, role: dep.role, idMultiEdge: idForMultipleEdges });
                             nodes.set(dep.from, { id: dep.from });
                             nodes.set(dep.to, { id: dep.to });
@@ -368,7 +366,7 @@ measures:
             const fpArray = map.fp || [];
             const fnArray = map.fn || [];
 
-            return fpArray.includes(item) && fnArray.includes(item);
+            return fpArray.includes(item.toLowerCase()) && fnArray.includes(item.toLowerCase());
         }
 
         function findNodeLabel(nodesGT, node) {
@@ -404,11 +402,8 @@ measures:
                             let idForMultipleEdges = 0;
                             if (edgesUsed.has(tupleKey)) {
                                 idForMultipleEdges = edgesUsed.get(tupleKey)+1;
-                                edgesUsed.set(tupleKey, idForMultipleEdges);
-                            } else {
-                                edgesUsed.set(tupleKey, idForMultipleEdges);
                             }
-                            edges.add({from: dep.from, to: dep.to, role: dep.role, label: dep.label, idMultiEdge: idForMultipleEdges});
+                            edgesUsed.set(tupleKey, idForMultipleEdges);
                             edges.add({from: dep.from, to: dep.to, role: dep.role, label: dep.label, idMultiEdge: idForMultipleEdges});
                             nodes.set(dep.from, { id: dep.from, label: fromLabel });
                             nodes.set(dep.to, { id: dep.to, label: toLabel });
@@ -742,6 +737,7 @@ measures:
             graphOut.nodes.forEach(node => {
                 node.id = node.id.replace(/\s/g,'')
             })
+
             graphGt.nodes.forEach(node => {
                 node.id = node.id.replace(/\s/g,'')
             })
@@ -768,12 +764,28 @@ measures:
             });
 
             const allEdges = new Map();
+            const edgesUsedOut = new Set();
             graphOut.edges.forEach(edge => {
+                let roleToUse = edge.role;
+                if (roleToUse) {
+                    roleToUse = roleToUse.toLowerCase();
+                }
                 const color = colorMap[edge.label] || "black";
-                allEdges.set(JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: edge.role, idMultiEdge: edge.idMultiEdge }), color)
+                const elem = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: roleToUse })
+                if (edgesUsedOut.has(elem)) {
+                    allEdges.set(JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: roleToUse, idMultiEdge: edge.idMultiEdge }), color)
+                } else {
+                    const elem = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: roleToUse })
+                    allEdges.set(elem, color);
+                    edgesUsedOut.add(elem)
+                }
             });
             graphGt.edges.forEach(edge => {
-                const edgeStr = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: edge.role, idMultiEdge: edge.idMultiEdge });
+                let roleToUse = edge.role;
+                if (roleToUse) {
+                    roleToUse = roleToUse.toLowerCase();
+                }
+                const edgeStr = JSON.stringify({ from: edge.from.toLowerCase(), to: edge.to.toLowerCase(), title: roleToUse});
                 if (!allEdges.has(edgeStr)) {
                     const color = colorMap[edge.label] || "black";
                     allEdges.set(JSON.stringify({

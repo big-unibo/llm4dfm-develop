@@ -35,7 +35,7 @@ def extract_ex_num(ex_name):
     if numbers:
         return int(numbers[-1])
     else:
-        print("No exercise numbers in exercise name.")
+        # print("No exercise numbers in exercise name.")
         return None
 
 # Yaml utils

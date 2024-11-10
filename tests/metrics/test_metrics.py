@@ -40,9 +40,9 @@ class MetricsTest(unittest.TestCase):
                 else:
                     ground_truth = ground_truth['supply_driven']
 
-                ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = (
-                    preprocess(ex_num, ground_truth['dependencies'], ground_truth['measures'] if ground_truth['measures'] else
-                    list(), ground_truth['fact'], is_demand, list()))
+            ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = (
+                preprocess(ex_num, ground_truth['dependencies'], ground_truth['measures'] if ground_truth['measures'] else
+                list(), ground_truth['fact'], is_demand, list()))
 
             dep_gt = ground_truth['dependencies']
             meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
