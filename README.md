@@ -353,12 +353,22 @@ Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
 
 ### Automatic metrics
 
-**Still work in progress**
-
 First of all, execution privileges must be granted by means of `chmod 700 ./resources/automatic_metrics.sh`.
 
 After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
-`poetry poe automatic_metrics` run the automatic metrics without configurations.
+`poetry poe automatic_metrics` run the program with the following configurations:
+
+- `dir -- the directory name inside 'outputs' folder`
+- `demand -- flag to state if it's demand version [true, false]`
+
+This could also be achieved by directly run `./resources/automatic-metrics.sh` from `llm4dfm` directory, with configurations as stated before.
+
+Example of run:
+`poetry poe automatic_metrics.sh demand-rq5-example-gpt4o-demand false`
+`./resources/automatic-metrics.sh 1 demand-rq5-example-gpt4o-demand false`
+
+Output:
+File preprocess and metrics calculation will be executed, results will be overridden in same file.
 
 ## Tests
 

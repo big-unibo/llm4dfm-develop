@@ -247,7 +247,7 @@ if __name__ == '__main__':
     if args.dir:
         ex_config['dir'] = args.dir
     if args.demand:
-        ex_config['demand'] = args.demand
+        ex_config['demand'] = args.demand.lower() == 'true'
     # Load exercise
     ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
 

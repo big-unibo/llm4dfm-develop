@@ -8,19 +8,19 @@ output:
     to: stableAddress
   - from: arrival, numberoflaps, year
     to: stableAddress
-  - from: WODType
-    to: surname
+  - from: type
+    to: memberSurname
   fact:
     name: memberName
   measures: []
 expected:
 - dependencies:
   - from: PRESENCE,PRESENCE
-    to: type
-  - from: arrival,memberName
+    to: WODType
+  - from: arrival,name
     to: stableAddress
-  - from: type
-    to: memberSurname
+  - from: WODType
+    to: surname
   fact:
-    name: memberName
+    name: name
   measures: []

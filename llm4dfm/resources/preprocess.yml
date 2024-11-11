@@ -3,10 +3,6 @@ common:
     equals:
     - Date:
       - day
-    - firstName:
-      - name
-    - lastName:
-      - surname
     ignore:
     - count
     - month
@@ -21,8 +17,22 @@ common:
     - INSTALLATION:
       - INSTALLATIONS
       - SoftwareInstallations
-    ignore:
-    - InstallationsCount
+      - SoftwareInstallation
+    - model:
+      - computerModel
+    - brand:
+      - computerBrand
+    - supplier:
+      - brandSupplier
+    - city:
+      - supplierCity
+    - address:
+      - supplierAddress
+    - description:
+      - softwareDescription
+    - type:
+      - softwareType
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -30,8 +40,13 @@ common:
 2:
   demand:
     equals:
-    - storeAddress:
-      - address
+    - PURCHASE:
+      - PURCHASES
+    - address:
+      - storeAddress
+    - type:
+      - articleType
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -39,20 +54,19 @@ common:
 3:
   demand:
     equals:
-    - Name:
-      - storeName
-    - Address:
-      - storeAddress
+    - PURCHASE:
+      - PURCHASES
     - creditCardType:
       - cardType
-      - type
-    - bankCountry:
-      - country
-      - issuingBankCountry
     - issuingBankAddress:
       - bankAddress
-    - cardName:
-      - creditCardName
+    - creditCardName:
+      - cardName
+    - firstName:
+      - holderName
+    - lastName:
+      - holderSurname
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -60,22 +74,33 @@ common:
 4:
   demand:
     equals:
-    - ARRIVALS:
-      - ARRIVAL
-    - Laps:
-      - numberOfLaps
-    - driverName:
+    - ARRIVAL:
+      - ARRIVALS
+      - RACE_ARRIVALS
+      - RACE_ARRIVAL
+    - numberOfLaps:
+      - laps
+    - carNumber:
+      - car
+    - mileage:
+      # length struggle with js visualisation since it's a property
+      - length
+      - circuitLength
+    - firstName:
+      - driverName
       - name
-    - driverSurname:
+    - lastName:
+      - driverSurname
       - surname
+    - manager:
+      - stableManager
     - mainAddress:
       - address
       - stableAddress
+      - stableMainAddress
     - age:
       - driverAge
-    - mileAge:
-      # length struggle with js visualisation since it's a property
-      - length
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -86,12 +111,18 @@ common:
     - PRESENCE:
       - DailyPresence
       - PRESENCES
-    - memberName:
-      - name
-    - memberSurname:
-      - surname
-    - type:
-      - WODType
+      - DailyPresences
+    - name:
+      - memberName
+      - firstName
+    - surname:
+      - memberSurname
+      - lastName
+    - WODType:
+      - type
+    - hour:
+      - time
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -99,15 +130,31 @@ common:
 6:
   demand:
     equals:
-    - staffTransfer:
-      - TRANSFER
+    - TRANSFER:
+      - staffTransfer
       - TRANSFERS
-    - staff:
-      - employee
     - employeeName:
-      - name
+      - employeeFirstName
+      - staffName
+      - staffFirstName
     - employeeSurname:
-      - surname
+      - employeeLastName
+      - staffSurname
+      - staffLastName
+    - employeeCode:
+      - staffCode
+      - staff
+    - gender:
+      - employeeGender
+    - divisionCode:
+      - division
+    - qualification:
+      - employeeQualification
+    - departmentCode:
+      - department
+    - reason:
+      - transferReason
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -117,8 +164,9 @@ common:
     equals:
     - RENTAL:
       - RENTALS
-    - Plate:
-      - carPlate
+    - carPlate:
+      - Plate
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -126,20 +174,35 @@ common:
 8:
   demand:
     equals:
+    - CheckIn:
+      - Check-In
     - numberOfBags:
       - bagsBoarded
-    - name:
+    - firstName:
+      - name
       - passengerName
-    - surname:
+      - passengerFirstName
+    - lastName:
+      - surname
       - passengerSurname
+      - passengerLastName
     - gender:
       - passengerGender
     - time:
       - checkinTime
-    - departureDelay:
-      - delayDeparture
-    - arrivalDelay:
-      - delayArrival
+    - ticketPriority:
+      - priority
+    - delayDeparture:
+      - departureDelay
+    - delayArrival:
+      - arrivalDelay
+    - flight:
+      - flightNumber
+    - ticketNumber:
+      - ticket
+    - cancelled:
+      - cancellationStatus
+    ignore: []
   supply:
     equals: []
     ignore: []
@@ -147,12 +210,23 @@ common:
 9:
   demand:
     equals:
-    - ROUTE:
-      - ROUTES
+    - ROUTE_IN_TICKET:
+      - RouteTicketAnalysis
     - Capacity:
       - trainCapacity
-    - Birthdate:
-      - customerBirthdate
+    - stationName:
+      - station
+    - firstName:
+      - customerName
+      - customerFirstName
+      - name
+    - lastName:
+      - customerSurname
+      - customerLastName
+      - surname
+    - customerCode:
+      - customer
+    ignore: []
   supply:
     equals: []
     ignore: []

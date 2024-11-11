@@ -4,9 +4,9 @@ output:
     to: softWareInstallations
   - from: surname
     to: name
-  - from: arrival, numberoflaps
+  - from: arrival, laps
     to: stableAddress
-  - from: arrival, numberoflaps, year
+  - from: arrival, numberOfLaps, year
     to: stableAddress
   - from: driverAge
     to: arrivals
@@ -15,12 +15,12 @@ output:
   measures: []
 expected:
 - dependencies:
-  - from: driverSurname
-    to: driverName
-  - from: ARRIVALS,Laps
+  - from: lastName
+    to: firstName
+  - from: arrival,numberOfLaps
     to: mainAddress
   - from: age
-    to: arrivals
+    to: ARRIVAL
   fact:
     name: mainAddress
   measures: []

@@ -2,8 +2,8 @@ output:
 - dependencies:
   - from: Day, month
     to: softWareInstallations
-  - from: time, checkinTime, delayDeparture
-    to: delayArrival
+  - from: time, checkinTime, departureDelay
+    to: arrivalDelay
   - from: passengerSurname, surname
     to: numberOfBags
   - from: arrival, numberoflaps, count
@@ -16,9 +16,9 @@ output:
     - name: bagsBoarded
 expected:
 - dependencies:
-  - from: time,time,departureDelay
-    to: arrivalDelay
-  - from: surname,lastName
+  - from: time,time,delayDeparture
+    to: delayArrival
+  - from: lastName,lastName
     to: numberOfBags
   - from: numberOfBags,gender
     to: time

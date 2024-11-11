@@ -11,7 +11,7 @@ output:
 expected:
 - dependencies:
   - from: Days,Installations
-    to: firstName
+    to: name
   fact:
-    name: lastName
+    name: surname
   measures: []
