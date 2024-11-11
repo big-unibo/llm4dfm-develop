@@ -7,6 +7,9 @@ common:
       - name
     - lastName:
       - surname
+    - theLength:
+      # length struggle with js visualisation since it's a property
+      - length
     ignore:
     - count
     - month
@@ -146,6 +149,7 @@ common:
     equals:
     - ROUTE:
       - ROUTE_IN_TICKET
+      - ROUTES
     - Capacity:
       - trainCapacity
     - Birthdate:
