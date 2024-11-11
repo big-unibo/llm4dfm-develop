@@ -54,7 +54,10 @@ def convert_same_nodes_different_order(node, node_preprocessed):
 
 
 # Convention to get output and ground truth following same order convention in nodes
-def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention_list):
+def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention_list=None):
+
+    if nodes_convention_list is None:
+        nodes_convention_list = list()
 
     prep = load_yaml_from_resources('preprocess')
 

@@ -16,11 +16,11 @@ output:
     - name: customerBirthdate
 expected:
 - dependencies:
-  - from: ROUTE,ROUTE,Capacity
+  - from: ROUTEINTICKET,ROUTE,Capacity
     to: delayArrival
   - from: Birthdate,lastName
     to: Capacity
-  - from: Capacity,ROUTE
+  - from: Capacity,ROUTEINTICKET
     to: ROUTE
   fact:
     name: firstName
