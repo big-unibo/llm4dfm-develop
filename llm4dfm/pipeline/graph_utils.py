@@ -13,6 +13,15 @@ def plot_csv_metrics(data, file_name, label):
                 print(f'Error while converting {i}-th value {value} to float, skipped')
         return sum(values_converted) / len(values_converted)
 
+    bar_width = 0.35
+
+    prec_color = 'black'
+    rec_color = 'red'
+    f1_edges_color = 'red'
+    f1_nodes_color = 'black'
+
+    ax_limits = [0, 1]
+
     # Prepare data for plotting
     exercises = list(data.keys())
     edges_precision_avg = [calculate_average(data[ex]['edges_precision']) for ex in exercises]
@@ -23,16 +32,7 @@ def plot_csv_metrics(data, file_name, label):
     nodes_f1 = [list(map(float, data[ex]['nodes_f1'])) for ex in exercises]
 
     ex_indexes = [ex.split('-')[-1] for ex in exercises]
-
-    bar_width = 0.35
     index = np.arange(len(exercises))
-
-    prec_color = 'black'
-    rec_color = 'red'
-    f1_edges_color = 'red'
-    f1_nodes_color = 'black'
-
-    ax_limits = [0,1]
 
     # Plot 1: Avg Precision and Recall for Edges
     fig1, ax1 = plt.subplots()

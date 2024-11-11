@@ -7,9 +7,6 @@ common:
       - name
     - lastName:
       - surname
-    - theLength:
-      # length struggle with js visualisation since it's a property
-      - length
     ignore:
     - count
     - month
@@ -76,6 +73,9 @@ common:
       - stableAddress
     - age:
       - driverAge
+    - mileAge:
+      # length struggle with js visualisation since it's a property
+      - length
   supply:
     equals: []
     ignore: []
@@ -148,7 +148,6 @@ common:
   demand:
     equals:
     - ROUTE:
-      - ROUTE_IN_TICKET
       - ROUTES
     - Capacity:
       - trainCapacity
