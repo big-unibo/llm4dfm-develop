@@ -4,9 +4,9 @@ common:
     - Date:
       - day
     ignore:
-    - count
-    - month
-    - year
+      - count
+      - month
+      - year
   supply:
     equals: []
     ignore: []
