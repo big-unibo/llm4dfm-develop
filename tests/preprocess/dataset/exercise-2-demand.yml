@@ -19,9 +19,9 @@ output:
   - name: Height
 expected:
 - dependencies:
-  - from: Date,lastName
+  - from: Date,SurName
     to: softWareInstallation
-  - from: storeAddress
+  - from: address
     to: mytest2
   - from: regular
     to: myregular

@@ -17,16 +17,16 @@ output:
   - name: storeAddress
 expected:
 - dependencies:
-  - from: Name,storeNames,Date
-    to: Address
+  - from: storeName,storeNames,Date
+    to: storeAddress
   - from: creditCardType,bankCountry
-    to: creditCardType
-  - from: bankCountry,bankCountry
+    to: type
+  - from: bankCountry,issuingBankCountry
     to: issuingBankAddress
-  - from: cardName,cardName
-    to: bankCountry
+  - from: creditCardName,creditCardName
+    to: issuingBankCountry
   fact:
-    name: bankCountry
+    name: issuingBankCountry
   measures:
   - name: creditCardType
-  - name: Address
+  - name: storeAddress

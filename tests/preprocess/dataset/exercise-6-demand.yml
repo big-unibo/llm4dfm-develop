@@ -4,25 +4,25 @@ output:
     to: softWareInstallations
   - from: TRANSFER, TRANSFERS
     to: staff
-  - from: arrival, name
+  - from: arrival, staffName
     to: stableAddress
   - from: arrival, numberoflaps, year
     to: stableAddress
-  - from: surname, employee
-    to: surname
+  - from: staffSurname, employee
+    to: staffSurname
   fact:
     name: staffTransfer
   measures:
     - name: TRANSFER
 expected:
 - dependencies:
-  - from: staffTransfer,staffTransfer
-    to: staff
+  - from: TRANSFER,TRANSFER
+    to: employeeCode
   - from: arrival,employeeName
     to: stableAddress
-  - from: employeeSurname,staff
+  - from: employeeSurname,employee
     to: employeeSurname
   fact:
-    name: staffTransfer
+    name: TRANSFER
   measures:
-    - name: staffTransfer
+    - name: TRANSFER

@@ -7,7 +7,7 @@ output:
   measures: []
 expected:
 - dependencies:
-  - from: Date,lastName
+  - from: Date,SurName
     to: INSTALLATION
   fact:
     name: INSTALLATION

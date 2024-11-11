@@ -18,11 +18,11 @@ expected:
 - dependencies:
   - from: ROUTEINTICKET,ROUTE,Capacity
     to: delayArrival
-  - from: Birthdate,lastName
+  - from: customerBirthdate,lastName
     to: Capacity
   - from: Capacity,ROUTEINTICKET
     to: ROUTE
   fact:
     name: firstName
   measures:
-    - name: Birthdate
+    - name: customerBirthdate

@@ -8,7 +8,7 @@ output:
 expected:
 - dependencies:
   - from: Days,INSTALLATION
-    to: firstName
+    to: name
   fact:
-    name: lastName
+    name: surname
   measures: []

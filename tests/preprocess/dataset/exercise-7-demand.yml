@@ -3,12 +3,12 @@ output:
   - from: Day, month
     to: softWareInstallations
   - from: RENTALS
-    to: carPlate
+    to: plate
   - from: arrival, name
     to: stableAddress
   - from: arrival, numberoflaps, count
     to: stableAddress
-  - from: carPlate, carPlate
+  - from: carPlate, plate
     to: surname
   fact:
     name: RENTALS
@@ -17,11 +17,11 @@ output:
 expected:
 - dependencies:
   - from: RENTAL
-    to: Plate
-  - from: arrival,firstName
+    to: carPlate
+  - from: arrival,name
     to: stableAddress
-  - from: Plate,Plate
-    to: lastName
+  - from: carPlate,carPlate
+    to: surname
   fact:
     name: RENTAL
   measures:
