@@ -9,18 +9,17 @@ import csv
 
 load_dotenv()
 
-datasets = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('DATASETS')}'
-outputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('OUTPUTS')}'
-results = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('RESULTS')}'
-inputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('INPUTS')}'
-auto_outputs = f'{os.path.dirname(os.path.abspath(__file__))}/../../{os.getenv('AUTO_OUTPUTS')}'
+base_path = os.path.dirname(os.path.abspath(__file__))
 
-# TODO is there a way to index better?
-resources = f'{os.path.dirname(os.path.abspath(__file__))}/../resources/'
+datasets = f'{base_path}/{os.getenv('DATASETS')}'
+outputs = f'{base_path}/{os.getenv('OUTPUTS')}'
+results = f'{base_path}/{os.getenv('RESULTS')}'
+inputs = f'{base_path}/{os.getenv('INPUTS')}'
+auto_outputs = f'{base_path}/{os.getenv('AUTO_OUTPUTS')}'
+resources = f'{base_path}/../resources/'
 
 # General utils
 
-# datetime object containing current date and time
 def get_timestamp():
     return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
 
@@ -78,7 +77,6 @@ def load_prompts(version, model_name):
 def load_output_exercise(dir_name, full_name):
     return load_yaml(f'{outputs}{dir_name}/{full_name}')
 
-
 def label_edges(out, gt, tp_idx, fp_idx, fn_idx, gt_used):
     out_to_return = deepcopy(out)
     gt_to_return = deepcopy(gt)
@@ -107,7 +105,6 @@ def output_as_valid_yaml(model_outputs):
 
 
 # Store output utils
-
 
 # add properties to dict_to_store as property:dict_property[property] if present
 def add_property_if_present(dict_to_store, props, dict_property):

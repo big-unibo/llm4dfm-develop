@@ -20,6 +20,8 @@ def _calc_metrics(tp, fp, fn):
 def _load_nodes(dependencies):
     return set(','.join(subset) for sublist in dependencies for subset in sublist[:2])
 
+
+# Computation split in calculate idx and then get metrics to label edges and nodes in output file
 class MetricsCalculator:
 
     def __init__(self, gt_fact, gt_measures, gt_dependencies, ex_number='', demand=False):
