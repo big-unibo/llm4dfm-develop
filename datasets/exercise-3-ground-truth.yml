@@ -4,6 +4,7 @@ supply_driven:
   measures:
     - name: PURCHASES.Amount
     - name: PURCHASES.Exchange
+    - name: CREDIT_CARDS.CreditLimit
   dependencies:
     - from: PURCHASES
       to: PURCHASES.Amount
@@ -23,7 +24,7 @@ supply_driven:
       to: HOLDERS.HolderCode
     - from: CREDIT_CARDS.CCNumber
       to: CREDIT_CARDS.ExpirationDate
-    - from: CREDIT_CARDS.CCNumber
+    - from: PURCHASES
       to: CREDIT_CARDS.CreditLimit
     - from: CARD_TYPES.TypeCode
       to: CARD_TYPES.Circuit
