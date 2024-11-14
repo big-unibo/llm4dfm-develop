@@ -3,6 +3,8 @@ supply_driven:
     name: PRESENCE
   measures:
     - name: WOD.numberOfRounds
+    - name: MEMBERS.weight
+    - name: MEMBERS.height
   dependencies:
     - from: PRESENCE
       to: WOD.numberOfRounds
@@ -22,9 +24,9 @@ supply_driven:
       to: MEMBERS.postalCode
     - from: MEMBERS.postalCode
       to: MEMBERS.city
-    - from: MEMBERS.FiscalCode
+    - from: PRESENCE
       to: MEMBERS.height
-    - from: MEMBERS.FiscalCode
+    - from: PRESENCE
       to: MEMBERS.weight
     - from: WORKOUTS.date,WORKOUTS.time
       to: WORKOUTS.time
