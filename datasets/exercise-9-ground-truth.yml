@@ -7,6 +7,7 @@ supply_driven:
     - name: ROUTES.DistanceKm
     - name: ROUTES.Fare
     - name: ROUTES.Duration
+    - name: TRAIN_TYPE.Capacity
   dependencies:
     - from: ROUTES_IN_TICKETS
       to: TICKETS.TicketCode
@@ -64,7 +65,7 @@ supply_driven:
       to: TRAINS.TrainCode
     - from: TRAINS.TrainCode
       to: TRAIN_TYPE.TrainTypeCode
-    - from: TRAIN_TYPE.TrainTypeCode
+    - from: ROUTES_IN_TICKETS
       to: TRAIN_TYPE.Capacity
     - from: TRAIN_TYPE.TrainTypeCode
       to: TRAIN_TYPE.TrainType
