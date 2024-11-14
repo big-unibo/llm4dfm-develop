@@ -12,6 +12,7 @@ supply_driven:
       to: ARTICLES.artName
     - from: ARTICLES.artId
       to: TYPES.typeId
+      role: type
     - from: REGIONS.regId
       to: REGIONS.regionName
     - from: REGIONS.regId
@@ -24,6 +25,7 @@ supply_driven:
       to: STORES.storeAddress
     - from: STORES.storeId
       to: REGIONS.regId
+      role: region
     - from: PURCHASE
       to: PURCHASE.quantity
     - from: PURCHASE

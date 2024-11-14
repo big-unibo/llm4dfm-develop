@@ -6,6 +6,7 @@ supply_driven:
     - name: TICKET.flightAmount
     - name: TICKET.taxAmount
     - name: PURCHASE.totalAmount
+    - name: AIRPLANE_TYPE.numberOfSeats
   dependencies:
     - from: CHECK_IN
       to: CHECK_IN.checkInTime
@@ -88,7 +89,7 @@ supply_driven:
       to: AIRLINE.nation
     - from: AIRPLANE_TYPE.airplaneType
       to: AIRPLANE_TYPE.name
-    - from: AIRPLANE_TYPE.airplaneType
+    - from: CHECK_IN
       to: AIRPLANE_TYPE.numberOfSeats
 demand_driven:
   fact:
@@ -110,7 +111,8 @@ demand_driven:
     - from: checkIn
       to: ticketNumber
     - from: ticketNumber
-      to: purchaseDate
+      to: date
+      role: purchase
     - from: ticketNumber
       to: passenger
     - from: passenger
@@ -118,7 +120,8 @@ demand_driven:
     - from: passenger
       to: surname
     - from: passenger
-      to: birthdate
+      to: date
+      role: birth
     - from: passenger
       to: city
       role: residence
