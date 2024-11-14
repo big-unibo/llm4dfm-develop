@@ -106,11 +106,12 @@ demand_driven:
       to: date
       role: purchase
     - from: customerCode
-      to: customerName
+      to: firstName
     - from: customerCode
-      to: customerSurname
+      to: lastName
     - from: customerCode
-      to: customerBirthdate
+      to: date
+      role: birth
     - from: customerCode
       to: city
       role: birth
