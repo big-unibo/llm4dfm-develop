@@ -152,6 +152,7 @@ Output
 
 The following parameters can be configured in `llm4dfm/resources/csv-graph-config.yml` file.
 
+- `dir -- full directory name, in case it's specified all other parameters will be ignored`
 - `v -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
 - `prompt_v -- the prompt version (part between prompts-v and .yml)`
 - `model_label -- model's label name`
@@ -364,7 +365,7 @@ After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/b
 This could also be achieved by directly run `./resources/automatic-metrics.sh` from `llm4dfm` directory, with configurations as stated before.
 
 Example of run:
-`poetry poe automatic_metrics.sh demand-rq5-example-gpt4o-demand false`
+`poetry poe automatic_metrics demand-rq5-example-gpt4o-demand false`
 `./resources/automatic-metrics.sh 1 demand-rq5-example-gpt4o-demand false`
 
 Output:

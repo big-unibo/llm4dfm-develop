@@ -2,6 +2,7 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PY_PROG="$SCRIPT_DIR/../pipeline/metrics.py"
+GRAPH_PROG="$SCRIPT_DIR/../pipeline/csv_graph.py"
 OUTPUT="$SCRIPT_DIR/../../outputs/"
 dir=''
 demand=true
@@ -28,3 +29,5 @@ for file in "$OUTPUT$dir"/*.yml; do
         python -W ignore "$PY_PROG" --exercise "$ex_name" --exercise_gt "$gt" --dir "$dir" --demand "$demand"
     fi
 done
+
+python -W ignore "$GRAPH_PROG" --dir "$dir"
