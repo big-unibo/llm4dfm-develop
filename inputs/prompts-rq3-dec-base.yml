@@ -27,8 +27,8 @@ gpt:
       (2) all measures (i.e., all numerical attributes directly connected to the root)
       are listed inside a "measures" tag, each is an empty item containing a "name" tag; 
       (3) all functional dependencies between attributes in a hierarchy are listed inside a "dependencies" tag: 
-      each is an empty item containing a "from" tag, listing the finer attribute(s), and a "to" tag, 
-      listing the coarser attribute(s); 
+      each is an empty item containing a "from" tag, listing the finer attribute(s), a "to" tag, listing 
+      the coarser attribute, and optionally a "role" tag;
       (4) the "dependencies" list also includes an item from the fact to each measure; 
       (5) if a dependency is from and/or to a combination of attributes, they should be comma-separated;
       (6) all attributes and measure names must be prefixed by the name (in uppercases) of the table 

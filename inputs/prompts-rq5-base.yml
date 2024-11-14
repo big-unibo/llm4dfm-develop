@@ -13,24 +13,24 @@ gpt:
       The arcs within a hierarchy are always directed from the finer attribute towards 
       the coarser one (e.g., date->month->year, product->category, 
       store->city->region->state->country->area). This means that there is an arc from 
-      attribute “a” to attribute “b” when one member of “a” is related to one member of “b”, 
-      while one member of “b” is related to many members of “a”.
-      When you have the same concept used twice or more (e.g., “delivery date” and 
-      “shipment date”; “city of birth” and “city of residence”), instead of keeping these 
+      attribute "a" to attribute "b" when one member of "a" is related to one member of "b", 
+      while one member of "b" is related to many members of "a".
+      When you have the same concept used twice or more (e.g., "delivery date" and 
+      "shipment date"; "city of birth" and "city of residence"), instead of keeping these 
       attributes separate, you should create two or more arcs reaching a single node 
-      (“date”; “city”) and add roles to the arcs (“delivery” and “shipment”; “birth” and 
-      “residence”). When the requirements specify that a concept is identified by an attribute 
-      (e.g., “Articles are identified by a code”), do not create a node for the concept 
-      (“article”) but only for the identifier (“article code”).
+      ("date"; "city") and add roles to the arcs ("delivery" and "shipment"; "birth" and 
+      "residence"). When the requirements specify that a concept is identified by an attribute 
+      (e.g., "Articles are identified by a code"), do not create a node for the concept 
+      ("article") but only for the identifier ("article code").
 
       The output I expect is a DFM schema in YAML formatted as follows: 
-      (1) the fact is a “fact” tag including a “name” tag; 
+      (1) the fact is a "fact" tag including a "name" tag; 
       (2) all measures are listed inside a "measures" tag, each is an empty item containing 
       a "name" tag; 
       (3) all many-to-one relationships between attributes in a hierarchy are listed inside 
       a "dependencies" tag: each is an empty item containing a "from" tag, listing the finer 
       attribute, a "to" tag, listing the coarser attribute, and optionally a "role" tag; 
-      (4) the “dependencies” list also includes an item from the fact to each dimension, 
+      (4) the "dependencies" list also includes an item from the fact to each dimension, 
       and one from the fact to each measure.
 
 
