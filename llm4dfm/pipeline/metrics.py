@@ -1,8 +1,9 @@
 import argparse
 import traceback
+import re
 
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
-    extract_ex_num, label_edges, store_additional_properties
+    extract_ex_num, label_edges, store_additional_properties, update_csv
 
 from llm4dfm.pipeline.preprocess import preprocess
 
@@ -20,6 +21,8 @@ def _calc_metrics(tp, fp, fn):
 def _load_nodes(dependencies):
     return set(','.join(subset) for sublist in dependencies for subset in sublist[:2])
 
+
+# Computation split in calculate idx and then get metrics to label edges and nodes in output file
 class MetricsCalculator:
 
     def __init__(self, gt_fact, gt_measures, gt_dependencies, ex_number='', demand=False):
@@ -252,6 +255,12 @@ if __name__ == '__main__':
     ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
 
     # Calculate metrics
+    timestamp = None
+    # Regular expression to match the timestamp in YYYY-MM-DDTHH-mm-SS format
+    match = re.search(r"\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}", ex_config['name'])
+
+    if match:
+        timestamp = match.group()
 
     if 'gt_preprocessed' in ex_output:
         ground_truth = ex_output['gt_preprocessed']
@@ -328,6 +337,7 @@ if __name__ == '__main__':
             metrics.append(dict())
             print(f"Output {i}-th not correctly generated, skipped")
 
+    update_csv(ex_config['dir'], timestamp, output_to_save, metrics)
     props = dict()
     props['gt_preprocessed'] = ground_truth
     props['output_preprocessed'] = output_to_save
