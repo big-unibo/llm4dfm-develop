@@ -175,7 +175,6 @@ for i, output in enumerate(model_outputs):
         print(f"Output {i}-th not correctly generated, skipped")
 
 # Store results
-
 ts = get_timestamp()
 
 # store output

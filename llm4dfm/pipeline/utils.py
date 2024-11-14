@@ -1,5 +1,6 @@
 import os
 from copy import deepcopy
+import pandas as pd
 
 from dotenv import load_dotenv
 import yaml
@@ -179,7 +180,9 @@ def store_additional_properties(dir_label, ex_name, props):
     write_yaml(f'{outputs}{dir_label}/{ex_name}', prev_out)
 
 def get_output_file_path(ex_version, prompt_version, model, label_dir):
-    f_name = f'output-{ex_version}-{prompt_version}-{model}.csv'
+    it_list = [st for st in ['output', ex_version, prompt_version, model] if st != '']
+
+    f_name = f'{'-'.join(it_list)}.csv'
     return f'{auto_outputs}{label_dir}/{f_name}'
 
 def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, timestamp, label_dir):
@@ -210,6 +213,7 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
                 data[f"{elem}_{met}"] = val
 
         prompt_version = ex_config['prompt_version']
+
         model = model_config['label'] if model_config['label'] != '' else model_config['name']
 
         file_path = get_output_file_path(ex_config['version'], prompt_version, model, label_dir)
@@ -226,7 +230,7 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
             # Check if the existing headers match the desired headers
             # TODO what to do in this case?
             if existing_headers != headers:
-                print("Headers do not match. Writing data anyway.")
+                print(f"Headers do not match\nActual:{existing_headers}\nNew: {headers}\nAttempt to write data anyway.")
         except:
             write_headers = True
 
@@ -239,3 +243,51 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
                 headers = list(data.keys())
                 writer.writerow(headers)
             writer.writerow(list(data.values()))
+
+def get_csv_file_from_output_dir(dir_name):
+    directory = f'{outputs}{dir_name}'
+
+    path = ''
+
+    for file in os.listdir(directory):
+        if file.endswith('.csv'):
+            path = os.path.join(directory, file)
+            break
+
+    return path
+
+
+def update_csv(dir_name, timestamp, output_preprocessed, metrics_list):
+    path = get_csv_file_from_output_dir(dir_name)
+
+    df = None
+    try:
+        df = pd.read_csv(path)
+    except:
+        print('File not found')
+        return
+
+    for idx, metrics in enumerate(metrics_list):
+        matching_rows = (df['timestamp'] == timestamp) & (df['index'] == idx+1)
+
+        data = dict()
+
+        data['fact'] = output_preprocessed[idx]['fact']['name']
+
+        data['measures'] = [measure['name'] for measure in output_preprocessed[idx]['measures']] if output_preprocessed[idx]['measures'] else None
+
+        data['dependencies'] = [dependency for dependency in output_preprocessed[idx]['dependencies']]
+
+        for node in output_preprocessed[idx]['nodes']:
+            data[f'node_{node}'] = output_preprocessed[idx]['nodes'][node]
+
+        for elem in metrics:
+            for met, val in metrics[elem].items():
+                data[f"{elem}_{met}"] = val
+        if matching_rows.any():
+            for prop in data:
+                df[prop].replace(df.loc[matching_rows, prop].iloc[0], str(data[prop]), inplace=True)
+        else:
+            df = df.append(data, ignore_index=True)
+    df.to_csv(path, index=False)
+
