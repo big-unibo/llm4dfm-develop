@@ -6,7 +6,7 @@ gpt:
     content: |
       Carry out demand-driven conceptual
       design of a multidimensional cube using the DFM (Dimensional Fact Model), starting from the following
-      source relational schema. 
+      requirements. 
       The output I expect is a DFM schema in YAML formatted as follows: 
       (1) the fact is a "fact" tag including a "name" tag; 
       (2) all measures are listed inside a "measures" tag, each is an empty item containing a "name" tag; 
