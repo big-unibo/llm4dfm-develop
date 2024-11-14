@@ -111,7 +111,8 @@ demand_driven:
     - from: checkIn
       to: ticketNumber
     - from: ticketNumber
-      to: purchaseDate
+      to: date
+      role: purchase
     - from: ticketNumber
       to: passenger
     - from: passenger
@@ -119,7 +120,8 @@ demand_driven:
     - from: passenger
       to: surname
     - from: passenger
-      to: birthdate
+      to: date
+      role: birth
     - from: passenger
       to: city
       role: residence
