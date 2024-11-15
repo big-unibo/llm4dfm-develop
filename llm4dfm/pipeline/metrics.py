@@ -262,23 +262,23 @@ if __name__ == '__main__':
     if match:
         timestamp = match.group()
 
-    if 'gt_preprocessed' in ex_output:
-        ground_truth = ex_output['gt_preprocessed']
+    # if 'gt_preprocessed' in ex_output:
+    #     ground_truth = ex_output['gt_preprocessed']
+    # else:
+    print('Calculating ground truth preprocess')
+    ground_truth = load_ground_truth_exercise(ex_config['gt'])
+    if ex_config['demand']:
+        ground_truth = ground_truth['demand_driven']
     else:
-        print('Calculating ground truth preprocess')
-        ground_truth = load_ground_truth_exercise(ex_config['gt'])
-        if ex_config['demand']:
-            ground_truth = ground_truth['demand_driven']
-        else:
-            ground_truth = ground_truth['supply_driven']
+        ground_truth = ground_truth['supply_driven']
 
-        # Extracting ex number as last digit in exercise name
-        ex_num = extract_ex_num(ex_config['name'])
+    # Extracting ex number as last digit in exercise name
+    ex_num = extract_ex_num(ex_config['name'])
 
-        ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
-                                                                                   ground_truth['measures'] if
-                                                                                   ground_truth['measures'] else list(),
-                                                                                   ground_truth['fact'], ex_config['demand'], list())
+    ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
+                                                                                ground_truth['measures'] if
+                                                                                ground_truth['measures'] else list(),
+                                                                                ground_truth['fact'], ex_config['demand'], list())
 
     metrics = []
 

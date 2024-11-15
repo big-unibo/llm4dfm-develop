@@ -1,0 +1,251 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- edges:
+    f1: 0
+    fn: 16
+    fp: 17
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.8235
+    fn: 3
+    fp: 3
+    precision: 0.8235
+    recall: 0.8235
+    tp: 14
+output:
+- dependencies:
+  - from: RaceArrivals
+    to: Driver
+  - from: RaceArrivals
+    to: Car
+  - from: RaceArrivals
+    to: Circuit
+  - from: RaceArrivals
+    to: Position
+  - from: RaceArrivals
+    to: Score
+  - from: RaceArrivals
+    to: NumberOfLaps
+  - from: RaceArrivals
+    to: Time
+  - from: DriverName
+    to: Driver
+  - from: DriverSurname
+    to: Driver
+  - from: DriverAge
+    to: Driver
+  - from: CarNumber
+    to: Car
+  - from: Stable
+    to: Car
+  - from: StableAddress
+    to: Stable
+  - from: StableManager
+    to: Stable
+  - from: CircuitName
+    to: Circuit
+  - from: CircuitCity
+    to: Circuit
+  - from: CircuitLength
+    to: Circuit
+  fact:
+    name: RaceArrivals
+  measures:
+  - name: Position
+  - name: Score
+  - name: NumberOfLaps
+  - name: Time
+output_preprocessed:
+- dependencies:
+  - from: RaceArrivals
+    label: fp
+    to: Driver
+  - from: RaceArrivals
+    label: fp
+    to: carNumber
+  - from: RaceArrivals
+    label: fp
+    to: Circuit
+  - from: RaceArrivals
+    label: fp
+    to: Position
+  - from: RaceArrivals
+    label: fp
+    to: Score
+  - from: RaceArrivals
+    label: fp
+    to: NumberOfLaps
+  - from: RaceArrivals
+    label: fp
+    to: Time
+  - from: firstName
+    label: fp
+    to: Driver
+  - from: lastName
+    label: fp
+    to: Driver
+  - from: age
+    label: fp
+    to: Driver
+  - from: CarNumber
+    label: fp
+    to: carNumber
+  - from: Stable
+    label: fp
+    to: carNumber
+  - from: mainAddress
+    label: fp
+    to: Stable
+  - from: manager
+    label: fp
+    to: Stable
+  - from: CircuitName
+    label: fp
+    to: Circuit
+  - from: CircuitCity
+    label: fp
+    to: Circuit
+  - from: mileage
+    label: fp
+    to: Circuit
+  fact:
+    name: RaceArrivals
+  ground_truth_labels:
+    dependencies:
+    - from: ARRIVAL
+      label: fn
+      to: NumberOfLaps
+    - from: ARRIVAL
+      label: fn
+      to: Time
+    - from: ARRIVAL
+      label: fn
+      to: Score
+    - from: ARRIVAL
+      label: fn
+      to: Position
+    - from: ARRIVAL
+      label: fn
+      to: Circuit
+    - from: ARRIVAL
+      label: fn
+      to: Driver
+    - from: ARRIVAL
+      label: fn
+      to: Date
+    - from: ARRIVAL
+      label: fn
+      to: CarNumber
+    - from: Circuit
+      label: fn
+      to: City
+    - from: Circuit
+      label: fn
+      to: mileage
+    - from: Driver
+      label: fn
+      to: firstName
+    - from: Driver
+      label: fn
+      to: lastName
+    - from: Driver
+      label: fn
+      to: Age
+    - from: CarNumber
+      label: fn
+      to: Stable
+    - from: Stable
+      label: fn
+      to: MainAddress
+    - from: Stable
+      label: fn
+      to: Manager
+    fact:
+      name: ARRIVAL
+    measures:
+    - name: Position
+    - name: Time
+    - name: Score
+    - name: NumberOfLaps
+  measures:
+  - name: Position
+  - name: Score
+  - name: NumberOfLaps
+  - name: Time
+  nodes:
+    fn:
+    - city
+    - arrival
+    - date
+    fp:
+    - racearrivals
+    - circuitname
+    - circuitcity
+    tp:
+    - firstname
+    - driver
+    - time
+    - circuit
+    - carnumber
+    - manager
+    - position
+    - mileage
+    - numberoflaps
+    - mainaddress
+    - age
+    - stable
+    - score
+    - lastname

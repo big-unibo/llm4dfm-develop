@@ -1,0 +1,337 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- edges:
+    f1: 0.48
+    fn: 13
+    fp: 13
+    precision: 0.48
+    recall: 0.48
+    tp: 12
+  nodes:
+    f1: 0.92
+    fn: 1
+    fp: 3
+    precision: 0.8846
+    recall: 0.9583
+    tp: 23
+output:
+- dependencies:
+  - from: Purchases
+    to: Store
+  - from: Purchases
+    to: CreditCard
+  - from: Purchases
+    to: Date
+  - from: Purchases
+    to: amount
+  - from: Purchases
+    to: exchange
+  - from: Store
+    to: StoreName
+  - from: StoreName
+    to: StoreAddress
+  - from: StoreAddress
+    to: StoreType
+  - from: StoreType
+    to: Country
+  - from: Country
+    to: Area
+  - from: CreditCard
+    to: CardType
+  - from: CardType
+    to: Holder
+  - from: Holder
+    to: ExpirationDate
+  - from: ExpirationDate
+    to: CreditLimit
+  - from: CardType
+    to: Circuit
+  - from: Circuit
+    to: IssuingBank
+  - from: IssuingBank
+    to: BankAddress
+  - from: BankAddress
+    to: BankCountry
+  - from: CardType
+    to: CardName
+  - from: CardName
+    to: CardColor
+  - from: Holder
+    to: FirstName
+  - from: FirstName
+    to: LastName
+  - from: LastName
+    to: Age
+  - from: Age
+    to: Job
+  - from: Job
+    to: IncomeRange
+  fact:
+    name: Purchases
+  measures:
+  - name: amount
+  - name: exchange
+output_preprocessed:
+- dependencies:
+  - from: PURCHASE
+    label: tp
+    to: Store
+  - from: PURCHASE
+    label: tp
+    to: CreditCard
+  - from: PURCHASE
+    label: tp
+    to: Date
+  - from: PURCHASE
+    label: tp
+    to: amount
+  - from: PURCHASE
+    label: tp
+    to: exchange
+  - from: Store
+    label: tp
+    to: StoreName
+  - from: StoreName
+    label: fp
+    to: StoreAddress
+  - from: StoreAddress
+    label: fp
+    to: StoreType
+  - from: StoreType
+    label: fp
+    to: Country
+  - from: Country
+    label: tp
+    to: Area
+  - from: CreditCard
+    label: tp
+    to: creditCardType
+  - from: creditCardType
+    label: fp
+    to: Holder
+  - from: Holder
+    label: fp
+    to: ExpirationDate
+  - from: ExpirationDate
+    label: fp
+    to: CreditLimit
+  - from: creditCardType
+    label: tp
+    to: Circuit
+  - from: Circuit
+    label: fp
+    to: IssuingBank
+  - from: IssuingBank
+    label: tp
+    to: issuingBankAddress
+  - from: issuingBankAddress
+    label: fp
+    to: BankCountry
+  - from: creditCardType
+    label: tp
+    to: creditCardName
+  - from: creditCardName
+    label: fp
+    to: CardColor
+  - from: Holder
+    label: tp
+    to: FirstName
+  - from: FirstName
+    label: fp
+    to: LastName
+  - from: LastName
+    label: fp
+    to: Age
+  - from: Age
+    label: fp
+    to: Job
+  - from: Job
+    label: fp
+    to: IncomeRange
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASE
+      label: tp
+      to: store
+    - from: PURCHASE
+      label: tp
+      to: creditCard
+    - from: PURCHASE
+      label: tp
+      to: date
+    - from: PURCHASE
+      label: tp
+      to: amount
+    - from: PURCHASE
+      label: tp
+      to: exchange
+    - from: store
+      label: tp
+      to: storeName
+    - from: store
+      label: fn
+      to: storeAddress
+    - from: store
+      label: fn
+      to: storeType
+    - from: store
+      label: fn
+      to: country
+    - from: country
+      label: tp
+      to: area
+    - from: holder
+      label: tp
+      to: firstName
+    - from: holder
+      label: fn
+      to: lastName
+    - from: holder
+      label: fn
+      to: age
+    - from: holder
+      label: fn
+      to: job
+    - from: holder
+      label: fn
+      to: incomeRange
+    - from: creditCard
+      label: tp
+      to: creditCardType
+    - from: creditCard
+      label: fn
+      to: holder
+    - from: creditCard
+      label: fn
+      role: expiration
+      to: date
+    - from: creditCard
+      label: fn
+      to: creditLimit
+    - from: creditCardType
+      label: fn
+      to: issuingBank
+    - from: creditCardType
+      label: tp
+      to: circuit
+    - from: issuingBank
+      label: tp
+      to: issuingBankAddress
+    - from: issuingBank
+      label: fn
+      to: country
+    - from: creditCardType
+      label: fn
+      to: color
+    - from: creditCardType
+      label: tp
+      to: creditCardName
+    fact:
+      name: PURCHASE
+    measures:
+    - name: amount
+    - name: exchange
+  measures:
+  - name: amount
+  - name: exchange
+  nodes:
+    fn:
+    - color
+    fp:
+    - cardcolor
+    - expirationdate
+    - bankcountry
+    tp:
+    - date
+    - store
+    - creditcard
+    - storename
+    - incomerange
+    - purchase
+    - firstname
+    - storeaddress
+    - creditcardname
+    - storetype
+    - circuit
+    - lastname
+    - country
+    - issuingbankaddress
+    - job
+    - exchange
+    - creditcardtype
+    - creditlimit
+    - amount
+    - issuingbank
+    - area
+    - holder
+    - age

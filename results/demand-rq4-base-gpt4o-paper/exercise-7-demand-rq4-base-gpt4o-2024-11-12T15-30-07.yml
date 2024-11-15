@@ -1,0 +1,298 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0.4103
+    fn: 11
+    fp: 12
+    precision: 0.4
+    recall: 0.4211
+    tp: 8
+  nodes:
+    f1: 0.7568
+    fn: 3
+    fp: 6
+    precision: 0.7
+    recall: 0.8235
+    tp: 14
+output:
+- dependencies:
+  - from: Rental
+    to: Car
+  - from: Rental
+    to: PickupOffice
+  - from: Rental
+    to: DropoffOffice
+  - from: Rental
+    to: PickupDate
+  - from: Rental
+    to: DropoffDate
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: Car
+    to: Plate
+  - from: Car
+    to: RegistrationDate
+  - from: Car
+    to: FuelType
+  - from: Car
+    to: Category
+  - from: Car
+    to: Model
+  - from: Model
+    to: Brand
+  - from: PickupOffice
+    role: Pickup
+    to: City
+  - from: DropoffOffice
+    role: Dropoff
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+output_preprocessed:
+- dependencies:
+  - from: Rental
+    label: fp
+    to: Car
+  - from: Rental
+    label: fp
+    to: PickupOffice
+  - from: Rental
+    label: fp
+    to: DropoffOffice
+  - from: Rental
+    label: fp
+    to: PickupDate
+  - from: Rental
+    label: fp
+    to: DropoffDate
+  - from: Rental
+    label: tp
+    to: Amount
+  - from: Rental
+    label: tp
+    to: Discount
+  - from: Rental
+    label: tp
+    to: InsuranceCost
+  - from: Rental
+    label: tp
+    to: MilesTravelled
+  - from: Car
+    label: fp
+    to: carPlate
+  - from: Car
+    label: fp
+    to: RegistrationDate
+  - from: Car
+    label: fp
+    to: FuelType
+  - from: Car
+    label: fp
+    to: Category
+  - from: Car
+    label: fp
+    to: Model
+  - from: Model
+    label: tp
+    to: Brand
+  - from: PickupOffice
+    label: fp
+    role: Pickup
+    to: City
+  - from: DropoffOffice
+    label: fp
+    role: Dropoff
+    to: City
+  - from: City
+    label: tp
+    to: State
+  - from: State
+    label: tp
+    to: Country
+  - from: Country
+    label: tp
+    to: Area
+  fact:
+    name: Rental
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: tp
+      to: Amount
+    - from: Rental
+      label: tp
+      to: Discount
+    - from: Rental
+      label: tp
+      to: InsuranceCost
+    - from: Rental
+      label: tp
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: tp
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: tp
+      to: State
+    - from: State
+      label: tp
+      to: Country
+    - from: Country
+      label: tp
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+  nodes:
+    fn:
+    - risk
+    - date
+    - office
+    fp:
+    - dropoffoffice
+    - pickupdate
+    - pickupoffice
+    - registrationdate
+    - car
+    - dropoffdate
+    tp:
+    - country
+    - milestravelled
+    - area
+    - fueltype
+    - city
+    - insurancecost
+    - amount
+    - carplate
+    - state
+    - rental
+    - model
+    - discount
+    - brand
+    - category

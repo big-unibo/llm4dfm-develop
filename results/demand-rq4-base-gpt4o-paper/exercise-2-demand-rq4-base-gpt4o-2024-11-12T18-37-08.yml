@@ -1,0 +1,206 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- edges:
+    f1: 0.88
+    fn: 2
+    fp: 1
+    precision: 0.9167
+    recall: 0.8462
+    tp: 11
+  nodes:
+    f1: 0.8889
+    fn: 2
+    fp: 1
+    precision: 0.9231
+    recall: 0.8571
+    tp: 12
+output:
+- dependencies:
+  - from: Purchases
+    to: quantity
+  - from: Purchases
+    to: revenue
+  - from: Purchases
+    to: unit_price
+  - from: Purchases
+    to: day
+  - from: Purchases
+    to: article
+  - from: Purchases
+    to: store
+  - from: day
+    to: month
+  - from: month
+    to: year
+  - from: article
+    to: article_type
+  - from: store
+    to: store_name
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  fact:
+    name: Purchases
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unit_price
+output_preprocessed:
+- dependencies:
+  - from: PURCHASE
+    label: tp
+    to: quantity
+  - from: PURCHASE
+    label: tp
+    to: revenue
+  - from: PURCHASE
+    label: tp
+    to: unitprice
+  - from: PURCHASE
+    label: tp
+    to: Date
+  - from: PURCHASE
+    label: tp
+    to: article
+  - from: PURCHASE
+    label: tp
+    to: store
+  - from: article
+    label: fp
+    to: articletype
+  - from: store
+    label: tp
+    to: storename
+  - from: store
+    label: tp
+    to: address
+  - from: store
+    label: tp
+    to: region
+  - from: region
+    label: tp
+    to: state
+  - from: state
+    label: tp
+    to: country
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: article
+      label: fn
+      to: articleName
+    - from: article
+      label: fn
+      to: type
+    - from: store
+      label: tp
+      to: storeName
+    - from: store
+      label: tp
+      to: address
+    - from: store
+      label: tp
+      to: region
+    - from: region
+      label: tp
+      to: state
+    - from: state
+      label: tp
+      to: country
+    - from: PURCHASE
+      label: tp
+      to: quantity
+    - from: PURCHASE
+      label: tp
+      to: revenue
+    - from: PURCHASE
+      label: tp
+      to: unitPrice
+    - from: PURCHASE
+      label: tp
+      to: article
+    - from: PURCHASE
+      label: tp
+      to: store
+    - from: PURCHASE
+      label: tp
+      to: date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: quantity
+    - name: revenue
+    - name: unitPrice
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitprice
+  nodes:
+    fn:
+    - articlename
+    - type
+    fp:
+    - articletype
+    tp:
+    - revenue
+    - address
+    - country
+    - quantity
+    - storename
+    - date
+    - store
+    - purchase
+    - article
+    - unitprice
+    - state
+    - region
