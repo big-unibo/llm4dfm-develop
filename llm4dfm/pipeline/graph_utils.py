@@ -31,7 +31,7 @@ def plot_csv_metrics(data, file_name, label):
     edges_f1 = [list(map(float, data[ex]['edges_f1'])) for ex in exercises]
     nodes_f1 = [list(map(float, data[ex]['nodes_f1'])) for ex in exercises]
 
-    ex_indexes = [ex.split('-')[-1] for ex in exercises]
+    ex_indexes = exercises # [ex.split('-')[-1] for ex in exercises]
     index = np.arange(len(exercises))
 
     # Plot 1: Avg Precision and Recall for Edges
@@ -42,7 +42,7 @@ def plot_csv_metrics(data, file_name, label):
     ax1.set_ylabel('Average Score')
     ax1.set_title('Average Precision and Recall for Edges')
     ax1.set_xticks(index)
-    ax1.set_xticklabels(ex_indexes)
+    ax1.set_xticklabels(ex_indexes, rotation=45, ha='right')
     ax1.set_ylim(ax_limits)
     ax1.legend()
     fig1.tight_layout()
@@ -56,7 +56,7 @@ def plot_csv_metrics(data, file_name, label):
     ax2.set_ylabel('Average Score')
     ax2.set_title('Average Precision and Recall for Nodes')
     ax2.set_xticks(index)
-    ax2.set_xticklabels(ex_indexes)
+    ax2.set_xticklabels(ex_indexes, rotation=45, ha='right')
     ax2.set_ylim(ax_limits)
     ax2.legend()
     fig2.tight_layout()
@@ -73,6 +73,8 @@ def plot_csv_metrics(data, file_name, label):
     ax3.set_xlabel('Exercise')
     ax3.set_ylabel('Average F1 Score')
     ax3.set_title('Average F1 Score for Edges and Nodes')
+    ax3.set_xticks(range(len(ex_indexes)))  # Ensure the ticks align with the number of labels
+    ax3.set_xticklabels(ex_indexes, rotation=45, ha='right')  # Rotate labels for clarity
     ax3.set_ylim(ax_limits)
     ax3.legend()
     fig3.tight_layout()
@@ -83,6 +85,8 @@ def plot_csv_metrics(data, file_name, label):
     ax4.boxplot(edges_f1, labels=ex_indexes)
     ax4.set_xlabel('Exercise')
     ax4.set_ylabel('F1 Score')
+    ax4.set_xticks(range(len(ex_indexes)))  # Ensure the ticks align with the number of labels
+    ax4.set_xticklabels(ex_indexes, rotation=45, ha='right')  # Rotate labels for clarity
     ax4.set_ylim(ax_limits)
     ax4.set_title('Boxplot of F1 Measure for Edges')
     fig4.tight_layout()
@@ -93,6 +97,8 @@ def plot_csv_metrics(data, file_name, label):
     ax5.boxplot(nodes_f1, labels=ex_indexes)
     ax5.set_xlabel('Exercise')
     ax5.set_ylabel('F1 Score')
+    ax5.set_xticks(range(len(ex_indexes)))  # Ensure the ticks align with the number of labels
+    ax5.set_xticklabels(ex_indexes, rotation=45, ha='right')  # Rotate labels for clarity
     ax5.set_ylim(ax_limits)
     ax5.set_title('Boxplot of F1 Measure for Nodes')
     fig5.tight_layout()

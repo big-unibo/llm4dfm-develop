@@ -20,8 +20,10 @@ for file in "$OUTPUT$dir"/*.yml; do
     if [[ -f "$file" ]]; then
         filename=$(basename "$file")
         ex_name=${filename%.*}
-        # Use grep with a regular expression to find the first number occurrence
+        # Depending on file name convention, first one is for first occurrence to understand exercise number
         ex_number=$(echo "$ex_name" | grep -o -E '[0-9]+' | head -n 1)
+        # Second one is for last occurrence for ex. number
+        # ex_number=$(echo "$ex_name" | grep -o -E '[0-9]+' | tail -n 1)
         gt="exercise-$ex_number"
 
         echo "Execution on $ex_name"
