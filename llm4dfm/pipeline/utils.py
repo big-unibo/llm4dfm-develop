@@ -246,31 +246,30 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
 
 def get_csv_file_from_output_dir(dir_name):
     directory = f'{outputs}{dir_name}'
+    file = f'output-{dir_name}.csv'
 
-    path = ''
-
-    for file in os.listdir(directory):
-        if file.endswith('.csv'):
-            path = os.path.join(directory, file)
-            break
-
-    return path
+    return os.path.join(directory, file)
 
 
-def update_csv(dir_name, timestamp, output_preprocessed, metrics_list):
+def update_csv(dir_name, timestamp, ex_name, output_preprocessed, metrics_list):
     path = get_csv_file_from_output_dir(dir_name)
 
-    df = None
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+
     try:
         df = pd.read_csv(path)
     except:
-        print('File not found')
-        return
+        df = pd.DataFrame()
 
     for idx, metrics in enumerate(metrics_list):
-        matching_rows = (df['timestamp'] == timestamp) & (df['index'] == idx+1)
+        if not df.empty:
+            matching_rows = (df['timestamp'] == timestamp) & (df['index'] == idx+1)
+        else:
+            matching_rows = None
 
         data = dict()
+
+        data['ex_name'] = ex_name
 
         data['fact'] = output_preprocessed[idx]['fact']['name']
 
@@ -284,10 +283,12 @@ def update_csv(dir_name, timestamp, output_preprocessed, metrics_list):
         for elem in metrics:
             for met, val in metrics[elem].items():
                 data[f"{elem}_{met}"] = val
-        if matching_rows.any():
+        if not df.empty and matching_rows.any():
             for prop in data:
                 df[prop].replace(df.loc[matching_rows, prop].iloc[0], str(data[prop]), inplace=True)
         else:
-            df = df.append(data, ignore_index=True)
+            data['timestamp'] = timestamp
+            data['index'] = idx+1
+            df = pd.concat([df, pd.DataFrame([data])], ignore_index=True)
     df.to_csv(path, index=False)
 
