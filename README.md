@@ -316,7 +316,7 @@ Thesaurus rules are applied here.
 
 - Configure [graph](#CSV-Graph)
 - Run `python pipeline/csv_graph.py` from `llm4dfm` directory.
-  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory a new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
+  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory, new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
 Example of run:
 `python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
 
@@ -349,7 +349,7 @@ Example of run:
 
 Output:
 Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
-Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}.csv` is generated if not present, else is enriched with run output.
+Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
 
 ### Automatic metrics

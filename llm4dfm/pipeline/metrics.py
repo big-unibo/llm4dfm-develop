@@ -1,6 +1,7 @@
 import argparse
 import traceback
 import re
+from pprint import pprint
 
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
     extract_ex_num, label_edges, store_additional_properties, update_csv
@@ -255,12 +256,13 @@ if __name__ == '__main__':
     ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
 
     # Calculate metrics
-    timestamp = None
+
     # Regular expression to match the timestamp in YYYY-MM-DDTHH-mm-SS format
     match = re.search(r"\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}", ex_config['name'])
-
     if match:
         timestamp = match.group()
+    else:
+        timestamp = ex_config['name']
 
     # if 'gt_preprocessed' in ex_output:
     #     ground_truth = ex_output['gt_preprocessed']
@@ -294,7 +296,7 @@ if __name__ == '__main__':
     outputs_to_use = []
 
     if isinstance(ex_output, dict):
-        if 'output_preprocessed' in ex_output:
+        if 'output_preprocessed' in ex_output and ex_output['output_preprocessed'] != []:
             outputs_to_use = ex_output['output_preprocessed']
         else:
             print('Calculating output preprocess')
@@ -309,11 +311,14 @@ if __name__ == '__main__':
                                                                       output['measures'] if output[
                                                                           'measures'] else list(),
                                                                       output['fact'], ex_config['demand'], ground_truth['dependencies'])
+
                     outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
                 except:
                     traceback.print_exc()
                     print(f"Output not correctly generated, skipped")
+
     output_to_save = []
+
     for i, output in enumerate(outputs_to_use):
         try:
             dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else list(), output['fact']
@@ -337,7 +342,7 @@ if __name__ == '__main__':
             metrics.append(dict())
             print(f"Output {i}-th not correctly generated, skipped")
 
-    update_csv(ex_config['dir'], timestamp, output_to_save, metrics)
+    update_csv(ex_config['dir'], timestamp, ex_config['name'], output_to_save, metrics)
     props = dict()
     props['gt_preprocessed'] = ground_truth
     props['output_preprocessed'] = output_to_save
