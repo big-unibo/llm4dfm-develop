@@ -64,7 +64,7 @@ else
   for ex_num in "${ex_nums[@]}"; do
       for ((i=1; i<=n_runs; i++)); do
         echo "Execution $i on $ex_num:"
-        python -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$ex_num-$ex_version-text.yml" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_label "$model_label" --dir_label "$dir_label"
+        python -W ignore "$PY_PROG" --exercise "$ex_dir$ex_prefix$ex_num-$ex_version-text.yml" --exercise_num "$ex_num" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_label "$model_label" --dir_label "$dir_label"
         if [ "$i" != "$n_runs" ]; then
           sleep $t_sleep
         fi

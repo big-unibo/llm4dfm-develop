@@ -9,7 +9,7 @@ def erase(string, chars_to_remove):
 def _process(deps, ignore, substitutions):
     dep = []
     for d in deps:
-        d = erase(d, [' '])
+        d = erase(d, [' ', '-', '_'])
         if d.lower() in ignore:
             dep = []
             break
@@ -23,7 +23,7 @@ def _process(deps, ignore, substitutions):
 
 
 def get_dict_to_check(common, exercise):
-    common_values = [list_val for sub_dict in common for list_val in sub_dict.values()]
+    common_values = [list_val  for sub_dict in common for list_val in sub_dict.values()]
     common_ex = [list_val for sub_dict in exercise for list_val in sub_dict.values()]
 
     list_dict = exercise
@@ -40,7 +40,7 @@ def get_dict_to_check(common, exercise):
         if len(idx_to_insert) > 0:
             if len(idx_to_insert) == len(common_values_list):
                 list_dict.append(common[idx_list])
-    return {key: [val.lower() for val in value] for my_dict in list_dict for key, value in my_dict.items()}
+    return {erase(key, [' ', '-', '_']): [erase(val.lower(), [' ', '-', '_']) for val in value] for my_dict in list_dict for key, value in my_dict.items()}
 
 
 # Need to search in both from and to
@@ -55,7 +55,6 @@ def convert_same_nodes_different_order(node, node_preprocessed):
 
 # Convention to get output and ground truth following same order convention in nodes
 def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention_list=None):
-
     if nodes_convention_list is None:
         nodes_convention_list = list()
 
@@ -68,6 +67,7 @@ def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention
 
     eq_common = prep['common']['equals'] if 'equals' in prep['common'] else []
     eq_ex = prep[ex_number]['equals'] if 'equals' in prep[ex_number] else []
+
     eq_dicts_to_check = get_dict_to_check(eq_common, eq_ex)
 
     ignore_common = prep['common']['ignore'] if 'ignore' in prep['common'] else []
@@ -78,8 +78,6 @@ def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention
     dep_preprocessed = []
 
     for dep in dependencies:
-
-
         frag_dep = {'from': dep['from'].split(',') if dep['from'] else 'ERROR',
                     'to': dep['to'].split(',') if dep['to'] else 'ERROR'}
         if demand:

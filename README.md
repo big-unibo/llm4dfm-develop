@@ -138,6 +138,7 @@ Exercise
 - `name           -- the exercise name (part before version, exercise-N)`
 - `version           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
 - `prompt_version -- the prompt version (part between prompts- and .yml)`
+- `number -- the exercise number`
 
 General
 
@@ -166,6 +167,7 @@ The following parameters can be configured in `llm4dfm/resources/metrics-config.
 - `name -- the exercise name without .yml extension`
 - `demand -- whether it's a demand driven exercise [true, false]`
 - `gt -- the ground truth's exercise`
+- `number -- the exercise number`
 
 ## Preprocessing
 
@@ -355,6 +357,8 @@ Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
 ### Automatic metrics
 
 First of all, execution privileges must be granted by means of `chmod 700 ./resources/automatic_metrics.sh`.
+
+**It is noticeable to say that exercise number has to be extracted from exercises' names. Depending on exercises name convention in directory where to iterate, it's provided inside script a default function collecting first numeric occurrence, but also a commented one enabling last occurrence in file names**
 
 After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
 `poetry poe automatic_metrics` run the program with the following configurations:

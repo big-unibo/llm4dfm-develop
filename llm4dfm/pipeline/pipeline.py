@@ -12,6 +12,7 @@ from llm4dfm.pipeline.metrics import MetricsCalculator
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--exercise', help='Exercise to use')
+parser.add_argument('--exercise_num', help='Exercise number to use')
 parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
 parser.add_argument('--model', help='Model used')
@@ -61,6 +62,13 @@ if args.exercise:
     model_config['exercise']['name'] = ex_name
 else:
     exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
+if args.exercise_num:
+    model_config['exercise']['number'] = int(args.exercise_num)
+else:
+    if not model_config['exercise']['number']:
+        print(f'No ex number given, extracting as last digit in {model_config['exercise']['name']}')
+        # Extracting ex number as last digit in exercise name
+        model_config['exercise']['number'] = extract_ex_num(model_config['exercise']['name'])
 if args.p_version:
     automatic_run = True
     model_config['exercise']['prompt_version'] = args.p_version
@@ -76,6 +84,7 @@ if args.dir_label:
 
 model_config['output']['dir_label'] = get_dir_label_name(model_config['exercise']['version'], model_config['exercise']['prompt_version'], config['label'], model_config['output']['dir_label'])
 
+ex_num = model_config['exercise']['number']
 # Load prompts
 
 model_outputs = []
@@ -125,9 +134,6 @@ if is_demand:
     ground_truth = ground_truth['demand_driven']
 else:
     ground_truth = ground_truth['supply_driven']
-
-# Extracting ex number as last digit in exercise name
-ex_num = extract_ex_num(model_config['exercise']['name'])
 
 # Calculate gt_preprocessed
 gt_preprocessed = dict()

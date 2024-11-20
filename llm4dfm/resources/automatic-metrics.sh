@@ -28,7 +28,7 @@ for file in "$OUTPUT$dir"/*.yml; do
 
         echo "Execution on $ex_name"
 
-        python -W ignore "$PY_PROG" --exercise "$ex_name" --exercise_gt "$gt" --dir "$dir" --demand "$demand"
+        python -W ignore "$PY_PROG" --exercise "$ex_name" --exercise_num "$ex_number" --exercise_gt "$gt" --dir "$dir" --demand "$demand"
     fi
 done
 

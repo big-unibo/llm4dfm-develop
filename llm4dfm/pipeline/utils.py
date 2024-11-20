@@ -179,11 +179,14 @@ def store_additional_properties(dir_label, ex_name, props):
         prev_out[prop] = props[prop]
     write_yaml(f'{outputs}{dir_label}/{ex_name}', prev_out)
 
-def get_output_file_path(ex_version, prompt_version, model, label_dir):
-    it_list = [st for st in ['output', ex_version, prompt_version, model] if st != '']
 
-    f_name = f'{'-'.join(it_list)}.csv'
-    return f'{auto_outputs}{label_dir}/{f_name}'
+
+def get_csv_file_from_output_dir(dir_name):
+    directory = f'{outputs}{dir_name}'
+    file = f'output-{dir_name}.csv'
+
+    return os.path.join(directory, file)
+
 
 def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, timestamp, label_dir):
     for i, metrics in enumerate(metrics_list):
@@ -212,11 +215,7 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
             for met, val in metrics[elem].items():
                 data[f"{elem}_{met}"] = val
 
-        prompt_version = ex_config['prompt_version']
-
-        model = model_config['label'] if model_config['label'] != '' else model_config['name']
-
-        file_path = get_output_file_path(ex_config['version'], prompt_version, model, label_dir)
+        file_path = get_csv_file_from_output_dir(label_dir)
 
         write_headers = False
         headers = list(data.keys())
@@ -243,12 +242,6 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
                 headers = list(data.keys())
                 writer.writerow(headers)
             writer.writerow(list(data.values()))
-
-def get_csv_file_from_output_dir(dir_name):
-    directory = f'{outputs}{dir_name}'
-    file = f'output-{dir_name}.csv'
-
-    return os.path.join(directory, file)
 
 
 def update_csv(dir_name, timestamp, ex_name, output_preprocessed, metrics_list):

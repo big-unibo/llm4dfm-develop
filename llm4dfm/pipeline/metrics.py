@@ -1,7 +1,6 @@
 import argparse
 import traceback
 import re
-from pprint import pprint
 
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
     extract_ex_num, label_edges, store_additional_properties, update_csv
@@ -237,6 +236,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="Process some configuration.")
     parser.add_argument('--exercise', help='Exercise to use')
+    parser.add_argument('--exercise_num', help='Exercise number to use')
     parser.add_argument('--exercise_gt', help='Exercise gt to use')
     parser.add_argument('--dir', help='Directory containing ex inside output')
     parser.add_argument('--demand', help='State if exercise is demand driven')
@@ -246,6 +246,13 @@ if __name__ == '__main__':
 
     if args.exercise:
         ex_config['name'] = args.exercise
+    if args.exercise_num:
+        ex_config['number'] = int(args.exercise_num)
+    else:
+        if not ex_config['number']:
+            print(f'No ex_num given, extracting as last digit of {ex_config["name"]}')
+            # Extracting ex number as last digit in exercise name
+            ex_config['number'] = extract_ex_num(ex_config['name'])
     if args.exercise_gt:
         ex_config['gt'] = args.exercise_gt
     if args.dir:
@@ -254,6 +261,8 @@ if __name__ == '__main__':
         ex_config['demand'] = args.demand.lower() == 'true'
     # Load exercise
     ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
+
+    ex_num = ex_config['number']
 
     # Calculate metrics
 
@@ -267,15 +276,13 @@ if __name__ == '__main__':
     # if 'gt_preprocessed' in ex_output:
     #     ground_truth = ex_output['gt_preprocessed']
     # else:
-    print('Calculating ground truth preprocess')
     ground_truth = load_ground_truth_exercise(ex_config['gt'])
     if ex_config['demand']:
         ground_truth = ground_truth['demand_driven']
     else:
         ground_truth = ground_truth['supply_driven']
 
-    # Extracting ex number as last digit in exercise name
-    ex_num = extract_ex_num(ex_config['name'])
+
 
     ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
                                                                                 ground_truth['measures'] if
@@ -288,34 +295,30 @@ if __name__ == '__main__':
     meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
     fact_gt = ground_truth['fact']
 
-    # Extracting ex number as last digit in exercise name
-    ex_num = extract_ex_num(ex_config['name'])
-
     metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, ex_config['demand'])
 
     outputs_to_use = []
 
     if isinstance(ex_output, dict):
-        if 'output_preprocessed' in ex_output and ex_output['output_preprocessed'] != []:
-            outputs_to_use = ex_output['output_preprocessed']
+        #if 'output_preprocessed' in ex_output and ex_output['output_preprocessed'] != []:
+        #    outputs_to_use = ex_output['output_preprocessed']
+        #else:
+        if 'output' in ex_output:
+            output_non_preprocessed = ex_output['output']
         else:
-            print('Calculating output preprocess')
-            if 'output' in ex_output:
-                output_non_preprocessed = ex_output['output']
-            else:
-                output_non_preprocessed = ex_output
+            output_non_preprocessed = ex_output
 
-            for output in output_non_preprocessed:
-                try:
-                    dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
-                                                                      output['measures'] if output[
-                                                                          'measures'] else list(),
-                                                                      output['fact'], ex_config['demand'], ground_truth['dependencies'])
+        for output in output_non_preprocessed:
+            try:
+                dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
+                                                                  output['measures'] if output[
+                                                                      'measures'] else list(),
+                                                                  output['fact'], ex_config['demand'], ground_truth['dependencies'])
 
-                    outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
-                except:
-                    traceback.print_exc()
-                    print(f"Output not correctly generated, skipped")
+                outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
+            except:
+                traceback.print_exc()
+                print(f"Output not correctly generated, skipped")
 
     output_to_save = []
 
