@@ -239,7 +239,7 @@ if __name__ == '__main__':
     parser.add_argument('--exercise_num', help='Exercise number to use')
     parser.add_argument('--exercise_gt', help='Exercise gt to use')
     parser.add_argument('--dir', help='Directory containing ex inside output')
-    parser.add_argument('--demand', help='State if exercise is demand driven')
+    parser.add_argument('--version', help='Exercise version to use')
     args = parser.parse_args()
 
     ex_config = input_config['exercise']
@@ -257,12 +257,10 @@ if __name__ == '__main__':
         ex_config['gt'] = args.exercise_gt
     if args.dir:
         ex_config['dir'] = args.dir
-    if args.demand:
-        ex_config['demand'] = args.demand.lower() == 'true'
+    if args.version:
+        ex_config['version'] = args.version
     # Load exercise
     ex_output = load_output_exercise(ex_config['dir'], ex_config['name'])
-
-    ex_num = ex_config['number']
 
     # Calculate metrics
 
@@ -277,17 +275,20 @@ if __name__ == '__main__':
     #     ground_truth = ex_output['gt_preprocessed']
     # else:
     ground_truth = load_ground_truth_exercise(ex_config['gt'])
-    if ex_config['demand']:
+
+    is_demand = ex_config['version'].lower() == 'demand'
+
+    if is_demand:
         ground_truth = ground_truth['demand_driven']
     else:
         ground_truth = ground_truth['supply_driven']
 
 
 
-    ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_num, ground_truth['dependencies'],
+    ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_config['number'], ground_truth['dependencies'],
                                                                                 ground_truth['measures'] if
                                                                                 ground_truth['measures'] else list(),
-                                                                                ground_truth['fact'], ex_config['demand'], list())
+                                                                                ground_truth['fact'], is_demand, list())
 
     metrics = []
 
@@ -295,7 +296,7 @@ if __name__ == '__main__':
     meas_gt = ground_truth['measures'] if ground_truth['measures'] else list()
     fact_gt = ground_truth['fact']
 
-    metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, ex_config['demand'])
+    metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_config['number'], is_demand)
 
     outputs_to_use = []
 
@@ -310,10 +311,10 @@ if __name__ == '__main__':
 
         for output in output_non_preprocessed:
             try:
-                dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
+                dep_output, meas_output, fact_output = preprocess(ex_config['number'], output['dependencies'],
                                                                   output['measures'] if output[
                                                                       'measures'] else list(),
-                                                                  output['fact'], ex_config['demand'], ground_truth['dependencies'])
+                                                                  output['fact'], is_demand, ground_truth['dependencies'])
 
                 outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
             except:
@@ -344,8 +345,7 @@ if __name__ == '__main__':
             traceback.print_exc()
             metrics.append(dict())
             print(f"Output {i}-th not correctly generated, skipped")
-
-    update_csv(ex_config['dir'], timestamp, ex_config['name'], output_to_save, metrics)
+    update_csv(ex_config['dir'], timestamp, ex_config['name'], ex_config['number'], ex_config['version'], output_to_save, metrics)
     props = dict()
     props['gt_preprocessed'] = ground_truth
     props['output_preprocessed'] = output_to_save

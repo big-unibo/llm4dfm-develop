@@ -364,13 +364,13 @@ After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/b
 `poetry poe automatic_metrics` run the program with the following configurations:
 
 - `dir -- the directory name inside 'outputs' folder`
-- `demand -- flag to state if it's demand version [true, false]`
+- `version -- the prompt version used [sql, demand], sql by default`
 
 This could also be achieved by directly run `./resources/automatic-metrics.sh` from `llm4dfm` directory, with configurations as stated before.
 
 Example of run:
-`poetry poe automatic_metrics demand-rq5-example-gpt4o-demand false`
-`./resources/automatic-metrics.sh 1 demand-rq5-example-gpt4o-demand false`
+`poetry poe automatic_metrics demand-rq5-example-gpt4o-demand demand`
+`./resources/automatic-metrics.sh 1 demand-rq5-example-gpt4o-demand demand`
 
 Output:
 File preprocess and metrics calculation will be executed, results will be overridden in same file.
@@ -379,5 +379,5 @@ File preprocess and metrics calculation will be executed, results will be overri
 
 To execute the tests' suite, inside `llm4dfm` root directory, run 
 ```bash
-poetry run poe test
+poetry poe test
 ```
