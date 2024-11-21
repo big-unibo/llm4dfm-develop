@@ -1,6 +1,6 @@
 exercise:
   dir: 'LLM-rizzi'
   name: 'rq4-tc1-ste'
-  demand: true
+  version: 'demand'
   gt: 'exercise-1'
   number: '1'

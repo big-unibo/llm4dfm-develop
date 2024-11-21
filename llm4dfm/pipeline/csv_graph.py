@@ -42,7 +42,7 @@ metrics_template = ['edges_precision', 'edges_recall', 'edges_f1', 'nodes_precis
 metrics = dict()
 
 for row in csv_file:
-    ex = row['ex_name']
+    ex = row['ex_number']
     if ex not in metrics:
         metrics[ex] = dict()
         for metr_templ in metrics_template:

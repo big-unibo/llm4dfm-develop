@@ -188,6 +188,14 @@ def get_csv_file_from_output_dir(dir_name):
     return os.path.join(directory, file)
 
 
+def get_headers_csv():
+    return ['ex_name','ex_version','ex_prompt_version','ex_number','timestamp','index','config_name','config_label',
+            'config_deployment','config_api_version','config_temperature','config_max_tokens','config_n_responses',
+            'config_stop','config_top_p','config_top_k','fact','measures','dependencies','node_tp','node_fp','node_fn',
+            'edges_tp','edges_fn','edges_fp','edges_precision','edges_recall','edges_f1','nodes_tp','nodes_fn',
+            'nodes_fp','nodes_precision','nodes_recall','nodes_f1']
+
+
 def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, timestamp, label_dir):
     for i, metrics in enumerate(metrics_list):
         data = dict()
@@ -218,7 +226,11 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
         file_path = get_csv_file_from_output_dir(label_dir)
 
         write_headers = False
-        headers = list(data.keys())
+        headers = get_headers_csv()
+
+        for head in headers:
+            if head not in data:
+                data[head] = None
 
         try:
             # Attempt to read the first row (headers) from the CSV file
@@ -239,12 +251,11 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
         with open(f'{file_path}', "a+", newline="") as csv_file:
             writer = csv.writer(csv_file)
             if write_headers:
-                headers = list(data.keys())
                 writer.writerow(headers)
             writer.writerow(list(data.values()))
 
 
-def update_csv(dir_name, timestamp, ex_name, output_preprocessed, metrics_list):
+def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preprocessed, metrics_list):
     path = get_csv_file_from_output_dir(dir_name)
 
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -252,17 +263,20 @@ def update_csv(dir_name, timestamp, ex_name, output_preprocessed, metrics_list):
     try:
         df = pd.read_csv(path)
     except:
-        df = pd.DataFrame()
+        df = pd.DataFrame(columns=get_headers_csv())
 
     for idx, metrics in enumerate(metrics_list):
         if not df.empty:
-            matching_rows = (df['timestamp'] == timestamp) & (df['index'] == idx+1)
+            missing_headers = [col for col in get_headers_csv() if col not in df.columns]
+
+            # Add missing headers with default NaN values
+            for col in missing_headers:
+                df[col] = pd.NA
+            matching_rows = (df['ex_number'] == ex_num) & (df['timestamp'] == timestamp) & (df['index'] == idx+1)
         else:
             matching_rows = None
 
         data = dict()
-
-        data['ex_name'] = ex_name
 
         data['fact'] = output_preprocessed[idx]['fact']['name']
 
@@ -276,12 +290,16 @@ def update_csv(dir_name, timestamp, ex_name, output_preprocessed, metrics_list):
         for elem in metrics:
             for met, val in metrics[elem].items():
                 data[f"{elem}_{met}"] = val
-        if not df.empty and matching_rows.any():
+        if not df.empty and (not matching_rows is None) and matching_rows.any():
             for prop in data:
-                df[prop].replace(df.loc[matching_rows, prop].iloc[0], str(data[prop]), inplace=True)
+                df.loc[matching_rows, prop] = str(data[prop])
         else:
+            data['ex_name'] = ex_name
+            data['ex_version'] = ex_version
+            data['ex_number'] = ex_num
             data['timestamp'] = timestamp
-            data['index'] = idx+1
+            data['index'] = idx + 1
+
             df = pd.concat([df, pd.DataFrame([data])], ignore_index=True)
     df.to_csv(path, index=False)
 
