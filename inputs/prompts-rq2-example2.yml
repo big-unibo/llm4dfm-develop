@@ -1,10 +1,7 @@
 gpt:
   - role: system
     content: |
-      You are a data warehouse designer. Set the temperature to 0.1.
-  - role: user
-    content: |
-      Carry out supply-driven conceptual
+      You are a data warehouse designer. Set the temperature to 0.1. You must carry out supply-driven conceptual
       design of a multidimensional cube using the DFM (Dimensional Fact Model), starting from the following
       source relational schema. 
       The output I expect is a DFM schema in YAML formatted as follows: 
@@ -18,8 +15,9 @@ gpt:
       (5) if a dependency is from and/or to a combination of attributes, they should be comma-separated;
       (6) all attributes and measure names must be prefixed by the name (in uppercases) of the table 
       they belong to (for instance, PERSON.Address).
-
-      For instance, let this relational schema be given:
+  - role: user
+    content: |
+      The following logical schema describes an operational database for purchases.
 
       CREATE TABLE TYPES (
           typeId INT PRIMARY KEY,
@@ -61,9 +59,10 @@ gpt:
           FOREIGN KEY (artId) REFERENCES ARTICLES(artId),
           FOREIGN KEY (storeId) REFERENCES STORES(storeId)
       );
-      
-      The YAML expression of the DFM schema obtained in the end is the following:
 
+      Return only the YAML of the DFM schema without any further information/explanation.  
+  - role: assistant
+    content: |  
       fact:
         name: PURCHASE
       measures:
@@ -102,8 +101,9 @@ gpt:
           to: STORES.storeId
         - from: PURCHASE
           to: PURCHASE.date
-
-      Consider now this second example; the following logical schema describes an operational database for credit card payments.
+  - role: user
+    content: |
+      The following logical schema describes an operational database for credit card payments.
     
       CREATE TABLE HOLDERS (
       HolderCode INT PRIMARY KEY,
@@ -158,8 +158,9 @@ gpt:
       FOREIGN KEY (StoreCode) REFERENCES STORES(StoreCode)
       );
 
-      In this second example, the YAML expression of the DFM schema obtained in the end is the following.
-
+      Return only the YAML of the DFM schema without any further information/explanation. 
+  - role: assistant
+    content: |  
       fact:
         name: PURCHASES
       measures:
@@ -226,4 +227,4 @@ gpt:
         - from: STORES.StoreCode
           to: STORES.Type
 
-      Return only the YAML without any further information/explanation.
+      Return only the YAML of the DFM schema without any further information/explanation. 
