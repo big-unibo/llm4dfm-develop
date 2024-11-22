@@ -349,35 +349,35 @@ output_preprocessed:
     fn:
     - creditcards.expirationdate
     fp:
-    - creditcards.typecode
     - creditcards.holdercode
+    - creditcards.typecode
     tp:
-    - creditcards.creditlimit
-    - cardtypes.issuingbank
-    - holders.lastname
-    - cardtypes.circuit
-    - purchases.date
     - stores.address
-    - cardtypes.color
-    - creditcards.ccnumber
-    - cardtypes.cardname
-    - purchases.currency
-    - holders.firstname
-    - stores.area
-    - stores.email
-    - holders.job
-    - stores.website
-    - holders.quality
-    - cardtypes.typecode
-    - holders.holdercode
-    - stores.type
-    - holders.birthdate
-    - cardtypes.address
-    - purchases
-    - stores.country
-    - holders.incomerange
-    - purchases.amount
-    - purchases.exchange
-    - stores.storecode
     - stores.name
+    - creditcards.ccnumber
+    - stores.storecode
+    - cardtypes.cardname
+    - purchases.exchange
+    - creditcards.creditlimit
+    - cardtypes.circuit
     - cardtypes.country
+    - holders.birthdate
+    - cardtypes.issuingbank
+    - holders.incomerange
+    - cardtypes.color
+    - stores.area
+    - purchases.currency
+    - holders.holdercode
+    - stores.website
+    - cardtypes.typecode
+    - cardtypes.address
+    - stores.country
+    - purchases.amount
+    - purchases.date
+    - purchases
+    - holders.quality
+    - stores.email
+    - stores.type
+    - holders.lastname
+    - holders.job
+    - holders.firstname

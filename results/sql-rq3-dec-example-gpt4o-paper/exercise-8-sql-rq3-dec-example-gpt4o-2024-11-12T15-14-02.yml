@@ -473,53 +473,53 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - flight.date
-    - ticket.ticketnumber
     - checkin.seat
-    - checkin.numberofbags
+    - ticket.ticketnumber
+    - flight.date
     - checkin
+    - checkin.numberofbags
     fp:
-    - ticket
-    - checkin.boardingcardcode
-    - boardingcard.ticketnumber
-    - boardingcard.seat
-    - ticket.date
     - boardingcard.boardingcardcode
     - ticket.route
-    - checkin.numberofbags
     - ticket.purchasecode
+    - ticket
+    - ticket.date
+    - checkin.boardingcardcode
+    - checkin.numberofbags
+    - boardingcard.seat
+    - boardingcard.ticketnumber
     tp:
-    - purchase.totalamount
-    - route.route
-    - person.birthdate
-    - flight.delayindeparture
     - flight.delayinarrival
-    - person.surname
-    - airplanetype.name
-    - flight.cancelledyn
-    - person.documenttype
-    - ticket.flightamount
-    - route.departuretime
-    - airline.airlinename
-    - person.cityofresidence
-    - airline.nation
-    - person.personcode
-    - airport.airportcode
-    - person.telephone
-    - airport.name
-    - person.email
-    - purchase.date
-    - airport.city
+    - ticket.priorityyn
     - person.documentid
-    - checkin.checkintime
-    - flight.date,flight.route
-    - person.name
-    - airplanetype.numberofseats
-    - person.gender
-    - airport.nation
-    - ticket.taxamount
     - airplanetype.airplanetype
-    - airline.airlinecode
     - route.arrivaltime
     - purchase.purchasecode
-    - ticket.priorityyn
+    - airport.airportcode
+    - person.birthdate
+    - flight.route,flight.date
+    - purchase.totalamount
+    - person.gender
+    - airline.airlinecode
+    - purchase.date
+    - person.email
+    - airline.nation
+    - airline.airlinename
+    - flight.cancelledyn
+    - ticket.taxamount
+    - airport.nation
+    - ticket.flightamount
+    - route.departuretime
+    - person.cityofresidence
+    - airplanetype.numberofseats
+    - airplanetype.name
+    - person.surname
+    - route.route
+    - person.personcode
+    - checkin.checkintime
+    - flight.delayindeparture
+    - airport.city
+    - person.telephone
+    - person.documenttype
+    - person.name
+    - airport.name

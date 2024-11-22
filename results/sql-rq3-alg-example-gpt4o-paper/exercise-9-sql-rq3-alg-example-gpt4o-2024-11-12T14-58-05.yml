@@ -355,40 +355,40 @@ output_preprocessed:
   - name: TRAINTYPE.Capacity
   nodes:
     fn:
-    - routes.fare
     - routes.duration
     - trips.date
+    - routes.fare
     fp:
-    - tickets.customercode
-    - trains.traintypecode
-    - routes.duration
+    - routes.departurestationcode
     - routes.fare
     - routes.arrivalstationcode
-    - routes.departurestationcode
+    - routes.duration
+    - trains.traintypecode
+    - tickets.customercode
     tp:
-    - tickets.ticketcode
-    - trains.traincode
-    - stations.region
     - customers.customercode
-    - trips.date,trips.traincode
-    - routesintrips.sequence
-    - tickets.purchasedate
-    - routesintrips.routecode,routesintrips.traincode,routesintrips.date
-    - customers.documentid
-    - tickets.totalprice
-    - customers.surname
-    - traintype.capacity
-    - customers.birthdate
-    - customers.birthcity
-    - stations.location
-    - customers.name
-    - stations.name
-    - traintype.traintype
-    - traintype.traintypecode
+    - routesintrips.date,routesintrips.traincode,routesintrips.routecode
     - stations.city
     - trips.status
-    - routesintickets
-    - routes.distancekm
+    - customers.surname
+    - tickets.purchasedate
+    - traintype.traintypecode
     - routes.routecode
-    - stations.stationcode
+    - customers.documentid
+    - stations.name
+    - trains.traincode
+    - customers.birthdate
     - routesintickets.price
+    - customers.birthcity
+    - tickets.totalprice
+    - routes.distancekm
+    - traintype.capacity
+    - tickets.ticketcode
+    - stations.region
+    - stations.location
+    - routesintrips.sequence
+    - stations.stationcode
+    - trips.traincode,trips.date
+    - customers.name
+    - routesintickets
+    - traintype.traintype

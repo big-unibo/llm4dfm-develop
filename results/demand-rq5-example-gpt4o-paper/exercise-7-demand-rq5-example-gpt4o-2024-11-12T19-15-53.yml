@@ -270,18 +270,18 @@ output_preprocessed:
     - registrationdate
     tp:
     - country
-    - area
     - milestravelled
-    - model
-    - city
-    - state
-    - category
-    - date
-    - insurancecost
     - rental
-    - fueltype
-    - discount
-    - office
-    - brand
     - amount
+    - state
+    - date
     - carplate
+    - office
+    - insurancecost
+    - area
+    - model
+    - fueltype
+    - category
+    - brand
+    - city
+    - discount

@@ -359,33 +359,33 @@ output_preprocessed:
     fn: []
     fp: []
     tp:
-    - purchases.currency
-    - purchases
-    - creditcards.creditlimit
-    - holders.incomerange
-    - cardtypes.circuit
-    - stores.email
-    - stores.storecode
-    - stores.website
+    - cardtypes.cardname
+    - stores.area
     - holders.firstname
+    - holders.quality
+    - creditcards.creditlimit
+    - stores.website
     - purchases.date
-    - stores.name
+    - stores.email
+    - cardtypes.address
+    - creditcards.ccnumber
     - holders.lastname
+    - cardtypes.color
     - holders.birthdate
     - stores.address
-    - stores.area
-    - holders.job
-    - purchases.exchange
+    - stores.storecode
+    - purchases.currency
+    - stores.name
     - holders.holdercode
-    - cardtypes.country
-    - cardtypes.typecode
-    - cardtypes.address
-    - creditcards.expirationdate
     - stores.type
     - purchases.amount
-    - cardtypes.issuingbank
-    - holders.quality
-    - cardtypes.color
-    - cardtypes.cardname
-    - creditcards.ccnumber
+    - cardtypes.country
+    - holders.incomerange
+    - creditcards.expirationdate
+    - holders.job
+    - cardtypes.typecode
+    - purchases.exchange
+    - cardtypes.circuit
     - stores.country
+    - purchases
+    - cardtypes.issuingbank

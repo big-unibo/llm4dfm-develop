@@ -241,27 +241,27 @@ output_preprocessed:
     - members.height
     - members.weight
     fp:
-    - exercises.exerciseid
-    - members.weight
-    - members.height
-    - maximumweights.weight
-    - exercises.name
-    - workouts.date
     - exercises.exercisetype
     - exerciseinwod.numberofrepetitions
+    - exercises.name
+    - maximumweights.weight
+    - workouts.date
+    - members.height
+    - members.weight
+    - exercises.exerciseid
     tp:
-    - workouts.instructor
-    - presence
+    - members.surname
     - wod.numberofrounds
-    - members.address
+    - members.gender
+    - members.fiscalcode
+    - wod.wodtype
+    - members.postalcode
     - members.city
+    - wod.date
+    - wod.name
     - workouts.date,workouts.time
     - members.name
-    - wod.name
-    - wod.date
-    - members.gender
+    - members.address
+    - presence
     - workouts.time
-    - members.postalcode
-    - members.surname
-    - wod.wodtype
-    - members.fiscalcode
+    - workouts.instructor

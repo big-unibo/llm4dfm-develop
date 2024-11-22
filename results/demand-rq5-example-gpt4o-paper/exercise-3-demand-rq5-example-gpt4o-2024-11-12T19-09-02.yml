@@ -24,7 +24,7 @@ gt_preprocessed:
   - from: store
     to: storeName
   - from: store
-    to: address
+    to: storeAddress
   - from: store
     to: storeType
   - from: store
@@ -69,19 +69,19 @@ gt_preprocessed:
   - name: exchange
 metrics:
 - edges:
-    f1: 0.88
-    fn: 3
-    fp: 3
-    precision: 0.88
-    recall: 0.88
-    tp: 22
-  nodes:
     f1: 0.92
-    fn: 1
-    fp: 3
-    precision: 0.8846
-    recall: 0.9583
+    fn: 2
+    fp: 2
+    precision: 0.92
+    recall: 0.92
     tp: 23
+  nodes:
+    f1: 0.96
+    fn: 0
+    fp: 2
+    precision: 0.9231
+    recall: 1.0
+    tp: 24
 output:
 - dependencies:
   - from: store
@@ -145,7 +145,7 @@ output_preprocessed:
     label: tp
     to: storeName
   - from: store
-    label: fp
+    label: tp
     to: storeAddress
   - from: store
     label: tp
@@ -239,8 +239,8 @@ output_preprocessed:
       label: tp
       to: storeName
     - from: store
-      label: fn
-      to: address
+      label: tp
+      to: storeAddress
     - from: store
       label: tp
       to: storeType
@@ -305,33 +305,32 @@ output_preprocessed:
   - name: amount
   - name: exchange
   nodes:
-    fn:
-    - address
+    fn: []
     fp:
     - bankcountry
-    - storeaddress
     - expirationdate
     tp:
-    - purchase
-    - creditlimit
-    - country
     - age
-    - holder
     - date
-    - area
-    - store
-    - creditcardname
-    - color
-    - storetype
-    - exchange
-    - storename
-    - circuit
-    - issuingbankaddress
     - amount
-    - lastname
-    - job
+    - color
+    - area
+    - country
+    - exchange
+    - storeaddress
+    - circuit
     - incomerange
     - creditcardtype
-    - issuingbank
-    - firstname
     - creditcard
+    - creditcardname
+    - job
+    - purchase
+    - store
+    - storetype
+    - storename
+    - lastname
+    - firstname
+    - holder
+    - issuingbank
+    - creditlimit
+    - issuingbankaddress

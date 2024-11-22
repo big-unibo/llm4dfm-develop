@@ -474,49 +474,49 @@ output_preprocessed:
   nodes:
     fn:
     - checkin.seat
+    - flight.date
     - checkin.numberofbags
     - checkin
-    - flight.date
     fp:
     - boardingcard.seat
-    - boardingcard.boardingcardcode
     - ticket
-    - ticket.date
-    - checkin.boardingcardcode
     - checkin.numberofbags
+    - ticket.date
+    - boardingcard.boardingcardcode
+    - checkin.boardingcardcode
     tp:
-    - checkin.checkintime
+    - airline.nation
+    - airport.nation
+    - person.telephone
+    - ticket.taxamount
+    - airplanetype.airplanetype
+    - airline.airlinename
+    - route.departuretime
+    - person.name
+    - airplanetype.name
     - route.route
-    - person.cityofresidence
-    - person.email
+    - person.documentid
+    - route.arrivaltime
+    - flight.route,flight.date
+    - purchase.totalamount
+    - checkin.checkintime
+    - person.personcode
     - person.surname
     - person.gender
-    - ticket.priorityyn
-    - purchase.date
+    - airport.city
+    - ticket.ticketnumber
+    - person.documenttype
+    - flight.delayindeparture
+    - airport.airportcode
     - airplanetype.numberofseats
     - flight.cancelledyn
-    - purchase.totalamount
-    - airline.nation
-    - person.name
-    - airport.city
-    - flight.delayindeparture
-    - ticket.taxamount
-    - ticket.flightamount
-    - airport.name
-    - person.documenttype
-    - airplanetype.airplanetype
-    - person.personcode
-    - ticket.ticketnumber
-    - airline.airlinename
-    - route.arrivaltime
-    - person.birthdate
-    - airplanetype.name
-    - person.telephone
-    - airport.airportcode
-    - airline.airlinecode
-    - flight.delayinarrival
-    - person.documentid
-    - route.departuretime
     - purchase.purchasecode
-    - flight.date,flight.route
-    - airport.nation
+    - person.cityofresidence
+    - flight.delayinarrival
+    - person.birthdate
+    - purchase.date
+    - person.email
+    - airline.airlinecode
+    - ticket.flightamount
+    - ticket.priorityyn
+    - airport.name

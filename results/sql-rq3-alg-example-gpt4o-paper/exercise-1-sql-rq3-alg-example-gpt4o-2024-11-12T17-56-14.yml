@@ -149,14 +149,14 @@ output_preprocessed:
     fp:
     - computer.brand
     tp:
-    - computer.model
-    - software.codsoftw
-    - software.type
     - computer.codcomputer
-    - supplies.brand
-    - suppliers.suppliercity
-    - software.softwaredescription
-    - suppliers.supplieraddress
-    - installations.installationdate
     - installations
     - suppliers.suppliername
+    - software.codsoftw
+    - installations.installationdate
+    - computer.model
+    - suppliers.supplieraddress
+    - software.type
+    - supplies.brand
+    - software.softwaredescription
+    - suppliers.suppliercity

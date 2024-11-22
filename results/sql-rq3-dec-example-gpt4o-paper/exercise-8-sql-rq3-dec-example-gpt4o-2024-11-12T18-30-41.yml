@@ -473,52 +473,52 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - checkin.numberofbags
     - checkin.seat
     - flight.date
     - checkin
-    fp:
-    - ticket
-    - ticket.purchasecode
     - checkin.numberofbags
-    - boardingcard.boardingcardcode
+    fp:
+    - checkin.numberofbags
     - boardingcard.seat
-    - ticket.route
     - checkin.boardingcardcode
+    - ticket
+    - boardingcard.boardingcardcode
+    - ticket.purchasecode
+    - ticket.route
     - ticket.date
     tp:
-    - route.arrivaltime
-    - ticket.priorityyn
-    - purchase.totalamount
-    - flight.delayinarrival
-    - airplanetype.airplanetype
-    - person.documenttype
-    - airport.airportcode
-    - person.documentid
-    - checkin.checkintime
-    - airport.city
-    - ticket.flightamount
     - purchase.date
-    - person.birthdate
-    - airline.airlinename
+    - flight.delayindeparture
+    - route.arrivaltime
+    - checkin.checkintime
+    - person.gender
+    - route.route
+    - airplanetype.numberofseats
+    - person.name
+    - ticket.flightamount
+    - airport.city
+    - flight.date,flight.route
+    - person.documentid
+    - flight.cancelledyn
     - airport.name
+    - person.email
     - person.personcode
     - person.cityofresidence
-    - airline.airlinecode
-    - person.name
-    - person.gender
-    - person.email
-    - route.departuretime
-    - flight.delayindeparture
     - ticket.ticketnumber
-    - airline.nation
-    - route.route
-    - airplanetype.name
     - purchase.purchasecode
-    - flight.cancelledyn
-    - airplanetype.numberofseats
+    - airline.nation
     - person.telephone
+    - flight.delayinarrival
+    - route.departuretime
+    - person.birthdate
+    - airline.airlinename
+    - airplanetype.name
+    - purchase.totalamount
+    - person.documenttype
     - airport.nation
+    - airport.airportcode
+    - airplanetype.airplanetype
     - person.surname
-    - flight.date,flight.route
     - ticket.taxamount
+    - airline.airlinecode
+    - ticket.priorityyn

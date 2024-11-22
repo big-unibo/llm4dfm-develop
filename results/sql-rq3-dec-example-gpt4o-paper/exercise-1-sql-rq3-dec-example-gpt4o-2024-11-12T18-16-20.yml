@@ -149,13 +149,13 @@ output_preprocessed:
     fp: []
     tp:
     - installations
-    - computer.model
     - installations.installationdate
     - computer.codcomputer
-    - software.softwaredescription
-    - suppliers.suppliercity
-    - software.codsoftw
-    - software.type
-    - suppliers.suppliername
-    - supplies.brand
     - suppliers.supplieraddress
+    - software.codsoftw
+    - suppliers.suppliercity
+    - software.softwaredescription
+    - suppliers.suppliername
+    - computer.model
+    - software.type
+    - supplies.brand

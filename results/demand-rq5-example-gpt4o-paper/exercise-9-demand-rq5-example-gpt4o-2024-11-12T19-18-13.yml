@@ -305,28 +305,28 @@ output_preprocessed:
     fn:
     - routeinticket
     - date
-    - location
-    - ticket
     - route
     - trip
+    - ticket
+    - location
     fp:
-    - purchasedate
     - tripdate
     - birthdate
     - route
+    - purchasedate
     tp:
     - documentid
-    - basefare
-    - price
-    - stationname
-    - traincode
-    - region
     - customercode
-    - status
-    - city
-    - lastname
-    - timeduration
-    - firstname
     - traintype
-    - capacity
     - distance
+    - lastname
+    - status
+    - capacity
+    - region
+    - price
+    - firstname
+    - timeduration
+    - stationname
+    - city
+    - basefare
+    - traincode

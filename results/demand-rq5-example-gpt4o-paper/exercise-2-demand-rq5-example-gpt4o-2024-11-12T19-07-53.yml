@@ -186,16 +186,16 @@ output_preprocessed:
     - article
     fp: []
     tp:
-    - quantity
-    - date
-    - unitprice
-    - type
-    - purchase
-    - store
+    - region
+    - revenue
     - articlename
     - address
-    - country
-    - revenue
-    - region
-    - storename
+    - date
+    - type
     - state
+    - quantity
+    - unitprice
+    - country
+    - storename
+    - store
+    - purchase

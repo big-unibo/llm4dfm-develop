@@ -271,28 +271,28 @@ output_preprocessed:
     fn:
     - grandprixs.numberoflaps
     fp:
-    - cars.stablename
     - grandprixs.numberoflaps
+    - cars.stablename
     tp:
-    - drivers.birthdate
-    - racingcircuits.circuitname
-    - drivers.name
     - arrivals.score
-    - cars.number
-    - drivers.surname,drivers.name
-    - racingstables.stablename
-    - racingcircuits.city
-    - racingstables.manager
-    - grandprixs.date,grandprixs.circuitname
-    - drives.year
-    - arrivals.time
-    - drives.fromdate
     - racingcircuits.description
-    - racingcircuits.length
-    - arrivals
+    - racingcircuits.circuitname
+    - drives.year
     - drivers.surname
-    - arrivals.position
-    - drives.number,drives.year,drives.name,drives.surname
-    - racingstables.mainaddress
-    - grandprixs.date
+    - grandprixs.circuitname,grandprixs.date
+    - racingcircuits.length
+    - racingstables.stablename
     - drives.todate
+    - drives.fromdate
+    - arrivals.time
+    - drivers.surname,drivers.name
+    - drivers.birthdate
+    - arrivals.position
+    - arrivals
+    - racingstables.mainaddress
+    - racingcircuits.city
+    - grandprixs.date
+    - cars.number
+    - racingstables.manager
+    - drivers.name
+    - drives.year,drives.surname,drives.number,drives.name

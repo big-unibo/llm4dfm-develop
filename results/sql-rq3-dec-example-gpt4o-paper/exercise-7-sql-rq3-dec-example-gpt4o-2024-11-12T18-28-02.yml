@@ -276,33 +276,33 @@ output_preprocessed:
   - name: PAYMENTS.Discount
   nodes:
     fn:
-    - insurances
-    - insurances.risk
     - payments.paymentmode
+    - insurances.risk
     - rentals.pickupdate,rentals.plate
+    - insurances
     fp:
-    - drivers.birthdate
-    - drivers.licensenumber
-    - drivers.drivername
     - rentals.dropoffplace
-    - rentals
-    - rentals.pickupplace
     - drivers.licenseexpiration
+    - drivers.licensenumber
+    - drivers.birthdate
+    - rentals.pickupplace
+    - rentals
+    - drivers.drivername
     tp:
-    - cars.model
     - rentals.pickupdate
-    - cars.registrationdate
-    - cars.plate
-    - cars.brand
-    - payments.amount
-    - rentaloffices.area
-    - rentals.miles
-    - rentaloffices.state
-    - insurances.cost
-    - rentaloffices.country
     - rentaloffices.officename
-    - rentals.dropoffdate
-    - payments.discount
-    - cars.category
-    - rentaloffices.city
     - cars.fuel
+    - cars.category
+    - payments.amount
+    - cars.plate
+    - rentaloffices.state
+    - rentaloffices.area
+    - rentaloffices.country
+    - cars.registrationdate
+    - rentals.dropoffdate
+    - cars.model
+    - rentaloffices.city
+    - payments.discount
+    - cars.brand
+    - insurances.cost
+    - rentals.miles

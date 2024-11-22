@@ -354,35 +354,35 @@ output_preprocessed:
     - routes.fare
     - routes.duration
     fp:
+    - routes.arrivalstationcode
+    - tickets.customercode
+    - routes.departurestationcode
     - routes.fare
     - routes.duration
-    - routes.departurestationcode
-    - tickets.customercode
-    - routes.arrivalstationcode
     tp:
-    - trips.date,trips.traincode
-    - customers.name
-    - customers.surname
-    - routesintrips.routecode,routesintrips.date,routesintrips.traincode
-    - customers.birthdate
-    - customers.documentid
-    - stations.city
-    - traintype.traintypecode
-    - traintype.capacity
-    - routes.routecode
-    - tickets.ticketcode
-    - stations.stationcode
+    - routesintickets
     - tickets.purchasedate
-    - tickets.totalprice
-    - trains.traincode
-    - trips.status
-    - traintype.traintype
-    - stations.location
+    - customers.surname
+    - tickets.ticketcode
+    - customers.documentid
+    - stations.region
     - routesintickets.price
     - customers.birthcity
-    - stations.name
+    - stations.city
+    - customers.name
+    - traintype.capacity
     - routes.distancekm
-    - customers.customercode
-    - routesintickets
+    - stations.stationcode
+    - customers.birthdate
+    - trips.status
+    - stations.name
+    - stations.location
     - routesintrips.sequence
-    - stations.region
+    - tickets.totalprice
+    - customers.customercode
+    - trains.traincode
+    - routes.routecode
+    - traintype.traintypecode
+    - trips.traincode,trips.date
+    - traintype.traintype
+    - routesintrips.date,routesintrips.routecode,routesintrips.traincode

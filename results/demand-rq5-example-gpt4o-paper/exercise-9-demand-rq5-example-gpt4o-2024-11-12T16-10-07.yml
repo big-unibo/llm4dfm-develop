@@ -310,27 +310,27 @@ output_preprocessed:
   nodes:
     fn:
     - trip
-    - location
-    - ticket
     - route
+    - location
     - routeinticket
+    - ticket
     fp:
     - birthdate
     - route
     tp:
-    - traintype
-    - date
-    - timeduration
-    - distance
-    - basefare
-    - capacity
-    - region
-    - traincode
-    - firstname
-    - city
-    - stationname
-    - customercode
-    - status
     - documentid
+    - customercode
+    - distance
+    - region
+    - traintype
+    - timeduration
+    - city
+    - capacity
     - lastname
     - price
+    - date
+    - status
+    - stationname
+    - traincode
+    - firstname
+    - basefare

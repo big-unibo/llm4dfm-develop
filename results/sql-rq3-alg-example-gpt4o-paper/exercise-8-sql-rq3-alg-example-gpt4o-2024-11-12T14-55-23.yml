@@ -488,52 +488,52 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - checkin.numberofbags
-    - flight.date,flight.route
-    - flight.date
     - checkin.seat
+    - flight.date
+    - checkin.numberofbags
     - checkin
+    - flight.date,flight.route
     fp:
     - boardingcard.boardingcardcode
-    - ticket.route
-    - checkin.numberofbags
-    - ticket
-    - checkin.boardingcardcode
     - ticket.date
     - boardingcard.seat
+    - ticket
+    - checkin.numberofbags
     - flight.date,route.route
+    - ticket.route
+    - checkin.boardingcardcode
     tp:
-    - airport.airportcode
-    - airline.airlinecode
-    - airport.name
-    - ticket.priorityyn
-    - person.name
-    - airline.nation
-    - person.cityofresidence
-    - person.birthdate
-    - flight.cancelledyn
-    - flight.delayindeparture
-    - route.arrivaltime
-    - person.gender
-    - purchase.purchasecode
-    - person.telephone
-    - person.personcode
-    - airplanetype.airplanetype
-    - ticket.flightamount
-    - person.documenttype
-    - airline.airlinename
-    - checkin.checkintime
-    - flight.delayinarrival
-    - airport.nation
-    - airplanetype.numberofseats
     - airport.city
-    - person.documentid
-    - route.route
-    - purchase.date
-    - ticket.taxamount
-    - airplanetype.name
-    - ticket.ticketnumber
-    - person.email
-    - person.surname
+    - ticket.flightamount
     - purchase.totalamount
+    - airline.airlinecode
+    - person.birthdate
+    - ticket.ticketnumber
+    - checkin.checkintime
+    - purchase.purchasecode
+    - person.gender
     - route.departuretime
+    - flight.cancelledyn
+    - person.documenttype
+    - person.telephone
+    - airplanetype.numberofseats
+    - airplanetype.airplanetype
+    - airport.airportcode
+    - route.route
+    - route.arrivaltime
+    - person.personcode
+    - person.cityofresidence
+    - ticket.priorityyn
+    - flight.delayindeparture
+    - person.surname
+    - airplanetype.name
+    - airline.nation
+    - purchase.date
+    - person.name
+    - person.email
+    - airport.nation
+    - flight.delayinarrival
+    - airport.name
+    - ticket.taxamount
+    - airline.airlinename
+    - person.documentid

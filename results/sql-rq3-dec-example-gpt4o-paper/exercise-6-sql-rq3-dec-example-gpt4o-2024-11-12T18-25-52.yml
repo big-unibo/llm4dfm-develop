@@ -230,22 +230,22 @@ output_preprocessed:
     fn:
     - recruitments.recruitmentdate
     fp:
-    - departments.department
-    - departments.todepartment
-    - departments.fromdepartment
-    - recruitments.employeecode
     - departments.currentdepartment
+    - departments.department
+    - recruitments.employeecode
     - staff.managercode
+    - departments.fromdepartment
+    - departments.todepartment
     tp:
-    - staff.name
-    - staff.surname
     - transfers.date
-    - departments.departmentname
-    - transfers
-    - staff.employeecode
-    - divisions.divisionname
     - transfers.reason
     - divisions.divcode
+    - divisions.divisionname
+    - staff.employeecode
+    - departments.departmentname
+    - staff.surname
+    - transfers
+    - qualifications.qualification
+    - staff.name
     - staff.gender
     - departments.departmentcode
-    - qualifications.qualification

@@ -475,49 +475,49 @@ output_preprocessed:
   nodes:
     fn:
     - checkin.seat
-    - flight.route,flight.date
     - checkin
+    - flight.date,flight.route
     - checkin.numberofbags
     fp:
-    - ticket
-    - boardingcard.boardingcardcode
+    - flight.date,route.route
     - boardingcard.seat
+    - ticket
     - checkin.boardingcardcode
     - checkin.numberofbags
-    - flight.date,route.route
+    - boardingcard.boardingcardcode
     tp:
-    - person.documenttype
-    - purchase.purchasecode
-    - ticket.priorityyn
-    - ticket.taxamount
-    - airplanetype.airplanetype
-    - ticket.flightamount
-    - person.gender
-    - airline.nation
-    - airplanetype.numberofseats
-    - person.birthdate
-    - airport.city
-    - route.route
-    - person.documentid
-    - person.surname
-    - flight.cancelledyn
-    - airplanetype.name
-    - flight.delayindeparture
-    - flight.delayinarrival
-    - airport.nation
-    - checkin.checkintime
-    - person.cityofresidence
-    - person.name
-    - route.departuretime
-    - airline.airlinename
-    - purchase.date
-    - ticket.ticketnumber
     - person.telephone
-    - airline.airlinecode
     - airport.airportcode
-    - person.email
-    - purchase.totalamount
+    - purchase.date
+    - airplanetype.airplanetype
+    - ticket.ticketnumber
+    - airline.nation
+    - person.gender
+    - purchase.purchasecode
+    - flight.delayindeparture
+    - airplanetype.name
+    - route.departuretime
     - route.arrivaltime
+    - person.name
+    - checkin.checkintime
+    - airplanetype.numberofseats
+    - airline.airlinename
+    - ticket.priorityyn
+    - airport.city
+    - person.documenttype
+    - person.birthdate
     - airport.name
-    - person.personcode
+    - person.cityofresidence
+    - flight.cancelledyn
+    - person.documentid
+    - route.route
+    - person.surname
     - flight.date
+    - airport.nation
+    - flight.delayinarrival
+    - person.email
+    - airline.airlinecode
+    - purchase.totalamount
+    - person.personcode
+    - ticket.flightamount
+    - ticket.taxamount

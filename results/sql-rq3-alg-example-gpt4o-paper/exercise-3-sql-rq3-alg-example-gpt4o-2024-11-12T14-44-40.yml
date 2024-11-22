@@ -338,37 +338,37 @@ output_preprocessed:
   - name: CREDITCARDS.CreditLimit
   nodes:
     fn:
-    - creditcards.expirationdate
     - purchases.currency
+    - creditcards.expirationdate
     fp:
-    - creditcards.typecode
     - creditcards.holdercode
+    - creditcards.typecode
     tp:
+    - stores.area
+    - stores.email
+    - holders.firstname
+    - cardtypes.circuit
+    - holders.lastname
     - holders.incomerange
-    - cardtypes.issuingbank
+    - cardtypes.address
+    - purchases.exchange
+    - stores.storecode
+    - purchases.amount
+    - cardtypes.country
+    - holders.quality
     - purchases
+    - holders.job
     - cardtypes.cardname
+    - creditcards.ccnumber
+    - stores.country
+    - cardtypes.issuingbank
     - cardtypes.typecode
-    - cardtypes.color
-    - purchases.date
     - stores.type
     - holders.holdercode
-    - stores.address
-    - stores.country
-    - creditcards.ccnumber
-    - holders.lastname
-    - stores.email
-    - stores.storecode
-    - stores.website
-    - cardtypes.circuit
-    - cardtypes.country
-    - creditcards.creditlimit
+    - purchases.date
     - holders.birthdate
-    - holders.firstname
-    - holders.quality
-    - purchases.amount
+    - creditcards.creditlimit
     - stores.name
-    - stores.area
-    - holders.job
-    - purchases.exchange
-    - cardtypes.address
+    - cardtypes.color
+    - stores.address
+    - stores.website

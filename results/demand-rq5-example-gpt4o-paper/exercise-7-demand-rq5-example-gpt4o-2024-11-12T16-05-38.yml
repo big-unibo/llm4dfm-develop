@@ -269,19 +269,19 @@ output_preprocessed:
     fp:
     - registrationdate
     tp:
-    - state
-    - country
-    - brand
-    - rental
-    - area
-    - carplate
-    - office
-    - fueltype
     - date
+    - rental
+    - city
+    - brand
+    - discount
+    - office
     - insurancecost
     - model
-    - amount
     - milestravelled
+    - country
+    - area
+    - fueltype
     - category
-    - discount
-    - city
+    - carplate
+    - state
+    - amount

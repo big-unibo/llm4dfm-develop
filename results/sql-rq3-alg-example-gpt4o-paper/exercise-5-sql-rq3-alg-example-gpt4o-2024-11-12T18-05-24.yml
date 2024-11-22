@@ -234,26 +234,26 @@ output_preprocessed:
     - members.weight
     - members.height
     fp:
-    - maximumweights.weight
     - members.weight
-    - exercises.name
     - exercises.exerciseid
+    - exercises.name
     - exercises.exercisetype
     - workouts.date
     - members.height
+    - maximumweights.weight
     tp:
-    - wod.wodtype
-    - workouts.instructor
     - workouts.time
-    - members.city
     - members.postalcode
-    - members.gender
-    - members.fiscalcode
+    - wod.wodtype
     - workouts.time,workouts.date
-    - wod.name
-    - wod.date
-    - members.address
-    - presence
+    - members.city
+    - members.fiscalcode
     - wod.numberofrounds
     - members.surname
+    - members.address
+    - wod.name
+    - presence
+    - workouts.instructor
+    - wod.date
     - members.name
+    - members.gender

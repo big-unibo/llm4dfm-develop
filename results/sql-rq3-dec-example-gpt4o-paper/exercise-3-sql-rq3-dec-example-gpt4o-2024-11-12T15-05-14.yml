@@ -349,36 +349,36 @@ output_preprocessed:
   nodes:
     fn: []
     fp:
-    - creditcards.typecode
     - creditcards.holdercode
+    - creditcards.typecode
     tp:
-    - cardtypes.color
-    - purchases.currency
-    - cardtypes.address
-    - holders.birthdate
-    - creditcards.creditlimit
-    - holders.quality
-    - purchases.amount
-    - holders.lastname
-    - stores.website
-    - holders.incomerange
-    - stores.storecode
-    - purchases.exchange
-    - cardtypes.issuingbank
+    - stores.email
     - cardtypes.circuit
+    - holders.birthdate
+    - cardtypes.issuingbank
     - stores.name
+    - cardtypes.country
+    - creditcards.creditlimit
+    - cardtypes.typecode
+    - holders.incomerange
+    - holders.firstname
+    - purchases.currency
+    - holders.quality
+    - cardtypes.address
+    - stores.address
+    - purchases
+    - creditcards.ccnumber
+    - cardtypes.cardname
+    - cardtypes.color
     - stores.type
     - purchases.date
-    - holders.firstname
-    - holders.holdercode
-    - creditcards.ccnumber
+    - stores.website
+    - stores.storecode
     - holders.job
-    - cardtypes.country
-    - cardtypes.typecode
-    - purchases
-    - stores.email
-    - cardtypes.cardname
-    - stores.address
-    - creditcards.expirationdate
+    - purchases.exchange
+    - holders.holdercode
     - stores.area
+    - holders.lastname
+    - creditcards.expirationdate
+    - purchases.amount
     - stores.country

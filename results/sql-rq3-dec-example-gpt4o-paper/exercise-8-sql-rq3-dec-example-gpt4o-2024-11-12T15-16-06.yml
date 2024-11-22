@@ -474,49 +474,49 @@ output_preprocessed:
   nodes:
     fn:
     - checkin.numberofbags
-    - flight.date
     - checkin
+    - flight.date
     - checkin.seat
     fp:
-    - checkin.numberofbags
-    - checkin.boardingcardcode
     - boardingcard.seat
-    - boardingcard.boardingcardcode
+    - checkin.boardingcardcode
     - ticket
     - ticket.date
+    - checkin.numberofbags
+    - boardingcard.boardingcardcode
     tp:
-    - airline.airlinename
-    - route.route
-    - route.arrivaltime
-    - airplanetype.name
-    - ticket.ticketnumber
-    - checkin.checkintime
-    - airport.name
-    - route.departuretime
-    - airline.airlinecode
-    - person.cityofresidence
-    - ticket.flightamount
-    - ticket.taxamount
-    - purchase.totalamount
-    - airplanetype.numberofseats
-    - person.personcode
-    - person.gender
-    - person.telephone
-    - flight.delayinarrival
-    - ticket.priorityyn
-    - airport.nation
-    - person.documentid
-    - flight.cancelledyn
-    - airport.city
-    - purchase.purchasecode
-    - flight.route,flight.date
-    - person.name
-    - airline.nation
-    - person.birthdate
-    - airport.airportcode
-    - person.email
-    - person.surname
-    - flight.delayindeparture
     - person.documenttype
-    - purchase.date
+    - person.surname
+    - purchase.purchasecode
+    - route.arrivaltime
+    - airline.airlinename
+    - purchase.totalamount
+    - route.departuretime
+    - airport.airportcode
+    - airplanetype.numberofseats
+    - ticket.priorityyn
+    - flight.delayindeparture
     - airplanetype.airplanetype
+    - person.documentid
+    - airline.nation
+    - person.personcode
+    - checkin.checkintime
+    - ticket.ticketnumber
+    - flight.cancelledyn
+    - airport.nation
+    - person.birthdate
+    - ticket.taxamount
+    - flight.date,flight.route
+    - airline.airlinecode
+    - person.email
+    - airport.name
+    - airplanetype.name
+    - person.name
+    - ticket.flightamount
+    - person.gender
+    - person.cityofresidence
+    - person.telephone
+    - purchase.date
+    - route.route
+    - flight.delayinarrival
+    - airport.city

@@ -473,49 +473,49 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - ticket.priorityyn
-    - checkin
-    - checkin.numberofbags
     - checkin.seat
     - flight.route,flight.date
-    fp:
-    - boardingcard.boardingcardcode
-    - route.route,flight.date
-    - checkin.boardingcardcode
+    - ticket.priorityyn
     - checkin.numberofbags
+    - checkin
+    fp:
+    - route.route,flight.date
     - ticket
+    - checkin.numberofbags
+    - boardingcard.boardingcardcode
+    - checkin.boardingcardcode
     tp:
-    - airport.nation
-    - flight.cancelledyn
-    - airline.airlinecode
-    - flight.date
-    - airline.nation
-    - person.name
-    - airplanetype.name
+    - ticket.taxamount
+    - person.email
+    - airplanetype.numberofseats
+    - person.birthdate
+    - person.surname
     - person.personcode
-    - person.gender
-    - flight.delayindeparture
+    - person.telephone
+    - flight.cancelledyn
+    - airline.airlinename
+    - airport.name
+    - purchase.date
+    - ticket.flightamount
+    - person.name
     - airport.city
     - route.departuretime
-    - airport.name
-    - airplanetype.numberofseats
-    - person.documenttype
-    - person.surname
-    - route.route
-    - ticket.taxamount
-    - ticket.ticketnumber
+    - person.gender
     - purchase.purchasecode
-    - person.email
-    - purchase.totalamount
     - airport.airportcode
     - airplanetype.airplanetype
-    - checkin.checkintime
-    - airline.airlinename
-    - flight.delayinarrival
+    - flight.date
+    - airport.nation
+    - airline.airlinecode
+    - flight.delayindeparture
+    - route.route
+    - person.documenttype
     - person.documentid
-    - person.birthdate
-    - purchase.date
-    - person.cityofresidence
-    - ticket.flightamount
+    - airplanetype.name
     - route.arrivaltime
-    - person.telephone
+    - purchase.totalamount
+    - checkin.checkintime
+    - ticket.ticketnumber
+    - flight.delayinarrival
+    - person.cityofresidence
+    - airline.nation

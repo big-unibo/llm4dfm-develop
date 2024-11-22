@@ -148,14 +148,14 @@ output_preprocessed:
     fn: []
     fp: []
     tp:
-    - supplier
-    - city
-    - computer
-    - software
-    - type
-    - date
-    - address
     - installation
-    - description
-    - model
+    - supplier
+    - address
+    - computer
     - brand
+    - type
+    - description
+    - date
+    - city
+    - model
+    - software

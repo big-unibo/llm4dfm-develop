@@ -148,14 +148,14 @@ output_preprocessed:
     fn: []
     fp: []
     tp:
-    - suppliers.suppliername
-    - computer.model
-    - suppliers.supplieraddress
-    - software.codsoftw
-    - supplies.brand
-    - installations
     - installations.installationdate
+    - suppliers.suppliername
+    - supplies.brand
     - software.type
     - computer.codcomputer
+    - installations
+    - suppliers.supplieraddress
     - suppliers.suppliercity
     - software.softwaredescription
+    - computer.model
+    - software.codsoftw

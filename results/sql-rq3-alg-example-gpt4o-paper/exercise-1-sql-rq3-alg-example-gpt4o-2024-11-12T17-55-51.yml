@@ -150,13 +150,13 @@ output_preprocessed:
     - computer.brand
     tp:
     - computer.codcomputer
-    - software.codsoftw
     - computer.model
-    - suppliers.suppliercity
-    - installations
-    - supplies.brand
-    - installations.installationdate
-    - suppliers.supplieraddress
-    - software.softwaredescription
     - suppliers.suppliername
+    - suppliers.supplieraddress
+    - installations
+    - software.codsoftw
+    - installations.installationdate
+    - supplies.brand
     - software.type
+    - suppliers.suppliercity
+    - software.softwaredescription

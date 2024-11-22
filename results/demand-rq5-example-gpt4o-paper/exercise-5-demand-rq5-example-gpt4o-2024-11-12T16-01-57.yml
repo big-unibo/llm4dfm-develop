@@ -185,14 +185,14 @@ output_preprocessed:
     tp:
     - surname
     - wodtype
-    - presence
-    - hour
-    - height
-    - instructor
     - postalcode
-    - date
-    - member
+    - name
     - weight
     - wod
-    - name
+    - instructor
+    - date
     - city
+    - hour
+    - member
+    - presence
+    - height

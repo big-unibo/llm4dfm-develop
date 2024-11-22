@@ -278,30 +278,30 @@ output_preprocessed:
     fn:
     - insurances
     - payments.paymentmode
-    - rentals.pickupdate,rentals.plate
+    - rentals.plate,rentals.pickupdate
     - insurances.risk
     fp:
     - rentals.dropoffplace
-    - rentals
     - drivers.licenseexpiration
-    - drivers.birthdate
     - drivers.licensenumber
+    - rentals
     - drivers.drivername
+    - drivers.birthdate
     tp:
-    - payments.amount
-    - insurances.cost
-    - cars.plate
-    - rentaloffices.country
     - rentaloffices.city
-    - rentals.dropoffdate
-    - payments.discount
-    - rentals.pickupdate
-    - cars.registrationdate
+    - payments.amount
+    - cars.plate
     - cars.model
-    - cars.category
+    - rentals.pickupdate
     - rentals.miles
-    - rentaloffices.state
-    - cars.fuel
-    - rentaloffices.officename
+    - cars.registrationdate
     - cars.brand
+    - rentaloffices.officename
+    - payments.discount
+    - cars.category
+    - rentals.dropoffdate
+    - rentaloffices.state
+    - rentaloffices.country
+    - insurances.cost
     - rentaloffices.area
+    - cars.fuel

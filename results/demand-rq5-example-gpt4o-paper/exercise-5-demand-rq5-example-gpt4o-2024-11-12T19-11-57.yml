@@ -183,16 +183,16 @@ output_preprocessed:
     fp:
     - memberaddress
     tp:
-    - member
+    - city
+    - surname
+    - date
     - weight
+    - wodtype
+    - member
+    - presence
+    - postalcode
     - hour
     - height
-    - date
-    - surname
-    - instructor
     - name
-    - presence
-    - wodtype
     - wod
-    - postalcode
-    - city
+    - instructor

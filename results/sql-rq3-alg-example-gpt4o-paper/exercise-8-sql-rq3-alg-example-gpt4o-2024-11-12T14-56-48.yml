@@ -473,50 +473,50 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - flight.date
-    - checkin.numberofbags
-    - checkin.seat
-    - flight.route,flight.date
     - checkin
+    - checkin.numberofbags
+    - flight.date
     - ticket.priorityyn
+    - flight.date,flight.route
+    - checkin.seat
     fp:
-    - checkin.boardingcardcode
+    - ticket
     - boardingcard.seat
     - flight.date,route.route
-    - boardingcard.boardingcardcode
     - checkin.numberofbags
-    - ticket
+    - boardingcard.boardingcardcode
+    - checkin.boardingcardcode
     tp:
-    - person.personcode
-    - person.email
-    - route.departuretime
-    - person.documenttype
-    - airplanetype.numberofseats
-    - flight.cancelledyn
-    - airport.nation
-    - checkin.checkintime
-    - airplanetype.airplanetype
-    - ticket.taxamount
-    - person.documentid
-    - person.gender
-    - airport.name
     - airport.city
     - ticket.ticketnumber
-    - purchase.date
-    - person.telephone
-    - airline.airlinename
-    - person.cityofresidence
-    - route.arrivaltime
-    - airline.airlinecode
-    - purchase.totalamount
-    - person.surname
-    - person.birthdate
-    - flight.delayindeparture
-    - purchase.purchasecode
     - airplanetype.name
-    - route.route
-    - airline.nation
+    - airline.airlinename
+    - person.gender
     - person.name
+    - airplanetype.airplanetype
+    - person.cityofresidence
+    - flight.cancelledyn
+    - airport.nation
+    - person.email
+    - person.surname
+    - person.telephone
     - flight.delayinarrival
+    - checkin.checkintime
+    - ticket.taxamount
     - airport.airportcode
+    - flight.delayindeparture
+    - person.documenttype
+    - airport.name
+    - route.route
+    - route.departuretime
+    - purchase.purchasecode
+    - purchase.totalamount
+    - airplanetype.numberofseats
+    - person.birthdate
+    - airline.nation
     - ticket.flightamount
+    - airline.airlinecode
+    - purchase.date
+    - route.arrivaltime
+    - person.documentid
+    - person.personcode

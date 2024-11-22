@@ -14,7 +14,7 @@ gt_preprocessed:
   - from: ARRIVAL
     to: NumberOfLaps
   - from: ARRIVAL
-    to: hour
+    to: Time
   - from: ARRIVAL
     to: Score
   - from: ARRIVAL
@@ -30,11 +30,11 @@ gt_preprocessed:
   - from: Circuit
     to: City
   - from: Circuit
-    to: Length
+    to: mileage
   - from: Driver
-    to: Name
+    to: firstName
   - from: Driver
-    to: Surname
+    to: lastName
   - from: Driver
     to: Age
   - from: CarNumber
@@ -47,24 +47,24 @@ gt_preprocessed:
     name: ARRIVAL
   measures:
   - name: Position
-  - name: hour
+  - name: Time
   - name: Score
   - name: NumberOfLaps
 metrics:
 - edges:
-    f1: 0.75
-    fn: 4
-    fp: 4
-    precision: 0.75
-    recall: 0.75
-    tp: 12
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 16
   nodes:
-    f1: 0.7647
-    fn: 4
-    fp: 4
-    precision: 0.7647
-    recall: 0.7647
-    tp: 13
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 17
 output:
 - dependencies:
   - from: driver
@@ -109,10 +109,10 @@ output:
 output_preprocessed:
 - dependencies:
   - from: driver
-    label: fp
+    label: tp
     to: firstName
   - from: driver
-    label: fp
+    label: tp
     to: lastName
   - from: driver
     label: tp
@@ -130,7 +130,7 @@ output_preprocessed:
     label: tp
     to: city
   - from: circuit
-    label: fp
+    label: tp
     to: mileage
   - from: ARRIVAL
     label: tp
@@ -142,7 +142,7 @@ output_preprocessed:
     label: tp
     to: numberOfLaps
   - from: ARRIVAL
-    label: fp
+    label: tp
     to: time
   - from: ARRIVAL
     label: tp
@@ -164,8 +164,8 @@ output_preprocessed:
       label: tp
       to: NumberOfLaps
     - from: ARRIVAL
-      label: fn
-      to: hour
+      label: tp
+      to: Time
     - from: ARRIVAL
       label: tp
       to: Score
@@ -188,14 +188,14 @@ output_preprocessed:
       label: tp
       to: City
     - from: Circuit
-      label: fn
-      to: Length
+      label: tp
+      to: mileage
     - from: Driver
-      label: fn
-      to: Name
+      label: tp
+      to: firstName
     - from: Driver
-      label: fn
-      to: Surname
+      label: tp
+      to: lastName
     - from: Driver
       label: tp
       to: Age
@@ -212,7 +212,7 @@ output_preprocessed:
       name: ARRIVAL
     measures:
     - name: Position
-    - name: hour
+    - name: Time
     - name: Score
     - name: NumberOfLaps
   measures:
@@ -221,27 +221,23 @@ output_preprocessed:
   - name: numberOfLaps
   - name: time
   nodes:
-    fn:
-    - surname
-    - length
-    - hour
-    - name
-    fp:
-    - time
-    - firstname
-    - lastname
-    - mileage
+    fn: []
+    fp: []
     tp:
-    - date
-    - age
-    - city
-    - numberoflaps
-    - mainaddress
-    - position
-    - manager
-    - circuit
+    - stable
     - carnumber
+    - time
+    - manager
+    - numberoflaps
     - arrival
+    - position
+    - age
+    - circuit
+    - lastname
+    - mainaddress
+    - city
+    - firstname
+    - mileage
+    - date
     - score
     - driver
-    - stable

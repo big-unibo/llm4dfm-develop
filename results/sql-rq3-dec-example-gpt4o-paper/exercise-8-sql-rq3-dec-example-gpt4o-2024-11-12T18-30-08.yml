@@ -473,50 +473,50 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - checkin
     - flight.date
-    - checkin.numberofbags
     - checkin.seat
+    - checkin.numberofbags
+    - checkin
     fp:
+    - boardingcard.boardingcardcode
     - checkin.boardingcardcode
+    - checkin.numberofbags
     - ticket
     - ticket.date
-    - checkin.numberofbags
     - boardingcard.seat
-    - boardingcard.boardingcardcode
     tp:
-    - airplanetype.numberofseats
-    - ticket.taxamount
-    - person.gender
-    - route.route
-    - route.arrivaltime
-    - airline.airlinecode
-    - airplanetype.airplanetype
-    - person.telephone
-    - purchase.date
-    - ticket.priorityyn
-    - purchase.totalamount
-    - airport.nation
-    - person.cityofresidence
     - airport.city
-    - airplanetype.name
-    - airline.nation
-    - checkin.checkintime
-    - airport.name
-    - flight.route,flight.date
-    - person.birthdate
-    - flight.delayinarrival
-    - person.documenttype
-    - person.personcode
-    - flight.cancelledyn
-    - person.documentid
-    - ticket.flightamount
-    - route.departuretime
-    - ticket.ticketnumber
-    - purchase.purchasecode
-    - person.email
-    - airline.airlinename
     - airport.airportcode
-    - person.surname
-    - person.name
+    - route.arrivaltime
+    - ticket.flightamount
+    - airline.airlinecode
+    - flight.cancelledyn
+    - airplanetype.airplanetype
+    - airline.airlinename
+    - flight.route,flight.date
+    - person.personcode
+    - purchase.purchasecode
     - flight.delayindeparture
+    - route.departuretime
+    - airplanetype.numberofseats
+    - airplanetype.name
+    - airport.name
+    - person.documenttype
+    - person.name
+    - route.route
+    - ticket.priorityyn
+    - person.birthdate
+    - ticket.ticketnumber
+    - airline.nation
+    - flight.delayinarrival
+    - person.cityofresidence
+    - purchase.totalamount
+    - person.surname
+    - person.gender
+    - person.telephone
+    - person.documentid
+    - ticket.taxamount
+    - person.email
+    - purchase.date
+    - airport.nation
+    - checkin.checkintime

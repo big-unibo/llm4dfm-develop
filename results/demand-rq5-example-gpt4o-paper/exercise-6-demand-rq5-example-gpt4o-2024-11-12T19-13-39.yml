@@ -214,19 +214,19 @@ output_preprocessed:
     fn:
     - reason
     fp:
-    - reason
-    - manager
-    - currentdepartment
     - recruitmentdate
+    - manager
+    - reason
+    - currentdepartment
     tp:
-    - employeename
-    - divisioncode
+    - qualification
     - divisionname
+    - divisioncode
+    - employeecode
+    - date
+    - gender
+    - departmentcode
+    - employeename
     - departmentname
     - transfer
-    - date
-    - departmentcode
-    - employeecode
-    - qualification
-    - gender
     - employeesurname

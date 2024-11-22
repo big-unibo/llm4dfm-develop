@@ -233,29 +233,29 @@ output_preprocessed:
   - name: EXERCISEINWOD.numberOfRepetitions
   nodes:
     fn:
-    - members.weight
     - members.height
+    - members.weight
     fp:
+    - exercises.exercisetype
+    - exerciseinwod.numberofrepetitions
+    - maximumweights.weight
+    - exercises.name
+    - members.height
     - members.weight
     - exercises.exerciseid
-    - exerciseinwod.numberofrepetitions
-    - exercises.exercisetype
-    - members.height
-    - exercises.name
-    - maximumweights.weight
     tp:
+    - members.city
     - wod.wodtype
-    - workouts.date,workouts.time
-    - members.fiscalcode
-    - members.postalcode
-    - workouts.instructor
-    - members.name
+    - wod.numberofrounds
     - members.address
     - presence
     - members.surname
-    - wod.numberofrounds
-    - members.city
-    - workouts.time
-    - wod.date
+    - members.fiscalcode
     - wod.name
+    - workouts.time
     - members.gender
+    - members.postalcode
+    - members.name
+    - wod.date
+    - workouts.instructor
+    - workouts.time,workouts.date

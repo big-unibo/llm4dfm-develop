@@ -348,32 +348,32 @@ output_preprocessed:
     - creditcards.typecode
     - creditcards.holdercode
     tp:
-    - holders.birthdate
-    - cardtypes.country
-    - holders.lastname
-    - purchases.amount
-    - holders.quality
-    - stores.website
-    - cardtypes.issuingbank
-    - stores.address
-    - holders.incomerange
     - purchases.exchange
-    - cardtypes.typecode
-    - cardtypes.address
-    - cardtypes.color
-    - purchases.date
-    - stores.name
     - cardtypes.circuit
+    - holders.lastname
+    - stores.website
     - stores.area
-    - creditcards.ccnumber
-    - stores.storecode
-    - creditcards.expirationdate
-    - holders.firstname
-    - stores.country
-    - stores.email
-    - creditcards.creditlimit
-    - holders.job
     - purchases
-    - holders.holdercode
-    - cardtypes.cardname
+    - stores.country
+    - cardtypes.color
+    - holders.incomerange
+    - cardtypes.issuingbank
+    - holders.firstname
+    - stores.email
     - stores.type
+    - stores.name
+    - creditcards.creditlimit
+    - creditcards.expirationdate
+    - stores.address
+    - stores.storecode
+    - holders.quality
+    - holders.holdercode
+    - purchases.amount
+    - purchases.date
+    - cardtypes.country
+    - cardtypes.cardname
+    - holders.birthdate
+    - cardtypes.address
+    - creditcards.ccnumber
+    - holders.job
+    - cardtypes.typecode

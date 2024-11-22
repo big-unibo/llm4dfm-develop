@@ -218,28 +218,28 @@ output_preprocessed:
   - name: MEMBERS.weight
   nodes:
     fn:
-    - wod.name
-    - workouts.time
-    - wod.date
-    - presence
     - workouts.instructor
+    - workouts.time
     - wod.numberofrounds
-    - workouts.date,workouts.time
+    - wod.name
+    - presence
     - wod.wodtype
+    - workouts.time,workouts.date
+    - wod.date
     fp:
-    - exercises.name
-    - maximumweights.weight
     - exercises.exerciseid
-    - maximumweights
+    - maximumweights.weight
     - exercises.exercisetype
+    - maximumweights
+    - exercises.name
     - maximumweights.date
     tp:
     - members.address
-    - members.gender
-    - members.city
     - members.name
     - members.postalcode
-    - members.fiscalcode
     - members.weight
-    - members.surname
+    - members.fiscalcode
+    - members.city
     - members.height
+    - members.gender
+    - members.surname

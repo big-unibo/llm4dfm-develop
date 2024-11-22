@@ -226,29 +226,29 @@ output_preprocessed:
   - name: WOD.numberOfRounds
   nodes:
     fn:
-    - members.weight
-    - workouts.instructor
     - workouts.time,workouts.date
+    - members.weight
     - members.height
+    - workouts.instructor
     fp:
-    - exercises.exerciseid
+    - members.weight
     - members.height
     - exercises.exercisetype
-    - members.weight
-    - exercises.name
+    - exercises.exerciseid
     - maximumweights.weight
+    - exercises.name
     - workouts.date
     tp:
+    - wod.numberofrounds
+    - members.fiscalcode
+    - members.postalcode
+    - wod.name
+    - wod.wodtype
+    - members.address
     - members.gender
+    - presence
+    - wod.date
+    - members.name
+    - members.city
     - members.surname
     - workouts.time
-    - members.postalcode
-    - presence
-    - members.fiscalcode
-    - wod.numberofrounds
-    - wod.wodtype
-    - wod.name
-    - members.address
-    - members.name
-    - wod.date
-    - members.city

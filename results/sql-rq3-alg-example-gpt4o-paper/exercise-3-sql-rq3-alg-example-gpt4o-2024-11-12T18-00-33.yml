@@ -351,32 +351,32 @@ output_preprocessed:
     - purchases.currency
     fp: []
     tp:
-    - stores.storecode
-    - stores.email
-    - stores.name
-    - cardtypes.address
-    - creditcards.expirationdate
-    - cardtypes.country
-    - cardtypes.cardname
-    - holders.job
-    - purchases.exchange
-    - holders.firstname
-    - stores.area
-    - holders.incomerange
-    - cardtypes.issuingbank
-    - cardtypes.circuit
-    - holders.holdercode
-    - cardtypes.typecode
-    - purchases.date
     - holders.lastname
+    - purchases.date
     - stores.type
-    - creditcards.creditlimit
-    - purchases
-    - holders.quality
-    - stores.address
-    - cardtypes.color
-    - stores.website
     - stores.country
+    - cardtypes.color
+    - holders.holdercode
+    - holders.incomerange
+    - stores.website
+    - holders.firstname
+    - cardtypes.country
     - holders.birthdate
-    - purchases.amount
+    - stores.name
+    - stores.address
+    - holders.job
+    - holders.quality
+    - cardtypes.typecode
+    - stores.email
+    - cardtypes.cardname
+    - creditcards.expirationdate
+    - cardtypes.circuit
     - creditcards.ccnumber
+    - creditcards.creditlimit
+    - purchases.exchange
+    - stores.area
+    - purchases.amount
+    - purchases
+    - stores.storecode
+    - cardtypes.address
+    - cardtypes.issuingbank

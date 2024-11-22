@@ -455,46 +455,46 @@ output_preprocessed:
   nodes:
     fn:
     - checkin.numberofbags
-    - flight.date
-    - checkin.checkintime
-    - ticket.ticketnumber
-    - flight.date,flight.route
     - checkin
+    - flight.date
+    - flight.date,flight.route
+    - ticket.ticketnumber
     - ticket.priorityyn
+    - checkin.checkintime
     - checkin.seat
     fp:
+    - ticket.date
     - flight.date,route.route
     - ticket
-    - ticket.date
     tp:
-    - flight.cancelledyn
-    - flight.delayindeparture
-    - route.route
-    - ticket.flightamount
-    - airplanetype.airplanetype
-    - airport.name
-    - airplanetype.name
-    - purchase.purchasecode
-    - person.surname
-    - person.gender
-    - person.birthdate
-    - purchase.totalamount
-    - route.arrivaltime
-    - airline.airlinename
-    - airplanetype.numberofseats
-    - airport.nation
-    - flight.delayinarrival
-    - person.personcode
-    - person.documenttype
-    - ticket.taxamount
-    - airport.city
     - airline.nation
-    - person.cityofresidence
-    - person.name
-    - person.telephone
-    - person.email
-    - purchase.date
-    - person.documentid
-    - airport.airportcode
-    - airline.airlinecode
+    - flight.delayinarrival
     - route.departuretime
+    - airport.city
+    - person.gender
+    - ticket.flightamount
+    - flight.cancelledyn
+    - airline.airlinename
+    - route.arrivaltime
+    - airplanetype.numberofseats
+    - ticket.taxamount
+    - airport.nation
+    - person.documentid
+    - flight.delayindeparture
+    - person.surname
+    - purchase.purchasecode
+    - person.cityofresidence
+    - airport.name
+    - person.personcode
+    - airplanetype.airplanetype
+    - purchase.totalamount
+    - person.telephone
+    - route.route
+    - airport.airportcode
+    - person.email
+    - person.name
+    - person.birthdate
+    - purchase.date
+    - airplanetype.name
+    - airline.airlinecode
+    - person.documenttype

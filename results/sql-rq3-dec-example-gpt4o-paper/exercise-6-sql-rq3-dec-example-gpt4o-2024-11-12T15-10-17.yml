@@ -231,21 +231,21 @@ output_preprocessed:
     - recruitments.recruitmentdate
     fp:
     - departments.todepartment
-    - recruitments.employeecode
-    - departments.currentdepartment
-    - departments.department
     - departments.fromdepartment
     - staff.managercode
+    - recruitments.employeecode
+    - departments.department
+    - departments.currentdepartment
     tp:
-    - transfers.reason
-    - staff.employeecode
-    - departments.departmentcode
     - qualifications.qualification
-    - transfers
     - transfers.date
+    - divisions.divisionname
+    - divisions.divcode
+    - departments.departmentcode
+    - staff.employeecode
     - staff.name
     - staff.surname
-    - divisions.divcode
     - departments.departmentname
+    - transfers.reason
+    - transfers
     - staff.gender
-    - divisions.divisionname

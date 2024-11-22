@@ -217,18 +217,18 @@ output_preprocessed:
     fp: []
     tp:
     - regions.state
-    - regions.regid
-    - articles.unitprice
-    - purchase.revenue
-    - stores.storeaddress
-    - types.typeid
-    - stores.storename
-    - stores.storeid
-    - types.typename
     - articles.artname
-    - articles.artid
-    - regions.country
-    - purchase.quantity
+    - types.typeid
     - purchase.date
+    - stores.storename
     - regions.regionname
     - purchase
+    - articles.artid
+    - types.typename
+    - regions.country
+    - articles.unitprice
+    - purchase.quantity
+    - stores.storeaddress
+    - stores.storeid
+    - regions.regid
+    - purchase.revenue

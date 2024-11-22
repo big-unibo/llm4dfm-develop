@@ -233,22 +233,22 @@ output_preprocessed:
     - recruitments.recruitmentdate
     - transfers.reason
     fp:
-    - recruitments.employeecode
     - departments.todepartment
     - staff.managercode
+    - recruitments.employeecode
     - transfers.reason
+    - departments.fromdepartment
     - departments.department
     - departments.currentdepartment
-    - departments.fromdepartment
     tp:
-    - staff.gender
-    - departments.departmentcode
-    - transfers.date
-    - qualifications.qualification
-    - departments.departmentname
-    - staff.name
-    - divisions.divisionname
     - divisions.divcode
+    - qualifications.qualification
+    - departments.departmentcode
+    - staff.name
+    - staff.employeecode
+    - staff.gender
+    - transfers.date
+    - divisions.divisionname
     - staff.surname
     - transfers
-    - staff.employeecode
+    - departments.departmentname

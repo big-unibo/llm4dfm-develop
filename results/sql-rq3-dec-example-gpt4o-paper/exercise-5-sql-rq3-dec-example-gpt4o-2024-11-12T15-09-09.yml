@@ -204,30 +204,30 @@ output_preprocessed:
   - name: MAXIMUMWEIGHTS.weight
   nodes:
     fn:
-    - wod.name
-    - workouts.instructor
-    - presence
-    - members.height
-    - wod.date
     - members.weight
-    - wod.wodtype
-    - workouts.time
-    - wod.numberofrounds
     - workouts.date,workouts.time
-    fp:
-    - maximumweights.weight
-    - exercises.exerciseid
+    - wod.wodtype
+    - wod.numberofrounds
+    - presence
+    - wod.name
     - members.height
+    - workouts.time
+    - wod.date
+    - workouts.instructor
+    fp:
     - members.weight
     - exercises.exercisetype
-    - maximumweights.date
-    - maximumweights
     - exercises.name
+    - maximumweights.date
+    - exercises.exerciseid
+    - members.height
+    - maximumweights
+    - maximumweights.weight
     tp:
-    - members.fiscalcode
-    - members.address
-    - members.surname
-    - members.gender
-    - members.postalcode
     - members.city
+    - members.address
+    - members.fiscalcode
+    - members.surname
     - members.name
+    - members.postalcode
+    - members.gender

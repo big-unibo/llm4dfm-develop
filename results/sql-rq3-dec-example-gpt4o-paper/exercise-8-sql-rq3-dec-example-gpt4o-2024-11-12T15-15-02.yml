@@ -473,52 +473,52 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - checkin.numberofbags
+    - checkin
     - flight.date
     - checkin.seat
-    - checkin
-    fp:
     - checkin.numberofbags
-    - checkin.boardingcardcode
-    - ticket
-    - ticket.date
-    - ticket.purchasecode
-    - ticket.route
+    fp:
     - boardingcard.boardingcardcode
     - boardingcard.seat
+    - ticket
+    - ticket.purchasecode
+    - ticket.date
+    - checkin.boardingcardcode
+    - ticket.route
+    - checkin.numberofbags
     tp:
-    - person.telephone
-    - airport.nation
-    - checkin.checkintime
-    - airplanetype.airplanetype
-    - route.route
-    - person.surname
-    - airport.airportcode
-    - airport.city
     - person.documentid
-    - flight.delayindeparture
-    - airline.airlinename
-    - ticket.flightamount
-    - route.arrivaltime
-    - flight.delayinarrival
-    - route.departuretime
-    - ticket.priorityyn
-    - airline.nation
-    - ticket.taxamount
-    - purchase.totalamount
-    - ticket.ticketnumber
-    - person.name
-    - airplanetype.numberofseats
     - person.gender
-    - airplanetype.name
-    - person.email
+    - airplanetype.numberofseats
     - airport.name
-    - flight.cancelledyn
-    - purchase.date
-    - flight.date,flight.route
     - person.birthdate
-    - purchase.purchasecode
-    - person.cityofresidence
-    - person.documenttype
-    - airline.airlinecode
+    - airport.city
+    - person.surname
+    - airline.nation
     - person.personcode
+    - flight.date,flight.route
+    - ticket.taxamount
+    - checkin.checkintime
+    - airport.airportcode
+    - route.route
+    - flight.delayinarrival
+    - airline.airlinename
+    - person.cityofresidence
+    - person.telephone
+    - flight.delayindeparture
+    - route.departuretime
+    - person.name
+    - purchase.purchasecode
+    - airplanetype.airplanetype
+    - purchase.date
+    - person.documenttype
+    - purchase.totalamount
+    - airplanetype.name
+    - flight.cancelledyn
+    - airline.airlinecode
+    - person.email
+    - ticket.ticketnumber
+    - ticket.flightamount
+    - airport.nation
+    - ticket.priorityyn
+    - route.arrivaltime

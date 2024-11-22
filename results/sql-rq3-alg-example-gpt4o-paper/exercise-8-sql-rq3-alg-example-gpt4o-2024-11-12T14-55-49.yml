@@ -471,51 +471,51 @@ output_preprocessed:
     fn:
     - checkin.seat
     - ticket.priorityyn
-    - checkin
     - flight.date,flight.route
     - checkin.numberofbags
+    - checkin
     fp:
-    - airport.arrival
-    - boardingcard.boardingcardcode
+    - flight.date,route.route
+    - checkin.boardingcardcode
     - person.passengercode
     - ticket
-    - boardingcard.seat
+    - airport.arrival
     - airport.departure
-    - checkin.boardingcardcode
-    - route.route,flight.date
+    - boardingcard.boardingcardcode
+    - boardingcard.seat
     - checkin.numberofbags
     tp:
-    - airplanetype.airplanetype
-    - purchase.totalamount
-    - ticket.flightamount
-    - route.arrivaltime
-    - person.cityofresidence
-    - airport.name
-    - airport.nation
-    - airplanetype.numberofseats
-    - airline.nation
-    - route.route
-    - person.gender
-    - person.birthdate
-    - purchase.purchasecode
-    - flight.delayinarrival
-    - flight.date
-    - ticket.taxamount
-    - person.telephone
-    - airline.airlinecode
-    - checkin.checkintime
-    - airport.city
-    - airline.airlinename
-    - person.name
-    - flight.cancelledyn
     - person.documentid
-    - person.surname
-    - airport.airportcode
-    - flight.delayindeparture
-    - ticket.ticketnumber
-    - person.personcode
-    - person.email
-    - airplanetype.name
-    - route.departuretime
-    - purchase.date
+    - person.telephone
+    - flight.cancelledyn
     - person.documenttype
+    - purchase.date
+    - person.email
+    - route.route
+    - person.cityofresidence
+    - airplanetype.numberofseats
+    - ticket.flightamount
+    - airline.nation
+    - airline.airlinename
+    - purchase.totalamount
+    - person.gender
+    - airline.airlinecode
+    - route.departuretime
+    - purchase.purchasecode
+    - airport.name
+    - person.surname
+    - person.birthdate
+    - ticket.taxamount
+    - airport.airportcode
+    - ticket.ticketnumber
+    - airport.city
+    - route.arrivaltime
+    - airplanetype.name
+    - airplanetype.airplanetype
+    - airport.nation
+    - checkin.checkintime
+    - person.personcode
+    - flight.delayinarrival
+    - flight.delayindeparture
+    - person.name
+    - flight.date

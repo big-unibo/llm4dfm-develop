@@ -220,23 +220,23 @@ output_preprocessed:
   nodes:
     fn: []
     fp:
+    - recruitments.employeecode
+    - departments.todepartment
+    - departments.department
     - staff.managercode
     - departments.currentdepartment
-    - recruitments.employeecode
-    - departments.department
     - departments.fromdepartment
-    - departments.todepartment
     tp:
-    - transfers.reason
     - transfers.date
-    - departments.departmentcode
-    - divisions.divisionname
-    - divisions.divcode
-    - recruitments.recruitmentdate
-    - departments.departmentname
     - staff.surname
+    - recruitments.recruitmentdate
+    - divisions.divisionname
+    - departments.departmentname
+    - transfers.reason
     - qualifications.qualification
-    - staff.name
     - staff.employeecode
-    - transfers
+    - staff.name
     - staff.gender
+    - departments.departmentcode
+    - transfers
+    - divisions.divcode

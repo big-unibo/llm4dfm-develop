@@ -259,29 +259,29 @@ output_preprocessed:
   - name: RACINGCIRCUITS.Length
   nodes:
     fn:
-    - drivers.name
     - grandprixs.numberoflaps
-    - drives.todate
+    - drivers.surname
     - drives.year
+    - drivers.name
+    - drives.todate
     - drives.fromdate
     - grandprixs.date
-    - drivers.surname
     fp:
     - grandprixs.numberoflaps
     tp:
+    - racingcircuits.circuitname
+    - drivers.surname,drivers.name
+    - grandprixs.circuitname,grandprixs.date
     - drivers.birthdate
-    - racingstables.mainaddress
-    - racingcircuits.length
-    - arrivals.score
+    - arrivals.position
+    - racingcircuits.description
     - racingstables.stablename
     - racingcircuits.city
-    - racingcircuits.circuitname
-    - cars.number
+    - racingcircuits.length
+    - racingstables.mainaddress
     - racingstables.manager
+    - arrivals.score
     - arrivals.time
-    - grandprixs.circuitname,grandprixs.date
-    - racingcircuits.description
     - arrivals
-    - drivers.name,drivers.surname
-    - arrivals.position
-    - drives.surname,drives.number,drives.name,drives.year
+    - drives.name,drives.year,drives.surname,drives.number
+    - cars.number

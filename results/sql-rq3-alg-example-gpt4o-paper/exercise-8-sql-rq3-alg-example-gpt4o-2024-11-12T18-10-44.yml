@@ -462,50 +462,50 @@ output_preprocessed:
   nodes:
     fn:
     - flight.date,flight.route
+    - ticket.priorityyn
     - checkin
     - checkin.seat
+    - checkin.numberofbags
     - flight.date
     - purchase.totalamount
-    - checkin.numberofbags
-    - ticket.priorityyn
     fp:
-    - boardingcard.boardingcardcode
     - boardingcard.seat
-    - ticket
     - route.route,flight.date
-    - purchase.totalamount
+    - ticket
     - checkin.boardingcardcode
+    - boardingcard.boardingcardcode
     - checkin.numberofbags
+    - purchase.totalamount
     tp:
-    - purchase.purchasecode
-    - airplanetype.name
     - flight.delayinarrival
-    - airplanetype.airplanetype
-    - person.cityofresidence
-    - route.route
-    - person.documenttype
-    - ticket.ticketnumber
-    - airline.nation
-    - person.personcode
-    - flight.cancelledyn
-    - person.gender
     - airline.airlinename
-    - airport.name
-    - person.birthdate
-    - flight.delayindeparture
-    - person.documentid
-    - airport.airportcode
-    - person.name
-    - airport.city
-    - person.email
-    - airline.airlinecode
-    - route.arrivaltime
-    - airplanetype.numberofseats
-    - purchase.date
-    - ticket.flightamount
-    - route.departuretime
     - person.surname
-    - person.telephone
-    - airport.nation
-    - ticket.taxamount
+    - person.name
+    - person.birthdate
+    - airplanetype.name
+    - airplanetype.airplanetype
     - checkin.checkintime
+    - airline.airlinecode
+    - airport.city
+    - flight.cancelledyn
+    - airport.airportcode
+    - person.gender
+    - person.email
+    - airport.name
+    - ticket.ticketnumber
+    - purchase.date
+    - airline.nation
+    - ticket.taxamount
+    - flight.delayindeparture
+    - airport.nation
+    - person.cityofresidence
+    - person.documenttype
+    - route.departuretime
+    - purchase.purchasecode
+    - person.telephone
+    - person.personcode
+    - airplanetype.numberofseats
+    - route.route
+    - person.documentid
+    - route.arrivaltime
+    - ticket.flightamount

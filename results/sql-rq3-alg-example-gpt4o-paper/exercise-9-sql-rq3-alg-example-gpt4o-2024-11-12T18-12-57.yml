@@ -343,41 +343,41 @@ output_preprocessed:
   - name: ROUTES.DistanceKm
   nodes:
     fn:
-    - tickets.purchasedate
     - traintype.capacity
-    - routes.duration
+    - tickets.purchasedate
     - trips.date
     - routes.fare
-    fp:
-    - traintype.capacity
     - routes.duration
+    fp:
     - tickets.customercode
     - trains.traintypecode
     - routes.arrivalstationcode
+    - traintype.capacity
     - routes.departurestationcode
     - routes.fare
+    - routes.duration
     tp:
+    - stations.stationcode
     - stations.region
     - routesintrips.sequence
-    - stations.city
-    - traintype.traintype
-    - traintype.traintypecode
-    - stations.stationcode
-    - routesintrips.routecode,routesintrips.traincode,routesintrips.date
-    - stations.name
-    - routes.routecode
-    - customers.name
-    - customers.birthcity
-    - customers.birthdate
+    - routesintickets.price
     - trains.traincode
+    - customers.birthdate
+    - traintype.traintype
+    - stations.name
     - trips.traincode,trips.date
-    - customers.surname
+    - customers.birthcity
     - routesintickets
+    - customers.name
+    - stations.location
+    - traintype.traintypecode
+    - routes.distancekm
+    - routes.routecode
+    - stations.city
     - tickets.ticketcode
     - tickets.totalprice
-    - trips.status
-    - routesintickets.price
-    - routes.distancekm
-    - stations.location
+    - routesintrips.routecode,routesintrips.traincode,routesintrips.date
     - customers.customercode
+    - trips.status
     - customers.documentid
+    - customers.surname

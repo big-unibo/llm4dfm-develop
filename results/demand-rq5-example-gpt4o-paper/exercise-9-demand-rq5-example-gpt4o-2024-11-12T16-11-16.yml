@@ -303,30 +303,30 @@ output_preprocessed:
   - name: timeDuration
   nodes:
     fn:
-    - route
-    - location
-    - ticket
-    - trip
-    - date
     - routeinticket
-    fp:
-    - purchasedate
+    - trip
+    - location
     - route
+    - date
+    - ticket
+    fp:
     - tripdate
+    - route
+    - purchasedate
     - birthdate
     tp:
+    - firstname
     - price
     - timeduration
-    - firstname
-    - documentid
-    - status
-    - city
-    - lastname
-    - region
-    - traintype
-    - customercode
+    - basefare
     - capacity
     - distance
-    - traincode
-    - basefare
+    - status
+    - documentid
+    - traintype
+    - lastname
+    - city
     - stationname
+    - traincode
+    - customercode
+    - region

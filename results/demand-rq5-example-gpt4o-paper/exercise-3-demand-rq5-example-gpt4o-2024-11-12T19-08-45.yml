@@ -311,26 +311,26 @@ output_preprocessed:
     - expirationdate
     tp:
     - storetype
-    - store
     - job
-    - color
-    - creditcardtype
-    - area
-    - date
-    - holder
-    - issuingbankaddress
-    - storename
     - age
+    - holder
     - country
-    - lastname
-    - amount
-    - purchase
-    - creditcard
-    - creditcardname
-    - issuingbank
-    - creditlimit
-    - incomerange
-    - storeaddress
     - firstname
-    - circuit
+    - creditcardname
+    - storeaddress
+    - incomerange
+    - issuingbank
+    - issuingbankaddress
+    - store
+    - lastname
+    - creditlimit
+    - date
     - exchange
+    - storename
+    - creditcardtype
+    - purchase
+    - circuit
+    - amount
+    - color
+    - creditcard
+    - area

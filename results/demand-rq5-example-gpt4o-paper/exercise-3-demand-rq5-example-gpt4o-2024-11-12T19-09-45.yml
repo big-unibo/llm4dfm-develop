@@ -307,30 +307,30 @@ output_preprocessed:
   nodes:
     fn: []
     fp:
-    - expirationdate
     - bankcountry
+    - expirationdate
     tp:
-    - holder
-    - purchase
     - color
+    - purchase
+    - issuingbank
+    - store
+    - area
     - creditcardname
     - storename
+    - firstname
+    - age
+    - lastname
+    - creditlimit
+    - country
+    - issuingbankaddress
+    - incomerange
+    - creditcardtype
     - amount
+    - creditcard
     - circuit
     - job
-    - creditcardtype
-    - creditlimit
-    - firstname
-    - date
-    - store
-    - lastname
-    - creditcard
-    - storetype
     - storeaddress
-    - country
-    - age
-    - area
-    - incomerange
-    - issuingbankaddress
+    - storetype
     - exchange
-    - issuingbank
+    - holder
+    - date

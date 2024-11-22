@@ -352,32 +352,32 @@ output_preprocessed:
     - creditcards.typecode
     - creditcards.holdercode
     tp:
-    - purchases
-    - stores.website
-    - stores.country
-    - cardtypes.color
-    - stores.storecode
-    - cardtypes.typecode
-    - holders.job
-    - purchases.exchange
-    - holders.firstname
-    - holders.quality
-    - stores.name
-    - purchases.amount
-    - holders.holdercode
-    - cardtypes.issuingbank
     - purchases.currency
-    - cardtypes.country
-    - stores.type
-    - holders.birthdate
-    - cardtypes.circuit
-    - purchases.date
+    - purchases.amount
+    - cardtypes.typecode
     - holders.incomerange
-    - stores.address
+    - stores.name
+    - stores.website
+    - purchases
+    - cardtypes.address
+    - holders.birthdate
+    - stores.country
     - creditcards.creditlimit
     - creditcards.ccnumber
-    - cardtypes.cardname
-    - cardtypes.address
-    - stores.area
-    - holders.lastname
+    - holders.firstname
+    - holders.job
+    - cardtypes.circuit
+    - stores.address
+    - stores.storecode
+    - cardtypes.color
     - stores.email
+    - purchases.exchange
+    - cardtypes.cardname
+    - holders.holdercode
+    - cardtypes.country
+    - purchases.date
+    - cardtypes.issuingbank
+    - holders.lastname
+    - stores.type
+    - holders.quality
+    - stores.area

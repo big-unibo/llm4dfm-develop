@@ -310,27 +310,27 @@ output_preprocessed:
     - bankcountry
     - expirationdate
     tp:
-    - creditcard
-    - job
-    - issuingbank
-    - incomerange
-    - circuit
-    - exchange
-    - country
-    - holder
-    - storename
+    - storeaddress
     - lastname
+    - age
+    - color
+    - amount
+    - purchase
+    - firstname
+    - storetype
+    - issuingbank
+    - creditcard
+    - storename
+    - circuit
+    - country
+    - creditlimit
     - creditcardname
     - date
-    - issuingbankaddress
+    - job
     - store
-    - area
-    - amount
+    - incomerange
     - creditcardtype
-    - firstname
-    - purchase
-    - storetype
-    - color
-    - creditlimit
-    - storeaddress
-    - age
+    - exchange
+    - holder
+    - area
+    - issuingbankaddress

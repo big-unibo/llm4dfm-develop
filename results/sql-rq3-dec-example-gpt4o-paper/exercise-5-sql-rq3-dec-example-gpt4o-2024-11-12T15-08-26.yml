@@ -231,31 +231,31 @@ output_preprocessed:
   - name: WOD.numberOfRounds
   nodes:
     fn:
-    - members.height
     - members.weight
+    - members.height
     fp:
-    - exercises.exercisetype
-    - workouts.date
-    - members.height
-    - exercises.exerciseid
-    - exercises.name
-    - maximumweights.weight
     - exerciseinwod.numberofrepetitions
-    - exerciseinwod.positioninsequence,exerciseinwod.date,exerciseinwod.exerciseid
+    - exerciseinwod.exerciseid,exerciseinwod.date,exerciseinwod.positioninsequence
     - members.weight
+    - maximumweights.weight
+    - exercises.name
+    - members.height
+    - workouts.date
+    - exercises.exercisetype
+    - exercises.exerciseid
     tp:
-    - members.address
-    - members.fiscalcode
-    - members.postalcode
-    - members.surname
-    - workouts.date,workouts.time
-    - members.city
-    - wod.wodtype
-    - workouts.instructor
+    - members.gender
+    - members.name
     - wod.name
     - workouts.time
-    - members.name
-    - members.gender
-    - presence
-    - wod.numberofrounds
     - wod.date
+    - members.city
+    - wod.wodtype
+    - presence
+    - members.postalcode
+    - workouts.instructor
+    - members.fiscalcode
+    - members.address
+    - workouts.time,workouts.date
+    - wod.numberofrounds
+    - members.surname

@@ -181,17 +181,17 @@ output_preprocessed:
     fn: []
     fp: []
     tp:
-    - name
-    - date
-    - height
-    - postalcode
-    - city
     - hour
     - weight
-    - member
-    - wodtype
+    - date
+    - height
+    - instructor
+    - postalcode
     - wod
-    - presence
+    - wodtype
     - surname
     - address
-    - instructor
+    - presence
+    - name
+    - city
+    - member

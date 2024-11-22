@@ -434,47 +434,47 @@ output_preprocessed:
   - name: AIRPLANETYPE.numberOfSeats
   nodes:
     fn:
-    - flight.date,flight.route
-    - ticket.ticketnumber
+    - checkin.checkintime
     - checkin.seat
-    - ticket.priorityyn
     - purchase.totalamount
+    - ticket.priorityyn
     - checkin.numberofbags
     - checkin
-    - checkin.checkintime
+    - flight.date,flight.route
+    - ticket.ticketnumber
     fp:
-    - ticket
     - purchase.totalamount
-    - flight.date,route.route
+    - route.route,flight.date
+    - ticket
     tp:
-    - airplanetype.name
-    - ticket.taxamount
-    - route.arrivaltime
+    - person.personcode
+    - flight.date
     - airline.nation
+    - purchase.date
+    - person.documentid
+    - person.gender
+    - purchase.purchasecode
+    - person.telephone
+    - ticket.flightamount
+    - airline.airlinecode
+    - person.surname
     - flight.delayinarrival
     - route.departuretime
-    - airport.nation
-    - flight.cancelledyn
-    - flight.date
-    - airport.name
-    - airport.city
-    - person.surname
-    - person.telephone
-    - person.birthdate
     - person.name
-    - airport.airportcode
-    - flight.delayindeparture
-    - person.personcode
-    - airline.airlinename
-    - airline.airlinecode
-    - ticket.flightamount
-    - person.documenttype
-    - person.cityofresidence
-    - airplanetype.airplanetype
-    - person.documentid
-    - route.route
-    - airplanetype.numberofseats
-    - person.gender
+    - ticket.taxamount
+    - airplanetype.name
+    - airport.city
     - person.email
-    - purchase.purchasecode
-    - purchase.date
+    - route.route
+    - flight.cancelledyn
+    - person.documenttype
+    - airplanetype.numberofseats
+    - airline.airlinename
+    - airplanetype.airplanetype
+    - route.arrivaltime
+    - airport.name
+    - flight.delayindeparture
+    - person.cityofresidence
+    - person.birthdate
+    - airport.airportcode
+    - airport.nation
