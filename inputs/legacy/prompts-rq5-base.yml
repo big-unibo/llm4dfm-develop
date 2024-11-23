@@ -1,7 +1,7 @@
 gpt:
   - role: system
     content: |
-      You are a data warehouse designer.
+      You are a data warehouse designer. Set the temperature to 0.1.
   - role: user
     content: |
       Your task is to create the conceptual schema for a multidimensional cube in a 
@@ -33,54 +33,5 @@ gpt:
       (4) the "dependencies" list also includes an item from the fact to each dimension, 
       and one from the fact to each measure.
 
-      For instance, let these requirements be given:
-      Decision-makers are interested in analyzing, in terms of quantity and cost, the shipments 
-      of articles made from a warehouse to another warehouse on a day-by-day basis. 
-      A warehouse has a unique name, an address, and is located in a region of a state (each 
-      state is part of one country). Articles are identified by a code and described by their 
-      names and their types.
-
-      Here, SHIPMENT is the fact, while quantity and cost are numerical measures. 
-      Article code, warehouse, and day are dimensions. Since two warehouses are involved, 
-      there are two arcs from SHIPMENT to warehouse, with roles "from" and "to", respectively. 
-      There are arcs from warehouse to name, address, and region; from region to state and 
-      from state to country. There are arcs from article code to article name and type.
-
-      The YAML expression of the DFM schema obtained is the following:
-
-      fact:
-        name: SHIPMENT
-      measures:
-        - name: quantity
-        - name: cost
-      dependencies:
-        - from: articleCode
-          to: articleName
-        - from: articleCode
-          to: type
-        - from: warehouse
-          to: warehouseName
-        - from: warehouse
-          to: warehouseAddress
-        - from: warehouse
-          to: region
-        - from: region
-          to: state
-        - from: state
-          to: country
-        - from: SHIPMENT
-          to: quantity
-        - from: SHIPMENT
-          to: cost
-        - from: SHIPMENT
-          to: articleCode
-        - from: SHIPMENT
-          to: warehouse
-          role: from
-        - from: SHIPMENT
-          to: warehouse
-          role: to
-        - from: SHIPMENT
-          to: date
 
       Return only the YAML without any further information/explanation.

@@ -1,7 +1,7 @@
 gpt:
   - role: system
     content: |
-      You are a data warehouse designer. Set the temperature to 0.1.
+      You are a data warehouse designer.
   - role: user
     content: |
       Carry out demand-driven conceptual
