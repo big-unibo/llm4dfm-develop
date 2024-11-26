@@ -1,0 +1,506 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4o
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- edges:
+    f1: 0.5195
+    fn: 17
+    fp: 20
+    precision: 0.5
+    recall: 0.5405
+    tp: 20
+  nodes:
+    f1: 0.8056
+    fn: 6
+    fp: 8
+    precision: 0.7838
+    recall: 0.8286
+    tp: 29
+output:
+- dependencies:
+  - from: CheckIn
+    to: Passenger
+  - from: CheckIn
+    to: Ticket
+  - from: CheckIn
+    to: Flight
+  - from: CheckIn
+    to: Seat
+  - from: CheckIn
+    to: number_of_bags
+  - from: CheckIn
+    to: ticket_amount
+  - from: CheckIn
+    to: tax_amount
+  - from: CheckIn
+    to: total_amount
+  - from: Passenger
+    to: document_id
+  - from: document_id
+    to: document_type
+  - from: document_id
+    to: name
+  - from: document_id
+    to: surname
+  - from: document_id
+    to: birthdate
+  - from: document_id
+    to: city_of_residence
+  - from: city_of_residence
+    to: nation
+  - from: Ticket
+    to: ticket_number
+  - from: ticket_number
+    to: purchase_date
+  - from: ticket_number
+    to: priority
+  - from: ticket_number
+    role: purchaser
+    to: Passenger
+  - from: Flight
+    to: flight_number
+  - from: flight_number
+    to: route
+  - from: flight_number
+    to: flight_date
+  - from: flight_number
+    to: departure_delay
+  - from: flight_number
+    to: arrival_delay
+  - from: flight_number
+    to: cancellation
+  - from: route
+    to: departure_airport
+  - from: route
+    to: arrival_airport
+  - from: route
+    to: departure_time
+  - from: route
+    to: arrival_time
+  - from: route
+    to: Airline
+  - from: Airline
+    to: airline_code
+  - from: airline_code
+    to: airline_name
+  - from: airline_code
+    to: airline_nation
+  - from: departure_airport
+    to: airport_code
+  - from: airport_code
+    to: airport_name
+  - from: airport_code
+    to: city
+  - from: city
+    to: nation
+  - from: Seat
+    to: seat_number
+  - from: seat_number
+    to: airplane_type
+  - from: airplane_type
+    to: number_of_seats
+  fact:
+    name: CheckIn
+  measures:
+  - name: number_of_bags
+  - name: ticket_amount
+  - name: tax_amount
+  - name: total_amount
+output_preprocessed:
+- dependencies:
+  - from: CheckIn
+    label: fp
+    to: Passenger
+  - from: CheckIn
+    label: tp
+    to: ticketNumber
+  - from: CheckIn
+    label: fp
+    to: Flight
+  - from: CheckIn
+    label: tp
+    to: Seat
+  - from: CheckIn
+    label: tp
+    to: numberofbags
+  - from: CheckIn
+    label: tp
+    to: ticketamount
+  - from: CheckIn
+    label: tp
+    to: taxamount
+  - from: CheckIn
+    label: tp
+    to: totalamount
+  - from: Passenger
+    label: tp
+    to: documentid
+  - from: documentid
+    label: fp
+    to: documenttype
+  - from: documentid
+    label: fp
+    to: firstName
+  - from: documentid
+    label: fp
+    to: lastName
+  - from: documentid
+    label: fp
+    to: birthdate
+  - from: documentid
+    label: fp
+    to: cityofresidence
+  - from: cityofresidence
+    label: fp
+    to: nation
+  - from: ticketNumber
+    label: fp
+    to: ticketnumber
+  - from: ticketnumber
+    label: fp
+    to: purchasedate
+  - from: ticketnumber
+    label: tp
+    to: ticketPriority
+  - from: ticketnumber
+    label: fp
+    role: purchaser
+    to: Passenger
+  - from: Flight
+    label: fp
+    to: flight
+  - from: flight
+    label: tp
+    to: route
+  - from: flight
+    label: tp
+    to: flightdate
+  - from: flight
+    label: tp
+    to: delayDeparture
+  - from: flight
+    label: tp
+    to: delayArrival
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: route
+    label: fp
+    to: departureairport
+  - from: route
+    label: fp
+    to: arrivalairport
+  - from: route
+    label: tp
+    to: departuretime
+  - from: route
+    label: tp
+    to: arrivaltime
+  - from: route
+    label: fp
+    to: Airline
+  - from: Airline
+    label: fp
+    to: airlinecode
+  - from: airlinecode
+    label: tp
+    to: airlinename
+  - from: airlinecode
+    label: tp
+    to: airlinenation
+  - from: departureairport
+    label: fp
+    to: airportcode
+  - from: airportcode
+    label: tp
+    to: airportname
+  - from: airportcode
+    label: tp
+    to: city
+  - from: city
+    label: tp
+    to: nation
+  - from: Seat
+    label: fp
+    to: seatnumber
+  - from: seatnumber
+    label: fp
+    to: airplanetype
+  - from: airplanetype
+    label: tp
+    to: numberofseats
+  fact:
+    name: CheckIn
+  ground_truth_labels:
+    dependencies:
+    - from: CheckIn
+      label: tp
+      to: numberOfBags
+    - from: CheckIn
+      label: tp
+      to: ticketAmount
+    - from: CheckIn
+      label: tp
+      to: taxAmount
+    - from: CheckIn
+      label: tp
+      to: totalAmount
+    - from: CheckIn
+      label: tp
+      to: ticketNumber
+    - from: ticketNumber
+      label: fn
+      role: purchase
+      to: date
+    - from: ticketNumber
+      label: fn
+      to: passenger
+    - from: passenger
+      label: fn
+      to: firstName
+    - from: passenger
+      label: fn
+      to: lastName
+    - from: passenger
+      label: fn
+      role: birth
+      to: date
+    - from: passenger
+      label: fn
+      role: residence
+      to: city
+    - from: passenger
+      label: tp
+      to: documentId
+    - from: passenger
+      label: fn
+      to: documentType
+    - from: passenger
+      label: fn
+      to: telephoneNumber
+    - from: passenger
+      label: fn
+      to: emailAddress
+    - from: passenger
+      label: fn
+      to: gender
+    - from: CheckIn
+      label: tp
+      to: seat
+    - from: CheckIn
+      label: fn
+      to: time
+    - from: ticketNumber
+      label: tp
+      to: ticketPriority
+    - from: ticketNumber
+      label: fn
+      to: flight
+    - from: flight
+      label: tp
+      to: flightDate
+    - from: flight
+      label: tp
+      to: delayDeparture
+    - from: flight
+      label: tp
+      to: delayArrival
+    - from: flight
+      label: fn
+      to: cancelled
+    - from: flight
+      label: tp
+      to: route
+    - from: route
+      label: fn
+      role: departure
+      to: airportCode
+    - from: route
+      label: fn
+      role: arrival
+      to: airportCode
+    - from: route
+      label: tp
+      to: departureTime
+    - from: route
+      label: tp
+      to: arrivalTime
+    - from: route
+      label: fn
+      to: airlineCode
+    - from: airlineCode
+      label: tp
+      to: airlineName
+    - from: airlineCode
+      label: tp
+      to: airlineNation
+    - from: route
+      label: fn
+      to: airplaneType
+    - from: airplaneType
+      label: tp
+      to: numberOfSeats
+    - from: airportCode
+      label: tp
+      to: airportName
+    - from: airportCode
+      label: tp
+      to: city
+    - from: city
+      label: tp
+      to: nation
+    fact:
+      name: CheckIn
+    measures:
+    - name: numberOfBags
+    - name: ticketAmount
+    - name: taxAmount
+    - name: totalAmount
+  measures:
+  - name: numberofbags
+  - name: ticketamount
+  - name: taxamount
+  - name: totalamount
+  nodes:
+    fn:
+    - telephonenumber
+    - time
+    - emailaddress
+    - gender
+    - cancelled
+    - date
+    fp:
+    - arrivalairport
+    - cancellation
+    - seatnumber
+    - birthdate
+    - departureairport
+    - purchasedate
+    - airline
+    - cityofresidence
+    tp:
+    - nation
+    - departuretime
+    - airlinecode
+    - totalamount
+    - delaydeparture
+    - passenger
+    - flight
+    - arrivaltime
+    - airportname
+    - city
+    - checkin
+    - delayarrival
+    - lastname
+    - firstname
+    - taxamount
+    - airlinename
+    - flightdate
+    - ticketnumber
+    - documenttype
+    - numberofseats
+    - airportcode
+    - airplanetype
+    - airlinenation
+    - ticketamount
+    - documentid
+    - ticketpriority
+    - route
+    - numberofbags
+    - seat
