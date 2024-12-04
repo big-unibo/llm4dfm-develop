@@ -4,16 +4,12 @@
 
 A research project by the [Business Intelligence Group](http://big.csr.unibo.it).
 
-This README contains all information required by:
-- Readers interested in the research findings of our study
-- Researchers who want to run new experiments
-- Developers who want to contribute to the project
-
 Index of this repository.
-- [Project structure](#project-structure)
-- [Research findings](#research-findings) - to jump to the conclusions
-- [Quick start](#quick-start) - to run experiments
-- [Installation and configuration](#installation-and-configuration) - to contribute
+- [Project structure](#project-structure): gives an overview of the repository.
+- [Research data](#research-data): shows the input used and output obtained in our research activity.
+- [Usage](#usage): explains how to use the code to run new experiments.
+
+IMPORTANT: to run the project, an active account on OpenAI is needed to connect to ChatGPT via API.
 
 ## Project structure
 
@@ -48,7 +44,7 @@ Configuration files and scripts to automate multiple executions of the pipeline 
 - `automatic-metrics.sh`  -- script to automate the recalculation of metrics on obtained outputs
 - `yml.html`  -- script to compare ground-truth and output via visualisation
 
-## Research findings
+## Research data
 
 The data you want to look at is summarized here.
 
@@ -58,6 +54,7 @@ The data you want to look at is summarized here.
   - The supply-driven requirements with tables described with SQL DDL: `sql-text`
   - The demand-driven requirements: `demand-text`
   - The ground truth for both supply- and demand-driven requirements: `ground-truth`
+- The thesaurus used for equivalence rules in demand-driven design is in the `llm4dfm/resources/preprocess.yml` file
 - The results of all interactions  with ChatGPT are in the `results` folder; for each research question, you can find:
   - The 10 interactions for every case study
   - A CSV file summarizing all obtained outputs and the calculated metrics
@@ -69,7 +66,175 @@ The data you want to look at is summarized here.
     - Boxplot of F1-measures on edges 
 - An example of a full interaction with ChatGPT (taken from one of the interactions for RQ5 on case study 7) is shown in `results/full-chat-example-rq5-exercise7.json`
 
-## Quick start
+### Analyzing results
+
+To analyze the output obtained from ChatGPT, the static web application at `llm4dfm/resources/yml.html` can be used.
+  - Open the page on your browser
+  - Load one of the output .yml files
+  - Use the available buttons to either draw the ground truth's DFM, draw the LLM's DFM, or draw a comparison of the two DFMs.
+    - True positives (on both nodes and edges) are indicated in green
+    - False positives (on both nodes and edges) are indicated in red
+    - False negatives (on both nodes and edges) are indicated in grey
+    - Nodes are indicated in yellow if they are present in the LLM's output with contradicting roles (e.g., both as dimensional attribute and measure), one of them being correct and the other wrong
+    - Comparison metrics (precision, recall, and F1-measure) are indicated to the right
+
+## Usage
+
+### Installation
+
+The project has been developed with Python 3.12. 
+
+#### Venv
+
+It is recommended to manage Python dependencies through virtual environments. See [here](https://docs.python.org/3/library/venv.html).
+
+> The .venv module provides support for creating lightweight "virtual environments" with their own site directories, optionally isolated from system site directories. Each virtual environment has its own Python binary (which matches the version of the binary that was used to create this environment) and can have its own independent set of installed Python packages in its site directories.
+
+In case .venv folder is not created, venv can be created through
+
+```bash
+python -m venv .venv
+```
+
+To activate venv in Windows (with bash shell; e.g., git bash)
+```bash
+source .venv/Scripts/activate
+```
+
+To activate venv in Linux
+```bash
+source .venv/bin/activate
+```
+
+#### Requirements
+
+Poetry is used to manage automatic testing; you can skip its installation if you are interested only in the execution of the pipeline.
+
+- Install dependencies without Poetry
+  ```bash
+  pip install -r requirements.txt
+  ```
+- Install dependencies with Poetry
+  ```bash
+  curl -sSL https://install.python-poetry.org | python3 -
+  poetry install
+  ```
+
+
+### Configuration 
+
+#### Required configuration parameters
+
+Inside the `pipeline` module, a `.env` file must be provided with the following configurations:
+- `DATASETS`   -- path to folder containing exercise (case study) texts
+- `OUTPUTS`    -- path to folder in which outpust are stored
+- `AUTO_OUTPUTS`    -- path to folder in which outpust of automatic runs are stored
+- `RESULTS`   -- path to folder in which results are stored
+- `INPUTS`   -- path to folder containing exercise prompts
+- `SAVE_MODELS`   -- path to folder in which store imported models
+
+If using Azure to interact with model's API, these configurations must be provided too (model_name must be uppercase)
+- `ENDPOINT_{model-name}`
+
+#### Authentication key
+
+The authentication key to connect to the API endpoint must be stored in `llm4dfm/resources/credentials.yml`;
+an example of how the config is structured can be found in `llm4dfm/resources/credentials-example.yml`.
+
+#### Pipeline parameters
+
+The following parameters can be configured in `llm4dfm/resources/pipeline-config.yml` file.
+
+Imported model (to be set if using a locally-imported LLM model)
+
+- `name` -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
+- `tokenizer -name`   -- model's tokenizer name, usually the same as the model`
+- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
+- `max_new_tokens` -- limit the maximum number of tokens generated in a single call`
+- `do_sample` -- boolean, if set specifies to generate more creative output`
+- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true`
+- `quantization` -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy`
+
+Api model (to be set if using APIs to connect to a remote endpoint)
+
+- `name`        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
+- `label`     -- model's name used in output file name generated, if not specified it uses name`
+- `deployment`     -- Deployment name for azure distribution [test-gpt-35, test-gpt-4o]`
+- `api_version`     -- api model's version`
+- `max_tokens` -- it's the maximum length of the generated output`
+- `n_response` -- regulates number of responses the model generates`
+- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 2 [0, ..., 1] [Default 0.1]`
+- `stop`        -- set the stop character(s, if list) that terminate the response when encountered`
+- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 [0, ..., 1]`
+- `top_k` -- threshold between 1 and 40 that specifies the number of tokens (with the highest probability) considered for the next generation. Less randomness for lower values [could be only a gemini parameter]`
+
+Exercise
+
+- `name`           -- the exercise name (part before version, exercise-N)`
+- `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
+- `prompt_version` -- the prompt version (part between prompts- and .yml)`
+- `number` -- the exercise number`
+
+General
+
+- `use` -- the model to use between import and api`
+- `debug_prints`   -- enable output prints during execution`
+
+Output
+
+- `dir_label` -- the label used in output directory name`
+
+#### CSV-Graph
+
+The following parameters can be configured in `llm4dfm/resources/csv-graph-config.yml` file.
+
+- `dir` -- full directory name, in case it's specified all other parameters will be ignored`
+- `v` -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
+- `prompt_v` -- the prompt version (part between prompts-v and .yml)`
+- `model_label` -- model's label name`
+- `dir_label` -- directory in which store file name`
+
+#### Metrics
+
+The following parameters can be configured in `llm4dfm/resources/metrics-config.yml` file, under the `exercise` section.
+
+- `dir` -- the exercise's directory inside outputs folder`
+- `name` -- the exercise name without .yml extension`
+- `demand` -- whether it's a demand driven exercise [true, false]`
+- `gt` -- the ground truth's exercise`
+- `number` -- the exercise number`
+
+#### Preprocessing
+
+In order to apply equality or ignore rules, `llm4dfm/resources/preprocess.yml` file has been provided.
+It is split in 2 sections, the first one is the common, that is applied to all exercises, and then rules for each exercise.
+
+Structure of each section is as follows:
+```
+1:
+  demand:
+    equals:
+    - item_to_keep_1:
+      - elem_1_equal_item_to_keep_1
+      - elem_2_equal_item_to_keep_1
+    - item_to_keep_2:
+      - elem_1_equal_item_to_keep_2
+      - elem_2_equal_item_to_keep_2
+    ignore:
+    - elem_to_ignore_1
+    - elem_to_ignore_2
+  supply:
+    equals:
+    - item_to_keep_1:
+      - elem_1_equal_item_to_keep_1
+      - elem_2_equal_item_to_keep_1
+    ignore: []
+```
+
+This state that in exercise 1 all elem_1_equal_item_to_keep_1 and elem_2_equal_item_to_keep_1 found in demand exercise
+will be preprocessed in item_to_keep_1 and so on, and all dependencies that will have elem_to_ignore_1 or elem_to_ignore_2
+will be ignored after preprocessing.
+Thesaurus rules are applied here.
 
 ### Single run
 
@@ -80,7 +245,7 @@ The data you want to look at is summarized here.
   - config:
     - name: gpt
     - version: 3.5-turbo
-    - max_tokens: null
+    - max_tokens: null 
     - n_responses: 1
     - stop: null
     - top_p: 0.9
@@ -242,171 +407,6 @@ Example of run:
 
 Output:
 File preprocess and metrics calculation will be executed, results will be overridden in same file.
-
-## Installation and configuration
-
-
-### Installation
-
-The project has been developed with Python 3.12. 
-
-#### Venv
-
-It is recommended to manage Python dependencies through virtual environments. See [here](https://docs.python.org/3/library/venv.html).
-
-> The .venv module provides support for creating lightweight "virtual environments" with their own site directories, optionally isolated from system site directories. Each virtual environment has its own Python binary (which matches the version of the binary that was used to create this environment) and can have its own independent set of installed Python packages in its site directories.
-
-In case .venv folder is not created, venv can be created through
-
-```bash
-python -m venv .venv
-```
-
-To activate venv in Windows (with bash shell; e.g., git bash)
-```bash
-source .venv/Scripts/activate
-```
-
-To activate venv in Linux
-```bash
-source .venv/bin/activate
-```
-
-#### Requirements
-
-Poetry is used to manage automatic testing; you can skip its installation if you are interested only in the execution of the pipeline.
-
-- Install dependencies without Poetry
-  ```bash
-  pip install -r requirements.txt
-  ```
-- Install dependencies with Poetry
-  ```bash
-  curl -sSL https://install.python-poetry.org | python3 -
-  poetry install
-  ```
-
-
-### Configuration 
-
-#### Required configuration parameters
-
-Inside the `pipeline` module, a `.env` file must be provided with the following configurations:
-- `DATASETS`   -- path to folder containing exercise (case study) texts
-- `OUTPUTS`    -- path to folder in which outpust are stored
-- `AUTO_OUTPUTS`    -- path to folder in which outpust of automatic runs are stored
-- `RESULTS`   -- path to folder in which results are stored
-- `INPUTS`   -- path to folder containing exercise prompts
-- `SAVE_MODELS`   -- path to folder in which store imported models
-
-If using Azure to interact with model's API, these configurations must be provided too (model_name must be uppercase)
-- `ENDPOINT_{model-name}`
-
-#### Authentication key
-
-Authentication key must be stored in `llm4dfm/resources/credentials.yml`,
-an example of how the config is structured can be found in `llm4dfm/resources/credentials-example.yml`.
-
-#### Algorithmic parameters
-
-##### Pipeline
-
-The following parameters can be configured in `llm4dfm/resources/pipeline-config.yml` file.
-
-##### Note
-
-**Import model has been momentarily removed**
-
-Imported model
-
-- `name` -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
-- `tokenizer -name`   -- model's tokenizer name, usually the same as the model`
-- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
-- `max_new_tokens` -- limit the maximum number of tokens generated in a single call`
-- `do_sample` -- boolean, if set specifies to generate more creative output`
-- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true`
-- `quantization` -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy`
-
-Api model
-
-- `name`        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
-- `label`     -- model's name used in output file name generated, if not specified it uses name`
-- `deployment`     -- Deployment name for azure distribution [test-gpt-35, test-gpt-4o]`
-- `api_version`     -- api model's version`
-- `max_tokens` -- it's the maximum length of the generated output`
-- `n_response` -- regulates number of responses the model generates`
-- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 2 [0, ..., 1] [Default 0.1]`
-- `stop`        -- set the stop character(s, if list) that terminate the response when encountered`
-- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 [0, ..., 1]`
-- `top_k` -- threshold between 1 and 40 that specifies the number of tokens (with the highest probability) considered for the next generation. Less randomness for lower values [could be only a gemini parameter]`
-
-Exercise
-
-- `name`           -- the exercise name (part before version, exercise-N)`
-- `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
-- `prompt_version` -- the prompt version (part between prompts- and .yml)`
-- `number` -- the exercise number`
-
-General
-
-- `use` -- the model to use between import and api`
-- `debug_prints`   -- enable output prints during execution`
-
-Output
-
-- `dir_label` -- the label used in output directory name`
-
-##### CSV-Graph
-
-The following parameters can be configured in `llm4dfm/resources/csv-graph-config.yml` file.
-
-- `dir` -- full directory name, in case it's specified all other parameters will be ignored`
-- `v` -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
-- `prompt_v` -- the prompt version (part between prompts-v and .yml)`
-- `model_label` -- model's label name`
-- `dir_label` -- directory in which store file name`
-
-##### Metrics
-
-The following parameters can be configured in `llm4dfm/resources/metrics-config.yml` file, under the `exercise` section.
-
-- `dir` -- the exercise's directory inside outputs folder`
-- `name` -- the exercise name without .yml extension`
-- `demand` -- whether it's a demand driven exercise [true, false]`
-- `gt` -- the ground truth's exercise`
-- `number` -- the exercise number`
-
-### Preprocessing
-
-In order to apply equality or ignore rules, `llm4dfm/resources/preprocess.yml` file has been provided.
-It is split in 2 sections, the first one is the common, that is applied to all exercises, and then rules for each exercise.
-
-Structure of each section is as follows:
-```
-1:
-  demand:
-    equals:
-    - item_to_keep_1:
-      - elem_1_equal_item_to_keep_1
-      - elem_2_equal_item_to_keep_1
-    - item_to_keep_2:
-      - elem_1_equal_item_to_keep_2
-      - elem_2_equal_item_to_keep_2
-    ignore:
-    - elem_to_ignore_1
-    - elem_to_ignore_2
-  supply:
-    equals:
-    - item_to_keep_1:
-      - elem_1_equal_item_to_keep_1
-      - elem_2_equal_item_to_keep_1
-    ignore: []
-```
-
-This state that in exercise 1 all elem_1_equal_item_to_keep_1 and elem_2_equal_item_to_keep_1 found in demand exercise
-will be preprocessed in item_to_keep_1 and so on, and all dependencies that will have elem_to_ignore_1 or elem_to_ignore_2
-will be ignored after preprocessing.
-Thesaurus rules are applied here.
 
 ### Tests
 
