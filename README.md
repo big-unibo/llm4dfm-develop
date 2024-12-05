@@ -365,13 +365,13 @@ First of all, execution privileges must be granted by means of `chmod 700 ./reso
 
 After activating [venv](#Venv), a task triggered by
 `poetry poe automatic_run` run the pipeline with the following configurations:
-- `number_of_runs -- set number of runs, 1 by default`
-- `file_version -- set file version [sql, original, demand], sql by default`
-- `prompt_version -- set prompt version [v1, v2, v3, v4, demand], v4 by default`
-- `model -- model to use in run`
-- `"<ex1> ... <fileN>" -- set exercises to run, all files matching previous configurations by default`
-- `model_label -- an optional model label used in yml output generated, empty string by default, if empty model name is used`
-- `dir_label -- an optional label used in output directory generated, if not provided a timestamp is generated`
+- `number_of_runs` -- set number of runs, 1 by default
+- `file_version` -- set file version [sql, original, demand], sql by default
+- `prompt_version` -- set prompt version [v1, v2, v3, v4, demand], v4 by default
+- `model` -- model to use in run
+- `"<ex1> ... <fileN>"` -- set exercises to run, all files matching previous configurations by default
+- `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name is used
+- `dir_label` -- an optional label used in output directory generated, if not provided a timestamp is generated
 
 This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
 
@@ -396,8 +396,8 @@ First of all, execution privileges must be granted by means of `chmod 700 ./reso
 After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
 `poetry poe automatic_metrics` run the program with the following configurations:
 
-- `dir -- the directory name inside 'outputs' folder`
-- `version -- the prompt version used [sql, demand], sql by default`
+- `dir` -- the directory name inside 'outputs' folder
+- `version` -- the prompt version used [sql, demand], sql by default
 
 This could also be achieved by directly run `./resources/automatic-metrics.sh` from `llm4dfm` directory, with configurations as stated before.
 
