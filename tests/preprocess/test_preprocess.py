@@ -3,8 +3,8 @@ import unittest
 
 from llm4dfm.pipeline.preprocess import preprocess
 from llm4dfm.pipeline.utils import extract_ex_num
-from tests.preprocess.preprocess_utils import load_preprocess_datasets, load_exercise, get_info_from_filename, store_test_output
-
+from tests.preprocess.preprocess_utils import load_preprocess_datasets, load_preprocess_exercise, store_preprocess_test_output
+from tests.utils import get_info_from_filename
 
 class PreprocessTest(unittest.TestCase):
 
@@ -16,7 +16,7 @@ class PreprocessTest(unittest.TestCase):
 
         for file_name in files:
 
-            ex_output = load_exercise(file_name)
+            ex_output = load_preprocess_exercise(file_name)
 
             exercise, version, prompt = get_info_from_filename(file_name)
             ex_num = extract_ex_num(exercise)
@@ -33,7 +33,7 @@ class PreprocessTest(unittest.TestCase):
             output_expected[file_name] = ex_output['expected']
 
         for file in output_generated.keys():
-            store_test_output(output_generated[file], file)
+            store_preprocess_test_output(output_generated[file], file)
 
         for file in output_expected.keys():
             for idx, (out_gt, out_gen) in enumerate(zip(output_expected[file], output_generated[file])):
