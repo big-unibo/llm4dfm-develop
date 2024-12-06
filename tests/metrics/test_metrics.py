@@ -4,7 +4,8 @@ import traceback
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, extract_ex_num, label_edges
 from llm4dfm.pipeline.metrics import MetricsCalculator
 from llm4dfm.pipeline.preprocess import preprocess
-from tests.metrics.metrics_utils import load_metrics_datasets, get_info_from_filename, load_exercise, store_test_output
+from tests.metrics.metrics_utils import load_metrics_datasets, load_metrics_exercise, store_metrics_test_output
+from tests.utils import get_info_from_filename
 
 class MetricsTest(unittest.TestCase):
 
@@ -17,7 +18,7 @@ class MetricsTest(unittest.TestCase):
         output_generated = dict()
 
         for file_name in files:
-            ex_output = load_exercise(file_name)
+            ex_output = load_metrics_exercise(file_name)
 
             metrics_gt[file_name] = ex_output['metrics']
 
@@ -89,7 +90,7 @@ class MetricsTest(unittest.TestCase):
                                            'metrics': metrics_list}
 
         for file in output_generated.keys():
-            store_test_output(output_generated[file], file)
+            store_metrics_test_output(output_generated[file], file)
 
         for file in metrics_gt.keys():
             for idx, (metr_dict_gt, metr_dict_calc) in enumerate(zip(metrics_gt[file], metrics_calculated[file])):

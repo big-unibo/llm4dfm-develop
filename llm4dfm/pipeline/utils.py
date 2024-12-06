@@ -196,7 +196,7 @@ def get_headers_csv():
             'nodes_fp','nodes_precision','nodes_recall','nodes_f1']
 
 
-def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, timestamp, label_dir):
+def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir):
     for i, metrics in enumerate(metrics_list):
         data = dict()
 
@@ -218,6 +218,13 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
 
         for node in output_preprocessed[i]['nodes']:
             data[f'node_{node}'] = output_preprocessed[i]['nodes'][node]
+
+        for det, val in detected_list[i].items():
+            if isinstance(val, dict):
+                for sub_det, prop in val.items():
+                    data[f'errors_{det}_{sub_det}'] = prop
+            else:
+                data[f'errors_{det}'] = val
 
         for elem in metrics:
             for met, val in metrics[elem].items():
@@ -255,7 +262,7 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
             writer.writerow(list(data.values()))
 
 
-def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preprocessed, metrics_list):
+def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preprocessed, metrics_list, detected):
     path = get_csv_file_from_output_dir(dir_name)
 
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -287,9 +294,17 @@ def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preproce
         for node in output_preprocessed[idx]['nodes']:
             data[f'node_{node}'] = output_preprocessed[idx]['nodes'][node]
 
+        for det, val in detected[idx].items():
+            if isinstance(val, dict):
+                for sub_det, prop in val.items():
+                    data[f'errors_{det}_{sub_det}'] = prop
+            else:
+                data[f'errors_{det}'] = val
+
         for elem in metrics:
             for met, val in metrics[elem].items():
                 data[f"{elem}_{met}"] = val
+
         if not df.empty and (not matching_rows is None) and matching_rows.any():
             for prop in data:
                 df.loc[matching_rows, prop] = str(data[prop])
@@ -302,4 +317,3 @@ def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preproce
 
             df = pd.concat([df, pd.DataFrame([data])], ignore_index=True)
     df.to_csv(path, index=False)
-

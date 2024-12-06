@@ -229,6 +229,37 @@ class MetricsCalculator:
 
         return tp_idx, fp_idx, fn_idx, gt_used
 
+
+class ErrorDetector:
+
+    def __init__(self, gt_fact, gt_measures, gt_dependencies):
+        self.gt_fact = gt_fact
+        self.gt_measures = gt_measures
+        self.gt_dependencies = gt_dependencies
+
+    def detect(self, out_fact, out_measures, out_dependencies):
+        dependencies_detection = dict()
+        dependencies_detection['reversed'] = 0
+        dependencies_detection['missing'] = 0
+        dependencies_detection['extra'] = 0
+
+        measures_detection = dict()
+        measures_detection['missing'] = 0
+        measures_detection['extra'] = 0
+
+        fact_detection = dict()
+        fact_detection['incorrect'] = False
+
+        attributes_detection = dict()
+        attributes_detection['shared_missing'] = 0
+        attributes_detection['shared_extra'] = 0
+
+        miscellaneous_detection = dict()
+        miscellaneous_detection['extra_disconnected_components'] = 0
+        miscellaneous_detection['extra_tags'] = False
+
+        return dependencies_detection, measures_detection, fact_detection, attributes_detection, miscellaneous_detection
+
 if __name__ == '__main__':
 
     # Load config
@@ -271,24 +302,22 @@ if __name__ == '__main__':
     else:
         timestamp = ex_config['name']
 
-    # if 'gt_preprocessed' in ex_output:
-    #     ground_truth = ex_output['gt_preprocessed']
-    # else:
-    ground_truth = load_ground_truth_exercise(ex_config['gt'])
-
     is_demand = ex_config['version'].lower() == 'demand'
 
-    if is_demand:
-        ground_truth = ground_truth['demand_driven']
+    if 'gt_preprocessed' in ex_output:
+        ground_truth = ex_output['gt_preprocessed']
     else:
-        ground_truth = ground_truth['supply_driven']
+        ground_truth = load_ground_truth_exercise(ex_config['gt'])
 
+        if is_demand:
+            ground_truth = ground_truth['demand_driven']
+        else:
+            ground_truth = ground_truth['supply_driven']
 
-
-    ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_config['number'], ground_truth['dependencies'],
-                                                                                ground_truth['measures'] if
-                                                                                ground_truth['measures'] else list(),
-                                                                                ground_truth['fact'], is_demand, list())
+        ground_truth['dependencies'], ground_truth['measures'], ground_truth['fact'] = preprocess(ex_config['number'], ground_truth['dependencies'],
+                                                                                    ground_truth['measures'] if
+                                                                                    ground_truth['measures'] else list(),
+                                                                                    ground_truth['fact'], is_demand, list())
 
     metrics = []
 
@@ -297,36 +326,41 @@ if __name__ == '__main__':
     fact_gt = ground_truth['fact']
 
     metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_config['number'], is_demand)
+    detector = ErrorDetector(fact_gt, meas_gt, dep_gt)
 
     outputs_to_use = []
 
     if isinstance(ex_output, dict):
-        #if 'output_preprocessed' in ex_output and ex_output['output_preprocessed'] != []:
-        #    outputs_to_use = ex_output['output_preprocessed']
-        #else:
-        if 'output' in ex_output:
-            output_non_preprocessed = ex_output['output']
+        if 'output_preprocessed' in ex_output and ex_output['output_preprocessed'] != []:
+            outputs_to_use = ex_output['output_preprocessed']
         else:
-            output_non_preprocessed = ex_output
+            if 'output' in ex_output:
+                output_non_preprocessed = ex_output['output']
+            else:
+                output_non_preprocessed = ex_output
 
-        for output in output_non_preprocessed:
-            try:
-                dep_output, meas_output, fact_output = preprocess(ex_config['number'], output['dependencies'],
-                                                                  output['measures'] if output[
-                                                                      'measures'] else list(),
-                                                                  output['fact'], is_demand, ground_truth['dependencies'])
+            for output in output_non_preprocessed:
+                try:
+                    dep_output, meas_output, fact_output = preprocess(ex_config['number'], output['dependencies'],
+                                                                      output['measures'] if output[
+                                                                          'measures'] else list(),
+                                                                      output['fact'], is_demand, ground_truth['dependencies'])
 
-                outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
-            except:
-                traceback.print_exc()
-                print(f"Output not correctly generated, skipped")
+                    outputs_to_use.append({'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output})
+                except:
+                    traceback.print_exc()
+                    print(f"Output not correctly generated, skipped")
 
     output_to_save = []
+    detection_list = list()
 
     for i, output in enumerate(outputs_to_use):
         try:
+            detected = dict()
             dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else list(), output['fact']
-
+            (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
+             detected['miscellaneous']) = detector.detect(dep_output, meas_output, fact_output)
+            detection_list.append(detected)
             edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
             tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
 
@@ -344,10 +378,12 @@ if __name__ == '__main__':
         except:
             traceback.print_exc()
             metrics.append(dict())
+            detection_list.append(dict())
             print(f"Output {i}-th not correctly generated, skipped")
-    update_csv(ex_config['dir'], timestamp, ex_config['name'], ex_config['number'], ex_config['version'], output_to_save, metrics)
+    update_csv(ex_config['dir'], timestamp, ex_config['name'], ex_config['number'], ex_config['version'], output_to_save, metrics, detection_list)
     props = dict()
     props['gt_preprocessed'] = ground_truth
     props['output_preprocessed'] = output_to_save
     props['metrics'] = metrics
+    props['errors'] = detection_list
     store_additional_properties(ex_config['dir'], ex_config['name'], props)
