@@ -22,7 +22,6 @@ class ErrorDetectionTest(unittest.TestCase):
 
             datection_gt[file_name] = ex_output['errors']
 
-
             if 'gt_preprocessed' in ex_output:
                 ground_truth = ex_output['gt_preprocessed']
             elif 'ground_truth' in ex_output:
@@ -62,8 +61,15 @@ class ErrorDetectionTest(unittest.TestCase):
                     dep_output, meas_output, fact_output = (output['dependencies'],
                                                             output['measures'] if output['measures'] else list(),
                                                             output['fact'])
-                    (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
-                     detected['miscellaneous']) = detector.detect(dep_output, meas_output, fact_output)
+                    if 'metrics' in ex_output:
+                        metrics = ex_output['metrics']
+                        (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
+                         detected['miscellaneous']) = detector.detect_with_metrics(fact_output, meas_output, dep_output,
+                                                                                   metrics[i]['edges']['fn'],
+                                                                                   metrics[i]['edges']['fp'])
+                    else:
+                        (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
+                         detected['miscellaneous']) = detector.detect(fact_output, meas_output, dep_output)
                     detection_list.append(detected)
                 except:
                     traceback.print_exc()

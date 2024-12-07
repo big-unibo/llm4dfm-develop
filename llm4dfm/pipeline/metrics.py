@@ -4,7 +4,7 @@ import re
 
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
     extract_ex_num, label_edges, store_additional_properties, update_csv
-
+from collections import defaultdict
 from llm4dfm.pipeline.preprocess import preprocess
 
 def _calc_metrics(tp, fp, fn):
@@ -230,6 +230,93 @@ class MetricsCalculator:
         return tp_idx, fp_idx, fn_idx, gt_used
 
 
+
+def count_reversed_edges(graph1, graph2):
+    graph1_edges = set()
+    graph2_edges = set()
+
+    for edge in graph1:
+        from_list = [attr.lower() for attr in edge['from'].split(',')]
+        from_list.sort()
+        from_key = ''.join(from_list)
+        to_list = [attr.lower() for attr in edge['to'].split(',')]
+        to_list.sort()
+        to_key = ''.join(to_list)
+        graph1_edges.add((from_key, to_key))
+
+    for edge in graph2:
+        from_list = [attr.lower() for attr in edge['from'].split(',')]
+        from_list.sort()
+        from_key = ''.join(from_list)
+        to_list = [attr.lower() for attr in edge['to'].split(',')]
+        to_list.sort()
+        to_key = ''.join(to_list)
+        # Put it reversed
+        graph2_edges.add((to_key, from_key))
+
+    # Check reversed edges in graph2 compared to graph1
+    reversed_edges = graph1_edges & graph2_edges
+
+    return len(reversed_edges)
+
+def count_nodes_with_multiple_incoming_edges(graph):
+    nodes_incoming_edges_count = dict()
+
+    for edge in graph:
+        to_list = [attr.lower() for attr in edge['to'].split(',')]
+        to_list.sort()
+        nodes_key = ''.join(to_list)
+
+        if nodes_key in nodes_incoming_edges_count:
+            nodes_incoming_edges_count[nodes_key] += 1
+        else:
+            nodes_incoming_edges_count[nodes_key] = 1
+
+    # Count nodes with more than one unique incoming edge
+    count = sum(1 for value in nodes_incoming_edges_count.values() if value > 1)
+    return count
+
+def count_connected_components(graph):
+    # Create adjacency list representation of the graph
+    adjacency_list = defaultdict(list)
+    for edge in graph:
+        adjacency_list[edge['from']].append(edge['to'])
+        adjacency_list[edge['to']].append(edge['from'])  # Undirected graph assumption
+
+    visited = set()
+
+    def dfs(sing_node):
+        stack = [sing_node]
+        while stack:
+            current = stack.pop()
+            if current not in visited:
+                visited.add(current)
+                stack.extend(adjacency_list[current])
+
+    # Count connected components
+    connected_components = 0
+    for node in adjacency_list:
+        if node not in visited:
+            connected_components += 1
+            dfs(node)
+
+    return connected_components
+
+def has_extra_tags(graph1, graph2):
+    roles_g1_set = set()
+    roles_g2_set = set()
+
+    for edge in graph1:
+        if 'role' in edge and edge['role'].lower() not in roles_g1_set:
+            roles_g1_set.add(edge['role'].lower())
+
+    for edge in graph2:
+        if 'role' in edge and edge['role'].lower() not in roles_g2_set:
+            roles_g2_set.add(edge['role'].lower())
+
+    return len(roles_g1_set & roles_g2_set) != len(roles_g1_set)
+
+
 class ErrorDetector:
 
     def __init__(self, gt_fact, gt_measures, gt_dependencies):
@@ -238,25 +325,44 @@ class ErrorDetector:
         self.gt_dependencies = gt_dependencies
 
     def detect(self, out_fact, out_measures, out_dependencies):
+        metric_calculator = MetricsCalculator(self.gt_fact, self.gt_measures, self.gt_dependencies)
+
+        _, edges_fp, edges_fn, _ = metric_calculator.get_edges_idx(fact_output, meas_output,
+                                                                                      dep_output)
+
+        return self.detect_with_metrics(out_fact, out_measures, out_dependencies, len(edges_fn), len(edges_fp))
+
+    def detect_with_metrics(self, out_fact, out_measures, out_dependencies, dep_fn, dep_fp):
         dependencies_detection = dict()
-        dependencies_detection['reversed'] = 0
-        dependencies_detection['missing'] = 0
-        dependencies_detection['extra'] = 0
+        dependencies_detection['reversed'] = count_reversed_edges(self.gt_dependencies, out_dependencies)
+        dependencies_detection['missing'] = dep_fn
+        dependencies_detection['extra'] = dep_fp
 
         measures_detection = dict()
-        measures_detection['missing'] = 0
-        measures_detection['extra'] = 0
+        meas_gt_to_use = {meas['name'].lower() for meas in self.gt_measures}
+        meas_out_to_use = {meas['name'].lower() for meas in out_measures}
+        measures_detection['missing'] = len(meas_gt_to_use) - len(meas_gt_to_use & meas_out_to_use)
+        measures_detection['extra'] = len(meas_out_to_use) - len(meas_gt_to_use & meas_out_to_use)
 
         fact_detection = dict()
-        fact_detection['incorrect'] = False
+        fact_detection['incorrect'] = self.gt_fact['name'].lower() != out_fact['name'].lower()
+
+        shared_count_gt = count_nodes_with_multiple_incoming_edges(self.gt_dependencies)
+        shared_count_out = count_nodes_with_multiple_incoming_edges(out_dependencies)
+
+        diff = shared_count_gt - shared_count_out
+        if diff > 0:
+            missing, extra = diff, 0
+        else:
+            missing, extra = 0, abs(diff)
 
         attributes_detection = dict()
-        attributes_detection['shared_missing'] = 0
-        attributes_detection['shared_extra'] = 0
+        attributes_detection['shared_missing'] = missing
+        attributes_detection['shared_extra'] = extra
 
         miscellaneous_detection = dict()
-        miscellaneous_detection['extra_disconnected_components'] = 0
-        miscellaneous_detection['extra_tags'] = False
+        miscellaneous_detection['extra_disconnected_components'] = count_connected_components(out_dependencies)-1
+        miscellaneous_detection['extra_tags'] = has_extra_tags(self.gt_dependencies, out_dependencies)
 
         return dependencies_detection, measures_detection, fact_detection, attributes_detection, miscellaneous_detection
 
@@ -356,17 +462,19 @@ if __name__ == '__main__':
 
     for i, output in enumerate(outputs_to_use):
         try:
-            detected = dict()
             dep_output, meas_output, fact_output = output['dependencies'], output['measures'] if output['measures'] else list(), output['fact']
-            (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
-             detected['miscellaneous']) = detector.detect(dep_output, meas_output, fact_output)
-            detection_list.append(detected)
             edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
             tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
 
             step_metric = {'edges': metric_calc.calculate_metrics_from_preprocessed(edges_tp_idx, edges_fp_idx, edges_fn_idx),
                            'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
             metrics.append(step_metric)
+
+            detected = dict()
+            (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
+             detected['miscellaneous']) = detector.detect_with_metrics(fact_output, meas_output, dep_output,
+                                                          step_metric['edges']['fn'], step_metric['edges']['fp'])
+            detection_list.append(detected)
 
             output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
 
