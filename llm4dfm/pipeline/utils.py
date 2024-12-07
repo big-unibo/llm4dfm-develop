@@ -176,7 +176,11 @@ def get_headers_csv():
             'config_deployment','config_api_version','config_temperature','config_max_tokens','config_n_responses',
             'config_stop','config_top_p','config_top_k','fact','measures','dependencies','node_tp','node_fp','node_fn',
             'edges_tp','edges_fn','edges_fp','edges_precision','edges_recall','edges_f1','nodes_tp','nodes_fn',
-            'nodes_fp','nodes_precision','nodes_recall','nodes_f1']
+            'nodes_fp','nodes_precision','nodes_recall','nodes_f1','errors_dependencies_reversed',
+            'errors_dependencies_missing','errors_dependencies_extra','errors_measures_missing',
+            'errors_measures_extra','errors_fact_incorrect','errors_attributes_shared_missing',
+            'errors_attributes_shared_extra','errors_miscellaneous_extra_disconnected_components',
+            'errors_miscellaneous_extra_tags']
 
 def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir):
     for i, metrics in enumerate(metrics_list):
@@ -201,16 +205,16 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
         for node in output_preprocessed[i]['nodes']:
             data[f'node_{node}'] = output_preprocessed[i]['nodes'][node]
 
+        for elem in metrics:
+            for met, val in metrics[elem].items():
+                data[f"{elem}_{met}"] = val
+
         for det, val in detected_list[i].items():
             if isinstance(val, dict):
                 for sub_det, prop in val.items():
                     data[f'errors_{det}_{sub_det}'] = prop
             else:
                 data[f'errors_{det}'] = val
-
-        for elem in metrics:
-            for met, val in metrics[elem].items():
-                data[f"{elem}_{met}"] = val
 
         file_path = get_csv_file_from_output_dir(label_dir)
 

@@ -7,8 +7,7 @@ from llm4dfm.pipeline.models import Model, load_text_and_first_prompt, is_model_
 from llm4dfm.pipeline.preprocess import preprocess
 from llm4dfm.pipeline.utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
                    get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num, label_edges, load_text_exercise)
-from llm4dfm.pipeline.metrics import MetricsCalculator
-
+from llm4dfm.pipeline.metrics import MetricsCalculator, ErrorDetector
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--exercise', help='Exercise to use')
@@ -155,8 +154,10 @@ meas_gt = gt_preprocessed['measures']
 fact_gt = gt_preprocessed['fact']
 
 metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
+detector = ErrorDetector(fact_gt, meas_gt, dep_gt)
 
 output_preprocessed = []
+detection_list = list()
 
 for i, output in enumerate(model_outputs):
     try:
@@ -173,6 +174,12 @@ for i, output in enumerate(model_outputs):
             'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
         metrics.append(step_metric)
 
+        detected = dict()
+        (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
+         detected['miscellaneous']) = detector.detect_with_metrics(fact_output, meas_output, dep_output,
+                                                      step_metric['edges']['fn'], step_metric['edges']['fp'])
+        detection_list.append(detected)
+
         output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
 
         out, gt = label_edges(output_to_use, gt_preprocessed, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
@@ -182,6 +189,7 @@ for i, output in enumerate(model_outputs):
                                                                     'fn': list(fn_nodes)}})
     except:
         traceback.print_exc()
+        detection_list.append(dict())
         metrics.insert(i, dict())
         print(f"Output {i}-th not correctly generated, skipped")
 
@@ -193,5 +201,5 @@ store_output(config, model_config['exercise'], model_outputs, output_preprocesse
              metrics, ts, model_config['output']['dir_label'])
 
 if automatic_run:
-    store_automatic_output(config, model_config['exercise'], output_preprocessed, metrics, ts,
-                           model_config['output']['dir_label'])
+    store_automatic_output(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import',
+                           metrics, detection_list, ts, model_config['output']['dir_label'])
