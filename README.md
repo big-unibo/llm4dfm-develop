@@ -370,7 +370,7 @@ All configurations specified as argument **override** the ones provided by confi
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
 Example of run:
-`poetry poe automatic_run 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o test-after-poetry`
+`poetry poe automatic_run 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
 `./resources/automatic-run.sh 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
 
 Output:
@@ -397,7 +397,7 @@ Example of run:
 `./resources/automatic-metrics.sh 1 demand-rq5-example-gpt4o-demand demand`
 
 Output:
-File preprocess and metrics calculation will be executed, results will be overridden in same file.
+File preprocess, metrics calculation and error detection will be executed, results will be overridden in same file.
 
 ### Tests
 
