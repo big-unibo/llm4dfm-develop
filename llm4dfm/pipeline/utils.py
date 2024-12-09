@@ -131,13 +131,14 @@ def config_to_print(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, ex_config, model_output, output_preprocessed, gt_preprocessed, metrics, timestamp, dir_label):
+def store_output(model_config, ex_config, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
     results_output = {
         'config': config_to_print(model_config),
         'output': model_output,
         'output_preprocessed': output_preprocessed,
         'gt_preprocessed': gt_preprocessed,
         'metrics': metrics,
+        'errors': error_detection,
     }
 
     prompt_version = ex_config['prompt_version']

@@ -119,8 +119,7 @@ model_outputs.append(model_output)
 try:
     model_outputs = output_as_valid_yaml(model_outputs)
 except:
-    store_output(config, model_config['exercise'], model_outputs, [], {}, [],
-                 get_timestamp(), model_config['output']['dir_label'])
+    store_output(config, model_config['exercise'], model_outputs, [], {}, model_config['use'] == 'import', [], [], get_timestamp(), model_config['output']['dir_label'])
     print("Output not correctly generated")
     exit(1)
 
@@ -198,7 +197,7 @@ ts = get_timestamp()
 
 # store output
 store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_preprocessed,
-             metrics, ts, model_config['output']['dir_label'])
+             model_config['use'] == 'import', metrics, detection_list, ts, model_config['output']['dir_label'])
 
 if automatic_run:
     store_automatic_output(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import',

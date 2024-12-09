@@ -230,27 +230,24 @@ class MetricsCalculator:
         return tp_idx, fp_idx, fn_idx, gt_used
 
 
+def get_key_from_node_to_avoid_order(node):
+    attr_list = [attr.lower() for attr in node.split(',')]
+    attr_list.sort()
+    return ''.join(attr_list)
+
 
 def count_reversed_edges(graph1, graph2):
     graph1_edges = set()
     graph2_edges = set()
 
     for edge in graph1:
-        from_list = [attr.lower() for attr in edge['from'].split(',')]
-        from_list.sort()
-        from_key = ''.join(from_list)
-        to_list = [attr.lower() for attr in edge['to'].split(',')]
-        to_list.sort()
-        to_key = ''.join(to_list)
+        from_key = get_key_from_node_to_avoid_order(edge['from'])
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
         graph1_edges.add((from_key, to_key))
 
     for edge in graph2:
-        from_list = [attr.lower() for attr in edge['from'].split(',')]
-        from_list.sort()
-        from_key = ''.join(from_list)
-        to_list = [attr.lower() for attr in edge['to'].split(',')]
-        to_list.sort()
-        to_key = ''.join(to_list)
+        from_key = get_key_from_node_to_avoid_order(edge['from'])
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
         # Put it reversed
         graph2_edges.add((to_key, from_key))
 
@@ -263,9 +260,7 @@ def count_nodes_with_multiple_incoming_edges(graph):
     nodes_incoming_edges_count = dict()
 
     for edge in graph:
-        to_list = [attr.lower() for attr in edge['to'].split(',')]
-        to_list.sort()
-        nodes_key = ''.join(to_list)
+        nodes_key = get_key_from_node_to_avoid_order(edge['to'])
 
         if nodes_key in nodes_incoming_edges_count:
             nodes_incoming_edges_count[nodes_key] += 1
@@ -280,8 +275,10 @@ def count_connected_components(graph):
     # Create adjacency list representation of the graph
     adjacency_list = defaultdict(list)
     for edge in graph:
-        adjacency_list[edge['from']].append(edge['to'])
-        adjacency_list[edge['to']].append(edge['from'])  # Undirected graph assumption
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
+        from_key = get_key_from_node_to_avoid_order(edge['from'])
+        adjacency_list[from_key].append(to_key)
+        adjacency_list[to_key].append(from_key)
 
     visited = set()
 
@@ -302,19 +299,24 @@ def count_connected_components(graph):
 
     return connected_components
 
-def has_extra_tags(graph1, graph2):
-    roles_g1_set = set()
-    roles_g2_set = set()
+def has_extra_tags(graph_gt, graph_out):
+    roles_gt = set()
+    roles_out = set()
 
-    for edge in graph1:
-        if 'role' in edge and edge['role'].lower() not in roles_g1_set:
-            roles_g1_set.add(edge['role'].lower())
+    for edge in graph_gt:
+        if 'role' in edge and edge['role'].lower() not in roles_gt:
+            roles_gt.add(edge['role'].lower())
 
-    for edge in graph2:
-        if 'role' in edge and edge['role'].lower() not in roles_g2_set:
-            roles_g2_set.add(edge['role'].lower())
+    for edge in graph_out:
+        if 'role' in edge and edge['role'].lower() not in roles_out:
+            roles_out.add(edge['role'].lower())
 
-    return len(roles_g1_set & roles_g2_set) != len(roles_g1_set)
+    #print(f'GT: {roles_gt}')
+    #print(f'OUT: {roles_out}')
+    #print(f'Extra tags: {len(roles_out) > len(roles_out & roles_gt)}')
+    # len(roles_out & roles_gt) != len(roles_out)
+
+    return len(roles_out) > len(roles_out & roles_gt)
 
 
 class ErrorDetector:
@@ -327,8 +329,7 @@ class ErrorDetector:
     def detect(self, out_fact, out_measures, out_dependencies):
         metric_calculator = MetricsCalculator(self.gt_fact, self.gt_measures, self.gt_dependencies)
 
-        _, edges_fp, edges_fn, _ = metric_calculator.get_edges_idx(fact_output, meas_output,
-                                                                                      dep_output)
+        _, edges_fp, edges_fn, _ = metric_calculator.get_edges_idx(fact_output, meas_output, dep_output)
 
         return self.detect_with_metrics(out_fact, out_measures, out_dependencies, len(edges_fn), len(edges_fp))
 
