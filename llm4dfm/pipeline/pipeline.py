@@ -26,26 +26,14 @@ key_config = load_yaml_from_resources('credentials')
 
 # Model loading
 
-if model_config['use'] == 'import':
-    raise Exception('import not supported')
-    # config = model_config['model_import']
-    #
-    # config['key'] = key_config[config['name']]['key']
-    #
-    # model = Model(model_config['use'], config['name'], config, config['key'],
-    #               model_config['debug_prints'], config['quantization'])
+config = model_config['model']
 
-elif model_config['use'] == 'api':
-    config = model_config['model_api']
-    if args.model:
-        automatic_run = True
-        config['name'] = args.model
+if args.model:
+    automatic_run = True
+    config['name'] = args.model
 
-    config['key'] = key_config[config['name']]['key']
-    model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'])
-
-else:
-    raise Exception("No models")
+config['key'] = key_config[config['name']]['key']
+model = Model(config['name'], config, config['key'], model_config['debug_prints'])
 
 # Argument parsing
 
@@ -132,7 +120,8 @@ model_outputs.append(model_output)
 try:
     model_outputs = output_as_valid_yaml(model_outputs)
 except:
-    store_output(config, model_config['exercise'], model_outputs, model_config['use'] == 'import', {}, get_timestamp(), model_config['output']['dir_label'])
+    store_output(config, model_config['exercise'], model_outputs, [], {}, [],
+                 get_timestamp(), model_config['output']['dir_label'])
     print("Output not correctly generated")
     exit(1)
 
@@ -201,8 +190,8 @@ ts = get_timestamp()
 
 # store output
 store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_preprocessed,
-             model_config['use'] == 'import', metrics, ts, model_config['output']['dir_label'])
+             metrics, ts, model_config['output']['dir_label'])
 
 if automatic_run:
-    store_automatic_output(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import',
-                           metrics, ts, model_config['output']['dir_label'])
+    store_automatic_output(config, model_config['exercise'], output_preprocessed, metrics, ts,
+                           model_config['output']['dir_label'])
