@@ -250,104 +250,120 @@ Thesaurus rules are applied here.
     - stop: null
     - top_p: 0.9
     - top_k: 5
+  - errors:
+    - dependencies:
+      - reversed [number>=0]
+      - missing: [number>=0]
+      - extra: [number>=0]
+    - measures:
+      - missing: [number>=0]
+      - extra: [number>=0]
+    - fact:
+      - incorrect: [boolean]
+    - attributes:
+      - shared_missing: [number>=0] (bigger than 0 only if extra = 0)
+      - shared_extra: [number>=0] (bigger than 0 only if missing = 0)
+    - miscellaneous:
+      - extra_disconnected_components: [number>=0] (0 means no extra components)
+      - extra_tags: [boolean]
   - output:
     - fact:
-        name: FACT_NAME
-      measures: 
+      - name: FACT_NAME
+    - measures: 
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
-      dependencies:
+    - dependencies:
       - from: TABLE1.Attr
       - to: TABLE2.Attr
       - ...
     - fact:
-      name: FACT_NAME
-      measures:
+      - name: FACT_NAME
+    - measures:
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
-      dependencies:
+    - dependencies:
       - from: TABLE1.Attr
       - to: TABLE2.Attr
       - ...
   - output_preprocessed:
     - fact:
-      name: FACT_NAME
-      measures:
+      - name: FACT_NAME
+    - measures:
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
-      dependencies:
+    - dependencies:
       - from: TABLE1.Attr
         label: tp
         to: TABLE2.Attr
       - ...
-      ground_truth_labels:
-        dependencies:
+    - ground_truth_labels:
+      - dependencies:
         - from: TABLE1.Attr
           label: tp
           to: TABLE2.Attr
         - ...
-        fact:
-          name: FACT_NAME
-        measures:
+      - fact:
+        - name: FACT_NAME
+      - measures:
         - name: MEASURE1_NAME
         - name: MEASURE2_NAME
     - fact:
-      name: FACT_NAME
-      measures:
+      - name: FACT_NAME
+    - measures:
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
-      dependencies:
+    - dependencies:
       - from: TABLE1.Attr
         label: tp
         to: TABLE2.Attr
       - ...
-      ground_truth_labels:
-        dependencies:
+    - ground_truth_labels:
+      - dependencies:
         - from: TABLE1.Attr
           label: tp
           to: TABLE2.Attr
         - ...
-        fact:
-          name: FACT_NAME
-        measures:
+      - fact:
+        - name: FACT_NAME
+      - measures:
         - name: MEASURE1_NAME
         - name: MEASURE2_NAME
   - gt_preprocessed:
     - fact:
-      name: FACT_NAME
-      measures:
+      - name: FACT_NAME
+    - measures:
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
-      dependencies:
+    - dependencies:
       - from: TABLE1.Attr
       - to: TABLE2.Attr
       - ...
     - fact:
-      name: FACT_NAME
-      measures:
+      - name: FACT_NAME
+    - measures:
       - name: MEASURE1_NAME
       - name: MEASURE2_NAME
-      dependencies:
+    - dependencies:
       - from: TABLE1.Attr
       - to: TABLE2.Attr
       - ...
   - metrics:
     - edges:
-        precision: [0.0 - 1]
-        recall: [0.0 - 1]
-        f1: [0.0 - 1]
-      nodes:
-        precision: [0.0 - 1]
-        recall: [0.0 - 1]
-        f1: [0.0 - 1]
+      - precision: [0.0 - 1]
+      - recall: [0.0 - 1]
+      - f1: [0.0 - 1]
+    - nodes:
+      - precision: [0.0 - 1]
+      - recall: [0.0 - 1]
+      - f1: [0.0 - 1]
     - edges:
-        precision: [0.0 - 1]
-        recall: [0.0 - 1]
-        f1: [0.0 - 1]
-      nodes:
-        precision: [0.0 - 1]
-        recall: [0.0 - 1]
-        f1: [0.0 - 1]
+      - precision: [0.0 - 1]
+      - recall: [0.0 - 1]
+      - f1: [0.0 - 1]
+    - nodes:
+      - precision: [0.0 - 1]
+      - recall: [0.0 - 1]
+      - f1: [0.0 - 1]
 
 - Configure [graph](#CSV-Graph)
 - Run `python pipeline/csv_graph.py` from `llm4dfm` directory.
@@ -379,7 +395,7 @@ All configurations specified as argument **override** the ones provided by confi
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
 Example of run:
-`poetry poe automatic_run 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o test-after-poetry`
+`poetry poe automatic_run 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
 `./resources/automatic-run.sh 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
 
 Output:
@@ -406,7 +422,7 @@ Example of run:
 `./resources/automatic-metrics.sh 1 demand-rq5-example-gpt4o-demand demand`
 
 Output:
-File preprocess and metrics calculation will be executed, results will be overridden in same file.
+File preprocess, metrics calculation and error detection will be executed, results will be overridden in same file.
 
 ### Tests
 
