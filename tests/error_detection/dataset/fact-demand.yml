@@ -1,0 +1,39 @@
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  fact:
+    name: INSTALLATION
+  measures: []
+output_preprocessed:
+# Wrong fact
+- dependencies:
+  - from: ERR-INSTALLATION
+    to: computer
+  fact:
+    name: ERR-INSTALLATION
+  measures: []
+# False fact
+- dependencies:
+  - from: FALSE_FACT
+    to: date
+  fact:
+    name: INSTALLATION
+  measures: []
+# Correct
+- dependencies:
+  - from: INSTALLATION
+    to: date
+  fact:
+    name: INSTALLATION
+  measures: []
+errors:
+- fact:
+    false_fact: 1
+    incorrect: true
+- fact:
+    false_fact: 1
+    incorrect: false
+- fact:
+    false_fact: 0
+    incorrect: false

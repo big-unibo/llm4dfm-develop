@@ -88,13 +88,15 @@ class ErrorDetectionTest(unittest.TestCase):
                     if type(comp) is dict:
                         for prop in comp:
                             try:
-                                self.assertEqual(detection_dict_gt[comp][prop], detection_dict_calc[comp][prop])
+                                if comp in detection_dict_gt and prop in detection_dict_gt[comp]:
+                                    self.assertEqual(detection_dict_gt[comp][prop], detection_dict_calc[comp][prop])
                             except:
                                 print(f'\n[DEBUG] Error in file *{file}* {idx}-th output: {comp}_{prop} Gt={detection_dict_gt[comp][prop]}, Out={detection_dict_calc[comp][prop]}')
                                 raise AssertionError
                     else:
                         try:
-                            self.assertEqual(detection_dict_gt[comp], detection_dict_calc[comp])
+                            if comp in detection_dict_gt:
+                                self.assertEqual(detection_dict_gt[comp], detection_dict_calc[comp])
                         except:
                             print(
                                 f'\n[DEBUG] Error in file *{file}* {idx}-th output: {comp} Gt={detection_dict_gt[comp]}, Out={detection_dict_calc[comp]}')

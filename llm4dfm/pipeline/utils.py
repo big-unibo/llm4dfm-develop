@@ -196,8 +196,9 @@ def get_headers_csv():
             'edges_tp','edges_fn','edges_fp','edges_precision','edges_recall','edges_f1','nodes_tp','nodes_fn',
             'nodes_fp','nodes_precision','nodes_recall','nodes_f1','errors_dependencies_reversed',
             'errors_dependencies_missing','errors_dependencies_extra','errors_measures_missing',
-            'errors_measures_extra','errors_fact_incorrect','errors_attributes_shared_missing',
-            'errors_attributes_shared_extra','errors_miscellaneous_extra_disconnected_components',
+            'errors_measures_extra','errors_fact_incorrect','errors_fact_false_fact','errors_attributes_shared_missing',
+            'errors_attributes_shared_extra','errors_attributes_shared_with_fact_root_missing',
+            'errors_attributes_shared_with_fact_root_extra','errors_miscellaneous_extra_disconnected_components',
             'errors_miscellaneous_extra_tags']
 
 

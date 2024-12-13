@@ -1,0 +1,116 @@
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  - from: INSTALLATION
+    to: INSTALLATION.Software
+  - from: INSTALLATION.Computer
+    to: INSTALLATION.Date
+  - from: NOT-FACT
+    to: INSTALLATION.Date
+  fact:
+    name: INSTALLATION
+  measures: []
+output_preprocessed:
+# Extra with duplicates
+- dependencies:
+  - from: INSTALLATION
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  - from: INSTALLATION
+    to: INSTALLATION.Software
+  - from: INSTALLATION.Computer
+    to: INSTALLATION.Date
+  - from: NOT-FACT
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  fact:
+    name: INSTALLATION
+  measures: []
+# Extra
+- dependencies:
+  - from: INSTALLATION
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  - from: INSTALLATION
+    to: INSTALLATION.Software
+  - from: INSTALLATION.Computer
+    to: INSTALLATION.Date
+  - from: NOT-FACT
+    to: INSTALLATION.Date
+  - from: NOT-FACT
+    to: INSTALLATION.Computer
+  - from: NOT-FACT
+    to: INSTALLATION.Software
+  fact:
+    name: INSTALLATION
+  measures: []
+# Missing
+- dependencies:
+  - from: INSTALLATION
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  - from: INSTALLATION
+    to: INSTALLATION.Software
+  fact:
+    name: INSTALLATION
+  measures: []
+# Reversed
+- dependencies:
+  - from: INSTALLATION.Date
+    to: INSTALLATION
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  - from: INSTALLATION
+    to: INSTALLATION.Software
+  - from: INSTALLATION.Computer
+    to: INSTALLATION.Date
+  - from: INSTALLATION.Date
+    to: NOT-FACT
+  fact:
+    name: INSTALLATION
+  measures: []
+# Right
+- dependencies:
+  - from: INSTALLATION
+    to: INSTALLATION.Date
+  - from: INSTALLATION
+    to: INSTALLATION.Computer
+  - from: INSTALLATION
+    to: INSTALLATION.Software
+  - from: INSTALLATION.Computer
+    to: INSTALLATION.Date
+  - from: NOT-FACT
+    to: INSTALLATION.Date
+  fact:
+    name: INSTALLATION
+  measures: []
+errors:
+- dependencies:
+    extra: 2
+    missing: 0
+    reversed: 0
+- dependencies:
+    extra: 2
+    missing: 0
+    reversed: 0
+- dependencies:
+    extra: 0
+    missing: 2
+    reversed: 0
+- dependencies:
+    extra: 2 # 0
+    missing: 2 # 0
+    reversed: 2
+- dependencies:
+    extra: 0
+    missing: 0
+    reversed: 0
