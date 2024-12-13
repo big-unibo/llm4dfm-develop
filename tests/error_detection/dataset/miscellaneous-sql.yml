@@ -1,0 +1,145 @@
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: TRANSFERS.Date
+  - from: TRANSFER
+    role: to
+    to: DEPARTMENTS.DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DEPARTMENTS.DepartmentCode
+  - from: DEPARTMENTS.DivisionCode
+    role: manager
+    to: STAFF.EmployeeCode
+  - from: STAFF.EmployeeCode
+    role: Recruitment
+    to: TRANSFERS.Date
+  - from: STAFF.EmployeeCode
+    role: current
+    to: DEPARTMENTS.DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+output_preprocessed:
+# Extra connected components
+- dependencies:
+  - from: TRANSFER
+    to: TRANSFERS.Date
+  - from: TRANSFER
+    role: to
+    to: DEPARTMENTS.DepartmentCode
+  - from: STAFF.EmployeeCode
+    role: from
+    to: DEPARTMENTS.DivisionCode
+  fact:
+    name: TRANSFER
+  measures: []
+# No connected components
+- dependencies: []
+  fact:
+    name: TRANSFER
+  measures: []
+# Extra tags
+- dependencies:
+  - from: TRANSFER
+    to: TRANSFERS.Date
+  - from: TRANSFER
+    role: to
+    to: DEPARTMENTS.DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DEPARTMENTS.DepartmentCode
+  - from: DEPARTMENTS.DivisionCode
+    role: manager
+    to: STAFF.EmployeeCode
+  - from: STAFF.EmployeeCode
+    role: Recruitment
+    to: TRANSFERS.Date
+  - from: STAFF.EmployeeCode
+    role: current
+    to: DEPARTMENTS.DepartmentCode
+  - from: STAFF.EmployeeCode
+    role: err-role-1
+    to: DEPARTMENTS.DepartmentCode
+  - from: STAFF.EmployeeCode
+    role: err-role-2
+    to: DEPARTMENTS.DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+# Missing tags
+- dependencies:
+  - from: TRANSFER
+    to: TRANSFERS.Date
+  - from: TRANSFER
+    role: to
+    to: DEPARTMENTS.DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DEPARTMENTS.DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+# Extra & missing tags
+- dependencies:
+  - from: TRANSFER
+    to: TRANSFERS.Date
+  - from: TRANSFER
+    role: to
+    to: DEPARTMENTS.DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DEPARTMENTS.DepartmentCode
+  - from: DEPARTMENTS.DivisionCode
+    role: manager
+    to: STAFF.EmployeeCode
+  - from: STAFF.EmployeeCode
+    role: Recruitment
+    to: TRANSFERS.Date
+  - from: STAFF.EmployeeCode
+    role: err-role
+    to: DEPARTMENTS.DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+# GT
+- dependencies:
+  - from: TRANSFER
+    to: TRANSFERS.Date
+  - from: TRANSFER
+    role: to
+    to: DEPARTMENTS.DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DEPARTMENTS.DepartmentCode
+  - from: DEPARTMENTS.DivisionCode
+    role: manager
+    to: STAFF.EmployeeCode
+  - from: STAFF.EmployeeCode
+    role: Recruitment
+    to: TRANSFERS.Date
+  - from: STAFF.EmployeeCode
+    role: current
+    to: DEPARTMENTS.DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+errors:
+- miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false

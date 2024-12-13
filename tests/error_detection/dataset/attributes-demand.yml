@@ -1,0 +1,99 @@
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Date
+  - from: NOT-FACT
+    to: Date
+  fact:
+    name: INSTALLATION
+  measures: []
+output_preprocessed:
+# Shared extra
+- dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Date
+  - from: Err-Node-1
+    to: Date-1
+  - from: Err-Node-2
+    to: Date
+  - from: Software
+    to: Date-1
+  fact:
+    name: INSTALLATION
+  measures: []
+# Shared extra with duplicates
+- dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Date
+  - from: NOT-FACT
+    to: Date
+  fact:
+    name: INSTALLATION
+  measures: []
+# Shared missing
+- dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  fact:
+    name: INSTALLATION
+  measures: []
+# No extra no missing
+- dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Date
+  - from: NOT-FACT
+    to: Date
+  fact:
+    name: INSTALLATION
+  measures: []
+errors:
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 1
+    shared_with_fact_root_missing: 0
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 1
+    shared_with_fact_root_missing: 0
+- attributes:
+    shared_extra: 0
+    shared_missing: 1
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 1
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0

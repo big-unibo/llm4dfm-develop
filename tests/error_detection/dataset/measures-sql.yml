@@ -1,0 +1,88 @@
+gt_preprocessed:
+  dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+output_preprocessed:
+# Extra with duplicates
+- dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Fare
+  - name: TRAINTYPE.Capacity
+# Extra
+- dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+  - name: errMeas-1
+  - name: errMeas-2
+# Missing empty
+- dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  fact:
+    name: ROUTESINTICKETS
+  measures: []
+# Missing
+- dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: TRAINTYPE.Capacity
+# Right
+- dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+errors:
+- measures:
+    extra: 1
+    missing: 1
+- measures:
+    extra: 2
+    missing: 0
+- measures:
+    extra: 0
+    missing: 6
+- measures:
+    extra: 0
+    missing: 3
+- measures:
+    extra: 0
+    missing: 0
