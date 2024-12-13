@@ -115,7 +115,8 @@ model_outputs = []
 
 ### BEGIN - Mode sending all the conversation in batch
 prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])
-prompts[len(prompts)-1]['content'] = "\n".join([prompts[len(prompts)-1]['content'], load_text_exercise(exercise)])
+if model_config['use'] == 'api':
+    prompts[len(prompts)-1]['content'] = "\n".join([prompts[len(prompts)-1]['content'], load_text_exercise(exercise)])
 
 # Batch text and prompts
 model_output = model.batch(prompts)
