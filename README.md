@@ -217,9 +217,9 @@ common:
     - Date:
       - day
     ignore:
-      - count
-      - month
-      - year
+    - count
+    - month
+    - year
   supply:
     equals: []
     ignore: []
@@ -266,7 +266,25 @@ config:
   top_k: 5
 
 errors:
-  dependencies:
+- dependencies:
+    reversed: [number>=0]
+    missing: [number>=0]
+    extra: [number>=0]
+  measures:
+    missing: [number>=0]
+    extra: [number>=0]
+  fact:
+    incorrect: [boolean]
+    false_fact: [number>=0]
+  attributes:
+    shared_missing: [number>=0] (bigger than 0 only if extra = 0)
+    shared_extra: [number>=0] (bigger than 0 only if missing = 0)
+    shared_with_fact_root_missing: [number>=0] (bigger than 0 only if with_fact_root_extra = 0)
+    shared_with_fact_root_extra: [number>=0] (bigger than 0 only if with_fact_root_missing = 0)
+  miscellaneous:
+    extra_disconnected_components: [number>=0] (0 means no extra components)
+    extra_tags: [boolean]
+- dependencies:
     reversed: [number>=0]
     missing: [number>=0]
     extra: [number>=0]
@@ -294,7 +312,7 @@ output:
   dependencies:
   - from: TABLE1.Attr
     to: TABLE2.Attr
-  -  ...
+  - ...
 - fact:
     name: FACT_NAME
   measures:
@@ -388,6 +406,40 @@ Example of run:
 - Configure [metrics](#Metrics)
 - Run `python pipeline/metrics.py` from `llm4dfm` directory.
   If no Exceptions raised, in selected exercise file, metrics section is added/overridden. In case preprocessed ground truth and output are not present, standard ones are used.
+
+### Import model
+
+Imported model are set up in `models.py` from `llm4dfm/pipeline` directory.
+Specifically, in method `load_model_and_tokenizer` there is a match case in which a key name is bound with exact model name
+used in `AutoModelForCausalLM.from_pretrained(model_name)`. 
+Using Huggingface models, it's required to put in file `credentials.yml` from `llm4dfm/resources` model key name and its key used:
+
+```yml
+model_key_name:
+  key: my_key
+```
+
+In case model or tokenizer require additional chat template, it has to be configured in `get_chat_template(model_name, tokenizer)` method.
+Moreover, function to batch input has to be provided in `load_generate_import_function(name, model, tokenizer, config, debug_print)` with the
+structure `function(str) -> str`.
+
+Specific prompts has to be stated in `inputs` folder, as:
+
+```yml
+gpt:
+  - role: system
+    content: Prompt content
+  - role: user
+    content: Prompt content
+
+falcon:
+  - role: system
+    content: Prompt content
+  - role: user
+    content: Prompt content
+```
+
+It is suggested to check chat constraints of each specific model.
 
 ### Automatic run
 
