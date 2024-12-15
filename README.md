@@ -111,14 +111,14 @@ source .venv/bin/activate
 Poetry is used to manage automatic testing; you can skip its installation if you are interested only in the execution of the pipeline.
 
 - Install dependencies without Poetry
-  ```bash
-  pip install -r requirements.txt
-  ```
+```bash
+pip install -r requirements.txt
+```
 - Install dependencies with Poetry
-  ```bash
-  curl -sSL https://install.python-poetry.org | python3 -
-  poetry install
-  ```
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+poetry install
+```
 
 
 ### Configuration 
@@ -147,62 +147,62 @@ The following parameters can be configured in `llm4dfm/resources/pipeline-config
 
 Imported model (to be set if using a locally-imported LLM model)
 
-- `name` -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
-- `tokenizer -name`   -- model's tokenizer name, usually the same as the model`
-- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true`
-- `max_new_tokens` -- limit the maximum number of tokens generated in a single call`
-- `do_sample` -- boolean, if set specifies to generate more creative output`
-- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true`
-- `quantization` -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy`
+- `name` -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)
+- `tokenizer -name`   -- model's tokenizer name, usually the same as the model
+- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true
+- `max_new_tokens` -- limit the maximum number of tokens generated in a single call
+- `do_sample` -- boolean, if set specifies to generate more creative output
+- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true
+- `quantization` -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy
 
 Api model (to be set if using APIs to connect to a remote endpoint)
 
-- `name`        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)`
-- `label`     -- model's name used in output file name generated, if not specified it uses name`
-- `deployment`     -- Deployment name for azure distribution [test-gpt-35, test-gpt-4o]`
-- `api_version`     -- api model's version`
-- `max_tokens` -- it's the maximum length of the generated output`
-- `n_response` -- regulates number of responses the model generates`
-- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 2 [0, ..., 1] [Default 0.1]`
-- `stop`        -- set the stop character(s, if list) that terminate the response when encountered`
-- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 [0, ..., 1]`
-- `top_k` -- threshold between 1 and 40 that specifies the number of tokens (with the highest probability) considered for the next generation. Less randomness for lower values [could be only a gemini parameter]`
+- `name`        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)
+- `label`     -- model's name used in output file name generated, if not specified it uses name
+- `deployment`     -- Deployment name for azure distribution [test-gpt-35, test-gpt-4o]
+- `api_version`     -- api model's version
+- `max_tokens` -- it's the maximum length of the generated output
+- `n_response` -- regulates number of responses the model generates
+- `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 2 [0, ..., 1] [Default 0.1]
+- `stop`        -- set the stop character(s, if list) that terminate the response when encountered
+- `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 [0, ..., 1]
+- `top_k` -- threshold between 1 and 40 that specifies the number of tokens (with the highest probability) considered for the next generation. Less randomness for lower values [could be only a gemini parameter]
 
 Exercise
 
-- `name`           -- the exercise name (part before version, exercise-N)`
-- `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
-- `prompt_version` -- the prompt version (part between prompts- and .yml)`
-- `number` -- the exercise number`
+- `name`           -- the exercise name (part before version, exercise-N)
+- `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]
+- `prompt_version` -- the prompt version (part between prompts- and .yml)
+- `number` -- the exercise number
 
 General
 
-- `use` -- the model to use between import and api`
-- `debug_prints`   -- enable output prints during execution`
+- `use` -- the model to use between import and api
+- `debug_prints`   -- enable output prints during execution
 
 Output
 
-- `dir_label` -- the label used in output directory name`
+- `dir_label` -- the label used in output directory name
 
 #### CSV-Graph
 
 The following parameters can be configured in `llm4dfm/resources/csv-graph-config.yml` file.
 
-- `dir` -- full directory name, in case it's specified all other parameters will be ignored`
-- `v` -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]`
-- `prompt_v` -- the prompt version (part between prompts-v and .yml)`
-- `model_label` -- model's label name`
-- `dir_label` -- directory in which store file name`
+- `dir` -- full directory name, in case it's specified all other parameters will be ignored
+- `v` -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]
+- `prompt_v` -- the prompt version (part between prompts-v and .yml)
+- `model_label` -- model's label name
+- `dir_label` -- directory in which store file name
 
 #### Metrics
 
 The following parameters can be configured in `llm4dfm/resources/metrics-config.yml` file, under the `exercise` section.
 
-- `dir` -- the exercise's directory inside outputs folder`
-- `name` -- the exercise name without .yml extension`
-- `demand` -- whether it's a demand driven exercise [true, false]`
-- `gt` -- the ground truth's exercise`
-- `number` -- the exercise number`
+- `dir` -- the exercise's directory inside outputs folder
+- `name` -- the exercise name without .yml extension
+- `demand` -- whether it's a demand driven exercise [true, false]
+- `gt` -- the ground truth's exercise
+- `number` -- the exercise number
 
 #### Preprocessing
 
@@ -210,8 +210,21 @@ In order to apply equality or ignore rules, `llm4dfm/resources/preprocess.yml` f
 It is split in 2 sections, the first one is the common, that is applied to all exercises, and then rules for each exercise.
 
 Structure of each section is as follows:
-```
-1:
+```yml
+common:
+  demand:
+    equals:
+    - Date:
+      - day
+    ignore:
+      - count
+      - month
+      - year
+  supply:
+    equals: []
+    ignore: []
+
+N_EXERCISE:
   demand:
     equals:
     - item_to_keep_1:
@@ -231,7 +244,7 @@ Structure of each section is as follows:
     ignore: []
 ```
 
-This state that in exercise 1 all elem_1_equal_item_to_keep_1 and elem_2_equal_item_to_keep_1 found in demand exercise
+This state that in exercise N_EXERCISE all elem_1_equal_item_to_keep_1 and elem_2_equal_item_to_keep_1 found in demand exercise
 will be preprocessed in item_to_keep_1 and so on, and all dependencies that will have elem_to_ignore_1 or elem_to_ignore_2
 will be ignored after preprocessing.
 Thesaurus rules are applied here.
@@ -242,128 +255,129 @@ Thesaurus rules are applied here.
 - Configure [pipeline](#Pipeline), and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `llm4dfm` directory.
   If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
-  - config:
-    - name: gpt
-    - version: 3.5-turbo
-    - max_tokens: null 
-    - n_responses: 1
-    - stop: null
-    - top_p: 0.9
-    - top_k: 5
-  - errors:
-    - dependencies:
-      - reversed [number>=0]
-      - missing: [number>=0]
-      - extra: [number>=0]
-    - measures:
-      - missing: [number>=0]
-      - extra: [number>=0]
-    - fact:
-      - incorrect: [boolean]
-    - attributes:
-      - shared_missing: [number>=0] (bigger than 0 only if extra = 0)
-      - shared_extra: [number>=0] (bigger than 0 only if missing = 0)
-    - miscellaneous:
-      - extra_disconnected_components: [number>=0] (0 means no extra components)
-      - extra_tags: [boolean]
-  - output:
-    - fact:
-      - name: FACT_NAME
-    - measures: 
-      - name: MEASURE1_NAME
-      - name: MEASURE2_NAME
-    - dependencies:
-      - from: TABLE1.Attr
-      - to: TABLE2.Attr
-      - ...
-    - fact:
-      - name: FACT_NAME
-    - measures:
-      - name: MEASURE1_NAME
-      - name: MEASURE2_NAME
-    - dependencies:
-      - from: TABLE1.Attr
-      - to: TABLE2.Attr
-      - ...
-  - output_preprocessed:
-    - fact:
-      - name: FACT_NAME
-    - measures:
-      - name: MEASURE1_NAME
-      - name: MEASURE2_NAME
-    - dependencies:
-      - from: TABLE1.Attr
-        label: tp
-        to: TABLE2.Attr
-      - ...
-    - ground_truth_labels:
-      - dependencies:
-        - from: TABLE1.Attr
-          label: tp
-          to: TABLE2.Attr
-        - ...
-      - fact:
-        - name: FACT_NAME
-      - measures:
-        - name: MEASURE1_NAME
-        - name: MEASURE2_NAME
-    - fact:
-      - name: FACT_NAME
-    - measures:
-      - name: MEASURE1_NAME
-      - name: MEASURE2_NAME
-    - dependencies:
-      - from: TABLE1.Attr
-        label: tp
-        to: TABLE2.Attr
-      - ...
-    - ground_truth_labels:
-      - dependencies:
-        - from: TABLE1.Attr
-          label: tp
-          to: TABLE2.Attr
-        - ...
-      - fact:
-        - name: FACT_NAME
-      - measures:
-        - name: MEASURE1_NAME
-        - name: MEASURE2_NAME
-  - gt_preprocessed:
-    - fact:
-      - name: FACT_NAME
-    - measures:
-      - name: MEASURE1_NAME
-      - name: MEASURE2_NAME
-    - dependencies:
-      - from: TABLE1.Attr
-      - to: TABLE2.Attr
-      - ...
-    - fact:
-      - name: FACT_NAME
-    - measures:
-      - name: MEASURE1_NAME
-      - name: MEASURE2_NAME
-    - dependencies:
-      - from: TABLE1.Attr
-      - to: TABLE2.Attr
-      - ...
-  - metrics:
-    - edges:
-      - precision: [0.0 - 1]
-      - recall: [0.0 - 1]
-      - f1: [0.0 - 1]
-    - nodes:
-      - precision: [0.0 - 1]
-      - recall: [0.0 - 1]
-      - f1: [0.0 - 1]
-    - edges:
-      - precision: [0.0 - 1]
-      - recall: [0.0 - 1]
-      - f1: [0.0 - 1]
-    - nodes:
-      - precision: [0.0 - 1]
-      - recall: [0.0 - 1]
-      - f1: [0.0 - 1]
+```yml
+config:
+  name: gpt
+  version: 3.5-turbo
+  max_tokens: null 
+  n_responses: 1
+  stop: null
+  top_p: 0.9
+  top_k: 5
+
+errors:
+  dependencies:
+    reversed: [number>=0]
+    missing: [number>=0]
+    extra: [number>=0]
+  measures:
+    missing: [number>=0]
+    extra: [number>=0]
+  fact:
+    incorrect: [boolean]
+    false_fact: [number>=0]
+  attributes:
+    shared_missing: [number>=0] (bigger than 0 only if extra = 0)
+    shared_extra: [number>=0] (bigger than 0 only if missing = 0)
+    shared_with_fact_root_missing: [number>=0] (bigger than 0 only if with_fact_root_extra = 0)
+    shared_with_fact_root_extra: [number>=0] (bigger than 0 only if with_fact_root_missing = 0)
+  miscellaneous:
+    extra_disconnected_components: [number>=0] (0 means no extra components)
+    extra_tags: [boolean]
+
+output:
+- fact:
+    name: FACT_NAME
+  measures: 
+  - name: MEASURE1_NAME
+  - name: MEASURE2_NAME
+  dependencies:
+  - from: TABLE1.Attr
+    to: TABLE2.Attr
+  -  ...
+- fact:
+    name: FACT_NAME
+  measures:
+  - name: MEASURE1_NAME
+  - name: MEASURE2_NAME
+  dependencies:
+  - from: TABLE1.Attr
+    to: TABLE2.Attr
+  - ...
+
+output_preprocessed:
+- fact:
+    name: FACT_NAME
+  measures:
+  - name: MEASURE1_NAME
+  - name: MEASURE2_NAME
+  dependencies:
+  - from: TABLE1.Attr
+    label: tp
+    to: TABLE2.Attr
+  - ...
+  ground_truth_labels:
+    dependencies:
+    - from: TABLE1.Attr
+      label: tp
+      to: TABLE2.Attr
+    - ...
+    fact:
+      name: FACT_NAME
+    measures:
+    - name: MEASURE1_NAME
+    - name: MEASURE2_NAME
+- fact:
+    name: FACT_NAME
+  measures:
+  - name: MEASURE1_NAME
+  - name: MEASURE2_NAME
+  dependencies:
+  - from: TABLE1.Attr
+    label: tp
+    to: TABLE2.Attr
+  - ...
+  ground_truth_labels:
+    dependencies:
+    - from: TABLE1.Attr
+      label: tp
+      to: TABLE2.Attr
+    - ...
+    fact:
+      name: FACT_NAME
+    measures:
+    - name: MEASURE1_NAME
+    - name: MEASURE2_NAME
+
+gt_preprocessed:
+  fact:
+    name: FACT_NAME
+  measures:
+  - name: MEASURE1_NAME
+  - name: MEASURE2_NAME
+  dependencies:
+  - from: TABLE1.Attr
+    to: TABLE2.Attr
+  - ...
+
+metrics:
+- edges:
+    precision: [0.0 - 1]
+    recall: [0.0 - 1]
+    f1: [0.0 - 1]
+  nodes:
+    precision: [0.0 - 1]
+    recall: [0.0 - 1]
+    f1: [0.0 - 1]
+- edges:
+    precision: [0.0 - 1]
+    recall: [0.0 - 1]
+    f1: [0.0 - 1]
+  nodes:
+    precision: [0.0 - 1]
+    recall: [0.0 - 1]
+    f1: [0.0 - 1]
+```
 
 - Configure [graph](#CSV-Graph)
 - Run `python pipeline/csv_graph.py` from `llm4dfm` directory.

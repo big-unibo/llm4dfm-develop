@@ -1,0 +1,145 @@
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+output_preprocessed:
+# Extra connected components
+- dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: EmployeeCode
+    role: from
+    to: DivisionCode
+  fact:
+    name: TRANSFER
+  measures: []
+# No connected components
+- dependencies: []
+  fact:
+    name: TRANSFER
+  measures: []
+# Extra tags
+- dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  - from: EmployeeCode
+    role: err-role-1
+    to: DepartmentCode
+  - from: EmployeeCode
+    role: err-role-2
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+# Missing tags
+- dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+# Extra & missing tags
+- dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: err-role
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+# GT
+- dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+errors:
+- miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+- miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false

@@ -251,7 +251,6 @@ def count_reversed_edges(graph1, graph2):
         # Put it reversed
         graph2_edges.add((to_key, from_key))
 
-    # Check reversed edges in graph2 compared to graph1
     reversed_edges = graph1_edges & graph2_edges
 
     return len(reversed_edges)
@@ -260,16 +259,73 @@ def count_nodes_with_multiple_incoming_edges(graph):
     nodes_incoming_edges_count = dict()
 
     for edge in graph:
-        nodes_key = get_key_from_node_to_avoid_order(edge['to'])
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
 
-        if nodes_key in nodes_incoming_edges_count:
-            nodes_incoming_edges_count[nodes_key] += 1
+        if to_key in nodes_incoming_edges_count:
+            nodes_incoming_edges_count[to_key] += 1
         else:
-            nodes_incoming_edges_count[nodes_key] = 1
+            nodes_incoming_edges_count[to_key] = 1
 
-    # Count nodes with more than one unique incoming edge
     count = sum(1 for value in nodes_incoming_edges_count.values() if value > 1)
+
     return count
+
+def count_nodes_with_multiple_incoming_edges_with_fact_root(graph, fact):
+    nodes_incoming_edges_count = dict()
+
+    for edge in graph:
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
+        from_key = get_key_from_node_to_avoid_order(edge['from'])
+
+        count_reachables = 1 if is_reachable(graph, fact, from_key) else 0
+
+        if to_key in nodes_incoming_edges_count:
+            a, b = nodes_incoming_edges_count[to_key]
+            nodes_incoming_edges_count[to_key] = a+1, b+count_reachables
+        else:
+            nodes_incoming_edges_count[to_key] = 1, count_reachables
+
+    count = sum(1 for key, (v1,v2) in nodes_incoming_edges_count.items() if v1 > 1 and v1 == v2)
+
+    return count
+
+def is_reachable(graph, start, target):
+    """
+    Determine if `target` is reachable from `start` in the given graph.
+
+    Args:
+        graph (list of dicts): List of edges, where each edge is a dict with 'from' and 'to' keys.
+        start (str): The starting node.
+        target (str): The target node.
+
+    Returns:
+        bool: True if the target is reachable from the start, False otherwise.
+    """
+    # Create adjacency list representation of the graph
+    adjacency_list = defaultdict(list)
+
+    start_key = get_key_from_node_to_avoid_order(start)
+    target_key = get_key_from_node_to_avoid_order(target)
+
+    for edge in graph:
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
+        from_key = get_key_from_node_to_avoid_order(edge['from'])
+        adjacency_list[from_key].append(to_key)
+        adjacency_list[to_key].append(from_key)
+
+    # Perform DFS to check reachability
+    visited = set()
+    stack = [start_key]
+
+    while stack:
+        current = stack.pop()
+        if current == target_key:
+            return True
+        if current not in visited:
+            visited.add(current)
+            stack.extend(adjacency_list[current])
+
+    return False
 
 def count_connected_components(graph):
     # Create adjacency list representation of the graph
@@ -299,6 +355,24 @@ def count_connected_components(graph):
 
     return connected_components
 
+def count_false_facts(fact, graph):
+    from_nodes = set()
+    to_nodes = set()
+
+    for edge in graph:
+        from_key = get_key_from_node_to_avoid_order(edge['from'])
+        to_key = get_key_from_node_to_avoid_order(edge['to'])
+        from_nodes.add(from_key)
+        to_nodes.add(to_key)
+
+    false_facts = len(from_nodes - to_nodes)
+
+    if get_key_from_node_to_avoid_order(fact) in from_nodes:
+        false_facts -= 1
+
+    return false_facts
+
+
 def has_extra_tags(graph_gt, graph_out):
     roles_gt = set()
     roles_out = set()
@@ -310,11 +384,6 @@ def has_extra_tags(graph_gt, graph_out):
     for edge in graph_out:
         if 'role' in edge and edge['role'].lower() not in roles_out:
             roles_out.add(edge['role'].lower())
-
-    #print(f'GT: {roles_gt}')
-    #print(f'OUT: {roles_out}')
-    #print(f'Extra tags: {len(roles_out) > len(roles_out & roles_gt)}')
-    # len(roles_out & roles_gt) != len(roles_out)
 
     return len(roles_out) > len(roles_out & roles_gt)
 
@@ -329,7 +398,7 @@ class ErrorDetector:
     def detect(self, out_fact, out_measures, out_dependencies):
         metric_calculator = MetricsCalculator(self.gt_fact, self.gt_measures, self.gt_dependencies)
 
-        _, edges_fp, edges_fn, _ = metric_calculator.get_edges_idx(fact_output, meas_output, dep_output)
+        _, edges_fp, edges_fn, _ = metric_calculator.get_edges_idx(out_fact, out_measures, out_dependencies)
 
         return self.detect_with_metrics(out_fact, out_measures, out_dependencies, len(edges_fn), len(edges_fp))
 
@@ -343,13 +412,18 @@ class ErrorDetector:
         meas_gt_to_use = {meas['name'].lower() for meas in self.gt_measures}
         meas_out_to_use = {meas['name'].lower() for meas in out_measures}
         measures_detection['missing'] = len(meas_gt_to_use) - len(meas_gt_to_use & meas_out_to_use)
-        measures_detection['extra'] = len(meas_out_to_use) - len(meas_gt_to_use & meas_out_to_use)
+        # Second part to add duplicates if presents
+        measures_detection['extra'] = len(meas_out_to_use) - len(meas_gt_to_use & meas_out_to_use) + (len(out_measures) - len(meas_out_to_use))
 
         fact_detection = dict()
         fact_detection['incorrect'] = self.gt_fact['name'].lower() != out_fact['name'].lower()
+        fact_detection['false_fact'] = count_false_facts(self.gt_fact['name'], out_dependencies)
 
         shared_count_gt = count_nodes_with_multiple_incoming_edges(self.gt_dependencies)
         shared_count_out = count_nodes_with_multiple_incoming_edges(out_dependencies)
+
+        shared_with_same_root_count_gt = count_nodes_with_multiple_incoming_edges_with_fact_root(self.gt_dependencies, self.gt_fact['name'])
+        shared_with_same_root_count_out = count_nodes_with_multiple_incoming_edges_with_fact_root(out_dependencies, out_fact['name'])
 
         diff = shared_count_gt - shared_count_out
         if diff > 0:
@@ -357,12 +431,20 @@ class ErrorDetector:
         else:
             missing, extra = 0, abs(diff)
 
+        shared_with_same_root_diff = shared_with_same_root_count_gt - shared_with_same_root_count_out
+        if shared_with_same_root_diff > 0:
+            shared_with_same_root_missing, shared_with_same_root_extra = shared_with_same_root_diff, 0
+        else:
+            shared_with_same_root_missing, shared_with_same_root_extra = 0, abs(shared_with_same_root_diff)
+
         attributes_detection = dict()
         attributes_detection['shared_missing'] = missing
         attributes_detection['shared_extra'] = extra
+        attributes_detection['shared_with_fact_root_missing'] = shared_with_same_root_missing
+        attributes_detection['shared_with_fact_root_extra'] = shared_with_same_root_extra
 
         miscellaneous_detection = dict()
-        miscellaneous_detection['extra_disconnected_components'] = count_connected_components(out_dependencies)-1
+        miscellaneous_detection['extra_disconnected_components'] = max(count_connected_components(out_dependencies)-1, 0)
         miscellaneous_detection['extra_tags'] = has_extra_tags(self.gt_dependencies, out_dependencies)
 
         return dependencies_detection, measures_detection, fact_detection, attributes_detection, miscellaneous_detection

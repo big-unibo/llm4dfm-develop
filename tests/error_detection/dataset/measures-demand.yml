@@ -1,0 +1,79 @@
+gt_preprocessed:
+  dependencies:
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+    - name: price
+    - name: distance
+    - name: baseFare
+    - name: timeDuration
+output_preprocessed:
+# Extra with duplicates
+- dependencies:
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: baseFare
+  - name: baseFare
+  - name: timeDuration
+# Extra
+- dependencies:
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+  - name: errMeas-1
+  - name: errMeas-2
+# Missing empty
+- dependencies:
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures: []
+# Missing
+- dependencies:
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: timeDuration
+# Right
+- dependencies:
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+errors:
+- measures:
+    extra: 1
+    missing: 1
+- measures:
+    extra: 2
+    missing: 0
+- measures:
+    extra: 0
+    missing: 4
+- measures:
+    extra: 0
+    missing: 2
+- measures:
+    extra: 0
+    missing: 0
