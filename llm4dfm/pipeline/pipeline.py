@@ -123,7 +123,6 @@ model_output = model.batch(prompts)
 model_outputs.append(model_output)
 ### END - Mode sending all the conversation in batch
 
-
 try:
     model_outputs = output_as_valid_yaml(model_outputs)
 except:
