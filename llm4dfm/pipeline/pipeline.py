@@ -27,7 +27,7 @@ key_config = load_yaml_from_resources('credentials')
 
 if model_config['use'] == 'import':
     config = model_config['model_import']
-    config['key'] = key_config[config['name']]['key']
+    config['key'] = key_config[config['name']]['key'][model_config['use']]
     model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'],
                   config['quantization'])
 elif model_config['use'] == 'api':
@@ -36,7 +36,7 @@ elif model_config['use'] == 'api':
         automatic_run = True
         config['name'] = args.model
 
-    config['key'] = key_config[config['name']]['key']
+    config['key'] = key_config[config['name']]['key'][model_config['use']]
     model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'])
 else:
     raise Exception("No models")

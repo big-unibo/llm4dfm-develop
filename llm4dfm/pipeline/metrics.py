@@ -243,13 +243,15 @@ def count_reversed_edges(graph1, graph2):
     for edge in graph1:
         from_key = get_key_from_node_to_avoid_order(edge['from'])
         to_key = get_key_from_node_to_avoid_order(edge['to'])
-        graph1_edges.add((from_key, to_key))
+        if to_key != from_key:
+            graph1_edges.add((from_key, to_key))
 
     for edge in graph2:
         from_key = get_key_from_node_to_avoid_order(edge['from'])
         to_key = get_key_from_node_to_avoid_order(edge['to'])
         # Put it reversed
-        graph2_edges.add((to_key, from_key))
+        if to_key != from_key:
+            graph2_edges.add((to_key, from_key))
 
     reversed_edges = graph1_edges & graph2_edges
 
@@ -405,8 +407,8 @@ class ErrorDetector:
     def detect_with_metrics(self, out_fact, out_measures, out_dependencies, dep_fn, dep_fp):
         dependencies_detection = dict()
         dependencies_detection['reversed'] = count_reversed_edges(self.gt_dependencies, out_dependencies)
-        dependencies_detection['missing'] = dep_fn
-        dependencies_detection['extra'] = dep_fp
+        dependencies_detection['missing'] = dep_fn - dependencies_detection['reversed']
+        dependencies_detection['extra'] = dep_fp - dependencies_detection['reversed']
 
         measures_detection = dict()
         meas_gt_to_use = {meas['name'].lower() for meas in self.gt_measures}
