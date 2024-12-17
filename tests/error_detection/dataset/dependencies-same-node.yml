@@ -1,0 +1,24 @@
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: INSTALLATION
+  fact:
+    name: INSTALLATION
+  measures: []
+output_preprocessed:
+# Extra with duplicates
+- dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: INSTALLATION
+  fact:
+    name: INSTALLATION
+  measures: []
+errors:
+- dependencies:
+    extra: 0
+    missing: 0
+    reversed: 0

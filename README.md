@@ -275,7 +275,7 @@ config:
 
 errors:
 - dependencies:
-    reversed: [number>=0]
+    reversed: [number>=0] (reversed edges aren't counted in missing and extra)
     missing: [number>=0]
     extra: [number>=0]
   measures:
@@ -293,7 +293,7 @@ errors:
     extra_disconnected_components: [number>=0] (0 means no extra components)
     extra_tags: [boolean]
 - dependencies:
-    reversed: [number>=0]
+    reversed: [number>=0] (reversed edges aren't counted in missing and extra)
     missing: [number>=0]
     extra: [number>=0]
   measures:

@@ -107,8 +107,8 @@ errors:
     missing: 2
     reversed: 0
 - dependencies:
-    extra: 2 # 0
-    missing: 2 # 0
+    extra: 0
+    missing: 0
     reversed: 2
 - dependencies:
     extra: 0
