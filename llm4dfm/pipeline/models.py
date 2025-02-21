@@ -186,7 +186,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
 
 class Model:
 
-    def __init__(self, name, config, key, debug_print,):
+    def __init__(self, use, name, config, key, debug_print, quantization):
         self.chat = []
         self.name = name
         self.config = config

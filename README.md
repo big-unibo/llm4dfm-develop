@@ -179,8 +179,6 @@ General
 
 - `use` -- the model to use between import and api
 - `debug_prints`   -- enable output prints during execution
-- `use` -- the model to use between import and api
-- `debug_prints`   -- enable output prints during execution
 
 Output
 
