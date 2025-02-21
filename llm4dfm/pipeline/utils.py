@@ -1,7 +1,6 @@
 import os
 from copy import deepcopy
 import pandas as pd
-
 from dotenv import load_dotenv
 import yaml
 from datetime import datetime
@@ -12,11 +11,11 @@ load_dotenv()
 
 base_path = os.path.dirname(os.path.abspath(__file__))
 
-datasets = f'{base_path}/{os.getenv('DATASETS')}'
-outputs = f'{base_path}/{os.getenv('OUTPUTS')}'
-results = f'{base_path}/{os.getenv('RESULTS')}'
-inputs = f'{base_path}/{os.getenv('INPUTS')}'
-auto_outputs = f'{base_path}/{os.getenv('AUTO_OUTPUTS')}'
+datasets = f'{base_path}/{os.getenv("DATASETS_PATH", os.getenv("DATASETS"))}'
+outputs = f'{base_path}/{os.getenv("OUTPUTS_PATH", os.getenv("OUTPUTS"))}'
+results = f'{base_path}/{os.getenv("RESULTS_PATH", os.getenv("RESULTS"))}'
+inputs = f'{base_path}/{os.getenv("INPUTS_PATH", os.getenv("INPUTS"))}'
+auto_outputs = f'{base_path}/{os.getenv("AUTO_OUTPUTS_PATH", os.getenv("AUTO_OUTPUTS"))}'
 resources = f'{base_path}/../resources/'
 
 # General utils
@@ -114,23 +113,7 @@ def add_property_if_present(dict_to_store, props, dict_property):
             dict_to_store[prop] = dict_property[prop]
 
 
-# configs useful in place of print results for import model
-def config_to_print_import_model(configs) -> dict:
-    conf_to_print = {}
-    add_property_if_present(conf_to_print, [
-        'name',
-        'temperature',
-        'tokenizer',
-        'max_new_tokens',
-        'do_sample',
-        'top_p',
-        'quantization',
-    ], configs)
-    return conf_to_print
-
-
-# configs useful in place of print results for apis model
-def config_to_print_api_model(configs) -> dict:
+def config_to_print(configs) -> dict:
     conf_to_print = {}
     add_property_if_present(conf_to_print, [
         'name',
@@ -150,7 +133,7 @@ def config_to_print_api_model(configs) -> dict:
 # model_output is the list of outputs
 def store_output(model_config, ex_config, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
     results_output = {
-        'config': config_to_print_import_model(model_config) if imported else config_to_print_api_model(model_config),
+        'config': config_to_print(model_config),
         'output': model_output,
         'output_preprocessed': output_preprocessed,
         'gt_preprocessed': gt_preprocessed,
@@ -213,7 +196,7 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
 
         data['index'] = i+1
 
-        for key, value in config_to_print_import_model(model_config).items() if imported else config_to_print_api_model(model_config).items():
+        for key, value in config_to_print(model_config).items():
             data[f"config_{key}"] = value
 
         data['fact'] = output_preprocessed[i]['fact']['name']

@@ -179,6 +179,8 @@ General
 
 - `use` -- the model to use between import and api
 - `debug_prints`   -- enable output prints during execution
+- `use` -- the model to use between import and api
+- `debug_prints`   -- enable output prints during execution
 
 Output
 
@@ -210,7 +212,7 @@ In order to apply equality or ignore rules, `llm4dfm/resources/preprocess.yml` f
 It is split in 2 sections, the first one is the common, that is applied to all exercises, and then rules for each exercise.
 
 Structure of each section is as follows:
-```yml
+```yaml
 common:
   demand:
     equals:
@@ -255,7 +257,7 @@ Thesaurus rules are applied here.
 - Configure [pipeline](#Pipeline), and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `llm4dfm` directory.
   If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
-```yml
+```yaml
 config:
   name: gpt
   version: 3.5-turbo
@@ -366,9 +368,8 @@ output_preprocessed:
     measures:
     - name: MEASURE1_NAME
     - name: MEASURE2_NAME
-
 gt_preprocessed:
-  fact:
+- fact:
     name: FACT_NAME
   measures:
   - name: MEASURE1_NAME
@@ -377,7 +378,15 @@ gt_preprocessed:
   - from: TABLE1.Attr
     to: TABLE2.Attr
   - ...
-
+- fact:
+    name: FACT_NAME
+  measures:
+  - name: MEASURE1_NAME
+  - name: MEASURE2_NAME
+  dependencies:
+  - from: TABLE1.Attr
+    to: TABLE2.Attr
+  - ...
 metrics:
 - edges:
     precision: [0.0 - 1]
@@ -447,13 +456,13 @@ First of all, execution privileges must be granted by means of `chmod 700 ./reso
 
 After activating [venv](#Venv), a task triggered by
 `poetry poe automatic_run` run the pipeline with the following configurations:
-- `number_of_runs -- set number of runs, 1 by default`
-- `file_version -- set file version [sql, original, demand], sql by default`
-- `prompt_version -- set prompt version [v1, v2, v3, v4, demand], v4 by default`
-- `model -- model to use in run`
-- `"<ex1> ... <fileN>" -- set exercises to run, all files matching previous configurations by default`
-- `model_label -- an optional model label used in yml output generated, empty string by default, if empty model name is used`
-- `dir_label -- an optional label used in output directory generated, if not provided a timestamp is generated`
+- `number_of_runs` -- set number of runs, 1 by default
+- `file_version` -- set file version [sql, original, demand], sql by default
+- `prompt_version` -- set prompt version [v1, v2, v3, v4, demand], v4 by default
+- `model` -- model to use in run
+- `"<ex1> ... <fileN>"` -- set exercises to run, all files matching previous configurations by default
+- `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name is used
+- `dir_label` -- an optional label used in output directory generated, if not provided a timestamp is generated
 
 This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
 
@@ -478,8 +487,8 @@ First of all, execution privileges must be granted by means of `chmod 700 ./reso
 After activating [venv](#Venv) from `llm4dfm` root directory via `source .venv/bin/activate`, a task triggered by
 `poetry poe automatic_metrics` run the program with the following configurations:
 
-- `dir -- the directory name inside 'outputs' folder`
-- `version -- the prompt version used [sql, demand], sql by default`
+- `dir` -- the directory name inside 'outputs' folder
+- `version` -- the prompt version used [sql, demand], sql by default
 
 This could also be achieved by directly run `./resources/automatic-metrics.sh` from `llm4dfm` directory, with configurations as stated before.
 
