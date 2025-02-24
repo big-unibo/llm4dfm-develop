@@ -20,33 +20,21 @@ parser.add_argument('--dir_label', help='Directory label to use')
 
 args = parser.parse_args()
 
+if any(value is not None for value in vars(args).values()):
+    automatic_run = True
+else:
+    automatic_run = False
+
 model_config = load_yaml_from_resources('pipeline-config')
 key_config = load_yaml_from_resources('credentials')
+config = model_config[f'model_{model_config['use']}']
 
-# Model loading
-
-if model_config['use'] == 'import':
-    config = model_config['model_import']
-    config['key'] = key_config[config['name']]['key'][model_config['use']]
-    model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'],
-                  config['quantization'])
-elif model_config['use'] == 'api':
-    config = model_config['model_api']
-    if args.model:
-        automatic_run = True
-        config['name'] = args.model
-
-    config['key'] = key_config[config['name']]['key'][model_config['use']]
-    model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'])
-else:
+if model_config['use'] != 'import' and model_config['use'] != 'api':
     raise Exception("No models")
 
 # Argument parsing
 
-automatic_run = False
-
 if args.exercise:
-    automatic_run = True
     if len(args.exercise.split('/')) > 0:
         exercise = args.exercise.split('/')[-1]
     else:
@@ -64,21 +52,27 @@ else:
         # Extracting ex number as last digit in exercise name
         model_config['exercise']['number'] = extract_ex_num(model_config['exercise']['name'])
 if args.p_version:
-    automatic_run = True
     model_config['exercise']['prompt_version'] = args.p_version
 if args.exercise_version:
-    automatic_run = True
     model_config['exercise']['version'] = args.exercise_version
-if args.model_label:
-    automatic_run = True
-    config['label'] = args.model_label
 if args.dir_label:
-    automatic_run = True
     model_config['output']['dir_label'] = args.dir_label
+if args.model:
+    config['name'] = args.model
+if args.model_label:
+    config['label'] = args.model_label
+
+config['key'] = key_config[config['name']]['key'][model_config['use']]
+
+# Model loading
+
+model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'],
+              config['quantization'])
 
 model_config['output']['dir_label'] = get_dir_label_name(model_config['exercise']['version'], model_config['exercise']['prompt_version'], config['label'], model_config['output']['dir_label'])
 
 ex_num = model_config['exercise']['number']
+
 # Load prompts
 
 model_outputs = []
@@ -115,8 +109,8 @@ model_outputs = []
 
 ### BEGIN - Mode sending all the conversation in batch
 prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])
-if model_config['use'] == 'api':
-    prompts[len(prompts)-1]['content'] = "\n".join([prompts[len(prompts)-1]['content'], load_text_exercise(exercise)])
+
+prompts[len(prompts)-1]['content'] = "\n".join([prompts[len(prompts)-1]['content'], load_text_exercise(exercise)])
 
 # Batch text and prompts
 model_output = model.batch(prompts)
