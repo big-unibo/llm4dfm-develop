@@ -44,12 +44,17 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
 
     def generate_with_import(chat):
         if debug_print:
-            log(f'Batching chat: {chat}')
-        encoded = tokenizer.apply_chat_template(chat, return_tensors="pt")
+            log(f'Batching chat: {chat[0]['content']}')
 
-        with torch.no_grad():
-            generated_ids = model.generate(
-                encoded,
+        model_outputs = []
+
+        for prompts in chat:
+            inputs = tokenizer(prompts['content'], return_tensors="pt")  # No dictionary
+
+            # with torch.no_grad():
+            # Generate output
+            output_tokens = model.generate(
+                **inputs,
                 max_new_tokens=config['max_new_tokens'],
                 eos_token_id=eos_token_id,
                 pad_token_id=pad_token_id,
@@ -57,11 +62,16 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
                 temperature=config['temperature'],
                 top_p=config['top_p'],
             )
-        decoded_with_batch = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
 
-        if debug_print:
-            log(f'Decoded_batch: {decoded_with_batch}')
-        return decoded_with_batch
+            # Decode text properly
+            output_text = tokenizer.decode(output_tokens[0], skip_special_tokens=True)
+
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
+
+            model_outputs.append(output_text)
+
+        return model_outputs[0] if len(model_outputs) == 1 else model_outputs
 
     match name:
         case 'falcon':
