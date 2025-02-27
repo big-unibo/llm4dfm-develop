@@ -184,6 +184,7 @@ def get_headers_csv():
             'errors_attributes_shared_with_fact_root_extra','errors_miscellaneous_extra_disconnected_components',
             'errors_miscellaneous_extra_tags']
 
+
 def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir):
     for i, metrics in enumerate(metrics_list):
         data = dict()

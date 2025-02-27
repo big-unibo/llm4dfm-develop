@@ -145,9 +145,6 @@ an example of how the config is structured can be found in `llm4dfm/resources/cr
 
 The following parameters can be configured in `llm4dfm/resources/pipeline-config.yml` file.
 
-<<<<<<< HEAD
-Model
-=======
 Imported model (to be set if using a locally-imported LLM model)
 
 - `name` -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)
@@ -159,7 +156,6 @@ Imported model (to be set if using a locally-imported LLM model)
 - `quantization` -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy
 
 Api model (to be set if using APIs to connect to a remote endpoint)
->>>>>>> 4550b17 (feat: add tests for error detection, updated readme)
 
 - `name`        -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)
 - `label`     -- model's name used in output file name generated, if not specified it uses name
@@ -181,12 +177,8 @@ Exercise
 
 General
 
-<<<<<<< HEAD
-- `debug_prints`   -- enable output prints during execution`
-=======
 - `use` -- the model to use between import and api
 - `debug_prints`   -- enable output prints during execution
->>>>>>> 4550b17 (feat: add tests for error detection, updated readme)
 
 Output
 
