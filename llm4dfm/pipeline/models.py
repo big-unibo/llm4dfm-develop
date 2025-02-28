@@ -1,3 +1,4 @@
+import transformers
 from transformers import pipeline
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
@@ -42,9 +43,42 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
     else:
         pad_token_id = tokenizer.eos_token_id
 
-    def generate_with_import(chat):
+    def generate_llama(chat):
         if debug_print:
-            log(f'Batching chat: {chat[0]['content']}')
+            log(f'Batching chat: {chat}')
+
+        pipeline = transformers.pipeline(
+            "text-generation",
+            model=model,
+            torch_dtype=torch.float16,
+            tokenizer=tokenizer,
+            device_map="auto",
+        )
+
+        model_outputs = []
+
+        for prompts in chat:
+
+            output_text = pipeline(
+                prompts,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+            )
+
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
+
+            model_outputs.append(output_text[0].get("generated_text"))
+
+        return '\n'.join(model_outputs)
+
+    def generate_falcon(chat):
+        if debug_print:
+            log(f'Batching chat: {chat}')
 
         model_outputs = []
 
@@ -71,14 +105,16 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
 
             model_outputs.append(output_text)
 
-        return model_outputs[0] if len(model_outputs) == 1 else model_outputs
+        return '\n'.join(model_outputs)
 
     match name:
         case 'falcon':
-            return generate_with_import
+            return generate_falcon
+        case 'llama-2' | 'llama-3':
+            return generate_llama
         case _:
-            log('No matching models generation found, try with standard')
-            return generate_with_import
+            log(f'No matching models generation found for {name}, try with standard')
+            return generate_falcon
 
 
 def load_model_api(name, key):
