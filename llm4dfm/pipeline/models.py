@@ -13,7 +13,7 @@ import requests
 import json
 import yaml
 
-from llm4dfm.pipeline.utils import load_text_exercise, load_prompts
+from llm4dfm.pipeline.utils import load_text_exercise, load_prompts, format_chat_for_instruct_models
 
 load_dotenv()
 base_path = os.path.dirname(os.path.abspath(__file__))
@@ -47,7 +47,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         if debug_print:
             log(f'Batching chat: {chat}')
 
-        pipeline = transformers.pipeline(
+        pipeline_llama = transformers.pipeline(
             "text-generation",
             model=model,
             torch_dtype=torch.float16,
@@ -55,57 +55,57 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
             device_map="auto",
         )
 
-        model_outputs = []
+        chat_for_llama = format_chat_for_instruct_models(chat)
 
-        for prompts in chat:
+        if debug_print:
+            log(f'Batching chat formatted: {chat_for_llama}')
 
-            output_text = pipeline(
-                prompts,
-                max_new_tokens=config['max_new_tokens'],
-                eos_token_id=eos_token_id,
-                pad_token_id=pad_token_id,
-                do_sample=config['do_sample'],
-                temperature=config['temperature'],
-                top_p=config['top_p'],
-            )
+        output_text = pipeline_llama(
+            chat_for_llama,
+            max_new_tokens=config['max_new_tokens'],
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
+            do_sample=config['do_sample'],
+            temperature=config['temperature'],
+            top_p=config['top_p'],
+            return_full_text=False,
+        )
 
-            if debug_print:
-                log(f'Decoded_batch: {output_text}')
+        if debug_print:
+            log(f'Decoded_batch: {output_text}')
 
-            model_outputs.append(output_text[0].get("generated_text"))
-
-        return '\n'.join(model_outputs)
+        return output_text[0]['generated_text']
 
     def generate_falcon(chat):
         if debug_print:
             log(f'Batching chat: {chat}')
 
-        model_outputs = []
+        falcon_chat = format_chat_for_instruct_models(chat)
 
-        for prompts in chat:
-            inputs = tokenizer(prompts['content'], return_tensors="pt")  # No dictionary
+        if debug_print:
+            log(f'Batching chat formatted: {falcon_chat}')
 
-            # with torch.no_grad():
-            # Generate output
-            output_tokens = model.generate(
-                **inputs,
-                max_new_tokens=config['max_new_tokens'],
-                eos_token_id=eos_token_id,
-                pad_token_id=pad_token_id,
-                do_sample=config['do_sample'],
-                temperature=config['temperature'],
-                top_p=config['top_p'],
-            )
+        inputs = tokenizer(falcon_chat, return_tensors="pt")  # No dictionary
 
-            # Decode text properly
-            output_text = tokenizer.decode(output_tokens[0], skip_special_tokens=True)
+        # with torch.no_grad():
+        # Generate output
+        output_tokens = model.generate(
+            **inputs,
+            max_new_tokens=config['max_new_tokens'],
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
+            do_sample=config['do_sample'],
+            temperature=config['temperature'],
+            top_p=config['top_p'],
+        )
 
-            if debug_print:
-                log(f'Decoded_batch: {output_text}')
+        # Decode text properly
+        output_text = tokenizer.decode(output_tokens[0], skip_special_tokens=True)
 
-            model_outputs.append(output_text)
+        if debug_print:
+            log(f'Decoded_batch: {output_text}')
 
-        return '\n'.join(model_outputs)
+        return falcon_chat
 
     match name:
         case 'falcon':
@@ -303,14 +303,14 @@ def get_chat_entry(entry_role, entry_content, model):
 def get_chat_template(model_name, tokenizer):
     # TODO check for other models' chat template
     match model_name:
-        case 'llama-3':
-            return {
-                "bos_token_id": tokenizer.bos_token_id,
-                "eos_token_id": tokenizer.eos_token_id,
-                "pad_token_id": tokenizer.pad_token_id,
-                "prefix": "<|startoftext|>",
-                "suffix": "<|endoftext|>",
-            }
+        # case 'llama-3':
+        #    return {
+        #         "bos_token_id": tokenizer.bos_token_id,
+        #         "eos_token_id": tokenizer.eos_token_id,
+        #         "pad_token_id": tokenizer.pad_token_id,
+        #         "prefix": "<|startoftext|>",
+        #         "suffix": "<|endoftext|>",
+        #     }
         case _:
             return {}
 
@@ -325,11 +325,13 @@ def load_model_and_tokenizer(model_name, key, quantization):
     ) if quantization else None
     match model_name:
         case 'llama-3':
-            m_name = 'meta-llama/Meta-Llama-3-8B'
+            m_name = 'meta-llama/Llama-3.2-1B-Instruct'
         case 'llama-2':
-            m_name = 'meta-llama/Llama-2-7b-hf'
-        case 'falcon':
-            m_name = 'tiiuae/falcon-11B'
+            m_name = 'meta-llama/Llama-2-7b-chat-hf'
+        case 'falcon7':
+            m_name = 'tiiuae/Falcon3-7B-instruct'
+        case 'falcon10':
+            m_name = 'tiiuae/Falcon3-10B-instruct'
         case 'mistral':
             m_name = 'mistralai/Mistral-7B-Instruct-v0.1'
         case _:
