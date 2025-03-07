@@ -503,3 +503,81 @@ To execute the tests' suite, inside `llm4dfm` root directory, run
 ```bash
 poetry poe test
 ```
+
+### Add new model
+
+In order to add a new model, it's required to set up model loading [and keys if required], prompt and batching functions.
+
+In case a key is required, in `llm4dfm/resources/credentials.yml` the key must be added in api if model is accessed via api or else in import
+
+```yml
+my-new-model-name:
+  key:
+    api: my-api-key
+    import: my-import-key
+```
+
+In place of an API model, in `llm4dfm/pipeline/models.py` the model loading function must be added
+
+```python
+def load_model_api(name, key):
+    match name:
+        case 'my-new-model-name':
+            model = ... # add loading function here
+            return model
+```
+
+In place of an import model, in `llm4dfm/pipeline/models.py` the model and tokenizer loading function must be added
+
+```python
+def load_model_and_tokenizer(model_name, key, quantization):
+    match name:
+        case 'my-new-model-name':
+            model = ... # add loading function here
+            return model
+```
+
+Then, model's prompt must be added in `inputs/{prompt-version-to-use}.yml`
+
+```yml
+my-new-model-name:
+  - role: my-first-role
+    content: |
+      my multi line comment
+  - role: my-second-role
+    content: |
+      my multi line comment
+  - ...
+```
+
+Lastly, the generation function must be provided in `llm4dfm/pipeline/models.py`, in case of an API model
+
+```python
+def load_generate_api_function(name, model, config, debug_print) -> Callable[[List[str]], str]:
+    def my-new-model-generating-function(chat):
+        ...
+        output_generated = model.batch(chat) # Substitute specific generating function here
+        ...
+        return output_generated
+
+    match name:
+        case 'my-new-model-name':
+            return my-new-model-generating-function
+```
+
+In case of an import model instead, in `llm4dfm/pipeline/models.py`
+
+```python
+def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
+    ...
+
+    def my-new-model-generating-function(chat):
+        ...
+        output_generated = model.batch(chat) # Substitute specific generating function here
+        ...
+        return output_generated
+
+    match name:
+        case 'my-new-model-name':
+            return my-new-model-generating-function
+```

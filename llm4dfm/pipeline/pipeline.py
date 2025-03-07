@@ -2,11 +2,12 @@ import argparse
 from pathlib import Path
 from tqdm import tqdm
 import traceback
+import time
 
 from llm4dfm.pipeline.models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from llm4dfm.pipeline.preprocess import preprocess
-from llm4dfm.pipeline.utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_automatic_output,
-                   get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num, label_edges, load_text_exercise)
+from llm4dfm.pipeline.utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_csv,
+                                    get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num, label_edges, load_text_exercise)
 from llm4dfm.pipeline.metrics import MetricsCalculator, ErrorDetector
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -62,7 +63,7 @@ if args.model:
 if args.model_label:
     config['label'] = args.model_label
 
-config['key'] = key_config[config['name']]['key'][model_config['use']]
+config['key'] = key_config[config['name']]['key'][model_config['use']] if model_config['use'] in key_config[config['name']]['key'] else None
 
 # Model loading
 
@@ -112,8 +113,16 @@ prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'
 
 prompts[len(prompts)-1]['content'] = "\n".join([prompts[len(prompts)-1]['content'], load_text_exercise(exercise)])
 
+elapsed_times = []
+
+start_time = time.time()
+
 # Batch text and prompts
 model_output = model.batch(prompts)
+
+end_time = time.time()  # End the timer
+elapsed_times.append(end_time - start_time)
+
 model_outputs.append(model_output)
 ### END - Mode sending all the conversation in batch
 
@@ -201,5 +210,5 @@ store_output(config, model_config['exercise'], model_outputs, output_preprocesse
              model_config['use'] == 'import', metrics, detection_list, ts, model_config['output']['dir_label'])
 
 if automatic_run:
-    store_automatic_output(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import',
-                           metrics, detection_list, ts, model_config['output']['dir_label'])
+    store_csv(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import',
+              metrics, detection_list, ts, model_config['output']['dir_label'], elapsed_times)
