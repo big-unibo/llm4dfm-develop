@@ -63,7 +63,10 @@ if args.model:
 if args.model_label:
     config['label'] = args.model_label
 
-config['key'] = key_config[config['name']]['key'][model_config['use']] if model_config['use'] in key_config[config['name']]['key'] else None
+if config['name'] in key_config and model_config['use'] in key_config[config['name']]['key']:
+    config['key'] = key_config[config['name']]['key'][model_config['use']]
+else:
+    config['key'] = None
 
 # Model loading
 
