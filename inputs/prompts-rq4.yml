@@ -35,11 +35,10 @@ falcon:
       
       Return only the YAML without any further information/explanation.
 llama-2:
-  - role: system
-    content: |
-      You are a data warehouse designer.
   - role: user
     content: |
+      You are a data warehouse designer.
+      
       Carry out demand-driven conceptual
       design of a multidimensional cube using the DFM (Dimensional Fact Model), starting from the following
       requirements. 
@@ -54,11 +53,10 @@ llama-2:
 
       Return only the YAML without any further information/explanation.
 llama-3:
-  - role: system
-    content: |
-      You are a data warehouse designer.
   - role: user
     content: |
+      You are a data warehouse designer.
+      
       Carry out demand-driven conceptual
       design of a multidimensional cube using the DFM (Dimensional Fact Model), starting from the following
       requirements. 

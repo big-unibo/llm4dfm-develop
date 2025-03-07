@@ -73,6 +73,26 @@ def load_ground_truth_exercise(ex_name, full_name=''):
 def load_prompts(version, model_name):
     return load_yaml(f'{inputs}prompts-{version}')[model_name]
 
+
+# Format chat for instruct models chat template
+def format_chat_for_instruct_models(chat):
+    formatted_chat = ""
+    for turn in chat:
+        role = turn["role"]
+        content = turn["content"].strip()
+
+        if role == "system":
+            formatted_chat += f"[INST] {content} [/INST]\n\n"
+        elif role == "user":
+            formatted_chat += f"User: {content}"
+
+    yaml_prompt = """You are an AI that outputs YAML-formatted data. Please generate a YAML response for the following input\n"""
+
+    yaml_reinforce = """\nYou must only output the YAML file. You MUST NOT generate any comment before or after. Output only one YAML valid response and immediately stop generating."""
+
+    return yaml_prompt + formatted_chat + yaml_reinforce + '\n\nAssistant: '
+
+
 # load output exercise used in second-step and its filename (used after to store the image)
 def load_output_exercise(dir_name, full_name):
     return load_yaml(f'{outputs}{dir_name}/{full_name}')
