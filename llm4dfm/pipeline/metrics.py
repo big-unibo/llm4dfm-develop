@@ -3,7 +3,7 @@ import traceback
 import re
 
 from llm4dfm.pipeline.utils import load_ground_truth_exercise, load_output_exercise, load_yaml_from_resources, \
-    extract_ex_num, label_edges, store_additional_properties, update_csv
+    extract_ex_num, label_edges, store_additional_properties, update_csv, store_csv
 from collections import defaultdict
 from llm4dfm.pipeline.preprocess import preprocess
 

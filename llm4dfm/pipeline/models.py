@@ -1,6 +1,6 @@
 import transformers
 from transformers import pipeline
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, LlamaForCausalLM, LlamaTokenizer
 import torch
 from torch import bfloat16
 import os
@@ -12,8 +12,9 @@ import time
 import requests
 import json
 import yaml
+import re
 
-from llm4dfm.pipeline.utils import load_text_exercise, load_prompts, format_chat_for_instruct_models
+from llm4dfm.pipeline.utils import load_text_exercise, load_prompts
 
 load_dotenv()
 base_path = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +29,29 @@ models_without_constraints_chat = ['gpt']
 def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
 
+# Format chat for instruct models chat template
+def format_chat_for_instruct_hf_models(chat):
+    formatted_chat = ""
+    for turn in chat:
+        role = turn["role"]
+        content = turn["content"].strip()
+
+        if role == "system":
+            formatted_chat += f"[INST] {content} [/INST]\n\n"
+        elif role == "user":
+            formatted_chat += f"User: {content}"
+
+    return formatted_chat + '\nAssistant: '
+
+# Format chat for instruct models chat template
+def format_chat_for_instruct_meta_models(chat):
+    formatted_chat = "<|begin_of_text|>"
+    for turn in chat:
+        role = f'<|start_header_id|>{turn["role"]}<|end_header_id|>'
+        content = turn["content"].strip()
+        formatted_chat += f"{role}{content}<|eot_id|>"
+
+    return formatted_chat + '<|start_header_id|>assistant<|end_header_id|>'
 
 def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
     # Default values
@@ -55,13 +79,46 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
             device_map="auto",
         )
 
-        chat_for_llama = format_chat_for_instruct_models(chat)
+        formatted_chat = format_chat_for_instruct_meta_models(chat)
 
         if debug_print:
-            log(f'Batching chat formatted: {chat_for_llama}')
+            log(f'Batching chat formatted: {formatted_chat}')
 
         output_text = pipeline_llama(
-            chat_for_llama,
+            formatted_chat,
+            max_new_tokens=config['max_new_tokens'],
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
+            do_sample=config['do_sample'],
+            temperature=config['temperature'],
+            top_p=config['top_p'],
+            return_full_text=False,
+        )
+
+        if debug_print:
+            log(f'Decoded_batch: {output_text}')
+
+        return re.sub(r"<.*?>", "", output_text[0]['generated_text'])
+
+    def generate_llama_hf(chat):
+        if debug_print:
+            log(f'Batching chat: {chat}')
+
+        pipeline_llama = transformers.pipeline(
+            "text-generation",
+            model=model,
+            torch_dtype=torch.float16,
+            tokenizer=tokenizer,
+            device_map="auto",
+        )
+
+        formatted_chat = format_chat_for_instruct_hf_models(chat)
+
+        if debug_print:
+            log(f'Batching chat formatted: {formatted_chat}')
+
+        output_text = pipeline_llama(
+            formatted_chat,
             max_new_tokens=config['max_new_tokens'],
             eos_token_id=eos_token_id,
             pad_token_id=pad_token_id,
@@ -80,12 +137,12 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         if debug_print:
             log(f'Batching chat: {chat}')
 
-        falcon_chat = format_chat_for_instruct_models(chat)
+        formatted_chat = format_chat_for_instruct_hf_models(chat)
 
         if debug_print:
-            log(f'Batching chat formatted: {falcon_chat}')
+            log(f'Batching chat formatted: {formatted_chat}')
 
-        inputs = tokenizer(falcon_chat, return_tensors="pt")  # No dictionary
+        inputs = tokenizer(formatted_chat, return_tensors="pt")  # No dictionary
 
         # with torch.no_grad():
         # Generate output
@@ -105,17 +162,18 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         if debug_print:
             log(f'Decoded_batch: {output_text}')
 
-        return falcon_chat
+        return output_text
 
     match name:
-        case 'falcon':
-            return generate_falcon
-        case 'llama-2' | 'llama-3':
+        case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
             return generate_llama
-        case _:
-            log(f'No matching models generation found for {name}, try with standard')
+        case 'llama-3-hf' | 'llama-2-hf':
+            return generate_llama_hf
+        case 'falcon7-hf' | 'falcon10-hf':
             return generate_falcon
-
+        case _:
+            log(f'No matching models generation found for {name}')
+            raise Exception("No model generation found")
 
 def load_model_api(name, key):
     match name:
@@ -315,6 +373,10 @@ def get_chat_template(model_name, tokenizer):
             return {}
 
 
+def is_model_from_hf(model_name):
+    return 'hf' in model_name
+
+
 def load_model_and_tokenizer(model_name, key, quantization):
     # TODO work on quantization
     bnb_config = BitsAndBytesConfig(
@@ -323,16 +385,23 @@ def load_model_and_tokenizer(model_name, key, quantization):
         bnb_4bit_use_double_quant=True,  # Second quantization after the first
         bnb_4bit_compute_dtype=bfloat16  # Computation type
     ) if quantization else None
+
     match model_name:
-        case 'llama-3':
+        case 'llama-3.2-1B':
+            m_name = 'Llama3.2-1B-Instruct'
+        case 'llama-3.2-3B':
+            m_name = 'Llama3.2-3B-Instruct'
+        case 'llama-3.3':
+            m_name = 'Llama3.3-70B-Instruct'
+        case 'llama-3-hf':
             m_name = 'meta-llama/Llama-3.2-1B-Instruct'
-        case 'llama-2':
+        case 'llama-2-hf':
             m_name = 'meta-llama/Llama-2-7b-chat-hf'
-        case 'falcon7':
+        case 'falcon7-hf':
             m_name = 'tiiuae/Falcon3-7B-instruct'
-        case 'falcon10':
+        case 'falcon10-hf':
             m_name = 'tiiuae/Falcon3-10B-instruct'
-        case 'mistral':
+        case 'mistral-hf':
             m_name = 'mistralai/Mistral-7B-Instruct-v0.1'
         case _:
             raise Exception("Model not found")
@@ -341,35 +410,53 @@ def load_model_and_tokenizer(model_name, key, quantization):
         os.makedirs(save_directory)
 
     model_directory = save_directory + m_name.replace(" ", "-").replace("/", "-") + '/'
-    model_save_name = 'pytorch_model.bin'
-    tokenizer_save_name = 'tokenizer_config.json'
 
-    # Check if the saved model directory already contains the model files
-    model_files_exist = os.path.exists(os.path.join(model_directory, model_save_name))
-    tokenizer_files_exist = os.path.exists(os.path.join(model_directory, tokenizer_save_name))
+    if is_model_from_hf(model_name):
+        model_save_name = 'pytorch_model.bin'
+        tokenizer_save_name = 'tokenizer_config.json'
 
-    if model_files_exist and tokenizer_files_exist:
-        # Load the model and tokenizer from the saved directory
-        model = AutoModelForCausalLM.from_pretrained(model_directory)
-        tokenizer = AutoTokenizer.from_pretrained(model_directory)
+        # Check if the saved model directory already contains the model files
+        model_exist = os.path.exists(os.path.join(model_directory, model_save_name))
+        tokenizer_exist = os.path.exists(os.path.join(model_directory, tokenizer_save_name))
+
+        if model_exist and tokenizer_exist:
+            # Load the model and tokenizer from the saved directory
+            model = AutoModelForCausalLM.from_pretrained(model_directory)
+            tokenizer = AutoTokenizer.from_pretrained(model_directory)
+        else:
+            # Download and load the model and tokenizer from Hugging Face
+            model = AutoModelForCausalLM.from_pretrained(m_name,
+                                                         # trust_remote_code=True,
+                                                         quantization_config=bnb_config,
+                                                         # device_map='auto',
+                                                         token=key,
+                                                         torch_dtype=torch.float16
+                                                         )
+            tokenizer = AutoTokenizer.from_pretrained(m_name,
+                                                      token=key
+                                                      )
+
+            # Save the model and tokenizer
+            model.save_pretrained(model_directory)
+            tokenizer.save_pretrained(model_directory)
+
     else:
-        # Download and load the model and tokenizer from Hugging Face
-        model = AutoModelForCausalLM.from_pretrained(m_name,
-                                                     # trust_remote_code=True,
-                                                     quantization_config=bnb_config,
-                                                     # device_map='auto',
-                                                     token=key,
-                                                     torch_dtype=torch.float16
-                                                     )
-        tokenizer = AutoTokenizer.from_pretrained(m_name,
-                                                  token=key
-                                                  )
+        model_exist = os.path.exists(os.path.join(model_directory))
 
-        # Save the model and tokenizer
-        model.save_pretrained(model_directory)
-        tokenizer.save_pretrained(model_directory)
+        if not model_exist:
+            raise Exception("Model could not be found and imported either.")
+
+        tokenizer = LlamaTokenizer.from_pretrained(f"{model_directory}tokenizer.model")
+
+        # Load the model
+        model = LlamaForCausalLM.from_pretrained(
+            model_directory,  # Path where your model files are located
+            quantization_config=bnb_config,
+            device_map="auto"  # Automatically allocate layers to GPUs if available
+        )
 
     chat_template = get_chat_template(model_name, tokenizer)
+
     if chat_template:
         tokenizer.add_special_tokens(chat_template)
         model.resize_token_embeddings(len(tokenizer))
