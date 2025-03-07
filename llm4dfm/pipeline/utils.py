@@ -73,26 +73,6 @@ def load_ground_truth_exercise(ex_name, full_name=''):
 def load_prompts(version, model_name):
     return load_yaml(f'{inputs}prompts-{version}')[model_name]
 
-
-# Format chat for instruct models chat template
-def format_chat_for_instruct_models(chat):
-    formatted_chat = ""
-    for turn in chat:
-        role = turn["role"]
-        content = turn["content"].strip()
-
-        if role == "system":
-            formatted_chat += f"[INST] {content} [/INST]\n\n"
-        elif role == "user":
-            formatted_chat += f"User: {content}"
-
-    yaml_prompt = """You are an AI that outputs YAML-formatted data. Please generate a YAML response for the following input\n"""
-
-    yaml_reinforce = """\nYou must only output the YAML file. You MUST NOT generate any comment before or after. Output only one YAML valid response and immediately stop generating."""
-
-    return yaml_prompt + formatted_chat + yaml_reinforce + '\n\nAssistant: '
-
-
 # load output exercise used in second-step and its filename (used after to store the image)
 def load_output_exercise(dir_name, full_name):
     return load_yaml(f'{outputs}{dir_name}/{full_name}')
@@ -175,14 +155,12 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
 
 
 # write model_output in file ex_name-model-timestamp.yml
-# model_output is the list of outputs
 def store_additional_properties(dir_label, ex_name, props):
     prev_out = load_yaml(f'{outputs}{dir_label}/{ex_name}')
 
     for prop in props:
         prev_out[prop] = props[prop]
     write_yaml(f'{outputs}{dir_label}/{ex_name}', prev_out)
-
 
 
 def get_csv_file_from_output_dir(dir_name):
@@ -193,7 +171,7 @@ def get_csv_file_from_output_dir(dir_name):
 
 
 def get_headers_csv():
-    return ['ex_name','ex_version','ex_prompt_version','ex_number','timestamp','index','config_name','config_label',
+    return ['ex_name','ex_version','ex_prompt_version','ex_number','timestamp','index','time','config_name','config_label',
             'config_deployment','config_api_version','config_temperature','config_max_tokens','config_n_responses',
             'config_stop','config_top_p','config_top_k','fact','measures','dependencies','node_tp','node_fp','node_fn',
             'edges_tp','edges_fn','edges_fp','edges_precision','edges_recall','edges_f1','nodes_tp','nodes_fn',
@@ -205,7 +183,7 @@ def get_headers_csv():
             'errors_miscellaneous_extra_tags']
 
 
-def store_automatic_output(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir):
+def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
     for i, metrics in enumerate(metrics_list):
         data = dict()
 
@@ -215,6 +193,9 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
         data["timestamp"] = timestamp
 
         data['index'] = i+1
+
+        if imported:
+            data['time'] = f'{times[i]:.4f}'
 
         for key, value in config_to_print(model_config).items():
             data[f"config_{key}"] = value
@@ -254,10 +235,18 @@ def store_automatic_output(model_config, ex_config, output_preprocessed, importe
                 reader = csv.reader(file)
                 existing_headers = next(reader)  # Read the first row (headers)
 
-            # Check if the existing headers match the desired headers
-            # TODO what to do in this case?
             if existing_headers != headers:
-                print(f"Headers do not match\nActual:{existing_headers}\nNew: {headers}\nAttempt to write data anyway.")
+                print(f"Headers do not match\nActual:{existing_headers}\nNew: {headers}\nUpdating headers.")
+
+                # Load existing CSV
+                csv_path = "data.csv"  # Change this to your CSV file path
+                df = pd.read_csv(csv_path)
+
+                for head in headers:
+
+                    if head not in df.columns:
+                        df[head] = None
+                df.to_csv(csv_path, index=False)
         except:
             write_headers = True
 
