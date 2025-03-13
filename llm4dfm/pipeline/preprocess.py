@@ -78,8 +78,8 @@ def preprocess(ex_number, dependencies, measures, fact, demand, nodes_convention
     dep_preprocessed = []
 
     for dep in dependencies:
-        frag_dep = {'from': dep['from'].split(',') if dep['from'] else 'ERROR',
-                    'to': dep['to'].split(',') if dep['to'] else 'ERROR'}
+        frag_dep = {'from': dep['from'].split(',') if 'from' in dep and dep['from'] else 'ERROR',
+                    'to': dep['to'].split(',') if 'to' in dep and dep['to'] else 'ERROR'}
         if demand:
             # if demand check attributes, so split on '.'
             dep_from = _process([single_part for item in frag_dep['from'] for single_part in item.split('.')],

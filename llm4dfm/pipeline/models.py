@@ -1,6 +1,6 @@
 import transformers
 from transformers import pipeline
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, LlamaForCausalLM, LlamaTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
 from torch import bfloat16
 import os
@@ -12,7 +12,6 @@ import time
 import requests
 import json
 import yaml
-import re
 
 from llm4dfm.pipeline.utils import load_text_exercise, load_prompts
 
@@ -30,28 +29,8 @@ def log(message):
     print(f'{os.path.splitext(os.path.basename(__file__))[0]} - {message}\n')
 
 # Format chat for instruct models chat template
-def format_chat_for_instruct_hf_models(chat):
-    formatted_chat = ""
-    for turn in chat:
-        role = turn["role"]
-        content = turn["content"].strip()
-
-        if role == "system":
-            formatted_chat += f"[INST] {content} [/INST]\n\n"
-        elif role == "user":
-            formatted_chat += f"User: {content}"
-
-    return formatted_chat + '\nAssistant: '
-
-# Format chat for instruct models chat template
-def format_chat_for_instruct_meta_models(chat):
-    formatted_chat = "<|begin_of_text|>"
-    for turn in chat:
-        role = f'<|start_header_id|>{turn["role"]}<|end_header_id|>'
-        content = turn["content"].strip()
-        formatted_chat += f"{role}{content}<|eot_id|>"
-
-    return formatted_chat + '<|start_header_id|>assistant<|end_header_id|>'
+def format_chat_for_instruct_hf_models(chat, tokenizer):
+    return tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False)
 
 def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
     # Default values
@@ -68,39 +47,11 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         pad_token_id = tokenizer.eos_token_id
 
     def generate_llama(chat):
-        if debug_print:
-            log(f'Batching chat: {chat}')
-
-        pipeline_llama = transformers.pipeline(
-            "text-generation",
-            model=model,
-            torch_dtype=torch.float16,
-            tokenizer=tokenizer,
-            device_map="auto",
-        )
-
-        formatted_chat = format_chat_for_instruct_meta_models(chat)
-
-        if debug_print:
-            log(f'Batching chat formatted: {formatted_chat}')
-
-        output_text = pipeline_llama(
-            formatted_chat,
-            max_new_tokens=config['max_new_tokens'],
-            eos_token_id=eos_token_id,
-            pad_token_id=pad_token_id,
-            do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-            return_full_text=False,
-        )
-
-        if debug_print:
-            log(f'Decoded_batch: {output_text}')
-
-        return re.sub(r"<.*?>", "", output_text[0]['generated_text'])
+        raise Exception("Not Implemented")
 
     def generate_llama_hf(chat):
+        chat_template = False
+
         if debug_print:
             log(f'Batching chat: {chat}')
 
@@ -112,7 +63,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
             device_map="auto",
         )
 
-        formatted_chat = format_chat_for_instruct_hf_models(chat)
+        formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
 
         if debug_print:
             log(f'Batching chat formatted: {formatted_chat}')
@@ -131,21 +82,19 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         if debug_print:
             log(f'Decoded_batch: {output_text}')
 
-        return output_text[0]['generated_text']
+        return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '')
 
     def generate_falcon(chat):
         if debug_print:
             log(f'Batching chat: {chat}')
 
-        formatted_chat = format_chat_for_instruct_hf_models(chat)
+        formatted_chat = format_chat_for_instruct_hf_models(chat, tokenizer)
 
         if debug_print:
             log(f'Batching chat formatted: {formatted_chat}')
 
-        inputs = tokenizer(formatted_chat, return_tensors="pt")  # No dictionary
+        inputs = tokenizer(formatted_chat, return_tensors="pt")
 
-        # with torch.no_grad():
-        # Generate output
         output_tokens = model.generate(
             **inputs,
             max_new_tokens=config['max_new_tokens'],
@@ -156,7 +105,6 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
             top_p=config['top_p'],
         )
 
-        # Decode text properly
         output_text = tokenizer.decode(output_tokens[0], skip_special_tokens=True)
 
         if debug_print:
@@ -167,13 +115,12 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
     match name:
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
             return generate_llama
-        case 'llama-3-hf' | 'llama-2-hf':
+        case 'llama-3.3-hf' | 'llama-3.2-hf' | 'llama-2-hf':
             return generate_llama_hf
         case 'falcon7-hf' | 'falcon10-hf':
             return generate_falcon
         case _:
-            log(f'No matching models generation found for {name}')
-            raise Exception("No model generation found")
+            raise Exception(f"No model generation found for {name}")
 
 def load_model_api(name, key):
     match name:
@@ -393,8 +340,10 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'Llama3.2-3B-Instruct'
         case 'llama-3.3':
             m_name = 'Llama3.3-70B-Instruct'
-        case 'llama-3-hf':
-            m_name = 'meta-llama/Llama-3.2-1B-Instruct'
+        case 'llama-3.2-hf':
+            m_name = 'meta-llama/Llama-3.2-3B-Instruct'
+        case 'llama-3.3-hf':
+            m_name = 'meta-llama/Llama-3.3-70B-Instruct'
         case 'llama-2-hf':
             m_name = 'meta-llama/Llama-2-7b-chat-hf'
         case 'falcon7-hf':
@@ -441,25 +390,23 @@ def load_model_and_tokenizer(model_name, key, quantization):
             tokenizer.save_pretrained(model_directory)
 
     else:
-        model_exist = os.path.exists(os.path.join(model_directory))
+        raise Exception("Loading models without hf not implemented yet")
 
-        if not model_exist:
-            raise Exception("Model could not be found and imported either.")
+        #model_exist = os.path.exists(os.path.join(model_directory))
 
-        tokenizer = LlamaTokenizer.from_pretrained(f"{model_directory}tokenizer.model")
+        #if not model_exist:
+        #    raise Exception("Model could not be found and imported either.")
 
-        # Load the model
-        model = LlamaForCausalLM.from_pretrained(
-            model_directory,  # Path where your model files are located
-            quantization_config=bnb_config,
-            device_map="auto"  # Automatically allocate layers to GPUs if available
-        )
+        #tokenizer_path = f"{model_directory}tokenizer.model"
 
-    chat_template = get_chat_template(model_name, tokenizer)
+        #model = Llama.build(
+        #    ckpt_dir=model_directory,
+        #    tokenizer_path=tokenizer_path,
+        #    max_seq_len=4000,
+        #    max_batch_size=4000,
+        #)
 
-    if chat_template:
-        tokenizer.add_special_tokens(chat_template)
-        model.resize_token_embeddings(len(tokenizer))
+        #tokenizer = None
 
     return model, tokenizer
 

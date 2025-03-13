@@ -26,11 +26,11 @@ if any(value is not None for value in vars(args).values()):
 else:
     automatic_run = False
 
-model_config = load_yaml_from_resources('pipeline-config')
+config = load_yaml_from_resources('pipeline-config')
 key_config = load_yaml_from_resources('credentials')
-config = model_config[f'model_{model_config['use']}']
+model_config = config[f'model_{config['use']}']
 
-if model_config['use'] != 'import' and model_config['use'] != 'api':
+if config['use'] != 'import' and config['use'] != 'api':
     raise Exception("No models")
 
 # Argument parsing
@@ -42,40 +42,40 @@ if args.exercise:
         exercise = args.exercise
     exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
     ex_name = '-'.join(exercise.split('-')[:2])
-    model_config['exercise']['name'] = ex_name
+    config['exercise']['name'] = ex_name
 else:
-    exercise = '-'.join((model_config['exercise']['name'], model_config['exercise']['version']))
+    exercise = '-'.join((config['exercise']['name'], config['exercise']['version']))
 if args.exercise_num:
-    model_config['exercise']['number'] = int(args.exercise_num)
+    config['exercise']['number'] = int(args.exercise_num)
 else:
-    if not model_config['exercise']['number']:
-        print(f'No ex number given, extracting as last digit in {model_config['exercise']['name']}')
+    if not config['exercise']['number']:
+        print(f'No ex number given, extracting as last digit in {config['exercise']['name']}')
         # Extracting ex number as last digit in exercise name
-        model_config['exercise']['number'] = extract_ex_num(model_config['exercise']['name'])
+        config['exercise']['number'] = extract_ex_num(config['exercise']['name'])
 if args.p_version:
-    model_config['exercise']['prompt_version'] = args.p_version
+    config['exercise']['prompt_version'] = args.p_version
 if args.exercise_version:
-    model_config['exercise']['version'] = args.exercise_version
+    config['exercise']['version'] = args.exercise_version
 if args.dir_label:
-    model_config['output']['dir_label'] = args.dir_label
+    config['output']['dir_label'] = args.dir_label
 if args.model:
-    config['name'] = args.model
+    model_config['name'] = args.model
 if args.model_label:
-    config['label'] = args.model_label
+    model_config['label'] = args.model_label
 
-if config['name'] in key_config and model_config['use'] in key_config[config['name']]['key']:
-    config['key'] = key_config[config['name']]['key'][model_config['use']]
+if model_config['name'] in key_config and config['use'] in key_config[model_config['name']]['key']:
+    model_config['key'] = key_config[model_config['name']]['key'][config['use']]
 else:
-    config['key'] = None
+    model_config['key'] = None
 
 # Model loading
 
-model = Model(model_config['use'], config['name'], config, config['key'], model_config['debug_prints'],
-              config['quantization'])
+model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'],
+              model_config['quantization'])
 
-model_config['output']['dir_label'] = get_dir_label_name(model_config['exercise']['version'], model_config['exercise']['prompt_version'], config['label'], model_config['output']['dir_label'])
+config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'])
 
-ex_num = model_config['exercise']['number']
+ex_num = config['exercise']['number']
 
 # Load prompts
 
@@ -112,7 +112,7 @@ model_outputs = []
 ### END - Mode supporting multiple iterations
 
 ### BEGIN - Mode sending all the conversation in batch
-prompts = load_prompts(model_config['exercise']['prompt_version'], config['name'])
+prompts = load_prompts(config['exercise']['prompt_version'], model_config['name'])
 
 prompts[len(prompts)-1]['content'] = "\n".join([prompts[len(prompts)-1]['content'], load_text_exercise(exercise)])
 
@@ -132,19 +132,19 @@ model_outputs.append(model_output)
 try:
     model_outputs = output_as_valid_yaml(model_outputs)
 except:
-    store_output(config, model_config['exercise'], model_outputs, [], {}, model_config['use'] == 'import', [], [], get_timestamp(), model_config['output']['dir_label'])
+    store_output(model_config, config['exercise'], model_outputs, [], {}, config['use'] == 'import', [], [], get_timestamp(), config['output']['dir_label'])
     print("Output not correctly generated")
     exit(1)
 
 
-if model_config['debug_prints']:
+if config['debug_prints']:
     print(f'Chat: {model.chat}\nOutput: {model_outputs}')
 
 # Load and preprocess ground-truth
 
-ground_truth = load_ground_truth_exercise(model_config['exercise']['name'])
+ground_truth = load_ground_truth_exercise(config['exercise']['name'])
 
-is_demand = model_config['exercise']['version'] == 'demand'
+is_demand = config['exercise']['version'] == 'demand'
 
 if is_demand:
     ground_truth = ground_truth['demand_driven']
@@ -209,9 +209,9 @@ for i, output in enumerate(model_outputs):
 ts = get_timestamp()
 
 # store output
-store_output(config, model_config['exercise'], model_outputs, output_preprocessed, gt_preprocessed,
-             model_config['use'] == 'import', metrics, detection_list, ts, model_config['output']['dir_label'])
+store_output(model_config, config['exercise'], model_outputs, output_preprocessed, gt_preprocessed,
+             config['use'] == 'import', metrics, detection_list, ts, config['output']['dir_label'])
 
 if automatic_run:
-    store_csv(config, model_config['exercise'], output_preprocessed, model_config['use'] == 'import',
-              metrics, detection_list, ts, model_config['output']['dir_label'], elapsed_times)
+    store_csv(model_config, config['exercise'], output_preprocessed, config['use'] == 'import',
+              metrics, detection_list, ts, config['output']['dir_label'], elapsed_times)

@@ -238,15 +238,13 @@ def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_li
             if existing_headers != headers:
                 print(f"Headers do not match\nActual:{existing_headers}\nNew: {headers}\nUpdating headers.")
 
-                # Load existing CSV
-                csv_path = "data.csv"  # Change this to your CSV file path
-                df = pd.read_csv(csv_path)
+                # Load existing
+                df = pd.read_csv(file_path)
 
                 for head in headers:
-
                     if head not in df.columns:
                         df[head] = None
-                df.to_csv(csv_path, index=False)
+                df.to_csv(file_path, index=False)
         except:
             write_headers = True
 
@@ -257,7 +255,7 @@ def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_li
             writer = csv.writer(csv_file)
             if write_headers:
                 writer.writerow(headers)
-            writer.writerow(list(data.values()))
+            writer.writerow([data[key] for key in headers])
 
 
 def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preprocessed, metrics_list, detected):
