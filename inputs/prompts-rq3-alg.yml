@@ -432,7 +432,7 @@ gpt:
   - role: user
     content: |
       Please apply this process to the following source schema, and create the YAML representation of the resulting DFM schema. Return only the YAML without any further information/explanation.
-falcon-hf:
+falcon7-hf:
   - role: system
     content: |
       You are a data warehouse designer that outputs YAML-formatted data. Please generate a YAML response for the following input.
@@ -862,7 +862,7 @@ falcon-hf:
       
       Please apply this process to the following source schema, and create the YAML representation of the resulting DFM schema.
       You must only output the YAML file. You MUST NOT generate any comment before or after. Output only one YAML valid response and immediately stop generating.
-llama-3-hf:
+falcon10-hf:
   - role: system
     content: |
       You are a data warehouse designer that outputs YAML-formatted data. Please generate a YAML response for the following input.
@@ -1722,7 +1722,7 @@ llama-2-hf:
       
       Please apply this process to the following source schema, and create the YAML representation of the resulting DFM schema.
       You must only output the YAML file. You MUST NOT generate any comment before or after. Output only one YAML valid response and immediately stop generating.
-llama-3.3:
+llama-3.3-hf:
   - role: system
     content: |
       You are a data warehouse designer that outputs YAML-formatted data. Please generate a YAML response for the following input.
@@ -2152,7 +2152,7 @@ llama-3.3:
       
       Please apply this process to the following source schema, and create the YAML representation of the resulting DFM schema.
       You must only output the YAML file. You MUST NOT generate any comment before or after. Output only one YAML valid response and immediately stop generating.
-llama-3.2-1B:
+llama-3.2-1B-hf:
   - role: system
     content: |
       You are a data warehouse designer that outputs YAML-formatted data. Please generate a YAML response for the following input.
@@ -2582,7 +2582,7 @@ llama-3.2-1B:
       
       Please apply this process to the following source schema, and create the YAML representation of the resulting DFM schema.
       You must only output the YAML file. You MUST NOT generate any comment before or after. Output only one YAML valid response and immediately stop generating.
-llama-3.2-3B:
+llama-3.2-3B-hf:
   - role: system
     content: |
       You are a data warehouse designer that outputs YAML-formatted data. Please generate a YAML response for the following input.

@@ -340,7 +340,9 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'Llama3.2-3B-Instruct'
         case 'llama-3.3':
             m_name = 'Llama3.3-70B-Instruct'
-        case 'llama-3.2-hf':
+        case 'llama-3.2-1B-hf':
+            m_name = 'meta-llama/Llama-3.2-1B-Instruct'
+        case 'llama-3.2-3B-hf':
             m_name = 'meta-llama/Llama-3.2-3B-Instruct'
         case 'llama-3.3-hf':
             m_name = 'meta-llama/Llama-3.3-70B-Instruct'
