@@ -50,7 +50,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         raise Exception("Not Implemented")
 
     def generate_llama_hf(chat):
-        chat_template = False
+        chat_template = True
 
         if debug_print:
             log(f'Batching chat: {chat}')
@@ -82,40 +82,48 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
         if debug_print:
             log(f'Decoded_batch: {output_text}')
 
-        return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '')
+        return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '').replace('assistant\n\n', '', 1)
 
     def generate_falcon(chat):
+
+        chat_template = True
+
+        pipeline_falcon = transformers.pipeline(
+            "text-generation",
+            model=model,
+            torch_dtype=torch.float16,
+            tokenizer=tokenizer,
+            device_map="auto",
+        )
+
         if debug_print:
             log(f'Batching chat: {chat}')
 
-        formatted_chat = format_chat_for_instruct_hf_models(chat, tokenizer)
+        formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
 
         if debug_print:
             log(f'Batching chat formatted: {formatted_chat}')
 
-        inputs = tokenizer(formatted_chat, return_tensors="pt")
-
-        output_tokens = model.generate(
-            **inputs,
+        output_text = pipeline_falcon(
+            formatted_chat,
             max_new_tokens=config['max_new_tokens'],
             eos_token_id=eos_token_id,
             pad_token_id=pad_token_id,
             do_sample=config['do_sample'],
             temperature=config['temperature'],
             top_p=config['top_p'],
+            return_full_text=False,
         )
-
-        output_text = tokenizer.decode(output_tokens[0], skip_special_tokens=True)
 
         if debug_print:
             log(f'Decoded_batch: {output_text}')
 
-        return output_text
+        return output_text[0]['generated_text'].replace('<|assistant|>', '')
 
     match name:
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
             return generate_llama
-        case 'llama-3.3-hf' | 'llama-3.2-hf' | 'llama-2-hf':
+        case 'llama-3.3-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-3B-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
             return generate_llama_hf
         case 'falcon7-hf' | 'falcon10-hf':
             return generate_falcon
@@ -346,8 +354,10 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'meta-llama/Llama-3.2-3B-Instruct'
         case 'llama-3.3-hf':
             m_name = 'meta-llama/Llama-3.3-70B-Instruct'
-        case 'llama-2-hf':
+        case 'llama-2-7B-hf':
             m_name = 'meta-llama/Llama-2-7b-chat-hf'
+        case 'llama-2-13B-hf':
+            m_name = 'meta-llama/Llama-2-13b-chat-hf'
         case 'falcon7-hf':
             m_name = 'tiiuae/Falcon3-7B-instruct'
         case 'falcon10-hf':
