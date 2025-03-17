@@ -3,6 +3,7 @@ from pathlib import Path
 from tqdm import tqdm
 import traceback
 import time
+import re
 
 from llm4dfm.pipeline.models import Model, load_text_and_first_prompt, is_model_without_chat_constraints
 from llm4dfm.pipeline.preprocess import preprocess
@@ -132,10 +133,14 @@ model_outputs.append(model_output)
 try:
     model_outputs = output_as_valid_yaml(model_outputs)
 except:
-    store_output(model_config, config['exercise'], model_outputs, [], {}, config['use'] == 'import', [], [], get_timestamp(), config['output']['dir_label'])
-    print("Output not correctly generated")
-    exit(1)
-
+    try:
+        # usually output yaml as ```yaml effective_yaml``` so attempt to collect effective_yaml
+        model_outputs = output_as_valid_yaml([re.search(r"```(.*?)```", single_output, re.DOTALL).group(1).replace('yaml', '') for single_output in model_outputs])
+        print('Yaml collected as ```effective_yaml```')
+    except:
+        store_output(model_config, config['exercise'], model_outputs, [], {}, config['use'] == 'import', [], [], get_timestamp(), config['output']['dir_label'])
+        print("Output not correctly generated")
+        exit(1)
 
 if config['debug_prints']:
     print(f'Chat: {model.chat}\nOutput: {model_outputs}')
