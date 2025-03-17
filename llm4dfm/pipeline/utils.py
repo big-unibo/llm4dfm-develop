@@ -184,7 +184,8 @@ def get_headers_csv():
 
 
 def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
-    for i, metrics in enumerate(metrics_list):
+
+    for i, out_prep in enumerate(output_preprocessed):
         data = dict()
 
         for key, value in ex_config.items():
@@ -200,17 +201,21 @@ def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_li
         for key, value in config_to_print(model_config).items():
             data[f"config_{key}"] = value
 
-        data['fact'] = output_preprocessed[i]['fact']['name']
+        try:
+            data['fact'] = out_prep['fact']['name']
+        except:
+            print(f'[Utils] Error loading {i}-th output preprocessed, len out_prep = {len(output_preprocessed)}, len metrics_list = {len(metrics_list)}\n\nOutput preprocessed: {output_preprocessed}\n\nMetrics: {metrics_list}')
+            raise Exception('Error storing csv')
 
         data['measures'] = [measure['name'] for measure in output_preprocessed[i]['measures']] if output_preprocessed[i]['measures'] else None
 
         data['dependencies'] = [dependency for dependency in output_preprocessed[i]['dependencies']]
 
-        for node in output_preprocessed[i]['nodes']:
-            data[f'node_{node}'] = output_preprocessed[i]['nodes'][node]
+        for node in out_prep['nodes']:
+            data[f'node_{node}'] = out_prep['nodes'][node]
 
-        for elem in metrics:
-            for met, val in metrics[elem].items():
+        for elem in metrics_list[i]:
+            for met, val in metrics_list[i][elem].items():
                 data[f"{elem}_{met}"] = val
 
         for det, val in detected_list[i].items():
@@ -268,7 +273,7 @@ def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preproce
     except:
         df = pd.DataFrame(columns=get_headers_csv())
 
-    for idx, metrics in enumerate(metrics_list):
+    for idx, out_prep in enumerate(output_preprocessed):
         if not df.empty:
             missing_headers = [col for col in get_headers_csv() if col not in df.columns]
 
@@ -281,14 +286,14 @@ def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preproce
 
         data = dict()
 
-        data['fact'] = output_preprocessed[idx]['fact']['name']
+        data['fact'] = out_prep['fact']['name']
 
-        data['measures'] = [measure['name'] for measure in output_preprocessed[idx]['measures']] if output_preprocessed[idx]['measures'] else None
+        data['measures'] = [measure['name'] for measure in out_prep['measures']] if out_prep['measures'] else None
 
-        data['dependencies'] = [dependency for dependency in output_preprocessed[idx]['dependencies']]
+        data['dependencies'] = [dependency for dependency in out_prep['dependencies']]
 
-        for node in output_preprocessed[idx]['nodes']:
-            data[f'node_{node}'] = output_preprocessed[idx]['nodes'][node]
+        for node in out_prep['nodes']:
+            data[f'node_{node}'] = out_prep['nodes'][node]
 
         for det, val in detected[idx].items():
             if isinstance(val, dict):
@@ -297,8 +302,8 @@ def update_csv(dir_name, timestamp, ex_name, ex_num, ex_version, output_preproce
             else:
                 data[f'errors_{det}'] = val
 
-        for elem in metrics:
-            for met, val in metrics[elem].items():
+        for elem in metrics_list[idx]:
+            for met, val in metrics_list[idx][elem].items():
                 data[f"{elem}_{met}"] = val
 
         if not df.empty and (not matching_rows is None) and matching_rows.any():
