@@ -533,11 +533,12 @@ In place of an import model, in `llm4dfm/pipeline/models.py` the model and token
 def load_model_and_tokenizer(model_name, key, quantization):
     match name:
         case 'my-new-model-name':
-            model = ... # add loading function here
-            return model
+            model, tokenizer = ... # add loading function here
+    
+    return model, tokenizer
 ```
 
-Then, model's prompt must be added in `inputs/{prompt-version-to-use}.yml`
+Then, model's prompt must be added in `inputs/{prompt-version-to-use}.yml`. It's worth state that a base prompt is provided in each prompt file, a specific prompt should be added as follows only if the base one doesn't satisfy model's requirement.
 
 ```yml
 my-new-model-name:

@@ -71,7 +71,11 @@ def load_ground_truth_exercise(ex_name, full_name=''):
 
 # return prompts of exercise as a dict given ex_name and model_name
 def load_prompts(version, model_name):
-    return load_yaml(f'{inputs}prompts-{version}')[model_name]
+    prompts = load_yaml(f'{inputs}prompts-{version}')
+    if model_name in prompts:
+        return prompts[model_name]
+    else:
+        return prompts['base']
 
 # load output exercise used in second-step and its filename (used after to store the image)
 def load_output_exercise(dir_name, full_name):
