@@ -70,12 +70,28 @@ def load_ground_truth_exercise(ex_name, full_name=''):
     return load_yaml(f'{datasets}{file_name}-ground-truth')
 
 # return prompts of exercise as a dict given ex_name and model_name
-def load_prompts(version, model_name):
+def load_prompts(version, model_name, exercise):
     prompts = load_yaml(f'{inputs}prompts-{version}')
     if model_name in prompts:
-        return prompts[model_name]
+        prompts = prompts[model_name]
     else:
-        return prompts['base']
+        prompts = prompts['base']
+
+    # Return a list of lists to bind prompts as complete chat prompts -> first one is a prompt of dict until
+    # receive a user-roled prompt, then each assistant prompt is a prompt itself
+    ret_prompts = [[]]
+
+    for idx, prompt in enumerate(prompts):
+        # If still not loaded a user prompt, build up just first prompt
+        if not any(sub_chat["role"] == "user" for sub_chat in ret_prompts[0]):
+            if prompt['role'] == 'user':
+                prompt['content'] = "\n".join([prompt['content'], load_text_exercise(exercise)])
+            ret_prompts[-1].append(prompt)
+        # If already loaded, each new prompt is a valid prompt
+        else:
+            ret_prompts.append([prompt])
+
+    return ret_prompts
 
 # load output exercise used in second-step and its filename (used after to store the image)
 def load_output_exercise(dir_name, full_name):
