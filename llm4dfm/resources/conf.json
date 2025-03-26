@@ -1,9 +1,9 @@
 {
-  "n_runs": 1,
+  "n_runs": 3,
   "ex_version": "sql",
   "prompt_version": "rq3-dec",
   "model": "gpt4o",
   "model_label": "gpt4o",
   "dir_label": "",
-  "exercises": ["1"]
+  "exercises": ["1", "2", "3", "4"]
 }
