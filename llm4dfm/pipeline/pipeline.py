@@ -132,12 +132,12 @@ for i_run in tqdm(range(n_runs), desc=f"Run"):
     except:
         try:
             # usually output yaml as ```yaml effective_yaml``` so attempt to collect effective_yaml
-            model_outputs = output_as_valid_yaml([re.search(r"```(.*?)```", single_output, re.DOTALL).group(1).replace('yaml', '') for single_output in model_outputs])
-            print('Yaml collected as ```effective_yaml```')
+            model_outputs = output_as_valid_yaml([re.search(r"```(.*?)```", single_output, re.DOTALL).group(1).replace('yaml', '').replace('yml', '') for single_output in model_outputs])
+            #print('Yaml collected as ```effective_yaml```')
         except:
             store_output(model_config, config['exercise'], model_outputs, [], {}, config['use'] == 'import', [], [], get_timestamp(), config['output']['dir_label'])
-            print("Output not correctly generated")
-            exit(1)
+            print("Output not correctly generated, skipped")
+            continue
 
     if config['debug_prints']:
         print(f'Chat: {model.chat}\nOutput: {model_outputs}')
