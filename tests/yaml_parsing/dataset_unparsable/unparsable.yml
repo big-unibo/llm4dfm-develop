@@ -1,0 +1,5 @@
+output:
+  # Last to makes it a not valid yaml
+- "Here is the DFM schema in YAML format for the given problem:\n\n```yml\nfact:\n\
+  \  name: ARRIVALS\nmeasures:\n  - name: POSITION\n  - name: SCORE\ndependencies:\n  - from: CITY.NAME, REGIONS.NAME\n
+  \    to: REGIONS.NAME\n\    role: measure\n  - from: CITY.NAME\n    to"

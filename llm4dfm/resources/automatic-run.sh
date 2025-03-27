@@ -13,7 +13,7 @@ n_runs=1
 exercises=""
 
 # Define the components of the regex pattern as variables
-ex_dir="../datasets/"
+ex_dir="datasets/"
 ex_prefix="exercise-"
 ex_version="sql"
 
@@ -54,6 +54,7 @@ echo "Runs: $n_runs, Exercise version: $ex_version, Prompt version: $prompt_vers
 # If no file given, look for the match ones
 # shellcheck disable=SC2235
 if [ -z "$exercises" ] && ([ "$ARGS" -lt 5 ] || [ -z "$5" ]); then
+  pwd
   regex="$ex_dir$ex_prefix*$ex_version*"
   for ex in $regex; do
     if [ -f "$ex" ]; then

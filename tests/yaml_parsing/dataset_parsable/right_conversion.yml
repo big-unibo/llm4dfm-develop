@@ -1,0 +1,44 @@
+output:
+- null
+- "Preamble:\n\n```yml\nfact:\n\
+  \  name: ARRIVALS\nmeasures:\n  - name: POSITION\n  - name: SCORE\n\ndependencies:\n
+  \ - from: CAR.NUMBER\n    to: CAR.MAIN_ADDRESS\n    role: foreign_key\n```\n\nSome more comments"
+- "Before:\n\n```yaml\nfact:\n\
+  \  name: ARRIVALS\nmeasures:\n  - name: POSITION\n  - name: SCORE\n\ndependencies:\n
+  \ - from: CITY.NAME, REGIONS.NAME\n    to: REGIONS.NAME\n\    role: measure\n  - from: CITY.NAME\n    to:"
+- "fact:\n\
+   \  name: ARRIVALS\nmeasures:\n  - name: POSITION\n  - name: SCORE\n\ndependencies:\n
+   \ - from: CITY.NAME, REGIONS.NAME\n    to: REGIONS.NAME\n\    role: measure\n  - from: CITY.NAME\n    to:"
+expected:
+- null
+- dependencies:
+  - from: CAR.NUMBER
+    role: foreign_key
+    to: CAR.MAIN_ADDRESS
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: POSITION
+  - name: SCORE
+- dependencies:
+  - from: CITY.NAME, REGIONS.NAME
+    role: measure
+    to: REGIONS.NAME
+  - from: CITY.NAME
+    to: null
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: POSITION
+  - name: SCORE
+- dependencies:
+  - from: CITY.NAME, REGIONS.NAME
+    role: measure
+    to: REGIONS.NAME
+  - from: CITY.NAME
+    to: null
+  fact:
+    name: ARRIVALS
+  measures:
+    - name: POSITION
+    - name: SCORE
