@@ -1,4 +1,4 @@
-# Test measures to be ignored correctly
+# Test null dependencies to be ignored correctly
 output:
 - dependencies:
   - from: Days, Installations

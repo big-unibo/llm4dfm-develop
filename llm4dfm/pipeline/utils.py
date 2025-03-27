@@ -118,11 +118,27 @@ def label_edges(out, gt, tp_idx, fp_idx, fn_idx, gt_used):
 
 
 # Map output to a valid yaml as dict
-def output_as_valid_yaml(model_outputs):
-    return [yaml.safe_load(out.replace('`', '').replace('yaml', '')
-                           .replace('`', '').replace('\\n', '\r\n')) if isinstance(out, str)
-                            else out for out in model_outputs]
+def output_as_valid_yaml(model_output):
 
+    if not isinstance(model_output, str):
+        return model_output
+
+    # Match YAML inside triple backticks
+    match = re.search(r"```(?:yaml|yml)?\s*(.*?)```", model_output, re.DOTALL)
+
+    if match:
+        # Extract content inside triple backticks, removing `yaml` or `yml` if present
+        yaml_content = match.group(1)
+    else:
+        match_preprocess = re.search(r"```(?:yaml|yml)?\s*(.*?)```", model_output + '```', re.DOTALL)
+
+        if match_preprocess:
+            yaml_content = match_preprocess.group(1)
+        else:
+            yaml_content = model_output
+
+    return yaml.safe_load(yaml_content.replace('`', '').replace('yaml', '')
+                             .replace('yml', '').replace('\\n', '\r\n'))
 
 # Store output utils
 

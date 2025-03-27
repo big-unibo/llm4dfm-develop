@@ -3,7 +3,6 @@ from pathlib import Path
 from tqdm import tqdm
 import traceback
 import time
-import re
 
 from llm4dfm.pipeline.models import Model
 from llm4dfm.pipeline.preprocess import preprocess
@@ -22,6 +21,9 @@ parser.add_argument('--model_label', help='Model label to use')
 parser.add_argument('--dir_label', help='Directory label to use')
 
 args = parser.parse_args()
+
+print(args.exercise)
+exit(0)
 
 if any(value is not None for value in vars(args).values()):
     automatic_run = True
@@ -125,19 +127,11 @@ for i_run in tqdm(range(n_runs), desc=f"Run"):
 
         elapsed_times.append(elapsed)
 
-        model_outputs.append(model_output)
-
-    try:
-        model_outputs = output_as_valid_yaml(model_outputs)
-    except:
         try:
-            # usually output yaml as ```yaml effective_yaml``` so attempt to collect effective_yaml
-            model_outputs = output_as_valid_yaml([re.search(r"```(.*?)```", single_output, re.DOTALL).group(1).replace('yaml', '').replace('yml', '') for single_output in model_outputs])
-            #print('Yaml collected as ```effective_yaml```')
+            model_output = output_as_valid_yaml(model_output)
         except:
-            store_output(model_config, config['exercise'], model_outputs, [], {}, config['use'] == 'import', [], [], get_timestamp(), config['output']['dir_label'])
-            print("Output not correctly generated, skipped")
-            continue
+            print("Output not parsed to yaml, kept as it is")
+        model_outputs.append(model_output)
 
     if config['debug_prints']:
         print(f'Chat: {model.chat}\nOutput: {model_outputs}')
