@@ -12,18 +12,16 @@ from llm4dfm.pipeline.metrics import MetricsCalculator, ErrorDetector
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--n_runs', help='Number of runs to execute')
-parser.add_argument('--exercise', help='Exercise to use')
+parser.add_argument('--exercises', nargs='+', help='List of exercises to use')
 parser.add_argument('--exercise_num', help='Exercise number to use')
 parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
 parser.add_argument('--model', help='Model used')
+parser.add_argument('--model_loading', help='Model loading technique used')
 parser.add_argument('--model_label', help='Model label to use')
 parser.add_argument('--dir_label', help='Directory label to use')
 
 args = parser.parse_args()
-
-print(args.exercise)
-exit(0)
 
 if any(value is not None for value in vars(args).values()):
     automatic_run = True
@@ -32,34 +30,42 @@ else:
 
 config = load_yaml_from_resources('pipeline-config')
 key_config = load_yaml_from_resources('credentials')
-model_config = config[f'model_{config['use']}']
-
-if config['use'] != 'import' and config['use'] != 'api':
-    raise Exception("No models")
 
 # Argument parsing
+
+if args.model_loading:
+    config['use'] = args.model_loading
+
+if config['use'] != 'import' and config['use'] != 'api':
+    raise Exception(f"No models for {config['use']} use")
+
+model_config = config[f'model_{config['use']}']
 
 if args.n_runs:
     n_runs = int(args.n_runs)
 else:
     n_runs = 1
-if args.exercise:
-    if len(args.exercise.split('/')) > 0:
-        exercise = args.exercise.split('/')[-1]
-    else:
-        exercise = args.exercise
-    exercise = '-'.join(Path(exercise).stem.split('-')[:-1])
-    ex_name = '-'.join(exercise.split('-')[:2])
+if args.exercises:
+    if not type(args.exercises) is list:
+        args.exercises = [args.exercises]
+
+    exercises = [ex.split('/')[-1] if len(ex.split('/')) > 0 else ex for ex in args.exercises]
+
+    exercises = ['-'.join(Path(ex).stem.split('-')[:-1]) for ex in exercises]
+    ex_name = ['-'.join(ex.split('-')[:2]) for ex in exercises]
     config['exercise']['name'] = ex_name
 else:
-    exercise = '-'.join((config['exercise']['name'], config['exercise']['version']))
+    config['exercise']['name'] = ['-'.join((ex_name, config['exercise']['version'])) for ex_name in config['exercise']['name']]
 if args.exercise_num:
-    config['exercise']['number'] = int(args.exercise_num)
+    if not type(args.exercise_num) is list:
+        args.exercise_num = [args.exercise_num]
+
+    config['exercise']['number'] = [int(ex_num) for ex_num in args.exercise_num]
 else:
-    if not config['exercise']['number']:
-        print(f'No ex number given, extracting as last digit in {config['exercise']['name']}')
+    if automatic_run or not config['exercise']['number'] or not type(config['exercise']['number']) is list or len(config['exercise']['number']) != len(config['exercise']['name']):
+        print(f'Extracting exercise number as last digit in {config['exercise']['name']}')
         # Extracting ex number as last digit in exercise name
-        config['exercise']['number'] = extract_ex_num(config['exercise']['name'])
+        config['exercise']['number'] = [extract_ex_num(ex_name) for ex_name in config['exercise']['name']]
 if args.p_version:
     config['exercise']['prompt_version'] = args.p_version
 if args.exercise_version:
@@ -79,114 +85,120 @@ else:
 # Model loading
 
 model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'],
-              model_config['quantization'])
+              model_config['quantization'] if 'quantization' in model_config else None)
 
 config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'])
 
-ex_num = config['exercise']['number']
 
-prompts = load_prompts(config['exercise']['prompt_version'], model_config['name'], exercise)
 
-# Load and preprocess ground-truth
+for ex_idx, exercise in enumerate(config['exercise']['name']):
 
-ground_truth = load_ground_truth_exercise(config['exercise']['name'])
+    print(f'Execution on {ex_idx}-th exercise')
 
-is_demand = config['exercise']['version'] == 'demand'
+    ex_num = config['exercise']['number'][ex_idx]
 
-if is_demand:
-    ground_truth = ground_truth['demand_driven']
-else:
-    ground_truth = ground_truth['supply_driven']
+    prompts = load_prompts(config['exercise']['prompt_version'], model_config['name'], '-'.join((exercise, config['exercise']['version'])))
 
-# Calculate gt_preprocessed
-gt_preprocessed = dict()
-gt_preprocessed['dependencies'], gt_preprocessed['measures'], gt_preprocessed['fact'] = preprocess(ex_num, ground_truth['dependencies'],
-                                                                                                   ground_truth['measures'] if ground_truth['measures'] else list(),
-                                                                                                   ground_truth['fact'], is_demand)
+    # Load and preprocess ground-truth
 
-dep_gt = gt_preprocessed['dependencies']
-meas_gt = gt_preprocessed['measures']
-fact_gt = gt_preprocessed['fact']
+    ground_truth = load_ground_truth_exercise(exercise)
 
-for i_run in tqdm(range(n_runs), desc=f"Run"):
+    is_demand = config['exercise']['version'] == 'demand'
 
-    model_outputs = []
-    elapsed_times = []
-    model.refresh_session()
+    if is_demand:
+        ground_truth = ground_truth['demand_driven']
+    else:
+        ground_truth = ground_truth['supply_driven']
 
-    for prompt in prompts:
+    # Calculate gt_preprocessed
+    gt_preprocessed = dict()
+    gt_preprocessed['dependencies'], gt_preprocessed['measures'], gt_preprocessed['fact'] = preprocess(ex_num, ground_truth['dependencies'],
+                                                                                                       ground_truth['measures'] if ground_truth['measures'] else list(),
+                                                                                                       ground_truth['fact'], is_demand)
 
-        start_time = time.time()
+    dep_gt = gt_preprocessed['dependencies']
+    meas_gt = gt_preprocessed['measures']
+    fact_gt = gt_preprocessed['fact']
 
-        # Batch text and prompts
-        model_output = model.batch(prompt)
+    for i_run in tqdm(range(n_runs), desc=f"Run"):
 
-        end_time = time.time()
+        model_outputs = []
+        elapsed_times = []
+        model.refresh_session()
 
-        elapsed = end_time - start_time
+        for prompt in prompts:
 
-        elapsed_times.append(elapsed)
+            start_time = time.time()
 
-        try:
-            model_output = output_as_valid_yaml(model_output)
-        except:
-            print("Output not parsed to yaml, kept as it is")
-        model_outputs.append(model_output)
+            # Batch text and prompts
+            model_output = model.batch(prompt)
 
-    if config['debug_prints']:
-        print(f'Chat: {model.chat}\nOutput: {model_outputs}')
+            end_time = time.time()
 
-    # Calculate metrics
+            elapsed = end_time - start_time
 
-    metrics = []
+            elapsed_times.append(elapsed)
 
-    metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
-    detector = ErrorDetector(fact_gt, meas_gt, dep_gt)
+            try:
+                model_output = output_as_valid_yaml(model_output)
+            except:
+                print("Output not parsed to yaml, kept as it is")
+            model_outputs.append(model_output)
 
-    output_preprocessed = []
-    detection_list = list()
+        if config['debug_prints']:
+            print(f'Chat: {model.chat}\nOutput: {model_outputs}')
 
-    for i, output in enumerate(model_outputs):
-        try:
-            # Preprocess output
-            dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
-                                                         output['measures'] if 'measures' in output and output['measures'] else list(),
-                                                         output['fact'], is_demand, gt_preprocessed['dependencies'])
-            # Get idxes to label edges correctly
-            edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
-            tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
+        # Calculate metrics
 
-            step_metric = {
-                'edges': metric_calc.calculate_metrics_from_preprocessed(edges_tp_idx, edges_fp_idx, edges_fn_idx),
-                'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
-            metrics.append(step_metric)
+        metrics = []
 
-            detected = dict()
-            (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
-             detected['miscellaneous']) = detector.detect_with_metrics(fact_output, meas_output, dep_output,
-                                                          step_metric['edges']['fn'], step_metric['edges']['fp'])
-            detection_list.append(detected)
+        metric_calc = MetricsCalculator(fact_gt, meas_gt, dep_gt, ex_num, is_demand)
+        detector = ErrorDetector(fact_gt, meas_gt, dep_gt)
 
-            output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
+        output_preprocessed = []
+        detection_list = list()
 
-            out, gt = label_edges(output_to_use, gt_preprocessed, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
+        for i, output in enumerate(model_outputs):
+            try:
+                # Preprocess output
+                dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
+                                                             output['measures'] if 'measures' in output and output['measures'] else list(),
+                                                             output['fact'], is_demand, gt_preprocessed['dependencies'])
+                # Get idxes to label edges correctly
+                edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
+                tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
 
-            output_preprocessed.append({'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
-                                   'ground_truth_labels': gt, 'nodes': {'tp': list(tp_nodes), 'fp': list(fp_nodes),
-                                                                        'fn': list(fn_nodes)}})
-        except:
-            traceback.print_exc()
-            detection_list.append(dict())
-            metrics.insert(i, dict())
-            print(f"Output {i}-th not correctly generated, skipped")
+                step_metric = {
+                    'edges': metric_calc.calculate_metrics_from_preprocessed(edges_tp_idx, edges_fp_idx, edges_fn_idx),
+                    'nodes': metric_calc.calculate_metrics_nodes(fact_output, meas_output, dep_output)}
+                metrics.append(step_metric)
 
-    # Store results
-    ts = get_timestamp()
+                detected = dict()
+                (detected['dependencies'], detected['measures'], detected['fact'], detected['attributes'],
+                 detected['miscellaneous']) = detector.detect_with_metrics(fact_output, meas_output, dep_output,
+                                                              step_metric['edges']['fn'], step_metric['edges']['fp'])
+                detection_list.append(detected)
 
-    # store output
-    store_output(model_config, config['exercise'], model_outputs, output_preprocessed, gt_preprocessed,
-                 config['use'] == 'import', metrics, detection_list, ts, config['output']['dir_label'])
+                output_to_use = {'dependencies': dep_output, 'measures': meas_output, 'fact': fact_output}
 
-    if automatic_run:
-        store_csv(model_config, config['exercise'], output_preprocessed, config['use'] == 'import',
-                  metrics, detection_list, ts, config['output']['dir_label'], elapsed_times)
+                out, gt = label_edges(output_to_use, gt_preprocessed, edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used)
+
+                output_preprocessed.append({'dependencies': out['dependencies'], 'fact': out['fact'], 'measures': out['measures'],
+                                       'ground_truth_labels': gt, 'nodes': {'tp': list(tp_nodes), 'fp': list(fp_nodes),
+                                                                            'fn': list(fn_nodes)}})
+            except:
+                traceback.print_exc()
+                detection_list.append(dict())
+                metrics.insert(i, dict())
+                print(f"Output {i}-th not correctly generated, skipped")
+
+        # Store results
+        ts = get_timestamp()
+
+        # store output
+        store_output(model_config, config['exercise']['prompt_version'], exercise, config['exercise']['version'], model_outputs, output_preprocessed, gt_preprocessed,
+                     config['use'] == 'import', metrics, detection_list, ts, config['output']['dir_label'])
+
+        if automatic_run:
+            store_csv(model_config, exercise, config['exercise']['version'], config['exercise']['prompt_version'], ex_idx, output_preprocessed, config['use'] == 'import',
+                      metrics, detection_list, ts, config['output']['dir_label'], elapsed_times)

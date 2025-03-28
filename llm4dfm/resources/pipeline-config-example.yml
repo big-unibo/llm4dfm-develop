@@ -14,9 +14,9 @@ output:
   dir_label: 'test'
 
 exercise:
-  name: 'exercise-1'
+  name: ['exercise-1']
   version: 'sql'
   prompt_version: 'v4'
-  number: '1'
+  number: ['1']
 
 debug_prints: false

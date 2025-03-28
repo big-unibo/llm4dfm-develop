@@ -170,10 +170,10 @@ Api model (to be set if using APIs to connect to a remote endpoint)
 
 Exercise
 
-- `name`           -- the exercise name (part before version, exercise-N)
+- `name`           -- the list of exercises' name (part before version, exercise-N)
 - `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]
 - `prompt_version` -- the prompt version (part between prompts- and .yml)
-- `number` -- the exercise number
+- `number` -- the list of exercises' number
 
 General
 
@@ -455,11 +455,12 @@ First of all, execution privileges must be granted by means of `chmod 700 ./reso
 After activating [venv](#Venv), a task triggered by
 `poetry poe automatic_run` run the pipeline with the following configurations:
 - `number_of_runs` -- set number of runs, 1 by default
-- `file_version` -- set file version [sql, original, demand], sql by default
-- `prompt_version` -- set prompt version [v1, v2, v3, v4, demand], v4 by default
+- `ex_version` -- set exercise version [sql, original, demand], sql by default
+- `prompt_version` -- set prompt version [rq2, rq3-alg, rq3-dec, rq4, rq5], rq5 by default
 - `model` -- model to use in run
-- `"<ex1> ... <fileN>"` -- set exercises to run, all files matching previous configurations by default
-- `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name is used
+- `model_loading` -- model loading technique to use in run [api, import]
+- `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name (configuration's model) is used
+- `"exercises"` -- set exercises to run, if not provided all files matching previous configurations are used ["<ex1> ... <exN>"]
 - `dir_label` -- an optional label used in output directory generated, if not provided a timestamp is generated
 
 This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
@@ -468,13 +469,16 @@ All configurations specified as argument **override** the ones provided by confi
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
 Example of run:
-`poetry poe automatic_run 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
-`./resources/automatic-run.sh 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
+`poetry poe automatic_run 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
+`./resources/automatic-run.sh 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
 
 Output:
 Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
 Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
+
+It is also possible to set configurations through `./resources/conf.json` file, following structure provided by `./resources/conf-example.json`.
+To pass this, execution has to be done like this `poetry poe automatic_run -f ./llm4dfm/resources/conf.json`
 
 ### Automatic metrics
 

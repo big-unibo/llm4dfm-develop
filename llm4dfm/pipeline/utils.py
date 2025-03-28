@@ -167,7 +167,7 @@ def config_to_print(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, ex_config, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
+def store_output(model_config, prompt_version, ex_name, ex_version, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
     results_output = {
         'config': config_to_print(model_config),
         'output': model_output,
@@ -177,8 +177,7 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
         'errors': error_detection,
     }
 
-    prompt_version = ex_config['prompt_version']
-    ex_name = '-'.join((ex_config['name'], ex_config['version']))
+    ex_name_to_use = '-'.join((ex_name, ex_version))
     model = model_config['label'] if model_config['label'] != '' else model_config['name']
 
     os.makedirs(f'{outputs}{dir_label}', exist_ok=True)
@@ -187,7 +186,7 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
     if metrics=={}:
         error = "-error"
 
-    write_yaml(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}', results_output)
+    write_yaml(f'{outputs}{dir_label}/{ex_name_to_use}-{prompt_version}-{model}-{timestamp}{error}', results_output)
 
 
 # write model_output in file ex_name-model-timestamp.yml
@@ -219,13 +218,15 @@ def get_headers_csv():
             'errors_miscellaneous_extra_tags']
 
 
-def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
+def store_csv(model_config, ex_name, ex_version, ex_prompt_version, ex_num, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
 
     for i, out_prep in enumerate(output_preprocessed):
         data = dict()
 
-        for key, value in ex_config.items():
-            data[f"ex_{key}"] = value
+        data["ex_name"] = ex_name
+        data["ex_version"] = ex_version
+        data["ex_prompt_version"] = ex_prompt_version
+        data["ex_number"] = ex_num
 
         data["timestamp"] = timestamp
 
