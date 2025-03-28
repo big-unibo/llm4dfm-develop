@@ -11,6 +11,7 @@ PY_PROG="$SCRIPT_DIR/../pipeline/pipeline.py"
 GRAPH_PROG="$SCRIPT_DIR/../pipeline/csv_graph.py"
 n_runs=1
 exercises=""
+model_loading="import"
 
 # Define the components of the regex pattern as variables
 ex_dir="datasets/"
@@ -21,7 +22,7 @@ ex_version="sql"
 while getopts "f:" opt; do
   case ${opt} in
     f ) FILE_PATH="$OPTARG" ;;
-    \? ) echo "Usage: $0 [-f file_path] [n_runs] [ex_version] [prompt_version] [model] [model_label] [dir_label]"
+    \? ) echo "Usage: $0 [-f file_path] [n_runs] [ex_version] [prompt_version] [model] [model_loading] [model_label] [exercises] [dir_label]"
          exit 1 ;;
   esac
 done
@@ -35,38 +36,42 @@ if [[ -n "$FILE_PATH" && -f "$FILE_PATH" ]]; then
   ex_version=$(jq -r '.ex_version // "'"$ex_version"'"' "$FILE_PATH")
   prompt_version=$(jq -r '.prompt_version // "'"$prompt_version"'"' "$FILE_PATH")
   model=$(jq -r '.model // "'"$model"'"' "$FILE_PATH")
+  model_loading=$(jq -r '.model_loading // "'"$model_loading"'"' "$FILE_PATH")
   model_label=$(jq -r '.model_label // "'"$model_label"'"' "$FILE_PATH")
   dir_label=$(jq -r '.dir_label | select(. != "") // "'"$dir_label"'"' "$FILE_PATH")
   exercises=$(jq -r 'if (.exercises | length) > 0 then .exercises | join(" ") else "" end' "$FILE_PATH")
+else
+  # Override with positional arguments if provided
+  if [ -n "$1" ]; then n_runs=$1; fi
+  if [ -n "$2" ]; then ex_version=$2; fi
+  if [ -n "$3" ]; then prompt_version=$3; fi
+  if [ -n "$4" ]; then model=$4; fi
+  if [ -n "$5" ]; then model_loading=$5; fi
+  if [ -n "$6" ]; then model_label=$6; fi
+  if [ -n "$7" ]; then exercises="$7"; fi
+  if [ -n "$8" ]; then dir_label=$8; fi
 fi
 
-# Override with positional arguments if provided
-if [ -n "$1" ]; then n_runs=$1; fi
-if [ -n "$2" ]; then ex_version=$2; fi
-if [ -n "$3" ]; then prompt_version=$3; fi
-if [ -n "$4" ]; then model=$4; fi
-if [ -n "$5" ]; then exercises="$5"; fi
-if [ -n "$6" ]; then model_label=$6; fi
-if [ -n "$7" ]; then dir_label=$7; fi
+ex_list=()
 
-echo "Runs: $n_runs, Exercise version: $ex_version, Prompt version: $prompt_version, Model: $model, Model label: $model_label, Label directory: $dir_label"
-
-# If no file given, look for the match ones
-# shellcheck disable=SC2235
-if [ -z "$exercises" ] && ([ "$ARGS" -lt 5 ] || [ -z "$5" ]); then
-  pwd
+if [ -z "$exercises" ]; then
   regex="$ex_dir$ex_prefix*$ex_version*"
   for ex in $regex; do
     if [ -f "$ex" ]; then
-      python -W ignore "$PY_PROG" --n_runs "$n_runs" --exercise "$ex" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_label "$model_label" --dir_label "$dir_label"
+      ex_list+=("$ex")  # Add matching files to the list
     fi
   done
-  python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
 else
   IFS=' ' read -r -a ex_nums <<< "$exercises"
   for ex_num in "${ex_nums[@]}"; do
-      python -W ignore "$PY_PROG" --n_runs "$n_runs" --exercise "$ex_dir$ex_prefix$ex_num-$ex_version-text.yml" --exercise_num "$ex_num" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_label "$model_label" --dir_label "$dir_label"
+    ex_file="$ex_dir$ex_prefix$ex_num-$ex_version-text.yml"
+    ex_list+=("$ex_file")  # Collect exercise filenames
   done
-  python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
 fi
 
+echo "Runs: $n_runs, Prompt version: $prompt_version, Model: $model, Model label: $model_label, Label directory: $dir_label, Exercises: [${ex_list[@]}]"
+
+if [ ${#ex_list[@]} -gt 0 ]; then
+    python -W ignore "$PY_PROG" --n_runs "$n_runs" --exercises "${ex_list[@]}" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_loading "$model_loading" --model_label "$model_label" --dir_label "$dir_label"
+    python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
+fi
