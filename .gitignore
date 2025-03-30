@@ -8,6 +8,7 @@ metastore_db/
 **/.env
 **/automatic_run/*.csv
 tests/*/generated/*
+**/conf.json
 
 # These are useless since we use gradle import
 .idea/
