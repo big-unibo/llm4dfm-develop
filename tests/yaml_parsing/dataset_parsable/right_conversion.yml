@@ -9,22 +9,6 @@ output:
 - "fact:\n\
    \  name: ARRIVALS\nmeasures:\n  - name: POSITION\n  - name: SCORE\n\ndependencies:\n
    \ - from: CITY.NAME, REGIONS.NAME\n    to: REGIONS.NAME\n\    role: measure\n  - from: CITY.NAME\n    to:"
-- "fact:\n  name: CROSSFIT\nmeasures:\n  - name: members\n  - name: weight\n  - name:\
-  \ height\n  - name: trainings\n  dependencies:\n  - from: member\n    to: name\n\
-  \  - from: member\n    to: surname\n  - from: member\n    to: address\n  - from:\
-  \ member\n    to: postalCode\n  - from: member\n    to: city\n  - from: member\n\
-  \    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to: trainings\n\
-  \  - from: WOD\n    to: type\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
-  \ instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: CROSSFIT\n  -\
-  \ from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n    to: weight\n  - from:\
-  \ CROSSFIT\n    to: height\n  - from: CROSSFIT\n    to: trainings\n    role: from\n\
-  \  - from: CROSSFIT\n    to: trainings\n    role: to\n  - from: CROSSFIT\n    to:\
-  \ day\n    role: day\n  - from: CROSSFIT\n    to: WOD\n    role: from\n  - from:\
-  \ WOD\n    to: WOD\n    role: to\n  - from: WOD\n    to: instructor\n    role: from\n\
-  \  - from: WOD\n    to: instructor\n    role: to\n  - from: WOD\n    to: hour\n\
-  \    role: from\n  - from: WOD\n    to: hour\n    role: to\n  - from: WOD\n    to:\
-  \ day\n    role: day\n  - from: WOD\n    to: day\n    role: from\n  - from: WOD\n\
-  \    to: day\n    role: to"
 expected:
 - null
 - dependencies:
@@ -58,4 +42,4 @@ expected:
   measures:
     - name: POSITION
     - name: SCORE
--
+- null

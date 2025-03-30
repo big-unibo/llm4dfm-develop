@@ -2,7 +2,7 @@ from pathlib import Path
 import argparse
 
 from llm4dfm.pipeline.utils import load_full_path_csv, load_yaml_from_resources, get_dir_label_name, get_csv_file_from_output_dir
-from llm4dfm.pipeline.graph_utils import plot_csv_metrics
+from llm4dfm.pipeline.graph_utils import plot_csv_metrics, plot_time_f1
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--prompt_version', help='Prompt version to use')
@@ -41,13 +41,19 @@ except:
 metrics_template = ['edges_precision', 'edges_recall', 'edges_f1', 'nodes_precision', 'nodes_recall', 'nodes_f1',]
 metrics = dict()
 
-for row in csv_file:
-    ex = row['ex_number']
-    if ex not in metrics:
-        metrics[ex] = dict()
-        for metr_templ in metrics_template:
-            metrics[ex][metr_templ] = []
-    for metr in metrics[ex]:
-        metrics[ex][metr].append(row[metr])
+for ex_name in csv_file['ex_name'].unique():
+    # Filter rows where ex_name matches the current value
+    filtered_df = csv_file[csv_file['ex_name'] == ex_name]
+
+    # Create a dictionary with the desired columns as lists
+    metrics[ex_name] = {
+        'edges_precision': filtered_df['edges_precision'].tolist(),
+        'edges_recall': filtered_df['edges_recall'].tolist(),
+        'edges_f1': filtered_df['edges_f1'].tolist(),
+        'nodes_precision': filtered_df['nodes_precision'].tolist(),
+        'nodes_recall': filtered_df['nodes_recall'].tolist(),
+        'nodes_f1': filtered_df['nodes_f1'].tolist()
+    }
 
 plot_csv_metrics(metrics, Path(file_path).parent, input_config['dir_label'])
+plot_time_f1(csv_file, Path(file_path).parent, input_config['dir_label'])

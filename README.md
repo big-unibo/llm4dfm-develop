@@ -570,7 +570,29 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
             return my-new-model-generating-function
 ```
 
-In case of an import model instead, in `llm4dfm/pipeline/models.py`
+In case of an import model instead, in `llm4dfm/pipeline/models.py`, if model loading requires further steps (i.e. huggingface models), it's suggested to load it
+outside the generation function, for example:
+
+```python
+def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
+    ...
+    def my-new-model-generating-function_from_model(model_to_use):
+        
+        def my-new-model-generating-function(chat):
+            ...
+            output_generated = model_to_use.batch(chat) # Substitute specific generating function here
+            ...
+            return output_generated
+
+        return my-new-model-generating-function
+
+    match name:
+        case 'my-new-model-name':
+            model_to_use = load(model, tokenizer)
+            return my-new-model-generating-function(model_to_use)
+```
+
+Or, if not required to load model:
 
 ```python
 def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
@@ -578,7 +600,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
 
     def my-new-model-generating-function(chat):
         ...
-        output_generated = model.batch(chat) # Substitute specific generating function here
+        output_generated = model.batch(tokenizer(chat)) # Substitute specific generating function here
         ...
         return output_generated
 
