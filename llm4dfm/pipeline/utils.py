@@ -53,9 +53,7 @@ def write_yaml(yaml_file, data):
         yaml.dump(data, file)
 
 def load_full_path_csv(path):
-    with open(f'{path}', 'r', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return [row for row in reader]
+    return pd.read_csv(path)
 
 # return the text of exercise given ex_name
 def load_text_exercise(ex_name):
@@ -232,8 +230,7 @@ def store_csv(model_config, ex_name, ex_version, ex_prompt_version, ex_num, outp
 
         data['index'] = i+1
 
-        if imported:
-            data['time'] = f'{times[i]:.4f}'
+        data['time'] = f'{times[i]:.4f}'
 
         for key, value in config_to_print(model_config).items():
             data[f"config_{key}"] = value

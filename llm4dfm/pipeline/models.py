@@ -32,7 +32,7 @@ def log(message):
 def format_chat_for_instruct_hf_models(chat, tokenizer):
     return tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False)
 
-def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
+def load_generate_import_function(name, model, tokenizer, config, debug_print, chat_template=True) -> Callable[[str], str]:
     # Default values
     pad_token_id = None
     eos_token_id = None
@@ -46,87 +46,90 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
     else:
         pad_token_id = tokenizer.eos_token_id
 
-    def generate_llama(chat):
-        raise Exception("Not Implemented")
+    def generate_llama_from_model(model_to_use):
+        def generate_llama(chat):
+            raise Exception("Not Implemented")
 
-    def generate_llama_hf(chat):
-        chat_template = True
+    def generate_llama_hf_from_model(model_to_use, chat_template):
 
-        if debug_print:
-            log(f'Batching chat: {chat}')
+        def generate_llama_hf(chat):
 
-        pipeline_llama = transformers.pipeline(
-            "text-generation",
-            model=model,
-            torch_dtype=torch.float16,
-            tokenizer=tokenizer,
-            device_map="auto",
-        )
+            if debug_print:
+                log(f'Batching chat: {chat}')
 
-        formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
+            formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
 
-        if debug_print:
-            log(f'Batching chat formatted: {formatted_chat}')
+            if debug_print:
+                log(f'Batching chat formatted: {formatted_chat}')
 
-        output_text = pipeline_llama(
-            formatted_chat,
-            max_new_tokens=config['max_new_tokens'],
-            eos_token_id=eos_token_id,
-            pad_token_id=pad_token_id,
-            do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-            return_full_text=False,
-        )
+            output_text = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+                return_full_text=False,
+            )
 
-        if debug_print:
-            log(f'Decoded_batch: {output_text}')
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
 
-        return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '').replace('assistant\n\n', '', 1)
+            return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '').replace('assistant\n\n', '', 1)
 
-    def generate_falcon(chat):
+        return generate_llama_hf
 
-        chat_template = True
+    def generate_falcon_from_model(model_to_use, chat_template):
+        def generate_falcon(chat):
 
-        pipeline_falcon = transformers.pipeline(
-            "text-generation",
-            model=model,
-            torch_dtype=torch.float16,
-            tokenizer=tokenizer,
-            device_map="auto",
-        )
+            if debug_print:
+                log(f'Batching chat: {chat}')
 
-        if debug_print:
-            log(f'Batching chat: {chat}')
+            formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
 
-        formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
+            if debug_print:
+                log(f'Batching chat formatted: {formatted_chat}')
 
-        if debug_print:
-            log(f'Batching chat formatted: {formatted_chat}')
+            output_text = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+                return_full_text=False,
+            )
 
-        output_text = pipeline_falcon(
-            formatted_chat,
-            max_new_tokens=config['max_new_tokens'],
-            eos_token_id=eos_token_id,
-            pad_token_id=pad_token_id,
-            do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-            return_full_text=False,
-        )
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
 
-        if debug_print:
-            log(f'Decoded_batch: {output_text}')
+            return output_text[0]['generated_text'].replace('<|assistant|>', '')
 
-        return output_text[0]['generated_text'].replace('<|assistant|>', '')
+        return generate_falcon
 
     match name:
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
-            return generate_llama
+            return generate_llama_from_model(model)
         case 'llama-3.3-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-3B-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
-            return generate_llama_hf
+            model_to_use = transformers.pipeline(
+                "text-generation",
+                model=model,
+                torch_dtype=torch.float16,
+                tokenizer=tokenizer,
+                device_map="auto",
+            )
+            return generate_llama_hf_from_model(model_to_use, chat_template)
         case 'falcon7-hf' | 'falcon10-hf':
-            return generate_falcon
+            model_to_use = transformers.pipeline(
+                "text-generation",
+                model=model,
+                torch_dtype=torch.float16,
+                tokenizer=tokenizer,
+                device_map="auto",
+            )
+            return generate_falcon_from_model(model_to_use, chat_template)
         case _:
             raise Exception(f"No model generation found for {name}")
 
