@@ -161,9 +161,9 @@ for ex_idx, exercise in enumerate(config['exercise']['name']):
         for i, output in enumerate(model_outputs):
             try:
                 # Preprocess output
-                dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'],
+                dep_output, meas_output, fact_output = preprocess(ex_num, output['dependencies'] if 'dependencies' in output and output['dependencies'] else list(),
                                                              output['measures'] if 'measures' in output and output['measures'] else list(),
-                                                             output['fact'], is_demand, gt_preprocessed['dependencies'])
+                                                             output['fact'] if 'fact' in output and output['fact'] else dict(), is_demand, gt_preprocessed['dependencies'])
                 # Get idxes to label edges correctly
                 edges_tp_idx, edges_fp_idx, edges_fn_idx, gt_used = metric_calc.get_edges_idx(fact_output, meas_output, dep_output)
                 tp_nodes, fp_nodes, fn_nodes = metric_calc.get_nodes()
