@@ -67,8 +67,19 @@ def load_ground_truth_exercise(ex_name, full_name=''):
         file_name = ex_name
     return load_yaml(f'{datasets}{file_name}-ground-truth')
 
+def load_prompts_as_single(prompt_version, model_name, exercise):
+    prompts = load_yaml(f'{inputs}prompts-{prompt_version}')
+    if model_name in prompts:
+        prompts = prompts[model_name]
+    else:
+        prompts = prompts['base']
+
+    prompts[-1]['content'] = "\n".join([prompts[-1]['content'], load_text_exercise(exercise)])
+
+    return prompts
+
 # return prompts of exercise as a dict given ex_name and model_name
-def load_prompts(version, model_name, exercise):
+def load_prompts_as_multiple(version, model_name, exercise):
     prompts = load_yaml(f'{inputs}prompts-{version}')
     if model_name in prompts:
         prompts = prompts[model_name]

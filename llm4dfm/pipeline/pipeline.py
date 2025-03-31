@@ -6,8 +6,10 @@ import time
 
 from llm4dfm.pipeline.models import Model
 from llm4dfm.pipeline.preprocess import preprocess
-from llm4dfm.pipeline.utils import (load_yaml_from_resources, load_prompts, store_output, load_ground_truth_exercise, store_csv,
-                                    get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num, label_edges)
+from llm4dfm.pipeline.utils import (load_yaml_from_resources, store_output, load_ground_truth_exercise,
+                                    store_csv,
+                                    get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num,
+                                    label_edges, load_prompts_as_multiple, load_prompts_as_single)
 from llm4dfm.pipeline.metrics import MetricsCalculator, ErrorDetector
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -93,14 +95,14 @@ config['output']['dir_label'] = get_dir_label_name(config['exercise']['version']
 
 for ex_idx, exercise in enumerate(config['exercise']['name']):
 
-    print(f'Execution on {ex_idx}-th exercise')
+    print(f'Execution on {exercise}')
 
     ex_num = config['exercise']['number'][ex_idx]
 
-    prompts = load_prompts(config['exercise']['prompt_version'], model_config['name'], '-'.join((exercise, config['exercise']['version'])))
+    # prompts = load_prompts_as_multiple(config['exercise']['prompt_version'], model_config['name'], '-'.join((exercise, config['exercise']['version'])))
+    prompts = load_prompts_as_single(config['exercise']['prompt_version'], model_config['name'], '-'.join((exercise, config['exercise']['version'])))
 
     # Load and preprocess ground-truth
-
     ground_truth = load_ground_truth_exercise(exercise)
 
     is_demand = config['exercise']['version'] == 'demand'
@@ -200,5 +202,5 @@ for ex_idx, exercise in enumerate(config['exercise']['name']):
                      config['use'] == 'import', metrics, detection_list, ts, config['output']['dir_label'])
 
         if automatic_run:
-            store_csv(model_config, exercise, config['exercise']['version'], config['exercise']['prompt_version'], ex_idx, output_preprocessed, config['use'] == 'import',
+            store_csv(model_config, exercise, config['exercise']['version'], config['exercise']['prompt_version'], ex_num, output_preprocessed, config['use'] == 'import',
                       metrics, detection_list, ts, config['output']['dir_label'], elapsed_times)
