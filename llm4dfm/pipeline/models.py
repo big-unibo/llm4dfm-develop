@@ -110,7 +110,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
     match name:
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
             return generate_llama_from_model(model)
-        case 'llama-3.3-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-3B-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
+        case 'llama-3-12B-hf' | 'llama-3.1-8B-inst-hf' | 'llama-3.1-8B-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-1B-inst-hf' | 'llama-3.2-3B-hf' | 'llama-3.2-3B-inst-hf' | 'llama-3.3-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
             model_to_use = transformers.pipeline(
                 "text-generation",
                 model=model,
@@ -119,7 +119,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
                 device_map="auto",
             )
             return generate_llama_hf_from_model(model_to_use, chat_template)
-        case 'falcon7-hf' | 'falcon10-hf':
+        case 'falcon-3-7B-inst-hf' | 'falcon-3-10B-inst-hf' | 'falcon-3-10B-base-hf':
             model_to_use = transformers.pipeline(
                 "text-generation",
                 model=model,
@@ -334,22 +334,34 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'Llama3.2-3B-Instruct'
         case 'llama-3.3':
             m_name = 'Llama3.3-70B-Instruct'
-        case 'llama-3.2-1B-hf':
+        case 'llama-3-12B-hf':
+            m_name = 'ehristoforu/llama-3-12b-instruct'
+        case 'llama-3.1-8B-inst-hf':
+            m_name = 'meta-llama/Llama-3.1-8B-Instruct'
+        case 'llama-3.1-8B-hf':
+            m_name = 'meta-llama/Llama-3.1-8B'
+        case 'llama-3.2-1B-inst-hf':
             m_name = 'meta-llama/Llama-3.2-1B-Instruct'
-        case 'llama-3.2-3B-hf':
+        case 'llama-3.2-1B-hf':
+            m_name = 'meta-llama/Llama-3.2-1B'
+        case 'llama-3.2-3B-inst-hf':
             m_name = 'meta-llama/Llama-3.2-3B-Instruct'
+        case 'llama-3.2-3B-hf':
+            m_name = 'meta-llama/Llama-3.2-3B'
         case 'llama-3.3-hf':
             m_name = 'meta-llama/Llama-3.3-70B-Instruct'
         case 'llama-2-7B-hf':
             m_name = 'meta-llama/Llama-2-7b-chat-hf'
         case 'llama-2-13B-hf':
             m_name = 'meta-llama/Llama-2-13b-chat-hf'
-        case 'falcon7-hf':
-            m_name = 'tiiuae/Falcon3-7B-instruct'
-        case 'falcon10-hf':
-            m_name = 'tiiuae/Falcon3-10B-instruct'
-        case 'mistral-hf':
-            m_name = 'mistralai/Mistral-7B-Instruct-v0.1'
+        case 'falcon-3-7B-inst-hf':
+            m_name = 'tiiuae/Falcon3-7B-Instruct'
+        case 'falcon-3-10B-inst-hf':
+            m_name = 'tiiuae/Falcon3-10B-Instruct'
+        case 'falcon-3-10B-base-hf':
+            m_name = 'tiiuae/Falcon3-10B-Base'
+        case 'mistral-7B-inst-hf':
+            m_name = 'mistralai/Mistral-7B-Instruct-v0.3'
         case _:
             raise Exception("Model not found")
 

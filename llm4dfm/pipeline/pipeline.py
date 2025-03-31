@@ -9,7 +9,7 @@ from llm4dfm.pipeline.preprocess import preprocess
 from llm4dfm.pipeline.utils import (load_yaml_from_resources, store_output, load_ground_truth_exercise,
                                     store_csv,
                                     get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num,
-                                    label_edges, load_prompts_as_multiple, load_prompts_as_single)
+                                    label_edges, load_prompts_as_multiple, load_prompts_as_single, load_credentials)
 from llm4dfm.pipeline.metrics import MetricsCalculator, ErrorDetector
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
@@ -79,10 +79,7 @@ if args.model:
 if args.model_label:
     model_config['label'] = args.model_label
 
-if model_config['name'] in key_config and config['use'] in key_config[model_config['name']]['key']:
-    model_config['key'] = key_config[model_config['name']]['key'][config['use']]
-else:
-    model_config['key'] = None
+model_config['key'] = load_credentials(key_config, model_config['name'], config['use'])
 
 # Model loading
 

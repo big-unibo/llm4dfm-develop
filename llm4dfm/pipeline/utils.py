@@ -37,6 +37,18 @@ def extract_ex_num(ex_name):
         # print("No exercise numbers in exercise name.")
         return None
 
+def load_credentials(keys, model_name, use):
+    key = None
+
+    if 'hf' in model_name and use in keys['hf']:
+        key = keys['hf'][use]
+    elif model_name in keys and use in keys[model_name]['key']:
+        key = keys[model_name]['key'][use]
+    else:
+        key = None
+
+    return key
+
 # Yaml utils
 
 # return yaml configurations as dict
