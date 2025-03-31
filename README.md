@@ -419,11 +419,19 @@ Example of run:
 Imported model are set up in `models.py` from `llm4dfm/pipeline` directory.
 Specifically, in method `load_model_and_tokenizer` there is a match case in which a key name is bound with exact model name
 used in `AutoModelForCausalLM.from_pretrained(model_name)`. 
-Using Huggingface models, it's required to put in file `credentials.yml` from `llm4dfm/resources` model key name and its key used:
+Using Huggingface models, it's required to put in file `credentials.yml` from `llm4dfm/resources` model key name and its key used,
+to make it easier to configure import models from HuggingFace, a single hf clause is provided, and each run with hf in model_name
+will use these credentials:
 
 ```yml
-model_key_name:
-  key: my_key
+my_model:
+  key:
+    api: my_api_key
+    import: my_import_key
+hf:
+  key:
+    api: my_api_key
+    import: my_import_key
 ```
 
 In case model or tokenizer require additional chat template, it has to be configured in `get_chat_template(model_name, tokenizer)` method.
@@ -512,7 +520,8 @@ poetry poe test
 
 In order to add a new model, it's required to set up model loading [and keys if required], prompt and batching functions.
 
-In case a key is required, in `llm4dfm/resources/credentials.yml` the key must be added in api if model is accessed via api or else in import
+In case a key is required, in `llm4dfm/resources/credentials.yml` the key must be added in api if model is accessed via api or else in import, as previously reported, in
+case of a HuggingFace model, ensure hf is in model_name to load credentials from the hf clause
 
 ```yml
 my-new-model-name:

@@ -86,7 +86,7 @@ def plot_time_f1(data, file_name, label):
     # Labels and title
     plt.xlabel("Average F1-score")
     plt.ylabel("Average Elapsed Time (s)")
-    plt.title("F1-score vs. Elapsed Time for Each Exercise")
+    plt.title(f"F1-score vs. Elapsed Time [{data.at[0, 'config_label']}]")
     plt.xlim(ax_limits)
     plt.legend()  # Show legend
     plt.grid(True)
