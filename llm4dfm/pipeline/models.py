@@ -13,8 +13,6 @@ import requests
 import json
 import yaml
 
-from llm4dfm.pipeline.utils import load_text_exercise, load_prompts
-
 load_dotenv()
 base_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -291,21 +289,6 @@ class Model:
 
     def refresh_session(self):
         self.chat = []
-
-
-# Load first prompt as system, providing scenario
-# Then load text exercise and second prompt as user
-# Return as list
-def load_text_and_first_prompt(ex_name, version, model_name):
-    ex_text = load_text_exercise(ex_name)
-    prompts = load_prompts(version, model_name)
-    scenario_prompt = prompts[0]
-    if len(prompts) > 1:
-        second_prompt = prompts[1]
-        return [scenario_prompt, get_chat_entry(second_prompt['role'], '\n'.join([second_prompt['content'], ex_text]),
-                                            model_name)]
-    else:
-        return [scenario_prompt, get_chat_entry('user', ex_text, model_name)]
 
 
 # return a new chat (list of dict {'role': role, 'content': content}) entry
