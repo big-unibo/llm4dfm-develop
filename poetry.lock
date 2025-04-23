@@ -2528,13 +2528,13 @@ test = ["pytest (>=7.2)", "pytest-cov (>=4.0)"]
 
 [[package]]
 name = "notebook"
-version = "7.4.0"
+version = "7.4.1"
 description = "Jupyter Notebook - A web-based notebook environment for interactive computing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "notebook-7.4.0-py3-none-any.whl", hash = "sha256:005fd21f4db6093a7b739b17df5fe60597811adb07e8255f458db4035d208e3a"},
-    {file = "notebook-7.4.0.tar.gz", hash = "sha256:581d88f83709d90ce738dfd1d759892b96e3cbbc9c4a989912ed6c6a08f0d3e8"},
+    {file = "notebook-7.4.1-py3-none-any.whl", hash = "sha256:498f12cf567d95b20e780d62d52564ee4310248b3175e996b667b5808028e5d3"},
+    {file = "notebook-7.4.1.tar.gz", hash = "sha256:96894962b230013ea0c0a466e4e642c5aace25ba8c86686175b69990ef628ff9"},
 ]
 
 [package.dependencies]
@@ -5185,4 +5185,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b5bf24993a3c52c2e1ff5aa86c3ffdf3a86c0956380f862692f78bcd3e81fc8e"
+content-hash = "e8e75980dfbea7388c4a624c3d83c8612f6377e0ff80a83215fc480ccff5be76"
