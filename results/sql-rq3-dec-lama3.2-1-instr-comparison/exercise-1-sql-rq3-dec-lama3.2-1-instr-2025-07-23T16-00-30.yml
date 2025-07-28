@@ -1,0 +1,1222 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 5
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 216
+    missing: 9
+    reversed: 1
+  fact:
+    false_fact: 2
+    incorrect: false
+  measures:
+    extra: 3
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 217
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.3636
+    fn: 7
+    fp: 7
+    precision: 0.3636
+    recall: 0.3636
+    tp: 4
+output:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: COMPUTER.CodComputer
+  - name: SOFTWARE.CodSoftw
+  - name: SUPPLIERS.SupplierName
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: COMPUTER.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierCity
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.SupplierAddress
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    label: fp
+    to: SUPPLIES.SupplierCity
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: COMPUTER.CodComputer
+  - name: SOFTWARE.CodSoftw
+  - name: SUPPLIERS.SupplierName
+  nodes:
+    fn:
+    - software.softwaredescription
+    - suppliers.supplieraddress
+    - suppliers.suppliercity
+    - software.codsoftw
+    - installations.installationdate
+    - suppliers.suppliername
+    - computer.codcomputer
+    fp:
+    - software.codsoftw
+    - supplies.supplieraddress
+    - computer.brand
+    - suppliers.suppliername
+    - computer.codcomputer
+    - supplies.suppliercity
+    - supplies.suppliername
+    tp:
+    - computer.model
+    - installations
+    - supplies.brand
+    - software.type

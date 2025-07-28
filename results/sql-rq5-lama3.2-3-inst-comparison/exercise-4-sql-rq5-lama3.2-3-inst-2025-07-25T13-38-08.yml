@@ -1,0 +1,232 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVALS
+    to: GRANDPRIXS.NumberOfLaps
+  - from: ARRIVALS
+    to: RACINGCIRCUITS.Length
+  - from: ARRIVALS
+    to: ARRIVALS.Time
+  - from: ARRIVALS
+    to: ARRIVALS.Score
+  - from: ARRIVALS
+    to: ARRIVALS.Position
+  - from: ARRIVALS
+    to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+  - from: ARRIVALS
+    to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: GRANDPRIXS.Date
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: RACINGCIRCUITS.CircuitName
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.City
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.Description
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVERS.Name,DRIVERS.Surname
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: CARS.Number
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.Year
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.FromDate
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.ToDate
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Name
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Surname
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.BirthDate
+  - from: CARS.Number
+    to: RACINGSTABLES.StableName
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.MainAddress
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.Manager
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: ARRIVALS.Position
+  - name: ARRIVALS.Time
+  - name: ARRIVALS.Score
+  - name: GRANDPRIXS.NumberOfLaps
+  - name: RACINGCIRCUITS.Length
+metrics:
+- {}
+output:
+- "fact:\n  name: ARRIVAL\nmeasures:\n  - name: Score\n  - name: Position\ndependencies:\n\
+  \  - from: Arrival\n    to: Score\n  - from: Arrival\n    to: Position\n  - from:\
+  \ Arrival\n    to: Date\n    role: arrival\n  - from: Arrival\n    to: CircuitName\n\
+  \  - from: Arrival\n    to: Name\n  - from: Arrival\n    to: Surname\n  - from:\
+  \ Arrival\n    to: Number\n  - from: Arrival\n    to: Year\n  - from: Arrival\n\
+  \    to: Time\n  - from: Arrival\n    to: Arrival\n    role: position\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: score\n  - from: Arrival\n    to: Arrival\n\
+  \    role: date\n  - from: Arrival\n    to: Arrival\n    role: circuit\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: driver\n  - from: Arrival\n    to: Arrival\n\
+  \    role: car\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: driver\n  - from: Arrival\n    to: Arrival\n\
+  \    role: car\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role: stable\n  - from: Arrival\n    to: Arrival\n\
+  \    role: stable\n  - from: Arrival\n    to: Arrival\n    role: stable\n  - from:\
+  \ Arrival\n    to: Arrival\n    role"
+output_preprocessed: []

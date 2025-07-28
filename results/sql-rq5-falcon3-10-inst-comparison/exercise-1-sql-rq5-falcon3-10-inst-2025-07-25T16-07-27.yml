@@ -1,0 +1,202 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 12
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 4
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 12
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 11
+    fp: 16
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: SUPPLIES
+    to: SUPPLIERS
+  - from: SUPPLIES
+    to: BRAND
+  - from: COMPUTER
+    to: BRAND
+  - from: COMPUTER
+    to: MODEL
+  - from: SOFTWARE
+    to: SOFTWAREDESCRIPTION
+  - from: SOFTWARE
+    to: TYPE
+  - from: SUPPLIERS
+    to: SUPPLIERCITY
+  - from: SUPPLIERS
+    to: SUPPLIERADDRESS
+  - from: INSTALLATION
+    to: CODCOMPUTER
+  - from: INSTALLATION
+    to: CODSOFTWARE
+  - from: INSTALLATION
+    to: INSTALLATIONDATE
+  - from: SUPPLIERS
+    to: SUPPLIERNAME
+  fact:
+    name: INSTALLATION
+  measures:
+  - name: none
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIES
+    label: fp
+    to: SUPPLIERS
+  - from: SUPPLIES
+    label: fp
+    to: BRAND
+  - from: COMPUTER
+    label: fp
+    to: BRAND
+  - from: COMPUTER
+    label: fp
+    to: MODEL
+  - from: SOFTWARE
+    label: fp
+    to: SOFTWAREDESCRIPTION
+  - from: SOFTWARE
+    label: fp
+    to: TYPE
+  - from: SUPPLIERS
+    label: fp
+    to: SUPPLIERCITY
+  - from: SUPPLIERS
+    label: fp
+    to: SUPPLIERADDRESS
+  - from: INSTALLATION
+    label: fp
+    to: CODCOMPUTER
+  - from: INSTALLATION
+    label: fp
+    to: CODSOFTWARE
+  - from: INSTALLATION
+    label: fp
+    to: INSTALLATIONDATE
+  - from: SUPPLIERS
+    label: fp
+    to: SUPPLIERNAME
+  fact:
+    name: INSTALLATION
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: none
+  nodes:
+    fn:
+    - suppliers.supplieraddress
+    - supplies.brand
+    - installations
+    - suppliers.suppliername
+    - computer.model
+    - software.type
+    - installations.installationdate
+    - software.softwaredescription
+    - suppliers.suppliercity
+    - software.codsoftw
+    - computer.codcomputer
+    fp:
+    - computer
+    - codcomputer
+    - supplieraddress
+    - brand
+    - suppliername
+    - installation
+    - type
+    - supplies
+    - codsoftware
+    - software
+    - installationdate
+    - suppliers
+    - model
+    - softwaredescription
+    - none
+    - suppliercity
+    tp: []

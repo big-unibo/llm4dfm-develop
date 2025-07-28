@@ -170,10 +170,10 @@ Api model (to be set if using APIs to connect to a remote endpoint)
 
 Exercise
 
-- `name`           -- the exercise name (part before version, exercise-N)
+- `name`           -- the list of exercises' name (part before version, exercise-N)
 - `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]
 - `prompt_version` -- the prompt version (part between prompts- and .yml)
-- `number` -- the exercise number
+- `number` -- the list of exercises' number
 
 General
 
@@ -419,11 +419,19 @@ Example of run:
 Imported model are set up in `models.py` from `llm4dfm/pipeline` directory.
 Specifically, in method `load_model_and_tokenizer` there is a match case in which a key name is bound with exact model name
 used in `AutoModelForCausalLM.from_pretrained(model_name)`. 
-Using Huggingface models, it's required to put in file `credentials.yml` from `llm4dfm/resources` model key name and its key used:
+Using Huggingface models, it's required to put in file `credentials.yml` from `llm4dfm/resources` model key name and its key used,
+to make it easier to configure import models from HuggingFace, a single hf clause is provided, and each run with hf in model_name
+will use these credentials:
 
 ```yml
-model_key_name:
-  key: my_key
+my_model:
+  key:
+    api: my_api_key
+    import: my_import_key
+hf:
+  key:
+    api: my_api_key
+    import: my_import_key
 ```
 
 In case model or tokenizer require additional chat template, it has to be configured in `get_chat_template(model_name, tokenizer)` method.
@@ -455,11 +463,12 @@ First of all, execution privileges must be granted by means of `chmod 700 ./reso
 After activating [venv](#Venv), a task triggered by
 `poetry poe automatic_run` run the pipeline with the following configurations:
 - `number_of_runs` -- set number of runs, 1 by default
-- `file_version` -- set file version [sql, original, demand], sql by default
-- `prompt_version` -- set prompt version [v1, v2, v3, v4, demand], v4 by default
+- `ex_version` -- set exercise version [sql, original, demand], sql by default
+- `prompt_version` -- set prompt version [rq2, rq3-alg, rq3-dec, rq4, rq5], rq5 by default
 - `model` -- model to use in run
-- `"<ex1> ... <fileN>"` -- set exercises to run, all files matching previous configurations by default
-- `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name is used
+- `model_loading` -- model loading technique to use in run [api, import]
+- `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name (configuration's model) is used
+- `"exercises"` -- set exercises to run, if not provided all files matching previous configurations are used ["<ex1> ... <exN>"]
 - `dir_label` -- an optional label used in output directory generated, if not provided a timestamp is generated
 
 This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
@@ -468,13 +477,16 @@ All configurations specified as argument **override** the ones provided by confi
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
 Example of run:
-`poetry poe automatic_run 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
-`./resources/automatic-run.sh 1 sql rq3-alg-base gpt "1 2 3 4 5 6 7 8 9" gpt4o example`
+`poetry poe automatic_run 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
+`./resources/automatic-run.sh 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
 
 Output:
 Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
 Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
+
+It is also possible to set configurations through `./resources/conf.json` file, following structure provided by `./resources/conf-example.json`.
+To pass this, execution has to be done like this `poetry poe automatic_run -f ./llm4dfm/resources/conf.json`
 
 ### Automatic metrics
 
@@ -508,7 +520,8 @@ poetry poe test
 
 In order to add a new model, it's required to set up model loading [and keys if required], prompt and batching functions.
 
-In case a key is required, in `llm4dfm/resources/credentials.yml` the key must be added in api if model is accessed via api or else in import
+In case a key is required, in `llm4dfm/resources/credentials.yml` the key must be added in api if model is accessed via api or else in import, as previously reported, in
+case of a HuggingFace model, ensure hf is in model_name to load credentials from the hf clause
 
 ```yml
 my-new-model-name:
@@ -531,13 +544,14 @@ In place of an import model, in `llm4dfm/pipeline/models.py` the model and token
 
 ```python
 def load_model_and_tokenizer(model_name, key, quantization):
-    match name:
+    match model_name:
         case 'my-new-model-name':
-            model = ... # add loading function here
-            return model
+            model, tokenizer = ... # add loading function here
+    
+    return model, tokenizer
 ```
 
-Then, model's prompt must be added in `inputs/{prompt-version-to-use}.yml`
+Then, model's prompt must be added in `inputs/{prompt-version-to-use}.yml`. It's worth state that a base prompt is provided in each prompt file, a specific prompt should be added as follows only if the base one doesn't satisfy model's requirement.
 
 ```yml
 my-new-model-name:
@@ -565,7 +579,29 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
             return my-new-model-generating-function
 ```
 
-In case of an import model instead, in `llm4dfm/pipeline/models.py`
+In case of an import model instead, in `llm4dfm/pipeline/models.py`, if model loading requires further steps (i.e. huggingface models), it's suggested to load it
+outside the generation function, for example:
+
+```python
+def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
+    ...
+    def my-new-model-generating-function_from_model(model_to_use):
+        
+        def my-new-model-generating-function(chat):
+            ...
+            output_generated = model_to_use.batch(chat) # Substitute specific generating function here
+            ...
+            return output_generated
+
+        return my-new-model-generating-function
+
+    match name:
+        case 'my-new-model-name':
+            model_to_use = load(model, tokenizer)
+            return my-new-model-generating-function(model_to_use)
+```
+
+Or, if not required to load model:
 
 ```python
 def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
@@ -573,7 +609,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
 
     def my-new-model-generating-function(chat):
         ...
-        output_generated = model.batch(chat) # Substitute specific generating function here
+        output_generated = model.batch(tokenizer(chat)) # Substitute specific generating function here
         ...
         return output_generated
 

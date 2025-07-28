@@ -1,0 +1,192 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- {}
+output:
+- "fact:\n  name: PRESENCE\nmeasures:\n  - name: time\n  - name: presence\ndependencies:\n\
+  \  - from: PRESENCE\n    to: FiscalCode\n  - from: PRESENCE\n    to: date\n  - from:\
+  \ PRESENCE\n    to: time\n  - from: PRESENCE\n    to: presence\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: date\n    role:\
+  \ to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: time\n    role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: from\n\
+  \  - from: PRESENCE\n    to: date\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n\
+  \    role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to: FiscalCode\n    role: from\n  - from: PRESENCE\n    to: FiscalCode\n  \
+  \  role: to\n  - from: PRESENCE\n    to: FiscalCode\n    role: to\n  - from: PRESENCE\n\
+  \    to"
+output_preprocessed: []

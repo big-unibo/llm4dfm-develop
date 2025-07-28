@@ -1,0 +1,16 @@
+# Test null dependencies to be ignored correctly
+output:
+- dependencies:
+  - from: Days, Installations
+    to: name
+  - null
+  fact:
+    name: surname
+  measures: []
+expected:
+- dependencies:
+  - from: Days,Installations
+    to: name
+  fact:
+    name: surname
+  measures: []

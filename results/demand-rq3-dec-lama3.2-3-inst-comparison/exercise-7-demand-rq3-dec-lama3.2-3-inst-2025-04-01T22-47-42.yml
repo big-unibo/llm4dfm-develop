@@ -1,0 +1,207 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- {}
+output:
+- "fact:\n  name: RENTAL\nmeasures:\n  - name: RENTAL.amount\n  - name: RENTAL.discount\n\
+  \  - name: RENTAL.insuranceCost\n  - name: RENTAL.milesTravelled\ndependencies:\n\
+  \  - from: RENTAL\n    to: RENTAL.amount\n  - from: RENTAL\n    to: RENTAL.discount\n\
+  \  - from: RENTAL\n    to: RENTAL.insuranceCost\n  - from: RENTAL\n    to: RENTAL.milesTravelled\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.brand\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n  - from:\
+  \ CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n\
+  \    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.fuelType\n  - from:\
+  \ CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to: CAR.category\n\
+  \  - from: CAR.plate\n    to: CAR.model\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n\
+  \  - from: CAR.plate\n    to: CAR.category\n  - from: CAR.plate\n    to: CAR.model\n\
+  \  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n    to:\
+  \ CAR.fuelType\n  - from: CAR.plate\n    to: CAR.registrationDate\n  - from: CAR.plate\n\
+  \    to: CAR.category\n  - from: CAR.plate\n    to"
+output_preprocessed: []

@@ -37,6 +37,18 @@ def extract_ex_num(ex_name):
         # print("No exercise numbers in exercise name.")
         return None
 
+def load_credentials(keys, model_name, use):
+    key = None
+
+    if model_name in keys and use in keys[model_name]['key']:
+        key = keys[model_name]['key'][use]
+    elif 'hf' in model_name and use in keys['hf']['key']:
+        key = keys['hf']['key'][use]
+    else:
+        key = None
+
+    return key
+
 # Yaml utils
 
 # return yaml configurations as dict
@@ -53,9 +65,7 @@ def write_yaml(yaml_file, data):
         yaml.dump(data, file)
 
 def load_full_path_csv(path):
-    with open(f'{path}', 'r', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return [row for row in reader]
+    return pd.read_csv(path)
 
 # return the text of exercise given ex_name
 def load_text_exercise(ex_name):
@@ -69,9 +79,42 @@ def load_ground_truth_exercise(ex_name, full_name=''):
         file_name = ex_name
     return load_yaml(f'{datasets}{file_name}-ground-truth')
 
+def load_prompts_as_single(prompt_version, model_name, exercise):
+    prompts = load_yaml(f'{inputs}prompts-{prompt_version}')
+    model_name_to_use = model_name.split('-')[0].lower() if len(model_name.split('-')) > 1 else model_name.lower()
+
+    if model_name_to_use in prompts:
+        prompts = prompts[model_name_to_use]
+    else:
+        prompts = prompts['base']
+
+    prompts[-1]['content'] = "\n".join([prompts[-1]['content'], load_text_exercise(exercise)])
+
+    return prompts
+
 # return prompts of exercise as a dict given ex_name and model_name
-def load_prompts(version, model_name):
-    return load_yaml(f'{inputs}prompts-{version}')[model_name]
+def load_prompts_as_multiple(version, model_name, exercise):
+    prompts = load_yaml(f'{inputs}prompts-{version}')
+    if model_name in prompts:
+        prompts = prompts[model_name]
+    else:
+        prompts = prompts['base']
+
+    # Return a list of lists to bind prompts as complete chat prompts -> first one is a prompt of dict until
+    # receive a user-roled prompt, then each assistant prompt is a prompt itself
+    ret_prompts = [[]]
+
+    for idx, prompt in enumerate(prompts):
+        # If still not loaded a user prompt, build up just first prompt
+        if not any(sub_chat["role"] == "user" for sub_chat in ret_prompts[0]):
+            if prompt['role'] == 'user':
+                prompt['content'] = "\n".join([prompt['content'], load_text_exercise(exercise)])
+            ret_prompts[-1].append(prompt)
+        # If already loaded, each new prompt is a valid prompt
+        else:
+            ret_prompts.append([prompt])
+
+    return ret_prompts
 
 # load output exercise used in second-step and its filename (used after to store the image)
 def load_output_exercise(dir_name, full_name):
@@ -98,11 +141,27 @@ def label_edges(out, gt, tp_idx, fp_idx, fn_idx, gt_used):
 
 
 # Map output to a valid yaml as dict
-def output_as_valid_yaml(model_outputs):
-    return [yaml.safe_load(out.replace('`', '').replace('yaml', '')
-                           .replace('`', '').replace('\\n', '\r\n')) if isinstance(out, str)
-                            else out for out in model_outputs]
+def output_as_valid_yaml(model_output):
 
+    if not isinstance(model_output, str):
+        return model_output
+
+    # Match YAML inside triple backticks
+    match = re.search(r"```(?:yaml|yml)?\s*(.*?)```", model_output, re.DOTALL)
+
+    if match:
+        # Extract content inside triple backticks, removing `yaml` or `yml` if present
+        yaml_content = match.group(1)
+    else:
+        match_preprocess = re.search(r"```(?:yaml|yml)?\s*(.*?)```", model_output + '```', re.DOTALL)
+
+        if match_preprocess:
+            yaml_content = match_preprocess.group(1)
+        else:
+            yaml_content = model_output
+
+    return yaml.safe_load(yaml_content.replace('`', '').replace('yaml', '')
+                             .replace('yml', '').replace('\\n', '\r\n'))
 
 # Store output utils
 
@@ -131,7 +190,7 @@ def config_to_print(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, ex_config, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
+def store_output(model_config, prompt_version, ex_name, ex_version, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
     results_output = {
         'config': config_to_print(model_config),
         'output': model_output,
@@ -141,8 +200,7 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
         'errors': error_detection,
     }
 
-    prompt_version = ex_config['prompt_version']
-    ex_name = '-'.join((ex_config['name'], ex_config['version']))
+    ex_name_to_use = '-'.join((ex_name, ex_version))
     model = model_config['label'] if model_config['label'] != '' else model_config['name']
 
     os.makedirs(f'{outputs}{dir_label}', exist_ok=True)
@@ -151,7 +209,7 @@ def store_output(model_config, ex_config, model_output, output_preprocessed, gt_
     if metrics=={}:
         error = "-error"
 
-    write_yaml(f'{outputs}{dir_label}/{ex_name}-{prompt_version}-{model}-{timestamp}{error}', results_output)
+    write_yaml(f'{outputs}{dir_label}/{ex_name_to_use}-{prompt_version}-{model}-{timestamp}{error}', results_output)
 
 
 # write model_output in file ex_name-model-timestamp.yml
@@ -183,20 +241,21 @@ def get_headers_csv():
             'errors_miscellaneous_extra_tags']
 
 
-def store_csv(model_config, ex_config, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
+def store_csv(model_config, ex_name, ex_version, ex_prompt_version, ex_num, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
 
     for i, out_prep in enumerate(output_preprocessed):
         data = dict()
 
-        for key, value in ex_config.items():
-            data[f"ex_{key}"] = value
+        data["ex_name"] = ex_name
+        data["ex_version"] = ex_version
+        data["ex_prompt_version"] = ex_prompt_version
+        data["ex_number"] = ex_num
 
         data["timestamp"] = timestamp
 
         data['index'] = i+1
 
-        if imported:
-            data['time'] = f'{times[i]:.4f}'
+        data['time'] = f'{times[i]:.4f}'
 
         for key, value in config_to_print(model_config).items():
             data[f"config_{key}"] = value

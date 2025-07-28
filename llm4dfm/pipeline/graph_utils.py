@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# Function to calculate average
 def _calculate_average(values):
     values_converted = []
     for i, value in enumerate(values):
@@ -51,6 +50,48 @@ def _plot_boxplot(val, idx, x_label, y_label, title, y_lim, save_path):
     ax.set_ylim(y_lim)
     fig.tight_layout()
     fig.savefig(save_path, format='pdf')
+
+def plot_time_f1(data, file_name, label):
+
+    f1_edges_color = 'red'
+    f1_nodes_color = 'black'
+
+    ax_limits = [0, 1]
+    # Compute average F1-score and elapsed time for each exercise
+
+    exercise_stats = data.groupby("ex_name").agg({
+        "edges_f1": "mean",
+        "nodes_f1": "mean",
+        "time": "mean"
+    }).reset_index()
+
+    # Plot the scatter plot
+    plt.figure(figsize=(10, 6))
+
+    # Scatter plot for edges
+    plt.scatter(exercise_stats["edges_f1"], exercise_stats["time"],
+                color=f1_edges_color, label="Edges", alpha=0.7)
+
+    # Scatter plot for nodes
+    plt.scatter(exercise_stats["nodes_f1"], exercise_stats["time"],
+                color=f1_nodes_color, label="Nodes", alpha=0.7)
+
+    # Annotate each point with exercise name
+    for i, row in exercise_stats.iterrows():
+        plt.text(row["edges_f1"], row["time"], row["ex_name"],
+                 fontsize=6, ha="right", color=f1_edges_color, rotation=45)
+        plt.text(row["nodes_f1"], row["time"], row["ex_name"],
+                 fontsize=6, ha="right", color=f1_nodes_color, rotation=45)
+
+    # Labels and title
+    plt.xlabel("Average F1-score")
+    plt.ylabel("Average Elapsed Time (s)")
+    plt.title(f"F1-score vs. Elapsed Time [{data.at[0, 'config_label']}]")
+    plt.xlim(ax_limits)
+    plt.legend()  # Show legend
+    plt.grid(True)
+
+    plt.savefig(f"{file_name}/{label}-times-f1.pdf", format='pdf')
 
 def plot_csv_metrics(data, file_name, label):
 
@@ -106,7 +147,6 @@ def plot_csv_metrics(data, file_name, label):
 
     _plot_boxplot(nodes_f1, ex_indexes, 'Exercise', 'F1 Score', 'Boxplot of F1 Measure for Nodes',
                   ax_limits, f"{file_name}/{label}-graph-boxplot_f1_nodes.pdf")
-
 
     # Set up the figure and subplots
     # fig, axs = plt.subplots(2, 3, figsize=(14, 10))

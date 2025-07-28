@@ -13,8 +13,6 @@ import requests
 import json
 import yaml
 
-from llm4dfm.pipeline.utils import load_text_exercise, load_prompts
-
 load_dotenv()
 base_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -30,9 +28,13 @@ def log(message):
 
 # Format chat for instruct models chat template
 def format_chat_for_instruct_hf_models(chat, tokenizer):
-    return tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False)
+    if tokenizer.chat_template:
+        return tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False)
+    else:
+        return '\n'.join([ct['content'] for ct in chat])
 
-def load_generate_import_function(name, model, tokenizer, config, debug_print) -> Callable[[str], str]:
+def load_generate_import_function(name, model, tokenizer, config, debug_print, chat_template=True) -> Callable[[str], str]:
+    chat_template = False
     # Default values
     pad_token_id = None
     eos_token_id = None
@@ -46,87 +48,129 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print) -
     else:
         pad_token_id = tokenizer.eos_token_id
 
-    def generate_llama(chat):
-        raise Exception("Not Implemented")
 
-    def generate_llama_hf(chat):
-        chat_template = True
+    def generate_mistral_from_model(model_to_use, chat_template):
+        def generate_mistral(chat):
 
-        if debug_print:
-            log(f'Batching chat: {chat}')
+            if debug_print:
+                log(f'Batching chat: {chat}')
 
-        pipeline_llama = transformers.pipeline(
-            "text-generation",
-            model=model,
-            torch_dtype=torch.float16,
-            tokenizer=tokenizer,
-            device_map="auto",
-        )
+            formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
 
-        formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
+            if debug_print:
+                log(f'Batching chat formatted: {formatted_chat}')
 
-        if debug_print:
-            log(f'Batching chat formatted: {formatted_chat}')
+            output_text = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+                return_full_text=False,
+            )
 
-        output_text = pipeline_llama(
-            formatted_chat,
-            max_new_tokens=config['max_new_tokens'],
-            eos_token_id=eos_token_id,
-            pad_token_id=pad_token_id,
-            do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-            return_full_text=False,
-        )
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
 
-        if debug_print:
-            log(f'Decoded_batch: {output_text}')
+            return output_text[0]['generated_text'].replace('<|assistant|>', '')
 
-        return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '').replace('assistant\n\n', '', 1)
+        return generate_mistral
 
-    def generate_falcon(chat):
+    def generate_llama_from_model(model_to_use):
+        def generate_llama(chat):
+            raise Exception("Not Implemented")
 
-        chat_template = True
+    def generate_llama_hf_from_model(model_to_use, chat_template):
 
-        pipeline_falcon = transformers.pipeline(
-            "text-generation",
-            model=model,
-            torch_dtype=torch.float16,
-            tokenizer=tokenizer,
-            device_map="auto",
-        )
+        def generate_llama_hf(chat):
 
-        if debug_print:
-            log(f'Batching chat: {chat}')
+            if debug_print:
+                log(f'Batching chat: {chat}')
 
-        formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
+            formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
 
-        if debug_print:
-            log(f'Batching chat formatted: {formatted_chat}')
+            if debug_print:
+                log(f'Batching chat formatted: {formatted_chat}')
 
-        output_text = pipeline_falcon(
-            formatted_chat,
-            max_new_tokens=config['max_new_tokens'],
-            eos_token_id=eos_token_id,
-            pad_token_id=pad_token_id,
-            do_sample=config['do_sample'],
-            temperature=config['temperature'],
-            top_p=config['top_p'],
-            return_full_text=False,
-        )
+            output_text = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+                return_full_text=False,
+            )
 
-        if debug_print:
-            log(f'Decoded_batch: {output_text}')
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
 
-        return output_text[0]['generated_text'].replace('<|assistant|>', '')
+            return output_text[0]['generated_text'] if not chat_template else output_text[0]['generated_text'].replace('assistant\n\n---\n', '').replace('assistant\n\n', '', 1)
+
+        return generate_llama_hf
+
+    def generate_falcon_from_model(model_to_use, chat_template):
+        def generate_falcon(chat):
+
+            if debug_print:
+                log(f'Batching chat: {chat}')
+
+            formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
+
+            if debug_print:
+                log(f'Batching chat formatted: {formatted_chat}')
+
+            output_text = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+                return_full_text=False,
+            )
+
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
+
+            return output_text[0]['generated_text'].replace('<|assistant|>', '')
+
+        return generate_falcon
 
     match name:
+        case 'mistral-7B-inst-v0.3-hf':
+            model_to_use = transformers.pipeline(
+                "text-generation",
+                model=model,
+                torch_dtype=torch.float16,
+                tokenizer=tokenizer,
+                device_map="auto",
+            )
+            return generate_mistral_from_model(model_to_use, chat_template)
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
-            return generate_llama
-        case 'llama-3.3-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-3B-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
-            return generate_llama_hf
-        case 'falcon7-hf' | 'falcon10-hf':
-            return generate_falcon
+            return generate_llama_from_model(model)
+        case 'llama-3-12B-inst-hf' | 'llama-3.1-8B-inst-hf' | 'llama-3.1-8B-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-1B-inst-hf' | 'llama-3.2-3B-hf' | 'llama-3.2-3B-inst-hf' | 'llama-3.3-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
+            model_to_use = transformers.pipeline(
+                "text-generation",
+                model=model,
+                torch_dtype=torch.float16,
+                tokenizer=tokenizer,
+                device_map="auto",
+            )
+            return generate_llama_hf_from_model(model_to_use, chat_template)
+        case 'falcon-3-7B-inst-hf' | 'falcon-3-10B-inst-hf' | 'falcon-3-10B-base-hf':
+            model_to_use = transformers.pipeline(
+                "text-generation",
+                model=model,
+                torch_dtype=torch.float16,
+                tokenizer=tokenizer,
+                device_map="auto",
+            )
+            return generate_falcon_from_model(model_to_use, chat_template)
         case _:
             raise Exception(f"No model generation found for {name}")
 
@@ -264,6 +308,7 @@ class Model:
         wait = 3
         max_tries = 5
         m_output = ''
+
         # Prompt can be list if it's the first input
         if type(prompt) is list:
             for p in prompt:
@@ -290,25 +335,11 @@ class Model:
         self.chat = []
 
 
-# Load first prompt as system, providing scenario
-# Then load text exercise and second prompt as user
-# Return as list
-def load_text_and_first_prompt(ex_name, version, model_name):
-    ex_text = load_text_exercise(ex_name)
-    prompts = load_prompts(version, model_name)
-    scenario_prompt = prompts[0]
-    if len(prompts) > 1:
-        second_prompt = prompts[1]
-        return [scenario_prompt, get_chat_entry(second_prompt['role'], '\n'.join([second_prompt['content'], ex_text]),
-                                            model_name)]
-    else:
-        return [scenario_prompt, get_chat_entry('user', ex_text, model_name)]
-
-
 # return a new chat (list of dict {'role': role, 'content': content}) entry
 def get_chat_entry(entry_role, entry_content, model):
     if entry_role == 'system':
-        if not is_model_supporting_system_chat(model):
+        model_name_to_use = model.split('-')[0].lower() if len(model.split('-')) > 1 else model.lower()
+        if not is_model_supporting_system_chat(model_name_to_use):
             return {'role': 'user', 'content': entry_content}
     return {'role': entry_role, 'content': entry_content}
 
@@ -348,22 +379,34 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'Llama3.2-3B-Instruct'
         case 'llama-3.3':
             m_name = 'Llama3.3-70B-Instruct'
-        case 'llama-3.2-1B-hf':
+        case 'llama-3-12B-inst-hf':
+            m_name = 'ehristoforu/llama-3-12b-instruct'
+        case 'llama-3.1-8B-inst-hf':
+            m_name = 'meta-llama/Llama-3.1-8B-Instruct'
+        case 'llama-3.1-8B-hf':
+            m_name = 'meta-llama/Llama-3.1-8B'
+        case 'llama-3.2-1B-inst-hf':
             m_name = 'meta-llama/Llama-3.2-1B-Instruct'
-        case 'llama-3.2-3B-hf':
+        case 'llama-3.2-1B-hf':
+            m_name = 'meta-llama/Llama-3.2-1B'
+        case 'llama-3.2-3B-inst-hf':
             m_name = 'meta-llama/Llama-3.2-3B-Instruct'
+        case 'llama-3.2-3B-hf':
+            m_name = 'meta-llama/Llama-3.2-3B'
         case 'llama-3.3-hf':
             m_name = 'meta-llama/Llama-3.3-70B-Instruct'
         case 'llama-2-7B-hf':
             m_name = 'meta-llama/Llama-2-7b-chat-hf'
         case 'llama-2-13B-hf':
             m_name = 'meta-llama/Llama-2-13b-chat-hf'
-        case 'falcon7-hf':
-            m_name = 'tiiuae/Falcon3-7B-instruct'
-        case 'falcon10-hf':
-            m_name = 'tiiuae/Falcon3-10B-instruct'
-        case 'mistral-hf':
-            m_name = 'mistralai/Mistral-7B-Instruct-v0.1'
+        case 'falcon-3-7B-inst-hf':
+            m_name = 'tiiuae/Falcon3-7B-Instruct'
+        case 'falcon-3-10B-inst-hf':
+            m_name = 'tiiuae/Falcon3-10B-Instruct'
+        case 'falcon-3-10B-base-hf':
+            m_name = 'tiiuae/Falcon3-10B-Base'
+        case 'mistral-7B-inst-v0.3-hf':
+            m_name = 'mistralai/Mistral-7B-Instruct-v0.3'
         case _:
             raise Exception("Model not found")
 

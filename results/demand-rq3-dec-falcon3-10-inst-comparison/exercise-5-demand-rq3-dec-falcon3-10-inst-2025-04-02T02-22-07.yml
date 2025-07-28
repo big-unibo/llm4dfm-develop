@@ -1,0 +1,264 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 3
+    shared_missing: 0
+    shared_with_fact_root_extra: 3
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 20
+    missing: 13
+    reversed: 0
+  fact:
+    false_fact: 5
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 13
+    fp: 20
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.1622
+    fn: 11
+    fp: 20
+    precision: 0.1304
+    recall: 0.2143
+    tp: 3
+output:
+- dependencies:
+  - from: MEMBER
+    to: MEMBER.name
+  - from: MEMBER
+    to: MEMBER.surname
+  - from: MEMBER
+    to: MEMBER.address
+  - from: MEMBER
+    to: MEMBER.postal_code
+  - from: MEMBER
+    to: MEMBER.city
+  - from: MEMBER
+    to: MEMBER.weight
+  - from: MEMBER
+    to: MEMBER.height
+  - from: WOD
+    to: WOD.type
+  - from: WOD
+    to: WOD.description
+  - from: INSTRUCTOR
+    to: INSTRUCTOR.name
+  - from: INSTRUCTOR
+    to: INSTRUCTOR.surname
+  - from: INSTRUCTOR
+    to: INSTRUCTOR.experience
+  - from: TRAINING
+    to: TRAINING.date
+  - from: TRAINING
+    to: TRAINING.hour
+  - from: TRAINING
+    to: TRAINING.instructor_id
+  - from: TRAINING
+    to: WOD.type
+  - from: MEMBER_PRESENCE
+    to: MEMBER.name, MEMBER.surname
+  - from: MEMBER_PRESENCE
+    to: TRAINING.date
+  - from: MEMBER_PRESENCE
+    to: TRAINING.hour
+  - from: MEMBER_PRESENCE
+    to: INSTRUCTOR.name, INSTRUCTOR.surname
+  fact:
+    name: MEMBER_PRESENCE
+  measures:
+  - name: WOD.type
+output_preprocessed:
+- dependencies:
+  - from: MEMBER
+    label: fp
+    to: MEMBER,name
+  - from: MEMBER
+    label: fp
+    to: MEMBER,surname
+  - from: MEMBER
+    label: fp
+    to: MEMBER,address
+  - from: MEMBER
+    label: fp
+    to: MEMBER,postalcode
+  - from: MEMBER
+    label: fp
+    to: MEMBER,city
+  - from: MEMBER
+    label: fp
+    to: MEMBER,weight
+  - from: MEMBER
+    label: fp
+    to: MEMBER,height
+  - from: WOD
+    label: fp
+    to: WOD,WODType
+  - from: WOD
+    label: fp
+    to: WOD,description
+  - from: INSTRUCTOR
+    label: fp
+    to: INSTRUCTOR,name
+  - from: INSTRUCTOR
+    label: fp
+    to: INSTRUCTOR,surname
+  - from: INSTRUCTOR
+    label: fp
+    to: INSTRUCTOR,experience
+  - from: TRAINING
+    label: fp
+    to: TRAINING,date
+  - from: TRAINING
+    label: fp
+    to: TRAINING,hour
+  - from: TRAINING
+    label: fp
+    to: TRAINING,instructorid
+  - from: TRAINING
+    label: fp
+    to: WOD,WODType
+  - from: MEMBERPRESENCE
+    label: fp
+    to: MEMBER,name,MEMBER,surname
+  - from: MEMBERPRESENCE
+    label: fp
+    to: TRAINING,date
+  - from: MEMBERPRESENCE
+    label: fp
+    to: TRAINING,hour
+  - from: MEMBERPRESENCE
+    label: fp
+    to: INSTRUCTOR,name,INSTRUCTOR,surname
+  fact:
+    name: MEMBERPRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: fn
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: fn
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: WOD.type
+  nodes:
+    fn:
+    - wodtype
+    - hour
+    - weight
+    - surname
+    - postalcode
+    - date
+    - presence
+    - address
+    - name
+    - city
+    - height
+    fp:
+    - name,instructor
+    - wod,wodtype
+    - wod.type
+    - name,surname,member
+    - training,instructorid
+    - name,member
+    - name,instructor,surname
+    - address,member
+    - memberpresence
+    - height,member
+    - training,date
+    - instructor,surname
+    - training
+    - weight,member
+    - experience,instructor
+    - training,hour
+    - postalcode,member
+    - wod,description
+    - city,member
+    - surname,member
+    tp:
+    - instructor
+    - member
+    - wod

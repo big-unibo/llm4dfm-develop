@@ -1,0 +1,239 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSURANCES
+    to: INSURANCES.Risk
+  - from: INSURANCES
+    to: INSURANCES.Cost
+  - from: INSURANCES
+    to: RENTALS.Plate,RENTALS.PickupDate
+  - from: INSURANCES
+    to: PAYMENTS.PaymentMode
+  - from: INSURANCES
+    to: PAYMENTS.Amount
+  - from: INSURANCES
+    to: PAYMENTS.Discount
+  - from: INSURANCES
+    to: RENTALS.Miles
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: CARS.Plate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: RENTALS.PickupDate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: RENTALS.DropoffDate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    role: PickupPlace
+    to: RENTALOFFICES.OfficeName
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    role: DropoffPlace
+    to: RENTALOFFICES.OfficeName
+  - from: CARS.Plate
+    to: CARS.Category
+  - from: CARS.Plate
+    to: CARS.Model
+  - from: CARS.Model
+    to: CARS.Brand
+  - from: CARS.Plate
+    to: CARS.Fuel
+  - from: CARS.Plate
+    to: CARS.RegistrationDate
+  - from: RENTALOFFICES.OfficeName
+    to: RENTALOFFICES.City
+  - from: RENTALOFFICES.City
+    to: RENTALOFFICES.State
+  - from: RENTALOFFICES.State
+    to: RENTALOFFICES.Country
+  - from: RENTALOFFICES.Country
+    to: RENTALOFFICES.Area
+  fact:
+    name: INSURANCES
+  measures:
+  - name: RENTALS.Miles
+  - name: INSURANCES.Cost
+  - name: PAYMENTS.Amount
+  - name: PAYMENTS.Discount
+metrics:
+- {}
+output:
+- "fact:\n  name: RENTAL_OFFICE\nmeasures:\n  - name: officeName\n  - name: city\n\
+  \  - name: area\n  - name: state\n  - name: country\ndependencies:\n  - from: rentalOffice\n\
+  \    to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n\
+  \    role: location\n  - from: rentalOffice\n    to: area\n    role: location\n\
+  \  - from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role: location\n  - from: rentalOffice\n    to: officeName\n    role: location\n\
+  \  - from: rentalOffice\n    to: city\n    role: location\n  - from: rentalOffice\n\
+  \    to: area\n    role: location\n  - from: rentalOffice\n    to: state\n    role:\
+  \ location\n  - from: rentalOffice\n    to: country\n    role: location\n  - from:\
+  \ rentalOffice\n    to: officeName\n    role: location\n  - from: rentalOffice\n\
+  \    to: city\n    role: location\n  - from: rentalOffice\n    to: area\n    role:\
+  \ location\n  - from: rentalOffice\n    to: state\n    role: location\n  - from:\
+  \ rentalOffice\n    to: country\n    role: location\n  - from: rentalOffice\n  \
+  \  to: officeName\n    role: location\n  - from: rentalOffice\n    to: city\n  \
+  \  role: location\n  - from: rentalOffice\n    to: area\n    role: location\n  -\
+  \ from: rentalOffice\n    to: state\n    role: location\n  - from: rentalOffice\n\
+  \    to: country\n    role: location\n  - from: rentalOffice\n    to: officeName\n\
+  \    role: location\n  - from: rentalOffice\n    to: city\n    role: location\n\
+  \  - from: rentalOffice\n    to: area\n    role: location\n  - from: rentalOffice\n\
+  \    to: state\n    role: location\n  - from: rentalOffice\n    to: country\n  \
+  \  role"
+output_preprocessed: []

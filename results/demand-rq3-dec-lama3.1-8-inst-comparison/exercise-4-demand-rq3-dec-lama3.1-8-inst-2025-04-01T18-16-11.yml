@@ -1,0 +1,79 @@
+config:
+  label: lama3.1-8-inst
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- {}
+output:
+- "CREATE TABLE CIRCUIT (\n    circuitId INT PRIMARY KEY,\n    city VARCHAR(50) NOT\
+  \ NULL,\n    length DECIMAL(10, 2) NOT NULL\n);\n\nCREATE TABLE RACE (\n    raceId\
+  \ INT PRIMARY KEY,\n    date DATE NOT NULL,\n    circuitId INT,\n    FOREIGN KEY\
+  \ (circuitId) REFERENCES CIRCUIT(circuitId)\n);\n\nCREATE TABLE DRIVER (\n    driverId\
+  \ INT PRIMARY KEY,\n    name VARCHAR(50) NOT NULL,\n    surname VARCHAR(50) NOT\
+  \ NULL,\n    age INT NOT NULL\n);\n\nCREATE TABLE CAR (\n    carId INT PRIMARY KEY,\n\
+  \    number INT NOT NULL,\n    stableId INT,\n    FOREIGN KEY (stableId) REFERENCES\
+  \ STABLE(stableId)\n);\n\nCREATE TABLE STABLE (\n    stableId INT PRIMARY KEY,\n\
+  \    address VARCHAR(100) NOT NULL,\n    manager VARCHAR(50) NOT NULL\n);\n\nCREATE\
+  \ TABLE RACE_RESULT (\n    raceId INT,\n    driverId INT,\n    carId INT,\n    position\
+  \ INT,\n    score DECIMAL(10, 2),\n    laps INT,\n    time TIME,\n    PRIMARY KEY\
+  \ (raceId, driverId, carId),\n    FOREIGN KEY (raceId) REFERENCES RACE(raceId),\n\
+  \    FOREIGN KEY (driverId) REFERENCES DRIVER(driverId),\n    FOREIGN KEY (carId)\
+  \ REFERENCES CAR(carId)\n);\n\nfact:\n  name: RACE_RESULT\nmeasures:\n  - name:\
+  \ RACE_RESULT.score\n  - name: RACE_RESULT.laps\n  - name: RACE_RESULT.time\ndependencies:\n\
+  \  - from: RACE_RESULT\n    to: RACE_RESULT.position\n  - from: RACE_RESULT\n  \
+  \  to: RACE_RESULT.score\n  - from: RACE_RESULT\n    to: RACE_RESULT.laps\n  - from:\
+  \ RACE_RESULT\n    to: RACE_RESULT.time\n  - from: CIRCUIT.circuitId\n    to: CIRCUIT.city\n\
+  \  - from: CIRCUIT.circuitId\n    to: CIRCUIT.length\n  - from: RACE.raceId\n  \
+  \  to: RACE.date\n  - from: RACE.raceId\n    to: CIRCUIT.circuitId\n  - from: DRIVER.driverId\n\
+  \    to: DRIVER.name\n  - from: DRIVER.driverId\n    to: DRIVER.surname\n  - from:\
+  \ DRIVER.driverId\n    to: DRIVER.age\n  - from: CAR.carId\n    to: CAR.number\n\
+  \  - from: CAR.carId\n    to: STABLE.stableId\n  - from: STABLE.stableId\n    to:\
+  \ STABLE.address\n  - from: STABLE.stableId\n    to: STABLE.manager\n  - from: RACE_RESULT.raceId,\
+  \ RACE_RESULT.driverId, RACE_RESULT.carId\n    to: RACE.raceId\n  - from: RACE_RESULT.raceId,\
+  \ RACE_RESULT.driverId, RACE_RESULT.carId\n    to: DRIVER.driverId\n  - from: RACE_RESULT.raceId,\
+  \ RACE_RESULT.driverId, RACE_RESULT.carId\n    to: CAR.carId"
+output_preprocessed: []

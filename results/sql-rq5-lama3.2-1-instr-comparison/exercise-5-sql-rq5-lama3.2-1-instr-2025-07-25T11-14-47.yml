@@ -1,0 +1,1704 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 4
+    shared_missing: 0
+    shared_with_fact_root_extra: 4
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 215
+    missing: 16
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: true
+  measures:
+    extra: 9
+    missing: 3
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- edges:
+    f1: 0
+    fn: 16
+    fp: 215
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 17
+    fp: 18
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: EXERCISES
+    role: exercise
+    to: exerciseId
+  - from: MAXIMUM_WEIGHTS
+    role: maximumWeight
+    to: weight
+  - from: MEMBERS
+    role: member
+    to: fiscalCode
+  - from: MEMBERS
+    role: memberName
+    to: name
+  - from: MEMBERS
+    role: memberSurname
+    to: surname
+  - from: MEMBERS
+    role: memberGender
+    to: gender
+  - from: MEMBERS
+    role: memberAddress
+    to: address
+  - from: MEMBERS
+    role: memberPostalCode
+    to: postalCode
+  - from: MEMBERS
+    role: memberCity
+    to: city
+  - from: MEMBERS
+    role: memberHeight
+    to: height
+  - from: MEMBERS
+    role: memberWeight
+    to: weight
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberInstructor
+    to: instructor
+  - from: MAXIMUM_WEIGHTS
+    role: maximumWeight
+    to: weight
+  - from: MEMBERS
+    role: memberDate
+    to: date
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    role: memberPresence
+    to: presence
+  - from: null
+  fact:
+    name: MEMBERS
+  measures:
+  - name: fiscalCode
+  - name: name
+  - name: surname
+  - name: gender
+  - name: address
+  - name: postalCode
+  - name: city
+  - name: height
+  - name: weight
+output_preprocessed:
+- dependencies:
+  - from: EXERCISES
+    label: fp
+    role: exercise
+    to: exerciseId
+  - from: MAXIMUMWEIGHTS
+    label: fp
+    role: maximumWeight
+    to: weight
+  - from: MEMBERS
+    label: fp
+    role: member
+    to: fiscalCode
+  - from: MEMBERS
+    label: fp
+    role: memberName
+    to: name
+  - from: MEMBERS
+    label: fp
+    role: memberSurname
+    to: surname
+  - from: MEMBERS
+    label: fp
+    role: memberGender
+    to: gender
+  - from: MEMBERS
+    label: fp
+    role: memberAddress
+    to: address
+  - from: MEMBERS
+    label: fp
+    role: memberPostalCode
+    to: postalCode
+  - from: MEMBERS
+    label: fp
+    role: memberCity
+    to: city
+  - from: MEMBERS
+    label: fp
+    role: memberHeight
+    to: height
+  - from: MEMBERS
+    label: fp
+    role: memberWeight
+    to: weight
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberInstructor
+    to: instructor
+  - from: MAXIMUMWEIGHTS
+    label: fp
+    role: maximumWeight
+    to: weight
+  - from: MEMBERS
+    label: fp
+    role: memberDate
+    to: date
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: MEMBERS
+    label: fp
+    role: memberExercise
+    to: exerciseId
+  - from: MEMBERS
+    label: fp
+    role: memberTime
+    to: time
+  - from: MEMBERS
+    label: fp
+    role: memberPresence
+    to: presence
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: MEMBERS
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: WOD.numberOfRounds
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.FiscalCode
+    - from: PRESENCE
+      label: fn
+      to: WORKOUTS.date,WORKOUTS.time
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.name
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.surname
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.gender
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.address
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.postalCode
+    - from: MEMBERS.postalCode
+      label: fn
+      to: MEMBERS.city
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.height
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.weight
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WORKOUTS.time
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WORKOUTS.instructor
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WOD.date
+    - from: WOD.date
+      label: fn
+      to: WOD.name
+    - from: WOD.date
+      label: fn
+      to: WOD.WODtype
+    fact:
+      name: PRESENCE
+    measures:
+    - name: WOD.numberOfRounds
+    - name: MEMBERS.weight
+    - name: MEMBERS.height
+  measures:
+  - name: fiscalCode
+  - name: name
+  - name: surname
+  - name: gender
+  - name: address
+  - name: postalCode
+  - name: city
+  - name: height
+  - name: weight
+  nodes:
+    fn:
+    - members.surname
+    - members.gender
+    - members.height
+    - workouts.time
+    - wod.date
+    - members.address
+    - wod.wodtype
+    - workouts.instructor
+    - wod.numberofrounds
+    - workouts.date,workouts.time
+    - members.name
+    - members.weight
+    - presence
+    - wod.name
+    - members.postalcode
+    - members.fiscalcode
+    - members.city
+    fp:
+    - postalcode
+    - r,o,e
+    - address
+    - exercises
+    - weight
+    - members
+    - time
+    - instructor
+    - surname
+    - city
+    - exerciseid
+    - maximumweights
+    - name
+    - date
+    - fiscalcode
+    - height
+    - presence
+    - gender
+    tp: []

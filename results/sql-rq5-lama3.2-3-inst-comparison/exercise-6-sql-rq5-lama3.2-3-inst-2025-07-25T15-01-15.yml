@@ -1,0 +1,1600 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 6
+    shared_missing: 0
+    shared_with_fact_root_extra: 6
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 209
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 15
+    fp: 209
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 13
+    fp: 12
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: employeeCode
+    to: name
+  - from: employeeCode
+    to: surname
+  - from: employeeCode
+    to: gender
+  - from: employeeCode
+    to: qualification
+  - from: employeeCode
+    to: department
+  - from: department
+    to: departmentName
+  - from: employeeCode
+    to: currentDepartment
+  - from: employeeCode
+    to: recruitmentDate
+  - from: employeeCode
+    to: salary
+  - from: RECRUITMENT
+    to: employeeCode
+  - from: RECRUITMENT
+    to: department
+  - from: RECRUITMENT
+    to: recruitmentDate
+  - from: RECRUITMENT
+    to: qualification
+  - from: RECRUITMENT
+    to: salary
+  - from: RECRUITMENT
+    to: promotion
+  - from: RECRUITMENT
+    to: currentDepartment
+  - from: RECRUITMENT
+    to: departmentName
+  - from: RECRUITMENT
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: from
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    role: to
+    to: department
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    to: employeeCode
+  fact:
+    name: RECRUITMENT
+  measures:
+  - name: salary
+  - name: promotion
+output_preprocessed:
+- dependencies:
+  - from: employeeCode
+    label: fp
+    to: name
+  - from: employeeCode
+    label: fp
+    to: surname
+  - from: employeeCode
+    label: fp
+    to: gender
+  - from: employeeCode
+    label: fp
+    to: qualification
+  - from: employeeCode
+    label: fp
+    to: department
+  - from: department
+    label: fp
+    to: departmentName
+  - from: employeeCode
+    label: fp
+    to: currentDepartment
+  - from: employeeCode
+    label: fp
+    to: recruitmentDate
+  - from: employeeCode
+    label: fp
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: from
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: employeeCode
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: department
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: qualification
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: salary
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: promotion
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: currentDepartment
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: departmentName
+  - from: RECRUITMENT
+    label: fp
+    role: to
+    to: recruitmentDate
+  - from: RECRUITMENT
+    label: fp
+    to: employeeCode
+  fact:
+    name: RECRUITMENT
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: salary
+  - name: promotion
+  nodes:
+    fn:
+    - transfers
+    - staff.surname
+    - departments.departmentname
+    - divisions.divcode
+    - transfers.reason
+    - staff.employeecode
+    - transfers.date
+    - departments.departmentcode
+    - staff.name
+    - staff.gender
+    - qualifications.qualification
+    - recruitments.recruitmentdate
+    - divisions.divisionname
+    fp:
+    - recruitmentdate
+    - gender
+    - salary
+    - surname
+    - name
+    - employeecode
+    - department
+    - promotion
+    - currentdepartment
+    - recruitment
+    - qualification
+    - departmentname
+    tp: []

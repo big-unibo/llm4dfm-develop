@@ -1,0 +1,665 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- {}
+output:
+- dependencies:
+  - from: DRIVER.name
+    to: DRIVER.surname
+  - from: CAR.carNumber
+    to: CAR.driverName
+  - from: CAR.carNumber
+    to: CAR.driverSurname
+  - from: CAR.carNumber
+    to: CAR.stableName
+  - from: CAR.carNumber
+    to: CAR.stableAddress
+  - from: CAR.carNumber
+    to: CAR.managerName
+  - from: CAR.carNumber
+    to: CAR.managerSurname
+  - from: CAR.carNumber
+    to: CAR.age
+  - from: CAR.carNumber
+    to: CAR.length
+  - from: CIRCUIT.city
+    to: CIRCUIT.name
+  - from: CIRCUIT.length
+    to: CIRCUIT.length
+  - from: DRIVER.name
+    to: DRIVER.age
+  - from: DRIVER.name
+    to: DRIVER.surname
+  - from: DRIVER.name
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from: DRIVER.surname
+    to: DRIVER.surname
+  - from
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: POSITION
+  - name: SCORE
+  - name: NUM_LAPS
+  - name: TIME
+output_preprocessed: []

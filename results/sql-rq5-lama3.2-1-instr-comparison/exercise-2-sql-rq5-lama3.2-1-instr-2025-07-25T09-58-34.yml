@@ -1,0 +1,1880 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 10
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 243
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 3
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: TYPES.typeId
+    to: TYPES.typeName
+  - from: ARTICLES.artId
+    to: ARTICLES.artName
+  - from: ARTICLES.artId
+    role: type
+    to: TYPES.typeId
+  - from: REGIONS.regId
+    to: REGIONS.regionName
+  - from: REGIONS.regId
+    to: REGIONS.state
+  - from: REGIONS.state
+    to: REGIONS.country
+  - from: STORES.storeId
+    to: STORES.storeName
+  - from: STORES.storeId
+    to: STORES.storeAddress
+  - from: STORES.storeId
+    role: region
+    to: REGIONS.regId
+  - from: PURCHASE
+    to: PURCHASE.quantity
+  - from: PURCHASE
+    to: PURCHASE.revenue
+  - from: PURCHASE
+    to: ARTICLES.unitPrice
+  - from: PURCHASE
+    to: ARTICLES.artId
+  - from: PURCHASE
+    to: STORES.storeId
+  - from: PURCHASE
+    to: PURCHASE.date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: PURCHASE.quantity
+  - name: PURCHASE.revenue
+  - name: ARTICLES.unitPrice
+metrics:
+- edges:
+    f1: 0
+    fn: 15
+    fp: 243
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.0714
+    fn: 15
+    fp: 11
+    precision: 0.0833
+    recall: 0.0625
+    tp: 1
+output:
+- dependencies:
+  - from: store
+    role: start
+    to: storeName
+  - from: store
+    role: start
+    to: storeAddress
+  - from: store
+    role: start
+    to: region
+  - from: store
+    role: start
+    to: state
+  - from: store
+    role: start
+    to: country
+  - from: store
+    role: start
+    to: artId
+  - from: store
+    role: start
+    to: date
+  - from: store
+    role: start
+    to: quantity
+  - from: store
+    role: start
+    to: revenue
+  - from: store
+    role: start
+    to: storeId
+  - from: store
+    role: start
+    to: artId
+  - from: store
+    role: start
+    to: date
+  - from: store
+    role: start
+    to: quantity
+  - from: store
+    role: start
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeName
+  - from: store
+    role: end
+    to: storeAddress
+  - from: store
+    role: end
+    to: region
+  - from: store
+    role: end
+    to: state
+  - from: store
+    role: end
+    to: country
+  - from: store
+    role: end
+    to: artId
+  - from: store
+    role: end
+    to: date
+  - from: store
+    role: end
+    to: quantity
+  - from: store
+    role: end
+    to: revenue
+  - from: store
+    role: end
+    to: storeId
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+output_preprocessed:
+- dependencies:
+  - from: store
+    label: fp
+    role: start
+    to: storeName
+  - from: store
+    label: fp
+    role: start
+    to: storeAddress
+  - from: store
+    label: fp
+    role: start
+    to: region
+  - from: store
+    label: fp
+    role: start
+    to: state
+  - from: store
+    label: fp
+    role: start
+    to: country
+  - from: store
+    label: fp
+    role: start
+    to: artId
+  - from: store
+    label: fp
+    role: start
+    to: date
+  - from: store
+    label: fp
+    role: start
+    to: quantity
+  - from: store
+    label: fp
+    role: start
+    to: revenue
+  - from: store
+    label: fp
+    role: start
+    to: storeId
+  - from: store
+    label: fp
+    role: start
+    to: artId
+  - from: store
+    label: fp
+    role: start
+    to: date
+  - from: store
+    label: fp
+    role: start
+    to: quantity
+  - from: store
+    label: fp
+    role: start
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeName
+  - from: store
+    label: fp
+    role: end
+    to: storeAddress
+  - from: store
+    label: fp
+    role: end
+    to: region
+  - from: store
+    label: fp
+    role: end
+    to: state
+  - from: store
+    label: fp
+    role: end
+    to: country
+  - from: store
+    label: fp
+    role: end
+    to: artId
+  - from: store
+    label: fp
+    role: end
+    to: date
+  - from: store
+    label: fp
+    role: end
+    to: quantity
+  - from: store
+    label: fp
+    role: end
+    to: revenue
+  - from: store
+    label: fp
+    role: end
+    to: storeId
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: TYPES.typeId
+      label: fn
+      to: TYPES.typeName
+    - from: ARTICLES.artId
+      label: fn
+      to: ARTICLES.artName
+    - from: ARTICLES.artId
+      label: fn
+      role: type
+      to: TYPES.typeId
+    - from: REGIONS.regId
+      label: fn
+      to: REGIONS.regionName
+    - from: REGIONS.regId
+      label: fn
+      to: REGIONS.state
+    - from: REGIONS.state
+      label: fn
+      to: REGIONS.country
+    - from: STORES.storeId
+      label: fn
+      to: STORES.storeName
+    - from: STORES.storeId
+      label: fn
+      to: STORES.storeAddress
+    - from: STORES.storeId
+      label: fn
+      role: region
+      to: REGIONS.regId
+    - from: PURCHASE
+      label: fn
+      to: PURCHASE.quantity
+    - from: PURCHASE
+      label: fn
+      to: PURCHASE.revenue
+    - from: PURCHASE
+      label: fn
+      to: ARTICLES.unitPrice
+    - from: PURCHASE
+      label: fn
+      to: ARTICLES.artId
+    - from: PURCHASE
+      label: fn
+      to: STORES.storeId
+    - from: PURCHASE
+      label: fn
+      to: PURCHASE.date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: PURCHASE.quantity
+    - name: PURCHASE.revenue
+    - name: ARTICLES.unitPrice
+  measures:
+  - name: quantity
+  - name: revenue
+  nodes:
+    fn:
+    - regions.state
+    - stores.storename
+    - articles.artid
+    - regions.regid
+    - regions.country
+    - purchase.date
+    - purchase.quantity
+    - articles.unitprice
+    - types.typename
+    - purchase.revenue
+    - articles.artname
+    - regions.regionname
+    - types.typeid
+    - stores.storeaddress
+    - stores.storeid
+    fp:
+    - artid
+    - quantity
+    - region
+    - storeid
+    - state
+    - storeaddress
+    - date
+    - store
+    - country
+    - storename
+    - revenue
+    tp:
+    - purchase

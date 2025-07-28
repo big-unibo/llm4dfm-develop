@@ -1,0 +1,187 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 1
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 10
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 10
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.2609
+    fn: 8
+    fp: 9
+    precision: 0.25
+    recall: 0.2727
+    tp: 3
+output:
+- dependencies:
+  - from: COMPUTER.brand
+    to: BRAND.brand
+  - from: BRAND.brand
+    to: SUPPLIER.brand
+  - from: SUPPLIER.brand
+    to: SUPPLIER.city
+  - from: SUPPLIER.brand
+    to: SUPPLIER.address
+  - from: SOFTWARE.description
+    to: SOFTWARE.description
+  - from: SOFTWARE.type
+    to: SOFTWARE_TYPE.type
+  - from: SOFTWARE_INSTALLATION
+    to: COMPUTER.model
+  - from: SOFTWARE_INSTALLATION
+    to: COMPUTER.brand
+  - from: SOFTWARE_INSTALLATION
+    to: SOFTWARE.description
+  - from: SOFTWARE_INSTALLATION
+    to: SOFTWARE.type
+  fact:
+    name: SOFTWARE_INSTALLATION
+  measures:
+  - name: COMPUTER.model
+  - name: COMPUTER.brand
+output_preprocessed:
+- dependencies:
+  - from: COMPUTER,brand
+    label: fp
+    to: BRAND,brand
+  - from: BRAND,brand
+    label: fp
+    to: SUPPLIER,brand
+  - from: SUPPLIER,brand
+    label: fp
+    to: SUPPLIER,city
+  - from: SUPPLIER,brand
+    label: fp
+    to: SUPPLIER,address
+  - from: SOFTWARE,description
+    label: fp
+    to: SOFTWARE,description
+  - from: SOFTWARE,type
+    label: fp
+    to: type,type
+  - from: INSTALLATION
+    label: fp
+    to: COMPUTER,model
+  - from: INSTALLATION
+    label: fp
+    to: COMPUTER,brand
+  - from: INSTALLATION
+    label: fp
+    to: SOFTWARE,description
+  - from: INSTALLATION
+    label: fp
+    to: SOFTWARE,type
+  fact:
+    name: INSTALLATION
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: fn
+      to: Model
+    - from: Computer
+      label: fn
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: COMPUTER.model
+  - name: COMPUTER.brand
+  nodes:
+    fn:
+    - computer
+    - description
+    - date
+    - model
+    - address
+    - city
+    - supplier
+    - software
+    fp:
+    - software,description
+    - supplier,address
+    - supplier,city
+    - computer.model
+    - computer.brand
+    - brand,computer
+    - supplier,brand
+    - model,computer
+    - software,type
+    tp:
+    - brand,brand
+    - installation
+    - type

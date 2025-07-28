@@ -1,0 +1,42 @@
+config:
+  label: lama3-12-inst
+  name: llama-3-12B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- {}
+output:
+- sourceildenafilimanekoartonakisreeampprintewewewew sourceoldemortewew sourceewew
+  sourceew sourceew sourceew sourceew sourceew sourceew sourceew sourceew sourceew
+  sourceew sourceew sourceew sourceew sourceew sourceew2 sourceew3 sourceew4 sourceew5
+  sourceew6 sourceew7 sourceew8 sourceew9 sourceew10 sourceew11 sourceew12 sourceew13
+  sourceew14 sourceew15 sourceew16 sourceew17 sourceew2ew sourceew3ew sourceew4ew
+  sourceew5ew sourceew6ew sourceew7ew sourceew2ew sourceew3ew source
+output_preprocessed: []
