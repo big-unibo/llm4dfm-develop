@@ -1,0 +1,1944 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 8
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 246
+    missing: 22
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 5
+  miscellaneous:
+    extra_disconnected_components: 12
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVALS
+    to: GRANDPRIXS.NumberOfLaps
+  - from: ARRIVALS
+    to: RACINGCIRCUITS.Length
+  - from: ARRIVALS
+    to: ARRIVALS.Time
+  - from: ARRIVALS
+    to: ARRIVALS.Score
+  - from: ARRIVALS
+    to: ARRIVALS.Position
+  - from: ARRIVALS
+    to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+  - from: ARRIVALS
+    to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: GRANDPRIXS.Date
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: RACINGCIRCUITS.CircuitName
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.City
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.Description
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVERS.Name,DRIVERS.Surname
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: CARS.Number
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.Year
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.FromDate
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.ToDate
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Name
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Surname
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.BirthDate
+  - from: CARS.Number
+    to: RACINGSTABLES.StableName
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.MainAddress
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.Manager
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: ARRIVALS.Position
+  - name: ARRIVALS.Time
+  - name: ARRIVALS.Score
+  - name: GRANDPRIXS.NumberOfLaps
+  - name: RACINGCIRCUITS.Length
+metrics:
+- edges:
+    f1: 0
+    fn: 22
+    fp: 246
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 23
+    fp: 15
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: City
+    role: location
+    to: City
+  - from: CircuitName
+    role: circuit
+    to: CircuitName
+  - from: Length
+    role: length
+    to: Length
+  - from: Description
+    role: description
+    to: Description
+  - from: Date
+    role: date
+    to: Date
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Name
+    role: name
+    to: Name
+  - from: Surname
+    role: surname
+    to: Surname
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+    role: from
+    to: From
+  - from: To
+    role: to
+    to: To
+  - from: Position
+    role: position
+    to: Position
+  - from: Time
+    role: time
+    to: Time
+  - from: Score
+    role: score
+    to: Score
+  - from: Year
+    role: year
+    to: Year
+  - from: From
+  fact:
+    name: RACING_CIRCUITS
+  measures:
+  - name: Length
+  - name: Description
+output_preprocessed:
+- dependencies:
+  - from: City
+    label: fp
+    role: location
+    to: City
+  - from: CircuitName
+    label: fp
+    role: circuit
+    to: CircuitName
+  - from: Length
+    label: fp
+    role: length
+    to: Length
+  - from: Description
+    label: fp
+    role: description
+    to: Description
+  - from: Date
+    label: fp
+    role: date
+    to: Date
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Name
+    label: fp
+    role: name
+    to: Name
+  - from: Surname
+    label: fp
+    role: surname
+    to: Surname
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    role: from
+    to: From
+  - from: To
+    label: fp
+    role: to
+    to: To
+  - from: Position
+    label: fp
+    role: position
+    to: Position
+  - from: Time
+    label: fp
+    role: time
+    to: Time
+  - from: Score
+    label: fp
+    role: score
+    to: Score
+  - from: Year
+    label: fp
+    role: year
+    to: Year
+  - from: From
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RACINGCIRCUITS
+  ground_truth_labels:
+    dependencies:
+    - from: ARRIVALS
+      label: fn
+      to: GRANDPRIXS.NumberOfLaps
+    - from: ARRIVALS
+      label: fn
+      to: RACINGCIRCUITS.Length
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Time
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Score
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Position
+    - from: ARRIVALS
+      label: fn
+      to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    - from: ARRIVALS
+      label: fn
+      to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+      label: fn
+      to: GRANDPRIXS.Date
+    - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.CircuitName
+    - from: RACINGCIRCUITS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.City
+    - from: RACINGCIRCUITS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.Description
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVERS.Name,DRIVERS.Surname
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: CARS.Number
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.FromDate
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.ToDate
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.Name
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.Surname
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.BirthDate
+    - from: CARS.Number
+      label: fn
+      to: RACINGSTABLES.StableName
+    - from: RACINGSTABLES.StableName
+      label: fn
+      to: RACINGSTABLES.MainAddress
+    - from: RACINGSTABLES.StableName
+      label: fn
+      to: RACINGSTABLES.Manager
+    fact:
+      name: ARRIVALS
+    measures:
+    - name: ARRIVALS.Position
+    - name: ARRIVALS.Time
+    - name: ARRIVALS.Score
+    - name: GRANDPRIXS.NumberOfLaps
+    - name: RACINGCIRCUITS.Length
+  measures:
+  - name: Length
+  - name: Description
+  nodes:
+    fn:
+    - arrivals.position
+    - grandprixs.numberoflaps
+    - grandprixs.date,grandprixs.circuitname
+    - drives.todate
+    - racingcircuits.description
+    - cars.number
+    - racingstables.stablename
+    - arrivals.time
+    - drivers.birthdate
+    - drives.year
+    - drivers.name,drivers.surname
+    - racingstables.manager
+    - grandprixs.date
+    - racingstables.mainaddress
+    - arrivals
+    - racingcircuits.circuitname
+    - drivers.surname
+    - arrivals.score
+    - racingcircuits.city
+    - drives.fromdate
+    - racingcircuits.length
+    - drives.year,drives.surname,drives.name,drives.number
+    - drivers.name
+    fp:
+    - r,o,e
+    - circuitname
+    - time
+    - to
+    - score
+    - city
+    - racingcircuits
+    - surname
+    - year
+    - description
+    - name
+    - date
+    - from
+    - position
+    - length
+    tp: []

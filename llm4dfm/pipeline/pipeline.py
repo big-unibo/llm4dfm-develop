@@ -125,24 +125,22 @@ for ex_idx, exercise in enumerate(config['exercise']['name']):
         elapsed_times = []
         model.refresh_session()
 
-        for prompt in prompts:
+        start_time = time.time()
 
-            start_time = time.time()
+        # Batch text and prompts
+        model_output = model.batch(prompts)
 
-            # Batch text and prompts
-            model_output = model.batch(prompt)
+        end_time = time.time()
 
-            end_time = time.time()
+        elapsed = end_time - start_time
 
-            elapsed = end_time - start_time
+        elapsed_times.append(elapsed)
 
-            elapsed_times.append(elapsed)
-
-            try:
-                model_output = output_as_valid_yaml(model_output)
-            except:
-                print("Output not parsed to yaml, kept as it is")
-            model_outputs.append(model_output)
+        try:
+            model_output = output_as_valid_yaml(model_output)
+        except:
+            print("Output not parsed to yaml, kept as it is")
+        model_outputs.append(model_output)
 
         if config['debug_prints']:
             print(f'Chat: {model.chat}\nOutput: {model_outputs}')

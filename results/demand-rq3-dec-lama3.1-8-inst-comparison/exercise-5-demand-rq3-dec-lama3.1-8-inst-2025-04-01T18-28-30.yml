@@ -1,0 +1,65 @@
+config:
+  label: lama3.1-8-inst
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- "CREATE TABLE MEMBER (\n    memberCode INT PRIMARY KEY,\n    name VARCHAR(50) NOT\
+  \ NULL,\n    surname VARCHAR(50) NOT NULL,\n    address VARCHAR(100),\n    postalCode\
+  \ VARCHAR(10),\n    city VARCHAR(50),\n    weight DECIMAL(10, 2),\n    height DECIMAL(10,\
+  \ 2)\n);\n\nCREATE TABLE WOD (\n    WODCode INT PRIMARY KEY,\n    WODName VARCHAR(100)\
+  \ NOT NULL,\n    WODType VARCHAR(50) NOT NULL\n);\n\nCREATE TABLE TRAINING (\n \
+  \   trainingCode INT PRIMARY KEY,\n    WODCode INT,\n    trainingDate DATE NOT NULL,\n\
+  \    trainingHour TIME NOT NULL,\n    instructor VARCHAR(50),\n    FOREIGN KEY (WODCode)\
+  \ REFERENCES WOD(WODCode)\n);\n\nCREATE TABLE TRAINING_ATTENDANCE (\n    memberCode\
+  \ INT,\n    trainingCode INT,\n    attendanceDate DATE NOT NULL,\n    attendanceTime\
+  \ TIME NOT NULL,\n    PRIMARY KEY (memberCode, trainingCode, attendanceDate, attendanceTime),\n\
+  \    FOREIGN KEY (memberCode) REFERENCES MEMBER(memberCode),\n    FOREIGN KEY (trainingCode)\
+  \ REFERENCES TRAINING(trainingCode)\n);\n\nfact:\n  name: TRAINING_ATTENDANCE\n\
+  measures:\n  - name: MEMBER.weight\n  - name: MEMBER.height\ndependencies:\n  -\
+  \ from: MEMBER.memberCode\n    to: MEMBER.name\n  - from: MEMBER.memberCode\n  \
+  \  to: MEMBER.surname\n  - from: MEMBER.memberCode\n    to: MEMBER.address\n  -\
+  \ from: MEMBER.memberCode\n    to: MEMBER.postalCode\n  - from: MEMBER.memberCode\n\
+  \    to: MEMBER.city\n  - from: MEMBER.memberCode\n    to: MEMBER.weight\n  - from:\
+  \ MEMBER.memberCode\n    to: MEMBER.height\n  - from: WOD.WODCode\n    to: WOD.WODName\n\
+  \  - from: WOD.WODCode\n    to: WOD.WODType\n  - from: TRAINING.trainingCode\n \
+  \   to: WOD.WODCode\n  - from: TRAINING.trainingCode\n    to: TRAINING.trainingDate\n\
+  \  - from: TRAINING.trainingCode\n    to: TRAINING.trainingHour\n  - from: TRAINING.trainingCode\n\
+  \    to: TRAINING.instructor\n  - from: TRAINING_ATTENDANCE\n    to: MEMBER.memberCode\n\
+  \  - from: TRAINING_ATTENDANCE\n    to: TRAINING.trainingCode"
+output_preprocessed: []

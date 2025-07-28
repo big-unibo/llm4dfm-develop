@@ -1,0 +1,1685 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 5
+    shared_missing: 0
+    shared_with_fact_root_extra: 5
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 209
+    missing: 21
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 5
+    missing: 4
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSURANCES
+    to: INSURANCES.Risk
+  - from: INSURANCES
+    to: INSURANCES.Cost
+  - from: INSURANCES
+    to: RENTALS.Plate,RENTALS.PickupDate
+  - from: INSURANCES
+    to: PAYMENTS.PaymentMode
+  - from: INSURANCES
+    to: PAYMENTS.Amount
+  - from: INSURANCES
+    to: PAYMENTS.Discount
+  - from: INSURANCES
+    to: RENTALS.Miles
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: CARS.Plate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: RENTALS.PickupDate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: RENTALS.DropoffDate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    role: PickupPlace
+    to: RENTALOFFICES.OfficeName
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    role: DropoffPlace
+    to: RENTALOFFICES.OfficeName
+  - from: CARS.Plate
+    to: CARS.Category
+  - from: CARS.Plate
+    to: CARS.Model
+  - from: CARS.Model
+    to: CARS.Brand
+  - from: CARS.Plate
+    to: CARS.Fuel
+  - from: CARS.Plate
+    to: CARS.RegistrationDate
+  - from: RENTALOFFICES.OfficeName
+    to: RENTALOFFICES.City
+  - from: RENTALOFFICES.City
+    to: RENTALOFFICES.State
+  - from: RENTALOFFICES.State
+    to: RENTALOFFICES.Country
+  - from: RENTALOFFICES.Country
+    to: RENTALOFFICES.Area
+  fact:
+    name: INSURANCES
+  measures:
+  - name: RENTALS.Miles
+  - name: INSURANCES.Cost
+  - name: PAYMENTS.Amount
+  - name: PAYMENTS.Discount
+metrics:
+- edges:
+    f1: 0
+    fn: 21
+    fp: 209
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 21
+    fp: 13
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: rentalOffice
+    role: location
+    to: officeName
+  - from: rentalOffice
+    role: location
+    to: city
+  - from: rentalOffice
+    role: location
+    to: area
+  - from: rentalOffice
+    role: location
+    to: state
+  - from: rentalOffice
+    role: location
+    to: country
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    to: null
+  fact:
+    name: RENTAL_OFFICE
+  measures:
+  - name: officeName
+  - name: city
+  - name: area
+  - name: state
+  - name: country
+output_preprocessed:
+- dependencies:
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: officeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: city
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: area
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: state
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: country
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCountry
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeCity
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeName
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeAddress
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeRegion
+  - from: rentalOffice
+    label: fp
+    role: location
+    to: rentalOfficeState
+  - from: rentalOffice
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RENTALOFFICE
+  ground_truth_labels:
+    dependencies:
+    - from: INSURANCES
+      label: fn
+      to: INSURANCES.Risk
+    - from: INSURANCES
+      label: fn
+      to: INSURANCES.Cost
+    - from: INSURANCES
+      label: fn
+      to: RENTALS.Plate,RENTALS.PickupDate
+    - from: INSURANCES
+      label: fn
+      to: PAYMENTS.PaymentMode
+    - from: INSURANCES
+      label: fn
+      to: PAYMENTS.Amount
+    - from: INSURANCES
+      label: fn
+      to: PAYMENTS.Discount
+    - from: INSURANCES
+      label: fn
+      to: RENTALS.Miles
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      label: fn
+      to: CARS.Plate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      label: fn
+      to: RENTALS.PickupDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      label: fn
+      to: RENTALS.DropoffDate
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      label: fn
+      role: PickupPlace
+      to: RENTALOFFICES.OfficeName
+    - from: RENTALS.Plate,RENTALS.PickupDate
+      label: fn
+      role: DropoffPlace
+      to: RENTALOFFICES.OfficeName
+    - from: CARS.Plate
+      label: fn
+      to: CARS.Category
+    - from: CARS.Plate
+      label: fn
+      to: CARS.Model
+    - from: CARS.Model
+      label: fn
+      to: CARS.Brand
+    - from: CARS.Plate
+      label: fn
+      to: CARS.Fuel
+    - from: CARS.Plate
+      label: fn
+      to: CARS.RegistrationDate
+    - from: RENTALOFFICES.OfficeName
+      label: fn
+      to: RENTALOFFICES.City
+    - from: RENTALOFFICES.City
+      label: fn
+      to: RENTALOFFICES.State
+    - from: RENTALOFFICES.State
+      label: fn
+      to: RENTALOFFICES.Country
+    - from: RENTALOFFICES.Country
+      label: fn
+      to: RENTALOFFICES.Area
+    fact:
+      name: INSURANCES
+    measures:
+    - name: RENTALS.Miles
+    - name: INSURANCES.Cost
+    - name: PAYMENTS.Amount
+    - name: PAYMENTS.Discount
+  measures:
+  - name: officeName
+  - name: city
+  - name: area
+  - name: state
+  - name: country
+  nodes:
+    fn:
+    - insurances.cost
+    - rentaloffices.area
+    - rentaloffices.city
+    - rentals.miles
+    - rentaloffices.officename
+    - cars.fuel
+    - cars.registrationdate
+    - rentals.pickupdate
+    - rentaloffices.state
+    - cars.brand
+    - rentals.dropoffdate
+    - payments.amount
+    - cars.plate
+    - insurances.risk
+    - payments.discount
+    - rentaloffices.country
+    - insurances
+    - cars.category
+    - payments.paymentmode
+    - rentals.plate,rentals.pickupdate
+    - cars.model
+    fp:
+    - r,o,e
+    - rentalofficeaddress
+    - area
+    - city
+    - rentalofficecity
+    - state
+    - rentalofficename
+    - rentaloffice
+    - rentalofficeregion
+    - rentalofficestate
+    - country
+    - rentalofficecountry
+    - officename
+    tp: []

@@ -1,0 +1,360 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 6
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 33
+    missing: 16
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- edges:
+    f1: 0
+    fn: 16
+    fp: 33
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.3256
+    fn: 10
+    fp: 19
+    precision: 0.2692
+    recall: 0.4118
+    tp: 7
+output:
+- dependencies:
+  - from: CIRCUIT.city
+    to: CIRCUIT.length
+  - from: CIRCUIT.city
+    to: CITY.name
+  - from: CIRCUIT.city
+    to: CITY.region
+  - from: CIRCUIT.city
+    to: CITY.nation
+  - from: CAR.stableId
+    to: STABLE.mainAddress
+  - from: CAR.stableId
+    to: STABLE.manager
+  - from: CAR.carNumber
+    to: CAR.driverName
+  - from: CAR.carNumber
+    to: CAR.driverSurname
+  - from: CAR.carNumber
+    to: CAR.driverAge
+  - from: CAR.carNumber
+    to: CAR.stableId
+  - from: CAR.carNumber
+    to: STABLE.mainAddress
+  - from: DRIVER.driverName
+    to: DRIVER.driverSurname
+  - from: DRIVER.driverName
+    to: DRIVER.driverAge
+  - from: DRIVER.driverName
+    to: DRIVER.carNumber
+  - from: DRIVER.driverName
+    to: CAR.carNumber
+  - from: DRIVER.driverName
+    to: CAR.driverName
+  - from: DRIVER.driverName
+    to: ARRIVAL.POSITION
+  - from: DRIVER.driverSurname
+    to: ARRIVAL.POSITION
+  - from: DRIVER.driverSurname
+    to: ARRIVAL.SCORE
+  - from: DRIVER.driverSurname
+    to: ARRIVAL.LAPS
+  - from: DRIVER.driverSurname
+    to: ARRIVAL.TIME
+  - from: CIRCUIT
+    to: ARRIVAL.POSITION
+  - from: CIRCUIT
+    to: ARRIVAL.SCORE
+  - from: CIRCUIT
+    to: ARRIVAL.LAPS
+  - from: CIRCUIT
+    to: ARRIVAL.TIME
+  - from: CAR.carNumber
+    to: ARRIVAL.POSITION
+  - from: CAR.carNumber
+    to: ARRIVAL.SCORE
+  - from: CAR.carNumber
+    to: ARRIVAL.LAPS
+  - from: CAR.carNumber
+    to: ARRIVAL.TIME
+  - from: STABLE.mainAddress
+    to: ARRIVAL.POSITION
+  - from: STABLE.mainAddress
+    to: ARRIVAL.SCORE
+  - from: STABLE.mainAddress
+    to: ARRIVAL.LAPS
+  - from: STABLE.mainAddress
+    to: ARRIVAL.TIME
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: POSITION
+  - name: SCORE
+  - name: LAPS
+  - name: TIME
+output_preprocessed:
+- dependencies:
+  - from: CIRCUIT,city
+    label: fp
+    to: CIRCUIT,mileage
+  - from: CIRCUIT,city
+    label: fp
+    to: CITY,firstName
+  - from: CIRCUIT,city
+    label: fp
+    to: CITY,region
+  - from: CIRCUIT,city
+    label: fp
+    to: CITY,nation
+  - from: carNumber,stableId
+    label: fp
+    to: STABLE,mainAddress
+  - from: carNumber,stableId
+    label: fp
+    to: STABLE,manager
+  - from: carNumber,carNumber
+    label: fp
+    to: carNumber,firstName
+  - from: carNumber,carNumber
+    label: fp
+    to: carNumber,lastName
+  - from: carNumber,carNumber
+    label: fp
+    to: carNumber,age
+  - from: carNumber,carNumber
+    label: fp
+    to: carNumber,stableId
+  - from: carNumber,carNumber
+    label: fp
+    to: STABLE,mainAddress
+  - from: DRIVER,firstName
+    label: fp
+    to: DRIVER,lastName
+  - from: DRIVER,firstName
+    label: fp
+    to: DRIVER,age
+  - from: DRIVER,firstName
+    label: fp
+    to: DRIVER,carNumber
+  - from: DRIVER,firstName
+    label: fp
+    to: carNumber,carNumber
+  - from: DRIVER,firstName
+    label: fp
+    to: carNumber,firstName
+  - from: DRIVER,firstName
+    label: fp
+    to: ARRIVAL,POSITION
+  - from: DRIVER,lastName
+    label: fp
+    to: ARRIVAL,POSITION
+  - from: DRIVER,lastName
+    label: fp
+    to: ARRIVAL,SCORE
+  - from: DRIVER,lastName
+    label: fp
+    to: ARRIVAL,numberOfLaps
+  - from: DRIVER,lastName
+    label: fp
+    to: ARRIVAL,TIME
+  - from: CIRCUIT
+    label: fp
+    to: ARRIVAL,POSITION
+  - from: CIRCUIT
+    label: fp
+    to: ARRIVAL,SCORE
+  - from: CIRCUIT
+    label: fp
+    to: ARRIVAL,numberOfLaps
+  - from: CIRCUIT
+    label: fp
+    to: ARRIVAL,TIME
+  - from: carNumber,carNumber
+    label: fp
+    to: ARRIVAL,POSITION
+  - from: carNumber,carNumber
+    label: fp
+    to: ARRIVAL,SCORE
+  - from: carNumber,carNumber
+    label: fp
+    to: ARRIVAL,numberOfLaps
+  - from: carNumber,carNumber
+    label: fp
+    to: ARRIVAL,TIME
+  - from: STABLE,mainAddress
+    label: fp
+    to: ARRIVAL,POSITION
+  - from: STABLE,mainAddress
+    label: fp
+    to: ARRIVAL,SCORE
+  - from: STABLE,mainAddress
+    label: fp
+    to: ARRIVAL,numberOfLaps
+  - from: STABLE,mainAddress
+    label: fp
+    to: ARRIVAL,TIME
+  fact:
+    name: ARRIVAL
+  ground_truth_labels:
+    dependencies:
+    - from: ARRIVAL
+      label: fn
+      to: NumberOfLaps
+    - from: ARRIVAL
+      label: fn
+      to: Time
+    - from: ARRIVAL
+      label: fn
+      to: Score
+    - from: ARRIVAL
+      label: fn
+      to: Position
+    - from: ARRIVAL
+      label: fn
+      to: Circuit
+    - from: ARRIVAL
+      label: fn
+      to: Driver
+    - from: ARRIVAL
+      label: fn
+      to: Date
+    - from: ARRIVAL
+      label: fn
+      to: CarNumber
+    - from: Circuit
+      label: fn
+      to: City
+    - from: Circuit
+      label: fn
+      to: mileage
+    - from: Driver
+      label: fn
+      to: firstName
+    - from: Driver
+      label: fn
+      to: lastName
+    - from: Driver
+      label: fn
+      to: Age
+    - from: CarNumber
+      label: fn
+      to: Stable
+    - from: Stable
+      label: fn
+      to: MainAddress
+    - from: Stable
+      label: fn
+      to: Manager
+    fact:
+      name: ARRIVAL
+    measures:
+    - name: Position
+    - name: Time
+    - name: Score
+    - name: NumberOfLaps
+  measures:
+  - name: POSITION
+  - name: SCORE
+  - name: numberOfLaps
+  - name: TIME
+  nodes:
+    fn:
+    - firstname
+    - mainaddress
+    - manager
+    - city
+    - lastname
+    - age
+    - mileage
+    - stable
+    - date
+    - driver
+    fp:
+    - firstname,carnumber
+    - firstname,driver
+    - arrival,time
+    - arrival,numberoflaps
+    - arrival,score
+    - nation,city
+    - carnumber,stableid
+    - mileage,circuit
+    - carnumber,age
+    - city,circuit
+    - carnumber,driver
+    - mainaddress,stable
+    - region,city
+    - lastname,driver
+    - manager,stable
+    - arrival,position
+    - lastname,carnumber
+    - firstname,city
+    - driver,age
+    tp:
+    - carnumber
+    - arrival
+    - time
+    - numberoflaps
+    - score
+    - position
+    - circuit

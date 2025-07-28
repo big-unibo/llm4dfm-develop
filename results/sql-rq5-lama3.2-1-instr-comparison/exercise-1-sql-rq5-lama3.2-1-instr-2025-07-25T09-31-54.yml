@@ -1,0 +1,1700 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 3
+    shared_missing: 0
+    shared_with_fact_root_extra: 3
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 224
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 224
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 11
+    fp: 6
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    to: SOFTWARE
+  fact:
+    name: SUPPLIERS
+  measures:
+  - name: supplierCity
+  - name: supplierAddress
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: COMPUTER
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: SOFTWARE
+    label: fp
+    role: software
+    to: INSTALLATIONS
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: INSTALLATIONS
+    label: fp
+    role: installation
+    to: COMPUTER
+  - from: INSTALLATIONS
+    label: fp
+    role: software
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: COMPUTER
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: SOFTWARE
+  - from: SUPPLIERS
+    label: fp
+    role: supplier
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    role: installation
+    to: INSTALLATIONS
+  - from: COMPUTER
+    label: fp
+    to: SOFTWARE
+  fact:
+    name: SUPPLIERS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: supplierCity
+  - name: supplierAddress
+  nodes:
+    fn:
+    - software.type
+    - computer.codcomputer
+    - installations.installationdate
+    - software.codsoftw
+    - supplies.brand
+    - suppliers.supplieraddress
+    - suppliers.suppliername
+    - suppliers.suppliercity
+    - computer.model
+    - installations
+    - software.softwaredescription
+    fp:
+    - software
+    - suppliers
+    - supplieraddress
+    - computer
+    - suppliercity
+    - installations
+    tp: []

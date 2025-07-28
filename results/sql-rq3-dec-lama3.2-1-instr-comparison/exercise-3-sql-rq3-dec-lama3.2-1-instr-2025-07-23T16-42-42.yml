@@ -1,0 +1,1246 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 21
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 180
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 4
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 2
+  miscellaneous:
+    extra_disconnected_components: 4
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: CREDITCARDS.CCNumber
+    to: CARDTYPES.TypeCode
+  - from: CREDITCARDS.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES
+    to: CREDITCARDS.CreditLimit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Address
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Color
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+metrics:
+- edges:
+    f1: 0.1256
+    fn: 15
+    fp: 180
+    precision: 0.0722
+    recall: 0.4828
+    tp: 14
+  nodes:
+    f1: 0.5679
+    fn: 7
+    fp: 28
+    precision: 0.451
+    recall: 0.7667
+    tp: 23
+output:
+- dependencies:
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Circuit
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.IssuingBank
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Address
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Country
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.CardName
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Color
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.StoreCode
+    to: STORES.Type
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.Exchange
+  - from: STORES.StoreCode
+    to: STORES.CreditLimit
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Circuit
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.IssuingBank
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Address
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Country
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.CardName
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Color
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Date
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Amount
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Currency
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Exchange
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.CreditLimit
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.FirstName
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.LastName
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.IncomeRange
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.Quality
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Circuit
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.IssuingBank
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Address
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Country
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.CardName
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Color
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.TypeCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.Circuit
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.IssuingBank
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.Address
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.Country
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.CardName
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.Color
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.CreditLimit
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.TypeCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.HolderCode
+    to: CREDIT_CARDS.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Date
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Amount
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Currency
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Exchange
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.CreditLimit
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.TypeCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Circuit
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.IssuingBank
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Address
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Country
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.CardName
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.Color
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.CreditLimit
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.TypeCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    to: PURCHASES.HolderCode
+  fact:
+    name: CREDIT_CARDS
+  measures:
+  - name: CREDIT_CARDS.amount
+  - name: CREDIT_CARDS.creditLimit
+output_preprocessed:
+- dependencies:
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.Quality
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Address
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.Color
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Name
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Address
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Country
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Type
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Email
+  - from: STORES.StoreCode
+    label: fp
+    to: STORES.Area
+  - from: STORES.StoreCode
+    label: fp
+    to: STORES.Exchange
+  - from: STORES.StoreCode
+    label: fp
+    to: STORES.CreditLimit
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Circuit
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.IssuingBank
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Address
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Country
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.CardName
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Color
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Date
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Amount
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Currency
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Exchange
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.CreditLimit
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.FirstName
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.LastName
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.IncomeRange
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.Quality
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Address
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Color
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.Circuit
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.IssuingBank
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.Address
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.Country
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.CardName
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.Color
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.CreditLimit
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.HolderCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Date
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Amount
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Currency
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Exchange
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.CreditLimit
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.TypeCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Circuit
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.IssuingBank
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Address
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Country
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.CardName
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.Color
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.CreditLimit
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.TypeCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  - from: PURCHASES.PurchCode
+    label: fp
+    to: PURCHASES.HolderCode
+  fact:
+    name: CREDITCARDS
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Amount
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Exchange
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CCNumber
+    - from: PURCHASES
+      label: fn
+      to: STORES.StoreCode
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Currency
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Date
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CARDTYPES.TypeCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: HOLDERS.HolderCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CREDITCARDS.ExpirationDate
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CreditLimit
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.Circuit
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.IssuingBank
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Address
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Country
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.CardName
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.Color
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.FirstName
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.LastName
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.BirthDate
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.Job
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.IncomeRange
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.Quality
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Name
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Address
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Country
+    - from: STORES.Country
+      label: fn
+      to: STORES.Area
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.WebSite
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Email
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Type
+    fact:
+      name: PURCHASES
+    measures:
+    - name: PURCHASES.Amount
+    - name: PURCHASES.Exchange
+    - name: CREDITCARDS.CreditLimit
+  measures:
+  - name: CREDITCARDS.amount
+  - name: CREDITCARDS.creditLimit
+  nodes:
+    fn:
+    - holders.birthdate
+    - holders.job
+    - purchases.exchange
+    - purchases
+    - purchases.amount
+    - creditcards.ccnumber
+    - creditcards.expirationdate
+    fp:
+    - creditcards.issuingbank
+    - creditcards.firstname
+    - purchases.color
+    - purchases.circuit
+    - purchases.holdercode
+    - creditcards.country
+    - purchases.issuingbank
+    - purchases.country
+    - creditcards.color
+    - purchases.cardname
+    - purchases.address
+    - creditcards.circuit
+    - purchases.amount
+    - creditcards.lastname
+    - purchases.creditlimit
+    - purchases.exchange
+    - purchases.typecode
+    - stores.exchange
+    - purchases.purchcode
+    - creditcards.incomerange
+    - creditcards.amount
+    - creditcards.holdercode
+    - creditcards
+    - creditcards.quality
+    - stores.creditlimit
+    - creditcards.cardname
+    - creditcards.typecode
+    - creditcards.address
+    tp:
+    - cardtypes.color
+    - stores.website
+    - holders.incomerange
+    - stores.type
+    - purchases.date
+    - holders.quality
+    - holders.lastname
+    - cardtypes.cardname
+    - creditcards.creditlimit
+    - holders.holdercode
+    - stores.address
+    - cardtypes.circuit
+    - purchases.currency
+    - stores.storecode
+    - stores.area
+    - stores.country
+    - cardtypes.typecode
+    - cardtypes.country
+    - stores.name
+    - holders.firstname
+    - stores.email
+    - cardtypes.address
+    - cardtypes.issuingbank

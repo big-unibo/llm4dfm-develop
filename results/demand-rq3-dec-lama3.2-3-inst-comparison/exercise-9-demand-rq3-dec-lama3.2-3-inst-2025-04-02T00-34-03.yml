@@ -1,0 +1,1779 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 2
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 221
+    missing: 24
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 5
+    missing: 4
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: route
+    role: departure
+    to: stationName
+  - from: route
+    role: arrival
+    to: stationName
+  - from: stationName
+    to: location
+  - from: location
+    to: city
+  - from: city
+    to: region
+  - from: trip
+    to: status
+  - from: trip
+    to: trainCode
+  - from: trip
+    to: date
+  - from: trainCode
+    to: trainType
+  - from: trainType
+    to: capacity
+  - from: ticket
+    to: customerCode
+  - from: ticket
+    role: purchase
+    to: date
+  - from: customerCode
+    to: firstName
+  - from: customerCode
+    to: lastName
+  - from: customerCode
+    role: birth
+    to: date
+  - from: customerCode
+    role: birth
+    to: city
+  - from: customerCode
+    to: documentId
+  - from: ROUTEINTICKET
+    to: ticket
+  - from: ROUTEINTICKET
+    to: route
+  - from: ROUTEINTICKET
+    to: trip
+  - from: ROUTEINTICKET
+    to: price
+  - from: ROUTEINTICKET
+    to: distance
+  - from: ROUTEINTICKET
+    to: baseFare
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+metrics:
+- edges:
+    f1: 0
+    fn: 24
+    fp: 221
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 21
+    fp: 13
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: TRAIN.code
+    to: TRAIN.type
+  - from: TRAIN.code
+    to: TRAIN.capacity
+  - from: TRAIN.code
+    to: TRAIN.status
+  - from: TRAIN.code
+    to: TRAIN.date
+  - from: TRAIN.code
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+    role: route
+    to: TRAIN.route
+  - from: TRAIN.code
+  fact:
+    name: TICKET
+  measures:
+  - name: TICKET.price
+  - name: TICKET.distance
+  - name: TICKET.baseFare
+  - name: TICKET.timeDuration
+  - name: TRAIN.capacity
+output_preprocessed:
+- dependencies:
+  - from: TRAIN,code
+    label: fp
+    to: TRAIN,type
+  - from: TRAIN,code
+    label: fp
+    to: TRAIN,capacity
+  - from: TRAIN,code
+    label: fp
+    to: TRAIN,status
+  - from: TRAIN,code
+    label: fp
+    to: TRAIN,date
+  - from: TRAIN,code
+    label: fp
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    role: route
+    to: TRAIN,route
+  - from: TRAIN,code
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: TICKET
+  ground_truth_labels:
+    dependencies:
+    - from: route
+      label: fn
+      role: departure
+      to: stationName
+    - from: route
+      label: fn
+      role: arrival
+      to: stationName
+    - from: stationName
+      label: fn
+      to: location
+    - from: location
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: region
+    - from: trip
+      label: fn
+      to: status
+    - from: trip
+      label: fn
+      to: trainCode
+    - from: trip
+      label: fn
+      to: date
+    - from: trainCode
+      label: fn
+      to: trainType
+    - from: trainType
+      label: fn
+      to: capacity
+    - from: ticket
+      label: fn
+      to: customerCode
+    - from: ticket
+      label: fn
+      role: purchase
+      to: date
+    - from: customerCode
+      label: fn
+      to: firstName
+    - from: customerCode
+      label: fn
+      to: lastName
+    - from: customerCode
+      label: fn
+      role: birth
+      to: date
+    - from: customerCode
+      label: fn
+      role: birth
+      to: city
+    - from: customerCode
+      label: fn
+      to: documentId
+    - from: ROUTEINTICKET
+      label: fn
+      to: ticket
+    - from: ROUTEINTICKET
+      label: fn
+      to: route
+    - from: ROUTEINTICKET
+      label: fn
+      to: trip
+    - from: ROUTEINTICKET
+      label: fn
+      to: price
+    - from: ROUTEINTICKET
+      label: fn
+      to: distance
+    - from: ROUTEINTICKET
+      label: fn
+      to: baseFare
+    - from: ROUTEINTICKET
+      label: fn
+      to: timeDuration
+    fact:
+      name: ROUTEINTICKET
+    measures:
+    - name: price
+    - name: distance
+    - name: baseFare
+    - name: timeDuration
+  measures:
+  - name: TICKET.price
+  - name: TICKET.distance
+  - name: TICKET.baseFare
+  - name: TICKET.timeDuration
+  - name: TRAIN.capacity
+  nodes:
+    fn:
+    - routeinticket
+    - trip
+    - price
+    - ticket
+    - location
+    - traintype
+    - distance
+    - customercode
+    - route
+    - date
+    - capacity
+    - documentid
+    - city
+    - traincode
+    - lastname
+    - basefare
+    - stationname
+    - firstname
+    - region
+    - timeduration
+    - status
+    fp:
+    - o,r,e
+    - type,train
+    - ticket.basefare
+    - code,train
+    - ticket.distance
+    - ticket
+    - ticket.price
+    - capacity,train
+    - route,train
+    - status,train
+    - ticket.timeduration
+    - train.capacity
+    - date,train
+    tp: []

@@ -1,0 +1,80 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSURANCES
+    to: INSURANCES.Risk
+  - from: INSURANCES
+    to: INSURANCES.Cost
+  - from: INSURANCES
+    to: RENTALS.Plate,RENTALS.PickupDate
+  - from: INSURANCES
+    to: PAYMENTS.PaymentMode
+  - from: INSURANCES
+    to: PAYMENTS.Amount
+  - from: INSURANCES
+    to: PAYMENTS.Discount
+  - from: INSURANCES
+    to: RENTALS.Miles
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: CARS.Plate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: RENTALS.PickupDate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    to: RENTALS.DropoffDate
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    role: PickupPlace
+    to: RENTALOFFICES.OfficeName
+  - from: RENTALS.Plate,RENTALS.PickupDate
+    role: DropoffPlace
+    to: RENTALOFFICES.OfficeName
+  - from: CARS.Plate
+    to: CARS.Category
+  - from: CARS.Plate
+    to: CARS.Model
+  - from: CARS.Model
+    to: CARS.Brand
+  - from: CARS.Plate
+    to: CARS.Fuel
+  - from: CARS.Plate
+    to: CARS.RegistrationDate
+  - from: RENTALOFFICES.OfficeName
+    to: RENTALOFFICES.City
+  - from: RENTALOFFICES.City
+    to: RENTALOFFICES.State
+  - from: RENTALOFFICES.State
+    to: RENTALOFFICES.Country
+  - from: RENTALOFFICES.Country
+    to: RENTALOFFICES.Area
+  fact:
+    name: INSURANCES
+  measures:
+  - name: RENTALS.Miles
+  - name: INSURANCES.Cost
+  - name: PAYMENTS.Amount
+  - name: PAYMENTS.Discount
+metrics:
+- {}
+output:
+- "fact:\n  name: RENTAL\nmeasures:\n  - name: Miles\n  - name: Amount\n  - name:\
+  \ Discount\ndependencies:\n  - from: Plate\n    to: Category\n  - from: Plate\n\
+  \    to: Model\n  - from: Plate\n    to: Brand\n  - from: Plate\n    to: Fuel\n\
+  \  - from: Plate\n    to: RegistrationDate\n  - from: Plate\n    to: OfficeName\n\
+  \    role: PickupPlace\n  - from: Plate\n    to: OfficeName\n    role: DropoffPlace\n\
+  \  - from: OfficeName\n    to: City\n  - from: City\n    to: Area\n  - from: Area\n\
+  \    to: State\n  - from: State\n    to: Country\n  - from: LicenseNumber\n    to:\
+  \ DriverName\n  - from: LicenseNumber\n    to: Birthdate\n  - from: LicenseNumber\n\
+  \    to: LicenseExpiration\n  - from: LicenseNumber\n    to: Plate\n    role: Plate\n\
+  \  - from: LicenseNumber\n    to: PickupDate\n    role: PickupDate\n  - from: RENTAL\n\
+  \    to: Miles\n  - from: RENTAL\n    to: Amount\n  - from: RENTAL\n    to: Discount\n\
+  \  - from: RENTAL\n    to: Plate\n  - from: RENTAL\n    to: PickupDate\n  - from:\
+  \ RENTAL\n    to: PickupPlace\n  - from: RENTAL\n    to: DropoffPlace\n  - from:\
+  \ RENTAL\n    to: OfficeName\n\nI hope this YAML representation of the DFM schema\
+  \ meets your requirements. If you have any further questions or need additional\
+  \ assistance, feel free to ask!"
+output_preprocessed: []

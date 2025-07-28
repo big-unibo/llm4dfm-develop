@@ -28,9 +28,13 @@ def log(message):
 
 # Format chat for instruct models chat template
 def format_chat_for_instruct_hf_models(chat, tokenizer):
-    return tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False)
+    if tokenizer.chat_template:
+        return tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False)
+    else:
+        return '\n'.join([ct['content'] for ct in chat])
 
 def load_generate_import_function(name, model, tokenizer, config, debug_print, chat_template=True) -> Callable[[str], str]:
+    chat_template = False
     # Default values
     pad_token_id = None
     eos_token_id = None
@@ -43,6 +47,36 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
         ]
     else:
         pad_token_id = tokenizer.eos_token_id
+
+
+    def generate_mistral_from_model(model_to_use, chat_template):
+        def generate_mistral(chat):
+
+            if debug_print:
+                log(f'Batching chat: {chat}')
+
+            formatted_chat = chat if not chat_template else format_chat_for_instruct_hf_models(chat, tokenizer)
+
+            if debug_print:
+                log(f'Batching chat formatted: {formatted_chat}')
+
+            output_text = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+                return_full_text=False,
+            )
+
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
+
+            return output_text[0]['generated_text'].replace('<|assistant|>', '')
+
+        return generate_mistral
 
     def generate_llama_from_model(model_to_use):
         def generate_llama(chat):
@@ -108,9 +142,18 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
         return generate_falcon
 
     match name:
+        case 'mistral-7B-inst-v0.3-hf':
+            model_to_use = transformers.pipeline(
+                "text-generation",
+                model=model,
+                torch_dtype=torch.float16,
+                tokenizer=tokenizer,
+                device_map="auto",
+            )
+            return generate_mistral_from_model(model_to_use, chat_template)
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
             return generate_llama_from_model(model)
-        case 'llama-3-12B-hf' | 'llama-3.1-8B-inst-hf' | 'llama-3.1-8B-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-1B-inst-hf' | 'llama-3.2-3B-hf' | 'llama-3.2-3B-inst-hf' | 'llama-3.3-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
+        case 'llama-3-12B-inst-hf' | 'llama-3.1-8B-inst-hf' | 'llama-3.1-8B-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-1B-inst-hf' | 'llama-3.2-3B-hf' | 'llama-3.2-3B-inst-hf' | 'llama-3.3-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
             model_to_use = transformers.pipeline(
                 "text-generation",
                 model=model,
@@ -265,6 +308,7 @@ class Model:
         wait = 3
         max_tries = 5
         m_output = ''
+
         # Prompt can be list if it's the first input
         if type(prompt) is list:
             for p in prompt:
@@ -294,7 +338,8 @@ class Model:
 # return a new chat (list of dict {'role': role, 'content': content}) entry
 def get_chat_entry(entry_role, entry_content, model):
     if entry_role == 'system':
-        if not is_model_supporting_system_chat(model):
+        model_name_to_use = model.split('-')[0].lower() if len(model.split('-')) > 1 else model.lower()
+        if not is_model_supporting_system_chat(model_name_to_use):
             return {'role': 'user', 'content': entry_content}
     return {'role': entry_role, 'content': entry_content}
 
@@ -334,7 +379,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'Llama3.2-3B-Instruct'
         case 'llama-3.3':
             m_name = 'Llama3.3-70B-Instruct'
-        case 'llama-3-12B-hf':
+        case 'llama-3-12B-inst-hf':
             m_name = 'ehristoforu/llama-3-12b-instruct'
         case 'llama-3.1-8B-inst-hf':
             m_name = 'meta-llama/Llama-3.1-8B-Instruct'
@@ -360,7 +405,7 @@ def load_model_and_tokenizer(model_name, key, quantization):
             m_name = 'tiiuae/Falcon3-10B-Instruct'
         case 'falcon-3-10B-base-hf':
             m_name = 'tiiuae/Falcon3-10B-Base'
-        case 'mistral-7B-inst-hf':
+        case 'mistral-7B-inst-v0.3-hf':
             m_name = 'mistralai/Mistral-7B-Instruct-v0.3'
         case _:
             raise Exception("Model not found")

@@ -1,0 +1,178 @@
+config:
+  label: mistral-7-inst
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 8
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 8
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.0833
+    fn: 10
+    fp: 12
+    precision: 0.0769
+    recall: 0.0909
+    tp: 1
+output:
+- dependencies:
+  - from: COMPUTER.computerId
+    to: COMPUTER.computerModel
+  - from: COMPUTER.computerId
+    to: COMPUTER.computerBrand
+  - from: COMPUTER.computerId
+    to: COMPUTER.computerLocation
+  - from: SUPPLIER.supplierId
+    to: SUPPLIER.supplierName
+  - from: SUPPLIER.supplierId
+    to: SUPPLIER.supplierAddress
+  - from: SUPPLIER.supplierId
+    to: SUPPLIER.supplierCity
+  - from: SOFTWARE.softwareId
+    to: SOFTWARE.softwareDescription
+  - from: SOFTWARE.softwareId
+    to: SOFTWARE.softwareType
+  fact:
+    name: INSTALLATION
+  measures:
+  - name: INSTALLATION.installationDate
+output_preprocessed:
+- dependencies:
+  - from: COMPUTER,computerId
+    label: fp
+    to: COMPUTER,model
+  - from: COMPUTER,computerId
+    label: fp
+    to: COMPUTER,brand
+  - from: COMPUTER,computerId
+    label: fp
+    to: COMPUTER,computerLocation
+  - from: SUPPLIER,supplierId
+    label: fp
+    to: SUPPLIER,supplierName
+  - from: SUPPLIER,supplierId
+    label: fp
+    to: SUPPLIER,address
+  - from: SUPPLIER,supplierId
+    label: fp
+    to: SUPPLIER,city
+  - from: SOFTWARE,softwareId
+    label: fp
+    to: SOFTWARE,description
+  - from: SOFTWARE,softwareId
+    label: fp
+    to: SOFTWARE,type
+  fact:
+    name: INSTALLATION
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: fn
+      to: Model
+    - from: Computer
+      label: fn
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: INSTALLATION.installationDate
+  nodes:
+    fn:
+    - date
+    - brand
+    - type
+    - supplier
+    - city
+    - computer
+    - model
+    - address
+    - software
+    - description
+    fp:
+    - brand,computer
+    - supplier,supplierid
+    - model,computer
+    - software,softwareid
+    - software,description
+    - city,supplier
+    - suppliername,supplier
+    - computerlocation,computer
+    - software,type
+    - installation.installationdate
+    - address,supplier
+    - computerid,computer
+    tp:
+    - installation

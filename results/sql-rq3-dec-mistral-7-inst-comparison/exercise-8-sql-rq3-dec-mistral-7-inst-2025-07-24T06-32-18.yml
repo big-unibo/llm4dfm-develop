@@ -1,0 +1,227 @@
+config:
+  label: mistral-7-inst
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: CHECKIN
+    to: CHECKIN.checkInTime
+  - from: CHECKIN
+    to: CHECKIN.numberOfBags
+  - from: CHECKIN
+    to: TICKET.ticketNumber
+  - from: CHECKIN
+    to: CHECKIN.seat
+  - from: CHECKIN
+    to: PERSON.personCode
+  - from: PERSON.personCode
+    to: PERSON.name
+  - from: PERSON.personCode
+    to: PERSON.surname
+  - from: PERSON.personCode
+    to: PERSON.birthdate
+  - from: PERSON.personCode
+    to: PERSON.cityOfResidence
+  - from: PERSON.personCode
+    to: PERSON.documentId
+  - from: PERSON.personCode
+    to: PERSON.documentType
+  - from: PERSON.personCode
+    to: PERSON.telephone
+  - from: PERSON.personCode
+    to: PERSON.email
+  - from: PERSON.personCode
+    to: PERSON.gender
+  - from: TICKET.ticketNumber
+    to: FLIGHT.date,FLIGHT.route
+  - from: CHECKIN
+    to: TICKET.flightAmount
+  - from: CHECKIN
+    to: TICKET.taxAmount
+  - from: TICKET.ticketNumber
+    to: TICKET.priorityYN
+  - from: TICKET.ticketNumber
+    to: PURCHASE.purchaseCode
+  - from: PURCHASE.purchaseCode
+    to: PURCHASE.date
+  - from: CHECKIN
+    to: PURCHASE.totalAmount
+  - from: PURCHASE.purchaseCode
+    role: buyerCode
+    to: PERSON.personCode
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.date
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.cancelledYN
+  - from: FLIGHT.date,FLIGHT.route
+    to: ROUTE.route
+  - from: ROUTE.route
+    to: ROUTE.arrivalTime
+  - from: ROUTE.route
+    to: ROUTE.departureTime
+  - from: ROUTE.route
+    to: AIRLINE.airlineCode
+  - from: ROUTE.route
+    role: departure
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    role: arrival
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    to: AIRPLANETYPE.airplaneType
+  - from: AIRPORT.airportCode
+    to: AIRPORT.name
+  - from: AIRPORT.airportCode
+    to: AIRPORT.city
+  - from: AIRPORT.city
+    to: AIRPORT.nation
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.airlineName
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.nation
+  - from: AIRPLANETYPE.airplaneType
+    to: AIRPLANETYPE.name
+  - from: CHECKIN
+    to: AIRPLANETYPE.numberOfSeats
+  fact:
+    name: CHECKIN
+  measures:
+  - name: CHECKIN.numberOfBags
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: PURCHASE.totalAmount
+  - name: AIRPLANETYPE.numberOfSeats
+metrics:
+- {}
+output:
+- CREATE TABLE LOST_BAG ( boardingCardCode INT, foundYN CHAR(1), FOREIGN KEY (boardingCardCode)
+  REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE SECURITY_CHECK ( boardingCardCode
+  INT, time TIME, FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE GATE ( gateNumber INT PRIMARY KEY, airportCode INT, FOREIGN KEY
+  (airportCode) REFERENCES AIRPORT(airportCode) ); CREATE TABLE BOARDING ( boardingCardCode
+  INT, gateNumber INT, time TIME, FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode),
+  FOREIGN KEY (gateNumber) REFERENCES GATE(gateNumber) ); CREATE TABLE LUGGAGE ( boardingCardCode
+  INT, weight DECIMAL(10, 2), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE DUTY_FREE ( boardingCardCode INT, purchaseCode INT, amount DECIMAL(10,
+  2), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN
+  KEY (purchaseCode) REFERENCES PURCHASE(purchaseCode) ); CREATE TABLE FOOD_AND_BEVERAGE
+  ( boardingCardCode INT, purchaseCode INT, amount DECIMAL(10, 2), FOREIGN KEY (boardingCardCode)
+  REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY (purchaseCode) REFERENCES
+  PURCHASE(purchaseCode) ); CREATE TABLE DUTY_FREE_SHOP ( shopCode INT PRIMARY KEY,
+  name VARCHAR(100), location VARCHAR(100) ); CREATE TABLE FOOD_AND_BEVERAGE_SHOP
+  ( shopCode INT PRIMARY KEY, name VARCHAR(100), location VARCHAR(100) ); CREATE TABLE
+  SHOP_PRODUCT ( shopCode INT, productCode INT, productName VARCHAR(100), price DECIMAL(10,
+  2), FOREIGN KEY (shopCode) REFERENCES DUTY_FREE_SHOP(shopCode) OR FOREIGN KEY (shopCode)
+  REFERENCES FOOD_AND_BEVERAGE_SHOP(shopCode) ); CREATE TABLE SHOP_PURCHASE ( shopCode
+  INT, purchaseCode INT, quantity INT, FOREIGN KEY (shopCode) REFERENCES DUTY_FREE_SHOP(shopCode)
+  OR FOREIGN KEY (shopCode) REFERENCES FOOD_AND_BEVERAGE_SHOP(shopCode), FOREIGN KEY
+  (purchaseCode) REFERENCES PURCHASE(purchaseCode) ); CREATE TABLE LOUNGE ( loungeCode
+  INT PRIMARY KEY, airportCode INT, location VARCHAR(100), FOREIGN KEY (airportCode)
+  REFERENCES AIRPORT(airportCode) ); CREATE TABLE LOUNGE_MEMBERSHIP ( loungeCode INT,
+  personCode INT, startDate DATE, endDate DATE, FOREIGN KEY (loungeCode) REFERENCES
+  LOUNGE(loungeCode), FOREIGN KEY (personCode) REFERENCES PERSON(personCode) ); CREATE
+  TABLE LOUNGE_VISIT ( loungeCode INT, boardingCardCode INT, visitDate DATE, FOREIGN
+  KEY (loungeCode) REFERENCES LOUNGE(loungeCode), FOREIGN KEY (boardingCardCode) REFERENCES
+  BOARDING_CARD(boardingCardCode) ); CREATE TABLE LOUNGE_SERVICE ( loungeCode INT,
+  serviceCode INT, price DECIMAL(10, 2), FOREIGN KEY (loungeCode) REFERENCES LOUNGE(loungeCode)
+  ); CREATE TABLE LOUNGE_SERVICE_PURCHASE ( loungeCode INT, purchaseCode INT, quantity
+  INT, FOREIGN KEY (loungeCode) REFERENCES LOUNGE(loungeCode), FOREIGN KEY (purchaseCode)
+  REFERENCES PURCHASE(purchaseCode) ); CREATE TABLE LOUNGE_SERVICE_USAGE ( loungeCode
+  INT, boardingCardCode INT, serviceCode INT, usageDate DATE, FOREIGN KEY (loungeCode)
+  REFERENCES LOUNGE(loungeCode), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode),
+  FOREIGN KEY (serviceCode) REFERENCES LOUNGE_SERVICE(serviceCode) ); CREATE TABLE
+  LOUNGE_FOOD_AND_BEVERAGE ( loungeCode INT, shopCode INT, FOREIGN KEY (loungeCode)
+  REFERENCES LOUNGE(loungeCode), FOREIGN KEY (shopCode) REFERENCES SHOP(shopCode)
+  ); CREATE TABLE LOUNGE_FOOD_AND_BEVERAGE_PURCHASE ( loungeCode INT, purchaseCode
+  INT, quantity INT, FOREIGN KEY (loungeCode) REFERENCES LOUNGE(loungeCode), FOREIGN
+  KEY (purchaseCode) REFERENCES PURCHASE(purchaseCode) ); CREATE TABLE LOUNGE_FOOD_AND_BEVERAGE_USAGE
+  ( loungeCode INT, boardingCardCode INT, shopCode INT, usageDate DATE, FOREIGN KEY
+  (loungeCode) REFERENCES LOUNGE(loungeCode), FOREIGN KEY (boardingCardCode) REFERENCES
+  BOARDING_CARD(boardingCardCode), FOREIGN KEY (shopCode) REFERENCES SHOP(shopCode)
+  ); CREATE TABLE COMPLAINT ( complaintCode INT PRIMARY KEY, boardingCardCode INT,
+  complaintType VARCHAR(100), complaintDescription TEXT, complaintDate DATE, complaintStatus
+  VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE COMPLAINT_RESPONSE ( complaintCode INT, responseDate DATE, response
+  VARCHAR(255), responsePerson VARCHAR(100), FOREIGN KEY (complaintCode) REFERENCES
+  COMPLAINT(complaintCode) ); CREATE TABLE COMPLAINT_CATEGORY ( complaintCategoryCode
+  INT PRIMARY KEY, complaintCategoryName VARCHAR(100) ); CREATE TABLE COMPLAINT_CATEGORY_ASSOCIATION
+  ( complaintCode INT, complaintCategoryCode INT, FOREIGN KEY (complaintCode) REFERENCES
+  COMPLAINT(complaintCode), FOREIGN KEY (complaintCategoryCode) REFERENCES COMPLAINT_CATEGORY(complaintCategoryCode)
+  ); CREATE TABLE FLIGHT_CANCELLATION ( flightCode INT PRIMARY KEY, reason VARCHAR(255),
+  cancellationDate DATE, FOREIGN KEY (flightCode) REFERENCES FLIGHT(date, route) );
+  CREATE TABLE FLIGHT_DELAY ( flightCode INT, delayReason VARCHAR(255), delayDuration
+  TIME, FOREIGN KEY (flightCode) REFERENCES FLIGHT(date, route) ); CREATE TABLE FLIGHT_DELAY_COMPENSATION
+  ( flightCode INT, compensationAmount DECIMAL(10, 2), compensationReason VARCHAR(255),
+  FOREIGN KEY (flightCode) REFERENCES FLIGHT(date, route) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT
+  ( boardingCardCode INT, seat VARCHAR(10), FOREIGN KEY (boardingCardCode) REFERENCES
+  BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_CHANGE (
+  boardingCardCode INT, oldSeat VARCHAR(10), newSeat VARCHAR(10), changeDate DATE,
+  FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE
+  TABLE FLIGHT_SEAT_ASSIGNMENT_REQUEST ( boardingCardCode INT, requestDate DATE, seatRequest
+  VARCHAR(10), seatRequestStatus VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES
+  BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_RESPONSE
+  ( boardingCardCode INT, responseDate DATE, seatResponse VARCHAR(10), responsePerson
+  VARCHAR(100), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_RESPONSE_STATUS ( boardingCardCode INT, responseStatus
+  VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_UPGRADE ( boardingCardCode INT, oldSeat VARCHAR(10),
+  newSeat VARCHAR(10), upgradeDate DATE, FOREIGN KEY (boardingCardCode) REFERENCES
+  BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_UPGRADE_REQUEST
+  ( boardingCardCode INT, requestDate DATE, upgradeRequest VARCHAR(10), upgradeRequestStatus
+  VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_UPGRADE_RESPONSE ( boardingCardCode INT,
+  responseDate DATE, upgradeResponse VARCHAR(10), responsePerson VARCHAR(100), FOREIGN
+  KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE
+  FLIGHT_SEAT_ASSIGNMENT_UPGRADE_RESPONSE_STATUS ( boardingCardCode INT, responseStatus
+  VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_DOWNGRADE ( boardingCardCode INT, oldSeat
+  VARCHAR(10), newSeat VARCHAR(10), downgradeDate DATE, FOREIGN KEY (boardingCardCode)
+  REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_DOWNGRADE_REQUEST
+  ( boardingCardCode INT, requestDate DATE, downgradeRequest VARCHAR(10), downgradeRequestStatus
+  VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_DOWNGRADE_RESPONSE ( boardingCardCode INT,
+  responseDate DATE, downgradeResponse VARCHAR(10), responsePerson VARCHAR(100), FOREIGN
+  KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE
+  FLIGHT_SEAT_ASSIGNMENT_DOWNGRADE_RESPONSE_STATUS ( boardingCardCode INT, responseStatus
+  VARCHAR(50), FOREIGN KEY (boardingCardCode) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP ( boardingCardCode1 INT, boardingCardCode2
+  INT, oldSeat1 VARCHAR(10), oldSeat2 VARCHAR(10), newSeat1 VARCHAR(10), newSeat2
+  VARCHAR(10), swapDate DATE, FOREIGN KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode),
+  FOREIGN KEY (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE
+  TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_REQUEST ( boardingCardCode1 INT, boardingCardCode2
+  INT, requestDate DATE, swapRequest VARCHAR(10), swapRequestStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_RESPONSE
+  ( boardingCardCode1 INT, boardingCardCode2 INT, responseDate DATE, swapResponse
+  VARCHAR(10), responsePerson VARCHAR(100), FOREIGN KEY (boardingCardCode1) REFERENCES
+  BOARDING_CARD(boardingCardCode), FOREIGN KEY (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode)
+  ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_RESPONSE_STATUS ( boardingCardCode1
+  INT, boardingCardCode2 INT, responseStatus VARCHAR(50), FOREIGN KEY (boardingCardCode1)
+  REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY (boardingCardCode2) REFERENCES
+  BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_REQUEST_STATUS
+  ( boardingCardCode1 INT, boardingCardCode2 INT, requestStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_RESPONSE_STATUS
+  ( boardingCardCode1 INT, boardingCardCode2 INT, responseStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_REQUEST_STATUS
+  ( boardingCardCode1 INT, boardingCardCode2 INT, requestStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_RESPONSE_STATUS
+  ( boardingCardCode1 INT, boardingCardCode2 INT, responseStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_REQUEST_STATUS
+  ( boardingCardCode1 INT, boardingCardCode2 INT, requestStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2) REFERENCES BOARDING_CARD(boardingCardCode) ); CREATE TABLE FLIGHT_SEAT_ASSIGNMENT_SWAP_RESPONSE_STATUS
+  ( boardingCardCode1 INT, boardingCardCode2 INT, responseStatus VARCHAR(50), FOREIGN
+  KEY (boardingCardCode1) REFERENCES BOARDING_CARD(boardingCardCode), FOREIGN KEY
+  (boardingCardCode2
+output_preprocessed: []

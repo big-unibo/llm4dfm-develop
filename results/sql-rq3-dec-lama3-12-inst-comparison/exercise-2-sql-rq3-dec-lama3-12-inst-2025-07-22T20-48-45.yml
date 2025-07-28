@@ -1,0 +1,194 @@
+config:
+  label: lama3-12-inst
+  name: llama-3-12B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TYPES.typeId
+    to: TYPES.typeName
+  - from: ARTICLES.artId
+    to: ARTICLES.artName
+  - from: ARTICLES.artId
+    role: type
+    to: TYPES.typeId
+  - from: REGIONS.regId
+    to: REGIONS.regionName
+  - from: REGIONS.regId
+    to: REGIONS.state
+  - from: REGIONS.state
+    to: REGIONS.country
+  - from: STORES.storeId
+    to: STORES.storeName
+  - from: STORES.storeId
+    to: STORES.storeAddress
+  - from: STORES.storeId
+    role: region
+    to: REGIONS.regId
+  - from: PURCHASE
+    to: PURCHASE.quantity
+  - from: PURCHASE
+    to: PURCHASE.revenue
+  - from: PURCHASE
+    to: ARTICLES.unitPrice
+  - from: PURCHASE
+    to: ARTICLES.artId
+  - from: PURCHASE
+    to: STORES.storeId
+  - from: PURCHASE
+    to: PURCHASE.date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: PURCHASE.quantity
+  - name: PURCHASE.revenue
+  - name: ARTICLES.unitPrice
+metrics:
+- {}
+output:
+- "source:\n\n  \n  \n  \n  \n  \niman Tessleramp   111   111   111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111  111\
+  \  111  111  111  111  111  111.IContainer&lt&lt&gt Server&lt Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server Server Server Server Server\
+  \ Server Server Server Server Server Server Server Server&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor&aposivor"
+output_preprocessed: []

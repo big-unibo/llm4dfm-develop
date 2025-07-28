@@ -1,0 +1,97 @@
+config:
+  label: lama3.1-8-inst
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- {}
+output:
+- "CREATE TABLE STORE (\n    storeId INT PRIMARY KEY,\n    storeName VARCHAR(100),\n\
+  \    storeAddress VARCHAR(100),\n    storeType VARCHAR(100),\n    country VARCHAR(100)\n\
+  );\n\nCREATE TABLE CREDIT_CARD (\n    cardId INT PRIMARY KEY,\n    cardType VARCHAR(100),\n\
+  \    holderName VARCHAR(100),\n    expirationDate DATE,\n    creditLimit DECIMAL(10,\
+  \ 2)\n);\n\nCREATE TABLE CARD_TYPE (\n    cardTypeId INT PRIMARY KEY,\n    circuit\
+  \ VARCHAR(100),\n    issuingBank VARCHAR(100),\n    issuingBankAddress VARCHAR(100),\n\
+  \    issuingBankCountry VARCHAR(100),\n    cardName VARCHAR(100),\n    cardColor\
+  \ VARCHAR(100)\n);\n\nCREATE TABLE HOLDER (\n    holderId INT PRIMARY KEY,\n   \
+  \ firstName VARCHAR(100),\n    lastName VARCHAR(100),\n    age INT,\n    job VARCHAR(100),\n\
+  \    incomeRange VARCHAR(100)\n);\n\nCREATE TABLE PURCHASE (\n    purchaseId INT\
+  \ PRIMARY KEY,\n    storeId INT,\n    cardId INT,\n    purchaseDate DATE,\n    amount\
+  \ DECIMAL(10, 2),\n    FOREIGN KEY (storeId) REFERENCES STORE(storeId),\n    FOREIGN\
+  \ KEY (cardId) REFERENCES CREDIT_CARD(cardId)\n);\n\nfact:\n  name: PURCHASE\nmeasures:\n\
+  \  - name: PURCHASE.amount\ndependencies:\n  - from: STORE.storeId\n    to: STORE.storeName\n\
+  \  - from: STORE.storeId\n    to: STORE.storeAddress\n  - from: STORE.storeId\n\
+  \    to: STORE.storeType\n  - from: STORE.storeId\n    to: STORE.country\n  - from:\
+  \ CREDIT_CARD.cardId\n    to: CREDIT_CARD.cardType\n  - from: CREDIT_CARD.cardId\n\
+  \    to: HOLDER.holderName\n  - from: CREDIT_CARD.cardId\n    to: CREDIT_CARD.expirationDate\n\
+  \  - from: CREDIT_CARD.cardId\n    to: CREDIT_CARD.creditLimit\n  - from: CARD_TYPE.cardTypeId\n\
+  \    to: CARD_TYPE.circuit\n  - from: CARD_TYPE.cardTypeId\n    to: CARD_TYPE.issuingBank\n\
+  \  - from: CARD_TYPE.cardTypeId\n    to: CARD_TYPE.issuingBankAddress\n  - from:\
+  \ CARD_TYPE.cardTypeId\n    to: CARD_TYPE.issuingBankCountry\n  - from: CARD_TYPE.cardTypeId\n\
+  \    to: CARD_TYPE.cardName\n  - from: CARD_TYPE.cardTypeId\n    to: CARD_TYPE.cardColor\n\
+  \  - from: HOLDER.holderId\n    to: HOLDER.firstName\n  - from: HOLDER.holderId\n\
+  \    to: HOLDER.lastName\n  - from: HOLDER.holderId\n    to: HOLDER.age\n  - from:\
+  \ HOLDER.holderId\n    to: HOLDER.job\n  - from: HOLDER.holderId\n    to: HOLDER.incomeRange\n\
+  \  - from: PURCHASE\n    to: STORE.storeId\n  - from: PURCHASE\n    to: CREDIT_CARD.cardId\n\
+  \  - from: PURCHASE\n    to: PURCHASE.amount\n  - from: PURCHASE\n    to: PURCHASE.purchaseDate"
+output_preprocessed: []

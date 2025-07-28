@@ -1,0 +1,347 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 2
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 21
+    missing: 25
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 2
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- edges:
+    f1: 0
+    fn: 25
+    fp: 21
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.0426
+    fn: 23
+    fp: 22
+    precision: 0.0435
+    recall: 0.0417
+    tp: 1
+output:
+- dependencies:
+  - from: STORE.storeId
+    to: STORE.storeName
+  - from: STORE.storeId
+    to: STORE.storeAddress
+  - from: STORE.storeId
+    to: STORE.storeType
+  - from: STORE.storeId
+    to: STORE.country
+  - from: STORE.storeId
+    to: STORE.area
+  - from: CREDIT_CARD.cardId
+    to: CREDIT_CARD.cardType
+  - from: CREDIT_CARD.cardId
+    to: CREDIT_CARD.holder
+  - from: CREDIT_CARD.cardId
+    to: CREDIT_CARD.expirationDate
+  - from: CREDIT_CARD.cardId
+    to: CREDIT_CARD.creditLimit
+  - from: CREDIT_CARD.cardType
+    to: CREDIT_CARD.circuit
+  - from: CREDIT_CARD.cardType
+    to: CREDIT_CARD.issuingBank
+  - from: CREDIT_CARD.cardType
+    to: CREDIT_CARD.cardName
+  - from: CREDIT_CARD.cardType
+    to: CREDIT_CARD.color
+  - from: CREDIT_CARD.holder
+    to: CREDIT_CARD.holderFirstName
+  - from: CREDIT_CARD.holder
+    to: CREDIT_CARD.holderLastName
+  - from: CREDIT_CARD.holder
+    to: CREDIT_CARD.age
+  - from: CREDIT_CARD.holder
+    to: CREDIT_CARD.job
+  - from: CREDIT_CARD.holder
+    to: CREDIT_CARD.incomeRange
+  - from: PURCHASE
+    to: STORE.storeId
+  - from: PURCHASE
+    to: CREDIT_CARD.cardId
+  - from: PURCHASE
+    to: PURCHASE.date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: PURCHASE.amount
+output_preprocessed:
+- dependencies:
+  - from: STORE,storeId
+    label: fp
+    to: STORE,storeName
+  - from: STORE,storeId
+    label: fp
+    to: STORE,storeAddress
+  - from: STORE,storeId
+    label: fp
+    to: STORE,storeType
+  - from: STORE,storeId
+    label: fp
+    to: STORE,country
+  - from: STORE,storeId
+    label: fp
+    to: STORE,area
+  - from: CREDITCARD,cardId
+    label: fp
+    to: CREDITCARD,creditCardType
+  - from: CREDITCARD,cardId
+    label: fp
+    to: CREDITCARD,holder
+  - from: CREDITCARD,cardId
+    label: fp
+    to: CREDITCARD,expirationDate
+  - from: CREDITCARD,cardId
+    label: fp
+    to: CREDITCARD,creditLimit
+  - from: CREDITCARD,creditCardType
+    label: fp
+    to: CREDITCARD,circuit
+  - from: CREDITCARD,creditCardType
+    label: fp
+    to: CREDITCARD,issuingBank
+  - from: CREDITCARD,creditCardType
+    label: fp
+    to: CREDITCARD,creditCardName
+  - from: CREDITCARD,creditCardType
+    label: fp
+    to: CREDITCARD,color
+  - from: CREDITCARD,holder
+    label: fp
+    to: CREDITCARD,holderFirstName
+  - from: CREDITCARD,holder
+    label: fp
+    to: CREDITCARD,holderLastName
+  - from: CREDITCARD,holder
+    label: fp
+    to: CREDITCARD,age
+  - from: CREDITCARD,holder
+    label: fp
+    to: CREDITCARD,job
+  - from: CREDITCARD,holder
+    label: fp
+    to: CREDITCARD,incomeRange
+  - from: PURCHASE
+    label: fp
+    to: STORE,storeId
+  - from: PURCHASE
+    label: fp
+    to: CREDITCARD,cardId
+  - from: PURCHASE
+    label: fp
+    to: PURCHASE,date
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASE
+      label: fn
+      to: store
+    - from: PURCHASE
+      label: fn
+      to: creditCard
+    - from: PURCHASE
+      label: fn
+      to: date
+    - from: PURCHASE
+      label: fn
+      to: amount
+    - from: PURCHASE
+      label: fn
+      to: exchange
+    - from: store
+      label: fn
+      to: storeName
+    - from: store
+      label: fn
+      to: storeAddress
+    - from: store
+      label: fn
+      to: storeType
+    - from: store
+      label: fn
+      to: country
+    - from: country
+      label: fn
+      to: area
+    - from: holder
+      label: fn
+      to: firstName
+    - from: holder
+      label: fn
+      to: lastName
+    - from: holder
+      label: fn
+      to: age
+    - from: holder
+      label: fn
+      to: job
+    - from: holder
+      label: fn
+      to: incomeRange
+    - from: creditCard
+      label: fn
+      to: creditCardType
+    - from: creditCard
+      label: fn
+      to: holder
+    - from: creditCard
+      label: fn
+      role: expiration
+      to: date
+    - from: creditCard
+      label: fn
+      to: creditLimit
+    - from: creditCardType
+      label: fn
+      to: issuingBank
+    - from: creditCardType
+      label: fn
+      to: circuit
+    - from: issuingBank
+      label: fn
+      to: issuingBankAddress
+    - from: issuingBank
+      label: fn
+      to: country
+    - from: creditCardType
+      label: fn
+      to: color
+    - from: creditCardType
+      label: fn
+      to: creditCardName
+    fact:
+      name: PURCHASE
+    measures:
+    - name: amount
+    - name: exchange
+  measures:
+  - name: PURCHASE.amount
+  nodes:
+    fn:
+    - creditcard
+    - creditcardtype
+    - store
+    - age
+    - storetype
+    - storeaddress
+    - issuingbankaddress
+    - holder
+    - storename
+    - circuit
+    - exchange
+    - firstname
+    - incomerange
+    - creditcardname
+    - country
+    - date
+    - lastname
+    - creditlimit
+    - amount
+    - job
+    - area
+    - color
+    - issuingbank
+    fp:
+    - creditcard,age
+    - creditlimit,creditcard
+    - storeaddress,store
+    - issuingbank,creditcard
+    - purchase,date
+    - creditcard,expirationdate
+    - color,creditcard
+    - storeid,store
+    - holder,creditcard
+    - creditcard,incomerange
+    - creditcard,cardid
+    - creditcard,holderfirstname
+    - country,store
+    - creditcard,job
+    - store,storetype
+    - creditcard,circuit
+    - holderlastname,creditcard
+    - creditcardtype,creditcard
+    - area,store
+    - creditcardname,creditcard
+    - purchase.amount
+    - storename,store
+    tp:
+    - purchase

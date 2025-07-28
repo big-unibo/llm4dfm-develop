@@ -40,10 +40,10 @@ def extract_ex_num(ex_name):
 def load_credentials(keys, model_name, use):
     key = None
 
-    if 'hf' in model_name and use in keys['hf']:
-        key = keys['hf'][use]
-    elif model_name in keys and use in keys[model_name]['key']:
+    if model_name in keys and use in keys[model_name]['key']:
         key = keys[model_name]['key'][use]
+    elif 'hf' in model_name and use in keys['hf']['key']:
+        key = keys['hf']['key'][use]
     else:
         key = None
 
@@ -81,8 +81,10 @@ def load_ground_truth_exercise(ex_name, full_name=''):
 
 def load_prompts_as_single(prompt_version, model_name, exercise):
     prompts = load_yaml(f'{inputs}prompts-{prompt_version}')
-    if model_name in prompts:
-        prompts = prompts[model_name]
+    model_name_to_use = model_name.split('-')[0].lower() if len(model_name.split('-')) > 1 else model_name.lower()
+
+    if model_name_to_use in prompts:
+        prompts = prompts[model_name_to_use]
     else:
         prompts = prompts['base']
 

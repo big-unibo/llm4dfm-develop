@@ -1,0 +1,1505 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 265
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 2
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 15
+    fp: 265
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 13
+    fp: 10
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: employeeCode
+    role: recruitment
+    to: department
+  - from: employeeCode
+    role: recruitmentCost
+    to: department
+  - from: employeeCode
+    role: recruitmentDate
+    to: date
+  - from: employeeCode
+    to: reason
+  - from: employeeCode
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    role: transferDate
+    to: date
+  - from: TRANSFER
+    to: reason
+  - from: TRANSFER
+    to: totalTransferCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    to: totalRecruitmentCost
+  - from: null
+  fact:
+    name: RECRUITMENT
+  measures:
+  - name: totalRecruitment
+  - name: totalRecruitmentCost
+output_preprocessed:
+- dependencies:
+  - from: employeeCode
+    label: fp
+    role: recruitment
+    to: department
+  - from: employeeCode
+    label: fp
+    role: recruitmentCost
+    to: department
+  - from: employeeCode
+    label: fp
+    role: recruitmentDate
+    to: date
+  - from: employeeCode
+    label: fp
+    to: reason
+  - from: employeeCode
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    role: transferDate
+    to: date
+  - from: TRANSFER
+    label: fp
+    to: reason
+  - from: TRANSFER
+    label: fp
+    to: totalTransferCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: TRANSFER
+    label: fp
+    to: totalRecruitmentCost
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RECRUITMENT
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: totalRecruitment
+  - name: totalRecruitmentCost
+  nodes:
+    fn:
+    - staff.surname
+    - staff.name
+    - transfers.date
+    - transfers.reason
+    - staff.employeecode
+    - transfers
+    - recruitments.recruitmentdate
+    - departments.departmentcode
+    - staff.gender
+    - qualifications.qualification
+    - divisions.divisionname
+    - departments.departmentname
+    - divisions.divcode
+    fp:
+    - department
+    - transfer
+    - r,o,e
+    - reason
+    - recruitment
+    - totaltransfercost
+    - totalrecruitment
+    - date
+    - employeecode
+    - totalrecruitmentcost
+    tp: []

@@ -1,0 +1,226 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 2
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 5
+    missing: 2
+    reversed: 1
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.6897
+    fn: 3
+    fp: 6
+    precision: 0.625
+    recall: 0.7692
+    tp: 10
+  nodes:
+    f1: 0.8966
+    fn: 1
+    fp: 2
+    precision: 0.8667
+    recall: 0.9286
+    tp: 13
+output:
+- dependencies:
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  - from: member
+    to: postalCode
+  - from: member
+    to: city
+  - from: member
+    to: weight
+  - from: member
+    to: height
+  - from: city
+    to: postalCode
+  - from: WOD
+    to: type
+  - from: WOD
+    to: date
+  - from: WOD
+    to: WODName
+  - from: PRESENCE
+    to: member
+  - from: PRESENCE
+    to: date
+  - from: PRESENCE
+    to: duration
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: instructor
+  fact:
+    name: PRESENCE
+  measures:
+  - name: duration
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: tp
+    to: surname
+  - from: member
+    label: tp
+    to: address
+  - from: member
+    label: fp
+    to: postalCode
+  - from: member
+    label: fp
+    to: city
+  - from: member
+    label: tp
+    to: weight
+  - from: member
+    label: tp
+    to: height
+  - from: city
+    label: fp
+    to: postalCode
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: WOD
+    label: fp
+    to: date
+  - from: WOD
+    label: fp
+    to: WODName
+  - from: PRESENCE
+    label: tp
+    to: member
+  - from: PRESENCE
+    label: tp
+    to: date
+  - from: PRESENCE
+    label: fp
+    to: duration
+  - from: PRESENCE
+    label: tp
+    to: WOD
+  - from: PRESENCE
+    label: tp
+    to: instructor
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: tp
+      to: Member
+    - from: PRESENCE
+      label: tp
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: tp
+      to: Date
+    - from: PRESENCE
+      label: tp
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: tp
+      to: Surname
+    - from: Member
+      label: tp
+      to: Weight
+    - from: Member
+      label: tp
+      to: Height
+    - from: Member
+      label: tp
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: duration
+  nodes:
+    fn:
+    - hour
+    fp:
+    - duration
+    - wodname
+    tp:
+    - weight
+    - wodtype
+    - city
+    - instructor
+    - wod
+    - presence
+    - name
+    - date
+    - height
+    - address
+    - surname
+    - postalcode
+    - member

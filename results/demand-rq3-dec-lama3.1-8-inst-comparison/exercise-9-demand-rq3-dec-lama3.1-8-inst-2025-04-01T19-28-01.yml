@@ -1,0 +1,371 @@
+config:
+  label: lama3.1-8-inst
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 2
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 23
+    missing: 24
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: true
+  measures:
+    extra: 4
+    missing: 4
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: route
+    role: departure
+    to: stationName
+  - from: route
+    role: arrival
+    to: stationName
+  - from: stationName
+    to: location
+  - from: location
+    to: city
+  - from: city
+    to: region
+  - from: trip
+    to: status
+  - from: trip
+    to: trainCode
+  - from: trip
+    to: date
+  - from: trainCode
+    to: trainType
+  - from: trainType
+    to: capacity
+  - from: ticket
+    to: customerCode
+  - from: ticket
+    role: purchase
+    to: date
+  - from: customerCode
+    to: firstName
+  - from: customerCode
+    to: lastName
+  - from: customerCode
+    role: birth
+    to: date
+  - from: customerCode
+    role: birth
+    to: city
+  - from: customerCode
+    to: documentId
+  - from: ROUTEINTICKET
+    to: ticket
+  - from: ROUTEINTICKET
+    to: route
+  - from: ROUTEINTICKET
+    to: trip
+  - from: ROUTEINTICKET
+    to: price
+  - from: ROUTEINTICKET
+    to: distance
+  - from: ROUTEINTICKET
+    to: baseFare
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+metrics:
+- edges:
+    f1: 0
+    fn: 24
+    fp: 23
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.12
+    fn: 18
+    fp: 26
+    precision: 0.1034
+    recall: 0.1429
+    tp: 3
+output:
+- dependencies:
+  - from: CUSTOMER.code
+    to: CUSTOMER.name
+  - from: CUSTOMER.code
+    to: CUSTOMER.surname
+  - from: CUSTOMER.code
+    to: CUSTOMER.birthdate
+  - from: CUSTOMER.code
+    to: CUSTOMER.city_of_birth
+  - from: CUSTOMER.code
+    to: CUSTOMER.document_id
+  - from: ROUTE
+    to: ROUTE.price
+  - from: ROUTE
+    to: ROUTE.distance
+  - from: ROUTE
+    to: ROUTE.base_fare
+  - from: ROUTE
+    to: ROUTE.time_duration
+  - from: ROUTE
+    to: STATION.departure
+  - from: ROUTE
+    to: STATION.arrival
+  - from: STATION
+    to: CITY.name
+  - from: STATION
+    to: CITY.location
+  - from: STATION
+    to: REGION.name
+  - from: TRIP
+    to: TRAIN.code
+  - from: TRIP
+    to: TRAIN.type
+  - from: TRIP
+    to: TRAIN.capacity
+  - from: TRAIN
+    to: TRAIN.code
+  - from: TICKET
+    to: CUSTOMER.code
+  - from: TICKET
+    to: ROUTE
+  - from: TICKET
+    to: TRIP
+  - from: TICKET
+    to: TICKET.date
+  - from: TICKET
+    to: TICKET.status
+  fact:
+    name: TICKET
+  measures:
+  - name: TICKET.price
+  - name: TICKET.distance
+  - name: TICKET.base_fare
+  - name: TICKET.time_duration
+output_preprocessed:
+- dependencies:
+  - from: customerCode,code
+    label: fp
+    to: customerCode,firstName
+  - from: customerCode,code
+    label: fp
+    to: customerCode,lastName
+  - from: customerCode,code
+    label: fp
+    to: customerCode,birthdate
+  - from: customerCode,code
+    label: fp
+    to: customerCode,cityofbirth
+  - from: customerCode,code
+    label: fp
+    to: customerCode,documentid
+  - from: ROUTE
+    label: fp
+    to: ROUTE,price
+  - from: ROUTE
+    label: fp
+    to: ROUTE,distance
+  - from: ROUTE
+    label: fp
+    to: ROUTE,basefare
+  - from: ROUTE
+    label: fp
+    to: ROUTE,timeduration
+  - from: ROUTE
+    label: fp
+    to: stationName,departure
+  - from: ROUTE
+    label: fp
+    to: stationName,arrival
+  - from: stationName
+    label: fp
+    to: CITY,firstName
+  - from: stationName
+    label: fp
+    to: CITY,location
+  - from: stationName
+    label: fp
+    to: REGION,firstName
+  - from: TRIP
+    label: fp
+    to: TRAIN,code
+  - from: TRIP
+    label: fp
+    to: TRAIN,type
+  - from: TRIP
+    label: fp
+    to: TRAIN,capacity
+  - from: TRAIN
+    label: fp
+    to: TRAIN,code
+  - from: TICKET
+    label: fp
+    to: customerCode,code
+  - from: TICKET
+    label: fp
+    to: ROUTE
+  - from: TICKET
+    label: fp
+    to: TRIP
+  - from: TICKET
+    label: fp
+    to: TICKET,date
+  - from: TICKET
+    label: fp
+    to: TICKET,status
+  fact:
+    name: TICKET
+  ground_truth_labels:
+    dependencies:
+    - from: route
+      label: fn
+      role: departure
+      to: stationName
+    - from: route
+      label: fn
+      role: arrival
+      to: stationName
+    - from: stationName
+      label: fn
+      to: location
+    - from: location
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: region
+    - from: trip
+      label: fn
+      to: status
+    - from: trip
+      label: fn
+      to: trainCode
+    - from: trip
+      label: fn
+      to: date
+    - from: trainCode
+      label: fn
+      to: trainType
+    - from: trainType
+      label: fn
+      to: capacity
+    - from: ticket
+      label: fn
+      to: customerCode
+    - from: ticket
+      label: fn
+      role: purchase
+      to: date
+    - from: customerCode
+      label: fn
+      to: firstName
+    - from: customerCode
+      label: fn
+      to: lastName
+    - from: customerCode
+      label: fn
+      role: birth
+      to: date
+    - from: customerCode
+      label: fn
+      role: birth
+      to: city
+    - from: customerCode
+      label: fn
+      to: documentId
+    - from: ROUTEINTICKET
+      label: fn
+      to: ticket
+    - from: ROUTEINTICKET
+      label: fn
+      to: route
+    - from: ROUTEINTICKET
+      label: fn
+      to: trip
+    - from: ROUTEINTICKET
+      label: fn
+      to: price
+    - from: ROUTEINTICKET
+      label: fn
+      to: distance
+    - from: ROUTEINTICKET
+      label: fn
+      to: baseFare
+    - from: ROUTEINTICKET
+      label: fn
+      to: timeDuration
+    fact:
+      name: ROUTEINTICKET
+    measures:
+    - name: price
+    - name: distance
+    - name: baseFare
+    - name: timeDuration
+  measures:
+  - name: TICKET.price
+  - name: TICKET.distance
+  - name: TICKET.basefare
+  - name: TICKET.timeduration
+  nodes:
+    fn:
+    - status
+    - ticket
+    - firstname
+    - location
+    - region
+    - documentid
+    - city
+    - distance
+    - timeduration
+    - routeinticket
+    - lastname
+    - traincode
+    - customercode
+    - date
+    - traintype
+    - price
+    - capacity
+    - basefare
+    fp:
+    - customercode,firstname
+    - ticket,date
+    - customercode,cityofbirth
+    - basefare,route
+    - customercode,birthdate
+    - ticket.timeduration
+    - ticket
+    - ticket.distance
+    - train,capacity
+    - city,location
+    - region,firstname
+    - documentid,customercode
+    - ticket.price
+    - status,ticket
+    - price,route
+    - customercode,lastname
+    - city,firstname
+    - arrival,stationname
+    - train,type
+    - stationname,departure
+    - train,code
+    - train
+    - timeduration,route
+    - distance,route
+    - code,customercode
+    - ticket.basefare
+    tp:
+    - route
+    - trip
+    - stationname

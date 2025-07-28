@@ -1,0 +1,258 @@
+config:
+  label: falcon3-10-inst
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 15
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 3
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TYPES.typeId
+    to: TYPES.typeName
+  - from: ARTICLES.artId
+    to: ARTICLES.artName
+  - from: ARTICLES.artId
+    role: type
+    to: TYPES.typeId
+  - from: REGIONS.regId
+    to: REGIONS.regionName
+  - from: REGIONS.regId
+    to: REGIONS.state
+  - from: REGIONS.state
+    to: REGIONS.country
+  - from: STORES.storeId
+    to: STORES.storeName
+  - from: STORES.storeId
+    to: STORES.storeAddress
+  - from: STORES.storeId
+    role: region
+    to: REGIONS.regId
+  - from: PURCHASE
+    to: PURCHASE.quantity
+  - from: PURCHASE
+    to: PURCHASE.revenue
+  - from: PURCHASE
+    to: ARTICLES.unitPrice
+  - from: PURCHASE
+    to: ARTICLES.artId
+  - from: PURCHASE
+    to: STORES.storeId
+  - from: PURCHASE
+    to: PURCHASE.date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: PURCHASE.quantity
+  - name: PURCHASE.revenue
+  - name: ARTICLES.unitPrice
+metrics:
+- edges:
+    f1: 0
+    fn: 15
+    fp: 15
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.0625
+    fn: 15
+    fp: 15
+    precision: 0.0625
+    recall: 0.0625
+    tp: 1
+output:
+- dependencies:
+  - from: artId
+    to: artName
+  - from: artId
+    to: unitPrice
+  - from: artId
+    to: type
+  - from: type
+    to: typeName
+  - from: storeId
+    to: storeName
+  - from: storeId
+    to: storeAddress
+  - from: storeId
+    to: region
+  - from: region
+    to: regionName
+  - from: region
+    to: state
+  - from: region
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: artId
+  - from: PURCHASE
+    to: storeId
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+output_preprocessed:
+- dependencies:
+  - from: artId
+    label: fp
+    to: artName
+  - from: artId
+    label: fp
+    to: unitPrice
+  - from: artId
+    label: fp
+    to: type
+  - from: type
+    label: fp
+    to: typeName
+  - from: storeId
+    label: fp
+    to: storeName
+  - from: storeId
+    label: fp
+    to: storeAddress
+  - from: storeId
+    label: fp
+    to: region
+  - from: region
+    label: fp
+    to: regionName
+  - from: region
+    label: fp
+    to: state
+  - from: region
+    label: fp
+    to: country
+  - from: PURCHASE
+    label: fp
+    to: quantity
+  - from: PURCHASE
+    label: fp
+    to: revenue
+  - from: PURCHASE
+    label: fp
+    to: artId
+  - from: PURCHASE
+    label: fp
+    to: storeId
+  - from: PURCHASE
+    label: fp
+    to: date
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: TYPES.typeId
+      label: fn
+      to: TYPES.typeName
+    - from: ARTICLES.artId
+      label: fn
+      to: ARTICLES.artName
+    - from: ARTICLES.artId
+      label: fn
+      role: type
+      to: TYPES.typeId
+    - from: REGIONS.regId
+      label: fn
+      to: REGIONS.regionName
+    - from: REGIONS.regId
+      label: fn
+      to: REGIONS.state
+    - from: REGIONS.state
+      label: fn
+      to: REGIONS.country
+    - from: STORES.storeId
+      label: fn
+      to: STORES.storeName
+    - from: STORES.storeId
+      label: fn
+      to: STORES.storeAddress
+    - from: STORES.storeId
+      label: fn
+      role: region
+      to: REGIONS.regId
+    - from: PURCHASE
+      label: fn
+      to: PURCHASE.quantity
+    - from: PURCHASE
+      label: fn
+      to: PURCHASE.revenue
+    - from: PURCHASE
+      label: fn
+      to: ARTICLES.unitPrice
+    - from: PURCHASE
+      label: fn
+      to: ARTICLES.artId
+    - from: PURCHASE
+      label: fn
+      to: STORES.storeId
+    - from: PURCHASE
+      label: fn
+      to: PURCHASE.date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: PURCHASE.quantity
+    - name: PURCHASE.revenue
+    - name: ARTICLES.unitPrice
+  measures:
+  - name: quantity
+  - name: revenue
+  nodes:
+    fn:
+    - stores.storename
+    - articles.unitprice
+    - purchase.revenue
+    - articles.artid
+    - purchase.date
+    - types.typeid
+    - regions.regionname
+    - articles.artname
+    - regions.country
+    - purchase.quantity
+    - regions.state
+    - stores.storeaddress
+    - stores.storeid
+    - types.typename
+    - regions.regid
+    fp:
+    - artname
+    - storeaddress
+    - region
+    - artid
+    - type
+    - revenue
+    - date
+    - typename
+    - storename
+    - regionname
+    - storeid
+    - state
+    - country
+    - unitprice
+    - quantity
+    tp:
+    - purchase
