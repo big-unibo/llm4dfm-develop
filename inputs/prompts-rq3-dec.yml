@@ -868,6 +868,4 @@ mistral:
         - from: TREATMENT
           to: PRESCRIPTION.therapyCode, PRESCRIPTION.examCode
       
-  - role: assistant
-    content: |
       Please apply this process to the following source schema, and create the YAML representation of the resulting DFM schema. Return only the YAML without any further information/explanation.
