@@ -83,8 +83,7 @@ model_config['key'] = load_credentials(key_config, model_config['name'], config[
 
 # Model loading
 
-model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'],
-              model_config['quantization'] if 'quantization' in model_config else None)
+model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'])
 
 config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'])
 

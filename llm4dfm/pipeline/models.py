@@ -2,7 +2,6 @@ import transformers
 from transformers import pipeline
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
-from torch import bfloat16
 import os
 from dotenv import load_dotenv
 from typing import Callable, List
@@ -33,8 +32,7 @@ def format_chat_for_instruct_hf_models(chat, tokenizer):
     else:
         return '\n'.join([ct['content'] for ct in chat])
 
-def load_generate_import_function(name, model, tokenizer, config, debug_print, chat_template=True) -> Callable[[str], str]:
-    chat_template = False
+def load_generate_import_function(name, model, tokenizer, config, debug_print, chat_template=False) -> Callable[[str], str]:
     # Default values
     pad_token_id = None
     eos_token_id = None
@@ -48,8 +46,18 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
     else:
         pad_token_id = tokenizer.eos_token_id
 
+    # Set generation parameters
+    generation_kwargs = {
+        "max_new_tokens": config['max_new_tokens'],
+        "eos_token_id": eos_token_id,
+        "pad_token_id": pad_token_id,
+        "do_sample": config['do_sample'],
+        "temperature": config['temperature'],
+        "top_p": config['top_p'],
+    }
 
     def generate_mistral_from_model(model_to_use, chat_template):
+
         def generate_mistral(chat):
 
             if debug_print:
@@ -60,21 +68,32 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
             if debug_print:
                 log(f'Batching chat formatted: {formatted_chat}')
 
-            output_text = model_to_use(
-                formatted_chat,
-                max_new_tokens=config['max_new_tokens'],
-                eos_token_id=eos_token_id,
-                pad_token_id=pad_token_id,
-                do_sample=config['do_sample'],
-                temperature=config['temperature'],
-                top_p=config['top_p'],
-                return_full_text=False,
-            )
+            input_ids = tokenizer(formatted_chat, return_tensors="pt").input_ids
+            input_ids = input_ids.to("cuda" if torch.cuda.is_available() else "cpu")
 
-            if debug_print:
-                log(f'Decoded_batch: {output_text}')
+            # Generate
+            output_ids = model_to_use.generate(input_ids, **generation_kwargs)
 
-            return output_text[0]['generated_text'].replace('<|assistant|>', '')
+            # If you want only the newly generated tokens (like `return_full_text=False`),
+            # you need to strip the input prompt manually from the output
+            generated_only = output_ids[0][input_ids.shape[-1]:]  # cut the prompt part
+            output_text = tokenizer.decode(generated_only, skip_special_tokens=True)
+
+            # output_text = model_to_use(
+            #     formatted_chat,
+            #     max_new_tokens=config['max_new_tokens'],
+            #     eos_token_id=eos_token_id,
+            #     pad_token_id=pad_token_id,
+            #     do_sample=config['do_sample'],
+            #     temperature=config['temperature'],
+            #     top_p=config['top_p'],
+            #     return_full_text=False,
+            # )
+            #
+            # if debug_print:
+            #     log(f'Decoded_batch: {output_text}')
+
+            return output_text#[0]['generated_text'].replace('<|assistant|>', '')
 
         return generate_mistral
 
@@ -150,7 +169,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
                 tokenizer=tokenizer,
                 device_map="auto",
             )
-            return generate_mistral_from_model(model_to_use, chat_template)
+            return generate_mistral_from_model(model, chat_template)
         case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
             return generate_llama_from_model(model)
         case 'llama-3-12B-inst-hf' | 'llama-3.1-8B-inst-hf' | 'llama-3.1-8B-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-1B-inst-hf' | 'llama-3.2-3B-hf' | 'llama-3.2-3B-inst-hf' | 'llama-3.3-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
@@ -289,14 +308,14 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
 
 class Model:
 
-    def __init__(self, use, name, config, key, debug_print, quantization=None):
+    def __init__(self, use, name, config, key, debug_print):
         self.chat = []
         self.name = name
         self.config = config
         self.config['debug_prints'] = debug_print
         if use == 'import':
-            self.model, self.tokenizer = load_model_and_tokenizer(name, key, quantization)
-            self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print)
+            self.model, self.tokenizer = load_model_and_tokenizer(name, key)
+            self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print, chat_template=False)
         elif use == 'api':
             self.model = load_model_api(name, key)
             if 'gemini' in self.config['name']:
@@ -363,14 +382,7 @@ def is_model_from_hf(model_name):
     return 'hf' in model_name
 
 
-def load_model_and_tokenizer(model_name, key, quantization):
-    # TODO work on quantization
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True,  # 4-bit quantization
-        bnb_4bit_quant_type='nf4',  # Normalized float 4
-        bnb_4bit_use_double_quant=True,  # Second quantization after the first
-        bnb_4bit_compute_dtype=bfloat16  # Computation type
-    ) if quantization else None
+def load_model_and_tokenizer(model_name, key):
 
     match model_name:
         case 'llama-3.2-1B':
@@ -425,20 +437,16 @@ def load_model_and_tokenizer(model_name, key, quantization):
 
         if model_exist and tokenizer_exist:
             # Load the model and tokenizer from the saved directory
-            model = AutoModelForCausalLM.from_pretrained(model_directory)
+            model = AutoModelForCausalLM.from_pretrained(model_directory,
+                                                         torch_dtype=torch.float16 if torch.cuda.is_available() else
+                                                            torch.float32)
             tokenizer = AutoTokenizer.from_pretrained(model_directory)
         else:
             # Download and load the model and tokenizer from Hugging Face
             model = AutoModelForCausalLM.from_pretrained(m_name,
-                                                         # trust_remote_code=True,
-                                                         quantization_config=bnb_config,
-                                                         # device_map='auto',
-                                                         token=key,
-                                                         torch_dtype=torch.float16
-                                                         )
-            tokenizer = AutoTokenizer.from_pretrained(m_name,
-                                                      token=key
-                                                      )
+                                                         torch_dtype=torch.float16 if torch.cuda.is_available() else
+                                                            torch.float32)
+            tokenizer = AutoTokenizer.from_pretrained(m_name, token=key)
 
             # Save the model and tokenizer
             model.save_pretrained(model_directory)
@@ -462,6 +470,10 @@ def load_model_and_tokenizer(model_name, key, quantization):
         #)
 
         #tokenizer = None
+
+    # Move to GPU only if available
+    if torch.cuda.is_available():
+        model.to("cuda")
 
     return model, tokenizer
 
