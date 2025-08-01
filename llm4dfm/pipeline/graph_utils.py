@@ -56,7 +56,6 @@ def plot_time_f1(data, file_name, label):
     f1_edges_color = 'red'
     f1_nodes_color = 'black'
 
-    ax_limits = [0, 1]
     # Compute average F1-score and elapsed time for each exercise
 
     exercise_stats = data.groupby("ex_name").agg({
@@ -69,26 +68,30 @@ def plot_time_f1(data, file_name, label):
     plt.figure(figsize=(10, 6))
 
     # Scatter plot for edges
-    plt.scatter(exercise_stats["edges_f1"], exercise_stats["time"],
-                color=f1_edges_color, label="Edges", alpha=0.7)
+    plt.scatter(exercise_stats["time"], exercise_stats["edges_f1"], color=f1_edges_color, label="Edges", alpha=0.7)
 
     # Scatter plot for nodes
-    plt.scatter(exercise_stats["nodes_f1"], exercise_stats["time"],
-                color=f1_nodes_color, label="Nodes", alpha=0.7)
+    plt.scatter(exercise_stats["time"], exercise_stats["nodes_f1"], color=f1_nodes_color, label="Nodes", alpha=0.7)
+
+    plt.plot([exercise_stats["time"], exercise_stats["time"]],  # x stays the same
+                 [exercise_stats["nodes_f1"], exercise_stats["edges_f1"]],  # y goes from nodes_f1 to edges_f1
+                 color='black', linewidth=1, alpha=0.5)
+
+    offset = 0.1
 
     # Annotate each point with exercise name
     for i, row in exercise_stats.iterrows():
-        plt.text(row["edges_f1"], row["time"], row["ex_name"],
-                 fontsize=6, ha="right", color=f1_edges_color, rotation=45)
-        plt.text(row["nodes_f1"], row["time"], row["ex_name"],
-                 fontsize=6, ha="right", color=f1_nodes_color, rotation=45)
+        plt.text(row["time"], row["edges_f1"] - offset, row["ex_name"],
+                 fontsize=6, ha="right", va="bottom", color=f1_edges_color, rotation=45)
+        plt.text(row["time"], row["nodes_f1"] + offset, row["ex_name"],
+                 fontsize=6, ha="right", va="top", color=f1_nodes_color, rotation=45)
 
     # Labels and title
-    plt.xlabel("Average F1-score")
-    plt.ylabel("Average Elapsed Time (s)")
+    plt.xlabel("Average Elapsed Time (s)")
+    plt.ylabel("Average F1-score")
+    plt.ylim(0, 1.1)
     plt.title(f"F1-score vs. Elapsed Time [{data.at[0, 'config_label']}]")
-    plt.xlim(ax_limits)
-    plt.ylim(bottom=0)
+    plt.xlim(left=0)
     plt.legend()  # Show legend
     plt.grid(True)
 
