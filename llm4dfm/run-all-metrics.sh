@@ -7,4 +7,4 @@
 ./resources/automatic-metrics.sh demand-rq4-base-gpt4o-paper demand
 ./resources/automatic-metrics.sh demand-rq4-example-gpt4o-paper demand
 ./resources/automatic-metrics.sh demand-rq5-base-gpt4o-paper demand
-./resources/automatic-metrics.sh demand-rq5-example-gpt4o-paper demand
+./resources/automatic-metrics.sh demand-rq5-falcon3-10-inst-comparison demand

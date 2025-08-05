@@ -2,6 +2,12 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 import matplotlib.pyplot as plt
+import argparse
+
+parser = argparse.ArgumentParser(description="Process some configuration.")
+parser.add_argument('--label', help='Label to use for output directory')
+parser.add_argument('--root', help='Directory to use as root, if not specified RESULTS in .env')
+args = parser.parse_args()
 
 def collect_csvs(root_dir, include_dir=None, exclude_dir=None):
     csv_files = []
@@ -13,8 +19,6 @@ def collect_csvs(root_dir, include_dir=None, exclude_dir=None):
                 if file.endswith(".csv"):
                     csv_path = os.path.join(dirpath, file)
                     csv_files.append(csv_path)
-        else:
-            print(f'Skipping {dirpath}')
 
     if not csv_files:
         print("No CSV files found.")
@@ -49,17 +53,21 @@ def plot_f1_vs_time_per_exercise(data, output_dir):
         plt.scatter(grouped["time"], grouped["nodes_f1"], color='black', label="Nodes F1", alpha=0.7)
         plt.scatter(grouped["time"], grouped["edges_f1"], color='red', label="Edges F1", alpha=0.7)
 
-        # Annotate each point with config label
         for _, row in grouped.iterrows():
             plt.text(row["time"], row["nodes_f1"], row["config_label"],
                      fontsize=6, ha="left", va="bottom", color='black', rotation=30)
             plt.text(row["time"], row["edges_f1"], row["config_label"],
                      fontsize=6, ha="left", va="bottom", color='red', rotation=30)
 
+        for _, row in grouped.iterrows():
+            plt.plot([row["time"], row["time"]],  # x stays the same
+                     [row["nodes_f1"], row["edges_f1"]],  # y goes from nodes_f1 to edges_f1
+                     color='black', linewidth=1, alpha=0.5)
+
         plt.title(f"{ex_name} – F1 vs. Time per Config")
         plt.xlabel("Average Elapsed Time (s)")
         plt.ylabel("Average F1-score")
-        plt.ylim(0, 1)
+        plt.ylim(0, 1.1)
         plt.grid(True)
         plt.legend()
 
@@ -70,15 +78,24 @@ def plot_f1_vs_time_per_exercise(data, output_dir):
         plt.savefig(filename)
         plt.close()
 
-        print(f"Saved plot for '{ex_name}' to {filename}")
-
 load_dotenv()
 
-root_directory = os.getenv('RESULTS')
+if not args.root:
+    root_directory = os.getenv('RESULTS')
+else:
+    root_directory = args.root
+
+if args.label:
+    label = args.label + '/'
+else:
+    label = ''
 
 def exclude(dir_name):
     return dir_name.endswith('paper')
 
+def include(dir_name):
+    return dir_name.endswith('comparison-gpu')
+
 merged_df = collect_csvs(root_directory, exclude_dir=exclude)
 
-plot_f1_vs_time_per_exercise(merged_df, root_directory)
+plot_f1_vs_time_per_exercise(merged_df, root_directory + label)
