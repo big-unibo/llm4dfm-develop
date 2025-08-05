@@ -56,6 +56,8 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
         "top_p": config['top_p'],
     }
 
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
     def generate_mistral_from_model(model_to_use, chat_template):
 
         def generate_mistral(chat):
@@ -68,16 +70,27 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
             if debug_print:
                 log(f'Batching chat formatted: {formatted_chat}')
 
-            input_ids = tokenizer(formatted_chat, return_tensors="pt").input_ids
-            input_ids = input_ids.to("cuda" if torch.cuda.is_available() else "cpu")
+            prompt = tokenizer.apply_chat_template(
+                formatted_chat,
+                tokenize=False,
+                add_generation_prompt=True
+            )
 
-            # Generate
-            output_ids = model_to_use.generate(input_ids, **generation_kwargs)
+            inputs = tokenizer(prompt, return_tensors="pt").to(model_to_use.device)
 
-            # If you want only the newly generated tokens (like `return_full_text=False`),
-            # you need to strip the input prompt manually from the output
-            generated_only = output_ids[0][input_ids.shape[-1]:]  # cut the prompt part
-            output_text = tokenizer.decode(generated_only, skip_special_tokens=True)
+            outputs = model_to_use.generate(
+                **inputs,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+            )
+
+            generated_text = tokenizer.decode(outputs[0][inputs['input_ids'].shape[-1]:], skip_special_tokens=True)
+
+            return generated_text
 
             # output_text = model_to_use(
             #     formatted_chat,
@@ -93,7 +106,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
             # if debug_print:
             #     log(f'Decoded_batch: {output_text}')
 
-            return output_text#[0]['generated_text'].replace('<|assistant|>', '')
+            #return output_text[0]['generated_text'].replace('<|assistant|>', '')
 
         return generate_mistral
 
@@ -159,6 +172,8 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
             return output_text[0]['generated_text'].replace('<|assistant|>', '')
 
         return generate_falcon
+
+    return generate_mistral_from_model(model, chat_template)
 
     match name:
         case 'mistral-7B-inst-v0.3-hf':
