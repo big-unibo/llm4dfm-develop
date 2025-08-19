@@ -44,6 +44,7 @@ Configuration files and scripts to automate multiple executions of the pipeline 
 - `automatic-run.sh`  -- script to automate the execution of multiple pipeline
 - `automatic-metrics.sh`  -- script to automate the recalculation of metrics on obtained outputs
 - `yml.html`  -- script to compare ground-truth and output via visualisation
+- `conf.json`  -- optional file to provide pipeline configurations in json fashion, a template is provided in `conf-example.json`
 
 ## Research data
 
@@ -120,7 +121,6 @@ pip install -r requirements.txt
 curl -sSL https://install.python-poetry.org | python3 -
 poetry install
 ```
-
 
 ### Configuration 
 
