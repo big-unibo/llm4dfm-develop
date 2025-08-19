@@ -22,7 +22,7 @@ ex_version="sql"
 while getopts "f:" opt; do
   case ${opt} in
     f ) FILE_PATH="$OPTARG" ;;
-    \? ) echo "Usage: $0 [-f file_path] [n_runs] [ex_version] [prompt_version] [model] [model_loading] [model_label] [exercises] [dir_label]"
+    \? ) echo "Usage: $0 [-f file_path] [n_runs] [ex_version] [prompt_version] [model] [model_loading] [model_label] [exercises] [dir_label] [debug_print]"
          exit 1 ;;
   esac
 done
@@ -52,6 +52,17 @@ else
   if [ -n "$8" ]; then dir_label=$8; fi
 fi
 
+DEBUG=false
+
+# Loop through all arguments
+for arg in "$@"
+do
+  if [ "$arg" == "--debug_print" ]; then
+    DEBUG=true
+    break
+  fi
+done
+
 ex_list=()
 
 if [ -z "$exercises" ]; then
@@ -72,6 +83,24 @@ fi
 echo "Runs: $n_runs, Prompt version: $prompt_version, Model: $model, Model label: $model_label, Label directory: $dir_label, Exercises: [${ex_list[@]}]"
 
 if [ ${#ex_list[@]} -gt 0 ]; then
-    python -W ignore "$PY_PROG" --n_runs "$n_runs" --exercises "${ex_list[@]}" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_loading "$model_loading" --model_label "$model_label" --dir_label "$dir_label"
+    CMD="python -W ignore \"$PY_PROG\" \
+    --n_runs \"$n_runs\" \
+    --exercises \"${ex_list[@]}\" \
+    --p_version \"$prompt_version\" \
+    --exercise_version \"$ex_version\" \
+    --model \"$model\" \
+    --model_loading \"$model_loading\" \
+    --model_label \"$model_label\" \
+    --dir_label \"$dir_label\""
+
+    # Append --debug_print if DEBUG is true
+    if [ "$DEBUG" = true ]; then
+      CMD="$CMD --debug_print"
+    fi
+
+    # Execute the command
+    eval $CMD
+
+    # python -W ignore "$PY_PROG" --n_runs "$n_runs" --exercises "${ex_list[@]}" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_loading "$model_loading" --model_label "$model_label" --dir_label "$dir_label"
     python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
 fi

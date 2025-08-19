@@ -30,6 +30,7 @@ The module `llm4dfm/pipeline` contains Python files implementing a pipeline enab
 - `preprocess.py` -- contains the preprocessing phase (e.g., to remove spaces and underscores)
 - `utils.py`    -- contains general utils
 - `csv_graph.py`    -- contains the process to generate graphs
+- `merge_graph.py`    -- contains the process to generate graphs for each exercise aggregating all times and f1 accuracy of all models used
 - `graph_utils.py`    -- contains utils used to work with graph, such as metrics calculation
 - `.env`        -- contains information about program's paths - must be created when cloning the repo, based on `.env-example`
 
@@ -148,12 +149,10 @@ The following parameters can be configured in `llm4dfm/resources/pipeline-config
 Imported model (to be set if using a locally-imported LLM model)
 
 - `name` -- model's name (can be a generalization, such as llama-2, the exact name is stored in "models.py" file, if not present you must add it there)
-- `tokenizer -name`   -- model's tokenizer name, usually the same as the model
 - `temperature` -- threshold between 0 and 2 that specifies willing to generate more random answers as growing to 1 *if used do_sample must be true
 - `max_new_tokens` -- limit the maximum number of tokens generated in a single call
 - `do_sample` -- boolean, if set specifies to generate more creative output
 - `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true
-- `quantization` -- boolean, enabling quantization techniques to speed up process slightly reducing accuracy
 
 Api model (to be set if using APIs to connect to a remote endpoint)
 
@@ -173,7 +172,7 @@ Exercise
 - `name`           -- the list of exercises' name (part before version, exercise-N)
 - `version`           -- the exercise version (part between exercise-N- and text.yml) [sql, original, demand]
 - `prompt_version` -- the prompt version (part between prompts- and .yml)
-- `number` -- the list of exercises' number
+- `number` -- the list of exercises' number [optional, if not given, obtained as last digit of each exercise in `name` config]
 
 General
 
@@ -194,13 +193,41 @@ The following parameters can be configured in `llm4dfm/resources/csv-graph-confi
 - `model_label` -- model's label name
 - `dir_label` -- directory in which store file name
 
+#### Merge-graphs
+
+The script can be configured with these settings:
+- `root` -- directory path where the recursive search for csv files starts, if not given `results` folder is used
+- `label` -- set the output's directory label that is saved in root path in which store the graphs
+
+Usage example:
+
+`python merge_graphs.py --root ../../results/ --label example`
+
+As result, a directory `../../results/example` is created, containing files `exercise-N_f1_vs_time.pdf` for each exercise-N found.
+
+It is also possible to state via code include and exclude rules to choose sub-directories to include (only those would be included) or to exclude (only those would be excluded) in recursive search for csv files
+
+```python
+def exclude(dir_name):
+    return dir_name.endswith('dir-to-exclude')
+
+merged_df = collect_csvs(root_directory, exclude_dir=exclude)
+```
+
+```python
+def include(dir_name):
+    return dir_name.endswith('dir-to-include')
+
+merged_df = collect_csvs(root_directory, include_dir=include)
+```
+
 #### Metrics
 
 The following parameters can be configured in `llm4dfm/resources/metrics-config.yml` file, under the `exercise` section.
 
 - `dir` -- the exercise's directory inside outputs folder
 - `name` -- the exercise name without .yml extension
-- `demand` -- whether it's a demand driven exercise [true, false]
+- `verion` -- the exercise version [sql, original, demand]
 - `gt` -- the ground truth's exercise
 - `number` -- the exercise number
 
@@ -438,15 +465,19 @@ In case model or tokenizer require additional chat template, it has to be config
 Moreover, function to batch input has to be provided in `load_generate_import_function(name, model, tokenizer, config, debug_print)` with the
 structure `function(str) -> str`.
 
-Specific prompts has to be stated in `inputs` folder, as:
+Specific prompts has to be stated in `inputs` folder, a base configuration can be set as follows, while specific ones can be detailed with model's name. If no model name matches, base will be picked.
 
 ```yml
+base:
+  - role: system
+    content: Prompt content
+  - role: user
+    content: Prompt content
 gpt:
   - role: system
     content: Prompt content
   - role: user
     content: Prompt content
-
 falcon:
   - role: system
     content: Prompt content
@@ -470,23 +501,25 @@ After activating [venv](#Venv), a task triggered by
 - `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name (configuration's model) is used
 - `"exercises"` -- set exercises to run, if not provided all files matching previous configurations are used ["<ex1> ... <exN>"]
 - `dir_label` -- an optional label used in output directory generated, if not provided a timestamp is generated
+- `--debug_print` -- an optional arg enabling debug prints
 
 This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
 
 All configurations specified as argument **override** the ones provided by configuration file ones.
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
+It is also possible to set configurations through `./resources/conf.json` file, following the structure of `./resources/conf-example.json`.
+To pass this, execution has to be done like this `poetry poe automatic_run -f ./llm4dfm/resources/conf.json`
+
 Example of run:
-`poetry poe automatic_run 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
+`poetry poe automatic_run 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example --debug_print`
 `./resources/automatic-run.sh 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
+`./resources/automatic-run.sh -f my_conf.json`
 
 Output:
 Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
 Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
-
-It is also possible to set configurations through `./resources/conf.json` file, following structure provided by `./resources/conf-example.json`.
-To pass this, execution has to be done like this `poetry poe automatic_run -f ./llm4dfm/resources/conf.json`
 
 ### Automatic metrics
 

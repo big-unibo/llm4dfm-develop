@@ -9,19 +9,19 @@ from llm4dfm.pipeline.preprocess import preprocess
 from llm4dfm.pipeline.utils import (load_yaml_from_resources, store_output, load_ground_truth_exercise,
                                     store_csv,
                                     get_timestamp, output_as_valid_yaml, get_dir_label_name, extract_ex_num,
-                                    label_edges, load_prompts_as_multiple, load_prompts_as_single, load_credentials)
+                                    label_edges, load_prompts_as_single, load_credentials)
 from llm4dfm.pipeline.metrics import MetricsCalculator, ErrorDetector
 
 parser = argparse.ArgumentParser(description="Process some configuration.")
 parser.add_argument('--n_runs', help='Number of runs to execute')
 parser.add_argument('--exercises', nargs='+', help='List of exercises to use')
-parser.add_argument('--exercise_num', help='Exercise number to use')
 parser.add_argument('--p_version', help='Prompt version to use')
 parser.add_argument('--exercise_version', help='Exercise version to use')
 parser.add_argument('--model', help='Model used')
 parser.add_argument('--model_loading', help='Model loading technique used')
 parser.add_argument('--model_label', help='Model label to use')
 parser.add_argument('--dir_label', help='Directory label to use')
+parser.add_argument('--debug_print', action='store_true', help='Enable debug prints')
 
 args = parser.parse_args()
 
@@ -58,16 +58,10 @@ if args.exercises:
     config['exercise']['name'] = ex_name
 else:
     config['exercise']['name'] = ['-'.join((ex_name, config['exercise']['version'])) for ex_name in config['exercise']['name']]
-if args.exercise_num:
-    if not type(args.exercise_num) is list:
-        args.exercise_num = [args.exercise_num]
-
-    config['exercise']['number'] = [int(ex_num) for ex_num in args.exercise_num]
-else:
-    if automatic_run or not config['exercise']['number'] or not type(config['exercise']['number']) is list or len(config['exercise']['number']) != len(config['exercise']['name']):
-        print(f'Extracting exercise number as last digit in {config['exercise']['name']}')
-        # Extracting ex number as last digit in exercise name
-        config['exercise']['number'] = [extract_ex_num(ex_name) for ex_name in config['exercise']['name']]
+if automatic_run or not config['exercise']['number'] or not type(config['exercise']['number']) is list or len(config['exercise']['number']) != len(config['exercise']['name']):
+    print(f'Extracting exercise number as last digit in {config['exercise']['name']}')
+    # Extracting ex number as last digit in exercise name
+    config['exercise']['number'] = [extract_ex_num(ex_name) for ex_name in config['exercise']['name']]
 if args.p_version:
     config['exercise']['prompt_version'] = args.p_version
 if args.exercise_version:
@@ -78,17 +72,16 @@ if args.model:
     model_config['name'] = args.model
 if args.model_label:
     model_config['label'] = args.model_label
+if args.debug_print:
+    config['debug_prints'] = True
 
 model_config['key'] = load_credentials(key_config, model_config['name'], config['use'])
 
 # Model loading
 
-model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'],
-              model_config['quantization'] if 'quantization' in model_config else None)
+model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'])
 
 config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'])
-
-
 
 for ex_idx, exercise in enumerate(config['exercise']['name']):
 
