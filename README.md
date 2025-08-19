@@ -508,17 +508,18 @@ This could also be achieved by directly run `./resources/automatic-run.sh` from 
 All configurations specified as argument **override** the ones provided by configuration file ones.
 If not specified, optional parameters are read by configuration files instead, all **except** dir_label, that in place of automatic run is generated if not given.
 
+It is also possible to set configurations through `./resources/conf.json` file, following the structure of `./resources/conf-example.json`.
+To pass this, execution has to be done like this `poetry poe automatic_run -f ./llm4dfm/resources/conf.json`
+
 Example of run:
 `poetry poe automatic_run 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example --debug_print`
 `./resources/automatic-run.sh 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
+`./resources/automatic-run.sh -f my_conf.json`
 
 Output:
 Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
 Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
-
-It is also possible to set configurations through `./resources/conf.json` file, following structure provided by `./resources/conf-example.json`.
-To pass this, execution has to be done like this `poetry poe automatic_run -f ./llm4dfm/resources/conf.json`
 
 ### Automatic metrics
 
