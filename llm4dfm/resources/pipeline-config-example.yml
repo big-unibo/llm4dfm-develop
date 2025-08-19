@@ -1,7 +1,18 @@
-model:
+use: 'api' # import or api
+debug_prints: false
+
+model_import:
+  name: 'falcon'
+  temperature: 0.2
+  max_new_tokens: 4000
+  do_sample: true
+  top_p: 0.9
+  device: 'cpu'
+
+model_api:
   name: 'gpt'
   label: 'gpt4o' # [gpt3-5, gpt4o]
-  deployment: 'test-gpt-4o' # Deployment name for azure distribution [test-gpt-35, test-gpt-4o]
+  deployment: 'gpt-4o' # Deployment name for azure distribution [test-gpt-35, test-gpt-4o]
   api_version: '2024-04-01-preview' # Used with GPT only up to now [2024-02-15-preview, 2024-04-01-preview]
   max_tokens:
   n_responses: 1
@@ -16,7 +27,5 @@ output:
 exercise:
   name: ['exercise-1']
   version: 'sql'
-  prompt_version: 'v4'
-  number: ['1']
-
-debug_prints: false
+  prompt_version: 'rq3-alg-base'
+  number: ['1'] # If not stated, obtained as last digit in ex. name config

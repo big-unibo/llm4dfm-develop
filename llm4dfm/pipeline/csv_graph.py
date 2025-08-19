@@ -9,6 +9,8 @@ parser.add_argument('--prompt_version', help='Prompt version to use')
 parser.add_argument('--exercise_v', help='Exercise version to use')
 parser.add_argument('--model_label', help='Model label to use')
 parser.add_argument('--dir_label', help='Directory label to use')
+parser.add_argument('--model_loading', help='Model loading technique used')
+parser.add_argument('--device', help='Set device used [cpu, gpu]')
 parser.add_argument('--dir', help='Full dir name to use')
 args = parser.parse_args()
 
@@ -28,7 +30,15 @@ else:
         input_config['model_label'] = args.model_label
     if args.dir_label:
         input_config['dir_label'] = args.dir_label
-    input_config['dir_label'] = get_dir_label_name(input_config['v'], input_config['prompt_v'], input_config['model_label'], input_config['dir_label'])
+    if args.model_loading:
+        input_config['model_loading'] = args.model_loading
+    if args.device:
+        input_config['device'] = args.device
+    input_config['dir_label'] = get_dir_label_name(input_config['v'], input_config['prompt_v'], input_config['model_label'], input_config['dir_label'], input_config['model_loading'], input_config['device'])
+    if not Path(get_csv_file_from_output_dir(input_config['dir_label'])).is_file() and input_config['device'] == 'gpu':
+        input_config['dir_label'] = get_dir_label_name(input_config['v'], input_config['prompt_v'],
+                                                       input_config['model_label'], input_config['dir_label'],
+                                                       input_config['model_loading'], input_config['device'], force_gpu_for_retrieve=True)
 
 file_path = get_csv_file_from_output_dir(input_config['dir_label'])
 

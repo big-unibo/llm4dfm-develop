@@ -21,6 +21,7 @@ parser.add_argument('--model', help='Model used')
 parser.add_argument('--model_loading', help='Model loading technique used')
 parser.add_argument('--model_label', help='Model label to use')
 parser.add_argument('--dir_label', help='Directory label to use')
+parser.add_argument('--device', help='Set device to use [cpu, gpu]')
 parser.add_argument('--debug_print', action='store_true', help='Enable debug prints')
 
 args = parser.parse_args()
@@ -72,16 +73,19 @@ if args.model:
     model_config['name'] = args.model
 if args.model_label:
     model_config['label'] = args.model_label
+if args.device:
+    model_config['device'] = args.device
 if args.debug_print:
     config['debug_prints'] = True
+
 
 model_config['key'] = load_credentials(key_config, model_config['name'], config['use'])
 
 # Model loading
 
-model = Model(config['use'], model_config['name'], model_config, model_config['key'], config['debug_prints'])
+model = Model(config['use'], model_config['name'], model_config, model_config['key'], model_config['device'], config['debug_prints'])
 
-config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'])
+config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['use'], config['output']['dir_label'])
 
 for ex_idx, exercise in enumerate(config['exercise']['name']):
 

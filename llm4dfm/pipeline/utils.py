@@ -6,6 +6,7 @@ import yaml
 from datetime import datetime
 import re
 import csv
+import torch
 
 load_dotenv()
 
@@ -24,9 +25,16 @@ def get_timestamp():
     return datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
 
 # Standard names utils
+def get_dir_label_name(ex_version, prompt_version, model_label, dir_label, use, device, force_gpu_for_retrieve=False):
+    if use == 'import':
+        if (device == 'gpu' and torch.cuda.is_available()) or force_gpu_for_retrieve:
+            dev_label = '-gpu'
+        else:
+            dev_label = '-cpu'
+    else:
+        dev_label = ''
 
-def get_dir_label_name(ex_version, prompt_version, model_label, dir_label):
-    return f"{ex_version}-{prompt_version}-{model_label}-{dir_label}"
+    return f"{ex_version}-{prompt_version}-{model_label}{dev_label}-{dir_label}"
 
 # Extract exercise number based on last digit of exercise name
 def extract_ex_num(ex_name):

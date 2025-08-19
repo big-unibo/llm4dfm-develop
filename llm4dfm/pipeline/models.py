@@ -308,13 +308,13 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
 
 class Model:
 
-    def __init__(self, use, name, config, key, debug_print):
+    def __init__(self, use, name, config, key, device, debug_print):
         self.chat = []
         self.name = name
         self.config = config
         self.config['debug_prints'] = debug_print
         if use == 'import':
-            self.model, self.tokenizer = load_model_and_tokenizer(name, key)
+            self.model, self.tokenizer = load_model_and_tokenizer(name, key, device)
             self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print, chat_template=False)
         elif use == 'api':
             self.model = load_model_api(name, key)
@@ -382,7 +382,7 @@ def is_model_from_hf(model_name):
     return 'hf' in model_name
 
 
-def load_model_and_tokenizer(model_name, key):
+def load_model_and_tokenizer(model_name, key, device):
 
     match model_name:
         case 'llama-3.2-1B':
@@ -455,25 +455,15 @@ def load_model_and_tokenizer(model_name, key):
     else:
         raise Exception("Loading models without hf not implemented yet")
 
-        #model_exist = os.path.exists(os.path.join(model_directory))
-
-        #if not model_exist:
-        #    raise Exception("Model could not be found and imported either.")
-
-        #tokenizer_path = f"{model_directory}tokenizer.model"
-
-        #model = Llama.build(
-        #    ckpt_dir=model_directory,
-        #    tokenizer_path=tokenizer_path,
-        #    max_seq_len=4000,
-        #    max_batch_size=4000,
-        #)
-
-        #tokenizer = None
-
     # Move to GPU only if available
-    if torch.cuda.is_available():
+    if torch.cuda.is_available() and device == 'gpu':
+        print("Cuda available, set to use GPU")
         model.to("cuda")
+    else:
+        if device == 'cpu':
+            print("Set to use CPU")
+        else:
+            print("Cuda not available, set to use CPU")
 
     return model, tokenizer
 
