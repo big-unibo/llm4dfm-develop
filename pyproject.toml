@@ -35,6 +35,7 @@ poetry = "^2.0.0"
 pytest = "^8.2.2"
 
 [tool.poe.tasks]
+run_all = { shell = "cd llm4dfm && ./run-all.sh" }
 automatic_run = "./llm4dfm/resources/automatic-run.sh"
 automatic_metrics = "./llm4dfm/resources/automatic-metrics.sh"
 test = "python -m unittest discover -v -s tests -p '*.py'"

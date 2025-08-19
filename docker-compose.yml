@@ -1,0 +1,28 @@
+services:
+  llm4dfm:
+    image: ghcr.io/luca1313/llm4dfm:20-08
+    container_name: develop
+
+    # Mount volumes:
+    volumes:
+      # Mount credentials.yml into container
+      - ./llm4dfm/resources/credentials.yml:/app/llm4dfm/resources/credentials.yml:ro
+      # Mount outputs folder for results
+      - ./outputs:/app/outputs
+
+    runtime: nvidia
+
+    # Use GPU if needed (requires NVIDIA Container Toolkit)
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - driver: nvidia
+#              count: all
+#              capabilities: [gpu]
+
+    # Default entrypoint — your bash script
+    entrypoint: ["/bin/bash", "poetry poe run_all"]
+
+    # Don’t restart automatically, since this is a one-shot job
+    restart: "no"

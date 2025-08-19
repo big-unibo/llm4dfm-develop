@@ -44,6 +44,7 @@ Configuration files and scripts to automate multiple executions of the pipeline 
 - `automatic-run.sh`  -- script to automate the execution of multiple pipeline
 - `automatic-metrics.sh`  -- script to automate the recalculation of metrics on obtained outputs
 - `yml.html`  -- script to compare ground-truth and output via visualisation
+- `conf.json`  -- optional file to provide pipeline configurations in json fashion, a template is provided in `conf-example.json`
 
 ## Research data
 
@@ -121,7 +122,6 @@ curl -sSL https://install.python-poetry.org | python3 -
 poetry install
 ```
 
-
 ### Configuration 
 
 #### Required configuration parameters
@@ -153,6 +153,7 @@ Imported model (to be set if using a locally-imported LLM model)
 - `max_new_tokens` -- limit the maximum number of tokens generated in a single call
 - `do_sample` -- boolean, if set specifies to generate more creative output
 - `top_p` -- threshold between 0 and 1 that specifies willing to use a wider set of words as growing to 1 *if used do_sample must be true
+- `device` -- set device to use between cpu and **gpu if available, if not cpu is used instead**
 
 Api model (to be set if using APIs to connect to a remote endpoint)
 
@@ -192,6 +193,8 @@ The following parameters can be configured in `llm4dfm/resources/csv-graph-confi
 - `prompt_v` -- the prompt version (part between prompts-v and .yml)
 - `model_label` -- model's label name
 - `dir_label` -- directory in which store file name
+- `model_loading` -- model's loading technique used [import, api]
+- `device` -- device set to be used in case of import, given that in case of gpu not found cpu is set, if no file with gpu tag is found, cpu is checked [cpu, gpu]
 
 #### Merge-graphs
 
@@ -281,7 +284,7 @@ Thesaurus rules are applied here.
 - Setup [authentication](#authentication-key)
 - Configure [pipeline](#Pipeline), and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `llm4dfm` directory.
-  If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated. Its structure is as follows:
+  If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}{device}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated, where device is actually an empty string if model loading is api, "-gpu" if gpu is set as device and available, "-cpu" otherwise. Its structure is as follows:
 ```yaml
 config:
   name: gpt
@@ -433,9 +436,9 @@ metrics:
 
 - Configure [graph](#CSV-Graph)
 - Run `python pipeline/csv_graph.py` from `llm4dfm` directory.
-  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory, new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
+  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}{device}-{csv_graph-dir_label}/` directory, new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
 Example of run:
-`python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model gpt4o --runs 1 --label test`
+`python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model_label gpt4o --dir_label test-dir --model_loading import --device cpu`
 
 - Configure [metrics](#Metrics)
 - Run `python pipeline/metrics.py` from `llm4dfm` directory.
@@ -501,6 +504,7 @@ After activating [venv](#Venv), a task triggered by
 - `model_label` -- an optional model label used in yml output generated, empty string by default, if empty model name (configuration's model) is used
 - `"exercises"` -- set exercises to run, if not provided all files matching previous configurations are used ["<ex1> ... <exN>"]
 - `dir_label` -- an optional label used in output directory generated, if not provided a timestamp is generated
+- `device` -- set device to use if model imported, if gpu not available cpu is set as default [cpu, gpu]
 - `--debug_print` -- an optional arg enabling debug prints
 
 This could also be achieved by directly run `./resources/automatic-run.sh` from `llm4dfm` directory, with configurations as stated before.
@@ -514,11 +518,12 @@ To pass this, execution has to be done like this `poetry poe automatic_run -f ./
 Example of run:
 `poetry poe automatic_run 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example --debug_print`
 `./resources/automatic-run.sh 1 sql rq3-alg-base gpt api gpt4o "1 2 3 4 5 6 7 8 9" example`
+`./resources/automatic-run.sh 1 sql rq3-alg-base falcon-3-7B-inst-hf import falcon-3 "1 2 3 4 5 6 7 8 9" example gpu`
 `./resources/automatic-run.sh -f my_conf.json`
 
 Output:
-Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{dir_label}/`.
-Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{dir_label}.csv` is generated if not present, else is enriched with run output.
+Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}{device}-{dir_label}/`.
+Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}{device}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
 
 ### Automatic metrics

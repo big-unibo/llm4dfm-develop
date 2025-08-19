@@ -6,5 +6,6 @@
   "model_loading": "api",
   "model_label": "gpt4o",
   "dir_label": "",
-  "exercises": ["1", "2", "3", "4"]
+  "exercises": ["1", "2", "3", "4"],
+  "device": "gpu"
 }

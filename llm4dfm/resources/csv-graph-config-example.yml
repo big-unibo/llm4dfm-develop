@@ -1,5 +1,6 @@
-dir:
 prompt_v: 'v4'
 v: 'sql'
 model_label: 'gpt4o'
 dir_label:
+model_loading: 'import'
+device: 'cpu'

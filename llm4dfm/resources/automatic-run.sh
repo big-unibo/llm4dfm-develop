@@ -12,6 +12,7 @@ GRAPH_PROG="$SCRIPT_DIR/../pipeline/csv_graph.py"
 n_runs=1
 exercises=""
 model_loading="import"
+device="cpu"
 
 # Define the components of the regex pattern as variables
 ex_dir="datasets/"
@@ -22,7 +23,7 @@ ex_version="sql"
 while getopts "f:" opt; do
   case ${opt} in
     f ) FILE_PATH="$OPTARG" ;;
-    \? ) echo "Usage: $0 [-f file_path] [n_runs] [ex_version] [prompt_version] [model] [model_loading] [model_label] [exercises] [dir_label] [debug_print]"
+    \? ) echo "Usage: $0 [-f file_path] [n_runs] [ex_version] [prompt_version] [model] [model_loading] [model_label] [exercises] [dir_label] [device] [debug_print]"
          exit 1 ;;
   esac
 done
@@ -38,6 +39,7 @@ if [[ -n "$FILE_PATH" && -f "$FILE_PATH" ]]; then
   model=$(jq -r '.model // "'"$model"'"' "$FILE_PATH")
   model_loading=$(jq -r '.model_loading // "'"$model_loading"'"' "$FILE_PATH")
   model_label=$(jq -r '.model_label // "'"$model_label"'"' "$FILE_PATH")
+  device=$(jq -r '.device // "'"device"'"' "$FILE_PATH")
   dir_label=$(jq -r '.dir_label | select(. != "") // "'"$dir_label"'"' "$FILE_PATH")
   exercises=$(jq -r 'if (.exercises | length) > 0 then .exercises | join(" ") else "" end' "$FILE_PATH")
 else
@@ -50,6 +52,7 @@ else
   if [ -n "$6" ]; then model_label=$6; fi
   if [ -n "$7" ]; then exercises="$7"; fi
   if [ -n "$8" ]; then dir_label=$8; fi
+  if [ -n "$9" ]; then device=$9; fi
 fi
 
 DEBUG=false
@@ -80,7 +83,7 @@ else
   done
 fi
 
-echo "Runs: $n_runs, Prompt version: $prompt_version, Model: $model, Model label: $model_label, Label directory: $dir_label, Exercises: [${ex_list[@]}]"
+echo "Runs: $n_runs, Prompt version: $prompt_version, Model: $model, Model label: $model_label, Label directory: $dir_label, Exercises: [${ex_list[@]}], Device: $device"
 
 if [ ${#ex_list[@]} -gt 0 ]; then
     CMD="python -W ignore \"$PY_PROG\" \
@@ -91,7 +94,8 @@ if [ ${#ex_list[@]} -gt 0 ]; then
     --model \"$model\" \
     --model_loading \"$model_loading\" \
     --model_label \"$model_label\" \
-    --dir_label \"$dir_label\""
+    --dir_label \"$dir_label\"
+    --device \"$device\""
 
     # Append --debug_print if DEBUG is true
     if [ "$DEBUG" = true ]; then
@@ -101,6 +105,5 @@ if [ ${#ex_list[@]} -gt 0 ]; then
     # Execute the command
     eval $CMD
 
-    # python -W ignore "$PY_PROG" --n_runs "$n_runs" --exercises "${ex_list[@]}" --p_version "$prompt_version" --exercise_version "$ex_version" --model "$model" --model_loading "$model_loading" --model_label "$model_label" --dir_label "$dir_label"
-    python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label"
+    python -W ignore "$GRAPH_PROG" --prompt_version "$prompt_version" --exercise_v "$ex_version" --model_label "$model_label" --dir_label "$dir_label" --model_loading "$model_loading" --device "$device"
 fi
