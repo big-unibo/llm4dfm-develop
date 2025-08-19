@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.13-slim
 
 # Set environment variables (avoids poetry creating virtualenvs inside container)
 ENV POETRY_VIRTUALENVS_CREATE=false \
