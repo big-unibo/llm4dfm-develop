@@ -9,7 +9,6 @@ __pycache__/
 venv
 outputs/
 results/
-tests/
 .github/
 
 .git/
