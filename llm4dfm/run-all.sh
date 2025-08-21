@@ -1,4 +1,4 @@
-label="gpu-comparison-remote"
+label="comparison-remote"
 device="gpu"
 
 ./resources/automatic-run.sh 5 sql rq3-dec llama-3.1-8B-inst-hf import lama3.1-8 "1 2 3 4 5 6 7 8 9" $label $device
