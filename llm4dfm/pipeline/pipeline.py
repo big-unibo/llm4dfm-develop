@@ -52,7 +52,7 @@ if args.exercises:
     if not type(args.exercises) is list:
         args.exercises = [args.exercises]
 
-    exercises = [ex.split('/')[-1] if len(ex.split('/')) > 0 else ex for ex in args.exercises]
+    exercises = [ex.split('/')[-1] if len(ex.split('/')) > 0 else ex for ex in args.exercises[0].split(' ')]
 
     exercises = ['-'.join(Path(ex).stem.split('-')[:-1]) for ex in exercises]
     ex_name = ['-'.join(ex.split('-')[:2]) for ex in exercises]
@@ -85,7 +85,7 @@ model_config['key'] = load_credentials(key_config, model_config['name'], config[
 
 model = Model(config['use'], model_config['name'], model_config, model_config['key'], model_config['device'], config['debug_prints'])
 
-config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['use'], config['output']['dir_label'])
+config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['use'], config['output']['dir_label'], model_config['device'])
 
 for ex_idx, exercise in enumerate(config['exercise']['name']):
 
