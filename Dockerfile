@@ -47,6 +47,7 @@ RUN poetry install --no-root
 COPY . .
 
 # Make sure the script is executable
+RUN chmod +x ./setup-container.sh
 RUN chmod +x llm4dfm/run-all.sh
 RUN chmod +x llm4dfm/resources/automatic-run.sh
 RUN chmod +x llm4dfm/resources/automatic-metrics.sh
