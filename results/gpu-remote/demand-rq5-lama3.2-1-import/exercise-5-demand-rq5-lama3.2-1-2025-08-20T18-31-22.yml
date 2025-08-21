@@ -1,0 +1,190 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: MEMBERS\nmeasures:\n  - name: weight\n  - name: height\ndependencies:\n\
+  \  - from: address\n    to: city\n    role: residence\n  - from: address\n    to:\
+  \ postalCode\n  - from: address\n    to: city\n    role: location\n  - from: address\n\
+  \    to: weight\n  - from: address\n    to: height\n  - from: WOD\n    to: type\n\
+  \  - from: WOD\n    to: frequency\n  - from: WOD\n    to: instructor\n  - from:\
+  \ WOD\n    to: day\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: instructor\n\
+  \  - from: WOD\n    to: day\n  - from: WOD\n    to: instructor\n  - from: WOD\n\
+  \    to: day\n  - from: WOD\n    to: instructor\n  - from: WOD\n    to: day\n  -\
+  \ from: WOD\n    to: instructor\n  - from: WOD\n    to: day\n  - from: MEMBERS\n\
+  \    to: cost\n  - from: MEMBERS\n    to: duration\n  - from: MEMBERS\n    to: date\n\
+  \  - from: MEMBERS\n    to: type\n  - from: MEMBERS\n    to: frequency\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: hour\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n\
+  \    to: day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to:\
+  \ day\n  - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n \
+  \ - from: MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from:\
+  \ MEMBERS\n    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n\
+  \    to: instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to:\
+  \ instructor\n  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n\
+  \  - from: MEMBERS\n    to: day\n  - from: MEMBERS\n    to: instructor\n  - from:\
+  \ MEMBERS\n    to: day\n  - from: MEMBERS\n    to"
+output_preprocessed: []

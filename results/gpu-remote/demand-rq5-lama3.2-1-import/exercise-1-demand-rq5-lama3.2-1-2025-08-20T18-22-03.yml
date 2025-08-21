@@ -1,0 +1,786 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: state
+  - from: computer
+    to: country
+  - from: computer
+    to: software
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: quantity
+  - from: computer
+    to: cost
+  - from: computer
+    to: articleCode
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: date
+  - from: computer
+    to: softwareName
+  - from: computer
+    to: softwareDescription
+  - from: computer
+    role: from
+    to: computer
+  - from: computer
+    role: to
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: software
+    to: computer
+  - from: computer
+    role: null
+    to: computer
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: model
+  - name: brand
+output_preprocessed: []

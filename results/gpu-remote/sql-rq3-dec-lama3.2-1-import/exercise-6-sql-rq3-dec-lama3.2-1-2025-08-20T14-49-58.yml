@@ -1,0 +1,1384 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 3
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 239
+    missing: 12
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 4
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0.0233
+    fn: 12
+    fp: 239
+    precision: 0.0124
+    recall: 0.2
+    tp: 3
+  nodes:
+    f1: 0.32
+    fn: 9
+    fp: 8
+    precision: 0.3333
+    recall: 0.3077
+    tp: 4
+output:
+- dependencies:
+  - from: STAFF.qualification
+    to: STAFF.currentDepartment
+  - from: STAFF.currentDepartment
+    to: STAFF.employeeCode
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: null
+  fact:
+    name: RECRUITMENTS
+  measures:
+  - name: employeeCode
+  - name: department
+  - name: recruitmentDate
+  - name: TRANSFERS
+output_preprocessed:
+- dependencies:
+  - from: STAFF.qualification
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.currentDepartment
+    label: fp
+    to: STAFF.employeeCode
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RECRUITMENTS
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: employeeCode
+  - name: department
+  - name: recruitmentDate
+  - name: TRANSFERS
+  nodes:
+    fn:
+    - departments.departmentname
+    - divisions.divcode
+    - recruitments.recruitmentdate
+    - transfers.date
+    - qualifications.qualification
+    - transfers.reason
+    - transfers
+    - divisions.divisionname
+    - departments.departmentcode
+    fp:
+    - staff.qualification
+    - employeecode
+    - staff.currentdepartment
+    - department
+    - e,o,r
+    - transfers
+    - recruitmentdate
+    - recruitments
+    tp:
+    - staff.employeecode
+    - staff.name
+    - staff.surname
+    - staff.gender

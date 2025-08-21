@@ -1,0 +1,1321 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 7
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 1
+  dependencies:
+    extra: 203
+    missing: 24
+    reversed: 0
+  fact:
+    false_fact: 5
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 2
+  miscellaneous:
+    extra_disconnected_components: 5
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTESINTICKETS
+    to: ROUTESINTICKETS.Price
+  - from: ROUTESINTICKETS
+    to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: ROUTESINTICKETS
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTESINTRIPS.Sequence
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    role: DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.RouteCode
+    role: ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: ROUTESINTICKETS
+    to: ROUTES.DistanceKm
+  - from: ROUTESINTICKETS
+    to: ROUTES.Duration
+  - from: ROUTESINTICKETS
+    to: ROUTES.Fare
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.Location
+    to: STATIONS.City
+  - from: STATIONS.City
+    to: STATIONS.Region
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Date
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Status
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINTYPE.TrainTypeCode
+  - from: ROUTESINTICKETS
+    to: TRAINTYPE.Capacity
+  - from: TRAINTYPE.TrainTypeCode
+    to: TRAINTYPE.TrainType
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+metrics:
+- edges:
+    f1: 0.0422
+    fn: 24
+    fp: 203
+    precision: 0.024
+    recall: 0.1724
+    tp: 5
+  nodes:
+    f1: 0.5246
+    fn: 13
+    fp: 16
+    precision: 0.5
+    recall: 0.5517
+    tp: 16
+output:
+- dependencies:
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TICKETS.CustomerCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.CustomerCode
+    to: TICKETS.Fare
+  - from: TICKETS.CustomerCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    to: TICKETS.Status
+  - from: TRAINS.TrainCode
+    to: TRAINS.Capacity
+  - from: TRAINS.TrainTypeCode
+    to: TRAINS.Capacity
+  - from: STATIONS.Name
+    to: STATIONS.Location
+  - from: STATIONS.Name
+    to: STATIONS.City
+  - from: STATIONS.Name
+    to: STATIONS.Region
+  - from: TRAINS.TrainCode
+    to: TRAINS.TrainTypeCode
+  - from: TRAINS.TrainTypeCode
+    to: TRAINS.Capacity
+  - from: ROUTES.DepartureStationCode
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.DepartureStationCode
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.DepartureStationCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.DepartureStationCode
+    to: ROUTES.Duration
+  - from: ROUTES.DepartureStationCode
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    to: ROUTES.Routes
+  - from: ROUTES.ArrivalStationCode
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.ArrivalStationCode
+    to: ROUTES.DistanceKm
+  - from: ROUTES.ArrivalStationCode
+    to: ROUTES.Duration
+  - from: ROUTES.ArrivalStationCode
+    to: ROUTES.Fare
+  - from: ROUTES.ArrivalStationCode
+    to: ROUTES.Routes
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.Date
+  - from: ROUTES.InTripCode
+    to: ROUTES.Status
+  - from: ROUTES.InTripCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.Sequence
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    to: ROUTES.InTripCode
+  fact:
+    name: TRAINS
+  measures:
+  - name: TRAIN_TYPE.capacity
+  - name: STATIONS.location
+  - name: ROUTES.distanceKm
+  - name: ROUTES.fare
+  - name: TICKETS.totalPrice
+  - name: TRIPS.status
+output_preprocessed:
+- dependencies:
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthCity
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.Fare
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.Status
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.Capacity
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAINS.Capacity
+  - from: STATIONS.Name
+    label: fp
+    to: STATIONS.Location
+  - from: STATIONS.Name
+    label: fp
+    to: STATIONS.City
+  - from: STATIONS.Name
+    label: fp
+    to: STATIONS.Region
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.TrainTypeCode
+  - from: TRAINS.TrainTypeCode
+    label: fp
+    to: TRAINS.Capacity
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: ROUTES.DistanceKm
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: ROUTES.Duration
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: ROUTES.Fare
+  - from: ROUTES.DepartureStationCode
+    label: fp
+    to: ROUTES.Routes
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: ROUTES.ArrivalStationCode
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: ROUTES.DistanceKm
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: ROUTES.Duration
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: ROUTES.Fare
+  - from: ROUTES.ArrivalStationCode
+    label: fp
+    to: ROUTES.Routes
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.Date
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.Status
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.RouteCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.Sequence
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  - from: ROUTES.InTripCode
+    label: fp
+    to: ROUTES.InTripCode
+  fact:
+    name: TRAINS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TICKETS.TicketCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTESINTICKETS.Price
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: fn
+      to: TICKETS.PurchaseDate
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: fn
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthCity
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: ROUTESINTRIPS.Sequence
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: fn
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAINTYPE.TrainTypeCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TRAINTYPE.Capacity
+    - from: TRAINTYPE.TrainTypeCode
+      label: fn
+      to: TRAINTYPE.TrainType
+    fact:
+      name: ROUTESINTICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTESINTICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+    - name: TRAINTYPE.Capacity
+  measures:
+  - name: TRAINTYPE.capacity
+  - name: STATIONS.location
+  - name: ROUTES.distanceKm
+  - name: ROUTES.fare
+  - name: TICKETS.totalPrice
+  - name: TRIPS.status
+  nodes:
+    fn:
+    - routesintrips.sequence
+    - traintype.traintypecode
+    - routesintickets
+    - routes.duration
+    - trips.date,trips.traincode
+    - trips.status
+    - routesintrips.date,routesintrips.traincode,routesintrips.routecode
+    - stations.location
+    - trips.date
+    - tickets.ticketcode
+    - stations.stationcode
+    - routesintickets.price
+    - traintype.traintype
+    fp:
+    - routes.intripcode
+    - trains
+    - trips.status
+    - tickets.status
+    - tickets.fare
+    - routes.sequence
+    - stations.location
+    - tickets.customercode
+    - routes.departurestationcode
+    - routes.date
+    - trains.traintypecode
+    - routes.arrivalstationcode
+    - routes.routes
+    - routes.duration
+    - routes.status
+    - trains.capacity
+    tp:
+    - customers.birthdate
+    - routes.fare
+    - stations.city
+    - customers.customercode
+    - stations.region
+    - tickets.totalprice
+    - customers.documentid
+    - stations.name
+    - routes.distancekm
+    - customers.surname
+    - tickets.purchasedate
+    - trains.traincode
+    - customers.name
+    - routes.routecode
+    - customers.birthcity
+    - traintype.capacity

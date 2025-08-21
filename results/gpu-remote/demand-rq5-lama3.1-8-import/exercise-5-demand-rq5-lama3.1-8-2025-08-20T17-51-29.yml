@@ -1,0 +1,221 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 6
+    missing: 5
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.5926
+    fn: 5
+    fp: 6
+    precision: 0.5714
+    recall: 0.6154
+    tp: 8
+  nodes:
+    f1: 0.7333
+    fn: 3
+    fp: 5
+    precision: 0.6875
+    recall: 0.7857
+    tp: 11
+output:
+- ? I noticed that I missed the relationships between the attributes in the hierarchy.
+    Here is the corrected YAML representation of the resulting DFM schema
+  : null
+  dependencies:
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  - from: member
+    to: postalCode
+  - from: member
+    to: city
+  - from: city
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: member
+    to: weight
+  - from: member
+    to: height
+  - from: WOD
+    to: type
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: member
+  - from: null
+  fact:
+    name: PRESENCE
+  measures:
+  - name: quantity
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: tp
+    to: surname
+  - from: member
+    label: tp
+    to: address
+  - from: member
+    label: fp
+    to: postalCode
+  - from: member
+    label: fp
+    to: city
+  - from: city
+    label: fp
+    to: region
+  - from: region
+    label: fp
+    to: state
+  - from: state
+    label: fp
+    to: country
+  - from: member
+    label: tp
+    to: weight
+  - from: member
+    label: tp
+    to: height
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: PRESENCE
+    label: tp
+    to: WOD
+  - from: PRESENCE
+    label: tp
+    to: member
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: tp
+      to: Member
+    - from: PRESENCE
+      label: tp
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: tp
+      to: Surname
+    - from: Member
+      label: tp
+      to: Weight
+    - from: Member
+      label: tp
+      to: Height
+    - from: Member
+      label: tp
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: quantity
+  nodes:
+    fn:
+    - instructor
+    - date
+    - hour
+    fp:
+    - quantity
+    - country
+    - region
+    - o,r,e
+    - state
+    tp:
+    - name
+    - address
+    - height
+    - city
+    - weight
+    - wod
+    - member
+    - wodtype
+    - surname
+    - presence
+    - postalcode
