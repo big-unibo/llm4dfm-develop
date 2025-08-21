@@ -110,17 +110,15 @@ source .venv/bin/activate
 
 #### Requirements
 
-Poetry is used to manage automatic testing; you can skip its installation if you are interested only in the execution of the pipeline.
+Poetry is used to manage all dependencies, packages and tasks to provide easier execution.
 
-- Install dependencies without Poetry
-```bash
-pip install -r requirements.txt
-```
 - Install dependencies with Poetry
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
 poetry install
 ```
+
+In `pyproject.toml` file, under the `[tool.poe.tasks]` section, all the provided tasks can be found.
 
 ### Configuration 
 
