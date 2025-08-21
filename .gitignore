@@ -9,6 +9,7 @@ metastore_db/
 **/automatic_run/*.csv
 tests/*/generated/*
 **/conf.json
+poetry.lock
 
 # These are useless since we use gradle import
 .idea/
