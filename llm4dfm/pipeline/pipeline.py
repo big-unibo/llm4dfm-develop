@@ -81,11 +81,11 @@ if args.debug_print:
 
 model_config['key'] = load_credentials(key_config, model_config['name'], config['use'])
 
+config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'], config['use'], model_config['device'])
+
 # Model loading
 
 model = Model(config['use'], model_config['name'], model_config, model_config['key'], model_config['device'], config['debug_prints'])
-
-config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['use'], config['output']['dir_label'], model_config['device'])
 
 for ex_idx, exercise in enumerate(config['exercise']['name']):
 
