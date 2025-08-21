@@ -13,9 +13,10 @@ RUN apt-get update && apt-get install -y \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
     && apt-get install -y python3.12 python3.12-venv python3.12-dev \
-    && apt install git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt install -Y git \
 
 # Install pip for Python 3.12
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
