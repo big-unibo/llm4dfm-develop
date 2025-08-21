@@ -1,7 +1,6 @@
 [tool.poetry]
 packages = [
     { include = "llm4dfm" },
-    { include = "tests" },
 ]
 name = "llm4dfm"
 version = "0.1.0"
@@ -26,6 +25,7 @@ transformers = "4.55.2"
 google-generativeai = "^0.8.3"
 networkx = "^3.4.1"
 torch = "^2.5.1"
+sentencepiece = "^0.2.1"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.4.0"
@@ -42,8 +42,8 @@ test = "python -m unittest discover -v -s tests -p '*.py'"
 coverage = "coverage run -m unittest discover -v -s tests -p '*.py'"
 coverage-report = "coverage report -m"
 coverage-html = "coverage html"
-mypy = "mypy llm4dfm tests"
-compile = "python -m compileall llm4dfm tests"
+mypy = "mypy llm4dfm"
+compile = "python -m compileall llm4dfm"
 
 [tool.poetry.scripts]
 # llm4dfm = "llm4dfm:main"
