@@ -32,7 +32,7 @@ def format_chat_for_instruct_hf_models(chat, tokenizer):
     else:
         return '\n'.join([ct['content'] for ct in chat])
 
-def load_generate_import_function(name, model, tokenizer, config, debug_print, chat_template=False) -> Callable[[str], str]:
+def load_generate_import_function(name, model, tokenizer, config, debug_print, device, chat_template=False) -> Callable[[str], str]:
     # Default values
     pad_token_id = None
     eos_token_id = None
@@ -69,7 +69,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
                 log(f'Batching chat formatted: {formatted_chat}')
 
             input_ids = tokenizer(formatted_chat, return_tensors="pt").input_ids
-            input_ids = input_ids.to("cuda" if torch.cuda.is_available() else "cpu")
+            input_ids = input_ids.to("cuda" if torch.cuda.is_available() and device == 'gpu' else "cpu")
 
             # Generate
             output_ids = model_to_use.generate(input_ids, **generation_kwargs)
@@ -79,21 +79,10 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, c
             generated_only = output_ids[0][input_ids.shape[-1]:]  # cut the prompt part
             output_text = tokenizer.decode(generated_only, skip_special_tokens=True)
 
-            # output_text = model_to_use(
-            #     formatted_chat,
-            #     max_new_tokens=config['max_new_tokens'],
-            #     eos_token_id=eos_token_id,
-            #     pad_token_id=pad_token_id,
-            #     do_sample=config['do_sample'],
-            #     temperature=config['temperature'],
-            #     top_p=config['top_p'],
-            #     return_full_text=False,
-            # )
-            #
-            # if debug_print:
-            #     log(f'Decoded_batch: {output_text}')
+            if debug_print:
+                log(f'Decoded_batch: {output_text}')
 
-            return output_text#[0]['generated_text'].replace('<|assistant|>', '')
+            return output_text
 
         return generate_mistral
 
@@ -315,7 +304,7 @@ class Model:
         self.config['debug_prints'] = debug_print
         if use == 'import':
             self.model, self.tokenizer = load_model_and_tokenizer(name, key, device)
-            self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print, chat_template=False)
+            self.generate = load_generate_import_function(name, self.model, self.tokenizer, config, debug_print, device, chat_template=False)
         elif use == 'api':
             self.model = load_model_api(name, key)
             if 'gemini' in self.config['name']:
