@@ -1,0 +1,306 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 2
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 30
+    missing: 9
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.0488
+    fn: 9
+    fp: 30
+    precision: 0.0323
+    recall: 0.1
+    tp: 1
+  nodes:
+    f1: 0.3333
+    fn: 4
+    fp: 24
+    precision: 0.2258
+    recall: 0.6364
+    tp: 7
+output:
+- dependencies:
+  - from: computer
+    role: installation
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: state
+  - from: computer
+    to: country
+  - from: computer
+    to: software
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: installationDate
+  - from: computer
+    to: installationRole
+  - from: computer
+    to: user
+  - from: computer
+    to: userAddress
+  - from: computer
+    to: userCity
+  - from: computer
+    to: userRegion
+  - from: computer
+    to: userState
+  - from: computer
+    to: userCountry
+  - from: computer
+    to: userSoftware
+  - from: computer
+    to: userType
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: softwareInstallationDate
+  - from: computer
+    to: softwareInstallationRole
+  - from: computer
+    to: softwareUser
+  - from: computer
+    to: softwareUserAddress
+  - from: computer
+    to: softwareUserCity
+  - from: computer
+    to: softwareUserRegion
+  - from: computer
+    to: softwareUserState
+  - from: computer
+    to: softwareUserCountry
+  - from: null
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: installed
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: fp
+    role: installation
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: state
+  - from: computer
+    label: fp
+    to: country
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: installationDate
+  - from: computer
+    label: fp
+    to: installationRole
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userAddress
+  - from: computer
+    label: fp
+    to: userCity
+  - from: computer
+    label: fp
+    to: userRegion
+  - from: computer
+    label: fp
+    to: userState
+  - from: computer
+    label: fp
+    to: userCountry
+  - from: computer
+    label: fp
+    to: userSoftware
+  - from: computer
+    label: fp
+    to: userType
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: softwareInstallationDate
+  - from: computer
+    label: fp
+    to: softwareInstallationRole
+  - from: computer
+    label: fp
+    to: softwareUser
+  - from: computer
+    label: fp
+    to: softwareUserAddress
+  - from: computer
+    label: fp
+    to: softwareUserCity
+  - from: computer
+    label: fp
+    to: softwareUserRegion
+  - from: computer
+    label: fp
+    to: softwareUserState
+  - from: computer
+    label: fp
+    to: softwareUserCountry
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: fn
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: installed
+  nodes:
+    fn:
+    - installation
+    - software
+    - description
+    - supplier
+    fp:
+    - installationrole
+    - softwareusercity
+    - user
+    - software
+    - r,e,o
+    - usercity
+    - region
+    - softwareuser
+    - installationdate
+    - country
+    - usertype
+    - userstate
+    - userregion
+    - state
+    - usercountry
+    - softwareuserstate
+    - installed
+    - softwareusercountry
+    - softwareinstallationrole
+    - usersoftware
+    - softwareuseraddress
+    - softwareuserregion
+    - softwareinstallationdate
+    - useraddress
+    tp:
+    - brand
+    - computer
+    - city
+    - model
+    - date
+    - address
+    - type

@@ -1,0 +1,472 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 5
+    shared_missing: 0
+    shared_with_fact_root_extra: 5
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 44
+    missing: 7
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.1905
+    fn: 7
+    fp: 44
+    precision: 0.12
+    recall: 0.4615
+    tp: 6
+  nodes:
+    f1: 0.8667
+    fn: 1
+    fp: 3
+    precision: 0.8125
+    recall: 0.9286
+    tp: 13
+output:
+- dependencies:
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  - from: member
+    to: postalCode
+  - from: member
+    to: city
+  - from: member
+    to: weight
+  - from: member
+    to: height
+  - from: WOD
+    to: type
+  - from: WOD
+    role: day
+    to: date
+  - from: WOD
+    to: quantity
+  - from: WOD
+    to: cost
+  - from: WOD
+    to: instructor
+  - from: WOD
+    to: hour
+  - from: WOD
+    role: presence
+    to: member
+  - from: CROSSFIT_TRAINING
+    to: quantity
+  - from: CROSSFIT_TRAINING
+    to: cost
+  - from: CROSSFIT_TRAINING
+    role: training
+    to: date
+  - from: CROSSFIT_TRAINING
+    role: attendance
+    to: member
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - from: CROSSFIT_TRAINING
+    role: repetition
+    to: WOD
+  - null
+  fact:
+    name: CROSSFIT_TRAINING
+  measures:
+  - name: quantity
+  - name: cost
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: tp
+    to: surname
+  - from: member
+    label: tp
+    to: address
+  - from: member
+    label: fp
+    to: postalCode
+  - from: member
+    label: fp
+    to: city
+  - from: member
+    label: tp
+    to: weight
+  - from: member
+    label: tp
+    to: height
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: WOD
+    label: fp
+    role: day
+    to: date
+  - from: WOD
+    label: fp
+    to: quantity
+  - from: WOD
+    label: fp
+    to: cost
+  - from: WOD
+    label: fp
+    to: instructor
+  - from: WOD
+    label: fp
+    to: hour
+  - from: WOD
+    label: fp
+    role: presence
+    to: member
+  - from: CROSSFITTRAINING
+    label: fp
+    to: quantity
+  - from: CROSSFITTRAINING
+    label: fp
+    to: cost
+  - from: CROSSFITTRAINING
+    label: fp
+    role: training
+    to: date
+  - from: CROSSFITTRAINING
+    label: fp
+    role: attendance
+    to: member
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  - from: CROSSFITTRAINING
+    label: fp
+    role: repetition
+    to: WOD
+  fact:
+    name: CROSSFITTRAINING
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: tp
+      to: Surname
+    - from: Member
+      label: tp
+      to: Weight
+    - from: Member
+      label: tp
+      to: Height
+    - from: Member
+      label: tp
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: quantity
+  - name: cost
+  nodes:
+    fn:
+    - presence
+    fp:
+    - cost
+    - quantity
+    - crossfittraining
+    tp:
+    - wodtype
+    - surname
+    - instructor
+    - name
+    - wod
+    - date
+    - postalcode
+    - city
+    - height
+    - member
+    - hour
+    - address
+    - weight

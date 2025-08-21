@@ -1,0 +1,720 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: day
+    to: WOD
+  - from: day
+    to: WODType
+  - from: day
+    to: hour
+  - from: day
+    to: instructor
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  - from: member
+    to: postalCode
+  - from: member
+    to: city
+  - from: member
+    to: weight
+  - from: member
+    to: height
+  - from: WOD
+    to: members
+  - from: WOD
+    to: WODType
+  - from: WOD
+    role: WOD
+    to: day
+  - from: WOD
+    role: WOD
+    to: hour
+  - from: WOD
+    role: WOD
+    to: instructor
+  - from: WOD
+    to: day
+  - from: WODType
+    to: type
+  - from: WODType
+    to: day
+  - from: day
+    to: members
+  - from: day
+    to: hour
+  - from: day
+    to: instructor
+  - from: day
+    to: WOD
+  - from: day
+    to: WODType
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: WOD
+    to: instructor
+  - from: day
+    to: WODType
+  - from: day
+    to: WOD
+  - from: day
+    role: WOD
+    to: WOD
+  - from: day
+    role: WOD
+    to: hour
+  - from: day
+    role: null
+    to: instructor
+  fact:
+    name: CROSSFIT
+  measures:
+  - name: members
+  - name: weight
+  - name: height
+output_preprocessed: []

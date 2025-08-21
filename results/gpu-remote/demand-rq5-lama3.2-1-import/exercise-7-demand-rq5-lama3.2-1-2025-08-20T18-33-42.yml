@@ -1,0 +1,1931 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 6
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 341
+    missing: 15
+    reversed: 3
+  fact:
+    false_fact: 2
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0.0055
+    fn: 18
+    fp: 344
+    precision: 0.0029
+    recall: 0.0526
+    tp: 1
+  nodes:
+    f1: 0.7429
+    fn: 4
+    fp: 5
+    precision: 0.7222
+    recall: 0.7647
+    tp: 13
+output:
+- dependencies:
+  - from: plate
+    to: plate
+  - from: pickup
+    to: dropoff
+  - from: pickup
+    to: dropoff
+  - from: registrationDate
+    to: fuelType
+  - from: registrationDate
+    to: model
+  - from: registrationDate
+    to: category
+  - from: model
+    to: brand
+  - from: fuelType
+    to: insuranceCost
+  - from: fuelType
+    to: category
+  - from: model
+    to: brand
+  - from: dropoff
+    to: city
+  - from: dropoff
+    to: state
+  - from: dropoff
+    to: country
+  - from: dropoff
+    to: area
+  - from: pickup
+    to: city
+  - from: pickup
+    to: state
+  - from: pickup
+    to: country
+  - from: pickup
+    to: area
+  - from: dropoff
+    to: city
+  - from: dropoff
+    to: state
+  - from: dropoff
+    to: country
+  - from: dropoff
+    to: area
+  - from: pickup
+    to: plate
+  - from: pickup
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: fuelType
+    to: plate
+  - from: category
+    to: plate
+  - from: category
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: plate
+  - from: brand
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: dropoff
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: registrationDate
+    to: plate
+  - from: model
+    to: plate
+  - from: model
+    to: null
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: carPlate
+    label: fp
+    to: carPlate
+  - from: pickup
+    label: fp
+    to: dropoff
+  - from: pickup
+    label: fp
+    to: dropoff
+  - from: registrationDate
+    label: fp
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    to: model
+  - from: registrationDate
+    label: fp
+    to: category
+  - from: model
+    label: tp
+    to: brand
+  - from: fuelType
+    label: fp
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    to: category
+  - from: model
+    label: fp
+    to: brand
+  - from: dropoff
+    label: fp
+    to: city
+  - from: dropoff
+    label: fp
+    to: state
+  - from: dropoff
+    label: fp
+    to: country
+  - from: dropoff
+    label: fp
+    to: area
+  - from: pickup
+    label: fp
+    to: city
+  - from: pickup
+    label: fp
+    to: state
+  - from: pickup
+    label: fp
+    to: country
+  - from: pickup
+    label: fp
+    to: area
+  - from: dropoff
+    label: fp
+    to: city
+  - from: dropoff
+    label: fp
+    to: state
+  - from: dropoff
+    label: fp
+    to: country
+  - from: dropoff
+    label: fp
+    to: area
+  - from: pickup
+    label: fp
+    to: carPlate
+  - from: pickup
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: fuelType
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: category
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: brand
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: dropoff
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: registrationDate
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: carPlate
+  - from: model
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: tp
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - date
+    - milestravelled
+    - office
+    - risk
+    fp:
+    - pickup
+    - r,e,o
+    - miles
+    - registrationdate
+    - dropoff
+    tp:
+    - brand
+    - amount
+    - city
+    - country
+    - rental
+    - model
+    - category
+    - discount
+    - state
+    - fueltype
+    - carplate
+    - insurancecost
+    - area

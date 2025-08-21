@@ -1,0 +1,176 @@
+config:
+  label: falcon3-10
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: TRANSFERS\nmeasures:\n  - name: TRANSFERS.reason\ndependencies:\n\
+  \  - from: QUALIFICATIONS.qualification\n    to: STAFF.qualification\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: QUALIFICATIONS.qualification\n  - from: STAFF.employeeCode\n    to: DEPARTMENTS.departmentCode\n\
+  \  - from: DIVISIONS.divCode\n    to: DIVISIONS.divisionName\n  - from: DIVISIONS.divCode\n\
+  \    to: DIVISIONS.managerCode\n  - from: DEPARTMENTS.departmentCode\n    to: DEPARTMENTS.departmentName\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: DIVISIONS.divCode\n  - from: TRANSFERS\n\
+  \    to: RECRUITMENTS.employeeCode\n  - from: TRANSFERS\n    to: DEPARTMENTS.fromDepartment\n\
+  \  - from: TRANSFERS\n    to: DEPARTMENTS.toDepartment\n  - from: TRANSFERS\n  \
+  \  to: TRANSFERS.date<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n<|assistant>\n\
+  <|assistant>\n<|assistant>\n<|assistant>\n<|"
+output_preprocessed: []
