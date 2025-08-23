@@ -1,0 +1,2005 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 1
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 1
+  dependencies:
+    extra: 359
+    missing: 18
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0.0053
+    fn: 18
+    fp: 359
+    precision: 0.0028
+    recall: 0.0526
+    tp: 1
+  nodes:
+    f1: 0.7429
+    fn: 4
+    fp: 5
+    precision: 0.7222
+    recall: 0.7647
+    tp: 13
+output:
+- dependencies:
+  - from: rental
+    to: plate
+  - from: rental
+    to: pickupDate
+  - from: rental
+    to: dropoffDate
+  - from: rental
+    to: office
+  - from: rental
+    to: registrationDate
+  - from: rental
+    to: fuelType
+  - from: rental
+    to: category
+  - from: rental
+    to: model
+  - from: rental
+    to: office
+  - from: rental
+    to: city
+  - from: rental
+    to: state
+  - from: rental
+    to: country
+  - from: rental
+    to: area
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+    to: office
+  - from: rental
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: rental
+    label: tp
+    to: carPlate
+  - from: rental
+    label: fp
+    to: pickupDate
+  - from: rental
+    label: fp
+    to: dropoffDate
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: registrationDate
+  - from: rental
+    label: fp
+    to: fuelType
+  - from: rental
+    label: fp
+    to: category
+  - from: rental
+    label: fp
+    to: model
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: city
+  - from: rental
+    label: fp
+    to: state
+  - from: rental
+    label: fp
+    to: country
+  - from: rental
+    label: fp
+    to: area
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: tp
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - milestravelled
+    - brand
+    - risk
+    - date
+    fp:
+    - o,r,e
+    - dropoffdate
+    - registrationdate
+    - miles
+    - pickupdate
+    tp:
+    - discount
+    - state
+    - insurancecost
+    - country
+    - city
+    - model
+    - office
+    - area
+    - carplate
+    - rental
+    - category
+    - fueltype
+    - amount

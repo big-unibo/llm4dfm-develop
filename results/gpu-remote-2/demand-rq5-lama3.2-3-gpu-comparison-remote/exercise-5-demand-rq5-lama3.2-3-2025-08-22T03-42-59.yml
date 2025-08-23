@@ -1,0 +1,192 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\n\
+  dependencies:\n  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: toassistant\n\nfact:\n  name:\
+  \ CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\ndependencies:\n\
+  \  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: toassistant\n\nfact:\n  name:\
+  \ CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\ndependencies:\n\
+  \  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: toassistant\n\nfact:\n  name:\
+  \ CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\ndependencies:\n\
+  \  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: to\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatmentassistant\n\nfact:\n  name: CROSSFIT_TRAINING\n\
+  measures:\n  - name: quantity\n  - name: cost\ndependencies:\n  - from: member\n\
+  \    to: memberName\n  - from: member\n    to: memberSurname\n  - from: member\n\
+  \    to: address\n  - from: member\n    to: postalCode\n  - from: member\n    to:\
+  \ city\n  - from: member\n    to: weight\n  - from: member\n    to: height\n  -\
+  \ from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role: day\n  - from:\
+  \ WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n    to: instructor\n\
+  \  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n    role: presence\n\
+  \  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n  - from: CROSSFIT_TRAINING\n\
+  \    to: WOD\n    role: to\n  - from: CROSSFIT_TRAINING\n    to: date\n    role:\
+  \ treatment\n  - from: CROSSFIT_TRAINING\n    to: quantity\n  - from: CROSSFIT_TRAINING\n\
+  \    to: cost\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatmentassistant\n\
+  \nfact:\n  name: CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\n\
+  dependencies:\n  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: to\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: quantity\n\
+  \  - from: CROSSFIT_TRAINING\n    to: cost\n  - from: CROSSFIT_TRAINING\n    to:\
+  \ date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role:\
+  \ treatmentassistant\n\nfact:\n  name: CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n\
+  \  - name: cost\ndependencies:\n  - from: member\n    to: memberName\n  - from:\
+  \ member\n    to: memberSurname\n  - from: member\n    to: address\n  - from: member\n\
+  \    to: postalCode\n  - from: member\n    to: city\n  - from: member\n    to: weight\n\
+  \  - from: member\n    to: height\n  - from: WOD\n    to: type\n  - from: WOD\n\
+  \    to: date\n    role: day\n  - from: WOD\n    to: quantity\n  - from: WOD\n \
+  \   to: cost\n  - from: WOD\n    to: instructor\n  - from: WOD\n    to: hour\n \
+  \ - from: WOD\n    to: member\n    role: presence\n  - from: CROSSFIT_TRAINING\n\
+  \    to: member\n    role: from\n  - from: CROSSFIT_TRAINING\n    to: WOD\n    role:\
+  \ to\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from:\
+  \ CROSSFIT_TRAINING\n    to: quantity\n  - from: CROSSFIT_TRAINING\n    to: cost\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatmentassistant\n\nfact:\n  name: CROSSFIT_TRAINING\nmeasures:\n \
+  \ - name: quantity\n  - name: cost\ndependencies:\n  - from: member\n    to: memberName\n\
+  \  - from: member\n    to: memberSurname\n  - from: member\n    to: address\n  -\
+  \ from: member\n    to: postalCode\n  - from: member\n    to: city\n  - from: member\n\
+  \    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to: type\n\
+  \  - from: WOD\n    to: date\n    role: day\n  - from: WOD\n    to: quantity\n \
+  \ - from: WOD\n    to: cost\n  - from: WOD\n    to: instructor\n  - from: WOD\n\
+  \    to: hour\n  - from: WOD\n    to: member\n    role: presence\n  - from: CROSSFIT_TRAINING\n\
+  \    to: member\n    role: from\n  - from: CROSSFIT_TRAINING\n    to: WOD\n    role:\
+  \ to\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from:\
+  \ CROSSFIT_TRAINING\n    to: quantity\n  - from: CROSSFIT_TRAINING\n    to: cost\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatmentassistant\n\
+  \nfact:\n  name: CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\n\
+  dependencies:\n  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: to\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: quantity\n\
+  \  - from: CROSSFIT_TRAINING\n    to: cost\n  - from: CROSSFIT_TRAINING\n    to:\
+  \ date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role:\
+  \ treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  -\
+  \ from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatmentassistant\n\nfact:\n  name: CROSSFIT_TRAINING\nmeasures:\n \
+  \ - name: quantity\n  - name: cost\ndependencies:\n  - from: member\n    to: memberName\n\
+  \  - from: member\n    to: memberSurname\n  - from: member\n    to: address\n  -\
+  \ from: member\n    to: postalCode\n  - from: member\n    to: city\n  - from: member\n\
+  \    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to: type\n\
+  \  - from: WOD\n    to: date\n    role: day\n  - from: WOD\n    to: quantity\n \
+  \ - from: WOD\n    to: cost\n  - from: WOD\n    to: instructor\n  - from: WOD\n\
+  \    to: hour\n  - from: WOD\n    to: member\n    role: presence\n  - from: CROSSFIT_TRAINING\n\
+  \    to: member\n    role: from\n  - from: CROSSFIT_TRAINING\n    to: WOD\n    role:\
+  \ to\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from:\
+  \ CROSSFIT_TRAINING\n    to: quantity\n  - from: CROSSFIT_TRAINING\n    to: cost\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatmentassistant\n\
+  \nfact:\n  name: CROSSFIT_TRAINING\nmeasures:\n  - name: quantity\n  - name: cost\n\
+  dependencies:\n  - from: member\n    to: memberName\n  - from: member\n    to: memberSurname\n\
+  \  - from: member\n    to: address\n  - from: member\n    to: postalCode\n  - from:\
+  \ member\n    to: city\n  - from: member\n    to: weight\n  - from: member\n   \
+  \ to: height\n  - from: WOD\n    to: type\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: quantity\n  - from: WOD\n    to: cost\n  - from: WOD\n\
+  \    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n    to: member\n\
+  \    role: presence\n  - from: CROSSFIT_TRAINING\n    to: member\n    role: from\n\
+  \  - from: CROSSFIT_TRAINING\n    to: WOD\n    role: to\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: quantity\n\
+  \  - from: CROSSFIT_TRAINING\n    to: cost\n  - from: CROSSFIT_TRAINING\n    to:\
+  \ date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role:\
+  \ treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  -\
+  \ from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n\
+  \  - from: CROSSFIT_TRAINING\n    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n\
+  \    to: date\n    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n\
+  \    role: treatment\n  - from: CROSSFIT_TRAINING\n    to: date\n    role"
+output_preprocessed: []

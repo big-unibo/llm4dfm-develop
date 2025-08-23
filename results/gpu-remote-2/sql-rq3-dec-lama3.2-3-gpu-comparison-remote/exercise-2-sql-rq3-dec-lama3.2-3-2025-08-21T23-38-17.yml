@@ -1,0 +1,205 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TYPES.typeId
+    to: TYPES.typeName
+  - from: ARTICLES.artId
+    to: ARTICLES.artName
+  - from: ARTICLES.artId
+    role: type
+    to: TYPES.typeId
+  - from: REGIONS.regId
+    to: REGIONS.regionName
+  - from: REGIONS.regId
+    to: REGIONS.state
+  - from: REGIONS.state
+    to: REGIONS.country
+  - from: STORES.storeId
+    to: STORES.storeName
+  - from: STORES.storeId
+    to: STORES.storeAddress
+  - from: STORES.storeId
+    role: region
+    to: REGIONS.regId
+  - from: PURCHASE
+    to: PURCHASE.quantity
+  - from: PURCHASE
+    to: PURCHASE.revenue
+  - from: PURCHASE
+    to: ARTICLES.unitPrice
+  - from: PURCHASE
+    to: ARTICLES.artId
+  - from: PURCHASE
+    to: STORES.storeId
+  - from: PURCHASE
+    to: PURCHASE.date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: PURCHASE.quantity
+  - name: PURCHASE.revenue
+  - name: ARTICLES.unitPrice
+metrics:
+- {}
+output:
+- "fact:\n  name: PURCHASE\nmeasures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\n\
+  dependencies:\n  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenueassistant\n\nfact:\n  name: PURCHASE\n\
+  measures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n\
+  \  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenueassistant\n\nfact:\n  name: PURCHASE\n\
+  measures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n\
+  \  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenueassistant\n\nfact:\n  name: PURCHASE\n\
+  measures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n\
+  \  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenueassistant\n\nfact:\n  name: PURCHASE\n\
+  measures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n\
+  \  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.dateassistant\n\
+  \nfact:\n  name: PURCHASE\nmeasures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\n\
+  dependencies:\n  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artIdassistant\n\nfact:\n  name: PURCHASE\nmeasures:\n\
+  \  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n  - from:\
+  \ PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n    to:\
+  \ STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n  -\
+  \ from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n  \
+  \  to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n \
+  \ - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.storeId\n    to: PURCHASE.artIdassistant\n\
+  \nfact:\n  name: PURCHASE\nmeasures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\n\
+  dependencies:\n  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n    to: PURCHASE.artIdassistant\n\
+  \nfact:\n  name: PURCHASE\nmeasures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\n\
+  dependencies:\n  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n    to: PURCHASE.artId\n\
+  \  - from: PURCHASE.artId\n    to: PURCHASE.artIdassistant\n\nfact:\n  name: PURCHASE\n\
+  measures:\n  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n\
+  \  - from: PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n    to: PURCHASE.artId\n\
+  \  - from: PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n  \
+  \  to: PURCHASE.artIdassistant\n\nfact:\n  name: PURCHASE\nmeasures:\n  - name:\
+  \ PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n  - from: PURCHASE.storeId\n\
+  \    to: STORES.storeId\n  - from: PURCHASE.storeId\n    to: STORES.storeName\n\
+  \  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.regId\n  - from: PURCHASE.storeId\n    to: REGIONS.regionName\n\
+  \  - from: PURCHASE.storeId\n    to: REGIONS.state\n  - from: PURCHASE.storeId\n\
+  \    to: REGIONS.country\n  - from: PURCHASE.artId\n    to: ARTICLES.artId\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.artName\n  - from: PURCHASE.artId\n   \
+  \ to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n    to: ARTICLES.type\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeId\n  - from: PURCHASE.artId\n    to: TYPES.typeName\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.quantity\n  - from: PURCHASE.date\n \
+  \   to: PURCHASE.revenue\n  - from: PURCHASE.artId\n    to: PURCHASE.storeId\n \
+  \ - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from: PURCHASE.artId\n    to:\
+  \ PURCHASE.artId\n  - from: PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n\
+  \    to: PURCHASE.artId\n  - from: PURCHASE.artId\n    to: PURCHASE.artId\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artIdassistant\n\nfact:\n  name: PURCHASE\nmeasures:\n\
+  \  - name: PURCHASE.revenue\n  - name: PURCHASE.quantity\ndependencies:\n  - from:\
+  \ PURCHASE.storeId\n    to: STORES.storeId\n  - from: PURCHASE.storeId\n    to:\
+  \ STORES.storeName\n  - from: PURCHASE.storeId\n    to: STORES.storeAddress\n  -\
+  \ from: PURCHASE.storeId\n    to: REGIONS.regId\n  - from: PURCHASE.storeId\n  \
+  \  to: REGIONS.regionName\n  - from: PURCHASE.storeId\n    to: REGIONS.state\n \
+  \ - from: PURCHASE.storeId\n    to: REGIONS.country\n  - from: PURCHASE.artId\n\
+  \    to: ARTICLES.artId\n  - from: PURCHASE.artId\n    to: ARTICLES.artName\n  -\
+  \ from: PURCHASE.artId\n    to: ARTICLES.unitPrice\n  - from: PURCHASE.artId\n \
+  \   to: ARTICLES.type\n  - from: PURCHASE.artId\n    to: TYPES.typeId\n  - from:\
+  \ PURCHASE.artId\n    to: TYPES.typeName\n  - from: PURCHASE.date\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE.date\n    to: PURCHASE.revenue\n  - from: PURCHASE.artId\n \
+  \   to: PURCHASE.storeId\n  - from: PURCHASE.artId\n    to: PURCHASE.date\n  - from:\
+  \ PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n    to: PURCHASE.artId\n\
+  \  - from: PURCHASE.artId\n    to: PURCHASE.artId\n  - from: PURCHASE.artId\n  \
+  \  to: PURCHASE.artId\n  - from: PURCHASE.artId\n    to"
+output_preprocessed: []

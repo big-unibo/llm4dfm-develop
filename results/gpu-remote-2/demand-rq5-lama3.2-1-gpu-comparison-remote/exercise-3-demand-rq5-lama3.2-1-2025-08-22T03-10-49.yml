@@ -1,0 +1,1741 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 8
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 296
+    missing: 19
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- edges:
+    f1: 0.0367
+    fn: 19
+    fp: 296
+    precision: 0.0199
+    recall: 0.24
+    tp: 6
+  nodes:
+    f1: 0.6047
+    fn: 11
+    fp: 6
+    precision: 0.6842
+    recall: 0.5417
+    tp: 13
+output:
+- dependencies:
+  - from: creditCard
+    role: purchase
+    to: store
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    to: holderName
+  - from: creditCard
+    to: holderAge
+  - from: creditCard
+    to: holderJob
+  - from: creditCard
+    to: holderIncomeRange
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - from: creditCard
+    to: expirationDate
+  - from: creditCard
+    to: cardName
+  - from: creditCard
+    to: cardColor
+  - from: creditCard
+    to: cardCircuit
+  - from: creditCard
+    to: creditLimit
+  - null
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+output_preprocessed:
+- dependencies:
+  - from: creditCard
+    label: fp
+    role: purchase
+    to: store
+  - from: store
+    label: tp
+    to: storeAddress
+  - from: store
+    label: tp
+    to: storeType
+  - from: store
+    label: tp
+    to: country
+  - from: creditCard
+    label: tp
+    to: creditCardType
+  - from: creditCard
+    label: tp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: tp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: holder
+  - from: creditCard
+    label: fp
+    to: firstName
+  - from: creditCard
+    label: fp
+    to: holderAge
+  - from: creditCard
+    label: fp
+    to: holderJob
+  - from: creditCard
+    label: fp
+    to: holderIncomeRange
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  - from: creditCard
+    label: fp
+    to: expirationDate
+  - from: creditCard
+    label: fp
+    to: creditCardName
+  - from: creditCard
+    label: fp
+    to: cardColor
+  - from: creditCard
+    label: fp
+    to: cardCircuit
+  - from: creditCard
+    label: fp
+    to: creditLimit
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASE
+      label: fn
+      to: store
+    - from: PURCHASE
+      label: fn
+      to: creditCard
+    - from: PURCHASE
+      label: fn
+      to: date
+    - from: PURCHASE
+      label: fn
+      to: amount
+    - from: PURCHASE
+      label: fn
+      to: exchange
+    - from: store
+      label: fn
+      to: storeName
+    - from: store
+      label: tp
+      to: storeAddress
+    - from: store
+      label: tp
+      to: storeType
+    - from: store
+      label: tp
+      to: country
+    - from: country
+      label: fn
+      to: area
+    - from: holder
+      label: fn
+      to: firstName
+    - from: holder
+      label: fn
+      to: lastName
+    - from: holder
+      label: fn
+      to: age
+    - from: holder
+      label: fn
+      to: job
+    - from: holder
+      label: fn
+      to: incomeRange
+    - from: creditCard
+      label: tp
+      to: creditCardType
+    - from: creditCard
+      label: tp
+      to: holder
+    - from: creditCard
+      label: fn
+      role: expiration
+      to: date
+    - from: creditCard
+      label: tp
+      to: creditLimit
+    - from: creditCardType
+      label: fn
+      to: issuingBank
+    - from: creditCardType
+      label: fn
+      to: circuit
+    - from: issuingBank
+      label: fn
+      to: issuingBankAddress
+    - from: issuingBank
+      label: fn
+      to: country
+    - from: creditCardType
+      label: fn
+      to: color
+    - from: creditCardType
+      label: fn
+      to: creditCardName
+    fact:
+      name: PURCHASE
+    measures:
+    - name: amount
+    - name: exchange
+  measures:
+  - name: amount
+  - name: exchange
+  nodes:
+    fn:
+    - lastname
+    - color
+    - job
+    - age
+    - circuit
+    - issuingbank
+    - incomerange
+    - date
+    - issuingbankaddress
+    - area
+    - storename
+    fp:
+    - expirationdate
+    - holderjob
+    - holderage
+    - cardcolor
+    - holderincomerange
+    - cardcircuit
+    tp:
+    - purchase
+    - country
+    - store
+    - storeaddress
+    - creditcard
+    - storetype
+    - exchange
+    - creditlimit
+    - firstname
+    - holder
+    - creditcardname
+    - creditcardtype
+    - amount

@@ -1,0 +1,437 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 9
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 41
+    missing: 21
+    reversed: 0
+  fact:
+    false_fact: 12
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 5
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVALS
+    to: GRANDPRIXS.NumberOfLaps
+  - from: ARRIVALS
+    to: RACINGCIRCUITS.Length
+  - from: ARRIVALS
+    to: ARRIVALS.Time
+  - from: ARRIVALS
+    to: ARRIVALS.Score
+  - from: ARRIVALS
+    to: ARRIVALS.Position
+  - from: ARRIVALS
+    to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+  - from: ARRIVALS
+    to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: GRANDPRIXS.Date
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: RACINGCIRCUITS.CircuitName
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.City
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.Description
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVERS.Name,DRIVERS.Surname
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: CARS.Number
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.Year
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.FromDate
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.ToDate
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Name
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Surname
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.BirthDate
+  - from: CARS.Number
+    to: RACINGSTABLES.StableName
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.MainAddress
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.Manager
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: ARRIVALS.Position
+  - name: ARRIVALS.Time
+  - name: ARRIVALS.Score
+  - name: GRANDPRIXS.NumberOfLaps
+  - name: RACINGCIRCUITS.Length
+metrics:
+- edges:
+    f1: 0.0312
+    fn: 21
+    fp: 41
+    precision: 0.0238
+    recall: 0.0455
+    tp: 1
+  nodes:
+    f1: 0.2449
+    fn: 17
+    fp: 20
+    precision: 0.2308
+    recall: 0.2609
+    tp: 6
+output:
+- dependencies:
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: GRAND_PRIXS.Date
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: GRAND_PRIXS.CircuitName
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Date
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.CircuitName
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Name
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Surname
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Number
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Year
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Position
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Time
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Score
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Name
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Surname
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Number
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Year
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Position
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Time
+  - from: GRAND_PRIXS.Date, GRAND_PRIXS.CircuitName
+    to: ARRIVALS.Score
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Name
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Surname
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Number
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Year
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Position
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Time
+  - from: ARRIVALS.Date, ARRIVALS.CircuitName
+    to: ARRIVALS.Score
+  - from: CARS.Number
+    to: ARRIVALS.Number
+  - from: CARS.Number
+    to: ARRIVALS.Year
+  - from: CARS.Number
+    to: ARRIVALS.Position
+  - from: CARS.Number
+    to: ARRIVALS.Time
+  - from: CARS.Number
+    to: ARRIVALS.Score
+  - from: DRIVES.Name
+    to: ARRIVALS.Name
+  - from: DRIVES.Surname
+    to: ARRIVALS.Surname
+  - from: DRIVES.Number
+    to: ARRIVALS.Number
+  - from: DRIVES.Year
+    to: ARRIVALS.Year
+  - from: DRIVES.Position
+    to: ARRIVALS.Position
+  - from: DRIVES.Time
+    to: ARRIVALS.Time
+  - from: DRIVES.Score
+    to: ARRIVALS.Score
+  - from: RACING_CIRCUITS.CircuitName
+    to: GRAND_PRIXS.CircuitName
+  - from: RACING_CIRCUITS.CircuitName
+    to: ARRIVALS.CircuitName
+  - from: RACING_CIRCUITS.CircuitName
+    to: ARRIVALS.Name
+  - from: RACING_CIRCUITS.CircuitName
+    to: ARRIVALS.Surname
+  - from: R
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: Score
+output_preprocessed:
+- dependencies:
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: tp
+    to: GRANDPRIXS.Date
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: GRANDPRIXS.CircuitName
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Date
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.CircuitName
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Name
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Surname
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Number
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Year
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Position
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Time
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Score
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Name
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Surname
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Number
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Year
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Position
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Time
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    label: fp
+    to: ARRIVALS.Score
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Name
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Surname
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Number
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Year
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Position
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Time
+  - from: ARRIVALS.Date,ARRIVALS.CircuitName
+    label: fp
+    to: ARRIVALS.Score
+  - from: CARS.Number
+    label: fp
+    to: ARRIVALS.Number
+  - from: CARS.Number
+    label: fp
+    to: ARRIVALS.Year
+  - from: CARS.Number
+    label: fp
+    to: ARRIVALS.Position
+  - from: CARS.Number
+    label: fp
+    to: ARRIVALS.Time
+  - from: CARS.Number
+    label: fp
+    to: ARRIVALS.Score
+  - from: DRIVES.Name
+    label: fp
+    to: ARRIVALS.Name
+  - from: DRIVES.Surname
+    label: fp
+    to: ARRIVALS.Surname
+  - from: DRIVES.Number
+    label: fp
+    to: ARRIVALS.Number
+  - from: DRIVES.Year
+    label: fp
+    to: ARRIVALS.Year
+  - from: DRIVES.Position
+    label: fp
+    to: ARRIVALS.Position
+  - from: DRIVES.Time
+    label: fp
+    to: ARRIVALS.Time
+  - from: DRIVES.Score
+    label: fp
+    to: ARRIVALS.Score
+  - from: RACINGCIRCUITS.CircuitName
+    label: fp
+    to: GRANDPRIXS.CircuitName
+  - from: RACINGCIRCUITS.CircuitName
+    label: fp
+    to: ARRIVALS.CircuitName
+  - from: RACINGCIRCUITS.CircuitName
+    label: fp
+    to: ARRIVALS.Name
+  - from: RACINGCIRCUITS.CircuitName
+    label: fp
+    to: ARRIVALS.Surname
+  - from: R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: ARRIVALS
+  ground_truth_labels:
+    dependencies:
+    - from: ARRIVALS
+      label: fn
+      to: GRANDPRIXS.NumberOfLaps
+    - from: ARRIVALS
+      label: fn
+      to: RACINGCIRCUITS.Length
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Time
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Score
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Position
+    - from: ARRIVALS
+      label: fn
+      to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    - from: ARRIVALS
+      label: fn
+      to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+      label: tp
+      to: GRANDPRIXS.Date
+    - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.CircuitName
+    - from: RACINGCIRCUITS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.City
+    - from: RACINGCIRCUITS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.Description
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVERS.Name,DRIVERS.Surname
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: CARS.Number
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.FromDate
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.ToDate
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.Name
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.Surname
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.BirthDate
+    - from: CARS.Number
+      label: fn
+      to: RACINGSTABLES.StableName
+    - from: RACINGSTABLES.StableName
+      label: fn
+      to: RACINGSTABLES.MainAddress
+    - from: RACINGSTABLES.StableName
+      label: fn
+      to: RACINGSTABLES.Manager
+    fact:
+      name: ARRIVALS
+    measures:
+    - name: ARRIVALS.Position
+    - name: ARRIVALS.Time
+    - name: ARRIVALS.Score
+    - name: GRANDPRIXS.NumberOfLaps
+    - name: RACINGCIRCUITS.Length
+  measures:
+  - name: Score
+  nodes:
+    fn:
+    - racingcircuits.description
+    - arrivals.time
+    - racingstables.mainaddress
+    - drivers.surname,drivers.name
+    - arrivals.position
+    - drives.year,drives.surname,drives.name,drives.number
+    - racingcircuits.length
+    - drivers.birthdate
+    - drivers.name
+    - drivers.surname
+    - racingstables.stablename
+    - drives.todate
+    - racingcircuits.city
+    - grandprixs.numberoflaps
+    - racingstables.manager
+    - arrivals.score
+    - drives.fromdate
+    fp:
+    - drives.surname
+    - r,e,o
+    - r
+    - arrivals.score
+    - score
+    - drives.number
+    - arrivals.name
+    - arrivals.position
+    - grandprixs.circuitname
+    - arrivals.circuitname,arrivals.date
+    - arrivals.number
+    - arrivals.circuitname
+    - arrivals.year
+    - drives.time
+    - drives.position
+    - drives.score
+    - arrivals.time
+    - arrivals.surname
+    - drives.name
+    - arrivals.date
+    tp:
+    - arrivals
+    - grandprixs.date
+    - cars.number
+    - drives.year
+    - grandprixs.date,grandprixs.circuitname
+    - racingcircuits.circuitname

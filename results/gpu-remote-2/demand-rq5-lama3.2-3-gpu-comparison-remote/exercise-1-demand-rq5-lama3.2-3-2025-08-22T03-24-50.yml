@@ -1,0 +1,148 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 0
+    missing: 7
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.4615
+    fn: 7
+    fp: 0
+    precision: 1.0
+    recall: 0.3
+    tp: 3
+  nodes:
+    f1: 0.4706
+    fn: 7
+    fp: 2
+    precision: 0.6667
+    recall: 0.3636
+    tp: 4
+output:
+- ? I made a mistake, I should have added the dependency from software to quantity,
+    and from computer to softwareType. Here is the corrected YAML
+  : null
+  I think I've finally got it! Here is the final YAML representation of the DFM schema: null
+  dependencies:
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: computerBrand
+  - from: computerBrand
+    to: supplier
+  - null
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: quantity
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: brand
+    label: tp
+    to: supplier
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: tp
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: quantity
+  nodes:
+    fn:
+    - date
+    - address
+    - installation
+    - type
+    - city
+    - software
+    - description
+    fp:
+    - quantity
+    - software
+    tp:
+    - brand
+    - supplier
+    - computer
+    - model
