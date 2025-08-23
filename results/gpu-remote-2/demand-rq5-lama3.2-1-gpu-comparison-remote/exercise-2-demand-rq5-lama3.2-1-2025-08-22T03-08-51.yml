@@ -1,0 +1,1756 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 7
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 316
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 2
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- edges:
+    f1: 0.0181
+    fn: 10
+    fp: 316
+    precision: 0.0094
+    recall: 0.2308
+    tp: 3
+  nodes:
+    f1: 0.8667
+    fn: 1
+    fp: 3
+    precision: 0.8125
+    recall: 0.9286
+    tp: 13
+output:
+- dependencies:
+  - from: store
+    role: start
+    to: storeName
+  - from: store
+    role: start
+    to: storeAddress
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: date
+  - from: articleCode
+    to: cost
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: articleType
+  - from: articleCode
+    to: quantity
+  - from: articleCode
+    to: revenue
+  - from: articleCode
+    to: unitPrice
+  - from: articleCode
+    to: null
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+output_preprocessed:
+- dependencies:
+  - from: store
+    label: fp
+    role: start
+    to: storeName
+  - from: store
+    label: fp
+    role: start
+    to: address
+  - from: store
+    label: tp
+    to: region
+  - from: region
+    label: tp
+    to: state
+  - from: state
+    label: tp
+    to: country
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: date
+  - from: articleCode
+    label: fp
+    to: cost
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: articleCode
+    label: fp
+    to: quantity
+  - from: articleCode
+    label: fp
+    to: revenue
+  - from: articleCode
+    label: fp
+    to: unitPrice
+  - from: articleCode
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: article
+      label: fn
+      to: articleName
+    - from: article
+      label: fn
+      to: type
+    - from: store
+      label: fn
+      to: storeName
+    - from: store
+      label: fn
+      to: address
+    - from: store
+      label: tp
+      to: region
+    - from: region
+      label: tp
+      to: state
+    - from: state
+      label: tp
+      to: country
+    - from: PURCHASE
+      label: fn
+      to: quantity
+    - from: PURCHASE
+      label: fn
+      to: revenue
+    - from: PURCHASE
+      label: fn
+      to: unitPrice
+    - from: PURCHASE
+      label: fn
+      to: article
+    - from: PURCHASE
+      label: fn
+      to: store
+    - from: PURCHASE
+      label: fn
+      to: date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: quantity
+    - name: revenue
+    - name: unitPrice
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+  nodes:
+    fn:
+    - article
+    fp:
+    - articlecode
+    - o,r,e
+    - cost
+    tp:
+    - purchase
+    - quantity
+    - state
+    - country
+    - store
+    - type
+    - address
+    - articlename
+    - region
+    - date
+    - unitprice
+    - revenue
+    - storename

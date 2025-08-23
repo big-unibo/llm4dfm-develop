@@ -1,0 +1,1937 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 5
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 358
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.0108
+    fn: 8
+    fp: 358
+    precision: 0.0056
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0.6316
+    fn: 5
+    fp: 2
+    precision: 0.75
+    recall: 0.5455
+    tp: 6
+output:
+- dependencies:
+  - from: computer
+    role: installed
+    to: model
+  - from: computer
+    role: supplied
+    to: brand
+  - from: computer
+    role: located
+    to: address
+  - from: computer
+    role: installed
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: type
+  - null
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: installed
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: fp
+    role: installed
+    to: model
+  - from: computer
+    label: fp
+    role: supplied
+    to: brand
+  - from: computer
+    label: fp
+    role: located
+    to: address
+  - from: computer
+    label: fp
+    role: installed
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: type
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: installed
+  nodes:
+    fn:
+    - software
+    - installation
+    - city
+    - supplier
+    - date
+    fp:
+    - installed
+    - software
+    tp:
+    - computer
+    - type
+    - address
+    - brand
+    - description
+    - model

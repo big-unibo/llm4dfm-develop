@@ -1,0 +1,1425 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 10
+    shared_missing: 0
+    shared_with_fact_root_extra: 10
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 173
+    missing: 19
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0
+    fn: 19
+    fp: 173
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.4737
+    fn: 8
+    fp: 12
+    precision: 0.4286
+    recall: 0.5294
+    tp: 9
+output:
+- dependencies:
+  - from: rental
+    role: rental
+    to: plate
+  - from: rental
+    role: pickup
+    to: pickupDate
+  - from: rental
+    role: dropoff
+    to: dropoffDate
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registrationDate
+  - from: rental
+    role: fuel
+    to: fuelType
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: officeCity
+    to: officeCity
+  - from: rental
+    role: officeState
+    to: officeState
+  - from: rental
+    role: officeCountry
+    to: officeCountry
+  - from: rental
+    role: officeArea
+    to: officeArea
+  - from: rental
+    role: rentalOffice
+    to: rentalOffice
+  - from: rental
+    role: insuranceCost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: brand
+    to: modelBrand
+  - from: rental
+    role: city
+    to: officeCity
+  - from: rental
+    role: state
+    to: officeState
+  - from: rental
+    role: country
+    to: officeCountry
+  - from: rental
+    role: area
+    to: officeArea
+  - from: rental
+    role: office
+    to: rentalOffice
+  - from: rental
+    role: cost
+    to: insuranceCost
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: discount
+    to: discount
+  - null
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: rental
+    label: fp
+    role: rental
+    to: carPlate
+  - from: rental
+    label: fp
+    role: pickup
+    to: pickupDate
+  - from: rental
+    label: fp
+    role: dropoff
+    to: dropoffDate
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: officeCity
+    to: officeCity
+  - from: rental
+    label: fp
+    role: officeState
+    to: officeState
+  - from: rental
+    label: fp
+    role: officeCountry
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: officeArea
+    to: officeArea
+  - from: rental
+    label: fp
+    role: rentalOffice
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: insuranceCost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: brand
+    to: modelBrand
+  - from: rental
+    label: fp
+    role: city
+    to: officeCity
+  - from: rental
+    label: fp
+    role: state
+    to: officeState
+  - from: rental
+    label: fp
+    role: country
+    to: officeCountry
+  - from: rental
+    label: fp
+    role: area
+    to: officeArea
+  - from: rental
+    label: fp
+    role: office
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: cost
+    to: insuranceCost
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: discount
+    to: discount
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - state
+    - milestravelled
+    - country
+    - city
+    - brand
+    - risk
+    - date
+    - area
+    fp:
+    - officestate
+    - registration
+    - officearea
+    - fuel
+    - officecity
+    - dropoffdate
+    - modelbrand
+    - officecountry
+    - registrationdate
+    - rentaloffice
+    - miles
+    - pickupdate
+    tp:
+    - discount
+    - insurancecost
+    - model
+    - office
+    - carplate
+    - rental
+    - category
+    - fueltype
+    - amount

@@ -1,0 +1,227 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from:\
+  \ employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n  -\
+  \ from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to: dateassistant\n\nI will now generate the final YAML\
+  \ response.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n\
+  \  - from: employee\n    to: employeeCode\n  - from: employee\n    to: employeeName\n\
+  \  - from: employee\n    to: employeeSurname\n  - from: employee\n    to: employeeGender\n\
+  \  - from: employee\n    to: employeeQualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \  - from: manager\n    to: employeeCode\n  - from: TRANSFER\n    to: employee\n\
+  \  - from: TRANSFER\n    to: currentDepartment\n  - from: TRANSFER\n    to: reason\n\
+  \  - from: TRANSFER\n    to"
+output_preprocessed: []

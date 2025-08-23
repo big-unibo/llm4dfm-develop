@@ -1,0 +1,1910 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 10
+    shared_missing: 0
+    shared_with_fact_root_extra: 10
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 354
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.0109
+    fn: 8
+    fp: 354
+    precision: 0.0056
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0.6364
+    fn: 4
+    fp: 4
+    precision: 0.6364
+    recall: 0.6364
+    tp: 7
+output:
+- dependencies:
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: nation
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: installed
+  - from: computer
+    to: software
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: installed
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: nation
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: installed
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: model
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: installed
+  nodes:
+    fn:
+    - description
+    - software
+    - installation
+    - supplier
+    fp:
+    - installed
+    - software
+    - region
+    - nation
+    tp:
+    - city
+    - computer
+    - address
+    - type
+    - brand
+    - date
+    - model
