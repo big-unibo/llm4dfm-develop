@@ -149,35 +149,20 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, d
 
         return generate_falcon
 
+    model_to_use = transformers.pipeline(
+        "text-generation",
+        model=model,
+        torch_dtype=torch.float16,
+        tokenizer=tokenizer,
+        device_map="auto",
+    )
+
     match name:
         case 'mistral-7B-inst-v0.3-hf':
-            model_to_use = transformers.pipeline(
-                "text-generation",
-                model=model,
-                torch_dtype=torch.float16,
-                tokenizer=tokenizer,
-                device_map="auto",
-            )
-            return generate_mistral_from_model(model, chat_template)
-        case 'llama-3.2-1B' | 'llama-3.2-3B' | 'llama-3.3':
-            return generate_llama_from_model(model)
+            return generate_mistral_from_model(model_to_use, chat_template)
         case 'llama-3-12B-inst-hf' | 'llama-3.1-8B-inst-hf' | 'llama-3.1-8B-hf' | 'llama-3.2-1B-hf' | 'llama-3.2-1B-inst-hf' | 'llama-3.2-3B-hf' | 'llama-3.2-3B-inst-hf' | 'llama-3.3-hf' | 'llama-2-7B-hf' | 'llama-2-13B-hf':
-            model_to_use = transformers.pipeline(
-                "text-generation",
-                model=model,
-                torch_dtype=torch.float16,
-                tokenizer=tokenizer,
-                device_map="auto",
-            )
             return generate_llama_hf_from_model(model_to_use, chat_template)
         case 'falcon-3-7B-inst-hf' | 'falcon-3-10B-inst-hf' | 'falcon-3-10B-base-hf':
-            model_to_use = transformers.pipeline(
-                "text-generation",
-                model=model,
-                torch_dtype=torch.float16,
-                tokenizer=tokenizer,
-                device_map="auto",
-            )
             return generate_falcon_from_model(model_to_use, chat_template)
         case _:
             raise Exception(f"No model generation found for {name}")
