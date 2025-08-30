@@ -68,21 +68,15 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, d
             if debug_print:
                 log(f'Batching chat formatted: {formatted_chat}')
 
-            input_ids = tokenizer(formatted_chat, return_tensors="pt").input_ids
-            input_ids = input_ids.to("cuda" if torch.cuda.is_available() and device == 'gpu' else "cpu")
+            input_ids = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)
 
             # Generate
-            output_ids = model_to_use.generate(input_ids, **generation_kwargs)
-
-            # If you want only the newly generated tokens (like `return_full_text=False`),
-            # you need to strip the input prompt manually from the output
-            generated_only = output_ids[0][input_ids.shape[-1]:]  # cut the prompt part
-            output_text = tokenizer.decode(generated_only, skip_special_tokens=True)
+            output_text = model_to_use(input_ids, **generation_kwargs)
 
             if debug_print:
-                log(f'Decoded_batch: {output_text}')
+                log(f'Decoded_batch: {output_text[0]["generated_text"]}')
 
-            return output_text
+            return output_text[0]["generated_text"]
 
         return generate_mistral
 

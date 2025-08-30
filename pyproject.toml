@@ -26,6 +26,7 @@ google-generativeai = "^0.8.3"
 networkx = "^3.4.1"
 torch = "^2.5.1"
 sentencepiece = "^0.2.1"
+accelerate = "^1.10.1"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.4.0"
