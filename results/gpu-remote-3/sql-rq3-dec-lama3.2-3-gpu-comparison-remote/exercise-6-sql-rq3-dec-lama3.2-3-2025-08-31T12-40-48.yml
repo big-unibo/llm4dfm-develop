@@ -1,0 +1,673 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 95
+    missing: 12
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: true
+  measures:
+    extra: 7
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0.0531
+    fn: 12
+    fp: 95
+    precision: 0.0306
+    recall: 0.2
+    tp: 3
+  nodes:
+    f1: 0.2308
+    fn: 10
+    fp: 10
+    precision: 0.2308
+    recall: 0.2308
+    tp: 3
+output:
+- dependencies:
+  - from: QUALIFICATIONS.qualification
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.divCode
+    to: DEPARTMENTS.departmentName
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: DEPARTMENTS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.managerCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.managerCode
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.managerCode
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    to: DIVISIONS.division
+  fact:
+    name: QUALIFICATION
+  measures:
+  - name: DEPARTMENTS.departmentName
+  - name: STAFF.name
+  - name: STAFF.surname
+  - name: STAFF.gender
+  - name: STAFF.qualification
+  - name: DEPARTMENTS.departmentName
+  - name: RECRUITMENTS.recruitmentDate
+output_preprocessed:
+- dependencies:
+  - from: QUALIFICATIONS.qualification
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.divCode
+    label: fp
+    to: DEPARTMENTS.departmentName
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.qualification
+  - from: DEPARTMENTS.divCode
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.managerCode
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.managerCode
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.managerCode
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divisionName
+    label: fp
+    to: DIVISIONS.division
+  fact:
+    name: QUALIFICATION
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: DEPARTMENTS.departmentName
+  - name: STAFF.name
+  - name: STAFF.surname
+  - name: STAFF.gender
+  - name: STAFF.qualification
+  - name: DEPARTMENTS.departmentName
+  - name: RECRUITMENTS.recruitmentDate
+  nodes:
+    fn:
+    - staff.name
+    - staff.gender
+    - staff.surname
+    - transfers
+    - departments.departmentname
+    - recruitments.recruitmentdate
+    - transfers.reason
+    - transfers.date
+    - departments.departmentcode
+    - divisions.divcode
+    fp:
+    - staff.name
+    - staff.surname
+    - divisions.managercode
+    - staff.qualification
+    - departments.departmentname
+    - recruitments.recruitmentdate
+    - divisions.division
+    - staff.gender
+    - departments.divcode
+    - qualification
+    tp:
+    - staff.employeecode
+    - divisions.divisionname
+    - qualifications.qualification

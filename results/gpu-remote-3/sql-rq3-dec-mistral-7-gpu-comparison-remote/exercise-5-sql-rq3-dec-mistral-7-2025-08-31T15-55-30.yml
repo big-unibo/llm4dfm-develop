@@ -1,0 +1,361 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- {}
+output:
+- "<s>[INST] You are a data warehouse designer that outputs YAML-formatted data. Please\
+  \ generate a YAML response for the following input.\n[/INST] Carry out supply-driven\
+  \ conceptual\ndesign of a multidimensional cube using the DFM (Dimensional Fact\
+  \ Model), starting from the given\nsource relational schema. \n\nData-driven conceptual\
+  \ design of a multidimensional cube starting from a source relational schema S \n\
+  should be carried out via the following steps.\n1. Find all the functional dependencies\
+  \ (from here on, FDs) entailed by schema S, including \nthose that relate the primary\
+  \ key of a relation R to the other attributes of R, \nthose that relate a composite\
+  \ primary key to its component attributes, \nand those that relate a foreign key\
+  \ F referencing relation R to the primary key of R.\nThe result should be a directed\
+  \ and fully connected graph of FDs.\n2. For every pair of FDs F->K and K->A, where\
+  \ F is a foreign key referencing relation R, \nK is the primary key of R, and A\
+  \ is an attribute of R, replace F->K and K->A with F->A.\n3. Find the roots of the\
+  \ obtained graph (i.e., the attributes that never appear on the right of an FD),\
+  \ \npick the root that allows reaching the greatest number of attributes by navigation\
+  \ FDs in the \ncorrect direction, and draw the corresponding tree (i.e., exclude\
+  \ from the graph all FDs that cannot\nbe navigated from the chosen root); the root\
+  \ must be renamed with the name of the corresponding relation R.\n\nThe output I\
+  \ expect is a DFM schema in YAML formatted as follows: \n(1) there is a \"fact\"\
+  \ tag including a \"name\" tag, listing the name of the root;\n(2) all measures\
+  \ (i.e., all numerical attributes directly connected to the root)\nare listed inside\
+  \ a \"measures\" tag, each is an empty item containing a \"name\" tag; \n(3) all\
+  \ functional dependencies between attributes in a hierarchy are listed inside a\
+  \ \"dependencies\" tag: \neach is an empty item containing a \"from\" tag, listing\
+  \ the finer attribute(s), a \"to\" tag, listing \nthe coarser attribute, and optionally\
+  \ a \"role\" tag; \n(4) the \"dependencies\" list also includes an item from the\
+  \ fact to each measure; \n(5) if a dependency is from and/or to a combination of\
+  \ attributes, they should be comma-separated;\n(6) all attributes and measure names\
+  \ must be prefixed by the name (in uppercases) of the table \nthey belong to (for\
+  \ instance, PERSON.Address).</s>[INST] Let this relational schema be given:\n\n\
+  CREATE TABLE TYPES (\n    typeId INT PRIMARY KEY,\n    typeName VARCHAR(100)\n);\n\
+  \nCREATE TABLE ARTICLES (\n    artId INT PRIMARY KEY,\n    artName VARCHAR(100),\n\
+  \    unitPrice FLOAT,\n    type INT,\n    FOREIGN KEY (type) REFERENCES TYPES(typeId)\n\
+  );\n\nCREATE TABLE REGIONS (\n    regId INT,\n    regionName VARCHAR(100),\n   \
+  \ state VARCHAR(100),\n    country VARCHAR(100),\n    PRIMARY KEY (regId, state)\n\
+  );\n\nCREATE TABLE STORES (\n    storeId INT PRIMARY KEY,\n    storeName VARCHAR(100),\n\
+  \    storeAddress VARCHAR(100),\n    regId INT,\n    state VARCHAR(100),\n    FOREIGN\
+  \ KEY (regId, state) REFERENCES REGIONS(regId, state)\n);\n\nCREATE TABLE PURCHASE\
+  \ (\n    storeId INT,\n    artId INT,\n    date DATE,\n    quantity INT,\n    revenue\
+  \ FLOAT,\n    PRIMARY KEY (storeId, artId, date),\n    FOREIGN KEY (artId) REFERENCES\
+  \ ARTICLES(artId),\n    FOREIGN KEY (storeId) REFERENCES STORES(storeId)\n);\n\n\
+  After step 1, the list of FDs is the following:\n\n- PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.storeId\n\
+  - PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.artId\n- PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.date\n\
+  - PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.quantity\n- PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.revenue\n\
+  - PURCHASE.artId->ARTICLES.artId\n- PURCHASE.storeId->STORES.storeId\n- ARTICLES.artId->ARTICLES.artName\n\
+  - ARTICLES.artId->ARTICLES.unitPrice\n- ARTICLES.artId->ARTICLES.type\n- ARTICLES.type->TYPES.typeId\n\
+  - TYPES.typeId->TYPES.typeName\n- STORES.storeId->STORES.storeName\n- STORES.storeId->STORES.storeAddress\n\
+  - STORES.storeId->STORES.regId,STORES.state\n- STORES.regId,STORES.state->REGIONS.regId,REGIONS.state\n\
+  - REGIONS.regId,REGIONS.state->REGIONS.regId\n- REGIONS.regId,REGIONS.state->REGIONS.state\n\
+  - REGIONS.regId,REGIONS.state->REGIONS.regionName\n- REGIONS.state->REGIONS.country\n\
+  \nAfter step 2, the list of FDs is changed as follows:\n\n- PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.storeId\
+  \ and PURCHASE.storeId->STORES.storeId \nare replaced with PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->STORES.storeId\
+  \ \n- PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->PURCHASE.artId and PURCHASE.artId->ARTICLES.artId\
+  \ \nare replaced with PURCHASE.storeId,PURCHASE.artId,PURCHASE.date->ARTICLES.artId\
+  \ \n- ARTICLES.artId->ARTICLES.type and ARTICLES.type->TYPES.typeId \nare replaced\
+  \ with ARTICLES.artId->TYPES.typeId\n- STORES.storeId->STORES.regId,STORES.state\
+  \ and STORES.regId,STORES.state->REGIONS.regId,REGIONS.state\nare replaced with\
+  \ STORES.storeId->REGIONS.regId,REGIONS.state\n\nAfter step 3, the YAML expression\
+  \ of the DFM schema is obtained as follows:\n\nfact:\n  name: PURCHASE\nmeasures:\n\
+  \  - name: PURCHASE.quantity\n  - name: PURCHASE.revenue\n  - name: ARTICLES.unitPrice\n\
+  dependencies:\n  - from: TYPES.typeId\n    to: TYPES.typeName\n  - from: ARTICLES.artId\n\
+  \    to: ARTICLES.artName\n  - from: ARTICLES.artId\n    to: TYPES.typeId\n    role:\
+  \ type\n  - from: REGIONS.regId, REGIONS.state\n    to: REGIONS.regionName\n  -\
+  \ from: REGIONS.regId, REGIONS.state\n    to: REGIONS.state\n  - from: REGIONS.state\n\
+  \    to: REGIONS.country\n  - from: STORES.storeId\n    to: STORES.storeName\n \
+  \ - from: STORES.storeId\n    to: STORES.storeAddress\n  - from: STORES.storeId\n\
+  \    to: REGIONS.regId, REGIONS.state\n  - from: PURCHASE\n    to: PURCHASE.quantity\n\
+  \  - from: PURCHASE\n    to: PURCHASE.revenue\n  - from: PURCHASE\n    to: ARTICLES.unitPrice\n\
+  \  - from: PURCHASE\n    to: ARTICLES.artId\n  - from: PURCHASE\n    to: STORES.storeId\n\
+  \  - from: PURCHASE\n    to: PURCHASE.date\n\nHere is another example; source schema:\n\
+  \nCREATE TABLE SUBSCRIPTION_TYPE (\n    subscriptionTypeCode INT PRIMARY KEY,\n\
+  \    subscriptionType VARCHAR(50) NOT NULL,\n    duration INT NOT NULL\n    amount\
+  \ DECIMAL(10, 2) NOT NULL\n);\n\nCREATE TABLE DEVICE_TYPE (\n    deviceTypeCode\
+  \ INT PRIMARY KEY,\n    deviceType VARCHAR(50) NOT NULL,\n    category VARCHAR(50)\
+  \ NOT NULL\n);\n\nCREATE TABLE USER (\n    userCode INT PRIMARY KEY,\n    username\
+  \ VARCHAR(50) NOT NULL,\n    firstName VARCHAR(50) NOT NULL,\n    secondName VARCHAR(50),\n\
+  \    birthDate DATE,\n    gender VARCHAR(10),\n    nation VARCHAR(50)\n);\n\nCREATE\
+  \ TABLE DEVICE (\n    deviceCode INT PRIMARY KEY,\n    userCode INT,\n    deviceTypeCode\
+  \ INT,\n    IPaddress VARCHAR(15),  \n    brand VARCHAR(50),\n    FOREIGN KEY (userCode)\
+  \ REFERENCES USER(userCode),\n    FOREIGN KEY (deviceTypeCode) REFERENCES DEVICE_TYPE(deviceTypeCode)\n\
+  );\n\nCREATE TABLE SERIES (\n    seriesCode INT PRIMARY KEY,\n    title VARCHAR(100)\
+  \ NOT NULL,\n    genre VARCHAR(50) NOT NULL\n);\n\nCREATE TABLE EPISODE (\n    episodeNumber\
+  \ INT,\n    seriesCode INT,\n    title VARCHAR(100) NOT NULL,\n    plot TEXT,\n\
+  \    releaseDate DATE,\n    PRIMARY KEY episodeNumber, seriesCode\n    FOREIGN KEY\
+  \ (seriesCode) REFERENCES SERIES(seriesCode)\n);\n\nCREATE TABLE SUBSCRIPTION (\n\
+  \    subscriptionCode INT PRIMARY KEY,\n    subscriptionTypeCode INT,\n    startDate\
+  \ DATE NOT NULL,\n    endDate DATE NOT NULL,\n    FOREIGN KEY (subscriptionTypeCode)\
+  \ REFERENCES SUBSCRIPTION_TYPE(subscriptionTypeCode)\n);\n\nCREATE TABLE STREAM\
+  \ (\n    streamCode INT PRIMARY KEY,\n    episodeNumber INT,\n    seriesCode INT\n\
+  \    deviceCode INT,\n    subscriptionCode INT,\n    startDate DATE NOT NULL,\n\
+  \    startTime TIME NOT NULL,\n    streamingQuality VARCHAR(50),\n    opinion TEXT,\n\
+  \    FOREIGN KEY (episodeNumber, seriesCode) REFERENCES EPISODE(episodeNumber, seriesCode),\n\
+  \    FOREIGN KEY (deviceCode) REFERENCES DEVICE(deviceCode),\n    FOREIGN KEY (subscriptionCode)\
+  \ REFERENCES SUBSCRIPTION(subscriptionCode)\n);\n\nand resulting DFM schema:\n\n\
+  fact:\n  name: STREAM\nmeasures:\n  - name: SUBSCRIPTION_TYPE.amount\ndependencies:\n\
+  \  - from: SUBSCRIPTION_TYPE.subscriptionTypeCode\n    to: SUBSCRIPTION_TYPE.subscriptionType\n\
+  \  - from: SUBSCRIPTION_TYPE.subscriptionTypeCode\n    to: SUBSCRIPTION_TYPE.duration\n\
+  \  - from: STREAM\n    to: SUBSCRIPTION_TYPE.amount\n  - from: DEVICE_TYPE.deviceTypeCode\n\
+  \    to: DEVICE_TYPE.deviceType\n  - from: DEVICE_TYPE.deviceTypeCode\n    to: DEVICE_TYPE.category\n\
+  \  - from: USER.userCode\n    to: USER.username\n  - from: USER.userCode\n    to:\
+  \ USER.firstName\n  - from: USER.userCode\n    to: USER.secondName\n  - from: USER.userCode\n\
+  \    to: USER.birthDate\n  - from: USER.userCode\n    to: USER.gender\n  - from:\
+  \ USER.userCode\n    to: USER.nation\n  - from: DEVICE.deviceCode\n    to: DEVICE.IPaddress\n\
+  \  - from: DEVICE.deviceCode\n    to: DEVICE.brand\n  - from: DEVICE.deviceCode\n\
+  \    to: USER.userCode\n  - from: DEVICE.deviceCode\n    to: DEVICE_TYPE.deviceTypeCode\n\
+  \  - from: SERIES.seriesCode\n    to: SERIES.title\n  - from: SERIES.seriesCode\n\
+  \    to: SERIES.genre\n  - from: EPISODE.episodeNumber, EPISODE.seriesCode\n   \
+  \ to: EPISODE.title\n  - from: EPISODE.episodeNumber, EPISODE.seriesCode\n    to:\
+  \ SERIES.seriesCode\n  - from: EPISODE.episodeNumber, EPISODE.seriesCode\n    to:\
+  \ EPISODE.episodeNumber\n  - from: EPISODE.episodeNumber, EPISODE.seriesCode\n \
+  \   to: EPISODE.plot\n  - from: EPISODE.episodeNumber, EPISODE.seriesCode\n    to:\
+  \ EPISODE.releaseDate\n  - from: SUBSCRIPTION.subscriptionCode\n    to: SUBSCRIPTION_TYPE.subscriptionTypeCode\n\
+  \  - from: SUBSCRIPTION.subscriptionCode\n    to: SUBSCRIPTION.startDate\n  - from:\
+  \ SUBSCRIPTION.subscriptionCode\n    to: SUBSCRIPTION.endDate\n  - from: STREAM\n\
+  \    to: STREAM.startDate\n  - from: STREAM\n    to: STREAM.startTime\n  - from:\
+  \ STREAM\n    to: STREAM.streamingQuality\n  - from: STREAM\n    to: STREAM.opinion\n\
+  \  - from: STREAM\n    to: EPISODE.episodeNumber, EPISODE.seriesCode\n  - from:\
+  \ STREAM\n    to: DEVICE.deviceCode\n  - from: STREAM\n    to: SUBSCRIPTION.subscriptionCode\n\
+  \nHere is a third example; source schema:\n\nCREATE TABLE PATIENT (\n    FiscalCode\
+  \ VARCHAR(16) PRIMARY KEY,\n    firstName VARCHAR(50) NOT NULL,\n    secondName\
+  \ VARCHAR(50) NOT NULL,\n    birthDate DATE NOT NULL,\n    gender CHAR(1),\n   \
+  \ city VARCHAR(50),\n    region VARCHAR(50),\n    nation VARCHAR(50)\n);\n\nCREATE\
+  \ TABLE PATIENT_DISEASE (\n    FiscalCode VARCHAR(16),\n    disease VARCHAR(100),\n\
+  \    PRIMARY KEY (FiscalCode, disease),\n    FOREIGN KEY (FiscalCode) REFERENCES\
+  \ PATIENT(FiscalCode)\n);\n\nCREATE TABLE SPECIALIZATION (\n    specCode INT PRIMARY\
+  \ KEY,\n    description VARCHAR(100) NOT NULL\n);\n\nCREATE TABLE THERAPY (\n  \
+  \  therapyCode INT PRIMARY KEY,\n    description VARCHAR(100) NOT NULL,\n    treatmentDuration\
+  \ INT\n    treatmentCost DECIMAL(10, 2),\n    specialization INT,\n    FOREIGN KEY\
+  \ (specialization) REFERENCES SPECIALIZATION(specCode)\n);\n\nCREATE TABLE PHYSICIAN\
+  \ (\n    physicianCode INT PRIMARY KEY,\n    firstName VARCHAR(50) NOT NULL,\n \
+  \   secondName VARCHAR(50) NOT NULL,\n    birthDate DATE NOT NULL,\n    specialization\
+  \ INT,\n    FOREIGN KEY (specialization) REFERENCES SPECIALIZATION(specCode)\n);\n\
+  \nCREATE TABLE EXAM (\n    examCode INT PRIMARY KEY,\n    FiscalCode VARCHAR(16),\n\
+  \    physicianCode INT,\n    examDate DATE NOT NULL,\n    diagnosis VARCHAR(255),\n\
+  \    FOREIGN KEY (FiscalCode) REFERENCES PATIENT(FiscalCode),\n    FOREIGN KEY (physicianCode)\
+  \ REFERENCES PHYSICIAN(physicianCode)\n);\n\nCREATE TABLE PRESCRIPTION (\n    therapyCode\
+  \ INT,\n    prescriptionDate DATE NOT NULL,\n    numberOfTreatments INT,\n    examCode\
+  \ INT,\n    PRIMARY KEY (therapyCode, examCode),\n    FOREIGN KEY (therapyCode)\
+  \ REFERENCES THERAPY(therapyCode),\n    FOREIGN KEY (examCode) REFERENCES EXAM(examCode)\n\
+  );\n\nCREATE TABLE TREATMENT (\n    treatmentCode INT PRIMARY KEY,\n    therapyCode\
+  \ INT,\n    examCode INT,\n    treatmentDate DATE NOT NULL,\n    FOREIGN KEY (therapyCode,\
+  \ examCode) REFERENCES PRESCRIPTION(therapyCode, examCode)\n);\n\nand resulting\
+  \ DFM schema:\n\nfact:\n  name: TREATMENT\nmeasures:\n  - name: THERAPY.treatmentDuration\n\
+  \  - name: THERAPY.treatmentCost\n  - name: PRESCRIPTION.numberOfTreatments\ndependencies:\n\
+  \  - from: PATIENT.FiscalCode\n    to: PATIENT.firstName\n  - from: PATIENT.FiscalCode\n\
+  \    to: PATIENT.secondName\n  - from: PATIENT.FiscalCode\n    to: PATIENT.birthDate\n\
+  \  - from: PATIENT.FiscalCode\n    to: PATIENT.gender\n  - from: PATIENT.FiscalCode\n\
+  \    to: PATIENT.city\n  - from: PATIENT.city\n    to: PATIENT.region\n  - from:\
+  \ PATIENT.region\n    to: PATIENT.nation\n  - from: SPECIALIZATION.specCode\n  \
+  \  to: SPECIALIZATION.description\n  - from: PHYSICIAN.physicianCode\n    to: PHYSICIAN.firstName\n\
+  \  - from: PHYSICIAN.physicianCode\n    to: PHYSICIAN.secondName\n  - from: PHYSICIAN.physicianCode\n\
+  \    to: PHYSICIAN.birthDate\n  - from: PHYSICIAN.physicianCode\n    to: SPECIALIZATION.specCode\n\
+  \  - from: THERAPY.therapyCode\n    to: THERAPY.description\n  - from: THERAPY.therapyCode\n\
+  \    to: SPECIALIZATION.specCode\n  - from: EXAM.examCode\n    to: PATIENT.FiscalCode\n\
+  \  - from: EXAM.examCode\n    to: PHYSICIAN.physicianCode\n  - from: EXAM.examCode\n\
+  \    to: EXAM.examDate\n  - from: EXAM.examCode\n    to: EXAM.diagnosis\n  - from:\
+  \ PRESCRIPTION.therapyCode, PRESCRIPTION.examCode\n    to: PRESCRIPTION.prescriptionDate\n\
+  \  - from: PRESCRIPTION.therapyCode, PRESCRIPTION.examCode\n    to: THERAPY.therapyCode\n\
+  \  - from: PRESCRIPTION.therapyCode, PRESCRIPTION.examCode\n    to: EXAM.examCode\n\
+  \  - from: PRESCRIPTION.therapyCode, PRESCRIPTION.examCode\n    to: PRESCRIPTION.numberOfTreatments\n\
+  \  - from: TREATMENT\n    to: TREATMENT.treatmentDate\n  - from: TREATMENT\n   \
+  \ to: PRESCRIPTION.therapyCode, PRESCRIPTION.examCode\n\nPlease apply this process\
+  \ to the following source schema, and create the YAML representation of the resulting\
+  \ DFM schema. Return only the YAML without any further information/explanation.\n\
+  \nThe following logical schema describes an operational database for a gym.\n\n\
+  CREATE TABLE MEMBERS ( \nFiscalCode CHAR(10) PRIMARY KEY,\nname VARCHAR(50),\nsurname\
+  \ VARCHAR(50),\ngender CHAR(1),\naddress VARCHAR(100),\npostalCode CHAR(10),\ncity\
+  \ VARCHAR(50),\nheight DECIMAL(5, 2),\nweight DECIMAL(5, 2),\n);\n\nCREATE TABLE\
+  \ EXERCISES (\nexerciseId INT PRIMARY KEY,\nname VARCHAR(50),\nexerciseType VARCHAR(50),\n\
+  );\n\nCREATE TABLE MAXIMUM_WEIGHTS (\nFiscalCode CHAR(10),\nexerciseId INT,\nweight\
+  \ DECIMAL(5, 2),\ndate DATE,\nPRIMARY KEY (FiscalCode, exerciseId, date),\nFOREIGN\
+  \ KEY (FiscalCode) REFERENCES MEMBERS(FiscalCode) \nFOREIGN KEY (exerciseId) REFERENCES\
+  \ EXERCISES(exerciseId)\n);\n\nCREATE TABLE WOD (\ndate DATE PRIMARY KEY,\nname\
+  \ VARCHAR(50),\nWODtype VARCHAR(50),\nnumberOfRounds INT,\n);\n\nCREATE TABLE EXERCISE_IN_WOD\
+  \ (\ndate DATE,\nexerciseId INT,\npositionInSequence INT,\nnumberOfRepetitions INT,\n\
+  PRIMARY KEY (date, exerciseId, positionInSequence),\nFOREIGN KEY (date) REFERENCES\
+  \ WOD(date),\nFOREIGN KEY (exerciseId) REFERENCES EXERCISES(exerciseId)\n);\n\n\
+  CREATE TABLE WORKOUTS (\ndate DATE,\ntime TIME,\ninstructor VARCHAR(50),\nPRIMARY\
+  \ KEY (date, time),\nFOREIGN KEY (date) REFERENCES WOD(date)\n);\n\nCREATE TABLE\
+  \ PRESENCE (\nFiscalCode CHAR(10),\ndate DATE,\ntime TIME,\nPRIMARY KEY (FiscalCode,\
+  \ date, time),\nFOREIGN KEY (FiscalCode) REFERENCES MEMBERS(FiscalCode) \nFOREIGN\
+  \ KEY (date) REFERENCES WORKOUTS(date),\nFOREIGN KEY (time) REFERENCES WORKOUTS(time)\n\
+  );\n[/INST] fact:\n  name: PRESENCE\nmeasures:\n  - name: MEMBERS.height\n  - name:\
+  \ MEMBERS.weight\ndependencies:\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.name\n\
+  \  - from: MEMBERS.FiscalCode\n    to: MEMBERS.surname\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.gender\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.address\n\
+  \  - from: MEMBERS.FiscalCode\n    to: MEMBERS.postalCode\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.city\n  - from: EXERCISES.exerciseId\n    to: EXERCISES.name\n\
+  \  - from: EXERCISES.exerciseId\n    to: EXERCISES.exerciseType\n  - from: MAXIMUM_WEIGHTS.FiscalCode,\
+  \ MAXIMUM_WEIGHTS.exerciseId, MAXIMUM_WEIGHTS.date\n    to: MAXIMUM_WEIGHTS.weight\n\
+  \  - from: WOD.date\n    to: WOD.name\n  - from: WOD.date\n    to: WOD.WODtype\n\
+  \  - from: WOD.date\n    to: WOD.numberOfRounds\n  - from: EXERCISE_IN_WOD.date,\
+  \ EXERCISE_IN_WOD.exerciseId, EXERCISE_IN_WOD.positionInSequence\n    to: EXERCISE_IN_WOD.numberOfRepetitions\n\
+  \  - from: WORKOUTS.date\n    to: WORKOUTS.time\n  - from: WORKOUTS.date\n    to:\
+  \ WORKOUTS.instructor\n  - from: PRESENCE.FiscalCode, PRESENCE.date, PRESENCE.time\n\
+  \    to: PRESENCE.time\n  - from: PRESENCE.FiscalCode, PRESENCE.date, PRESENCE.time\n\
+  \    to: MEMBERS.height\n  - from: PRESENCE.FiscalCode, PRESENCE.date, PRESENCE.time\n\
+  \    to: MEMBERS.weight\nHere's another example:\n\nCREATE TABLE STUDENT (\n   \
+  \ student\\_id INT PRIMARY KEY,\n    first\\_name VARCHAR(50),\n    last\\_name\
+  \ VARCHAR(50),\n    gender VARCHAR(10),\n    birth\\_date DATE,\n    address VARCHAR(100),\n\
+  \    city VARCHAR(50),\n    state VARCHAR(50),\n    zip VARCHAR(10),\n    phone\
+  \ VARCHAR(15),\n    email VARCHAR(100)\n);\n\nCREATE TABLE COURSE (\n    course\\\
+  _id INT PRIMARY KEY,\n    course\\_name VARCHAR(100),\n    course\\_description\
+  \ VARCHAR(255),\n    course\\_type VARCHAR(50),\n    course\\_duration INT,\n  \
+  \  course\\_fee DECIMAL(10, 2)\n);\n\nCREATE TABLE ENROLLMENT (\n    student\\_id\
+  \ INT,\n    course\\_id INT,\n    enrollment\\_date DATE,\n    PRIMARY KEY (student\\\
+  _id, course\\_id),\n    FOREIGN KEY (student\\_id) REFERENCES STUDENT(student\\\
+  _id),\n    FOREIGN KEY (course\\_id) REFERENCES COURSE(course\\_id)\n);\n\nCREATE\
+  \ TABLE GRADE (\n    student\\_id INT,\n    course\\_id INT,\n    grade VARCHAR(10),\n\
+  \    PRIMARY KEY (student\\_id, course\\_id),\n    FOREIGN KEY (student\\_id) REFERENCES\
+  \ STUDENT(student\\_id),\n    FOREIGN KEY (course\\_id) REFERENCES COURSE(course\\\
+  _id)\n);\n\nThe resulting DFM schema:\n\nfact:\n  name: GRADE\nmeasures:\n  - name:\
+  \ STUDENT.gender\n  - name: STUDENT.birth\\_date\n  - name: COURSE.course\\_duration\n\
+  \  - name: COURSE.course\\_fee\ndependencies:\n  - from: STUDENT.student\\_id\n\
+  \    to: STUDENT.first\\_name\n  - from: STUDENT.student\\_id\n    to: STUDENT.last\\\
+  _name\n  - from: STUDENT.student\\_id\n    to: STUDENT.gender\n  - from: STUDENT.student\\\
+  _id\n    to: STUDENT.birth\\_date\n  - from: STUDENT.student\\_id\n    to: STUDENT.address\n\
+  \  - from: STUDENT.student\\_id\n    to: STUDENT.city\n  - from: STUDENT.student\\\
+  _id\n    to: STUDENT.state\n  - from: STUDENT.student\\_id\n    to: STUDENT.zip\n\
+  \  - from: STUDENT.student\\_id\n    to: STUDENT.phone\n  - from: STUDENT.student\\\
+  _id\n    to: STUDENT.email\n  - from: COURSE.course\\_id\n    to: COURSE.course\\\
+  _name\n  - from: COURSE.course\\_id\n    to: COURSE.course\\_description\n  - from:\
+  \ COURSE.course\\_id\n    to: COURSE.course\\_type\n  - from: COURSE.course\\_id\n\
+  \    to: COURSE.course\\_duration\n  - from: COURSE.course\\_id\n    to: COURSE.course\\\
+  _fee\n  - from: ENROLLMENT.student\\_id, ENROLLMENT.course\\_id\n    to: ENROLLMENT.enrollment\\\
+  _date\n  - from: ENROLLMENT.student\\_id, ENROLLMENT.course\\_id\n    to: STUDENT.student\\\
+  _id\n  - from: ENROLLMENT.student\\_id, ENROLLMENT.course\\_id\n    to: COURSE.course\\\
+  _id\n  - from: GRADE.student\\_id, GRADE.course\\_id\n    to: GRADE.grade\nHere's\
+  \ another example:\n\nCREATE TABLE PRODUCT (\n    product\\_id INT PRIMARY KEY,\n\
+  \    product\\_name VARCHAR(100),\n    category VARCHAR(50),\n    manufacturer VARCHAR(100),\n\
+  \    price DECIMAL(10, 2)\n);\n\nCREATE TABLE STORE (\n    store\\_id INT PRIMARY\
+  \ KEY,\n    store\\_name VARCHAR(100),\n    address VARCHAR(100),\n    city VARCHAR(50),\n\
+  \    state VARCHAR(50),\n    zip VARCHAR(10)\n);\n\nCREATE TABLE STORE\\_INVENTORY\
+  \ (\n    store\\_id INT,\n    product\\_id INT,\n    quantity INT,\n    PRIMARY\
+  \ KEY (store\\_id, product\\_id),\n    FOREIGN KEY (store\\_id) REFERENCES STORE(store\\\
+  _id),\n    FOREIGN KEY (product\\_id) REFERENCES PRODUCT(product\\_id)\n);\n\nCREATE\
+  \ TABLE SALES (\n    store\\_id INT,\n    product\\_id INT,\n    sale\\_date DATE,\n\
+  \    quantity INT,\n    revenue DECIMAL(10, 2),\n    PRIMARY KEY (store\\_id, product\\\
+  _id, sale\\_date),\n    FOREIGN KEY (store\\_id) REFERENCES STORE(store\\_id),\n\
+  \    FOREIGN KEY (product\\_id) REFERENCES PRODUCT(product\\_id)\n);\n\nThe resulting\
+  \ DFM schema:\n\nfact:\n  name: SALES\nmeasures:\n  - name: PRODUCT.price\ndependencies:\n\
+  \  - from: PRODUCT.product\\_id\n    to: PRODUCT.product\\_name\n  - from: PRODUCT.product\\\
+  _id\n    to: PRODUCT.category\n  - from: PRODUCT.product\\_id\n    to: PRODUCT.manufacturer\n\
+  \  - from: STORE.store\\_id\n    to: STORE.store\\_name\n  - from: STORE.store\\\
+  _id\n    to: STORE.address\n  - from: STORE.store\\_id\n    to: STORE.city\n  -\
+  \ from: STORE.store\\_id\n    to: STORE.state\n  - from: STORE.store\\_id\n    to:\
+  \ STORE.zip\n  - from: STORE\\_INVENTORY.store\\_id, STORE\\_INVENTORY.product\\\
+  _id\n    to: STORE\\_INVENTORY.quantity\n  - from: SALES.store\\_id, SALES.product\\\
+  _id, SALES.sale\\_date\n    to: SALES.quantity\n  - from: SALES.store\\_id, SALES.product\\\
+  _id, SALES.sale\\_date\n    to: SALES.revenue\n  - from: SALES.store\\_id, SALES.product\\\
+  _id, SALES.sale\\_date\n    to: PRODUCT.product\\_id\n  - from: SALES.store\\_id,\
+  \ SALES.product\\_id, SALES.sale\\_date\n    to: STORE.store\\_id\n  - from: SALES.store\\\
+  _id, SALES.product\\_id, SALES.sale\\_date\n    to: STORE\\_INVENTORY.store\\_id,\
+  \ STORE\\_INVENTORY.product\\_id\nHere's another example:\n\nCREATE TABLE AUTHOR\
+  \ (\n    author\\_id INT PRIMARY KEY,\n    first\\_name VARCHAR(50),\n    last\\\
+  _name VARCHAR(50),\n    birth\\_year INT,\n    nationality VARCHAR(50)\n);\n\nCREATE\
+  \ TABLE BOOK (\n    book\\_id INT PRIMARY KEY,\n    title VARCHAR(100),\n    publication\\\
+  _year INT,\n    publisher VARCHAR(100),\n    genre VARCHAR(50)\n);\n\nCREATE TABLE\
+  \ AUTHOR\\_BOOK (\n    author\\_id INT,\n    book\\_id INT,\n    role VARCHAR(20),\n\
+  \    PRIMARY KEY (author\\_id, book\\_id),\n    FOREIGN KEY (author\\_id) REFERENCES\
+  \ AUTHOR(author\\_id),\n    FOREIGN KEY (book\\_id) REFERENCES BOOK(book\\_id)\n\
+  );\n\nCREATE TABLE LIBRARY (\n    library\\_id INT PRIMARY KEY,\n    library\\_name\
+  \ VARCHAR(100),\n    address VARCHAR(100),\n    city VARCHAR(50),\n    state VARCHAR(50),\n\
+  \    zip VARCHAR(10)\n);\n\nCREATE TABLE BOOK\\_LOAN (\n    library\\_id INT,\n\
+  \    book\\_id INT,\n    loan\\_date DATE,\n    return\\_date DATE,\n    borrower\
+  \ VARCHAR(100),\n    PRIMARY KEY (library\\_id, book\\_id, loan\\_date),\n    FOREIGN\
+  \ KEY (library\\_id) REFERENCES LIBRARY(library\\_id),\n    FOREIGN KEY (book\\\
+  _id) REFERENCES BOOK(book\\_id)\n);\n\nThe resulting DFM schema:\n\nfact:\n  name:\
+  \ BOOK\\_LOAN\nmeasures:\n  - name: AUTHOR.nationality\n  - name: BOOK.publication\\\
+  _year\ndependencies:\n  - from: AUTHOR.author\\_id\n    to: AUTHOR.first\\_name\n\
+  \  - from: AUTHOR.author\\_id\n    to: AUTHOR.last\\_name\n  - from: AUTHOR.author\\\
+  _id\n    to: AUTHOR.birth\\_year\n  - from: AUTHOR.author\\_id\n    to: AUTHOR.nationality\n\
+  \  - from: BOOK.book\\_id\n    to: BOOK.title\n  - from: BOOK.book\\_id\n    to:\
+  \ BOOK.publication\\_year\n  - from: BOOK.book\\_id\n    to: BOOK.publisher\n  -\
+  \ from: BOOK.book\\_id\n    to: BOOK.genre\n  - from: AUTHOR\\_BOOK.author\\_id,\
+  \ AUTHOR\\_BOOK.book\\_id\n    to: AUTHOR\\_BOOK.role\n  - from: LIBRARY.library\\\
+  _id\n    to: LIBRARY.library\\_name\n  - from: LIBRARY.library\\_id\n    to: LIBRARY.address\n\
+  \  - from: LIBRARY.library\\_id\n    to: LIBRARY.city\n  - from: LIBRARY.library\\\
+  _id\n    to: LIBRARY.state\n  - from: LIBRARY.library\\_id\n    to: LIBRARY.zip\n\
+  \  - from: BOOK\\_LOAN.library\\_id, BOOK\\_LOAN.book\\_id, BOOK\\_LOAN.loan\\_date\n\
+  \    to: BOOK\\_LOAN.return\\_date\n  - from: BOOK\\_LOAN.library\\_id, BOOK\\_LOAN.book\\\
+  _id, BOOK\\_LOAN.loan\\_date\n    to: BOOK\\_LOAN.borrower\n  - from: BOOK\\_LOAN.library\\\
+  _id, BOOK\\_LOAN.book\\_id, BOOK\\_LOAN.loan\\_date\n    to: BOOK.book\\_id\n  -\
+  \ from: BOOK\\_LOAN.library\\_id, BOOK\\_LOAN.book\\_id, BOOK\\_LOAN.loan\\_date\n\
+  \    to: LIBRARY.library\\_id\n  - from: BOOK\\_LOAN.library\\_id, BOOK\\_LOAN.book\\\
+  _id, BOOK\\_LOAN.loan\\_date\n    to: AUTHOR\\_BOOK.author\\_id, AUTHOR\\_BOOK.book\\\
+  _id\nHere's another example:\n\nCREATE TABLE CUSTOMER (\n    customer\\_id INT PRIMARY\
+  \ KEY,\n    first\\_name VARCHAR(50),\n    last\\_name VARCHAR(50),\n    email VARCHAR(100),\n\
+  \    phone VARCHAR(15)\n);\n\nCREATE TABLE ORDER\\_LINE\\_ITEM (\n    order\\_id\
+  \ INT,\n    product\\_id INT,\n    quantity INT,\n    price DECIMAL(10, 2),\n  \
+  \  PRIMARY KEY (order\\_id, product\\_id),\n    FOREIGN KEY (order\\_id) REFERENCES\
+  \ ORDER(order\\_id),\n    FOREIGN KEY (product\\_id) REFERENCES PRODUCT(product\\\
+  _id)\n);\n\nCREATE TABLE ORDER (\n    order\\_id INT PRIMARY KEY,\n    customer\\\
+  _id INT,\n    order\\_date DATE,\n    total\\_amount DECIMAL(10, 2),\n    FOREIGN\
+  \ KEY (customer\\_id) REFERENCES CUSTOMER(customer\\_id)\n);\n\nCREATE TABLE PRODUCT\
+  \ (\n    product\\_id INT PRIMARY KEY,\n    product\\_name VARCHAR(100),\n    category\
+  \ VARCHAR(50),\n    manufacturer VARCHAR(100),\n    price DECIMAL(10, 2)\n);\n\n\
+  The resulting DFM schema:\n\nfact:\n  name: ORDER\nmeasures:\n  - name: CUSTOMER.email\n\
+  \  - name: CUSTOMER.phone\n  - name: ORDER.order\\_date\n  - name: ORDER.total\\\
+  _amount\ndependencies:\n  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.first\\\
+  _name\n  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.last\\_name\n  - from:\
+  \ CUSTOMER.customer\\_id\n    to: CUSTOMER.email\n  - from: CUSTOMER.customer\\\
+  _id\n    to: CUSTOMER.phone\n  - from: ORDER.order\\_id\n    to: ORDER.order\\_date\n\
+  \  - from: ORDER.order\\_id\n    to: ORDER.total\\_amount\n  - from: ORDER\\_LINE\\\
+  _ITEM.order\\_id, ORDER\\_LINE\\_ITEM.product\\_id\n    to: ORDER\\_LINE\\_ITEM.quantity\n\
+  \  - from: ORDER\\_LINE\\_ITEM.order\\_id, ORDER\\_LINE\\_ITEM.product\\_id\n  \
+  \  to: ORDER\\_LINE\\_ITEM.price\n  - from: ORDER\\_LINE\\_ITEM.order\\_id, ORDER\\\
+  _LINE\\_ITEM.product\\_id\n    to: PRODUCT.product\\_id\n  - from: ORDER\\_LINE\\\
+  _ITEM.order\\_id, ORDER\\_LINE\\_ITEM.product\\_id\n    to: PRODUCT.product\\_name\n\
+  \  - from: ORDER\\_LINE\\_ITEM.order\\_id, ORDER\\_LINE"
+output_preprocessed: []

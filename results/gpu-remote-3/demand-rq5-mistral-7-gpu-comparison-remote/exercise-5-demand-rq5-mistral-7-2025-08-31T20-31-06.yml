@@ -1,0 +1,177 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 5
+    missing: 13
+    reversed: 0
+  fact:
+    false_fact: 4
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 4
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 13
+    fp: 5
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.087
+    fn: 13
+    fp: 8
+    precision: 0.1111
+    recall: 0.0714
+    tp: 1
+output:
+- dependencies:
+  - from: Product
+    to: ProductID
+  - from: Store
+    to: StoreID
+  - from: Date
+    to: Date
+  - from: Customer
+    to: CustomerID
+  - from: Sales
+    to: Quantity
+  fact:
+    name: Sales
+  measures:
+  - name: Quantity
+output_preprocessed:
+- dependencies:
+  - from: Product
+    label: fp
+    to: ProductID
+  - from: Store
+    label: fp
+    to: StoreID
+  - from: Date
+    label: fp
+    to: Date
+  - from: Customer
+    label: fp
+    to: CustomerID
+  - from: Sales
+    label: fp
+    to: Quantity
+  fact:
+    name: Sales
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: fn
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: fn
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: Quantity
+  nodes:
+    fn:
+    - hour
+    - city
+    - surname
+    - instructor
+    - wod
+    - member
+    - postalcode
+    - wodtype
+    - presence
+    - weight
+    - height
+    - address
+    - name
+    fp:
+    - store
+    - sales
+    - customerid
+    - product
+    - storeid
+    - customer
+    - quantity
+    - productid
+    tp:
+    - date

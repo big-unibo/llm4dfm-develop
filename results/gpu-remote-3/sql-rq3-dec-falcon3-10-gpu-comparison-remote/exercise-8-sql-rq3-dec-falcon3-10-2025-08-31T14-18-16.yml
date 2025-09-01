@@ -1,0 +1,150 @@
+config:
+  label: falcon3-10
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: CHECKIN
+    to: CHECKIN.checkInTime
+  - from: CHECKIN
+    to: CHECKIN.numberOfBags
+  - from: CHECKIN
+    to: TICKET.ticketNumber
+  - from: CHECKIN
+    to: CHECKIN.seat
+  - from: CHECKIN
+    to: PERSON.personCode
+  - from: PERSON.personCode
+    to: PERSON.name
+  - from: PERSON.personCode
+    to: PERSON.surname
+  - from: PERSON.personCode
+    to: PERSON.birthdate
+  - from: PERSON.personCode
+    to: PERSON.cityOfResidence
+  - from: PERSON.personCode
+    to: PERSON.documentId
+  - from: PERSON.personCode
+    to: PERSON.documentType
+  - from: PERSON.personCode
+    to: PERSON.telephone
+  - from: PERSON.personCode
+    to: PERSON.email
+  - from: PERSON.personCode
+    to: PERSON.gender
+  - from: TICKET.ticketNumber
+    to: FLIGHT.date,FLIGHT.route
+  - from: CHECKIN
+    to: TICKET.flightAmount
+  - from: CHECKIN
+    to: TICKET.taxAmount
+  - from: TICKET.ticketNumber
+    to: TICKET.priorityYN
+  - from: TICKET.ticketNumber
+    to: PURCHASE.purchaseCode
+  - from: PURCHASE.purchaseCode
+    to: PURCHASE.date
+  - from: CHECKIN
+    to: PURCHASE.totalAmount
+  - from: PURCHASE.purchaseCode
+    role: buyerCode
+    to: PERSON.personCode
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.date
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.cancelledYN
+  - from: FLIGHT.date,FLIGHT.route
+    to: ROUTE.route
+  - from: ROUTE.route
+    to: ROUTE.arrivalTime
+  - from: ROUTE.route
+    to: ROUTE.departureTime
+  - from: ROUTE.route
+    to: AIRLINE.airlineCode
+  - from: ROUTE.route
+    role: departure
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    role: arrival
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    to: AIRPLANETYPE.airplaneType
+  - from: AIRPORT.airportCode
+    to: AIRPORT.name
+  - from: AIRPORT.airportCode
+    to: AIRPORT.city
+  - from: AIRPORT.city
+    to: AIRPORT.nation
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.airlineName
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.nation
+  - from: AIRPLANETYPE.airplaneType
+    to: AIRPLANETYPE.name
+  - from: CHECKIN
+    to: AIRPLANETYPE.numberOfSeats
+  fact:
+    name: CHECKIN
+  measures:
+  - name: CHECKIN.numberOfBags
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: PURCHASE.totalAmount
+  - name: AIRPLANETYPE.numberOfSeats
+metrics:
+- {}
+output:
+- "fact:\n  name: TICKET\nmeasures:\n  - name: TICKET.flightAmount\n  - name: TICKET.taxAmount\n\
+  dependencies:\n  - from: PERSON.personCode\n    to: PERSON.name\n  - from: PERSON.personCode\n\
+  \    to: PERSON.surname\n  - from: PERSON.personCode\n    to: PERSON.birthdate\n\
+  \  - from: PERSON.personCode\n    to: PERSON.cityOfResidence\n  - from: PERSON.personCode\n\
+  \    to: PERSON.documentId\n  - from: PERSON.personCode\n    to: PERSON.documentType\n\
+  \  - from: PERSON.personCode\n    to: PERSON.telephone\n  - from: PERSON.personCode\n\
+  \    to: PERSON.email\n  - from: PERSON.personCode\n    to: PERSON.gender\n  - from:\
+  \ PURCHASE.purchaseCode\n    to: PURCHASE.date\n  - from: PURCHASE.purchaseCode\n\
+  \    to: PURCHASE.totalAmount\n  - from: PURCHASE.purchaseCode\n    to: PERSON.personCode\n\
+  \  - from: AIRPORT.airportCode\n    to: AIRPORT.name\n  - from: AIRPORT.airportCode\n\
+  \    to: AIRPORT.city\n  - from: AIRPORT.airportCode\n    to: AIRPORT.nation\n \
+  \ - from: AIRLINE.airlineCode\n    to: AIRLINE.airlineName\n  - from: AIRLINE.airlineCode\n\
+  \    to: AIRLINE.nation\n  - from: AIRPLANE_TYPE.airplaneType\n    to: AIRPLANE_TYPE.name\n\
+  \  - from: AIRPLANE_TYPE.airplaneType\n    to: AIRPLANE_TYPE.numberOfSeats\n  -\
+  \ from: ROUTE.route\n    to: ROUTE.airlineCode\n  - from: ROUTE.route\n    to: ROUTE.departure\n\
+  \  - from: ROUTE.route\n    to: ROUTE.arrival\n  - from: ROUTE.route\n    to: ROUTE.departureTime\n\
+  \  - from: ROUTE.route\n    to: ROUTE.arrivalTime\n  - from: ROUTE.route\n    to:\
+  \ AIRPLANE_TYPE.airplaneType\n  - from: FLIGHT.date, FLIGHT.route\n    to: FLIGHT.date\n\
+  \  - from: FLIGHT.date, FLIGHT.route\n    to: FLIGHT.route\n  - from: FLIGHT.date,\
+  \ FLIGHT.route\n    to: FLIGHT.delayInDeparture\n  - from: FLIGHT.date, FLIGHT.route\n\
+  \    to: FLIGHT.delayInArrival\n  - from: FLIGHT.date, FLIGHT.route\n    to: FLIGHT.cancelledYN\n\
+  \  - from: TICKET.ticketNumber\n    to: TICKET.date\n  - from: TICKET.ticketNumber\n\
+  \    to: TICKET.route\n  - from: TICKET.ticketNumber\n    to: TICKET.purchaseCode\n\
+  \  - from: TICKET.ticketNumber\n    to: TICKET.flightAmount\n  - from: TICKET.ticketNumber\n\
+  \    to: TICKET.taxAmount\n  - from: TICKET.ticketNumber\n    to: TICKET.priorityYN\n\
+  \  - from: BOARDING_CARD.boardingCardCode\n    to: BOARDING_CARD.ticketNumber\n\
+  \  - from: BOARDING_CARD.boardingCardCode\n    to: BOARDING_CARD.passengerCode\n\
+  \  - from: BOARDING_CARD.boardingCardCode\n    to: BOARDING_CARD.seat\n  - from:\
+  \ CHECK_IN.boardingCardCode\n    to: CHECK_IN.checkInTime\n  - from: CHECK_IN.boardingCardCode\n\
+  \    to: CHECK_IN.numberOfBags\n  - from: TICKET\n    to: FLIGHT.date, FLIGHT.route\n\
+  \  - from: TICKET\n    to: PURCHASE.purchaseCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n<|"
+output_preprocessed: []

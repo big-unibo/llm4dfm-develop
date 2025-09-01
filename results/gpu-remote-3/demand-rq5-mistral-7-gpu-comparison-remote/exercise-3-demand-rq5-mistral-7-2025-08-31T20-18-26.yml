@@ -1,0 +1,75 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- {}
+output:
+- store:
+    address: 123 Main St
+    area: New York
+    country: USA
+    name: Store A
+    type: Supermarket
+output_preprocessed: []

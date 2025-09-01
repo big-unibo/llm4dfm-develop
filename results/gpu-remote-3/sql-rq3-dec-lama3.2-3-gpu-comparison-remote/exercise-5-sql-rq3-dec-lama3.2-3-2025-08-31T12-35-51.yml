@@ -1,0 +1,79 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- {}
+output:
+- Here is the corrected YAML representation of the resulting DFM schema: null
+  ? It seems that the previous response contained duplicate entries. Here is the corrected
+    YAML representation of the resulting DFM schema
+  : null
+  ? It seems that the previous response still contained duplicate entries. Here is
+    the corrected YAML representation of the resulting DFM schema
+  : null
+  dependencies:
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from
+  fact:
+    name: PRESENCE
+  measures:
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+  - name: MEMBERS.address
+  - name: MEMBERS.postalCode
+  - name: MEMBERS.city
+  - name: MEMBERS.gender
+  - name: WOD.name
+  - name: WOD.WODtype
+  - name: WOD.numberOfRounds
+  - name: EXERCISES.name
+  - name: EXERCISES.exerciseType
+  - name: MAXIMUM_WEIGHTS.weight
+  - name: MAXIMUM_WEIGHTS.date
+  - name: WORKOUTS.time
+output_preprocessed: []

@@ -1,0 +1,73 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.SupplierName
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    to: COMPUTER.Brand
+  - from: SUPPLIES.Brand
+    to: COMPUTER.CodComputer
+  - from: SUPPLIES.Brand
+    to: COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: INSTALLATIONS.CodSoftw
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS.CodComputer
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS.CodComputer
+    to: COMPUTER.Brand
+  - from: INSTALLATIONS.CodComputer
+    to: INSTALLATIONS.CodSoftw
+  - from: INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS.CodComputer
+  - from: INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS.CodComputer
+  - from: INSTALLATIONS.CodComputer
+    to: INSTALLATIONS.CodSoftw
+  - from: INSTALLATIONS.CodComputer
+    to: INSTALLATIONS.CodSoftw
+  - from: INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS.CodComputerassistant
+  fact:
+    name: INSTALLATION
+  measures:
+  - name: null
+output_preprocessed: []
