@@ -1,0 +1,1177 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 3
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 207
+    missing: 9
+    reversed: 0
+  fact:
+    false_fact: 2
+    incorrect: true
+  measures:
+    extra: 3
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0.0092
+    fn: 9
+    fp: 207
+    precision: 0.0048
+    recall: 0.1
+    tp: 1
+  nodes:
+    f1: 0.1
+    fn: 10
+    fp: 8
+    precision: 0.1111
+    recall: 0.0909
+    tp: 1
+output:
+- dependencies:
+  - from: SUPPLIERS.supplierName
+    to: SUPPLIERS.supplierCity
+  - from: SUPPLIERS.supplierName
+    to: SUPPLIERS.supplierName
+  - from: SUPPLIERS.supplierName
+    to: SUPPLIERS.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierName
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierName
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierName
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    to: SUPPLIES.supplierCity
+  - from: SUPPL
+  fact:
+    name: SUPPLIERS
+  measures:
+  - name: SUPPLIERS.brand
+  - name: SUPPLIERS.supplierName
+  - name: SUPPLIERS.supplierCity
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIERS.supplierName
+    label: tp
+    to: SUPPLIERS.supplierCity
+  - from: SUPPLIERS.supplierName
+    label: fp
+    to: SUPPLIERS.supplierName
+  - from: SUPPLIERS.supplierName
+    label: fp
+    to: SUPPLIERS.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierName
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierName
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierName
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPLIES.brand
+    label: fp
+    to: SUPPLIES.supplierCity
+  - from: SUPPL
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: SUPPLIERS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: tp
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: SUPPLIERS.brand
+  - name: SUPPLIERS.supplierName
+  - name: SUPPLIERS.supplierCity
+  nodes:
+    fn:
+    - installations
+    - suppliers.supplieraddress
+    - software.codsoftw
+    - suppliers.suppliername
+    - suppliers.suppliercity
+    - installations.installationdate
+    - software.type
+    - software.softwaredescription
+    - computer.codcomputer
+    - computer.model
+    fp:
+    - suppliers
+    - supplies.suppliercity
+    - suppliers.suppliername
+    - suppliers.suppliercity
+    - r,e,o
+    - suppl
+    - supplies.suppliername
+    - suppliers.brand
+    tp:
+    - supplies.brand

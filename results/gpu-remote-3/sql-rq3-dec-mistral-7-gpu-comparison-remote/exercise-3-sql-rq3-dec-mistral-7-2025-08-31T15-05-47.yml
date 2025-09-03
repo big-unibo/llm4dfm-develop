@@ -1,0 +1,386 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 7
+    missing: 9
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 2
+  miscellaneous:
+    extra_disconnected_components: 3
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: CREDITCARDS.CCNumber
+    to: CARDTYPES.TypeCode
+  - from: CREDITCARDS.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES
+    to: CREDITCARDS.CreditLimit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Address
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Color
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+metrics:
+- edges:
+    f1: 0.7143
+    fn: 9
+    fp: 7
+    precision: 0.7407
+    recall: 0.6897
+    tp: 20
+  nodes:
+    f1: 0.871
+    fn: 3
+    fp: 5
+    precision: 0.8438
+    recall: 0.9
+    tp: 27
+output:
+- dependencies:
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Circuit
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.IssuingBank
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Address
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Country
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.CardName
+  - from: CARD_TYPES.TypeCode
+    to: CARD_TYPES.Color
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.StoreCode
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: CREDIT_CARDS
+    to: CREDIT_CARDS.TypeCode
+  - from: CREDIT_CARDS
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS
+    to: CREDIT_CARDS.ExpirationDate
+  - from: CREDIT_CARDS
+    to: CREDIT_CARDS.CreditLimit
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDIT_CARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+output_preprocessed:
+- dependencies:
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.Quality
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Address
+  - from: CARDTYPES.TypeCode
+    label: fp
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    label: tp
+    to: CARDTYPES.Color
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Name
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Address
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Country
+  - from: STORES.StoreCode
+    label: fp
+    to: STORES.Area
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    label: tp
+    to: STORES.Email
+  - from: CREDITCARDS
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: CREDITCARDS
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS
+    label: fp
+    to: CREDITCARDS.ExpirationDate
+  - from: CREDITCARDS
+    label: fp
+    to: CREDITCARDS.CreditLimit
+  - from: PURCHASES
+    label: tp
+    to: PURCHASES.Date
+  - from: PURCHASES
+    label: tp
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    label: tp
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    label: tp
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    label: tp
+    to: STORES.StoreCode
+  fact:
+    name: PURCHASES
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Amount
+    - from: PURCHASES
+      label: tp
+      to: PURCHASES.Exchange
+    - from: PURCHASES
+      label: tp
+      to: CREDITCARDS.CCNumber
+    - from: PURCHASES
+      label: tp
+      to: STORES.StoreCode
+    - from: PURCHASES
+      label: tp
+      to: PURCHASES.Currency
+    - from: PURCHASES
+      label: tp
+      to: PURCHASES.Date
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CARDTYPES.TypeCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: HOLDERS.HolderCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CREDITCARDS.ExpirationDate
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CreditLimit
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.Circuit
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.IssuingBank
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Address
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Country
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.CardName
+    - from: CARDTYPES.TypeCode
+      label: tp
+      to: CARDTYPES.Color
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.FirstName
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.LastName
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.BirthDate
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.Job
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.IncomeRange
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.Quality
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Name
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Address
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Country
+    - from: STORES.Country
+      label: fn
+      to: STORES.Area
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.WebSite
+    - from: STORES.StoreCode
+      label: tp
+      to: STORES.Email
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Type
+    fact:
+      name: PURCHASES
+    measures:
+    - name: PURCHASES.Amount
+    - name: PURCHASES.Exchange
+    - name: CREDITCARDS.CreditLimit
+  measures:
+  - name: PURCHASES.Amount
+  nodes:
+    fn:
+    - creditcards.creditlimit
+    - stores.type
+    - purchases.exchange
+    fp:
+    - creditcards
+    - creditcards.typecode
+    - purchases.exchange
+    - creditcards.creditlimit
+    - creditcards.holdercode
+    tp:
+    - cardtypes.issuingbank
+    - holders.quality
+    - purchases.date
+    - stores.website
+    - holders.birthdate
+    - purchases.amount
+    - holders.incomerange
+    - stores.email
+    - cardtypes.circuit
+    - cardtypes.cardname
+    - purchases
+    - stores.name
+    - holders.job
+    - stores.storecode
+    - creditcards.expirationdate
+    - cardtypes.country
+    - creditcards.ccnumber
+    - cardtypes.typecode
+    - stores.country
+    - stores.address
+    - cardtypes.color
+    - holders.lastname
+    - holders.holdercode
+    - purchases.currency
+    - cardtypes.address
+    - holders.firstname
+    - stores.area

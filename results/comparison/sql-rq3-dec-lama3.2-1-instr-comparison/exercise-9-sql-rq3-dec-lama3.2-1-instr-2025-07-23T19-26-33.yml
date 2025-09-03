@@ -1,0 +1,1165 @@
+config:
+  label: lama3.2-1-instr
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 1
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 1
+  dependencies:
+    extra: 0
+    missing: 29
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 446
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTESINTICKETS
+    to: ROUTESINTICKETS.Price
+  - from: ROUTESINTICKETS
+    to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: ROUTESINTICKETS
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTESINTRIPS.Sequence
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    role: DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.RouteCode
+    role: ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: ROUTESINTICKETS
+    to: ROUTES.DistanceKm
+  - from: ROUTESINTICKETS
+    to: ROUTES.Duration
+  - from: ROUTESINTICKETS
+    to: ROUTES.Fare
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.Location
+    to: STATIONS.City
+  - from: STATIONS.City
+    to: STATIONS.Region
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Date
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Status
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINTYPE.TrainTypeCode
+  - from: ROUTESINTICKETS
+    to: TRAINTYPE.Capacity
+  - from: TRAINTYPE.TrainTypeCode
+    to: TRAINTYPE.TrainType
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+metrics:
+- edges:
+    f1: 0
+    fn: 29
+    fp: 0
+    precision: 0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.2222
+    fn: 24
+    fp: 11
+    precision: 0.3125
+    recall: 0.1724
+    tp: 5
+output:
+- fact:
+    name: TRAINS
+  measures:
+  - name: TRAIN_TYPE.capacity
+  - name: STATIONS.location
+  - name: ROUTES.distanceKm
+  - name: ROUTES.fare
+  - name: ROUTES.duration
+  - name: ROUTES.sequencenumber
+  - name: ROUTES.intrastrip
+  - name: ROUTES.outtrastrip
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: CUSTOMERS.name
+  - name: CUSTOMERS.surname
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+output_preprocessed:
+- dependencies: []
+  fact:
+    name: TRAINS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TICKETS.TicketCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTESINTICKETS.Price
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: fn
+      to: TICKETS.PurchaseDate
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: fn
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: fn
+      to: CUSTOMERS.BirthCity
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: ROUTESINTRIPS.Sequence
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: fn
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: fn
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAINTYPE.TrainTypeCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TRAINTYPE.Capacity
+    - from: TRAINTYPE.TrainTypeCode
+      label: fn
+      to: TRAINTYPE.TrainType
+    fact:
+      name: ROUTESINTICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTESINTICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+    - name: TRAINTYPE.Capacity
+  measures:
+  - name: TRAINTYPE.capacity
+  - name: STATIONS.location
+  - name: ROUTES.distanceKm
+  - name: ROUTES.fare
+  - name: ROUTES.duration
+  - name: ROUTES.sequencenumber
+  - name: ROUTES.intrastrip
+  - name: ROUTES.outtrastrip
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: CUSTOMERS.name
+  - name: CUSTOMERS.surname
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  - name: TICKETS.purchasedate
+  - name: TICKETS.totalprice
+  - name: TICKETS.fare
+  - name: TICKETS.price
+  - name: TICKETS.totalprice
+  - name: TICKETS.customercode
+  nodes:
+    fn:
+    - customers.birthcity
+    - customers.documentid
+    - trips.date
+    - routesintrips.sequence
+    - trains.traincode
+    - tickets.purchasedate
+    - routesintickets
+    - customers.birthdate
+    - trips.status
+    - stations.name
+    - stations.stationcode
+    - stations.region
+    - routesintickets.price
+    - traintype.traintypecode
+    - routesintrips.traincode,routesintrips.date,routesintrips.routecode
+    - trips.date,trips.traincode
+    - customers.customercode
+    - stations.location
+    - traintype.traintype
+    - routes.routecode
+    - tickets.ticketcode
+    - customers.surname
+    - customers.name
+    - stations.city
+    fp:
+    - trains
+    - routes.sequencenumber
+    - routes.outtrastrip
+    - tickets.fare
+    - tickets.customercode
+    - tickets.price
+    - customers.name
+    - customers.surname
+    - routes.intrastrip
+    - tickets.purchasedate
+    - stations.location
+    tp:
+    - routes.duration
+    - routes.distancekm
+    - routes.fare
+    - traintype.capacity
+    - tickets.totalprice

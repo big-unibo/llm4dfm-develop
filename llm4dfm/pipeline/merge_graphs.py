@@ -94,8 +94,9 @@ def exclude(dir_name):
     return dir_name.endswith('paper')
 
 def include(dir_name):
-    return dir_name.endswith('comparison-gpu')
+    return dir_name == 'comparison'
 
-merged_df = collect_csvs(root_directory, exclude_dir=exclude)
+merged_df = collect_csvs(root_directory)
 
-plot_f1_vs_time_per_exercise(merged_df, root_directory + label)
+if merged_df is not None:
+    plot_f1_vs_time_per_exercise(merged_df, root_directory + label)

@@ -13,11 +13,9 @@ RUN apt-get update && apt-get install -y \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
     && apt-get install -y python3.12 python3.12-venv python3.12-dev \
-    && apt install git \
+    && apt install -y git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt install -y git
 
 # Install pip for Python 3.12
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
@@ -50,7 +48,7 @@ RUN poetry install --no-root
 COPY . .
 
 # Make sure the script is executable
-RUN chmod +x setup-container.sh
-RUN chmod +x llm4dfm/run-all.sh
-RUN chmod +x llm4dfm/resources/automatic-run.sh
-RUN chmod +x llm4dfm/resources/automatic-metrics.sh
+RUN chmod +x setup-container.sh \
+    && chmod +x llm4dfm/run-all.sh \
+    && chmod +x llm4dfm/resources/automatic-run.sh \
+    && chmod +x llm4dfm/resources/automatic-metrics.sh

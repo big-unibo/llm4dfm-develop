@@ -1,0 +1,229 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: CREDITCARDS.CCNumber
+    to: CARDTYPES.TypeCode
+  - from: CREDITCARDS.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES
+    to: CREDITCARDS.CreditLimit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Address
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Color
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+metrics:
+- {}
+output:
+- "fact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.Circuit\n  -\
+  \ from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CREDIT_CARDS.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CREDIT_CARDS.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.FirstName\n\
+  \  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.LastName\n  - from: CREDIT_CARDS.HolderCode\n\
+  \    to: HOLDERS.BirthDate\n  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.Job\n\
+  \  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.IncomeRange\n  - from: CREDIT_CARDS.HolderCode\n\
+  \    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.CCNumber\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Date\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Currency\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.StoreCode\n  - from: PURCHASES.StoreCode\n    to: STORES.Name\n\
+  \  - from: PURCHASES.StoreCode\n    to: STORES.Address\n  - from: PURCHASES.StoreCode\n\
+  \    to: STORES.Country\n  - from: PURCHASES.StoreCode\n    to: STORES.Area\n  -\
+  \ from: PURCHASES.StoreCode\n    to: STORES.WebSite\n  - from: PURCHASES.StoreCode\n\
+  \    to: STORES.Email\n  - from: PURCHASES.StoreCode\n    to: STORES.Typeassistant\n\
+  \nfact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Circuit\n  - from:\
+  \ CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.FirstName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.Job\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.CCNumber\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Date\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Currency\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.StoreCode\n  - from: STORES.StoreCode\n    to: STORES.Name\n\
+  \  - from: STORES.StoreCode\n    to: STORES.Address\n  - from: STORES.StoreCode\n\
+  \    to: STORES.Country\n  - from: STORES.StoreCode\n    to: STORES.Area\n  - from:\
+  \ STORES.StoreCode\n    to: STORES.WebSite\n  - from: STORES.StoreCode\n    to:\
+  \ STORES.Email\n  - from: STORES.StoreCode\n    to: STORES.Typeassistant\n\nfact:\n\
+  \  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Circuit\n  - from:\
+  \ CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.FirstName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.Job\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.CCNumber\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Date\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Currency\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.StoreCode\n  - from: STORES.StoreCode\n    to: STORES.Name\n\
+  \  - from: STORES.StoreCode\n    to: STORES.Address\n  - from: STORES.StoreCode\n\
+  \    to: STORES.Country\n  - from: STORES.StoreCode\n    to: STORES.Area\n  - from:\
+  \ STORES.StoreCode\n    to: STORES.WebSite\n  - from: STORES.StoreCode\n    to:\
+  \ STORES.Email\n  - from: STORES.StoreCode\n    to: STORES.Typeassistant\n\nfact:\n\
+  \  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Circuit\n  - from:\
+  \ CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.FirstName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.Job\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.CCNumber\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Date\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Currency\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.StoreCode\n  - from: STORES.StoreCode\n    to: STORES.Name\n\
+  \  - from: STORES.StoreCode\n    to: STORES.Address\n  - from: STORES.StoreCode\n\
+  \    to: STORES.Country\n  - from: STORES.StoreCode\n    to: STORES.Area\n  - from:\
+  \ STORES.StoreCode\n    to: STORES.WebSite\n  - from: STORES.StoreCode\n    to:\
+  \ STORES.Email\n  - from: STORES.StoreCode\n    to: STORES.Type\n  - from: PURCHASES.StoreCode\n\
+  \    to: STORES.Typeassistant\n\nfact:\n  name: PURCHASES\nmeasures:\n  - name:\
+  \ PURCHASES.Amount\n  - name: PURCHASES.Exchange\ndependencies:\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Circuit\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Country\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.FirstName\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Job\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.CCNumber\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Date\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Currency\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.StoreCode\n  - from: STORES.StoreCode\n\
+  \    to: STORES.Name\n  - from: STORES.StoreCode\n    to: STORES.Address\n  - from:\
+  \ STORES.StoreCode\n    to: STORES.Country\n  - from: STORES.StoreCode\n    to:\
+  \ STORES.Area\n  - from: STORES.StoreCode\n    to: STORES.WebSite\n  - from: STORES.StoreCode\n\
+  \    to: STORES.Email\n  - from: STORES.StoreCode\n    to: STORES.Type\n  - from:\
+  \ PURCHASES.StoreCode\n    to: STORES.Type\n  - from: PURCHASES.StoreCode\n    to:\
+  \ STORES.Addressassistant\n\nfact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n\
+  \  - name: PURCHASES.Exchange\ndependencies:\n  - from: CARD_TYPES.TypeCode\n  \
+  \  to: CARD_TYPES.Circuit\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Country\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.FirstName\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Job\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.CCNumber\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Date\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Currency\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.StoreCode\n  - from: STORES.StoreCode\n\
+  \    to: STORES.Name\n  - from: STORES.StoreCode\n    to: STORES.Type\n  - from:\
+  \ PURCHASES.StoreCode\n    to: STORES.Type\n  - from: PURCHASES.StoreCode\n    to:\
+  \ STORES.Address\n  - from: PURCHASES.StoreCode\n    to: STORES.Country\n  - from:\
+  \ PURCHASES.StoreCode\n    to: STORES.Area\n  - from: PURCHASES.StoreCode\n    to:\
+  \ STORES.WebSite\n  - from: PURCHASES.StoreCode\n    to: STORES.Emailassistant\n\
+  \nfact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Circuit\n  - from:\
+  \ CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.FirstName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.Job\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.CCNumber\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.StoreCode\n\
+  \  - from: STORES.StoreCode\n    to: STORES.Name\n  - from: STORES.StoreCode\n \
+  \   to: STORES.Type\n  - from: PURCHASES.StoreCode\n    to: STORES.Type\n  - from:\
+  \ PURCHASES.StoreCode\n    to: STORES.Address\n  - from: PURCHASES.StoreCode\n \
+  \   to: STORES.Country\n  - from: PURCHASES.StoreCode\n    to: STORES.Area\n  -\
+  \ from: PURCHASES.StoreCode\n    to: STORES.WebSite\n  - from: PURCHASES.StoreCode\n\
+  \    to: STORES.Email\n  - from: PURCHASES.StoreCode\n    to: PURCHASES.Dateassistant\n\
+  \nfact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Circuit\n  - from:\
+  \ CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.FirstName\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.LastName\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.BirthDate\n  - from: HOLDERS.HolderCode\n    to: HOLDERS.Job\n\
+  \  - from: HOLDERS.HolderCode\n    to: HOLDERS.IncomeRange\n  - from: HOLDERS.HolderCode\n\
+  \    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.CCNumber\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.Amount\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: PURCHASES.Exchange\n  - from: CREDIT_CARDS.CCNumber\n    to: PURCHASES.StoreCode\n\
+  \  - from: STORES.StoreCode\n    to: STORES.Type\n  - from: PURCHASES.StoreCode\n\
+  \    to: STORES.Type\n  - from: PURCHASES.StoreCode\n    to: STORES.Address\n  -\
+  \ from: PURCHASES.StoreCode\n    to: STORES.Country\n  - from: PURCHASES.StoreCode\n\
+  \    to: STORES.Area\n  - from: PURCHASES.StoreCode\n    to: STORES.WebSite\n  -\
+  \ from: PURCHASES.StoreCode\n    to: STORES.Email\n  - from: PURCHASES.StoreCode\n\
+  \    to: PURCHASES.Date\n  - from: PURCHASES.StoreCode\n    to: PURCHASES.Dateassistant\n\
+  \nfact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Circuit\n  - from:\
+  \ CARD_TYPES.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CARD_TYPES.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CARD_TYPES.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: HOLDERS.HolderCode\n    to"
+output_preprocessed: []

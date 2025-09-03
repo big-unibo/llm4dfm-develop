@@ -1,0 +1,271 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 8
+    missing: 7
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.4444
+    fn: 7
+    fp: 8
+    precision: 0.4286
+    recall: 0.4615
+    tp: 6
+  nodes:
+    f1: 0.9655
+    fn: 0
+    fp: 1
+    precision: 0.9333
+    recall: 1.0
+    tp: 14
+output:
+- ? I noticed that the last item in the dependencies list was a duplicate. Here is
+    the corrected YAML representation of the resulting DFM schema
+  : null
+  ? I noticed that the last item in the dependencies list was missing the role tag
+    for the relationship between PRESENCE and instructor. Here is the corrected YAML
+    representation of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and WOD should be listed with
+    a role, as it is a many-to-one relationship. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and date should be listed with
+    a role, as it is a many-to-one relationship. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and hour should be listed with
+    a role, as it is a many-to-one relationship. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and instructor should be a many-to-one
+    relationship, where one instructor can lead multiple PRESENCE events. However,
+    in the current representation, the relationship is listed twice, which is incorrect.
+    Here is the corrected YAML representation of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and instructor should be listed
+    only once, with the role "trainer". Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and instructor should be listed
+    with a role, as it is a many-to-one relationship. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and member should be listed with
+    a role, as it is a many-to-one relationship. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the relationship between PRESENCE and quantity should be listed
+    with a role, as it is a many-to-one relationship. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  ? I noticed that the role for the relationship between PRESENCE and instructor should
+    be "trainer" or "instructor", but not both. Here is the corrected YAML representation
+    of the resulting DFM schema
+  : null
+  dependencies:
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  - from: member
+    to: postalCode
+  - from: member
+    to: city
+  - from: member
+    to: weight
+  - from: member
+    to: height
+  - from: WOD
+    to: type
+  - from: PRESENCE
+    role: workout
+    to: WOD
+  - from: PRESENCE
+    role: attendee
+    to: member
+  - from: PRESENCE
+    role: event
+    to: date
+  - from: PRESENCE
+    role: count
+    to: quantity
+  - from: PRESENCE
+    role: time
+    to: hour
+  - from: PRESENCE
+    role: trainerassistant
+    to: instructor
+  fact:
+    name: PRESENCE
+  measures:
+  - name: quantity
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: tp
+    to: surname
+  - from: member
+    label: tp
+    to: address
+  - from: member
+    label: fp
+    to: postalCode
+  - from: member
+    label: fp
+    to: city
+  - from: member
+    label: tp
+    to: weight
+  - from: member
+    label: tp
+    to: height
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: PRESENCE
+    label: fp
+    role: workout
+    to: WOD
+  - from: PRESENCE
+    label: fp
+    role: attendee
+    to: member
+  - from: PRESENCE
+    label: fp
+    role: event
+    to: date
+  - from: PRESENCE
+    label: fp
+    role: count
+    to: quantity
+  - from: PRESENCE
+    label: fp
+    role: time
+    to: hour
+  - from: PRESENCE
+    label: fp
+    role: trainerassistant
+    to: instructor
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: tp
+      to: Surname
+    - from: Member
+      label: tp
+      to: Weight
+    - from: Member
+      label: tp
+      to: Height
+    - from: Member
+      label: tp
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: quantity
+  nodes:
+    fn: []
+    fp:
+    - quantity
+    tp:
+    - name
+    - postalcode
+    - member
+    - address
+    - instructor
+    - surname
+    - wodtype
+    - weight
+    - height
+    - hour
+    - date
+    - wod
+    - city
+    - presence

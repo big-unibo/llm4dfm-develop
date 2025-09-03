@@ -1,0 +1,224 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 10
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 15
+    fp: 10
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 13
+    fp: 11
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: Time.Year
+    to: Time.Year
+  - from: Time.Month
+    to: Time.Month
+  - from: Products.ProductID
+    to: Products.ProductName
+  - from: Customers.CustomerID
+    to: Customers.CustomerName
+  - from: Sales.SalesAmount
+    to: Sales.SalesAmount
+  - from: Sales.QuantitySold
+    to: Sales.QuantitySold
+  - from: Sales
+    to: Sales.SalesAmount
+  - from: Sales
+    to: Sales.QuantitySold
+  - from: Sales
+    to: Products.ProductID
+  - from: Sales
+    to: Customers.CustomerID
+  fact:
+    name: Sales
+  measures:
+  - name: SalesAmount
+  - name: QuantitySold
+output_preprocessed:
+- dependencies:
+  - from: Time.Year
+    label: fp
+    to: Time.Year
+  - from: Time.Month
+    label: fp
+    to: Time.Month
+  - from: Products.ProductID
+    label: fp
+    to: Products.ProductName
+  - from: Customers.CustomerID
+    label: fp
+    to: Customers.CustomerName
+  - from: Sales.SalesAmount
+    label: fp
+    to: Sales.SalesAmount
+  - from: Sales.QuantitySold
+    label: fp
+    to: Sales.QuantitySold
+  - from: Sales
+    label: fp
+    to: Sales.SalesAmount
+  - from: Sales
+    label: fp
+    to: Sales.QuantitySold
+  - from: Sales
+    label: fp
+    to: Products.ProductID
+  - from: Sales
+    label: fp
+    to: Customers.CustomerID
+  fact:
+    name: Sales
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: SalesAmount
+  - name: QuantitySold
+  nodes:
+    fn:
+    - divisions.divisionname
+    - recruitments.recruitmentdate
+    - departments.departmentcode
+    - qualifications.qualification
+    - staff.gender
+    - divisions.divcode
+    - staff.surname
+    - transfers.date
+    - staff.employeecode
+    - departments.departmentname
+    - transfers
+    - transfers.reason
+    - staff.name
+    fp:
+    - salesamount
+    - sales
+    - customers.customername
+    - time.month
+    - time.year
+    - products.productname
+    - sales.quantitysold
+    - quantitysold
+    - sales.salesamount
+    - customers.customerid
+    - products.productid
+    tp: []

@@ -1,0 +1,218 @@
+config:
+  label: lama3.2-3-inst
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 5
+    shared_missing: 0
+    shared_with_fact_root_extra: 5
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 8
+    missing: 3
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.56
+    fn: 3
+    fp: 8
+    precision: 0.4667
+    recall: 0.7
+    tp: 7
+  nodes:
+    f1: 0.7273
+    fn: 3
+    fp: 3
+    precision: 0.7273
+    recall: 0.7273
+    tp: 8
+output:
+- dependencies:
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: brand
+    to: supplier
+  - from: supplier
+    to: city
+  - from: supplier
+    to: address
+  - from: software
+    to: description
+  - from: software
+    to: type
+  - from: computer
+    to: quantity
+  - from: computer
+    to: cost
+  - from: computer
+    role: from
+    to: software
+  - from: computer
+    role: to
+    to: brand
+  - from: computer
+    role: from
+    to: supplier
+  - from: computer
+    role: to
+    to: city
+  - from: computer
+    role: to
+    to: address
+  - from: computer
+    role: date
+    to: software
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: quantity
+  - name: cost
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: brand
+    label: tp
+    to: supplier
+  - from: supplier
+    label: tp
+    to: city
+  - from: supplier
+    label: tp
+    to: address
+  - from: software
+    label: tp
+    to: description
+  - from: software
+    label: tp
+    to: type
+  - from: computer
+    label: fp
+    to: quantity
+  - from: computer
+    label: fp
+    to: cost
+  - from: computer
+    label: fp
+    role: from
+    to: software
+  - from: computer
+    label: fp
+    role: to
+    to: brand
+  - from: computer
+    label: fp
+    role: from
+    to: supplier
+  - from: computer
+    label: fp
+    role: to
+    to: city
+  - from: computer
+    label: fp
+    role: to
+    to: address
+  - from: computer
+    label: fp
+    role: date
+    to: software
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: tp
+      to: Supplier
+    - from: Supplier
+      label: tp
+      to: City
+    - from: Supplier
+      label: tp
+      to: Address
+    - from: Software
+      label: tp
+      to: Description
+    - from: Software
+      label: tp
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: quantity
+  - name: cost
+  nodes:
+    fn:
+    - installation
+    - date
+    - software
+    fp:
+    - quantity
+    - cost
+    - software
+    tp:
+    - city
+    - model
+    - address
+    - description
+    - supplier
+    - computer
+    - type
+    - brand

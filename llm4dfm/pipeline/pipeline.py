@@ -84,7 +84,6 @@ model_config['key'] = load_credentials(key_config, model_config['name'], config[
 config['output']['dir_label'] = get_dir_label_name(config['exercise']['version'], config['exercise']['prompt_version'], model_config['label'], config['output']['dir_label'], config['use'], model_config['device'])
 
 # Model loading
-
 model = Model(config['use'], model_config['name'], model_config, model_config['key'], model_config['device'], config['debug_prints'])
 
 for ex_idx, exercise in enumerate(config['exercise']['name']):
@@ -191,8 +190,8 @@ for ex_idx, exercise in enumerate(config['exercise']['name']):
 
         # store output
         store_output(model_config, config['exercise']['prompt_version'], exercise, config['exercise']['version'], model_outputs, output_preprocessed, gt_preprocessed,
-                     config['use'] == 'import', metrics, detection_list, ts, config['output']['dir_label'])
+                     metrics, detection_list, ts, config['output']['dir_label'])
 
         if automatic_run:
-            store_csv(model_config, exercise, config['exercise']['version'], config['exercise']['prompt_version'], ex_num, output_preprocessed, config['use'] == 'import',
+            store_csv(model_config, exercise, config['exercise']['version'], config['exercise']['prompt_version'], ex_num, output_preprocessed,
                       metrics, detection_list, ts, config['output']['dir_label'], elapsed_times)
