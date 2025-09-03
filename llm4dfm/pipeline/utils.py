@@ -46,7 +46,6 @@ def extract_ex_num(ex_name):
         return None
 
 def load_credentials(keys, model_name, use):
-    key = None
 
     if model_name in keys and use in keys[model_name]['key']:
         key = keys[model_name]['key'][use]
@@ -198,7 +197,7 @@ def config_to_print(configs) -> dict:
 
 # write model_output in file ex_name-model-timestamp.yml
 # model_output is the list of outputs
-def store_output(model_config, prompt_version, ex_name, ex_version, model_output, output_preprocessed, gt_preprocessed, imported, metrics, error_detection, timestamp, dir_label):
+def store_output(model_config, prompt_version, ex_name, ex_version, model_output, output_preprocessed, gt_preprocessed, metrics, error_detection, timestamp, dir_label):
     results_output = {
         'config': config_to_print(model_config),
         'output': model_output,
@@ -249,7 +248,7 @@ def get_headers_csv():
             'errors_miscellaneous_extra_tags']
 
 
-def store_csv(model_config, ex_name, ex_version, ex_prompt_version, ex_num, output_preprocessed, imported, metrics_list, detected_list, timestamp, label_dir, times):
+def store_csv(model_config, ex_name, ex_version, ex_prompt_version, ex_num, output_preprocessed, metrics_list, detected_list, timestamp, label_dir, times):
 
     for i, out_prep in enumerate(output_preprocessed):
         data = dict()

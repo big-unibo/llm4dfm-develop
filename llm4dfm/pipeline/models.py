@@ -68,15 +68,20 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, d
             if debug_print:
                 log(f'Batching chat formatted: {formatted_chat}')
 
-            input_ids = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)
-
-            # Generate
-            output_text = model_to_use(input_ids, **generation_kwargs)
+            outputs = model_to_use(
+                formatted_chat,
+                max_new_tokens=config['max_new_tokens'],
+                eos_token_id=eos_token_id,
+                pad_token_id=pad_token_id,
+                do_sample=config['do_sample'],
+                temperature=config['temperature'],
+                top_p=config['top_p'],
+            )
 
             if debug_print:
-                log(f'Decoded_batch: {output_text[0]["generated_text"]}')
+                log(f'Decoded_batch: {outputs[0]["generated_text"]}')
 
-            return output_text[0]["generated_text"]
+            return outputs[0]["generated_text"]
 
         return generate_mistral
 
