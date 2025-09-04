@@ -148,13 +148,18 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, d
 
         return generate_falcon
 
-    model_to_use = transformers.pipeline(
-        "text-generation",
-        model=model,
-        torch_dtype=torch.float16,
-        tokenizer=tokenizer,
-        device_map="auto",
-    )
+    if device == "cpu":
+        pipeline_device = -1  # CPU
+        format = torch.float32
+    elif device == "gpu" and torch.cuda.is_available():
+        pipeline_device = 0  # GPU
+        format = torch.float16
+    else:
+        print("GPU requested but CUDA not available, falling back to CPU")
+        pipeline_device = -1
+        format = torch.float32
+
+    model_to_use = transformers.pipeline("text-generation", model=model, torch_dtype=format, tokenizer=tokenizer, device=pipeline_device,)
 
     match name:
         case 'mistral-7B-inst-v0.3-hf':
@@ -276,7 +281,7 @@ def load_generate_api_function(name, model, config, debug_print) -> Callable[[Li
         case 'mistral':
             return generate_with_huggingface_api
         case _:
-            raise Exception("Generate function for this model not implemented yet")
+            raise Exception(f"Generate function for {name} model not implemented yet")
 
 
 class Model:
