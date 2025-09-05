@@ -76,6 +76,7 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, d
                 do_sample=config['do_sample'],
                 temperature=config['temperature'],
                 top_p=config['top_p'],
+                return_full_text=False,
             )
 
             if debug_print:
