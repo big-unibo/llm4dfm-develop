@@ -222,6 +222,17 @@ def include(dir_name):
 merged_df = collect_csvs(root_directory, include_dir=include)
 ```
 
+#### Aggregate-times
+
+The script can be configured with these settings:
+- `root` -- directory path where the recursive search for csv files starts, if not given `results` folder is used
+
+Usage example:
+
+`python aggregate_times.py --root ../../results/`
+
+As result, a file in root directory `{root}/aggregate_times.pdf` is created, containing boxplot graph aggregating times on y-axis and model, f1 measure on average for nodes and edges and the device used.
+
 #### Metrics
 
 The following parameters can be configured in `llm4dfm/resources/metrics-config.yml` file, under the `exercise` section.
@@ -282,7 +293,7 @@ Thesaurus rules are applied here.
 - Setup [authentication](#authentication-key)
 - Configure [pipeline](#Pipeline), and [graph](#CSV-Graph)
 - Run `python pipeline/pipeline.py` from `llm4dfm` directory.
-  If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}{device}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated, where device is actually an empty string if model loading is api, "-gpu" if gpu is set as device and available, "-cpu" otherwise. Its structure is as follows:
+  If no Exceptions raised, in `outputs` directory a new directory with a file `/{exercise-version}-{exercise-prompt_version}-{model-label}-{device}-{dir_label}/{exercise.name}-{exercise.version}-{exercise.prompt_version}-{model.label}-{new_timestamp}.yml` is generated, where device is actually an empty string if model loading is api, "-gpu" if gpu is set as device and available, "-cpu" otherwise. Its structure is as follows:
 ```yaml
 config:
   name: gpt
@@ -434,7 +445,7 @@ metrics:
 
 - Configure [graph](#CSV-Graph)
 - Run `python pipeline/csv_graph.py` from `llm4dfm` directory.
-  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}{device}-{csv_graph-dir_label}/` directory, new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
+  If no Exceptions raised, in `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{device}-{csv_graph-dir_label}/` directory, new graph files named `graph-boxplot_f1_edges.pdf, graph-boxplot_f1_nodes.pdf, graph-f1_scores_edges_nodes.pdf, graph-precision_recall_edges.pdf, graph-precision_recall_nodes.pdf` are generated aggregating precision, recall and f1-measure collected in the csv file inside `outputs/{csv_graph-v}-{csv_graph-prompt_v}-{csv_graph-model_label}-{csv_graph-dir_label}/` directory.
 Example of run:
 `python pipeline/csv_graph.py --exercise_v sql --prompt_version v4 --model_label gpt4o --dir_label test-dir --model_loading import --device cpu`
 
@@ -520,8 +531,8 @@ Example of run:
 `./resources/automatic-run.sh -f my_conf.json`
 
 Output:
-Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}{device}-{dir_label}/`.
-Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}{device}-{dir_label}.csv` is generated if not present, else is enriched with run output.
+Generate one output file for each run on each file as described before inside `outputs/{file_version}-{prompt_version}-{model_label}-{device}-{dir_label}/`.
+Additionally, a csv file `output-{file_version}-{prompt_version}-{model_label}-{device}-{dir_label}.csv` is generated if not present, else is enriched with run output.
 Moreover, `pipeline/csv_graph.py` is run too, generating graphs.
 
 ### Automatic metrics
