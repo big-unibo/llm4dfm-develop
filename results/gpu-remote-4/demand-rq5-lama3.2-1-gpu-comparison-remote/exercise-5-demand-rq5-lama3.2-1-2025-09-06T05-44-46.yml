@@ -1,0 +1,203 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: MEMBERS\nmeasures:\n  - name: weight\n  - name: height\ndependencies:\n\
+  \  - from: address\n    to: city\n    role: residence\n  - from: address\n    to:\
+  \ postalCode\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role: city\n  - from: address\n    to: city\n    role: city\n  - from: address\n\
+  \    to: postalCode\n    role: postalCode\n  - from: address\n    to: city\n   \
+  \ role"
+output_preprocessed: []

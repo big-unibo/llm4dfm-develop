@@ -1,0 +1,1271 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 6
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 216
+    missing: 14
+    reversed: 0
+  fact:
+    false_fact: 6
+    incorrect: true
+  measures:
+    extra: 4
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 10
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0.0086
+    fn: 14
+    fp: 216
+    precision: 0.0046
+    recall: 0.0667
+    tp: 1
+  nodes:
+    f1: 0.3158
+    fn: 7
+    fp: 19
+    precision: 0.24
+    recall: 0.4615
+    tp: 6
+output:
+- dependencies:
+  - from: STAFF.qualification
+    to: STAFF.name
+  - from: STAFF.currentDepartment
+    to: STAFF.name
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.divCode
+    to: DEPARTMENTS.divisionName
+  - from: DEPARTMENTS.managerCode
+    to: DEPARTMENTS.managerName
+  - from: RECRUITMENTS.employeeCode
+    to: RECRUITMENTS.department
+  - from: RECRUITMENTS.recruitmentDate
+    to: RECRUITMENTS.recruitmentDate
+  - from: RECRUITMENTS.employeeCode
+    to: RECRUITMENTS.employeeName
+  - from: RECRUITMENTS.department
+    to: RECRUITMENTS.department
+  - from: RECRUITMENTS.recruitmentDate
+    to: RECRUITMENTS.recruitmentDate
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeName
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    to: null
+  fact:
+    name: RECRUITMENTS
+  measures:
+  - name: employeeCode
+  - name: department
+  - name: recruitmentDate
+  - name: employeeName
+output_preprocessed:
+- dependencies:
+  - from: STAFF.qualification
+    label: fp
+    to: STAFF.name
+  - from: STAFF.currentDepartment
+    label: fp
+    to: STAFF.name
+  - from: DEPARTMENTS.departmentCode
+    label: tp
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.divCode
+    label: fp
+    to: DEPARTMENTS.divisionName
+  - from: DEPARTMENTS.managerCode
+    label: fp
+    to: DEPARTMENTS.managerName
+  - from: RECRUITMENTS.employeeCode
+    label: fp
+    to: RECRUITMENTS.department
+  - from: RECRUITMENTS.recruitmentDate
+    label: fp
+    to: RECRUITMENTS.recruitmentDate
+  - from: RECRUITMENTS.employeeCode
+    label: fp
+    to: RECRUITMENTS.employeeName
+  - from: RECRUITMENTS.department
+    label: fp
+    to: RECRUITMENTS.department
+  - from: RECRUITMENTS.recruitmentDate
+    label: fp
+    to: RECRUITMENTS.recruitmentDate
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeName
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.fromDepartment
+    label: fp
+    to: TRANSFERS.fromDepartment
+  - from: TRANSFERS.toDepartment
+    label: fp
+    to: TRANSFERS.toDepartment
+  - from: TRANSFERS.reason
+    label: fp
+    to: TRANSFERS.reason
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.employeeCode
+  - from: TRANSFERS.date
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RECRUITMENTS
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: tp
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: employeeCode
+  - name: department
+  - name: recruitmentDate
+  - name: employeeName
+  nodes:
+    fn:
+    - staff.employeecode
+    - divisions.divisionname
+    - staff.surname
+    - divisions.divcode
+    - qualifications.qualification
+    - transfers
+    - staff.gender
+    fp:
+    - departments.managername
+    - transfers.employeename
+    - transfers.todepartment
+    - staff.qualification
+    - recruitmentdate
+    - departments.divcode
+    - recruitments.employeecode
+    - transfers.fromdepartment
+    - recruitments
+    - staff.currentdepartment
+    - transfers.employeecode
+    - recruitments.department
+    - recruitments.employeename
+    - employeecode
+    - departments.divisionname
+    - employeename
+    - departments.managercode
+    - e,o,r
+    - department
+    tp:
+    - departments.departmentname
+    - departments.departmentcode
+    - transfers.date
+    - transfers.reason
+    - staff.name
+    - recruitments.recruitmentdate

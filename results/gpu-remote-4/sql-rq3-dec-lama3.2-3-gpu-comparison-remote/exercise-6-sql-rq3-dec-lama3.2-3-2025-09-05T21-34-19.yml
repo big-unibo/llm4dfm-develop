@@ -1,0 +1,209 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: RECRUITMENT\nmeasures:\n  - name: DEPARTMENTS.departmentName\n \
+  \ - name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name:\
+  \ STAFF.qualification\n  - name: DEPARTMENTS.departmentName\n  - name: RECRUITMENTS.recruitmentDate\n\
+  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.departmentCode\n    to:\
+  \ DEPARTMENTS.departmentName\n  - from: RECRUITMENTS.employeeCode\n    to: STAFF.employeeCode\n\
+  \  - from: RECRUITMENTS.department\n    to: DEPARTMENTS.departmentCode\n  - from:\
+  \ RECRUITMENTS.recruitmentDate\n    to: RECRUITMENTS.recruitmentDate\n  - from:\
+  \ RECRUITMENTS.employeeCode\n    to: RECRUITMENTS.recruitmentDate\n  - from: RECRUITMENTS.employeeCode\n\
+  \    to: DEPARTMENTS.departmentCode\n  - from: TRANSFERS.employeeCode\n    to: STAFF.employeeCode\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: DEPARTMENTS.departmentCode\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: DEPARTMENTS.departmentCode\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n\
+  \  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: STAFF.employeeCode\n    to: STAFF.currentDepartment\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: DEPARTMENTS.departmentNameassistant\n\
+  \nfact:\n  name: TRANSFER\nmeasures:\n  - name: DEPARTMENTS.departmentName\n  -\
+  \ name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  - name: DEPARTMENTS.departmentName\n  - name: TRANSFERS.date\ndependencies:\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.departmentCode\n    to:\
+  \ DEPARTMENTS.departmentName\n  - from: TRANSFERS.employeeCode\n    to: STAFF.employeeCode\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: DEPARTMENTS.departmentCode\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: DEPARTMENTS.departmentCode\n  - from: TRANSFERS.date\n\
+  \    to: TRANSFERS.date\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: STAFF.employeeCode\n    to: STAFF.currentDepartment\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: DEPARTMENTS.departmentNameassistant\n\
+  \nfact:\n  name: STAFF\nmeasures:\n  - name: DEPARTMENTS.departmentName\n  - name:\
+  \ STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  - name: DEPARTMENTS.departmentName\n  - name: STAFF.currentDepartment\ndependencies:\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.departmentCode\n    to:\
+  \ DEPARTMENTS.departmentName\n  - from: STAFF.employeeCode\n    to: STAFF.currentDepartment\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: DEPARTMENTS.departmentNameassistant\n\
+  \nfact:\n  name: QUALIFICATION\nmeasures:\n  - name: DEPARTMENTS.departmentName\n\
+  \  - name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name:\
+  \ STAFF.qualification\n  - name: DEPARTMENTS.departmentName\ndependencies:\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n \
+  \   to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.departmentCode\n    to:\
+  \ DEPARTMENTS.departmentNameassistant\n\nfact:\n  name: DEPARTMENT\nmeasures:\n\
+  \  - name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name:\
+  \ STAFF.qualification\n  - name: DEPARTMENTS.departmentName\n  - name: DEPARTMENTS.divisionName\n\
+  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: DEPARTMENTS.departmentCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.divisionCode\n    to:\
+  \ DIVISIONS.divisionName\n  - from: DEPARTMENTS.divisionCode\n    to: DIVISIONS.managerCode\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: STAFF.employeeCodeassistant\n\nfact:\n\
+  \  name: DIVISION\nmeasures:\n  - name: DEPARTMENTS.departmentName\n  - name: DIVISIONS.divisionName\n\
+  \  - name: DIVISIONS.managerCode\n  dependencies:\n  - from: DEPARTMENTS.divisionCode\n\
+  \    to: DIVISIONS.divisionName\n  - from: DIVISIONS.divisionCode\n    to: DIVISIONS.managerCode\n\
+  \  - from: DEPARTMENTS.divisionCode\n    to: DEPARTMENTS.departmentNameassistant\n\
+  \nfact:\n  name: DIVISIONS\nmeasures:\n  - name: DIVISIONS.divisionName\n  dependencies:\n\
+  \  - from: DIVISIONS.divisionCode\n    to: DIVISIONS.divisionNameassistant\n\nfact:\n\
+  \  name: DIVISION\nmeasures:\n  - name: DIVISIONS.divisionName\ndependencies:\n\
+  \  - from: DIVISIONS.divisionCode\n    to: DIVISIONS.divisionNameassistant\n\nfact:\n\
+  \  name: QUALIFICATION\nmeasures:\n  - name: STAFF.name\n  - name: STAFF.surname\n\
+  \  - name: STAFF.gender\n  - name: STAFF.qualification\n  dependencies:\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.qualificationassistant\n\nfact:\n  name: STAFF\nmeasures:\n  - name:\
+  \ STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualificationassistant\n\nfact:\n  name:\
+  \ DEPARTMENT\nmeasures:\n  - name: DEPARTMENTS.departmentName\n  - name: STAFF.name\n\
+  \  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: DEPARTMENTS.departmentCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.divisionCode\n    to:\
+  \ DIVISIONS.divisionName\n  - from: DEPARTMENTS.divisionCode\n    to: DIVISIONS.managerCode\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: STAFF.employeeCodeassistant\n\nfact:\n\
+  \  name: DEPARTMENTS\nmeasures:\n  - name: DEPARTMENTS.departmentName\n  - name:\
+  \ STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: DEPARTMENTS.departmentCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.divisionCode\n    to:\
+  \ DIVISIONS.divisionName\n  - from: DEPARTMENTS.divisionCode\n    to: DIVISIONS.managerCode\n\
+  \  - from: DEPARTMENTS.departmentCode\n    to: STAFF.employeeCode\n  - from: DEPARTMENTS.divisionCode\n\
+  \    to: DEPARTMENTS.divisionNameassistant\n\nfact:\n  name: QUALIFICATIONS\nmeasures:\n\
+  \  - name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name:\
+  \ STAFF.qualification\n  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualification\n\
+  \  - from: STAFF.qualification\n    to: QUALIFICATIONS.qualificationassistant\n\n\
+  fact:\n  name: STAFF\nmeasures:\n  - name: STAFF.name\n  - name: STAFF.surname\n\
+  \  - name: STAFF.gender\n  - name: STAFF.qualification\n  dependencies:\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualificationassistant\n\
+  \nfact:\n  name: STAFF\nmeasures:\n  - name: STAFF.name\n  - name: STAFF.surname\n\
+  \  - name: STAFF.gender\n  - name: STAFF.qualification\n  dependencies:\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualification\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualificationassistant\n\nfact:\n  name:\
+  \ STAFF\nmeasures:\n  - name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n\
+  \  - name: STAFF.qualification\n  dependencies:\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.name\n  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualificationassistant\n\
+  \nfact:\n  name: STAFF\nmeasures:\n  - name: STAFF.name\n  - name: STAFF.surname\n\
+  \  - name: STAFF.gender\n  - name: STAFF.qualification\n  dependencies:\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualification\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.name\n  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.qualificationassistant\n\nfact:\n  name: STAFF\nmeasures:\n  - name: STAFF.name\n\
+  \  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.name\n  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.qualificationassistant\n\nfact:\n  name: STAFF\nmeasures:\n  - name:\
+  \ STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name: STAFF.qualification\n\
+  \  dependencies:\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.surname\n  - from: STAFF.employeeCode\n    to: STAFF.gender\n  -\
+  \ from: STAFF.employeeCode\n    to: STAFF.qualification\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.name\n  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.qualification\n  - from: STAFF.employeeCode\n    to: STAFF.name\n  - from:\
+  \ STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF"
+output_preprocessed: []

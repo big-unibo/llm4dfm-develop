@@ -1,0 +1,57 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- {}
+output:
+- ? I made a mistake, I should have added the dependency from the fact to the quantity,
+    computerModel, computerBrand, softwareType, and software. Here is the corrected
+    YAML
+  : null
+  ? I will correct the YAML to only include the dependencies from the fact to the
+    quantity, computerModel, computerBrand, softwareType, and software, and from the
+    fact to each of these dimensions. Here is the corrected YAML
+  : null
+  dependencies:
+  - from: computer
+    to: quantity
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: computerBrand
+  - from: computerBrand
+    to: softwareTypeassistant
+  fact:
+    name: SOFTWARE
+  measures:
+  - null
+output_preprocessed: []

@@ -1,0 +1,1420 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 4
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 204
+    missing: 40
+    reversed: 0
+  fact:
+    false_fact: 6
+    incorrect: true
+  measures:
+    extra: 24
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 6
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: CHECKIN
+    to: CHECKIN.checkInTime
+  - from: CHECKIN
+    to: CHECKIN.numberOfBags
+  - from: CHECKIN
+    to: TICKET.ticketNumber
+  - from: CHECKIN
+    to: CHECKIN.seat
+  - from: CHECKIN
+    to: PERSON.personCode
+  - from: PERSON.personCode
+    to: PERSON.name
+  - from: PERSON.personCode
+    to: PERSON.surname
+  - from: PERSON.personCode
+    to: PERSON.birthdate
+  - from: PERSON.personCode
+    to: PERSON.cityOfResidence
+  - from: PERSON.personCode
+    to: PERSON.documentId
+  - from: PERSON.personCode
+    to: PERSON.documentType
+  - from: PERSON.personCode
+    to: PERSON.telephone
+  - from: PERSON.personCode
+    to: PERSON.email
+  - from: PERSON.personCode
+    to: PERSON.gender
+  - from: TICKET.ticketNumber
+    to: FLIGHT.date,FLIGHT.route
+  - from: CHECKIN
+    to: TICKET.flightAmount
+  - from: CHECKIN
+    to: TICKET.taxAmount
+  - from: TICKET.ticketNumber
+    to: TICKET.priorityYN
+  - from: TICKET.ticketNumber
+    to: PURCHASE.purchaseCode
+  - from: PURCHASE.purchaseCode
+    to: PURCHASE.date
+  - from: CHECKIN
+    to: PURCHASE.totalAmount
+  - from: PURCHASE.purchaseCode
+    role: buyerCode
+    to: PERSON.personCode
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.date
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.cancelledYN
+  - from: FLIGHT.date,FLIGHT.route
+    to: ROUTE.route
+  - from: ROUTE.route
+    to: ROUTE.arrivalTime
+  - from: ROUTE.route
+    to: ROUTE.departureTime
+  - from: ROUTE.route
+    to: AIRLINE.airlineCode
+  - from: ROUTE.route
+    role: departure
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    role: arrival
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    to: AIRPLANETYPE.airplaneType
+  - from: AIRPORT.airportCode
+    to: AIRPORT.name
+  - from: AIRPORT.airportCode
+    to: AIRPORT.city
+  - from: AIRPORT.city
+    to: AIRPORT.nation
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.airlineName
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.nation
+  - from: AIRPLANETYPE.airplaneType
+    to: AIRPLANETYPE.name
+  - from: CHECKIN
+    to: AIRPLANETYPE.numberOfSeats
+  fact:
+    name: CHECKIN
+  measures:
+  - name: CHECKIN.numberOfBags
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: PURCHASE.totalAmount
+  - name: AIRPLANETYPE.numberOfSeats
+metrics:
+- edges:
+    f1: 0
+    fn: 40
+    fp: 204
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.1159
+    fn: 35
+    fp: 26
+    precision: 0.1333
+    recall: 0.1026
+    tp: 4
+output:
+- dependencies:
+  - from: AIRPORT.name
+    to: AIRPORT.city
+  - from: AIRPORT.name
+    to: AIRLINE.name
+  - from: AIRPORT.name
+    to: AIRPLANE_TYPE.name
+  - from: ROUTE.airlineCode
+    to: ROUTE.departure
+  - from: ROUTE.airlineCode
+    to: ROUTE.arrival
+  - from: ROUTE.airplaneType
+    to: ROUTE.airplaneType
+  - from: FLIGHT.date
+    to: FLIGHT.route
+  - from: FLIGHT.date
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date
+    to: FLIGHT.cancelledYN
+  - from: TICKET.date
+    to: TICKET.route
+  - from: TICKET.date
+    to: TICKET.purchaseCode
+  - from: TICKET.date
+    to: TICKET.flightAmount
+  - from: TICKET.date
+    to: TICKET.taxAmount
+  - from: TICKET.date
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.ticketNumber
+    to: BOARDING_CARD.passengerCode
+  - from: BOARDING_CARD.ticketNumber
+    to: BOARDING_CARD.seat
+  - from: CHECK_IN.boardingCardCode
+    to: CHECK_IN.checkInTime
+  - from: CHECK_IN.boardingCardCode
+    to: CHECK_IN.numberOfBags
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.passengerCode
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: CHECK_IN.checkInTime
+    to: CHECK_IN.checkInTime
+  - from: CHECK_IN.checkInTime
+    to: CHECK_IN.numberOfBags
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: CHECK_IN.checkInTime
+    to: CHECK_IN.checkInTime
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: CHECK_IN.checkInTime
+    to: CHECK_IN.checkInTime
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: CHECK_IN.checkInTime
+    to: CHECK_IN.checkInTime
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priorityYN
+  - from: BOARDING_CARD.seat
+    to: BOARDING_CARD.seat
+  - from: TICKET.flightAmount
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    to: TICKET.priority
+  fact:
+    name: AIRPORT
+  measures:
+  - name: AIRPORT.name
+  - name: AIRPORT.city
+  - name: AIRPORT.nation
+  - name: AIRLINE.name
+  - name: AIRLINE.nation
+  - name: AIRPLANE_TYPE.name
+  - name: AIRPLANE_TYPE.numberOfSeats
+  - name: ROUTE.airlineCode
+  - name: ROUTE.departure
+  - name: ROUTE.arrival
+  - name: ROUTE.airplaneType
+  - name: FLIGHT.date
+  - name: FLIGHT.route
+  - name: FLIGHT.delayInDeparture
+  - name: FLIGHT.delayInArrival
+  - name: FLIGHT.cancelledYN
+  - name: TICKET.date
+  - name: TICKET.route
+  - name: TICKET.purchaseCode
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: TICKET.priorityYN
+  - name: BOARDING_CARD.ticketNumber
+  - name: BOARDING_CARD.passengerCode
+  - name: BOARDING_CARD.seat
+  - name: CHECK_IN.boardingCardCode
+  - name: CHECK_IN.checkInTime
+  - name: CHECK_IN.numberOfBags
+output_preprocessed:
+- dependencies:
+  - from: AIRPORT.name
+    label: fp
+    to: AIRPORT.city
+  - from: AIRPORT.name
+    label: fp
+    to: AIRLINE.name
+  - from: AIRPORT.name
+    label: fp
+    to: AIRPLANETYPE.name
+  - from: ROUTE.airlineCode
+    label: fp
+    to: ROUTE.departure
+  - from: ROUTE.airlineCode
+    label: fp
+    to: ROUTE.arrival
+  - from: ROUTE.airplaneType
+    label: fp
+    to: ROUTE.airplaneType
+  - from: FLIGHT.date
+    label: fp
+    to: FLIGHT.route
+  - from: FLIGHT.date
+    label: fp
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date
+    label: fp
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date
+    label: fp
+    to: FLIGHT.cancelledYN
+  - from: TICKET.date
+    label: fp
+    to: TICKET.route
+  - from: TICKET.date
+    label: fp
+    to: TICKET.purchaseCode
+  - from: TICKET.date
+    label: fp
+    to: TICKET.flightAmount
+  - from: TICKET.date
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.date
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.ticketNumber
+    label: fp
+    to: BOARDINGCARD.passengerCode
+  - from: BOARDINGCARD.ticketNumber
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: CHECKIN.boardingCardCode
+    label: fp
+    to: CHECKIN.checkInTime
+  - from: CHECKIN.boardingCardCode
+    label: fp
+    to: CHECKIN.numberOfBags
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.passengerCode
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: CHECKIN.checkInTime
+    label: fp
+    to: CHECKIN.checkInTime
+  - from: CHECKIN.checkInTime
+    label: fp
+    to: CHECKIN.numberOfBags
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: CHECKIN.checkInTime
+    label: fp
+    to: CHECKIN.checkInTime
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: CHECKIN.checkInTime
+    label: fp
+    to: CHECKIN.checkInTime
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: CHECKIN.checkInTime
+    label: fp
+    to: CHECKIN.checkInTime
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priorityYN
+  - from: BOARDINGCARD.seat
+    label: fp
+    to: BOARDINGCARD.seat
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.taxAmount
+  - from: TICKET.flightAmount
+    label: fp
+    to: TICKET.priority
+  fact:
+    name: AIRPORT
+  ground_truth_labels:
+    dependencies:
+    - from: CHECKIN
+      label: fn
+      to: CHECKIN.checkInTime
+    - from: CHECKIN
+      label: fn
+      to: CHECKIN.numberOfBags
+    - from: CHECKIN
+      label: fn
+      to: TICKET.ticketNumber
+    - from: CHECKIN
+      label: fn
+      to: CHECKIN.seat
+    - from: CHECKIN
+      label: fn
+      to: PERSON.personCode
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.name
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.surname
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.birthdate
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.cityOfResidence
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.documentId
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.documentType
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.telephone
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.email
+    - from: PERSON.personCode
+      label: fn
+      to: PERSON.gender
+    - from: TICKET.ticketNumber
+      label: fn
+      to: FLIGHT.date,FLIGHT.route
+    - from: CHECKIN
+      label: fn
+      to: TICKET.flightAmount
+    - from: CHECKIN
+      label: fn
+      to: TICKET.taxAmount
+    - from: TICKET.ticketNumber
+      label: fn
+      to: TICKET.priorityYN
+    - from: TICKET.ticketNumber
+      label: fn
+      to: PURCHASE.purchaseCode
+    - from: PURCHASE.purchaseCode
+      label: fn
+      to: PURCHASE.date
+    - from: CHECKIN
+      label: fn
+      to: PURCHASE.totalAmount
+    - from: PURCHASE.purchaseCode
+      label: fn
+      role: buyerCode
+      to: PERSON.personCode
+    - from: FLIGHT.date,FLIGHT.route
+      label: fn
+      to: FLIGHT.delayInDeparture
+    - from: FLIGHT.date,FLIGHT.route
+      label: fn
+      to: FLIGHT.date
+    - from: FLIGHT.date,FLIGHT.route
+      label: fn
+      to: FLIGHT.delayInArrival
+    - from: FLIGHT.date,FLIGHT.route
+      label: fn
+      to: FLIGHT.cancelledYN
+    - from: FLIGHT.date,FLIGHT.route
+      label: fn
+      to: ROUTE.route
+    - from: ROUTE.route
+      label: fn
+      to: ROUTE.arrivalTime
+    - from: ROUTE.route
+      label: fn
+      to: ROUTE.departureTime
+    - from: ROUTE.route
+      label: fn
+      to: AIRLINE.airlineCode
+    - from: ROUTE.route
+      label: fn
+      role: departure
+      to: AIRPORT.airportCode
+    - from: ROUTE.route
+      label: fn
+      role: arrival
+      to: AIRPORT.airportCode
+    - from: ROUTE.route
+      label: fn
+      to: AIRPLANETYPE.airplaneType
+    - from: AIRPORT.airportCode
+      label: fn
+      to: AIRPORT.name
+    - from: AIRPORT.airportCode
+      label: fn
+      to: AIRPORT.city
+    - from: AIRPORT.city
+      label: fn
+      to: AIRPORT.nation
+    - from: AIRLINE.airlineCode
+      label: fn
+      to: AIRLINE.airlineName
+    - from: AIRLINE.airlineCode
+      label: fn
+      to: AIRLINE.nation
+    - from: AIRPLANETYPE.airplaneType
+      label: fn
+      to: AIRPLANETYPE.name
+    - from: CHECKIN
+      label: fn
+      to: AIRPLANETYPE.numberOfSeats
+    fact:
+      name: CHECKIN
+    measures:
+    - name: CHECKIN.numberOfBags
+    - name: TICKET.flightAmount
+    - name: TICKET.taxAmount
+    - name: PURCHASE.totalAmount
+    - name: AIRPLANETYPE.numberOfSeats
+  measures:
+  - name: AIRPORT.name
+  - name: AIRPORT.city
+  - name: AIRPORT.nation
+  - name: AIRLINE.name
+  - name: AIRLINE.nation
+  - name: AIRPLANETYPE.name
+  - name: AIRPLANETYPE.numberOfSeats
+  - name: ROUTE.airlineCode
+  - name: ROUTE.departure
+  - name: ROUTE.arrival
+  - name: ROUTE.airplaneType
+  - name: FLIGHT.date
+  - name: FLIGHT.route
+  - name: FLIGHT.delayInDeparture
+  - name: FLIGHT.delayInArrival
+  - name: FLIGHT.cancelledYN
+  - name: TICKET.date
+  - name: TICKET.route
+  - name: TICKET.purchaseCode
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: TICKET.priorityYN
+  - name: BOARDINGCARD.ticketNumber
+  - name: BOARDINGCARD.passengerCode
+  - name: BOARDINGCARD.seat
+  - name: CHECKIN.boardingCardCode
+  - name: CHECKIN.checkInTime
+  - name: CHECKIN.numberOfBags
+  nodes:
+    fn:
+    - purchase.totalamount
+    - person.name
+    - ticket.priorityyn
+    - airline.airlinecode
+    - ticket.ticketnumber
+    - route.arrivaltime
+    - airport.nation
+    - airport.airportcode
+    - person.cityofresidence
+    - person.personcode
+    - person.gender
+    - route.route
+    - checkin.checkintime
+    - flight.delayinarrival
+    - airplanetype.name
+    - person.documentid
+    - flight.date,flight.route
+    - person.birthdate
+    - route.departuretime
+    - airline.nation
+    - airport.name
+    - purchase.date
+    - person.telephone
+    - flight.cancelledyn
+    - person.documenttype
+    - flight.date
+    - person.surname
+    - person.email
+    - purchase.purchasecode
+    - airport.city
+    - airplanetype.airplanetype
+    - checkin.seat
+    - airline.airlinename
+    - checkin
+    - flight.delayindeparture
+    fp:
+    - boardingcard.passengercode
+    - checkin.boardingcardcode
+    - ticket.priority
+    - ticket.route
+    - ticket.priorityyn
+    - flight.route
+    - airport.nation
+    - route.airplanetype
+    - route.departure
+    - checkin.checkintime
+    - flight.delayinarrival
+    - airplanetype.name
+    - route.airlinecode
+    - route.arrival
+    - airport.name
+    - airline.nation
+    - ticket.purchasecode
+    - flight.cancelledyn
+    - ticket.date
+    - flight.date
+    - boardingcard.ticketnumber
+    - airport.city
+    - boardingcard.seat
+    - airport
+    - flight.delayindeparture
+    - airline.name
+    tp:
+    - airplanetype.numberofseats
+    - checkin.numberofbags
+    - ticket.taxamount
+    - ticket.flightamount

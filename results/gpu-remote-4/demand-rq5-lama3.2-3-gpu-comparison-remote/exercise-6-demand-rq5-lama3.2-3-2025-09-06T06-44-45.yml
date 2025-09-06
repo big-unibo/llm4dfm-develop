@@ -1,0 +1,108 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: transfer
+    to: reason
+  - from: transfer
+    to: employeeCode
+  - from: transfer
+    to: employeeName
+  - from: transfer
+    to: employeeSurname
+  - from: transfer
+    to: employeeGender
+  - from: transfer
+    to: employeeQualification
+  - from: transfer
+    to: employeeRecruitmentDate
+  - from: transfer
+    to: employeeDepartment
+  - from: transfer
+    to: departmentCode
+  - from: transfer
+    to: departmentName
+  - from: transfer
+    to: divisionCode
+  - from: transfer
+    to: divisionName
+  - from: transfer
+    to: managerCode
+  - from: transfer
+    to: managerName
+  - from: transfer
+    to: divisionManager
+  - from: transfer
+    role: from
+    to: employeeCode
+  - from: transfer
+    role: to
+    to: employeeCode
+  - from: transfer
+    to: date
+  - from: transfer
+    role: to
+    to: employeeDepartment
+  - from: transfer
+    role: to
+    to: employeeCode
+  - from: transfer
+    to: date
+  - from: transfer
+    role: to
+    to: employeeDepartment
+  - from: transfer
+    role: toassistant
+    to: employeeCode
+  fact:
+    name: TRANSFER
+  measures:
+  - null
+output_preprocessed: []

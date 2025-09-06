@@ -1,0 +1,158 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 1
+    missing: 12
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.1333
+    fn: 12
+    fp: 1
+    precision: 0.5
+    recall: 0.0769
+    tp: 1
+  nodes:
+    f1: 0.3
+    fn: 11
+    fp: 3
+    precision: 0.5
+    recall: 0.2143
+    tp: 3
+output:
+- dependencies:
+  - from: member
+    to: name
+  - from: member
+  fact:
+    name: PRESENCE
+  measures:
+  - name: quantity
+  - name: cost
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: fn
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: quantity
+  - name: cost
+  nodes:
+    fn:
+    - date
+    - weight
+    - hour
+    - wodtype
+    - height
+    - city
+    - surname
+    - address
+    - postalcode
+    - instructor
+    - wod
+    fp:
+    - quantity
+    - e,o,r
+    - cost
+    tp:
+    - presence
+    - member
+    - name

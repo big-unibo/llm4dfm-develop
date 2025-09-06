@@ -1,0 +1,256 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 1
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 2
+    missing: 2
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- edges:
+    f1: 0.875
+    fn: 2
+    fp: 2
+    precision: 0.875
+    recall: 0.875
+    tp: 14
+  nodes:
+    f1: 0.9697
+    fn: 1
+    fp: 0
+    precision: 1.0
+    recall: 0.9412
+    tp: 16
+output:
+- dependencies:
+  - from: driver
+    to: name
+  - from: driver
+    to: surname
+  - from: driver
+    to: age
+  - from: car
+    to: carNumber
+  - from: circuit
+    to: city
+  - from: circuit
+    to: length
+  - from: stable
+    to: mainAddress
+  - from: stable
+    to: manager
+  - from: ARRIVAL
+    to: position
+  - from: ARRIVAL
+    to: score
+  - from: ARRIVAL
+    to: numberOfLaps
+  - from: ARRIVAL
+    to: time
+  - from: ARRIVAL
+    to: carNumber
+  - from: ARRIVAL
+    to: circuit
+  - from: ARRIVAL
+    to: driver
+  - from: ARRIVAL
+    to: stable
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: position
+  - name: score
+  - name: numberOfLaps
+  - name: time
+output_preprocessed:
+- dependencies:
+  - from: driver
+    label: tp
+    to: firstName
+  - from: driver
+    label: tp
+    to: lastName
+  - from: driver
+    label: tp
+    to: age
+  - from: carNumber
+    label: fp
+    to: carNumber
+  - from: circuit
+    label: tp
+    to: city
+  - from: circuit
+    label: tp
+    to: mileage
+  - from: stable
+    label: tp
+    to: mainAddress
+  - from: stable
+    label: tp
+    to: manager
+  - from: ARRIVAL
+    label: tp
+    to: position
+  - from: ARRIVAL
+    label: tp
+    to: score
+  - from: ARRIVAL
+    label: tp
+    to: numberOfLaps
+  - from: ARRIVAL
+    label: tp
+    to: time
+  - from: ARRIVAL
+    label: tp
+    to: carNumber
+  - from: ARRIVAL
+    label: tp
+    to: circuit
+  - from: ARRIVAL
+    label: tp
+    to: driver
+  - from: ARRIVAL
+    label: fp
+    to: stable
+  fact:
+    name: ARRIVAL
+  ground_truth_labels:
+    dependencies:
+    - from: ARRIVAL
+      label: tp
+      to: NumberOfLaps
+    - from: ARRIVAL
+      label: tp
+      to: Time
+    - from: ARRIVAL
+      label: tp
+      to: Score
+    - from: ARRIVAL
+      label: tp
+      to: Position
+    - from: ARRIVAL
+      label: tp
+      to: Circuit
+    - from: ARRIVAL
+      label: tp
+      to: Driver
+    - from: ARRIVAL
+      label: fn
+      to: Date
+    - from: ARRIVAL
+      label: tp
+      to: CarNumber
+    - from: Circuit
+      label: tp
+      to: City
+    - from: Circuit
+      label: tp
+      to: mileage
+    - from: Driver
+      label: tp
+      to: firstName
+    - from: Driver
+      label: tp
+      to: lastName
+    - from: Driver
+      label: tp
+      to: Age
+    - from: CarNumber
+      label: fn
+      to: Stable
+    - from: Stable
+      label: tp
+      to: MainAddress
+    - from: Stable
+      label: tp
+      to: Manager
+    fact:
+      name: ARRIVAL
+    measures:
+    - name: Position
+    - name: Time
+    - name: Score
+    - name: NumberOfLaps
+  measures:
+  - name: position
+  - name: score
+  - name: numberOfLaps
+  - name: time
+  nodes:
+    fn:
+    - date
+    fp: []
+    tp:
+    - lastname
+    - city
+    - circuit
+    - arrival
+    - stable
+    - mileage
+    - numberoflaps
+    - age
+    - carnumber
+    - mainaddress
+    - score
+    - driver
+    - manager
+    - time
+    - position
+    - firstname

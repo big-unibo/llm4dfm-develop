@@ -1,0 +1,63 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- {}
+output:
+- I see that you asked me to only output the YAML file. Here is the corrected response: null
+  dependencies:
+  - from: software
+    to: description
+  - from: software
+    to: type
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: brand
+    to: supplier
+  - from: supplier
+    to: city
+  - from: supplier
+    to: address
+  - from: INSTALLATION
+    to: computer
+  - from: INSTALLATION
+    to: software
+  - from: INSTALLATION
+    to: dateassistant
+  fact:
+    name: null
+  measures:
+  - name: quantity
+  - name: cost
+output_preprocessed: []

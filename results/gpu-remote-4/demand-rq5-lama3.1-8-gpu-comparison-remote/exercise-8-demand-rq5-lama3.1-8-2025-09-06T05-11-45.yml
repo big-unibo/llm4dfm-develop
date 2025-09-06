@@ -1,0 +1,120 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- {}
+output:
+- dependencies:
+  - from: passenger
+    to: passengerName
+  - from: passenger
+    to: passengerSurname
+  - from: passenger
+    to: passengerBirthdate
+  - from: passenger
+    to: cityOfResidence
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from
+  fact:
+    name: CHECK-IN
+  measures:
+  - name: numBagsBoarded
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+output_preprocessed: []

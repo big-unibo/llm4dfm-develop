@@ -1,0 +1,99 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- {}
+output:
+- dependencies:
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: age
+  - from: car
+    to: carNumber
+  - from: car
+    to: stable
+  - from: car
+    to: stableAddress
+  - from: car
+    to: stableManager
+  - from: circuit
+    to: city
+  - from: circuit
+    to: length
+  - from: ARRIVAL
+    to: position
+  - from: ARRIVAL
+    to: score
+  - from: ARRIVAL
+    to: laps
+  - from: ARRIVAL
+    to: time
+  - from: ARRIVAL
+    to: driver
+  - from: ARRIVAL
+    to: car
+  - from: ARRIVAL
+    to: circuit
+  - from: ARRIVAL
+    to: stable
+  - from: ARRIVAL
+    to: date
+  - from: ARRIVAL
+    role: null
+    to: stableManager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: position
+  - name: score
+  - name: laps
+  - name: time
+output_preprocessed: []

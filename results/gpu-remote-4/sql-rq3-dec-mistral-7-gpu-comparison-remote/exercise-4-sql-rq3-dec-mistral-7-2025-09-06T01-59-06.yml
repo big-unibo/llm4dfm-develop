@@ -1,0 +1,242 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 5
+    missing: 22
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 5
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVALS
+    to: GRANDPRIXS.NumberOfLaps
+  - from: ARRIVALS
+    to: RACINGCIRCUITS.Length
+  - from: ARRIVALS
+    to: ARRIVALS.Time
+  - from: ARRIVALS
+    to: ARRIVALS.Score
+  - from: ARRIVALS
+    to: ARRIVALS.Position
+  - from: ARRIVALS
+    to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+  - from: ARRIVALS
+    to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: GRANDPRIXS.Date
+  - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    to: RACINGCIRCUITS.CircuitName
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.City
+  - from: RACINGCIRCUITS.CircuitName
+    to: RACINGCIRCUITS.Description
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVERS.Name,DRIVERS.Surname
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: CARS.Number
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.Year
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.FromDate
+  - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    to: DRIVES.ToDate
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Name
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.Surname
+  - from: DRIVERS.Name,DRIVERS.Surname
+    to: DRIVERS.BirthDate
+  - from: CARS.Number
+    to: RACINGSTABLES.StableName
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.MainAddress
+  - from: RACINGSTABLES.StableName
+    to: RACINGSTABLES.Manager
+  fact:
+    name: ARRIVALS
+  measures:
+  - name: ARRIVALS.Position
+  - name: ARRIVALS.Time
+  - name: ARRIVALS.Score
+  - name: GRANDPRIXS.NumberOfLaps
+  - name: RACINGCIRCUITS.Length
+metrics:
+- edges:
+    f1: 0
+    fn: 22
+    fp: 5
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 23
+    fp: 9
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: DEPARTMENTS.department_id
+    to: DEPARTMENTS.department_name
+  - from: EMPLOYEES.employee_id
+    to: EMPLOYEES.first_name
+  - from: EMPLOYEES.employee_id
+    to: EMPLOYEES.last_name
+  - from: EMPLOYEES.employee_id
+    to: EMPLOYEES.salary
+  - from: EMPLOYEES.manager_id
+    to: EMPLOYEES.employee_id (self-referencing foreign key)
+  fact:
+    name: EMPLOYEES
+  measures:
+  - name: EMPLOYEES.salary
+output_preprocessed:
+- dependencies:
+  - from: DEPARTMENTS.departmentid
+    label: fp
+    to: DEPARTMENTS.departmentname
+  - from: EMPLOYEES.employeeid
+    label: fp
+    to: EMPLOYEES.firstname
+  - from: EMPLOYEES.employeeid
+    label: fp
+    to: EMPLOYEES.lastname
+  - from: EMPLOYEES.employeeid
+    label: fp
+    to: EMPLOYEES.salary
+  - from: EMPLOYEES.managerid
+    label: fp
+    to: EMPLOYEES.employeeid(selfreferencingforeignkey)
+  fact:
+    name: EMPLOYEES
+  ground_truth_labels:
+    dependencies:
+    - from: ARRIVALS
+      label: fn
+      to: GRANDPRIXS.NumberOfLaps
+    - from: ARRIVALS
+      label: fn
+      to: RACINGCIRCUITS.Length
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Time
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Score
+    - from: ARRIVALS
+      label: fn
+      to: ARRIVALS.Position
+    - from: ARRIVALS
+      label: fn
+      to: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+    - from: ARRIVALS
+      label: fn
+      to: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+    - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+      label: fn
+      to: GRANDPRIXS.Date
+    - from: GRANDPRIXS.Date,GRANDPRIXS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.CircuitName
+    - from: RACINGCIRCUITS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.City
+    - from: RACINGCIRCUITS.CircuitName
+      label: fn
+      to: RACINGCIRCUITS.Description
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVERS.Name,DRIVERS.Surname
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: CARS.Number
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.Year
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.FromDate
+    - from: DRIVES.Name,DRIVES.Surname,DRIVES.Number,DRIVES.Year
+      label: fn
+      to: DRIVES.ToDate
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.Name
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.Surname
+    - from: DRIVERS.Name,DRIVERS.Surname
+      label: fn
+      to: DRIVERS.BirthDate
+    - from: CARS.Number
+      label: fn
+      to: RACINGSTABLES.StableName
+    - from: RACINGSTABLES.StableName
+      label: fn
+      to: RACINGSTABLES.MainAddress
+    - from: RACINGSTABLES.StableName
+      label: fn
+      to: RACINGSTABLES.Manager
+    fact:
+      name: ARRIVALS
+    measures:
+    - name: ARRIVALS.Position
+    - name: ARRIVALS.Time
+    - name: ARRIVALS.Score
+    - name: GRANDPRIXS.NumberOfLaps
+    - name: RACINGCIRCUITS.Length
+  measures:
+  - name: EMPLOYEES.salary
+  nodes:
+    fn:
+    - arrivals.score
+    - drivers.name,drivers.surname
+    - racingcircuits.city
+    - grandprixs.date,grandprixs.circuitname
+    - grandprixs.date
+    - drives.year
+    - racingcircuits.length
+    - drivers.birthdate
+    - racingstables.mainaddress
+    - drives.todate
+    - arrivals.time
+    - arrivals.position
+    - arrivals
+    - drives.fromdate
+    - racingcircuits.description
+    - grandprixs.numberoflaps
+    - drivers.name
+    - racingstables.stablename
+    - racingcircuits.circuitname
+    - drivers.surname
+    - racingstables.manager
+    - drives.surname,drives.name,drives.number,drives.year
+    - cars.number
+    fp:
+    - departments.departmentname
+    - employees.lastname
+    - employees.managerid
+    - employees.employeeid(selfreferencingforeignkey)
+    - departments.departmentid
+    - employees.employeeid
+    - employees
+    - employees.salary
+    - employees.firstname
+    tp: []

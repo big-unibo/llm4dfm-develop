@@ -1,0 +1,261 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- {}
+output:
+- " fact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from:\
+  \ employee\n    to: code\n  - from: employee\n    to: name\n  - from: employee\n\
+  \    to: surname\n  - from: employee\n    to: gender\n  - from: employee\n    to:\
+  \ qualification\n  - from: employee\n    to: recruitmentDate\n  - from: employee\n\
+  \    to: currentDepartment\n  - from: currentDepartment\n    to: departmentCode\n\
+  \  - from: currentDepartment\n    to: departmentName\n  - from: currentDepartment\n\
+  \    to: division\n  - from: division\n    to: divisionCode\n  - from: division\n\
+  \    to: divisionName\n  - from: division\n    to: manager\n    role: employeeCode\n\
+  \  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n    to: employee\n    role:\
+  \ fromDepartment\n  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\
+  \nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from:\
+  \ employee\n    to: code\n  - from: employee\n    to: name\n  - from: employee\n\
+  \    to: surname\n  - from: employee\n    to: gender\n  - from: employee\n    to:\
+  \ qualification\n  - from: employee\n    to: recruitmentDate\n  - from: employee\n\
+  \    to: currentDepartment\n  - from: currentDepartment\n    to: departmentCode\n\
+  \  - from: currentDepartment\n    to: departmentName\n  - from: currentDepartment\n\
+  \    to: division\n  - from: division\n    to: divisionCode\n  - from: division\n\
+  \    to: divisionName\n  - from: division\n    to: manager\n    role: employeeCode\n\
+  \  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n    to: employee\n    role:\
+  \ fromDepartment\n  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\
+  \nThis is the YAML representation of the resulting DFM schema for the given source\
+  \ schema. The fact is named TRANSFER, and it has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nfact:\n  name: TRANSFER\nmeasures:\n\
+  \  - name: reason\ndependencies:\n  - from: employee\n    to: code\n  - from: employee\n\
+  \    to: name\n  - from: employee\n    to: surname\n  - from: employee\n    to:\
+  \ gender\n  - from: employee\n    to: qualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \    role: employeeCode\n  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n\
+  \    to: employee\n    role: fromDepartment\n  - from: TRANSFER\n    to: employee\n\
+  \    role: toDepartment\n\nThis is the YAML representation of the resulting DFM\
+  \ schema for the given source schema. The fact is named TRANSFER, and it has one\
+  \ measure, \"reason\". The dependencies show the relationships between the fact,\
+  \ measures, and dimensions. Each employee has attributes such as code, name, surname,\
+  \ gender, qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nIn this schema,\
+  \ the fact is TRANSFER, and it has one measure, \"reason\". The dependencies show\
+  \ the relationships between the fact, measures, and dimensions. Each employee has\
+  \ attributes such as code, name, surname, gender, qualification, recruitment date,\
+  \ and current department. A current department belongs to a division, which has\
+  \ a unique code, name, and manager (who is an employee). A transfer involves two\
+  \ departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and\
+  \ manager (who is an employee). A transfer involves two departments (from and to)\
+  \ and a reason.\n\nThe fact, TRANSFER, has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. Each employee\
+  \ has attributes such as code, name, surname, gender, qualification, recruitment\
+  \ date, and current department. A current department belongs to a division, which\
+  \ has a unique code, name, and manager (who is an employee). A transfer involves\
+  \ two departments (from and to) and a reason.\n\nThe fact, TRANSFER, has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. Each employee has attributes such as code, name, surname, gender,\
+  \ qualification, recruitment date, and current department. A current department\
+  \ belongs to a division, which has a unique code, name, and manager (who is an employee).\
+  \ A transfer involves two departments (from and to) and a reason.\n\nThe fact, TRANSFER,\
+  \ has one measure, \"reason\". The dependencies show the relationships between the\
+  \ fact, measures, and dimensions. Each employee has attributes such as code, name,\
+  \ surname, gender, qualification, recruitment date, and current department. A current\
+  \ department belongs to a division, which has a unique code, name, and manager (who\
+  \ is an employee). A transfer involves two departments (from and to) and a reason.\n\
+  \nThe fact, TRANSFER, has one measure, \"reason\". The dependencies show the relationships\
+  \ between the fact, measures, and dimensions. Each employee has attributes such\
+  \ as code, name, surname, gender, qualification, recruitment date, and current department.\
+  \ A current department belongs to a division, which has a unique code, name, and"
+output_preprocessed: []

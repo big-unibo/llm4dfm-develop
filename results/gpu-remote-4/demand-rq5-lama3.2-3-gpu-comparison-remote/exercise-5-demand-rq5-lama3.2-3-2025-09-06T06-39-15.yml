@@ -1,0 +1,191 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: CROSSFIT\nmeasures:\n  - name: members\n  - name: trainings\ndependencies:\n\
+  \  - from: member\n    to: name\n  - from: member\n    to: surname\n  - from: member\n\
+  \    to: address\n  - from: member\n    to: postalCode\n  - from: member\n    to:\
+  \ city\n  - from: member\n    to: weight\n  - from: member\n    to: height\n  -\
+  \ from: WOD\n    to: type\n  - from: WOD\n    to: date\n  - from: WOD\n    to: trainings\n\
+  \  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n  - from: CROSSFIT\n\
+  \    to: members\n  - from: CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n  \
+  \  to: dateassistant\n\ndependencies:\n  - from: member\n    to: city\n    role:\
+  \ residence\n  - from: member\n    to: postalCode\n    role: address\n  - from:\
+  \ member\n    to: address\n    role: location\n  - from: member\n    to: weight\n\
+  \  - from: member\n    to: height\n  - from: WOD\n    to: WODType\n  - from: WOD\n\
+  \    to: date\n    role: day\n  - from: WOD\n    to: hours\n  - from: WOD\n    to:\
+  \ instructors\n  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n    to: members\n\
+  \  - from: CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n    to: dateassistant\n\
+  \ndependencies:\n  - from: member\n    to: city\n    role: residence\n  - from:\
+  \ member\n    to: postalCode\n    role: address\n  - from: member\n    to: address\n\
+  \    role: location\n  - from: member\n    to: weight\n  - from: member\n    to:\
+  \ height\n  - from: WOD\n    to: WODType\n  - from: WOD\n    to: date\n    role:\
+  \ day\n  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n  - from:\
+  \ WOD\n    to: repetitions\n  - from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n\
+  \    to: trainings\n  - from: CROSSFIT\n    to: dateassistant\n\ndependencies:\n\
+  \  - from: member\n    to: nation\n    role: residence\n  - from: member\n    to:\
+  \ region\n    role: residence\n  - from: member\n    to: city\n    role: residence\n\
+  \  - from: member\n    to: postalCode\n    role: address\n  - from: member\n   \
+  \ to: address\n    role: location\n  - from: member\n    to: weight\n  - from: member\n\
+  \    to: height\n  - from: WOD\n    to: WODType\n  - from: WOD\n    to: date\n \
+  \   role: day\n  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n\
+  \  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n    to: members\n  - from:\
+  \ CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n    to: dateassistant\n\nfact:\n\
+  \  name: CROSSFIT\nmeasures:\n  - name: members\n  - name: trainings\ndependencies:\n\
+  \  - from: member\n    to: name\n  - from: member\n    to: surname\n  - from: member\n\
+  \    to: address\n  - from: member\n    to: postalCode\n  - from: member\n    to:\
+  \ city\n  - from: member\n    to: weight\n  - from: member\n    to: height\n  -\
+  \ from: WOD\n    to: type\n  - from: WOD\n    to: date\n  - from: WOD\n    to: trainings\n\
+  \  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n  - from: CROSSFIT\n\
+  \    to: members\n  - from: CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n  \
+  \  to: dateassistant\n\ndependencies:\n  - from: member\n    to: nation\n    role:\
+  \ residence\n  - from: member\n    to: region\n    role: residence\n  - from: member\n\
+  \    to: city\n    role: residence\n  - from: member\n    to: postalCode\n    role:\
+  \ address\n  - from: member\n    to: address\n    role: location\n  - from: member\n\
+  \    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to: WODType\n\
+  \  - from: WOD\n    to: date\n    role: day\n  - from: WOD\n    to: hours\n  - from:\
+  \ WOD\n    to: instructors\n  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n\
+  \    to: members\n  - from: CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n  \
+  \  to: date\n  - from: CROSSFIT\n    to: WOD\n    role: day\n  - from: CROSSFIT\n\
+  \    to: WOD\n    role: repetitionassistant\n\nfact:\n  name: CROSSFIT\nmeasures:\n\
+  \  - name: members\n  - name: trainings\ndependencies:\n  - from: member\n    to:\
+  \ name\n  - from: member\n    to: surname\n  - from: member\n    to: address\n \
+  \ - from: member\n    to: postalCode\n  - from: member\n    to: city\n  - from:\
+  \ member\n    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to:\
+  \ type\n  - from: WOD\n    to: date\n  - from: WOD\n    to: trainings\n  - from:\
+  \ WOD\n    to: hours\n  - from: WOD\n    to: instructors\n  - from: WOD\n    to:\
+  \ repetitions\n  - from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n    to:\
+  \ trainings\n  - from: CROSSFIT\n    to: date\n  - from: CROSSFIT\n    to: WOD\n\
+  \    role: day\n  - from: CROSSFIT\n    to: WOD\n    role: repetition\n  - from:\
+  \ CROSSFIT\n    to: WOD\n    role: instructorassistant\n\nfact:\n  name: CROSSFIT\n\
+  measures:\n  - name: members\n  - name: trainings\ndependencies:\n  - from: member\n\
+  \    to: nation\n    role: residence\n  - from: member\n    to: region\n    role:\
+  \ residence\n  - from: member\n    to: city\n    role: residence\n  - from: member\n\
+  \    to: postalCode\n    role: address\n  - from: member\n    to: address\n    role:\
+  \ location\n  - from: member\n    to: weight\n  - from: member\n    to: height\n\
+  \  - from: WOD\n    to: WODType\n  - from: WOD\n    to: date\n    role: day\n  -\
+  \ from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n  - from: WOD\n\
+  \    to: repetitions\n  - from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n\
+  \    to: trainings\n  - from: CROSSFIT\n    to: date\n  - from: CROSSFIT\n    to:\
+  \ WOD\n    role: day\n  - from: CROSSFIT\n    to: WOD\n    role: repetition\n  -\
+  \ from: CROSSFIT\n    to: WOD\n    role: instructor\n  - from: CROSSFIT\n    to:\
+  \ WOD\n    role: typeassistant\n\nfact:\n  name: CROSSFIT\nmeasures:\n  - name:\
+  \ members\n  - name: trainings\ndependencies:\n  - from: member\n    to: nation\n\
+  \    role: residence\n  - from: member\n    to: region\n    role: residence\n  -\
+  \ from: member\n    to: city\n    role: residence\n  - from: member\n    to: postalCode\n\
+  \    role: address\n  - from: member\n    to: address\n    role: location\n  - from:\
+  \ member\n    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to:\
+  \ WODType\n  - from: WOD\n    to: date\n    role: day\n  - from: WOD\n    to: hours\n\
+  \  - from: WOD\n    to: instructors\n  - from: WOD\n    to: repetitions\n  - from:\
+  \ CROSSFIT\n    to: members\n  - from: CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n\
+  \    to: date\n  - from: CROSSFIT\n    to: WOD\n    role: day\n  - from: CROSSFIT\n\
+  \    to: WOD\n    role: repetition\n  - from: CROSSFIT\n    to: WOD\n    role: instructor\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: type\n  - from: CROSSFIT\n    to: WOD\n\
+  \    role: trainingsassistant\n\nfact:\n  name: CROSSFIT\nmeasures:\n  - name: members\n\
+  \  - name: trainings\ndependencies:\n  - from: member\n    to: nation\n    role:\
+  \ residence\n  - from: member\n    to: region\n    role: residence\n  - from: member\n\
+  \    to: city\n    role: residence\n  - from: member\n    to: postalCode\n    role:\
+  \ address\n  - from: member\n    to: address\n    role: location\n  - from: member\n\
+  \    to: weight\n  - from: member\n    to: height\n  - from: WOD\n    to: WODType\n\
+  \  - from: WOD\n    to: date\n    role: day\n  - from: WOD\n    to: hours\n  - from:\
+  \ WOD\n    to: instructors\n  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n\
+  \    to: members\n  - from: CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n  \
+  \  to: date\n  - from: CROSSFIT\n    to: WOD\n    role: day\n  - from: CROSSFIT\n\
+  \    to: WOD\n    role: repetition\n  - from: CROSSFIT\n    to: WOD\n    role: instructor\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: type\n  - from: CROSSFIT\n    to: WOD\n\
+  \    role: trainings\n  - from: CROSSFIT\n    to: WOD\n    role: membersassistant\n\
+  \nfact:\n  name: CROSSFIT\nmeasures:\n  - name: members\n  - name: trainings\ndependencies:\n\
+  \  - from: member\n    to: nation\n    role: residence\n  - from: member\n    to:\
+  \ region\n    role: residence\n  - from: member\n    to: city\n    role: residence\n\
+  \  - from: member\n    to: postalCode\n    role: address\n  - from: member\n   \
+  \ to: address\n    role: location\n  - from: member\n    to: weight\n  - from: member\n\
+  \    to: height\n  - from: WOD\n    to: WODType\n  - from: WOD\n    to: date\n \
+  \   role: day\n  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n\
+  \  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n    to: members\n  - from:\
+  \ CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n    to: date\n  - from: CROSSFIT\n\
+  \    to: WOD\n    role: day\n  - from: CROSSFIT\n    to: WOD\n    role: repetition\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: instructor\n  - from: CROSSFIT\n   \
+  \ to: WOD\n    role: type\n  - from: CROSSFIT\n    to: WOD\n  - from: CROSSFIT\n\
+  \    to: trainings\n  - from: CROSSFIT\n    to: membersassistant\n\nfact:\n  name:\
+  \ CROSSFIT\nmeasures:\n  - name: members\n  - name: trainings\ndependencies:\n \
+  \ - from: member\n    to: nation\n    role: residence\n  - from: member\n    to:\
+  \ region\n    role: residence\n  - from: member\n    to: city\n    role: residence\n\
+  \  - from: member\n    to: postalCode\n    role: address\n  - from: member\n   \
+  \ to: address\n    role: location\n  - from: member\n    to: weight\n  - from: member\n\
+  \    to: height\n  - from: WOD\n    to: WODType\n  - from: WOD\n    to: date\n \
+  \   role: day\n  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n\
+  \  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n    to: members\n  - from:\
+  \ CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n    to: date\n  - from: CROSSFIT\n\
+  \    to: WOD\n    role: day\n  - from: CROSSFIT\n    to: WOD\n    role: repetition\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: instructor\n  - from: CROSSFIT\n   \
+  \ to: WOD\n    role: type\n  - from: CROSSFIT\n    to: WOD\n  - from: CROSSFIT\n\
+  \    to: trainings\n  - from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n  \
+  \  to: WOD\n    role: membersassistant\n\nfact:\n  name: CROSSFIT\nmeasures:\n \
+  \ - name: members\n  - name: trainings\ndependencies:\n  - from: member\n    to:\
+  \ nation\n    role: residence\n  - from: member\n    to: region\n    role: residence\n\
+  \  - from: member\n    to: city\n    role: residence\n  - from: member\n    to:\
+  \ postalCode\n    role: address\n  - from: member\n    to: address\n    role: location\n\
+  \  - from: member\n    to: weight\n  - from: member\n    to: height\n  - from: WOD\n\
+  \    to: WODType\n  - from: WOD\n    to: date\n    role: day\n  - from: WOD\n  \
+  \  to: hours\n  - from: WOD\n    to: instructors\n  - from: WOD\n    to: repetitions\n\
+  \  - from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n    to: trainings\n  -\
+  \ from: CROSSFIT\n    to: date\n  - from: CROSSFIT\n    to: WOD\n    role: day\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: repetition\n  - from: CROSSFIT\n   \
+  \ to: WOD\n    role: instructor\n  - from: CROSSFIT\n    to: WOD\n    role: type\n\
+  \  - from: CROSSFIT\n    to: WOD\n  - from: CROSSFIT\n    to: trainings\n  - from:\
+  \ CROSSFIT\n    to: members\n  - from: CROSSFIT\n    to: WOD\n    role: members\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: trainingsassistant\n\nfact:\n  name:\
+  \ CROSSFIT\nmeasures:\n  - name: members\n  - name: trainings\ndependencies:\n \
+  \ - from: member\n    to: nation\n    role: residence\n  - from: member\n    to:\
+  \ region\n    role: residence\n  - from: member\n    to: city\n    role: residence\n\
+  \  - from: member\n    to: postalCode\n    role: address\n  - from: member\n   \
+  \ to: address\n    role: location\n  - from: member\n    to: weight\n  - from: member\n\
+  \    to: height\n  - from: WOD\n    to: WODType\n  - from: WOD\n    to: date\n \
+  \   role: day\n  - from: WOD\n    to: hours\n  - from: WOD\n    to: instructors\n\
+  \  - from: WOD\n    to: repetitions\n  - from: CROSSFIT\n    to: members\n  - from:\
+  \ CROSSFIT\n    to: trainings\n  - from: CROSSFIT\n    to: date\n  - from: CROSSFIT\n\
+  \    to: WOD\n    role: day\n  - from: CROSSFIT\n    to: WOD\n    role: repetition\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: instructor\n  - from: CROSSFIT\n   \
+  \ to: WOD\n    role: type\n  - from: CROSSFIT\n    to: WOD\n  - from: CROSSFIT\n\
+  \    to: trainings\n  - from: CROSSFIT\n    to: members\n  - from: CROSSFIT\n  \
+  \  to: WOD\n    role: members\n  - from: CROSSFIT\n    to: WOD\n    role: trainings\n\
+  \  - from: CROSSFIT\n    to: WOD\n    role: instructor\n  - from: CROSSFIT\n   \
+  \ to: WOD\n    role"
+output_preprocessed: []

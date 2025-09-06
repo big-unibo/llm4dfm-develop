@@ -1,0 +1,184 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 1
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- edges:
+    f1: 0.1111
+    fn: 15
+    fp: 1
+    precision: 0.5
+    recall: 0.0625
+    tp: 1
+  nodes:
+    f1: 0.3333
+    fn: 13
+    fp: 3
+    precision: 0.5714
+    recall: 0.2353
+    tp: 4
+output:
+- dependencies:
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+  fact:
+    name: EXERCISES
+  measures:
+  - name: MEMBERS.height
+  - name: MEMBERS.weight
+  - name: EXERCISE_IN_WOD.numberOfRepetitions
+output_preprocessed:
+- dependencies:
+  - from: MEMBERS.FiscalCode
+    label: tp
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: EXERCISES
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: WOD.numberOfRounds
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.FiscalCode
+    - from: PRESENCE
+      label: fn
+      to: WORKOUTS.date,WORKOUTS.time
+    - from: MEMBERS.FiscalCode
+      label: tp
+      to: MEMBERS.name
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.surname
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.gender
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.address
+    - from: MEMBERS.FiscalCode
+      label: fn
+      to: MEMBERS.postalCode
+    - from: MEMBERS.postalCode
+      label: fn
+      to: MEMBERS.city
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.height
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.weight
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WORKOUTS.time
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WORKOUTS.instructor
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WOD.date
+    - from: WOD.date
+      label: fn
+      to: WOD.name
+    - from: WOD.date
+      label: fn
+      to: WOD.WODtype
+    fact:
+      name: PRESENCE
+    measures:
+    - name: WOD.numberOfRounds
+    - name: MEMBERS.weight
+    - name: MEMBERS.height
+  measures:
+  - name: MEMBERS.height
+  - name: MEMBERS.weight
+  - name: EXERCISEINWOD.numberOfRepetitions
+  nodes:
+    fn:
+    - members.city
+    - members.postalcode
+    - members.surname
+    - members.address
+    - wod.name
+    - workouts.time,workouts.date
+    - members.gender
+    - wod.wodtype
+    - workouts.time
+    - wod.date
+    - presence
+    - wod.numberofrounds
+    - workouts.instructor
+    fp:
+    - exerciseinwod.numberofrepetitions
+    - o,e,r
+    - exercises
+    tp:
+    - members.name
+    - members.height
+    - members.fiscalcode
+    - members.weight

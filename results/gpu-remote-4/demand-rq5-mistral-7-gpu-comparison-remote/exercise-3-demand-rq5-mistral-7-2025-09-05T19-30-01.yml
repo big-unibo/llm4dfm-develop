@@ -1,0 +1,220 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- {}
+output:
+- " fact:\n  name: PURCHASE\nmeasures:\n  - name: amount\ndependencies:\n  - from:\
+  \ store\n    to: name\n  - from: store\n    to: address\n  - from: store\n    to:\
+  \ type\n  - from: store\n    to: country\n    role: location\n  - from: store\n\
+  \    to: area\n    role: location\n  - from: creditCard\n    to: type\n  - from:\
+  \ creditCard\n    to: holder\n  - from: creditCard\n    to: expirationDate\n  -\
+  \ from: creditCard\n    to: creditLimit\n  - from: creditCardType\n    to: circuit\n\
+  \  - from: creditCardType\n    to: issuingBankAddress\n  - from: creditCardType\n\
+  \    to: issuingBankCountry\n  - from: creditCardType\n    to: cardName\n  - from:\
+  \ creditCardType\n    to: color\n  - from: holder\n    to: firstName\n  - from:\
+  \ holder\n    to: lastName\n  - from: holder\n    to: age\n  - from: holder\n  \
+  \  to: job\n  - from: holder\n    to: incomeRange\n  - from: PURCHASE\n    to: amount\n\
+  \nfact:\n  name: PURCHASE\nmeasures:\n  - name: amount\ndependencies:\n  - from:\
+  \ store\n    to: name\n  - from: store\n    to: address\n  - from: store\n    to:\
+  \ type\n  - from: store\n    to: country\n    role: location\n  - from: store\n\
+  \    to: area\n    role: location\n  - from: creditCard\n    to: type\n  - from:\
+  \ creditCard\n    to: holder\n  - from: creditCard\n    to: expirationDate\n  -\
+  \ from: creditCard\n    to: creditLimit\n  - from: creditCardType\n    to: circuit\n\
+  \  - from: creditCardType\n    to: issuingBankAddress\n  - from: creditCardType\n\
+  \    to: issuingBankCountry\n  - from: creditCardType\n    to: cardName\n  - from:\
+  \ creditCardType\n    to: color\n  - from: holder\n    to: firstName\n  - from:\
+  \ holder\n    to: lastName\n  - from: holder\n    to: age\n  - from: holder\n  \
+  \  to: job\n  - from: holder\n    to: incomeRange\n  - from: PURCHASE\n    to: amount\n\
+  \  - from: PURCHASE\n    to: store\n    role: location\n  - from: PURCHASE\n   \
+  \ to: creditCard\n    role: payment\\_method\n\nfact:\n  name: PURCHASE\nmeasures:\n\
+  \  - name: amount\ndependencies:\n  - from: store\n    to: name\n  - from: store\n\
+  \    to: address\n  - from: store\n    to: type\n  - from: store\n    to: country\n\
+  \    role: location\n  - from: store\n    to: area\n    role: location\n  - from:\
+  \ creditCard\n    to: type\n  - from: creditCard\n    to: holder\n  - from: creditCard\n\
+  \    to: expirationDate\n  - from: creditCard\n    to: creditLimit\n  - from: creditCardType\n\
+  \    to: circuit\n  - from: creditCardType\n    to: issuingBankAddress\n  - from:\
+  \ creditCardType\n    to: issuingBankCountry\n  - from: creditCardType\n    to:\
+  \ cardName\n  - from: creditCardType\n    to: color\n  - from: holder\n    to: firstName\n\
+  \  - from: holder\n    to: lastName\n  - from: holder\n    to: age\n  - from: holder\n\
+  \    to: job\n  - from: holder\n    to: incomeRange\n  - from: PURCHASE\n    to:\
+  \ amount\n  - from: PURCHASE\n    to: store\n    role: location\n  - from: PURCHASE\n\
+  \    to: creditCard\n    role: payment\\_method\n  - from: PURCHASE\n    to: date\n\
+  \    role: transaction\\_date\n\nfact:\n  name: PURCHASE\nmeasures:\n  - name: amount\n\
+  dependencies:\n  - from: store\n    to: name\n  - from: store\n    to: address\n\
+  \  - from: store\n    to: type\n  - from: store\n    to: country\n    role: location\n\
+  \  - from: store\n    to: area\n    role: location\n  - from: creditCard\n    to:\
+  \ type\n  - from: creditCard\n    to: holder\n  - from: creditCard\n    to: expirationDate\n\
+  \  - from: creditCard\n    to: creditLimit\n  - from: creditCardType\n    to: circuit\n\
+  \  - from: creditCardType\n    to: issuingBankAddress\n  - from: creditCardType\n\
+  \    to: issuingBankCountry\n  - from: creditCardType\n    to: cardName\n  - from:\
+  \ creditCardType\n    to: color\n  - from: holder\n    to: firstName\n  - from:\
+  \ holder\n    to: lastName\n  - from: holder\n    to: age\n  - from: holder\n  \
+  \  to: job\n  - from: holder\n    to: incomeRange\n  - from: PURCHASE\n    to: amount\n\
+  \  - from: PURCHASE\n    to: store\n    role: location\n  - from: PURCHASE\n   \
+  \ to: creditCard\n    role: payment\\_method\n  - from: PURCHASE\n    to: date\n\
+  \    role: transaction\\_date\n  - from: PURCHASE\n    to: item\n    role: product\\\
+  _purchased\n\nfact:\n  name: PURCHASE\nmeasures:\n  - name: amount\ndependencies:\n\
+  \  - from: store\n    to: name\n  - from: store\n    to: address\n  - from: store\n\
+  \    to: type\n  - from: store\n    to: country\n    role: location\n  - from: store\n\
+  \    to: area\n    role: location\n  - from: creditCard\n    to: type\n  - from:\
+  \ creditCard\n    to: holder\n  - from: creditCard\n    to: expirationDate\n  -\
+  \ from: creditCard\n    to: creditLimit\n  - from: creditCardType\n    to: circuit\n\
+  \  - from: creditCardType\n    to: issuingBankAddress\n  - from: creditCardType\n\
+  \    to: issuingBankCountry\n  - from: creditCardType\n    to: cardName\n  - from:\
+  \ creditCardType\n    to: color\n  - from: holder\n    to: firstName\n  - from:\
+  \ holder\n    to: lastName\n  - from: holder\n    to: age\n  - from: holder\n  \
+  \  to: job\n  - from: holder\n    to: incomeRange\n  - from: PURCHASE\n    to: amount\n\
+  \  - from: PURCHASE\n    to: store\n    role: location\n  - from: PURCHASE\n   \
+  \ to: creditCard\n    role: payment\\_method\n  - from: PURCHASE\n    to: date\n\
+  \    role: transaction\\_date\n  - from: PURCHASE\n    to: item\n    role: product\\\
+  _purchased\n  - from: item\n    to: productName\n  - from: item\n    to: productType\n\
+  \  - from: item\n    to: productCategory\n  - from: item\n    to: productBrand\n\
+  \  - from: item\n    to: productModel\n  - from: item\n    to: productPrice\n\n\
+  fact:\n  name: PURCHASE\nmeasures:\n  - name: amount\ndependencies:\n  - from: store\n\
+  \    to: name\n  - from: store\n    to: address\n  - from: store\n    to: type\n\
+  \  - from: store\n    to: country\n    role: location\n  - from: store\n    to:\
+  \ area\n    role: location\n  - from: creditCard\n    to: type\n  - from: creditCard\n\
+  \    to: holder\n  - from: creditCard\n    to: expirationDate\n  - from: creditCard\n\
+  \    to: creditLimit\n  - from: creditCardType\n    to: circuit\n  - from: creditCardType\n\
+  \    to: issuingBankAddress\n  - from: creditCardType\n    to: issuingBankCountry\n\
+  \  - from: creditCardType\n    to: cardName\n  - from: creditCardType\n    to: color\n\
+  \  - from: holder\n    to: firstName\n  - from: holder\n    to: lastName\n  - from:\
+  \ holder\n    to: age\n  - from: holder\n    to: job\n  - from: holder\n    to:\
+  \ incomeRange\n  - from: PURCHASE\n    to: amount\n  - from: PURCHASE\n    to: store\n\
+  \    role: location\n  - from: PURCHASE\n    to: creditCard\n    role: payment\\\
+  _method\n  - from: PURCHASE\n    to: date\n    role: transaction\\_date\n  - from:\
+  \ PURCHASE\n    to: item\n    role: product\\_purchased\n  - from: item\n    to:\
+  \ productName\n  - from: item\n    to: productType\n  - from: item\n    to: productCategory\n\
+  \  - from: item\n    to: productBrand\n  - from: item\n    to: productModel\n  -\
+  \ from: item\n    to: productPrice\n  - from: item\n    to: productQuantity\n  -\
+  \ from: item\n    to: productDiscount\n  - from: item\n    to: productTax\n  - from:\
+  \ item\n    to: productVAT\n\nfact:\n  name: PURCHASE\nmeasures:\n  - name: amount\n\
+  dependencies:\n  - from: store\n    to: name\n  - from: store\n    to: address\n\
+  \  - from: store\n    to: type\n  - from: store\n    to: country\n    role: location\n\
+  \  - from: store\n    to: area\n    role: location\n  - from: creditCard\n    to:\
+  \ type\n  - from: creditCard\n    to: holder\n  - from: creditCard\n    to: expirationDate\n\
+  \  - from: creditCard\n    to: creditLimit\n  - from: creditCardType\n    to: circuit\n\
+  \  - from: creditCardType\n    to: issuingBankAddress\n  - from: creditCardType\n\
+  \    to: issuingBankCountry\n  - from: creditCardType\n    to: cardName\n  - from:\
+  \ creditCardType\n    to: color\n  - from: holder\n    to: firstName\n  - from:\
+  \ holder\n    to: lastName\n  - from: holder\n    to: age\n  - from: holder\n  \
+  \  to: job\n  - from: holder\n    to: incomeRange\n  - from: PURCHASE\n    to: amount\n\
+  \  - from: PURCHASE\n    to: store\n    role: location\n  - from: PURCHASE\n   \
+  \ to: creditCard\n    role: payment\\_method\n  - from: PURCHASE\n    to: date\n\
+  \    role: transaction\\_date\n  - from: PURCHASE\n    to: item\n    role: product\\\
+  _purchased\n  - from: item\n    to: productName\n  - from: item\n    to: productType\n\
+  \  - from: item\n    to: productCategory\n  - from: item\n    to: productBrand\n\
+  \  - from: item\n    to: productModel\n  - from: item\n    to: productPrice\n  -\
+  \ from: item\n    to: productQuantity\n  - from: item\n    to: productDiscount\n\
+  \  - from: item\n    to: productTax\n  - from: item\n    to: productVAT\n  - from:\
+  \ item\n    to: productSKU\n  - from: item\n    to: productBarcode\n  - from: item\n\
+  \    to: productUPC\n  - from: item\n    to: productEAN\n\nfact:\n  name: PURCHASE\n\
+  measures:\n  - name: amount\ndependencies:\n  - from: store\n    to: name\n  - from:\
+  \ store\n    to: address\n  - from: store\n    to: type\n  - from: store\n    to:\
+  \ country\n    role: location\n  - from: store\n    to: area\n    role: location\n\
+  \  - from: creditCard\n    to: type\n  - from: creditCard\n    to: holder\n  - from:\
+  \ creditCard\n    to: expirationDate\n  - from: creditCard\n    to: creditLimit\n\
+  \  - from: creditCardType\n    to: circuit\n  - from: creditCardType\n    to: issuingBankAddress\n\
+  \  - from: creditCardType\n    to: issuingBankCountry\n  - from: creditCardType\n\
+  \    to: cardName\n  - from: creditCardType\n    to: color\n  - from: holder\n \
+  \   to: firstName\n  - from: holder\n    to: lastName\n  - from: holder\n    to:\
+  \ age\n  - from: holder\n    to: job\n  - from: holder\n    to: incomeRange\n  -\
+  \ from: PURCHASE\n    to: amount\n  - from: PURCHASE\n    to: store\n    role: location\n\
+  \  - from: PURCHASE\n    to: creditCard\n    role: payment\\_method\n  - from: PURCHASE\n\
+  \    to: date\n    role: transaction\\_date\n  - from: PURCHASE\n    to: item\n\
+  \    role: product\\_purchased\n  - from: item\n    to: productName\n  - from: item\n\
+  \    to: productType\n  - from: item\n    to: productCategory\n  - from: item\n\
+  \    to: productBrand\n  - from: item\n    to: productModel\n  - from: item\n  \
+  \  to: productPrice\n  - from: item\n    to: productQuantity\n  - from: item\n \
+  \   to: productDiscount\n  - from: item\n    to: productTax\n  - from: item\n  \
+  \  to: productVAT\n  - from: item\n    to: productSKU\n  - from: item\n    to: productBarcode\n\
+  \  - from: item\n    to: productUPC\n  - from: item\n    to: productEAN\n  - from:\
+  \ item\n    to: productWeight\n  - from: item\n    to: productSize\n  - from: item\n\
+  \    to: productDimensions\n  - from: item\n    to: productColor\n  - from: item\n\
+  \    to: productMaterial\n  - from: item\n    to: productOrigin\n  - from: item\n\
+  \    to: productManufacturer\n  - from: item\n    to: productModelYear\n  - from:\
+  \ item\n    to: productWarranty\n  - from: item\n    to: productWarrantyType\n \
+  \ - from: item\n    to: productSerialNumber\n  - from: item\n    to: productBatchNumber\n\
+  \  - from: item\n    to: productLotNumber\n  - from: item\n    to: productExpirationDate\n\
+  \  - from: item\n    to: productManufacturingDate\n  - from: item\n    to: productRecallStatus\n\
+  \  - from: item\n    to: productRecallReason\n  - from: item\n    to: productRecallDate\n\
+  \  - from: item\n    to: productRecallNotes\n  - from: item\n    to: productRecallContact\n\
+  \  - from: item\n    to: productRecallResolution\n  - from: item\n    to: productRecallFollowUp\n\
+  \  - from: item\n    to: productRecallActionTaken\n  - from: item\n    to: productRecallStatusDate\n\
+  \  - from: item\n    to: productRecallStatusReason\n  - from: item\n    to: productRecallStatusNotes\n\
+  \  - from: item\n    to: productRecallStatusContact\n  - from: item\n    to: productRecallStatusFollowUp\n\
+  \  - from: item\n    to: productRecallStatusActionTaken\n  - from: item\n    to:\
+  \ productRecallStatusReasonDate\n  - from: item\n    to: productRecallStatusReasonNotes\n\
+  \  - from: item\n    to: productRecallStatusReasonContact\n  - from: item\n    to:\
+  \ productRecallStatusReasonFollowUp\n  - from: item\n    to: productRecallStatusReasonActionTaken\n\
+  \  - from: item\n    to: productRecallStatusReasonReasonDate\n  - from: item\n \
+  \   to: productRecallStatusReasonReasonNotes\n  - from: item\n    to: productRecallStatusReasonReasonContact\n\
+  \  - from: item\n    to: productRecallStatusReasonReasonFollowUp\n  - from: item\n\
+  \    to: productRecallStatusReasonReasonActionTaken\n  - from: item\n    to: productRecallStatusReasonReasonReasonDate\n\
+  \  - from: item\n    to: productRecallStatusReasonReasonReasonNotes\n  - from: item\n\
+  \    to: productRecallStatusReasonReasonReasonContact\n  - from: item\n    to: productRecallStatusReasonReasonReasonFollowUp\n\
+  \  - from: item\n    to: productRecall"
+output_preprocessed: []
