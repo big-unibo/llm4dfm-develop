@@ -1,0 +1,68 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: RECRUITMENT\nmeasures:\n  - name: DEPARTMENTS.departmentName\n \
+  \ - name: STAFF.name\n  - name: STAFF.surname\n  - name: STAFF.gender\n  - name:\
+  \ STAFF qualification\n  - name: DEPARTMENTS.divisionName\n  - name: DIVISIONS.divisionName\n\
+  \  - name: DIVISIONS.managerCode\n  - name: STAFF.currentDepartment\n  - name: RECRUITMENTS.recruitmentDate\n\
+  \  - name: RECRUITMENTS.department\n  - name: TRANSFERS.fromDepartment\n  - name:\
+  \ TRANSFERS.toDepartment\n  dependencies:\n  - from: STAFF.employeeCode\n    to:\
+  \ STAFF.name\n  - from: STAFF.employeeCode\n    to: STAFF.surname\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF.gender\n  - from: STAFF.employeeCode\n    to: STAFF qualification\n\
+  \  - from: STAFF.employeeCode\n    to: STAFF.currentDepartment\n  - from: DEPARTMENTS.departmentCode\n\
+  \    to: DEPARTMENTS.departmentName\n  - from: DEPARTMENTS.departmentCode\n    to:\
+  \ DEPARTMENTS.divisionName\n  - from: DEPARTMENTS.departmentCode\n    to: DIVISIONS.divisionName\n\
+  \  - from: DIVISIONS.divisionCode\n    to: DIVISIONS.managerCode\n  - from: STAFF.employeeCode\n\
+  \    to: STAFF qualification\n  - from: RECRUITMENTS.employeeCode\n    to: STAFF.employeeCode\n\
+  \  - from: RECRUITMENTS.employeeCode\n    to: RECRUITMENTS.department\n  - from:\
+  \ TRANSFERS.employeeCode\n    to: STAFF.employeeCode\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: DEPARTMENTS.departmentCode\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: DEPARTMENTS.departmentCode"
+output_preprocessed: []

@@ -1,0 +1,1941 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 8
+    shared_missing: 0
+    shared_with_fact_root_extra: 8
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 248
+    missing: 19
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0
+    fn: 19
+    fp: 248
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.7027
+    fn: 4
+    fp: 7
+    precision: 0.65
+    recall: 0.7647
+    tp: 13
+output:
+- dependencies:
+  - from: rental
+    role: rental
+    to: plate
+  - from: rental
+    role: pickup
+    to: pickup
+  - from: rental
+    role: dropoff
+    to: dropoff
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: registration
+    to: registration
+  - from: rental
+    role: fuel
+    to: fuel
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+    role: miles
+    to: miles
+  - from: rental
+    role: category
+    to: category
+  - from: rental
+    role: model
+    to: model
+  - from: rental
+    role: brand
+    to: brand
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: city
+    to: city
+  - from: rental
+    role: state
+    to: state
+  - from: rental
+    role: country
+    to: country
+  - from: rental
+    role: area
+    to: area
+  - from: rental
+    role: office
+    to: office
+  - from: rental
+    role: insurance
+    to: insurance
+  - from: rental
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: rental
+    label: fp
+    role: rental
+    to: carPlate
+  - from: rental
+    label: fp
+    role: pickup
+    to: pickup
+  - from: rental
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: registration
+    to: registration
+  - from: rental
+    label: fp
+    role: fuel
+    to: fuel
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    role: miles
+    to: miles
+  - from: rental
+    label: fp
+    role: category
+    to: category
+  - from: rental
+    label: fp
+    role: model
+    to: model
+  - from: rental
+    label: fp
+    role: brand
+    to: brand
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: city
+    to: city
+  - from: rental
+    label: fp
+    role: state
+    to: state
+  - from: rental
+    label: fp
+    role: country
+    to: country
+  - from: rental
+    label: fp
+    role: area
+    to: area
+  - from: rental
+    label: fp
+    role: office
+    to: office
+  - from: rental
+    label: fp
+    role: insurance
+    to: insurance
+  - from: rental
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - milestravelled
+    - risk
+    - date
+    - fueltype
+    fp:
+    - registration
+    - pickup
+    - o,e,r
+    - insurance
+    - miles
+    - dropoff
+    - fuel
+    tp:
+    - model
+    - category
+    - rental
+    - insurancecost
+    - state
+    - city
+    - office
+    - carplate
+    - country
+    - amount
+    - brand
+    - discount
+    - area

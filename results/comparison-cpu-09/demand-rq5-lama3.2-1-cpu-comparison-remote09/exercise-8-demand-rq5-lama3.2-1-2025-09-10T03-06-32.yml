@@ -1,0 +1,1924 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 15
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 310
+    missing: 36
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- edges:
+    f1: 0.0057
+    fn: 36
+    fp: 310
+    precision: 0.0032
+    recall: 0.027
+    tp: 1
+  nodes:
+    f1: 0.3171
+    fn: 22
+    fp: 34
+    precision: 0.2766
+    recall: 0.3714
+    tp: 13
+output:
+- dependencies:
+  - from: passenger
+    role: passenger
+    to: passengerName
+  - from: passenger
+    role: passenger
+    to: passengerTicketNumber
+  - from: passenger
+    role: passenger
+    to: passengerDocumentId
+  - from: passenger
+    role: passenger
+    to: passengerDocumentType
+  - from: passenger
+    role: passenger
+    to: passengerTelephoneNumber
+  - from: passenger
+    role: passenger
+    to: passengerEmailAddress
+  - from: passenger
+    to: passengerGender
+  - from: ticket
+    role: ticket
+    to: ticketNumber
+  - from: ticket
+    role: flight
+    to: flight
+  - from: flight
+    role: route
+    to: route
+  - from: route
+    role: airplane
+    to: airplane
+  - from: route
+    role: airplane
+    to: airplaneType
+  - from: route
+    role: seats
+    to: seats
+  - from: route
+    role: airline
+    to: airline
+  - from: route
+    to: nation
+  - from: route
+    to: city
+  - from: route
+    to: airport
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: flightDelay
+  - from: flight
+    to: flightArrival
+  - from: flight
+    to: flightCancellation
+  - from: route
+    to: routeName
+  - from: route
+    to: routeDescription
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeAirplane
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeAirline
+  - from: route
+    to: routeNation
+  - from: route
+    to: routeCity
+  - from: route
+    to: routeAirport
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeFlightDelay
+  - from: route
+    to: routeFlightArrival
+  - from: route
+    to: routeFlightCancellation
+  - from: route
+    to: routeType
+  - from: route
+    to: routeNumber
+  - from: route
+    to: routeCode
+  - from: route
+    to: routeArea
+  - from: route
+    to: routeRegion
+  - from: route
+    to: routeNation
+  - from: route
+    to: route
+  fact:
+    name: CHECK_IN
+  measures:
+  - name: bags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+output_preprocessed:
+- dependencies:
+  - from: passenger
+    label: fp
+    role: passenger
+    to: firstName
+  - from: passenger
+    label: fp
+    role: passenger
+    to: passengerTicketNumber
+  - from: passenger
+    label: fp
+    role: passenger
+    to: passengerDocumentId
+  - from: passenger
+    label: fp
+    role: passenger
+    to: passengerDocumentType
+  - from: passenger
+    label: fp
+    role: passenger
+    to: passengerTelephoneNumber
+  - from: passenger
+    label: fp
+    role: passenger
+    to: passengerEmailAddress
+  - from: passenger
+    label: tp
+    to: gender
+  - from: ticketNumber
+    label: fp
+    role: ticket
+    to: ticketNumber
+  - from: ticketNumber
+    label: fp
+    role: flight
+    to: flight
+  - from: flight
+    label: fp
+    role: route
+    to: route
+  - from: route
+    label: fp
+    role: airplane
+    to: airplane
+  - from: route
+    label: fp
+    role: airplane
+    to: airplaneType
+  - from: route
+    label: fp
+    role: seats
+    to: seats
+  - from: route
+    label: fp
+    role: airline
+    to: airline
+  - from: route
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    to: city
+  - from: route
+    label: fp
+    to: airport
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: flightDelay
+  - from: flight
+    label: fp
+    to: flightArrival
+  - from: flight
+    label: fp
+    to: flightCancellation
+  - from: route
+    label: fp
+    to: routeName
+  - from: route
+    label: fp
+    to: routeDescription
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeAirplane
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeAirline
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: routeCity
+  - from: route
+    label: fp
+    to: routeAirport
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeFlightDelay
+  - from: route
+    label: fp
+    to: routeFlightArrival
+  - from: route
+    label: fp
+    to: routeFlightCancellation
+  - from: route
+    label: fp
+    to: routeType
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: routeCode
+  - from: route
+    label: fp
+    to: routeArea
+  - from: route
+    label: fp
+    to: routeRegion
+  - from: route
+    label: fp
+    to: routeNation
+  - from: route
+    label: fp
+    to: route
+  fact:
+    name: CheckIn
+  ground_truth_labels:
+    dependencies:
+    - from: CheckIn
+      label: fn
+      to: numberOfBags
+    - from: CheckIn
+      label: fn
+      to: ticketAmount
+    - from: CheckIn
+      label: fn
+      to: taxAmount
+    - from: CheckIn
+      label: fn
+      to: totalAmount
+    - from: CheckIn
+      label: fn
+      to: ticketNumber
+    - from: ticketNumber
+      label: fn
+      role: purchase
+      to: date
+    - from: ticketNumber
+      label: fn
+      to: passenger
+    - from: passenger
+      label: fn
+      to: firstName
+    - from: passenger
+      label: fn
+      to: lastName
+    - from: passenger
+      label: fn
+      role: birth
+      to: date
+    - from: passenger
+      label: fn
+      role: residence
+      to: city
+    - from: passenger
+      label: fn
+      to: documentId
+    - from: passenger
+      label: fn
+      to: documentType
+    - from: passenger
+      label: fn
+      to: telephoneNumber
+    - from: passenger
+      label: fn
+      to: emailAddress
+    - from: passenger
+      label: tp
+      to: gender
+    - from: CheckIn
+      label: fn
+      to: seat
+    - from: CheckIn
+      label: fn
+      to: time
+    - from: ticketNumber
+      label: fn
+      to: ticketPriority
+    - from: ticketNumber
+      label: fn
+      to: flight
+    - from: flight
+      label: fn
+      to: flightDate
+    - from: flight
+      label: fn
+      to: delayDeparture
+    - from: flight
+      label: fn
+      to: delayArrival
+    - from: flight
+      label: fn
+      to: cancelled
+    - from: flight
+      label: fn
+      to: route
+    - from: route
+      label: fn
+      role: departure
+      to: airportCode
+    - from: route
+      label: fn
+      role: arrival
+      to: airportCode
+    - from: route
+      label: fn
+      to: departureTime
+    - from: route
+      label: fn
+      to: arrivalTime
+    - from: route
+      label: fn
+      to: airlineCode
+    - from: airlineCode
+      label: fn
+      to: airlineName
+    - from: airlineCode
+      label: fn
+      to: airlineNation
+    - from: route
+      label: fn
+      to: airplaneType
+    - from: airplaneType
+      label: fn
+      to: numberOfSeats
+    - from: airportCode
+      label: fn
+      to: airportName
+    - from: airportCode
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: nation
+    fact:
+      name: CheckIn
+    measures:
+    - name: numberOfBags
+    - name: ticketAmount
+    - name: taxAmount
+    - name: totalAmount
+  measures:
+  - name: bags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+  nodes:
+    fn:
+    - documenttype
+    - ticketpriority
+    - airportcode
+    - lastname
+    - airlinecode
+    - flightdate
+    - emailaddress
+    - airportname
+    - numberofseats
+    - arrivaltime
+    - time
+    - departuretime
+    - seat
+    - documentid
+    - delayarrival
+    - cancelled
+    - airlinenation
+    - numberofbags
+    - delaydeparture
+    - airlinename
+    - telephonenumber
+    - date
+    fp:
+    - passengerticketnumber
+    - airport
+    - routeflightarrival
+    - passengerdocumentid
+    - departureairport
+    - arrivalairport
+    - bags
+    - routearrivalairport
+    - routeairplanetype
+    - routeseats
+    - passengertelephonenumber
+    - routeflightcancellation
+    - passengeremailaddress
+    - routeairline
+    - routeairplane
+    - routearea
+    - routecity
+    - routeairport
+    - seats
+    - routeregion
+    - passengerdocumenttype
+    - airplane
+    - routeflightdelay
+    - routecode
+    - flightcancellation
+    - routetype
+    - flightarrival
+    - routedescription
+    - airline
+    - routedepartureairport
+    - flightdelay
+    - routename
+    - routenation
+    - routenumber
+    tp:
+    - nation
+    - airplanetype
+    - ticketnumber
+    - firstname
+    - flight
+    - city
+    - totalamount
+    - passenger
+    - route
+    - gender
+    - taxamount
+    - ticketamount
+    - checkin

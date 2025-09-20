@@ -1,0 +1,174 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: CROSSFIT\nmeasures:\n  - name: members\n  - name: weight\n  - name:\
+  \ height\n  - name: training\ndependencies:\n  - from: WOD\n    to: training\n \
+  \ - from: WOD\n    to: instructor\n  - from: WOD\n    to: hour\n  - from: WOD\n\
+  \    to: day\n  - from: WOD\n    to: type\n  - from: WOD\n    to: members\n  - from:\
+  \ WOD\n    to: members\n    role: from\n  - from: WOD\n    to: members\n    role:\
+  \ to\n  - from: WOD\n    to: day\n    role: day\n  - from: WOD\n    to: day\n  \
+  \  role: repeat\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n  -\
+  \ from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n    to:\
+  \ postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n    to: training\n\
+  \    role: from\n  - from: WOD\n    to: training\n    role: to\n  - from: WOD\n\
+  \    to: day\n  - from: WOD\n    to: training\n    role: repeat\n  - from: WOD\n\
+  \    to: city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n  -\
+  \ from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n\
+  \    to: address\n  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n\
+  \    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ training\n    role: from\n  - from: WOD\n    to: training\n    role: to\n  - from:\
+  \ WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n\
+  \  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n  \
+  \  to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n\
+  \    role: from\n  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n \
+  \   to: day\n  - from: WOD\n    to: training\n    role: from\n  - from: WOD\n  \
+  \  to: training\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n  - from: WOD\n\
+  \    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n\
+  \  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n    to: members\n\
+  \    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n   \
+  \ role: from\n  - from: WOD\n    to: training\n    role: to\n  - from: WOD\n   \
+  \ to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n  - from:\
+  \ WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n\
+  \  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n    role: from\n\
+  \  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: training\n    role: from\n  - from: WOD\n    to: training\n    role:\
+  \ to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n \
+  \   to: region\n  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  -\
+  \ from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n\
+  \    to: members\n    role: from\n  - from: WOD\n    to: members\n    role: to\n\
+  \  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n    role: from\n \
+  \ - from: WOD\n    to: training\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n\
+  \  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n\
+  \    to: address\n  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n\
+  \    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ training\n    role: from\n  - from: WOD\n    to: training\n    role: to\n  - from:\
+  \ WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n\
+  \  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n  \
+  \  to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n\
+  \    role: from\n  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n \
+  \   to: day\n  - from: WOD\n    to: training\n    role: from\n  - from: WOD\n  \
+  \  to: training\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n  - from: WOD\n\
+  \    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n\
+  \  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n    to: members\n\
+  \    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n   \
+  \ role: from\n  - from: WOD\n    to: training\n    role: to\n  - from: WOD\n   \
+  \ to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n  - from:\
+  \ WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n\
+  \  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n    role: from\n\
+  \  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: training\n    role: from\n  - from: WOD\n    to: training\n    role:\
+  \ to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n \
+  \   to: region\n  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  -\
+  \ from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n\
+  \    to: members\n    role: from\n  - from: WOD\n    to: members\n    role: to\n\
+  \  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n    role: from\n \
+  \ - from: WOD\n    to: training\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n\
+  \  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n\
+  \    to: address\n  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n\
+  \    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ training\n    role: from\n  - from: WOD\n    to: training\n    role: to\n  - from:\
+  \ WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n\
+  \  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n  \
+  \  to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n\
+  \    role: from\n  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n \
+  \   to: day\n  - from: WOD\n    to: training\n    role: from\n  - from: WOD\n  \
+  \  to: training\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n  - from: WOD\n\
+  \    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n\
+  \  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n    to: members\n\
+  \    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n   \
+  \ role: from\n  - from: WOD\n    to: training\n    role: to\n  - from: WOD\n   \
+  \ to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n  - from:\
+  \ WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n\
+  \  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n    role: from\n\
+  \  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: training\n    role: from\n  - from: WOD\n    to: training\n    role:\
+  \ to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n \
+  \   to: region\n  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  -\
+  \ from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n\
+  \    to: members\n    role: from\n  - from: WOD\n    to: members\n    role: to\n\
+  \  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n    role: from\n \
+  \ - from: WOD\n    to: training\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n\
+  \  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n\
+  \    to: address\n  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n\
+  \    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ training\n    role: from\n  - from: WOD\n    to: training\n    role: to\n  - from:\
+  \ WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n\
+  \  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n  \
+  \  to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n\
+  \    role: from\n  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n \
+  \   to: day\n  - from: WOD\n    to: training\n    role: from\n  - from: WOD\n  \
+  \  to: training\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n  - from: WOD\n\
+  \    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n\
+  \  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n    to: members\n\
+  \    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n   \
+  \ role: from\n  - from: WOD\n    to: training\n    role: to\n  - from: WOD\n   \
+  \ to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n  - from:\
+  \ WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n\
+  \  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n    role: from\n\
+  \  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: training\n    role: from\n  - from: WOD\n    to: training\n    role:\
+  \ to\n  - from: WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n \
+  \   to: region\n  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  -\
+  \ from: WOD\n    to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n\
+  \    to: members\n    role: from\n  - from: WOD\n    to: members\n    role: to\n\
+  \  - from: WOD\n    to: day\n  - from: WOD\n    to: training\n    role: from\n \
+  \ - from: WOD\n    to: training\n    role: to\n  - from: WOD\n    to: day\n  - from:\
+  \ WOD\n    to: city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n\
+  \  - from: WOD\n    to: nation\n  - from: WOD\n    to: postalCode\n  - from: WOD\n\
+  \    to: address\n  - from: WOD\n    to: members\n    role: from\n  - from: WOD\n\
+  \    to: members\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ training\n    role: from\n  - from: WOD\n    to: training\n    role: to\n  - from:\
+  \ WOD\n    to: day\n  - from: WOD\n    to: city\n  - from: WOD\n    to: region\n\
+  \  - from: WOD\n    to: state\n  - from: WOD\n    to: nation\n  - from: WOD\n  \
+  \  to: postalCode\n  - from: WOD\n    to: address\n  - from: WOD\n    to: members\n\
+  \    role: from\n  - from: WOD\n    to: members\n    role: to\n  - from: WOD\n \
+  \   to: day\n  - from: WOD\n    to: training\n    role: from\n  - from: WOD\n  \
+  \  to: training\n    role: to\n  - from: WOD\n    to: day\n  - from: WOD\n    to:\
+  \ city\n  - from: WOD\n    to: region\n  - from: WOD\n    to: state\n  - from: WOD\n\
+  \    to: nation\n  - from: WOD\n    to"
+output_preprocessed: []

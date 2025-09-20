@@ -1,0 +1,204 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: RECRUITMENTS\nmeasures:\n  - name: employeeCode\n  - name: department\n\
+  \  - name: recruitmentDate\n  - name: employeeName\ndependencies:\n  - from: STAFF.qualification\n\
+  \    to: STAFF.name\n  - from: STAFF.currentDepartment\n    to: STAFF.name\n  -\
+  \ from: DEPARTMENTS.departmentCode\n    to: DEPARTMENTS.departmentName\n  - from:\
+  \ DEPARTMENTS.divCode\n    to: DEPARTMENTS.divisionName\n  - from: DEPARTMENTS.managerCode\n\
+  \    to: DEPARTMENTS.managerName\n  - from: RECRUITMENTS.employeeCode\n    to: RECRUITMENTS.department\n\
+  \  - from: RECRUITMENTS.recruitmentDate\n    to: RECRUITMENTS.recruitmentDate\n\
+  \  - from: RECRUITMENTS.employeeCode\n    to: RECRUITMENTS.employeeName\n  - from:\
+  \ RECRUITMENTS.fromDepartment\n    to: RECRUITMENTS.fromDepartment\n  - from: RECRUITMENTS.toDepartment\n\
+  \    to: RECRUITMENTS.toDepartment\n  - from: RECRUITMENTS.reason\n    to: RECRUITMENTS.reason\n\
+  \  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeName\n  - from: TRANSFERS.date\n\
+  \    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n\
+  \  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to: TRANSFERS.employeeCode\n\
+  \  - from: TRANSFERS.date\n    to: TRANSFERS.date\n  - from: TRANSFERS.fromDepartment\n\
+  \    to: TRANSFERS.fromDepartment\n  - from: TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n\
+  \  - from: TRANSFERS.reason\n    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n\
+  \    to: TRANSFERS.employeeCode\n  - from: TRANSFERS.date\n    to: TRANSFERS.date\n\
+  \  - from: TRANSFERS.fromDepartment\n    to: TRANSFERS.fromDepartment\n  - from:\
+  \ TRANSFERS.toDepartment\n    to: TRANSFERS.toDepartment\n  - from: TRANSFERS.reason\n\
+  \    to: TRANSFERS.reason\n  - from: TRANSFERS.employeeCode\n    to"
+output_preprocessed: []

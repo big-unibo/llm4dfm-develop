@@ -1,0 +1,257 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- {}
+output:
+- "fact:\n  name: CHECK_IN\nmeasures:\n  - name: bags\n  - name: ticketAmount\n  -\
+  \ name: taxAmount\n  - name: totalAmount\ndependencies:\n  - from: passenger\n \
+  \   to: passengerName\n    role: passenger\n  - from: passenger\n    to: ticketNumber\n\
+  \    role: ticket\n  - from: passenger\n    to: passengerDocumentId\n    role: passenger\n\
+  \  - from: passenger\n    to: passengerDocumentType\n    role: passenger\n  - from:\
+  \ passenger\n    to: telephoneNumber\n    role: passenger\n  - from: passenger\n\
+  \    to: emailAddress\n    role: passenger\n  - from: passenger\n    to: gender\n\
+  \  - from: checkIn\n    to: checkInDate\n    role: checkIn\n  - from: checkIn\n\
+  \    to: ticket\n    role: ticket\n  - from: checkIn\n    to: ticketAmount\n   \
+  \ role: ticketAmount\n  - from: checkIn\n    to: taxAmount\n    role: taxAmount\n\
+  \  - from: checkIn\n    to: totalAmount\n    role: totalAmount\n  - from: checkIn\n\
+  \    to: passenger\n    role: passenger\n  - from: checkIn\n    to: route\n    role:\
+  \ route\n  - from: checkIn\n    to: airline\n    role: airline\n  - from: checkIn\n\
+  \    to: airplaneType\n    role: airplaneType\n  - from: checkIn\n    to: seats\n\
+  \    role: seats\n  - from: checkIn\n    to: route\n    role: route\n  - from: checkIn\n\
+  \    to: flight\n    role: flight\n  - from: checkIn\n    to: route\n    role: route\n\
+  \  - from: checkIn\n    to: airline\n    role: airline\n  - from: checkIn\n    to:\
+  \ route\n    role: route\n  - from: checkIn\n    to: flight\n    role: flight\n\
+  \  - from: checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to: flight\n    role: flight\n  - from:\
+  \ checkIn\n    to: route\n    role: route\n  - from: checkIn\n    to: airline\n\
+  \    role: airline\n  - from: checkIn\n    to"
+output_preprocessed: []

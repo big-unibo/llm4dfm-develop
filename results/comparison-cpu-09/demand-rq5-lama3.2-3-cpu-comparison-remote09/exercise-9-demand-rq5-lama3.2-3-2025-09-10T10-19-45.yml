@@ -1,0 +1,1966 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 11
+    shared_missing: 0
+    shared_with_fact_root_extra: 11
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 272
+    missing: 15
+    reversed: 1
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: route
+    role: departure
+    to: stationName
+  - from: route
+    role: arrival
+    to: stationName
+  - from: stationName
+    to: location
+  - from: location
+    to: city
+  - from: city
+    to: region
+  - from: trip
+    to: status
+  - from: trip
+    to: trainCode
+  - from: trip
+    to: date
+  - from: trainCode
+    to: trainType
+  - from: trainType
+    to: capacity
+  - from: ticket
+    to: customerCode
+  - from: ticket
+    role: purchase
+    to: date
+  - from: customerCode
+    to: firstName
+  - from: customerCode
+    to: lastName
+  - from: customerCode
+    role: birth
+    to: date
+  - from: customerCode
+    role: birth
+    to: city
+  - from: customerCode
+    to: documentId
+  - from: ROUTEINTICKET
+    to: ticket
+  - from: ROUTEINTICKET
+    to: route
+  - from: ROUTEINTICKET
+    to: trip
+  - from: ROUTEINTICKET
+    to: price
+  - from: ROUTEINTICKET
+    to: distance
+  - from: ROUTEINTICKET
+    to: baseFare
+  - from: ROUTEINTICKET
+    to: timeDuration
+  fact:
+    name: ROUTEINTICKET
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+metrics:
+- edges:
+    f1: 0.0525
+    fn: 16
+    fp: 273
+    precision: 0.0285
+    recall: 0.3333
+    tp: 8
+  nodes:
+    f1: 0.6383
+    fn: 6
+    fp: 11
+    precision: 0.5769
+    recall: 0.7143
+    tp: 15
+output:
+- dependencies:
+  - from: route
+    to: price
+  - from: route
+    to: distance
+  - from: route
+    to: baseFare
+  - from: route
+    to: timeDuration
+  - from: ticket
+    role: purchase
+    to: date
+  - from: ticket
+    to: customer
+  - from: ticket
+    role: route
+    to: route
+  - from: ticket
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    to: status
+  - from: route
+    role: departure
+    to: station
+  - from: route
+    role: arrival
+    to: station
+  - from: station
+    role: location
+    to: city
+  - from: station
+    to: region
+  - from: customer
+    to: code
+  - from: customer
+    to: name
+  - from: customer
+    to: surname
+  - from: customer
+    to: birthdate
+  - from: customer
+    to: cityOfBirth
+  - from: customer
+    to: documentId
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: fiscalCode
+  - from: customer
+    to: patientFirstName
+  - from: customer
+    to: patientSecondName
+  - from: customer
+    role: patientBirth
+    to: date
+  - from: customer
+    to: gender
+  - from: customer
+    to: nation
+  - from: route
+    role: trip
+    to: trip
+  - from: trip
+    role: train
+    to: train
+  - from: trip
+    role: trip
+    to: date
+  - from: trip
+    to: status
+  - from: route
+    role: station
+    to: station
+  - from: station
+    role: city
+    to: city
+  - from: station
+    to: region
+  - from: station
+    role: ticket
+    to: ticket
+  - from: station
+    role: route
+    to: route
+  - from: station
+    role: trip
+    to: trip
+  - from: station
+    role: train
+    to: train
+  - from: station
+    role: station
+    to: date
+  - from: station
+    to: status
+  - from: customer
+    to: null
+  fact:
+    name: TICKET
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+output_preprocessed:
+- dependencies:
+  - from: route
+    label: fp
+    to: price
+  - from: route
+    label: fp
+    to: distance
+  - from: route
+    label: fp
+    to: baseFare
+  - from: route
+    label: fp
+    to: timeDuration
+  - from: ticket
+    label: tp
+    role: purchase
+    to: date
+  - from: ticket
+    label: tp
+    to: customerCode
+  - from: ticket
+    label: fp
+    role: route
+    to: route
+  - from: ticket
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: tp
+    to: status
+  - from: route
+    label: tp
+    role: departure
+    to: stationName
+  - from: route
+    label: tp
+    role: arrival
+    to: stationName
+  - from: stationName
+    label: fp
+    role: location
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: customerCode
+    label: fp
+    to: code
+  - from: customerCode
+    label: tp
+    to: firstName
+  - from: customerCode
+    label: tp
+    to: lastName
+  - from: customerCode
+    label: fp
+    to: birthdate
+  - from: customerCode
+    label: fp
+    to: cityOfBirth
+  - from: customerCode
+    label: tp
+    to: documentId
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: fiscalCode
+  - from: customerCode
+    label: fp
+    to: patientFirstName
+  - from: customerCode
+    label: fp
+    to: patientSecondName
+  - from: customerCode
+    label: fp
+    role: patientBirth
+    to: date
+  - from: customerCode
+    label: fp
+    to: gender
+  - from: customerCode
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    role: trip
+    to: trip
+  - from: trip
+    label: fp
+    role: train
+    to: train
+  - from: trip
+    label: fp
+    role: trip
+    to: date
+  - from: trip
+    label: fp
+    to: status
+  - from: route
+    label: fp
+    role: station
+    to: stationName
+  - from: stationName
+    label: fp
+    role: city
+    to: city
+  - from: stationName
+    label: fp
+    to: region
+  - from: stationName
+    label: fp
+    role: ticket
+    to: ticket
+  - from: stationName
+    label: fp
+    role: route
+    to: route
+  - from: stationName
+    label: fp
+    role: trip
+    to: trip
+  - from: stationName
+    label: fp
+    role: train
+    to: train
+  - from: stationName
+    label: fp
+    role: station
+    to: date
+  - from: stationName
+    label: fp
+    to: status
+  - from: customerCode
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: TICKET
+  ground_truth_labels:
+    dependencies:
+    - from: route
+      label: tp
+      role: departure
+      to: stationName
+    - from: route
+      label: tp
+      role: arrival
+      to: stationName
+    - from: stationName
+      label: fn
+      to: location
+    - from: location
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: region
+    - from: trip
+      label: tp
+      to: status
+    - from: trip
+      label: fn
+      to: trainCode
+    - from: trip
+      label: fn
+      to: date
+    - from: trainCode
+      label: fn
+      to: trainType
+    - from: trainType
+      label: fn
+      to: capacity
+    - from: ticket
+      label: tp
+      to: customerCode
+    - from: ticket
+      label: tp
+      role: purchase
+      to: date
+    - from: customerCode
+      label: tp
+      to: firstName
+    - from: customerCode
+      label: tp
+      to: lastName
+    - from: customerCode
+      label: fn
+      role: birth
+      to: date
+    - from: customerCode
+      label: fn
+      role: birth
+      to: city
+    - from: customerCode
+      label: tp
+      to: documentId
+    - from: ROUTEINTICKET
+      label: fn
+      to: ticket
+    - from: ROUTEINTICKET
+      label: fn
+      to: route
+    - from: ROUTEINTICKET
+      label: fn
+      to: trip
+    - from: ROUTEINTICKET
+      label: fn
+      to: price
+    - from: ROUTEINTICKET
+      label: fn
+      to: distance
+    - from: ROUTEINTICKET
+      label: fn
+      to: baseFare
+    - from: ROUTEINTICKET
+      label: fn
+      to: timeDuration
+    fact:
+      name: ROUTEINTICKET
+    measures:
+    - name: price
+    - name: distance
+    - name: baseFare
+    - name: timeDuration
+  measures:
+  - name: price
+  - name: distance
+  - name: baseFare
+  - name: timeDuration
+  nodes:
+    fn:
+    - traintype
+    - traincode
+    - ticket
+    - location
+    - routeinticket
+    - capacity
+    fp:
+    - gender
+    - r,o,e
+    - fiscalcode
+    - birthdate
+    - nation
+    - ticket
+    - cityofbirth
+    - patientsecondname
+    - code
+    - train
+    - patientfirstname
+    tp:
+    - route
+    - price
+    - date
+    - city
+    - stationname
+    - region
+    - customercode
+    - trip
+    - status
+    - documentid
+    - lastname
+    - basefare
+    - firstname
+    - timeduration
+    - distance

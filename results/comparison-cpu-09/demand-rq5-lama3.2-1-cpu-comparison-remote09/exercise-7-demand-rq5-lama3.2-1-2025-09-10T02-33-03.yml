@@ -1,0 +1,1839 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 12
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 238
+    missing: 18
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0.0078
+    fn: 18
+    fp: 238
+    precision: 0.0042
+    recall: 0.0526
+    tp: 1
+  nodes:
+    f1: 0.8333
+    fn: 2
+    fp: 4
+    precision: 0.7895
+    recall: 0.8824
+    tp: 15
+output:
+- dependencies:
+  - from: plate
+    to: plate
+  - from: pickup
+    to: dropoff
+  - from: pickup
+    to: dropoff
+  - from: registrationDate
+    to: fuelType
+  - from: registrationDate
+    to: model
+  - from: registrationDate
+    to: category
+  - from: model
+    to: brand
+  - from: fuelType
+    to: insuranceCost
+  - from: fuelType
+    to: category
+  - from: model
+    to: brand
+  - from: dropoff
+    to: city
+  - from: dropoff
+    to: state
+  - from: dropoff
+    to: country
+  - from: dropoff
+    to: area
+  - from: pickup
+    to: office
+  - from: pickup
+    to: office
+  - from: pickup
+    to: office
+  - from: dropoff
+    to: office
+  - from: dropoff
+    to: office
+  - from: dropoff
+    to: office
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - from: dropoff
+    role: date
+    to: date
+  - from: dropoff
+    role: pickup
+    to: pickup
+  - from: pickup
+    role: pickup
+    to: date
+  - from: pickup
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    role: model
+    to: model
+  - from: registrationDate
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: fuelType
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    role: category
+    to: category
+  - from: model
+    role: brand
+    to: brand
+  - from: dropoff
+    role: city
+    to: city
+  - from: dropoff
+    role: state
+    to: state
+  - from: dropoff
+    role: country
+    to: country
+  - from: dropoff
+    role: area
+    to: area
+  - from: dropoff
+    role: office
+    to: office
+  - null
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: carPlate
+    label: fp
+    to: carPlate
+  - from: pickup
+    label: fp
+    to: dropoff
+  - from: pickup
+    label: fp
+    to: dropoff
+  - from: registrationDate
+    label: fp
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    to: model
+  - from: registrationDate
+    label: fp
+    to: category
+  - from: model
+    label: tp
+    to: brand
+  - from: fuelType
+    label: fp
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    to: category
+  - from: model
+    label: fp
+    to: brand
+  - from: dropoff
+    label: fp
+    to: city
+  - from: dropoff
+    label: fp
+    to: state
+  - from: dropoff
+    label: fp
+    to: country
+  - from: dropoff
+    label: fp
+    to: area
+  - from: pickup
+    label: fp
+    to: office
+  - from: pickup
+    label: fp
+    to: office
+  - from: pickup
+    label: fp
+    to: office
+  - from: dropoff
+    label: fp
+    to: office
+  - from: dropoff
+    label: fp
+    to: office
+  - from: dropoff
+    label: fp
+    to: office
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  - from: dropoff
+    label: fp
+    role: date
+    to: date
+  - from: dropoff
+    label: fp
+    role: pickup
+    to: pickup
+  - from: pickup
+    label: fp
+    role: pickup
+    to: date
+  - from: pickup
+    label: fp
+    role: dropoff
+    to: dropoff
+  - from: pickup
+    label: fp
+    role: registration
+    to: registrationDate
+  - from: registrationDate
+    label: fp
+    role: fuel
+    to: fuelType
+  - from: registrationDate
+    label: fp
+    role: model
+    to: model
+  - from: registrationDate
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: fuelType
+    label: fp
+    role: insurance
+    to: insuranceCost
+  - from: fuelType
+    label: fp
+    role: category
+    to: category
+  - from: model
+    label: fp
+    role: brand
+    to: brand
+  - from: dropoff
+    label: fp
+    role: city
+    to: city
+  - from: dropoff
+    label: fp
+    role: state
+    to: state
+  - from: dropoff
+    label: fp
+    role: country
+    to: country
+  - from: dropoff
+    label: fp
+    role: area
+    to: area
+  - from: dropoff
+    label: fp
+    role: office
+    to: office
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: tp
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - milestravelled
+    - risk
+    fp:
+    - registrationdate
+    - pickup
+    - miles
+    - dropoff
+    tp:
+    - model
+    - category
+    - rental
+    - insurancecost
+    - state
+    - city
+    - office
+    - carplate
+    - country
+    - amount
+    - date
+    - fueltype
+    - brand
+    - discount
+    - area

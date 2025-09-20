@@ -1,0 +1,159 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 4
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 4
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0.25
+    fn: 8
+    fp: 4
+    precision: 0.3333
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0.6667
+    fn: 4
+    fp: 3
+    precision: 0.7
+    recall: 0.6364
+    tp: 7
+output:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Brand
+  - from: COMPUTER.CodComputer, COMPUTER.Brand
+    to: COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: INSTALLATIONS.CodComputer, INSTALLATIONS.CodSoftw
+    to: INSTALLATIONS.InstallationDate
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: COMPUTER.Model
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.Brand
+  - from: COMPUTER.CodComputer,COMPUTER.Brand
+    label: fp
+    to: COMPUTER.Model
+  - from: SOFTWARE.CodSoftw
+    label: tp
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    label: tp
+    to: SOFTWARE.Type
+  - from: INSTALLATIONS.CodComputer,INSTALLATIONS.CodSoftw
+    label: fp
+    to: INSTALLATIONS.InstallationDate
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: tp
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: tp
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: COMPUTER.Model
+  nodes:
+    fn:
+    - computer.codcomputer
+    - suppliers.suppliercity
+    - computer.model
+    - suppliers.supplieraddress
+    fp:
+    - installations.codsoftw,installations.codcomputer
+    - computer.model
+    - computer.codcomputer,computer.brand
+    tp:
+    - software.type
+    - supplies.brand
+    - software.codsoftw
+    - software.softwaredescription
+    - installations
+    - suppliers.suppliername
+    - installations.installationdate

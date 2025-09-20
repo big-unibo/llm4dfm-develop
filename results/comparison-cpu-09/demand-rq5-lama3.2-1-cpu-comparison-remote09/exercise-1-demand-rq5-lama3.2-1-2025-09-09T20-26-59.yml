@@ -1,0 +1,321 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 3
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 29
+    missing: 9
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.05
+    fn: 9
+    fp: 29
+    precision: 0.0333
+    recall: 0.1
+    tp: 1
+  nodes:
+    f1: 0.1429
+    fn: 9
+    fp: 15
+    precision: 0.1176
+    recall: 0.1818
+    tp: 2
+output:
+- dependencies:
+  - from: computer
+    role: start
+    to: address
+  - from: computer
+    role: end
+    to: address
+  - from: computer
+    role: quantity
+    to: address
+  - from: computer
+    role: cost
+    to: address
+  - from: computer
+    role: articleCode
+    to: address
+  - from: computer
+    role: warehouse
+    to: address
+  - from: computer
+    role: date
+    to: address
+  - from: computer
+    to: computerBrand
+  - from: computer
+    to: computerAddress
+  - from: computer
+    to: computerCity
+  - from: computer
+    to: computerRegion
+  - from: computer
+    to: computerState
+  - from: computer
+    to: computerCountry
+  - from: computer
+    to: computerSoftware
+  - from: computer
+    to: computerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerWarehouse
+  - from: computer
+    to: computerSoftware
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerSoftware
+  - from: computer
+    role: start
+    to: computerSoftware
+  - from: computer
+    role: end
+    to: computerSoftware
+  - from: computer
+    role: quantity
+    to: computerSoftware
+  - from: computer
+    role: cost
+    to: computerSoftware
+  - from: computer
+    role: articleCode
+    to: computerSoftware
+  - from: computer
+    role: warehouse
+    to: computerSoftware
+  - from: computer
+    role: date
+    to: computerSoftware
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: model
+  - name: brand
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: fp
+    role: start
+    to: address
+  - from: computer
+    label: fp
+    role: end
+    to: address
+  - from: computer
+    label: fp
+    role: quantity
+    to: address
+  - from: computer
+    label: fp
+    role: cost
+    to: address
+  - from: computer
+    label: fp
+    role: articleCode
+    to: address
+  - from: computer
+    label: fp
+    role: warehouse
+    to: address
+  - from: computer
+    label: fp
+    role: date
+    to: address
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: computerAddress
+  - from: computer
+    label: fp
+    to: computerCity
+  - from: computer
+    label: fp
+    to: computerRegion
+  - from: computer
+    label: fp
+    to: computerState
+  - from: computer
+    label: fp
+    to: computerCountry
+  - from: computer
+    label: fp
+    to: computerSoftware
+  - from: computer
+    label: fp
+    to: computerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerWarehouse
+  - from: computer
+    label: fp
+    to: computerSoftware
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: start
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: end
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: quantity
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: cost
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: articleCode
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: warehouse
+    to: computerSoftware
+  - from: computer
+    label: fp
+    role: date
+    to: computerSoftware
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: fn
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: model
+  - name: brand
+  nodes:
+    fn:
+    - model
+    - supplier
+    - city
+    - installation
+    - description
+    - date
+    - software
+    - brand
+    - type
+    fp:
+    - model
+    - computercity
+    - computercountry
+    - computerarticlecode
+    - computertype
+    - computerregion
+    - computerstate
+    - computercost
+    - computersoftware
+    - computerdate
+    - computeraddress
+    - software
+    - computerwarehouse
+    - brand
+    - computerquantity
+    tp:
+    - address
+    - computer

@@ -1,0 +1,1794 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 13
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 329
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.0117
+    fn: 8
+    fp: 329
+    precision: 0.006
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0.4
+    fn: 5
+    fp: 13
+    precision: 0.3158
+    recall: 0.5455
+    tp: 6
+output:
+- dependencies:
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computerModelInstalledDate
+  - from: computer
+    to: computerModelInstalledQuantity
+  - from: computer
+    to: computerModelInstalledCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  - from: computer
+    to: computerModelType
+  - from: computer
+    to: computerModelDescription
+  - from: computer
+    to: computer
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: type
+  - from: computer
+    to: description
+  - from: computer
+    to: installedDate
+  - from: computer
+    to: installedQuantity
+  - from: computer
+    to: installedCost
+  - from: computer
+    to: computerModelName
+  - from: computer
+    to: computerModelBrand
+  - from: computer
+    to: computerModelAddress
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: installed
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computerModelInstalledDate
+  - from: computer
+    label: fp
+    to: computerModelInstalledQuantity
+  - from: computer
+    label: fp
+    to: computerModelInstalledCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  - from: computer
+    label: fp
+    to: computerModelType
+  - from: computer
+    label: fp
+    to: computerModelDescription
+  - from: computer
+    label: fp
+    to: computer
+  - from: computer
+    label: fp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: installedDate
+  - from: computer
+    label: fp
+    to: installedQuantity
+  - from: computer
+    label: fp
+    to: installedCost
+  - from: computer
+    label: fp
+    to: computerModelName
+  - from: computer
+    label: fp
+    to: computerModelBrand
+  - from: computer
+    label: fp
+    to: computerModelAddress
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: installed
+  nodes:
+    fn:
+    - supplier
+    - city
+    - installation
+    - date
+    - software
+    fp:
+    - computermodeladdress
+    - computermodeldescription
+    - computermodelbrand
+    - computermodelinstalledcost
+    - computermodeltype
+    - installeddate
+    - computermodelinstalledquantity
+    - installedquantity
+    - software
+    - computermodelname
+    - installed
+    - installedcost
+    - computermodelinstalleddate
+    tp:
+    - model
+    - address
+    - computer
+    - description
+    - brand
+    - type

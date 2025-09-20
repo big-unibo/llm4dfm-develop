@@ -1,0 +1,530 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTESINTICKETS
+    to: ROUTESINTICKETS.Price
+  - from: ROUTESINTICKETS
+    to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: ROUTESINTICKETS
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTESINTRIPS.Sequence
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    role: DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.RouteCode
+    role: ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: ROUTESINTICKETS
+    to: ROUTES.DistanceKm
+  - from: ROUTESINTICKETS
+    to: ROUTES.Duration
+  - from: ROUTESINTICKETS
+    to: ROUTES.Fare
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.Location
+    to: STATIONS.City
+  - from: STATIONS.City
+    to: STATIONS.Region
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Date
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Status
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINTYPE.TrainTypeCode
+  - from: ROUTESINTICKETS
+    to: TRAINTYPE.Capacity
+  - from: TRAINTYPE.TrainTypeCode
+    to: TRAINTYPE.TrainType
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+metrics:
+- {}
+output:
+- dependencies:
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: TICKETS.TotalPrice
+  - from
+  fact:
+    name: TICKET
+  measures:
+  - name: TICKETS.TotalPrice
+output_preprocessed: []

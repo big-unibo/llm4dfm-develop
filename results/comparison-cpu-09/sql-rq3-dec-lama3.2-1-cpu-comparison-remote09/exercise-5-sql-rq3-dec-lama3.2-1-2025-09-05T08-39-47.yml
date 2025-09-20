@@ -1,0 +1,1288 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 213
+    missing: 11
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 6
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- edges:
+    f1: 0.0427
+    fn: 11
+    fp: 213
+    precision: 0.0229
+    recall: 0.3125
+    tp: 5
+  nodes:
+    f1: 0.1714
+    fn: 14
+    fp: 15
+    precision: 0.1667
+    recall: 0.1765
+    tp: 3
+output:
+- dependencies:
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.city
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.height
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.weight
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.instructor
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.date
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.workoutDate
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.workoutTime
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presenceDate
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presenceTime
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.presence
+  - null
+  fact:
+    name: MEMBERS
+  measures:
+  - name: MEMBERS.name
+  - name: MEMBERS.surname
+  - name: MEMBERS.gender
+  - name: MEMBERS.address
+  - name: MEMBERS.postalCode
+  - name: MEMBERS.city
+  - name: MEMBERS.height
+  - name: MEMBERS.weight
+output_preprocessed:
+- dependencies:
+  - from: MEMBERS.FiscalCode
+    label: tp
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    label: tp
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    label: tp
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    label: tp
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    label: tp
+    to: MEMBERS.postalCode
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.city
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.height
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.weight
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.time
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.instructor
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.date
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.time
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.workoutDate
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.workoutTime
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presenceDate
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presenceTime
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  - from: MEMBERS.FiscalCode
+    label: fp
+    to: MEMBERS.presence
+  fact:
+    name: MEMBERS
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: WOD.numberOfRounds
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.FiscalCode
+    - from: PRESENCE
+      label: fn
+      to: WORKOUTS.date,WORKOUTS.time
+    - from: MEMBERS.FiscalCode
+      label: tp
+      to: MEMBERS.name
+    - from: MEMBERS.FiscalCode
+      label: tp
+      to: MEMBERS.surname
+    - from: MEMBERS.FiscalCode
+      label: tp
+      to: MEMBERS.gender
+    - from: MEMBERS.FiscalCode
+      label: tp
+      to: MEMBERS.address
+    - from: MEMBERS.FiscalCode
+      label: tp
+      to: MEMBERS.postalCode
+    - from: MEMBERS.postalCode
+      label: fn
+      to: MEMBERS.city
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.height
+    - from: PRESENCE
+      label: fn
+      to: MEMBERS.weight
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WORKOUTS.time
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WORKOUTS.instructor
+    - from: WORKOUTS.date,WORKOUTS.time
+      label: fn
+      to: WOD.date
+    - from: WOD.date
+      label: fn
+      to: WOD.name
+    - from: WOD.date
+      label: fn
+      to: WOD.WODtype
+    fact:
+      name: PRESENCE
+    measures:
+    - name: WOD.numberOfRounds
+    - name: MEMBERS.weight
+    - name: MEMBERS.height
+  measures:
+  - name: MEMBERS.name
+  - name: MEMBERS.surname
+  - name: MEMBERS.gender
+  - name: MEMBERS.address
+  - name: MEMBERS.postalCode
+  - name: MEMBERS.city
+  - name: MEMBERS.height
+  - name: MEMBERS.weight
+  nodes:
+    fn:
+    - members.city
+    - presence
+    - members.address
+    - members.gender
+    - workouts.time,workouts.date
+    - members.name
+    - wod.numberofrounds
+    - wod.wodtype
+    - workouts.instructor
+    - members.surname
+    - wod.date
+    - wod.name
+    - members.postalcode
+    - workouts.time
+    fp:
+    - members.workouttime
+    - members.date
+    - members.city
+    - members
+    - members.address
+    - members.gender
+    - members.name
+    - members.presencetime
+    - members.workoutdate
+    - members.instructor
+    - members.presencedate
+    - members.time
+    - members.surname
+    - members.presence
+    - members.postalcode
+    tp:
+    - members.height
+    - members.weight
+    - members.fiscalcode
