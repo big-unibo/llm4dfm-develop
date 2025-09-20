@@ -1,0 +1,245 @@
+config:
+  label: falcon3-10
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 4
+    shared_missing: 0
+    shared_with_fact_root_extra: 4
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 9
+    missing: 3
+    reversed: 1
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.5625
+    fn: 4
+    fp: 10
+    precision: 0.4737
+    recall: 0.6923
+    tp: 9
+  nodes:
+    f1: 0.9333
+    fn: 0
+    fp: 2
+    precision: 0.875
+    recall: 1.0
+    tp: 14
+output:
+- dependencies:
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  - from: member
+    to: postalCode
+  - from: member
+    to: city
+  - from: member
+    to: weight
+  - from: member
+    to: height
+  - from: city
+    to: postalCode
+  - from: WOD
+    to: type
+  - from: WOD
+    to: date
+  - from: WOD
+    to: workout
+  - from: workout
+    to: WOD
+  - from: PRESENCE
+    to: member
+  - from: PRESENCE
+    role: training
+    to: date
+  - from: PRESENCE
+    to: instructor
+  - from: PRESENCE
+    to: hour
+  - from: instructor
+    to: WOD
+  - from: instructor
+    role: instructorTraining
+    to: date
+  - from: instructor
+    to: hour
+  fact:
+    name: PRESENCE
+  measures:
+  - name: duration
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: tp
+    to: surname
+  - from: member
+    label: tp
+    to: address
+  - from: member
+    label: fp
+    to: postalCode
+  - from: member
+    label: fp
+    to: city
+  - from: member
+    label: tp
+    to: weight
+  - from: member
+    label: tp
+    to: height
+  - from: city
+    label: fp
+    to: postalCode
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: WOD
+    label: fp
+    to: date
+  - from: WOD
+    label: fp
+    to: workout
+  - from: workout
+    label: fp
+    to: WOD
+  - from: PRESENCE
+    label: tp
+    to: member
+  - from: PRESENCE
+    label: fp
+    role: training
+    to: date
+  - from: PRESENCE
+    label: tp
+    to: instructor
+  - from: PRESENCE
+    label: tp
+    to: hour
+  - from: instructor
+    label: fp
+    to: WOD
+  - from: instructor
+    label: fp
+    role: instructorTraining
+    to: date
+  - from: instructor
+    label: fp
+    to: hour
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: tp
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: tp
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: tp
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: tp
+      to: Surname
+    - from: Member
+      label: tp
+      to: Weight
+    - from: Member
+      label: tp
+      to: Height
+    - from: Member
+      label: tp
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: duration
+  nodes:
+    fn: []
+    fp:
+    - duration
+    - workout
+    tp:
+    - surname
+    - wodtype
+    - height
+    - name
+    - wod
+    - hour
+    - city
+    - date
+    - address
+    - presence
+    - member
+    - instructor
+    - postalcode
+    - weight

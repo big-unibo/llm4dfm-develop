@@ -1,0 +1,697 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- {}
+output:
+- dependencies:
+  - from: store
+    role: start
+    to: storeName
+  - from: store
+    role: start
+    to: storeAddress
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: article
+    to: articleName
+  - from: article
+    to: articleType
+  - from: article
+    to: unitPrice
+  - from: article
+    to: revenue
+  - from: article
+    to: quantity
+  - from: article
+    to: cost
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: storeName
+  - from: PURCHASE
+    to: storeAddress
+  - from: PURCHASE
+    to: region
+  - from: PURCHASE
+    to: state
+  - from: PURCHASE
+    to: country
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: articleName
+  - from: PURCHASE
+    to: articleType
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: cost
+  - from: PURCHASE
+    to: revenue
+  - from
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+output_preprocessed: []

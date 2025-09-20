@@ -1,0 +1,1411 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 13
+    shared_missing: 0
+    shared_with_fact_root_extra: 13
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 201
+    missing: 32
+    reversed: 0
+  fact:
+    false_fact: 3
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 4
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- edges:
+    f1: 0.0412
+    fn: 32
+    fp: 201
+    precision: 0.0243
+    recall: 0.1351
+    tp: 5
+  nodes:
+    f1: 0.2314
+    fn: 21
+    fp: 72
+    precision: 0.1628
+    recall: 0.4
+    tp: 14
+output:
+- dependencies:
+  - from: passenger
+    to: passengerName
+  - from: passenger
+    to: passengerDocumentId
+  - from: passenger
+    to: passengerDocumentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: ticket
+    to: ticketNumber
+  - from: route
+    to: routeDepartureAirport
+  - from: route
+    to: routeArrivalAirport
+  - from: route
+    to: routeTime
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: route
+    to: routeAirplaneType
+  - from: route
+    to: routeSeats
+  - from: route
+    to: routeDepartureCity
+  - from: route
+    to: routeArrivalCity
+  - from: route
+    to: routeDepartureNation
+  - from: route
+    to: routeArrivalNation
+  - from: checkIn
+    to: checkInTime
+  - from: checkIn
+    to: checkInStatus
+  - from: checkIn
+    to: checkInPriority
+  - from: checkIn
+    to: checkInTaxAmount
+  - from: checkIn
+    to: checkInTotalAmount
+  - from: checkIn
+    to: checkInTicketNumber
+  - from: checkIn
+    to: checkInRoute
+  - from: checkIn
+    to: checkInAirline
+  - from: checkIn
+    to: checkInRouteAirplaneType
+  - from: checkIn
+    to: checkInRouteSeats
+  - from: checkIn
+    to: checkInRouteDepartureCity
+  - from: checkIn
+    to: checkInRouteArrivalCity
+  - from: checkIn
+    to: checkInRouteDepartureNation
+  - from: checkIn
+    to: checkInRouteArrivalNation
+  - from: checkIn
+    to: checkInTaxRate
+  - from: checkIn
+    to: checkInTotalCost
+  - from: checkIn
+    to: checkInTicketType
+  - from: checkIn
+    to: checkInCheckinStatus
+  - from: checkIn
+    to: checkInCheckinPriority
+  - from: checkIn
+    to: checkInCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinRoute
+  - from: checkIn
+    to: checkInCheckinAirline
+  - from: checkIn
+    to: checkInCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: checkIn
+    to: checkInCheckinCheckinTaxRate
+  - from: checkIn
+    to: checkInCheckinCheckinTotalCost
+  - from: checkIn
+    to: checkInCheckinCheckinTicketType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinStatus
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinPriority
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRoute
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinAirline
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: checkIn
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: checkIn
+    to: checkInCheckinCheckinRouteArrival
+  fact:
+    name: CHECK_IN
+  measures:
+  - name: bags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+output_preprocessed:
+- dependencies:
+  - from: passenger
+    label: tp
+    to: firstName
+  - from: passenger
+    label: fp
+    to: passengerDocumentId
+  - from: passenger
+    label: fp
+    to: passengerDocumentType
+  - from: passenger
+    label: tp
+    to: telephoneNumber
+  - from: passenger
+    label: tp
+    to: emailAddress
+  - from: passenger
+    label: tp
+    to: gender
+  - from: ticketNumber
+    label: fp
+    to: ticketNumber
+  - from: route
+    label: fp
+    to: routeDepartureAirport
+  - from: route
+    label: fp
+    to: routeArrivalAirport
+  - from: route
+    label: fp
+    to: routeTime
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: route
+    label: fp
+    to: routeAirplaneType
+  - from: route
+    label: fp
+    to: routeSeats
+  - from: route
+    label: fp
+    to: routeDepartureCity
+  - from: route
+    label: fp
+    to: routeArrivalCity
+  - from: route
+    label: fp
+    to: routeDepartureNation
+  - from: route
+    label: fp
+    to: routeArrivalNation
+  - from: CheckIn
+    label: tp
+    to: time
+  - from: CheckIn
+    label: fp
+    to: checkInStatus
+  - from: CheckIn
+    label: fp
+    to: checkInPriority
+  - from: CheckIn
+    label: fp
+    to: checkInTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInRoute
+  - from: CheckIn
+    label: fp
+    to: checkInAirline
+  - from: CheckIn
+    label: fp
+    to: checkInRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteDepartureNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrivalNation
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTaxRate
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTotalCost
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinTicketType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinStatus
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinPriority
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTaxAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTotalAmount
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinTicketNumber
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRoute
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinAirline
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteAirplaneType
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteSeats
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinCheckinRouteDepartureCity
+  - from: CheckIn
+    label: fp
+    to: checkInCheckinCheckinRouteArrival
+  fact:
+    name: CheckIn
+  ground_truth_labels:
+    dependencies:
+    - from: CheckIn
+      label: fn
+      to: numberOfBags
+    - from: CheckIn
+      label: fn
+      to: ticketAmount
+    - from: CheckIn
+      label: fn
+      to: taxAmount
+    - from: CheckIn
+      label: fn
+      to: totalAmount
+    - from: CheckIn
+      label: fn
+      to: ticketNumber
+    - from: ticketNumber
+      label: fn
+      role: purchase
+      to: date
+    - from: ticketNumber
+      label: fn
+      to: passenger
+    - from: passenger
+      label: tp
+      to: firstName
+    - from: passenger
+      label: fn
+      to: lastName
+    - from: passenger
+      label: fn
+      role: birth
+      to: date
+    - from: passenger
+      label: fn
+      role: residence
+      to: city
+    - from: passenger
+      label: fn
+      to: documentId
+    - from: passenger
+      label: fn
+      to: documentType
+    - from: passenger
+      label: tp
+      to: telephoneNumber
+    - from: passenger
+      label: tp
+      to: emailAddress
+    - from: passenger
+      label: tp
+      to: gender
+    - from: CheckIn
+      label: fn
+      to: seat
+    - from: CheckIn
+      label: tp
+      to: time
+    - from: ticketNumber
+      label: fn
+      to: ticketPriority
+    - from: ticketNumber
+      label: fn
+      to: flight
+    - from: flight
+      label: fn
+      to: flightDate
+    - from: flight
+      label: fn
+      to: delayDeparture
+    - from: flight
+      label: fn
+      to: delayArrival
+    - from: flight
+      label: fn
+      to: cancelled
+    - from: flight
+      label: fn
+      to: route
+    - from: route
+      label: fn
+      role: departure
+      to: airportCode
+    - from: route
+      label: fn
+      role: arrival
+      to: airportCode
+    - from: route
+      label: fn
+      to: departureTime
+    - from: route
+      label: fn
+      to: arrivalTime
+    - from: route
+      label: fn
+      to: airlineCode
+    - from: airlineCode
+      label: fn
+      to: airlineName
+    - from: airlineCode
+      label: fn
+      to: airlineNation
+    - from: route
+      label: fn
+      to: airplaneType
+    - from: airplaneType
+      label: fn
+      to: numberOfSeats
+    - from: airportCode
+      label: fn
+      to: airportName
+    - from: airportCode
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: nation
+    fact:
+      name: CheckIn
+    measures:
+    - name: numberOfBags
+    - name: ticketAmount
+    - name: taxAmount
+    - name: totalAmount
+  measures:
+  - name: bags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+  nodes:
+    fn:
+    - nation
+    - documenttype
+    - city
+    - ticketpriority
+    - airportcode
+    - lastname
+    - flightdate
+    - airportname
+    - airplanetype
+    - numberofseats
+    - arrivaltime
+    - departuretime
+    - seat
+    - documentid
+    - delayarrival
+    - cancelled
+    - airlinenation
+    - numberofbags
+    - delaydeparture
+    - flight
+    - date
+    fp:
+    - checkincheckinroute
+    - checkincheckinrouteairplanetype
+    - routearrivalnation
+    - checkintickettype
+    - checkincheckincheckinroutearrivalcity
+    - checkincheckintaxamount
+    - passengerdocumentid
+    - checkinpriority
+    - checkincheckincheckintaxamount
+    - checkincheckincheckinrouteseats
+    - checkincheckincheckincheckinrouteairplanetype
+    - bags
+    - checkinrouteseats
+    - routearrivalairport
+    - checkincheckincheckinstatus
+    - checkincheckincheckinrouteairplanetype
+    - checkinticketnumber
+    - checkincheckintaxrate
+    - routeairplanetype
+    - checkincheckincheckinroutearrival
+    - checkincheckincheckincheckinpriority
+    - checkinairline
+    - checkincheckinrouteseats
+    - checkincheckincheckincheckinstatus
+    - checkincheckincheckintaxrate
+    - routeseats
+    - checkinroutedeparturenation
+    - checkinroutedeparturecity
+    - checkincheckincheckinairline
+    - checkinroute
+    - checkincheckintickettype
+    - checkincheckincheckincheckinairline
+    - routearrivalcity
+    - checkinroutearrivalnation
+    - checkinstatus
+    - checkincheckincheckinticketnumber
+    - checkincheckincheckincheckinrouteseats
+    - checkincheckincheckincheckinroute
+    - checkincheckincheckincheckintotalamount
+    - checkincheckincheckinroutearrivalnation
+    - checkintotalamount
+    - checkintaxamount
+    - checkincheckinstatus
+    - checkincheckinticketnumber
+    - checkincheckinairline
+    - checkincheckincheckinroutedeparturecity
+    - checkincheckinpriority
+    - checkincheckinroutearrivalnation
+    - checkincheckincheckintickettype
+    - checkintotalcost
+    - routetime
+    - checkincheckinroutedeparturenation
+    - passengerdocumenttype
+    - routedeparturecity
+    - checkincheckincheckinroute
+    - checkincheckinroutearrivalcity
+    - checkinroutearrivalcity
+    - checkinrouteairplanetype
+    - checkincheckincheckincheckintaxamount
+    - checkincheckincheckincheckinroutedeparturecity
+    - checkincheckincheckincheckinticketnumber
+    - checkintaxrate
+    - airline
+    - checkincheckincheckinpriority
+    - checkincheckintotalcost
+    - routedeparturenation
+    - routedepartureairport
+    - checkincheckinroutedeparturecity
+    - checkincheckincheckinroutedeparturenation
+    - checkincheckintotalamount
+    - checkincheckincheckintotalcost
+    - checkincheckincheckintotalamount
+    tp:
+    - ticketnumber
+    - airlinename
+    - firstname
+    - totalamount
+    - gender
+    - telephonenumber
+    - passenger
+    - taxamount
+    - route
+    - time
+    - ticketamount
+    - airlinecode
+    - checkin
+    - emailaddress

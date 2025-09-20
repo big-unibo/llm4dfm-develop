@@ -1,0 +1,1992 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 15
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 320
+    missing: 24
+    reversed: 1
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- edges:
+    f1: 0.0649
+    fn: 25
+    fp: 321
+    precision: 0.036
+    recall: 0.3243
+    tp: 12
+  nodes:
+    f1: 0.6753
+    fn: 9
+    fp: 16
+    precision: 0.619
+    recall: 0.7429
+    tp: 26
+output:
+- dependencies:
+  - from: passenger
+    to: passengerName
+  - from: passenger
+    to: passengerSurname
+  - from: passenger
+    to: passengerBirthdate
+  - from: passenger
+    to: passengerCity
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: passenger
+    to: checkInTime
+  - from: passenger
+    to: ticketNumber
+  - from: ticket
+    role: purchase
+    to: date
+  - from: ticket
+    to: flight
+  - from: ticket
+    to: flightDelay
+  - from: ticket
+    to: flightCancellation
+  - from: ticket
+    to: route
+  - from: ticket
+    to: routeDepartureAirport
+  - from: ticket
+    to: routeArrivalAirport
+  - from: ticket
+    to: routeDepartureTime
+  - from: ticket
+    to: routeArrivalTime
+  - from: ticket
+    to: airline
+  - from: ticket
+    to: airplaneType
+  - from: ticket
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: airline
+    to: nation
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: checkInTime
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: routeDepartureAirport
+  - from: flight
+    to: routeArrivalAirport
+  - from: flight
+    to: routeDepartureTime
+  - from: flight
+    to: routeArrivalTime
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplaneType
+  - from: route
+    to: seats
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineName
+  - from: airplaneType
+    to: airplaneType
+  - from: airplaneType
+    to: seats
+  - from: route
+    to: route
+  - from: route
+    to: airportCode
+  - from: route
+    to: airportName
+  - from: route
+    to: airportCity
+  - from: route
+    to: airlineCode
+  - from: route
+    to: airplane
+  fact:
+    name: CHECKIN
+  measures:
+  - name: bagsBoarded
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+output_preprocessed:
+- dependencies:
+  - from: passenger
+    label: tp
+    to: firstName
+  - from: passenger
+    label: tp
+    to: lastName
+  - from: passenger
+    label: fp
+    to: passengerBirthdate
+  - from: passenger
+    label: fp
+    to: passengerCity
+  - from: passenger
+    label: tp
+    to: documentId
+  - from: passenger
+    label: tp
+    to: documentType
+  - from: passenger
+    label: tp
+    to: telephoneNumber
+  - from: passenger
+    label: tp
+    to: emailAddress
+  - from: passenger
+    label: tp
+    to: gender
+  - from: passenger
+    label: fp
+    to: time
+  - from: passenger
+    label: fp
+    to: ticketNumber
+  - from: ticketNumber
+    label: tp
+    role: purchase
+    to: date
+  - from: ticketNumber
+    label: tp
+    to: flight
+  - from: ticketNumber
+    label: fp
+    to: flightDelay
+  - from: ticketNumber
+    label: fp
+    to: flightCancellation
+  - from: ticketNumber
+    label: fp
+    to: route
+  - from: ticketNumber
+    label: fp
+    to: routeDepartureAirport
+  - from: ticketNumber
+    label: fp
+    to: routeArrivalAirport
+  - from: ticketNumber
+    label: fp
+    to: routeDepartureTime
+  - from: ticketNumber
+    label: fp
+    to: routeArrivalTime
+  - from: ticketNumber
+    label: fp
+    to: airline
+  - from: ticketNumber
+    label: fp
+    to: airplaneType
+  - from: ticketNumber
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airline
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: tp
+    to: airlineCode
+  - from: route
+    label: tp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: passenger
+    label: fp
+    to: documentId
+  - from: passenger
+    label: fp
+    to: documentType
+  - from: passenger
+    label: fp
+    to: time
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: tp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: routeDepartureAirport
+  - from: flight
+    label: fp
+    to: routeArrivalAirport
+  - from: flight
+    label: fp
+    to: routeDepartureTime
+  - from: flight
+    label: fp
+    to: routeArrivalTime
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: seats
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: airplaneType
+  - from: airplaneType
+    label: fp
+    to: seats
+  - from: route
+    label: fp
+    to: route
+  - from: route
+    label: fp
+    to: airportCode
+  - from: route
+    label: fp
+    to: airportName
+  - from: route
+    label: fp
+    to: airportCity
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: route
+    label: fp
+    to: airplane
+  fact:
+    name: CheckIn
+  ground_truth_labels:
+    dependencies:
+    - from: CheckIn
+      label: fn
+      to: numberOfBags
+    - from: CheckIn
+      label: fn
+      to: ticketAmount
+    - from: CheckIn
+      label: fn
+      to: taxAmount
+    - from: CheckIn
+      label: fn
+      to: totalAmount
+    - from: CheckIn
+      label: fn
+      to: ticketNumber
+    - from: ticketNumber
+      label: tp
+      role: purchase
+      to: date
+    - from: ticketNumber
+      label: fn
+      to: passenger
+    - from: passenger
+      label: tp
+      to: firstName
+    - from: passenger
+      label: tp
+      to: lastName
+    - from: passenger
+      label: fn
+      role: birth
+      to: date
+    - from: passenger
+      label: fn
+      role: residence
+      to: city
+    - from: passenger
+      label: tp
+      to: documentId
+    - from: passenger
+      label: tp
+      to: documentType
+    - from: passenger
+      label: tp
+      to: telephoneNumber
+    - from: passenger
+      label: tp
+      to: emailAddress
+    - from: passenger
+      label: tp
+      to: gender
+    - from: CheckIn
+      label: fn
+      to: seat
+    - from: CheckIn
+      label: fn
+      to: time
+    - from: ticketNumber
+      label: fn
+      to: ticketPriority
+    - from: ticketNumber
+      label: tp
+      to: flight
+    - from: flight
+      label: fn
+      to: flightDate
+    - from: flight
+      label: fn
+      to: delayDeparture
+    - from: flight
+      label: fn
+      to: delayArrival
+    - from: flight
+      label: fn
+      to: cancelled
+    - from: flight
+      label: tp
+      to: route
+    - from: route
+      label: fn
+      role: departure
+      to: airportCode
+    - from: route
+      label: fn
+      role: arrival
+      to: airportCode
+    - from: route
+      label: fn
+      to: departureTime
+    - from: route
+      label: fn
+      to: arrivalTime
+    - from: route
+      label: tp
+      to: airlineCode
+    - from: airlineCode
+      label: fn
+      to: airlineName
+    - from: airlineCode
+      label: fn
+      to: airlineNation
+    - from: route
+      label: tp
+      to: airplaneType
+    - from: airplaneType
+      label: fn
+      to: numberOfSeats
+    - from: airportCode
+      label: fn
+      to: airportName
+    - from: airportCode
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: nation
+    fact:
+      name: CheckIn
+    measures:
+    - name: numberOfBags
+    - name: ticketAmount
+    - name: taxAmount
+    - name: totalAmount
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+  nodes:
+    fn:
+    - cancelled
+    - delayarrival
+    - numberofseats
+    - ticketpriority
+    - city
+    - delaydeparture
+    - seat
+    - flightdate
+    - airlinenation
+    fp:
+    - routearrivalairport
+    - routearrivaltime
+    - routedeparturetime
+    - routedepartureairport
+    - flightdelay
+    - passengercity
+    - airportcity
+    - passengerbirthdate
+    - seats
+    - departureairport
+    - cancellation
+    - arrivalairport
+    - delay
+    - airline
+    - flightcancellation
+    - airplane
+    tp:
+    - airplanetype
+    - checkin
+    - ticketamount
+    - time
+    - documentid
+    - lastname
+    - airportname
+    - airlinecode
+    - ticketnumber
+    - numberofbags
+    - taxamount
+    - airportcode
+    - documenttype
+    - date
+    - departuretime
+    - telephonenumber
+    - passenger
+    - firstname
+    - gender
+    - route
+    - nation
+    - totalamount
+    - airlinename
+    - arrivaltime
+    - flight
+    - emailaddress

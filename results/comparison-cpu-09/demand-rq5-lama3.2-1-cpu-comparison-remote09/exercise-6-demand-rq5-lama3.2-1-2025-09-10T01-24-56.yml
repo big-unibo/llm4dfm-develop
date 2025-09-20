@@ -1,0 +1,1933 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 4
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 351
+    missing: 14
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- edges:
+    f1: 0.0054
+    fn: 14
+    fp: 351
+    precision: 0.0028
+    recall: 0.0667
+    tp: 1
+  nodes:
+    f1: 0.2609
+    fn: 9
+    fp: 8
+    precision: 0.2727
+    recall: 0.25
+    tp: 3
+output:
+- dependencies:
+  - from: employee
+    role: transfer
+    to: department
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: employee
+    to: currentDepartment
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: division
+  - from: employee
+    to: manager
+  - from: department
+    to: reason
+  - from: department
+    to: date
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: date
+  - from: null
+  fact:
+    name: TRANSFER
+  measures:
+  - name: reason
+  - name: date
+output_preprocessed:
+- dependencies:
+  - from: employee
+    label: fp
+    role: transfer
+    to: departmentCode
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: tp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: divisionCode
+  - from: employee
+    label: fp
+    to: manager
+  - from: departmentCode
+    label: fp
+    to: reason
+  - from: departmentCode
+    label: fp
+    to: date
+  - from: departmentCode
+    label: fp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: date
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: TRANSFER
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFER
+      label: fn
+      to: Date
+    - from: TRANSFER
+      label: fn
+      role: to
+      to: DepartmentCode
+    - from: TRANSFER
+      label: fn
+      role: from
+      to: DepartmentCode
+    - from: TRANSFER
+      label: fn
+      to: Reason
+    - from: TRANSFER
+      label: fn
+      to: EmployeeCode
+    - from: DepartmentCode
+      label: fn
+      to: DepartmentName
+    - from: DepartmentCode
+      label: tp
+      to: DivisionCode
+    - from: DivisionCode
+      label: fn
+      to: DivisionName
+    - from: DivisionCode
+      label: fn
+      role: manager
+      to: EmployeeCode
+    - from: EmployeeCode
+      label: fn
+      to: EmployeeName
+    - from: EmployeeCode
+      label: fn
+      to: EmployeeSurname
+    - from: EmployeeCode
+      label: fn
+      to: Gender
+    - from: EmployeeCode
+      label: fn
+      to: Qualification
+    - from: EmployeeCode
+      label: fn
+      role: Recruitment
+      to: Date
+    - from: EmployeeCode
+      label: fn
+      role: current
+      to: DepartmentCode
+    fact:
+      name: TRANSFER
+    measures: []
+  measures:
+  - name: reason
+  - name: date
+  nodes:
+    fn:
+    - departmentname
+    - qualification
+    - gender
+    - divisionname
+    - employeecode
+    - employeename
+    - date
+    - employeesurname
+    - reason
+    fp:
+    - o,e,r
+    - recruitmentdate
+    - employee
+    - divisionmanager
+    - date
+    - manager
+    - currentdepartment
+    - reason
+    tp:
+    - departmentcode
+    - transfer
+    - divisioncode

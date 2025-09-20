@@ -1,0 +1,508 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.Type
+  - from
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: COMPUTER.CodComputer
+  - name: SOFTWARE.CodSoftw
+  - name: SUPPLIERS.SupplierName
+output_preprocessed: []

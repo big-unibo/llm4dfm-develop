@@ -1,0 +1,1753 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 222
+    missing: 17
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0.0165
+    fn: 17
+    fp: 222
+    precision: 0.0089
+    recall: 0.1053
+    tp: 2
+  nodes:
+    f1: 0.4667
+    fn: 10
+    fp: 6
+    precision: 0.5385
+    recall: 0.4118
+    tp: 7
+output:
+- dependencies:
+  - from: rental
+    to: plate
+  - from: rental
+    to: pickupDate
+  - from: rental
+    to: dropoffDate
+  - from: rental
+    to: office
+  - from: rental
+    to: registrationDate
+  - from: rental
+    to: fuelType
+  - from: rental
+    to: milesTravelled
+  - from: rental
+    to: rentalPlate
+  - from: rental
+    to: rentalOffice
+  - from: rental
+    role: rental
+    to: rentalPlate
+  - from: rental
+    role: pickup
+    to: rentalPlate
+  - from: rental
+    role: dropoff
+    to: rentalPlate
+  - from: rental
+    role: office
+    to: rentalPlate
+  - from: rental
+    role: registration
+    to: rentalPlate
+  - from: rental
+    role: fuelType
+    to: rentalPlate
+  - from: rental
+    role: milesTravelled
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    to: rentalOffice
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    role: rental
+    to: rentalPlate
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+output_preprocessed:
+- dependencies:
+  - from: rental
+    label: tp
+    to: carPlate
+  - from: rental
+    label: fp
+    to: pickupDate
+  - from: rental
+    label: fp
+    to: dropoffDate
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: registrationDate
+  - from: rental
+    label: fp
+    to: fuelType
+  - from: rental
+    label: tp
+    to: milesTravelled
+  - from: rental
+    label: fp
+    to: rentalPlate
+  - from: rental
+    label: fp
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: rental
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: pickup
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: dropoff
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: office
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: registration
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: fuelType
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: milesTravelled
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    to: rentalOffice
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rentalPlate
+    to: rentalPlate
+  - from: rental
+    label: fp
+    role: rental
+    to: rentalPlate
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: tp
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: tp
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  nodes:
+    fn:
+    - model
+    - category
+    - state
+    - city
+    - country
+    - milestravelled
+    - risk
+    - date
+    - brand
+    - area
+    fp:
+    - registrationdate
+    - rentalplate
+    - dropoffdate
+    - rentaloffice
+    - milestravelled
+    - pickupdate
+    tp:
+    - rental
+    - insurancecost
+    - office
+    - carplate
+    - amount
+    - fueltype
+    - discount
