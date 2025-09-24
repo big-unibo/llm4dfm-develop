@@ -1,0 +1,220 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 1
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 7
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 2
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.4
+    fn: 8
+    fp: 7
+    precision: 0.4167
+    recall: 0.3846
+    tp: 5
+  nodes:
+    f1: 0.8571
+    fn: 2
+    fp: 2
+    precision: 0.8571
+    recall: 0.8571
+    tp: 12
+output:
+- dependencies:
+  - from: DailyPresences
+    to: Date
+  - from: DailyPresences
+    to: Member
+  - from: DailyPresences
+    to: WOD
+  - from: DailyPresences
+    to: Instructor
+  - from: DailyPresences
+    to: Weight
+  - from: DailyPresences
+    to: Height
+  - from: Name
+    role: Member
+    to: Surname
+  - from: Address
+    role: Member
+    to: PostalCode
+  - from: PostalCode
+    role: Member
+    to: City
+  - from: WOD
+    to: Type
+  - from: Date
+    to: Hour
+  - from: Instructor
+    to: WOD
+  fact:
+    name: DailyPresences
+  measures:
+  - name: Weight
+  - name: Height
+output_preprocessed:
+- dependencies:
+  - from: PRESENCE
+    label: tp
+    to: Date
+  - from: PRESENCE
+    label: tp
+    to: Member
+  - from: PRESENCE
+    label: tp
+    to: WOD
+  - from: PRESENCE
+    label: tp
+    to: Instructor
+  - from: PRESENCE
+    label: fp
+    to: Weight
+  - from: PRESENCE
+    label: fp
+    to: Height
+  - from: Name
+    label: fp
+    role: Member
+    to: Surname
+  - from: Address
+    label: fp
+    role: Member
+    to: PostalCode
+  - from: PostalCode
+    label: fp
+    role: Member
+    to: City
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: Date
+    label: fp
+    to: Hour
+  - from: Instructor
+    label: fp
+    to: WOD
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: tp
+      to: Member
+    - from: PRESENCE
+      label: tp
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: tp
+      to: Date
+    - from: PRESENCE
+      label: tp
+      to: Instructor
+    - from: Member
+      label: fn
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: Weight
+  - name: Height
+  nodes:
+    fn:
+    - weight
+    - height
+    fp:
+    - weight
+    - height
+    tp:
+    - date
+    - postalcode
+    - member
+    - surname
+    - presence
+    - address
+    - wod
+    - name
+    - wodtype
+    - city
+    - instructor
+    - hour

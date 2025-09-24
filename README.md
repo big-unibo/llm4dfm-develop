@@ -9,7 +9,8 @@ Index of this repository.
 - [Research data](#research-data): shows the input used and output obtained in our research activity.
 - [Usage](#usage): explains how to use the code to run new experiments.
 
-IMPORTANT: to run the project, an active account on OpenAI is needed to connect to ChatGPT via API.
+IMPORTANT: to run the project via API, an active account on OpenAI is needed to connect to ChatGPT, while for import,
+Huggingface is the provider used to import models.
 
 ## Project structure
 

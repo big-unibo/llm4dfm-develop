@@ -90,12 +90,16 @@ df = df.merge(stats[["config_label", "label_text"]], on="config_label", how="lef
 # Final label includes both device and the model-level F1 info
 df["x_label"] = df["label_text"] + "\n" + df["device"]
 
-order = (
-    df.groupby(["config_label", "device"])["avg_f1"]
+config_order = (
+    df.groupby("config_label")["avg_f1"]
       .mean()
       .sort_values(ascending=False)
       .index
 )
+
+# 2. Build pair order: for each config, list cpu first, then gpu
+devices = ["cpu", "gpu"]
+order = [(cl, dev) for cl in config_order for dev in devices if (cl, dev) in df.set_index(["config_label","device"]).index]
 
 # Build a mapping (config_label, device) -> enriched label
 label_map = df.set_index(["config_label", "device"])["x_label"].to_dict()
@@ -110,13 +114,70 @@ df["x_label"] = pd.Categorical(
 output_file = f'{start_dir_path}aggregate_times_cpu_gpu.pdf'
 
 # Plot
+
+# plt.figure(figsize=(12, 6))
+#
+# # Get categories in order
+# categories = df["x_label"].cat.categories
+# positions = range(1, len(categories) * 2, 2)  # leave a gap of 1 unit between boxes
+#
+# # Draw boxplots manually
+# data = [df.loc[df["x_label"] == cat, "time"] for cat in categories]
+# plt.boxplot(data, positions=positions, widths=0.6, patch_artist=True)
+#
+# # Replace x ticks with categories
+# plt.xticks(positions, categories, ha="right")
+#
+# plt.xlabel("Model")
+# plt.ylabel("Time")
+# plt.title("Execution Times by Model and Device (sorted by avg F1)")
+# plt.tight_layout()
+#
+# plt.savefig(output_file, dpi=300)
+# plt.close()
+# print(f"Saved boxplot to {output_file}.")
+
 plt.figure(figsize=(12, 6))
-df.boxplot(column="time", by="x_label", grid=False)
-plt.xlabel("Model")
+
+# Get categories in order
+categories = df["x_label"].cat.categories
+positions = range(1, len(categories) * 2, 2)  # leave a gap of 1 unit between boxes
+
+# Draw boxplots manually
+data = [df.loc[df["x_label"] == cat, "time"] for cat in categories]
+plt.boxplot(data, positions=positions, widths=0.6, patch_artist=True)
+
+# Now: instead of full labels, split into model+F1 (centered) and device (under each box)
+
+# Build device labels (cpu/gpu)
+device_labels = ["CPU" if "cpu" in cat else "GPU" for cat in categories]
+
+# Build F1 labels (one per config_label)
+f1_labels = stats.set_index("config_label")["label_text"].to_dict()
+
+# Midpoints for each config (between CPU/GPU positions)
+midpoints = []
+f1_texts = []
+for cl in config_order:
+    pair_cats = [label_map[(cl, dev)] for dev in devices if (cl, dev) in label_map]
+    pair_positions = [positions[categories.get_loc(cat)] for cat in pair_cats]
+    if len(pair_positions) == 2:  # we have cpu+gpu
+        mid = sum(pair_positions) / 2
+        midpoints.append(mid)
+        f1_texts.append(f1_labels[cl])
+
+# First row of ticks: device labels under each box
+plt.xticks(positions, device_labels, ha="center")
+
+# Add second row of ticks (F1 labels centered above CPU/GPU pair)
+for mid, text in zip(midpoints, f1_texts):
+    plt.text(mid, plt.ylim()[0] - 0.05*(plt.ylim()[1]-plt.ylim()[0]),
+             text, ha="center", va="top", fontsize=9)
+
+plt.xlabel("Model (with average F1)", labelpad=40)
 plt.ylabel("Time")
 plt.title("Execution Times by Model and Device (sorted by avg F1)")
-plt.suptitle("")
 plt.tight_layout()
+
 plt.savefig(output_file, dpi=300)
 plt.close()
-print(f"Saved boxplot to {output_file}.")

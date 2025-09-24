@@ -90,18 +90,18 @@ for _, row in stats.iterrows():
     # Annotate points with model + prompt version
     plt.text(
         row["avg_time"] + 0.01, row["avg_edges_f1"] + 0.01,
-        f"{row['model']} - {row['ex_prompt_version']} (E)", fontsize=8
+        f"{row['model']} - {row['ex_prompt_version']} (E)", fontsize=8, va='top', ha='left'
     )
     plt.text(
         row["avg_time"] + 0.01, row["avg_nodes_f1"] - 0.02,
-        f"{row['model']} - {row['ex_prompt_version']} (N)", fontsize=8
+        f"{row['model']} - {row['ex_prompt_version']} (N)", fontsize=8, va='bottom', ha='left'
     )
 
     # Draw line between edges and nodes points for same model+prompt
     plt.plot(
         [row["avg_time"], row["avg_time"]],
         [row["avg_edges_f1"], row["avg_nodes_f1"]],
-        color=colors[row["model"]], linestyle="--", alpha=0.7
+        color=colors[row["model"]], linestyle="-" if row['model'] == 'gpt4' else '--', alpha=0.7
     )
 
 plt.xlabel("Average Execution Time")

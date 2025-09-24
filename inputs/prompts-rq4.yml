@@ -1,7 +1,9 @@
 base:
+  - role: system
+    content: |
+      You are a data warehouse designer that outputs YAML-formatted data. Please generate a YAML response for the following input.
   - role: user
     content: |
-      You are a data warehouse designer.
       Carry out demand-driven conceptual
       design of a multidimensional cube using the DFM (Dimensional Fact Model), starting from the following
       requirements. 

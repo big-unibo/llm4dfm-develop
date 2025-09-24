@@ -1,0 +1,180 @@
+config:
+  api_version: 2025-01-01-preview
+  deployment: gpt-5-chat
+  label: gpt5
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 1
+    shared_missing: 0
+    shared_with_fact_root_extra: 1
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 2
+    missing: 2
+    reversed: 3
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0.5
+    fn: 5
+    fp: 5
+    precision: 0.5
+    recall: 0.5
+    tp: 5
+  nodes:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 11
+output:
+- dependencies:
+  - from: SUPPLIERS.SupplierAddress
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierCity
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: COMPUTER.CodComputer
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: SOFTWARE.SoftwareDescription
+    to: SOFTWARE.Type
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  fact:
+    name: INSTALLATIONS
+  measures: []
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIERS.SupplierAddress
+    label: fp
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierCity
+    label: fp
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    label: fp
+    to: COMPUTER.CodComputer
+  - from: COMPUTER.CodComputer
+    label: tp
+    to: COMPUTER.Model
+  - from: SOFTWARE.SoftwareDescription
+    label: fp
+    to: SOFTWARE.Type
+  - from: SOFTWARE.CodSoftw
+    label: tp
+    to: SOFTWARE.SoftwareDescription
+  - from: INSTALLATIONS
+    label: tp
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    label: tp
+    to: SOFTWARE.CodSoftw
+  - from: INSTALLATIONS
+    label: tp
+    to: INSTALLATIONS.InstallationDate
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: tp
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: tp
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: tp
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: tp
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: tp
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures: []
+  nodes:
+    fn: []
+    fp: []
+    tp:
+    - suppliers.suppliername
+    - computer.model
+    - installations
+    - software.softwaredescription
+    - suppliers.suppliercity
+    - installations.installationdate
+    - software.codsoftw
+    - software.type
+    - computer.codcomputer
+    - suppliers.supplieraddress
+    - supplies.brand

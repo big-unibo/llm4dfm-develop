@@ -1,0 +1,245 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 3
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 9
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- edges:
+    f1: 0.3448
+    fn: 10
+    fp: 9
+    precision: 0.3571
+    recall: 0.3333
+    tp: 5
+  nodes:
+    f1: 0.7407
+    fn: 2
+    fp: 5
+    precision: 0.6667
+    recall: 0.8333
+    tp: 10
+output:
+- dependencies:
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeName
+    to: EmployeeSurname
+  - from: EmployeeSurname
+    to: Gender
+  - from: Gender
+    to: Qualification
+  - from: Qualification
+    to: RecruitmentDate
+  - from: RecruitmentDate
+    to: CurrentDepartment
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentName
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionName
+    to: DivisionManager
+  - from: StaffTransfer
+    to: EmployeeCode
+  - from: StaffTransfer
+    to: DepartmentCode
+  - from: StaffTransfer
+    to: TransferCount
+  - from: StaffTransfer
+    to: TransferReason
+  fact:
+    name: StaffTransfer
+  measures:
+  - name: TransferCount
+  - name: TransferReason
+output_preprocessed:
+- dependencies:
+  - from: EmployeeCode
+    label: tp
+    to: EmployeeName
+  - from: EmployeeName
+    label: fp
+    to: EmployeeSurname
+  - from: EmployeeSurname
+    label: fp
+    to: Gender
+  - from: Gender
+    label: fp
+    to: Qualification
+  - from: Qualification
+    label: fp
+    to: RecruitmentDate
+  - from: RecruitmentDate
+    label: fp
+    to: CurrentDepartment
+  - from: DepartmentCode
+    label: tp
+    to: DepartmentName
+  - from: DepartmentName
+    label: fp
+    to: DivisionCode
+  - from: DivisionCode
+    label: tp
+    to: DivisionName
+  - from: DivisionName
+    label: fp
+    to: DivisionManager
+  - from: TRANSFER
+    label: tp
+    to: EmployeeCode
+  - from: TRANSFER
+    label: fp
+    to: DepartmentCode
+  - from: TRANSFER
+    label: fp
+    to: TransferCount
+  - from: TRANSFER
+    label: tp
+    to: reason
+  fact:
+    name: TRANSFER
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFER
+      label: fn
+      to: Date
+    - from: TRANSFER
+      label: fn
+      role: to
+      to: DepartmentCode
+    - from: TRANSFER
+      label: fn
+      role: from
+      to: DepartmentCode
+    - from: TRANSFER
+      label: tp
+      to: Reason
+    - from: TRANSFER
+      label: tp
+      to: EmployeeCode
+    - from: DepartmentCode
+      label: tp
+      to: DepartmentName
+    - from: DepartmentCode
+      label: fn
+      to: DivisionCode
+    - from: DivisionCode
+      label: tp
+      to: DivisionName
+    - from: DivisionCode
+      label: fn
+      role: manager
+      to: EmployeeCode
+    - from: EmployeeCode
+      label: tp
+      to: EmployeeName
+    - from: EmployeeCode
+      label: fn
+      to: EmployeeSurname
+    - from: EmployeeCode
+      label: fn
+      to: Gender
+    - from: EmployeeCode
+      label: fn
+      to: Qualification
+    - from: EmployeeCode
+      label: fn
+      role: Recruitment
+      to: Date
+    - from: EmployeeCode
+      label: fn
+      role: current
+      to: DepartmentCode
+    fact:
+      name: TRANSFER
+    measures: []
+  measures:
+  - name: TransferCount
+  - name: reason
+  nodes:
+    fn:
+    - date
+    - reason
+    fp:
+    - reason
+    - divisionmanager
+    - recruitmentdate
+    - transfercount
+    - currentdepartment
+    tp:
+    - departmentname
+    - employeename
+    - gender
+    - departmentcode
+    - employeecode
+    - transfer
+    - qualification
+    - divisioncode
+    - employeesurname
+    - divisionname
