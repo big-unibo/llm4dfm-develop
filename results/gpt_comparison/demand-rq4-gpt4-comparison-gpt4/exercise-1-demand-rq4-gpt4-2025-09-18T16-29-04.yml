@@ -1,0 +1,183 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 3
+    missing: 3
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.7
+    fn: 3
+    fp: 3
+    precision: 0.7
+    recall: 0.7
+    tp: 7
+  nodes:
+    f1: 0.9091
+    fn: 1
+    fp: 1
+    precision: 0.9091
+    recall: 0.9091
+    tp: 10
+output:
+- dependencies:
+  - from: SoftwareInstallation
+    to: Computer
+  - from: SoftwareInstallation
+    to: Software
+  - from: SoftwareInstallation
+    to: installationCount
+  - from: Computer
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: City
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: SoftwareInstallation
+  measures:
+  - name: installationCount
+output_preprocessed:
+- dependencies:
+  - from: INSTALLATION
+    label: tp
+    to: Computer
+  - from: INSTALLATION
+    label: tp
+    to: Software
+  - from: INSTALLATION
+    label: fp
+    to: installationCount
+  - from: Computer
+    label: tp
+    to: Model
+  - from: Model
+    label: fp
+    to: Brand
+  - from: Brand
+    label: tp
+    to: Supplier
+  - from: Supplier
+    label: tp
+    to: City
+  - from: City
+    label: fp
+    to: Address
+  - from: Software
+    label: tp
+    to: Description
+  - from: Software
+    label: tp
+    to: Type
+  fact:
+    name: INSTALLATION
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: tp
+      to: Computer
+    - from: INSTALLATION
+      label: tp
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: fn
+      to: Brand
+    - from: Brand
+      label: tp
+      to: Supplier
+    - from: Supplier
+      label: tp
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: tp
+      to: Description
+    - from: Software
+      label: tp
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: installationCount
+  nodes:
+    fn:
+    - date
+    fp:
+    - installationcount
+    tp:
+    - description
+    - address
+    - type
+    - computer
+    - supplier
+    - software
+    - installation
+    - city
+    - brand
+    - model

@@ -1,0 +1,1410 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 246
+    missing: 15
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 6
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 15
+    fp: 246
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 13
+    fp: 10
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: STAFF.qualification
+    to: STAFF.currentDepartment
+  - from: STAFF.currentDepartment
+    to: STAFF.qualification
+  - from: STAFF.currentDepartment
+    to: STAFF.department
+  - from: STAFF.department
+    to: STAFF.qualification
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.qualification
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.qualification
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    to: STAFF.currentDepartment
+  - from: STAFF
+  fact:
+    name: RECRUITMENTS
+  measures:
+  - name: STAFF.qualification
+  - name: STAFF.currentDepartment
+  - name: RECRUITMENTS.department
+  - name: TRANSFERS.fromDepartment
+  - name: TRANSFERS.toDepartment
+  - name: TRANSFERS.reason
+output_preprocessed:
+- dependencies:
+  - from: STAFF.qualification
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.currentDepartment
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.currentDepartment
+    label: fp
+    to: STAFF.department
+  - from: STAFF.department
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.qualification
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.department
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RECRUITMENTS
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: fn
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: fn
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: fn
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: fn
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: STAFF.qualification
+  - name: STAFF.currentDepartment
+  - name: RECRUITMENTS.department
+  - name: TRANSFERS.fromDepartment
+  - name: TRANSFERS.toDepartment
+  - name: TRANSFERS.reason
+  nodes:
+    fn:
+    - transfers
+    - staff.surname
+    - staff.gender
+    - departments.departmentcode
+    - staff.name
+    - divisions.divcode
+    - staff.employeecode
+    - divisions.divisionname
+    - transfers.reason
+    - transfers.date
+    - qualifications.qualification
+    - recruitments.recruitmentdate
+    - departments.departmentname
+    fp:
+    - e,r,o
+    - recruitments
+    - recruitments.department
+    - staff.department
+    - staff
+    - transfers.fromdepartment
+    - transfers.reason
+    - staff.currentdepartment
+    - transfers.todepartment
+    - staff.qualification
+    tp: []

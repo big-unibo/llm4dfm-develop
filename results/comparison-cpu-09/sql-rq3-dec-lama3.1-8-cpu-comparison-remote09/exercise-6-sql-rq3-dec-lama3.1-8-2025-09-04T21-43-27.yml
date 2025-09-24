@@ -1,0 +1,279 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 10
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 10
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- edges:
+    f1: 0.4375
+    fn: 8
+    fp: 10
+    precision: 0.4118
+    recall: 0.4667
+    tp: 7
+  nodes:
+    f1: 0.25
+    fn: 9
+    fp: 15
+    precision: 0.2105
+    recall: 0.3077
+    tp: 4
+output:
+- dependencies:
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    to: STAFF.employeeCode
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: RECRUITMENTS.employeeCode
+    to: STAFF.employeeCode
+  - from: RECRUITMENTS.employeeCode
+    to: DEPARTMENTS.departmentCode
+  - from: RECRUITMENTS.employeeCode
+    to: RECRUITMENTS.recruitmentDate
+  - from: TRANSFERS.employeeCode
+    to: RECRUITMENTS.employeeCode
+  - from: TRANSFERS.employeeCode
+    to: TRANSFERS.date
+  - from: TRANSFERS.employeeCode
+    to: DEPARTMENTS.fromDepartment
+  - from: TRANSFERS.employeeCode
+    to: DEPARTMENTS.toDepartment
+  fact:
+    name: RECRUITMENTS
+  measures:
+  - name: RECRUITMENTS.recruitmentDate
+  - name: STAFF.name
+  - name: STAFF.surname
+  - name: STAFF.gender
+  - name: STAFF.currentDepartment
+  - name: DEPARTMENTS.departmentName
+  - name: DEPARTMENTS.divCode
+  - name: DIVISIONS.divisionName
+  - name: DIVISIONS.managerCode
+  - name: QUALIFICATIONS.qualification
+output_preprocessed:
+- dependencies:
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    label: tp
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    label: fp
+    to: STAFF.currentDepartment
+  - from: STAFF.employeeCode
+    label: fp
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    label: tp
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    label: tp
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    label: tp
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    label: fp
+    to: STAFF.employeeCode
+  - from: STAFF.employeeCode
+    label: tp
+    to: QUALIFICATIONS.qualification
+  - from: RECRUITMENTS.employeeCode
+    label: fp
+    to: STAFF.employeeCode
+  - from: RECRUITMENTS.employeeCode
+    label: fp
+    to: DEPARTMENTS.departmentCode
+  - from: RECRUITMENTS.employeeCode
+    label: fp
+    to: RECRUITMENTS.recruitmentDate
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: RECRUITMENTS.employeeCode
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: TRANSFERS.date
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: DEPARTMENTS.fromDepartment
+  - from: TRANSFERS.employeeCode
+    label: fp
+    to: DEPARTMENTS.toDepartment
+  fact:
+    name: RECRUITMENTS
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFERS
+      label: fn
+      to: STAFF.employeeCode
+    - from: TRANSFERS
+      label: fn
+      role: fromDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      role: toDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.date
+    - from: TRANSFERS
+      label: fn
+      to: TRANSFERS.reason
+    - from: TRANSFERS
+      label: fn
+      to: RECRUITMENTS.recruitmentDate
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.name
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.surname
+    - from: STAFF.employeeCode
+      label: tp
+      to: STAFF.gender
+    - from: STAFF.employeeCode
+      label: tp
+      to: QUALIFICATIONS.qualification
+    - from: STAFF.employeeCode
+      label: fn
+      role: currentDepartment
+      to: DEPARTMENTS.departmentCode
+    - from: DEPARTMENTS.departmentCode
+      label: tp
+      to: DEPARTMENTS.departmentName
+    - from: DEPARTMENTS.departmentCode
+      label: tp
+      to: DIVISIONS.divCode
+    - from: DIVISIONS.divCode
+      label: tp
+      to: DIVISIONS.divisionName
+    - from: DIVISIONS.divCode
+      label: fn
+      role: managerCode
+      to: STAFF.employeeCode
+    fact:
+      name: TRANSFERS
+    measures: []
+  measures:
+  - name: RECRUITMENTS.recruitmentDate
+  - name: STAFF.name
+  - name: STAFF.surname
+  - name: STAFF.gender
+  - name: STAFF.currentDepartment
+  - name: DEPARTMENTS.departmentName
+  - name: DEPARTMENTS.divCode
+  - name: DIVISIONS.divisionName
+  - name: DIVISIONS.managerCode
+  - name: QUALIFICATIONS.qualification
+  nodes:
+    fn:
+    - transfers.reason
+    - qualifications.qualification
+    - recruitments.recruitmentdate
+    - staff.name
+    - staff.surname
+    - divisions.divisionname
+    - transfers
+    - staff.gender
+    - departments.departmentname
+    fp:
+    - divisions.managercode
+    - staff.currentdepartment
+    - qualifications.qualification
+    - recruitments
+    - recruitments.recruitmentdate
+    - departments.divcode
+    - transfers.employeecode
+    - staff.name
+    - staff.surname
+    - divisions.divisionname
+    - staff.gender
+    - departments.todepartment
+    - departments.departmentname
+    - recruitments.employeecode
+    - departments.fromdepartment
+    tp:
+    - transfers.date
+    - departments.departmentcode
+    - divisions.divcode
+    - staff.employeecode

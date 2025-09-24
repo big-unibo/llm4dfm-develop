@@ -1,0 +1,243 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- {}
+output:
+- " fact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from:\
+  \ employee\n    to: code\n  - from: employee\n    to: name\n  - from: employee\n\
+  \    to: surname\n  - from: employee\n    to: gender\n  - from: employee\n    to:\
+  \ qualification\n  - from: employee\n    to: recruitmentDate\n  - from: employee\n\
+  \    to: currentDepartment\n  - from: currentDepartment\n    to: departmentCode\n\
+  \  - from: currentDepartment\n    to: departmentName\n  - from: currentDepartment\n\
+  \    to: division\n  - from: division\n    to: divisionCode\n  - from: division\n\
+  \    to: divisionName\n  - from: division\n    to: manager\n    role: employeeCode\n\
+  \  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n    to: employee\n    role:\
+  \ fromDepartment\n  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\
+  \nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from:\
+  \ employee\n    to: code\n  - from: employee\n    to: name\n  - from: employee\n\
+  \    to: surname\n  - from: employee\n    to: gender\n  - from: employee\n    to:\
+  \ qualification\n  - from: employee\n    to: recruitmentDate\n  - from: employee\n\
+  \    to: currentDepartment\n  - from: currentDepartment\n    to: departmentCode\n\
+  \  - from: currentDepartment\n    to: departmentName\n  - from: currentDepartment\n\
+  \    to: division\n  - from: division\n    to: divisionCode\n  - from: division\n\
+  \    to: divisionName\n  - from: division\n    to: manager\n    role: employeeCode\n\
+  \  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n    to: employee\n    role:\
+  \ fromDepartment\n  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\
+  \nThis is the YAML representation of the resulting DFM schema for the given source\
+  \ schema. The fact is named \"TRANSFER\", and it has one measure named \"reason\"\
+  . The dependencies show the relationships between the fact, measures, and dimensions.\
+  \ The arcs exiting the fact lead to measures (reason) or dimensions (employee, currentDepartment,\
+  \ division). The arcs within a hierarchy are directed from the finer attribute towards\
+  \ the coarser one (e.g., department->division). There are two arcs from TRANSFER\
+  \ to employee, with roles \"fromDepartment\" and \"toDepartment\", respectively.\
+  \ There are arcs from employee to code, name, surname, gender, qualification, recruitmentDate,\
+  \ and currentDepartment. There are arcs from currentDepartment to departmentCode,\
+  \ departmentName, and division. There are arcs from division to divisionCode and\
+  \ divisionName. There is an arc from division to manager, with the role \"employeeCode\"\
+  .\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from:\
+  \ employee\n    to: code\n  - from: employee\n    to: name\n  - from: employee\n\
+  \    to: surname\n  - from: employee\n    to: gender\n  - from: employee\n    to:\
+  \ qualification\n  - from: employee\n    to: recruitmentDate\n  - from: employee\n\
+  \    to: currentDepartment\n  - from: currentDepartment\n    to: departmentCode\n\
+  \  - from: currentDepartment\n    to: departmentName\n  - from: currentDepartment\n\
+  \    to: division\n  - from: division\n    to: divisionCode\n  - from: division\n\
+  \    to: divisionName\n  - from: division\n    to: manager\n    role: employeeCode\n\
+  \  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n    to: employee\n    role:\
+  \ fromDepartment\n  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\
+  \nThis YAML representation describes a multidimensional cube for analyzing staff\
+  \ transfers between departments. The fact is named \"TRANSFER\" and has one measure,\
+  \ \"reason\". The dependencies show the relationships between the fact, measures,\
+  \ and dimensions. The arcs exiting the fact lead to measures (reason) or dimensions\
+  \ (employee, currentDepartment, division). The arcs within a hierarchy are directed\
+  \ from the finer attribute towards the coarser one (e.g., department->division).\
+  \ There are two arcs from TRANSFER to employee, with roles \"fromDepartment\" and\
+  \ \"toDepartment\", respectively. There are arcs from employee to code, name, surname,\
+  \ gender, qualification, recruitmentDate, and currentDepartment. There are arcs\
+  \ from currentDepartment to departmentCode, departmentName, and division. There\
+  \ are arcs from division to divisionCode and divisionName. There is an arc from\
+  \ division to manager, with the role \"employeeCode\". This schema allows decision-makers\
+  \ to analyze staff transfers on a daily basis, considering the reason, employee\
+  \ details, current department, and division information.\n\nfact:\n  name: TRANSFER\n\
+  measures:\n  - name: reason\ndependencies:\n  - from: employee\n    to: code\n \
+  \ - from: employee\n    to: name\n  - from: employee\n    to: surname\n  - from:\
+  \ employee\n    to: gender\n  - from: employee\n    to: qualification\n  - from:\
+  \ employee\n    to: recruitmentDate\n  - from: employee\n    to: currentDepartment\n\
+  \  - from: currentDepartment\n    to: departmentCode\n  - from: currentDepartment\n\
+  \    to: departmentName\n  - from: currentDepartment\n    to: division\n  - from:\
+  \ division\n    to: divisionCode\n  - from: division\n    to: divisionName\n  -\
+  \ from: division\n    to: manager\n    role: employeeCode\n  - from: TRANSFER\n\
+  \    to: reason\n  - from: TRANSFER\n    to: employee\n    role: fromDepartment\n\
+  \  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\nThis YAML representation\
+  \ describes a multidimensional cube for analyzing staff transfers between departments.\
+  \ The fact is named \"TRANSFER\" and has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. The arcs exiting\
+  \ the fact lead to measures (reason) or dimensions (employee, currentDepartment,\
+  \ division). The arcs within a hierarchy are directed from the finer attribute towards\
+  \ the coarser one (e.g., department->division). There are two arcs from TRANSFER\
+  \ to employee, with roles \"fromDepartment\" and \"toDepartment\", respectively.\
+  \ There are arcs from employee to code, name, surname, gender, qualification, recruitmentDate,\
+  \ and currentDepartment. There are arcs from currentDepartment to departmentCode,\
+  \ departmentName, and division. There are arcs from division to divisionCode and\
+  \ divisionName. There is an arc from division to manager, with the role \"employeeCode\"\
+  . This schema allows decision-makers to analyze staff transfers on a daily basis,\
+  \ considering the reason, employee details, current department, and division information.\
+  \ The schema is designed in a demand-driven fashion, starting from the end-user\
+  \ requirements, using the DFM (Dimensional Fact Modeling) approach.\n\nfact:\n \
+  \ name: TRANSFER\nmeasures:\n  - name: reason\ndependencies:\n  - from: employee\n\
+  \    to: code\n  - from: employee\n    to: name\n  - from: employee\n    to: surname\n\
+  \  - from: employee\n    to: gender\n  - from: employee\n    to: qualification\n\
+  \  - from: employee\n    to: recruitmentDate\n  - from: employee\n    to: currentDepartment\n\
+  \  - from: currentDepartment\n    to: departmentCode\n  - from: currentDepartment\n\
+  \    to: departmentName\n  - from: currentDepartment\n    to: division\n  - from:\
+  \ division\n    to: divisionCode\n  - from: division\n    to: divisionName\n  -\
+  \ from: division\n    to: manager\n    role: employeeCode\n  - from: TRANSFER\n\
+  \    to: reason\n  - from: TRANSFER\n    to: employee\n    role: fromDepartment\n\
+  \  - from: TRANSFER\n    to: employee\n    role: toDepartment\n\nThis YAML representation\
+  \ describes a multidimensional cube for analyzing staff transfers between departments.\
+  \ The fact is named \"TRANSFER\" and has one measure, \"reason\". The dependencies\
+  \ show the relationships between the fact, measures, and dimensions. The arcs exiting\
+  \ the fact lead to measures (reason) or dimensions (employee, currentDepartment,\
+  \ division). The arcs within a hierarchy are directed from the finer attribute towards\
+  \ the coarser one (e.g., department->division). There are two arcs from TRANSFER\
+  \ to employee, with roles \"fromDepartment\" and \"toDepartment\", respectively.\
+  \ There are arcs from employee to code, name, surname, gender, qualification, recruitmentDate,\
+  \ and currentDepartment. There are arcs from currentDepartment to departmentCode,\
+  \ departmentName, and division. There are arcs from division to divisionCode and\
+  \ divisionName. There is an arc from division to manager, with the role \"employeeCode\"\
+  . This schema allows decision-makers to analyze staff transfers on a daily basis,\
+  \ considering the reason, employee details, current department, and division information.\
+  \ The schema is designed in a demand-driven fashion, starting from the end-user\
+  \ requirements, using the DFM (Dimensional Fact Modeling) approach. The schema is\
+  \ optimized for query performance and data integrity, ensuring that the data is\
+  \ consistent and easy to analyze.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name:\
+  \ reason\ndependencies:\n  - from: employee\n    to: code\n  - from: employee\n\
+  \    to: name\n  - from: employee\n    to: surname\n  - from: employee\n    to:\
+  \ gender\n  - from: employee\n    to: qualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \    role: employeeCode\n  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n\
+  \    to: employee\n    role: fromDepartment\n  - from: TRANSFER\n    to: employee\n\
+  \    role: toDepartment\n\nThis YAML representation describes a multidimensional\
+  \ cube for analyzing staff transfers between departments. The fact is named \"TRANSFER\"\
+  \ and has one measure, \"reason\". The dependencies show the relationships between\
+  \ the fact, measures, and dimensions. The arcs exiting the fact lead to measures\
+  \ (reason) or dimensions (employee, currentDepartment, division). The arcs within\
+  \ a hierarchy are directed from the finer attribute towards the coarser one (e.g.,\
+  \ department->division). There are two arcs from TRANSFER to employee, with roles\
+  \ \"fromDepartment\" and \"toDepartment\", respectively. There are arcs from employee\
+  \ to code, name, surname, gender, qualification, recruitmentDate, and currentDepartment.\
+  \ There are arcs from currentDepartment to departmentCode, departmentName, and division.\
+  \ There are arcs from division to divisionCode and divisionName. There is an arc\
+  \ from division to manager, with the role \"employeeCode\". This schema allows decision-makers\
+  \ to analyze staff transfers on a daily basis, considering the reason, employee\
+  \ details, current department, and division information. The schema is designed\
+  \ in a demand-driven fashion, starting from the end-user requirements, using the\
+  \ DFM (Dimensional Fact Modeling) approach. The schema is optimized for query performance\
+  \ and data integrity, ensuring that the data is consistent and easy to analyze.\
+  \ The schema follows best practices for data warehousing, such as normalization,\
+  \ denormalization, and aggregation, to provide a high-performance, scalable, and\
+  \ maintainable solution.\n\nfact:\n  name: TRANSFER\nmeasures:\n  - name: reason\n\
+  dependencies:\n  - from: employee\n    to: code\n  - from: employee\n    to: name\n\
+  \  - from: employee\n    to: surname\n  - from: employee\n    to: gender\n  - from:\
+  \ employee\n    to: qualification\n  - from: employee\n    to: recruitmentDate\n\
+  \  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n  \
+  \  to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n  -\
+  \ from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \    role: employeeCode\n  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n\
+  \    to: employee\n    role: fromDepartment\n  - from: TRANSFER\n    to: employee\n\
+  \    role: toDepartment\n\nThis YAML representation describes a multidimensional\
+  \ cube for analyzing staff transfers between departments. The fact is named \"TRANSFER\"\
+  \ and has one measure, \"reason\". The dependencies show the relationships between\
+  \ the fact, measures, and dimensions. The arcs exiting the fact lead to measures\
+  \ (reason) or dimensions (employee, currentDepartment, division). The arcs within\
+  \ a hierarchy are directed from the finer attribute towards the coarser one (e.g.,\
+  \ department->division). There are two arcs from TRANSFER to employee, with roles\
+  \ \"fromDepartment\" and \"toDepartment\", respectively. There are arcs from employee\
+  \ to code, name, surname, gender, qualification, recruitmentDate, and currentDepartment.\
+  \ There are arcs from currentDepartment to departmentCode, departmentName, and division.\
+  \ There are arcs from division to divisionCode and divisionName. There is an arc\
+  \ from division to manager, with the role \"employeeCode\". This schema allows decision-makers\
+  \ to analyze staff transfers on a daily basis, considering the reason, employee\
+  \ details, current department, and division information. The schema is designed\
+  \ in a demand-driven fashion, starting from the end-user requirements, using the\
+  \ DFM (Dimensional Fact Modeling) approach. The schema is optimized for query performance\
+  \ and data integrity, ensuring that the data is consistent and easy to analyze.\
+  \ The schema follows best practices for data warehousing, such as normalization,\
+  \ denormalization, and aggregation, to provide a high-performance, scalable, and\
+  \ maintainable solution. The schema is designed to support complex queries, such\
+  \ as trend analysis, comparative analysis, and drill-down analysis, to provide insights\
+  \ into the staff transfer patterns and trends.\n\nfact:\n  name: TRANSFER\nmeasures:\n\
+  \  - name: reason\ndependencies:\n  - from: employee\n    to: code\n  - from: employee\n\
+  \    to: name\n  - from: employee\n    to: surname\n  - from: employee\n    to:\
+  \ gender\n  - from: employee\n    to: qualification\n  - from: employee\n    to:\
+  \ recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from: currentDepartment\n\
+  \    to: departmentCode\n  - from: currentDepartment\n    to: departmentName\n \
+  \ - from: currentDepartment\n    to: division\n  - from: division\n    to: divisionCode\n\
+  \  - from: division\n    to: divisionName\n  - from: division\n    to: manager\n\
+  \    role: employeeCode\n  - from: TRANSFER\n    to: reason\n  - from: TRANSFER\n\
+  \    to: employee\n    role: fromDepartment\n  - from: TRANSFER\n    to: employee\n\
+  \    role: toDepartment\n\nThis YAML representation describes a multidimensional\
+  \ cube for analyzing staff transfers between departments. The fact is named \"TRANSFER\"\
+  \ and has one measure, \"reason\". The dependencies show the relationships between\
+  \ the fact, measures, and dimensions. The arcs exiting the fact lead to measures\
+  \ (reason) or dimensions (employee, currentDepartment, division). The arcs within\
+  \ a hierarchy are directed from the finer attribute towards the coarser one (e.g.,\
+  \ department->division). There are two arcs from TRANSFER to employee, with roles\
+  \ \"fromDepartment\" and \"toDepartment\", respectively. There are arcs from employee\
+  \ to code, name, surname, gender, qualification, recruitmentDate, and currentDepartment.\
+  \ There are arcs from currentDepartment to departmentCode, departmentName, and division.\
+  \ There are arcs from division to divisionCode and divisionName. There is an arc\
+  \ from division to manager, with the role \"employeeCode\". This schema allows decision-makers\
+  \ to analyze staff transfers on a daily basis, considering the reason, employee\
+  \ details, current department, and division information. The schema is designed\
+  \ in a demand-driven fashion, starting from the end-user requirements, using the\
+  \ DFM (Dimensional Fact Modeling) approach. The schema is optimized for query"
+output_preprocessed: []

@@ -1,0 +1,1797 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 317
+    missing: 19
+    reversed: 0
+  fact:
+    false_fact: 2
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 3
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0
+    fn: 19
+    fp: 317
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.303
+    fn: 12
+    fp: 11
+    precision: 0.3125
+    recall: 0.2941
+    tp: 5
+output:
+- dependencies:
+  - from: plate
+    to: plate
+  - from: pickupDate
+    to: dropoffDate
+  - from: pickupOffice
+    to: dropoffOffice
+  - from: car
+    to: car
+  - from: car
+    to: carRegistration
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  - from: car
+    to: carFuelType
+  - from: car
+    to: carRegistrationDate
+  - from: car
+    to: carCategory
+  - from: car
+    to: carModel
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: carPlate
+    label: fp
+    to: carPlate
+  - from: pickupDate
+    label: fp
+    to: dropoffDate
+  - from: pickupOffice
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: car
+  - from: car
+    label: fp
+    to: carRegistration
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  - from: car
+    label: fp
+    to: carFuelType
+  - from: car
+    label: fp
+    to: carRegistrationDate
+  - from: car
+    label: fp
+    to: carCategory
+  - from: car
+    label: fp
+    to: carModel
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - state
+    - date
+    - model
+    - office
+    - brand
+    - fueltype
+    - category
+    - area
+    - city
+    - risk
+    - milestravelled
+    - country
+    fp:
+    - carmodel
+    - miles
+    - dropoffoffice
+    - pickupdate
+    - car
+    - carfueltype
+    - pickupoffice
+    - carregistrationdate
+    - carcategory
+    - carregistration
+    - dropoffdate
+    tp:
+    - amount
+    - insurancecost
+    - discount
+    - carplate
+    - rental

@@ -1,0 +1,1577 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 276
+    missing: 14
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- edges:
+    f1: 0.0068
+    fn: 14
+    fp: 276
+    precision: 0.0036
+    recall: 0.0667
+    tp: 1
+  nodes:
+    f1: 0.1463
+    fn: 9
+    fp: 26
+    precision: 0.1034
+    recall: 0.25
+    tp: 3
+output:
+- dependencies:
+  - from: employee
+    role: transfer
+    to: department
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: currentDepartment
+  - from: department
+    to: division
+  - from: department
+    to: divisionManager
+  - from: employee
+    to: reason
+  - from: employee
+    to: reasonDate
+  - from: employee
+    to: reasonRole
+  - from: employee
+    to: reasonType
+  - from: employee
+    to: departmentReason
+  - from: employee
+    to: currentDepartmentReason
+  - from: employee
+    to: recruitmentDateReason
+  - from: employee
+    to: recruitmentDateRole
+  - from: employee
+    to: currentDepartmentRole
+  - from: employee
+    to: reasonTypeReason
+  - from: employee
+    to: reasonTypeRole
+  - from: employee
+    to: departmentReasonType
+  - from: employee
+    to: reasonTypeReasonRole
+  - from: employee
+    to: transferReason
+  - from: employee
+    to: transferReasonDate
+  - from: employee
+    to: transferReasonRole
+  - from: employee
+    to: transferReasonType
+  - from: employee
+    to: departmentReasonTypeRole
+  - from: employee
+    to: reasonTypeReasonRole
+  - from: employee
+    to: transferReasonTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonTypeDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonTypeDateRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  - from: employee
+    to: transferReasonDateTypeRole
+  - from: employee
+    to: transferReasonDateRole
+  fact:
+    name: TRANSFER
+  measures:
+  - name: reason
+  - name: date
+output_preprocessed:
+- dependencies:
+  - from: employee
+    label: fp
+    role: transfer
+    to: departmentCode
+  - from: employee
+    label: fp
+    to: recruitmentDate
+  - from: employee
+    label: fp
+    to: currentDepartment
+  - from: departmentCode
+    label: tp
+    to: divisionCode
+  - from: departmentCode
+    label: fp
+    to: divisionManager
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: reasonDate
+  - from: employee
+    label: fp
+    to: reasonRole
+  - from: employee
+    label: fp
+    to: reasonType
+  - from: employee
+    label: fp
+    to: departmentReason
+  - from: employee
+    label: fp
+    to: currentDepartmentReason
+  - from: employee
+    label: fp
+    to: recruitmentDateReason
+  - from: employee
+    label: fp
+    to: recruitmentDateRole
+  - from: employee
+    label: fp
+    to: currentDepartmentRole
+  - from: employee
+    label: fp
+    to: reasonTypeReason
+  - from: employee
+    label: fp
+    to: reasonTypeRole
+  - from: employee
+    label: fp
+    to: departmentReasonType
+  - from: employee
+    label: fp
+    to: reasonTypeReasonRole
+  - from: employee
+    label: fp
+    to: reason
+  - from: employee
+    label: fp
+    to: transferReasonDate
+  - from: employee
+    label: fp
+    to: transferReasonRole
+  - from: employee
+    label: fp
+    to: transferReasonType
+  - from: employee
+    label: fp
+    to: departmentReasonTypeRole
+  - from: employee
+    label: fp
+    to: reasonTypeReasonRole
+  - from: employee
+    label: fp
+    to: transferReasonTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonTypeDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonTypeDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  - from: employee
+    label: fp
+    to: transferReasonDateTypeRole
+  - from: employee
+    label: fp
+    to: transferReasonDateRole
+  fact:
+    name: TRANSFER
+  ground_truth_labels:
+    dependencies:
+    - from: TRANSFER
+      label: fn
+      to: Date
+    - from: TRANSFER
+      label: fn
+      role: to
+      to: DepartmentCode
+    - from: TRANSFER
+      label: fn
+      role: from
+      to: DepartmentCode
+    - from: TRANSFER
+      label: fn
+      to: Reason
+    - from: TRANSFER
+      label: fn
+      to: EmployeeCode
+    - from: DepartmentCode
+      label: fn
+      to: DepartmentName
+    - from: DepartmentCode
+      label: tp
+      to: DivisionCode
+    - from: DivisionCode
+      label: fn
+      to: DivisionName
+    - from: DivisionCode
+      label: fn
+      role: manager
+      to: EmployeeCode
+    - from: EmployeeCode
+      label: fn
+      to: EmployeeName
+    - from: EmployeeCode
+      label: fn
+      to: EmployeeSurname
+    - from: EmployeeCode
+      label: fn
+      to: Gender
+    - from: EmployeeCode
+      label: fn
+      to: Qualification
+    - from: EmployeeCode
+      label: fn
+      role: Recruitment
+      to: Date
+    - from: EmployeeCode
+      label: fn
+      role: current
+      to: DepartmentCode
+    fact:
+      name: TRANSFER
+    measures: []
+  measures:
+  - name: reason
+  - name: date
+  nodes:
+    fn:
+    - departmentname
+    - qualification
+    - gender
+    - divisionname
+    - employeecode
+    - employeename
+    - date
+    - employeesurname
+    - reason
+    fp:
+    - reasontype
+    - transferreasontyperole
+    - transferreasondate
+    - departmentreasontyperole
+    - transferreasondaterole
+    - recruitmentdaterole
+    - employee
+    - recruitmentdate
+    - transferreasonrole
+    - departmentreasontype
+    - reason
+    - reasontyperole
+    - transferreasontype
+    - reasondate
+    - reasontypereason
+    - recruitmentdatereason
+    - currentdepartment
+    - reasontypereasonrole
+    - currentdepartmentreason
+    - transferreasondatetyperole
+    - reasonrole
+    - transferreasontypedaterole
+    - currentdepartmentrole
+    - departmentreason
+    - divisionmanager
+    - date
+    tp:
+    - departmentcode
+    - divisioncode
+    - transfer

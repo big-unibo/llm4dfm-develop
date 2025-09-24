@@ -1,0 +1,163 @@
+config:
+  label: lama3.1-8
+  name: llama-3.1-8B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 0
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.375
+    fn: 10
+    fp: 0
+    precision: 1.0
+    recall: 0.2308
+    tp: 3
+  nodes:
+    f1: 0.5
+    fn: 9
+    fp: 1
+    precision: 0.8333
+    recall: 0.3571
+    tp: 5
+output:
+- ? I noticed that the output I provided earlier was missing some relationships. Here
+    is the corrected YAML representation of the resulting DFM schema
+  : null
+  dependencies:
+  - from: member
+    to: name
+  - from: member
+    to: surname
+  - from: member
+    to: address
+  fact:
+    name: PRESENCE
+  measures:
+  - name: quantity
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: tp
+    to: name
+  - from: member
+    label: tp
+    to: surname
+  - from: member
+    label: tp
+    to: address
+  fact:
+    name: PRESENCE
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: tp
+      to: Name
+    - from: Member
+      label: tp
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: tp
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: fn
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: quantity
+  nodes:
+    fn:
+    - city
+    - date
+    - hour
+    - weight
+    - instructor
+    - wod
+    - height
+    - postalcode
+    - wodtype
+    fp:
+    - quantity
+    tp:
+    - member
+    - address
+    - presence
+    - surname
+    - name

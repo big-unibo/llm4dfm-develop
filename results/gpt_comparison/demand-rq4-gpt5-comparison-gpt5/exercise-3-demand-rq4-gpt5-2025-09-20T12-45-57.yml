@@ -1,0 +1,354 @@
+config:
+  api_version: 2025-01-01-preview
+  deployment: gpt-5-chat
+  label: gpt5
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 2
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 5
+    missing: 6
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: creditCard
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    to: amount
+  - from: PURCHASE
+    to: exchange
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: storeType
+  - from: store
+    to: country
+  - from: country
+    to: area
+  - from: holder
+    to: firstName
+  - from: holder
+    to: lastName
+  - from: holder
+    to: age
+  - from: holder
+    to: job
+  - from: holder
+    to: incomeRange
+  - from: creditCard
+    to: creditCardType
+  - from: creditCard
+    to: holder
+  - from: creditCard
+    role: expiration
+    to: date
+  - from: creditCard
+    to: creditLimit
+  - from: creditCardType
+    to: issuingBank
+  - from: creditCardType
+    to: circuit
+  - from: issuingBank
+    to: issuingBankAddress
+  - from: issuingBank
+    to: country
+  - from: creditCardType
+    to: color
+  - from: creditCardType
+    to: creditCardName
+  fact:
+    name: PURCHASE
+  measures:
+  - name: amount
+  - name: exchange
+metrics:
+- edges:
+    f1: 0.7755
+    fn: 6
+    fp: 5
+    precision: 0.7917
+    recall: 0.76
+    tp: 19
+  nodes:
+    f1: 0.96
+    fn: 0
+    fp: 2
+    precision: 0.9231
+    recall: 1.0
+    tp: 24
+output:
+- dependencies:
+  - from: Purchases
+    to: Date
+  - from: Purchases
+    to: Store
+  - from: Purchases
+    to: Credit Card
+  - from: Purchases
+    to: Amount
+  - from: Purchases
+    to: Exchange
+  - from: Day
+    to: Month
+  - from: Month
+    to: Year
+  - from: Store Name
+    to: Store Address
+  - from: Store Address
+    to: Store Type
+  - from: Store Type
+    to: Country
+  - from: Country
+    to: Area
+  - from: Credit Card
+    to: Card Type
+  - from: Credit Card
+    to: Holder
+  - from: Credit Card
+    to: Expiration Date
+  - from: Credit Card
+    to: Credit Limit
+  - from: Card Type
+    to: Circuit
+  - from: Card Type
+    to: Issuing Bank
+  - from: Card Type
+    to: Card Name
+  - from: Card Type
+    to: Color
+  - from: Issuing Bank
+    to: Bank Address
+  - from: Bank Address
+    to: Bank Country
+  - from: Holder
+    to: First Name
+  - from: Holder
+    to: Last Name
+  - from: Holder
+    to: Age
+  - from: Holder
+    to: Job
+  - from: Holder
+    to: Income Range
+  fact:
+    name: Purchases
+  measures:
+  - name: Amount
+  - name: Exchange
+output_preprocessed:
+- dependencies:
+  - from: PURCHASE
+    label: tp
+    to: Date
+  - from: PURCHASE
+    label: tp
+    to: Store
+  - from: PURCHASE
+    label: tp
+    to: CreditCard
+  - from: PURCHASE
+    label: tp
+    to: Amount
+  - from: PURCHASE
+    label: tp
+    to: Exchange
+  - from: StoreName
+    label: fp
+    to: StoreAddress
+  - from: StoreAddress
+    label: fp
+    to: StoreType
+  - from: StoreType
+    label: fp
+    to: Country
+  - from: Country
+    label: tp
+    to: Area
+  - from: CreditCard
+    label: tp
+    to: creditCardType
+  - from: CreditCard
+    label: tp
+    to: Holder
+  - from: CreditCard
+    label: fp
+    to: ExpirationDate
+  - from: CreditCard
+    label: tp
+    to: CreditLimit
+  - from: creditCardType
+    label: tp
+    to: Circuit
+  - from: creditCardType
+    label: tp
+    to: IssuingBank
+  - from: creditCardType
+    label: tp
+    to: creditCardName
+  - from: creditCardType
+    label: tp
+    to: Color
+  - from: IssuingBank
+    label: tp
+    to: issuingBankAddress
+  - from: issuingBankAddress
+    label: fp
+    to: BankCountry
+  - from: Holder
+    label: tp
+    to: FirstName
+  - from: Holder
+    label: tp
+    to: LastName
+  - from: Holder
+    label: tp
+    to: Age
+  - from: Holder
+    label: tp
+    to: Job
+  - from: Holder
+    label: tp
+    to: IncomeRange
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASE
+      label: tp
+      to: store
+    - from: PURCHASE
+      label: tp
+      to: creditCard
+    - from: PURCHASE
+      label: tp
+      to: date
+    - from: PURCHASE
+      label: tp
+      to: amount
+    - from: PURCHASE
+      label: tp
+      to: exchange
+    - from: store
+      label: fn
+      to: storeName
+    - from: store
+      label: fn
+      to: storeAddress
+    - from: store
+      label: fn
+      to: storeType
+    - from: store
+      label: fn
+      to: country
+    - from: country
+      label: tp
+      to: area
+    - from: holder
+      label: tp
+      to: firstName
+    - from: holder
+      label: tp
+      to: lastName
+    - from: holder
+      label: tp
+      to: age
+    - from: holder
+      label: tp
+      to: job
+    - from: holder
+      label: tp
+      to: incomeRange
+    - from: creditCard
+      label: tp
+      to: creditCardType
+    - from: creditCard
+      label: tp
+      to: holder
+    - from: creditCard
+      label: fn
+      role: expiration
+      to: date
+    - from: creditCard
+      label: tp
+      to: creditLimit
+    - from: creditCardType
+      label: tp
+      to: issuingBank
+    - from: creditCardType
+      label: tp
+      to: circuit
+    - from: issuingBank
+      label: tp
+      to: issuingBankAddress
+    - from: issuingBank
+      label: fn
+      to: country
+    - from: creditCardType
+      label: tp
+      to: color
+    - from: creditCardType
+      label: tp
+      to: creditCardName
+    fact:
+      name: PURCHASE
+    measures:
+    - name: amount
+    - name: exchange
+  measures:
+  - name: Amount
+  - name: Exchange
+  nodes:
+    fn: []
+    fp:
+    - bankcountry
+    - expirationdate
+    tp:
+    - creditcardtype
+    - color
+    - date
+    - issuingbank
+    - age
+    - incomerange
+    - creditlimit
+    - storeaddress
+    - area
+    - creditcardname
+    - store
+    - job
+    - purchase
+    - amount
+    - firstname
+    - issuingbankaddress
+    - lastname
+    - country
+    - exchange
+    - storename
+    - circuit
+    - creditcard
+    - storetype
+    - holder

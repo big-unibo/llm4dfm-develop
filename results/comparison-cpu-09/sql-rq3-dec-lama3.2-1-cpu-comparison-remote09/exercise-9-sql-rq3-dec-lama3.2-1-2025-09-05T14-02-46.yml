@@ -1,0 +1,1228 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 7
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 1
+  dependencies:
+    extra: 183
+    missing: 22
+    reversed: 0
+  fact:
+    false_fact: 5
+    incorrect: true
+  measures:
+    extra: 4
+    missing: 2
+  miscellaneous:
+    extra_disconnected_components: 4
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: ROUTESINTICKETS
+    to: TICKETS.TicketCode
+  - from: ROUTESINTICKETS
+    to: ROUTESINTICKETS.Price
+  - from: ROUTESINTICKETS
+    to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+  - from: TICKETS.TicketCode
+    to: TICKETS.PurchaseDate
+  - from: ROUTESINTICKETS
+    to: TICKETS.TotalPrice
+  - from: TICKETS.TicketCode
+    to: CUSTOMERS.CustomerCode
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: TRIPS.TrainCode,TRIPS.Date
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTESINTRIPS.Sequence
+  - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    to: ROUTES.RouteCode
+  - from: ROUTES.RouteCode
+    role: DepartureStationCode
+    to: STATIONS.StationCode
+  - from: ROUTES.RouteCode
+    role: ArrivalStationCode
+    to: STATIONS.StationCode
+  - from: ROUTESINTICKETS
+    to: ROUTES.DistanceKm
+  - from: ROUTESINTICKETS
+    to: ROUTES.Duration
+  - from: ROUTESINTICKETS
+    to: ROUTES.Fare
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.Location
+    to: STATIONS.City
+  - from: STATIONS.City
+    to: STATIONS.Region
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Date
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRIPS.Status
+  - from: TRIPS.TrainCode,TRIPS.Date
+    to: TRAINS.TrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINTYPE.TrainTypeCode
+  - from: ROUTESINTICKETS
+    to: TRAINTYPE.Capacity
+  - from: TRAINTYPE.TrainTypeCode
+    to: TRAINTYPE.TrainType
+  fact:
+    name: ROUTESINTICKETS
+  measures:
+  - name: TICKETS.TotalPrice
+  - name: ROUTESINTICKETS.Price
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Fare
+  - name: ROUTES.Duration
+  - name: TRAINTYPE.Capacity
+metrics:
+- edges:
+    f1: 0.0639
+    fn: 22
+    fp: 183
+    precision: 0.0368
+    recall: 0.2414
+    tp: 7
+  nodes:
+    f1: 0.549
+    fn: 15
+    fp: 8
+    precision: 0.6364
+    recall: 0.4828
+    tp: 14
+output:
+- dependencies:
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    to: CUSTOMERS.BirthCity
+  - from: TICKETS.CustomerCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    to: TICKETS.TotalPrice
+  - from: TICKETS.CustomerCode
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    to: TICKETS.TotalPrice
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: TRAIN_TYPE.TrainTypeCode
+    to: TRAIN_TYPE.Capacity
+  - from: STATIONS.StationCode
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    to: STATIONS.Region
+  - from: STATIONS.StationCode
+    to: STATIONS.name
+  - from: STATIONS.StationCode
+    to: STATIONS.location
+  - from: STATIONS.StationCode
+    to: STATIONS.city
+  - from: STATIONS.StationCode
+    to: STATIONS.region
+  - from: STATIONS.StationCode
+    to: STATIONS.name
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    to: TRAINS.DependentTrainCode
+  - null
+  fact:
+    name: TRAINS
+  measures:
+  - name: TRAIN_TYPE.capacity
+  - name: STATIONS.name
+  - name: STATIONS.location
+  - name: STATIONS.city
+  - name: STATIONS.region
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Duration
+  - name: ROUTES.Fare
+output_preprocessed:
+- dependencies:
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Name
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.Surname
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.DocumentId
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthDate
+  - from: CUSTOMERS.CustomerCode
+    label: tp
+    to: CUSTOMERS.BirthCity
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.PurchaseDate
+  - from: TICKETS.CustomerCode
+    label: fp
+    to: TICKETS.TotalPrice
+  - from: TRAINTYPE.TrainTypeCode
+    label: fp
+    to: TRAINTYPE.Capacity
+  - from: TRAINTYPE.TrainTypeCode
+    label: fp
+    to: TRAINTYPE.Capacity
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Name
+  - from: STATIONS.StationCode
+    label: tp
+    to: STATIONS.Location
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.City
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.Region
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.name
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.location
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.city
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.region
+  - from: STATIONS.StationCode
+    label: fp
+    to: STATIONS.name
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  - from: TRAINS.TrainCode
+    label: fp
+    to: TRAINS.DependentTrainCode
+  fact:
+    name: TRAINS
+  ground_truth_labels:
+    dependencies:
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TICKETS.TicketCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTESINTICKETS.Price
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+    - from: TICKETS.TicketCode
+      label: fn
+      to: TICKETS.PurchaseDate
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TICKETS.TotalPrice
+    - from: TICKETS.TicketCode
+      label: fn
+      to: CUSTOMERS.CustomerCode
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Name
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.Surname
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.DocumentId
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthDate
+    - from: CUSTOMERS.CustomerCode
+      label: tp
+      to: CUSTOMERS.BirthCity
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: TRIPS.TrainCode,TRIPS.Date
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: ROUTESINTRIPS.Sequence
+    - from: ROUTESINTRIPS.TrainCode,ROUTESINTRIPS.Date,ROUTESINTRIPS.RouteCode
+      label: fn
+      to: ROUTES.RouteCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: DepartureStationCode
+      to: STATIONS.StationCode
+    - from: ROUTES.RouteCode
+      label: fn
+      role: ArrivalStationCode
+      to: STATIONS.StationCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.DistanceKm
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.Duration
+    - from: ROUTESINTICKETS
+      label: fn
+      to: ROUTES.Fare
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Name
+    - from: STATIONS.StationCode
+      label: tp
+      to: STATIONS.Location
+    - from: STATIONS.Location
+      label: fn
+      to: STATIONS.City
+    - from: STATIONS.City
+      label: fn
+      to: STATIONS.Region
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Date
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRIPS.Status
+    - from: TRIPS.TrainCode,TRIPS.Date
+      label: fn
+      to: TRAINS.TrainCode
+    - from: TRAINS.TrainCode
+      label: fn
+      to: TRAINTYPE.TrainTypeCode
+    - from: ROUTESINTICKETS
+      label: fn
+      to: TRAINTYPE.Capacity
+    - from: TRAINTYPE.TrainTypeCode
+      label: fn
+      to: TRAINTYPE.TrainType
+    fact:
+      name: ROUTESINTICKETS
+    measures:
+    - name: TICKETS.TotalPrice
+    - name: ROUTESINTICKETS.Price
+    - name: ROUTES.DistanceKm
+    - name: ROUTES.Fare
+    - name: ROUTES.Duration
+    - name: TRAINTYPE.Capacity
+  measures:
+  - name: TRAINTYPE.capacity
+  - name: STATIONS.name
+  - name: STATIONS.location
+  - name: STATIONS.city
+  - name: STATIONS.region
+  - name: ROUTES.DistanceKm
+  - name: ROUTES.Duration
+  - name: ROUTES.Fare
+  nodes:
+    fn:
+    - trips.date
+    - routesintickets.price
+    - routes.routecode
+    - tickets.ticketcode
+    - stations.city
+    - trips.status
+    - traintype.traintype
+    - trips.date,trips.traincode
+    - routesintrips.sequence
+    - stations.location
+    - routesintrips.routecode,routesintrips.traincode,routesintrips.date
+    - tickets.totalprice
+    - stations.name
+    - routesintickets
+    - stations.region
+    fp:
+    - trains.dependenttraincode
+    - stations.location
+    - trains
+    - stations.city
+    - tickets.totalprice
+    - tickets.customercode
+    - stations.name
+    - stations.region
+    tp:
+    - traintype.capacity
+    - routes.distancekm
+    - routes.fare
+    - customers.name
+    - customers.birthdate
+    - tickets.purchasedate
+    - routes.duration
+    - customers.birthcity
+    - customers.documentid
+    - customers.surname
+    - customers.customercode
+    - traintype.traintypecode
+    - trains.traincode
+    - stations.stationcode

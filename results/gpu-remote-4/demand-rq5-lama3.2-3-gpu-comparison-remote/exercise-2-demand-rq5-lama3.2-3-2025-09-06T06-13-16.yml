@@ -1,0 +1,79 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- {}
+output:
+- I apologize for the previous response. Here is the corrected YAML representation of the resulting DFM schema: null
+  I will make sure to remove the extra lines. Here is the corrected YAML representation of the resulting DFM schema: null
+  dependencies:
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: type
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: date
+  - from: PURCHASE
+    role: null
+    to: store
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+output_preprocessed: []

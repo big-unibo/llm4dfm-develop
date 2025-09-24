@@ -1,0 +1,82 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- {}
+output:
+- Here is the corrected YAML: null
+  ? I made a mistake, I should have added the dependency from the fact to the supplier,
+    computer, software, and softwareType. Here is the corrected YAML
+  : null
+  I will remove the duplicate dependency. Here is the corrected YAML: null
+  dependencies:
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: computerBrand
+  - from: computerBrand
+    to: supplier
+  - from: supplier
+    to: city
+  - from: supplier
+    to: address
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: software
+    to: description
+  - from: software
+    to: quantity
+  - from: computer
+    role: from
+    to: software
+  - from: computer
+    role: from
+    to: computerBrand
+  - from: computer
+    role: from
+    to: supplier
+  - from: computer
+    role: from
+    to: softwareType
+  - from: computer
+    role: to
+    to: software
+  - from: computer
+    to: quantity
+  - from
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: quantity
+output_preprocessed: []

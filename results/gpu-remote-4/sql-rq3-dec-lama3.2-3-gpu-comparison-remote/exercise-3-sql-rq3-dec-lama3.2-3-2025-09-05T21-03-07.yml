@@ -1,0 +1,975 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 9
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 143
+    missing: 28
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: CREDITCARDS.CCNumber
+    to: CARDTYPES.TypeCode
+  - from: CREDITCARDS.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES
+    to: CREDITCARDS.CreditLimit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Address
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Color
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+metrics:
+- edges:
+    f1: 0.0116
+    fn: 28
+    fp: 143
+    precision: 0.0069
+    recall: 0.0345
+    tp: 1
+  nodes:
+    f1: 0.3256
+    fn: 23
+    fp: 6
+    precision: 0.5385
+    recall: 0.2333
+    tp: 7
+output:
+- dependencies:
+  - from: CREDIT_CARDS.CCNumber
+    to: CREDIT_CARDS.TypeCode
+  - from: CREDIT_CARDS.CCNumber
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.CCNumber
+    to: CREDIT_CARDS.ExpirationDate
+  - from: CREDIT_CARDS.CCNumber
+    to: CREDIT_CARDS.CreditLimit
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.CCNumber
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: PURCHASES.CCNumber
+    to: CREDIT_CARDS.CCNumber
+  - from: PURCHASES.CCNumber
+    to: CREDIT_CARDS.TypeCode
+  - from: PURCHASES.CCNumber
+    to: CREDIT_CARDS.HolderCode
+  - from: PURCHASES.CCNumber
+    to: CREDIT_CARDS.ExpirationDate
+  - from: PURCHASES.CCNumber
+    to: CREDIT_CARDS.CreditLimit
+  - from: PURCHASES.StoreCode
+    to: STORES.StoreCode
+  - from: PURCHASES.StoreCode
+    to: PURCHASES.Amount
+  - from: PURCHASES.StoreCode
+    to: PURCHASES.Exchange
+  - from: PURCHASES.StoreCode
+    to: CREDIT_CARDS.CCNumber
+  - from: PURCHASES.StoreCode
+    to: CREDIT_CARDS.TypeCode
+  - from: PURCHASES.StoreCode
+    to: CREDIT_CARDS.HolderCode
+  - from: PURCHASES.StoreCode
+    to: CREDIT_CARDS.ExpirationDate
+  - from: PURCHASES.StoreCode
+    to: CREDIT_CARDS.CreditLimit
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.CCNumber
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.StoreCode
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Amount
+  - from: CREDIT_CARDS.CCNumber
+    to: PURCHASES.Exchange
+  - from: CREDIT_C
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDIT_CARDS.CreditLimit
+output_preprocessed:
+- dependencies:
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    label: tp
+    to: CREDITCARDS.ExpirationDate
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: CREDITCARDS.CreditLimit
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.CCNumber
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: PURCHASES.CCNumber
+    label: fp
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES.CCNumber
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: PURCHASES.CCNumber
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: PURCHASES.CCNumber
+    label: fp
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES.CCNumber
+    label: fp
+    to: CREDITCARDS.CreditLimit
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: STORES.StoreCode
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: PURCHASES.Amount
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: PURCHASES.Exchange
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES.StoreCode
+    label: fp
+    to: CREDITCARDS.CreditLimit
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.CCNumber
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.StoreCode
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Amount
+  - from: CREDITCARDS.CCNumber
+    label: fp
+    to: PURCHASES.Exchange
+  - from: CREDITC
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: PURCHASES
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Amount
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Exchange
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CCNumber
+    - from: PURCHASES
+      label: fn
+      to: STORES.StoreCode
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Currency
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Date
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CARDTYPES.TypeCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: HOLDERS.HolderCode
+    - from: CREDITCARDS.CCNumber
+      label: tp
+      to: CREDITCARDS.ExpirationDate
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CreditLimit
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.Circuit
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.IssuingBank
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Address
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Country
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.CardName
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.Color
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.FirstName
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.LastName
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.BirthDate
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.Job
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.IncomeRange
+    - from: HOLDERS.HolderCode
+      label: fn
+      to: HOLDERS.Quality
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Name
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Address
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Country
+    - from: STORES.Country
+      label: fn
+      to: STORES.Area
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.WebSite
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Email
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Type
+    fact:
+      name: PURCHASES
+    measures:
+    - name: PURCHASES.Amount
+    - name: PURCHASES.Exchange
+    - name: CREDITCARDS.CreditLimit
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+  nodes:
+    fn:
+    - stores.country
+    - stores.name
+    - stores.area
+    - holders.holdercode
+    - holders.lastname
+    - holders.birthdate
+    - stores.website
+    - purchases.currency
+    - holders.incomerange
+    - cardtypes.issuingbank
+    - cardtypes.color
+    - purchases.date
+    - holders.firstname
+    - stores.type
+    - cardtypes.country
+    - stores.email
+    - cardtypes.typecode
+    - holders.job
+    - stores.address
+    - cardtypes.circuit
+    - cardtypes.address
+    - cardtypes.cardname
+    - holders.quality
+    fp:
+    - o,r,e
+    - purchases.ccnumber
+    - creditc
+    - creditcards.holdercode
+    - purchases.storecode
+    - creditcards.typecode
+    tp:
+    - creditcards.expirationdate
+    - creditcards.creditlimit
+    - purchases.exchange
+    - purchases
+    - creditcards.ccnumber
+    - stores.storecode
+    - purchases.amount

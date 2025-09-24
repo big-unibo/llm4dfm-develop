@@ -1,0 +1,219 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 0
+    missing: 0
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- edges:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 13
+  nodes:
+    f1: 1.0
+    fn: 0
+    fp: 0
+    precision: 1.0
+    recall: 1.0
+    tp: 14
+output:
+- dependencies:
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: article
+    to: articleName
+  - from: article
+    to: articleType
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+output_preprocessed:
+- dependencies:
+  - from: store
+    label: tp
+    to: storeName
+  - from: store
+    label: tp
+    to: address
+  - from: store
+    label: tp
+    to: region
+  - from: region
+    label: tp
+    to: state
+  - from: state
+    label: tp
+    to: country
+  - from: article
+    label: tp
+    to: articleName
+  - from: article
+    label: tp
+    to: type
+  - from: PURCHASE
+    label: tp
+    to: quantity
+  - from: PURCHASE
+    label: tp
+    to: revenue
+  - from: PURCHASE
+    label: tp
+    to: unitPrice
+  - from: PURCHASE
+    label: tp
+    to: store
+  - from: PURCHASE
+    label: tp
+    to: article
+  - from: PURCHASE
+    label: tp
+    to: date
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: article
+      label: tp
+      to: articleName
+    - from: article
+      label: tp
+      to: type
+    - from: store
+      label: tp
+      to: storeName
+    - from: store
+      label: tp
+      to: address
+    - from: store
+      label: tp
+      to: region
+    - from: region
+      label: tp
+      to: state
+    - from: state
+      label: tp
+      to: country
+    - from: PURCHASE
+      label: tp
+      to: quantity
+    - from: PURCHASE
+      label: tp
+      to: revenue
+    - from: PURCHASE
+      label: tp
+      to: unitPrice
+    - from: PURCHASE
+      label: tp
+      to: article
+    - from: PURCHASE
+      label: tp
+      to: store
+    - from: PURCHASE
+      label: tp
+      to: date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: quantity
+    - name: revenue
+    - name: unitPrice
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+  nodes:
+    fn: []
+    fp: []
+    tp:
+    - date
+    - type
+    - region
+    - articlename
+    - revenue
+    - quantity
+    - address
+    - purchase
+    - unitprice
+    - country
+    - store
+    - article
+    - state
+    - storename

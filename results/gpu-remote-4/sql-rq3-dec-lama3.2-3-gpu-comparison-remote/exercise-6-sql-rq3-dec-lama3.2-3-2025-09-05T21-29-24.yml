@@ -1,0 +1,84 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFERS
+    to: STAFF.employeeCode
+  - from: TRANSFERS
+    role: fromDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    role: toDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: TRANSFERS
+    to: TRANSFERS.date
+  - from: TRANSFERS
+    to: TRANSFERS.reason
+  - from: TRANSFERS
+    to: RECRUITMENTS.recruitmentDate
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: QUALIFICATIONS.qualification
+  - from: STAFF.employeeCode
+    role: currentDepartment
+    to: DEPARTMENTS.departmentCode
+  - from: DEPARTMENTS.departmentCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.departmentCode
+    to: DIVISIONS.divCode
+  - from: DIVISIONS.divCode
+    to: DIVISIONS.divisionName
+  - from: DIVISIONS.divCode
+    role: managerCode
+    to: STAFF.employeeCode
+  fact:
+    name: TRANSFERS
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: STAFF.employeeCode
+    to: STAFF.name
+  - from: STAFF.employeeCode
+    to: STAFF.surname
+  - from: STAFF.employeeCode
+    to: STAFF.gender
+  - from: STAFF.employeeCode
+    to: STAFF.qualification
+  - from: STAFF.employeeCode
+    to: DEPARTMENTS.departmentName
+  - from: DEPARTMENTS.divCode
+    to: DIVISIONS.divisionName
+  - from: DEPARTMENTS.divCode
+    to: STAFF.name
+  - from: DEPARTMENTS.divCode
+    to: STAFF.surname
+  - from: DEPARTMENTS.divCode
+    to: STAFF.gender
+  - from: DEPARTMENTS.divCode
+    to: STAFF.qualification
+  - from: DEPARTMENTS.managerCode
+    to: STAFF.name
+  - from: DEPARTMENTS.managerCode
+    to: STAFF.surname
+  - from: DEPARTMENTS.managerCode
+    to: STAFF.gender
+  - from: DEPARTMENTS.managerCode
+    to: STAFF.qualificationassistant
+  fact:
+    name: QUALIFICATIONS
+  measures:
+  - name: STAFF.name
+  - null
+output_preprocessed: []

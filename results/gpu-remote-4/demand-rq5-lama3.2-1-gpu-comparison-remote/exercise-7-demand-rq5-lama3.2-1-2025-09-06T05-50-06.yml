@@ -1,0 +1,1903 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 17
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 2
+  dependencies:
+    extra: 338
+    missing: 19
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0
+    fn: 19
+    fp: 338
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.619
+    fn: 4
+    fp: 12
+    precision: 0.52
+    recall: 0.7647
+    tp: 13
+output:
+- dependencies:
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  - from: car
+    to: dropoffDate
+  - from: car
+    to: office
+  - from: car
+    to: registrationDate
+  - from: car
+    to: fuelType
+  - from: car
+    to: model
+  - from: car
+    to: category
+  - from: car
+    to: modelBrand
+  - from: car
+    to: officeLocation
+  - from: car
+    to: city
+  - from: car
+    to: state
+  - from: car
+    to: country
+  - from: car
+    to: area
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupOffice
+  - from: car
+    to: dropoffOffice
+  - from: car
+    to: insuranceOffice
+  - from: car
+    to: fuelOffice
+  - from: car
+    to: modelOffice
+  - from: car
+    to: office
+  - from: car
+    to: carPlate
+  - from: car
+    to: pickupDate
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  - from: car
+    label: fp
+    to: dropoffDate
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: registrationDate
+  - from: car
+    label: fp
+    to: fuelType
+  - from: car
+    label: fp
+    to: model
+  - from: car
+    label: fp
+    to: category
+  - from: car
+    label: fp
+    to: modelBrand
+  - from: car
+    label: fp
+    to: officeLocation
+  - from: car
+    label: fp
+    to: city
+  - from: car
+    label: fp
+    to: state
+  - from: car
+    label: fp
+    to: country
+  - from: car
+    label: fp
+    to: area
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupOffice
+  - from: car
+    label: fp
+    to: dropoffOffice
+  - from: car
+    label: fp
+    to: insuranceOffice
+  - from: car
+    label: fp
+    to: fuelOffice
+  - from: car
+    label: fp
+    to: modelOffice
+  - from: car
+    label: fp
+    to: office
+  - from: car
+    label: fp
+    to: carPlate
+  - from: car
+    label: fp
+    to: pickupDate
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: fn
+      to: Amount
+    - from: Rental
+      label: fn
+      to: Discount
+    - from: Rental
+      label: fn
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: fn
+      to: City
+    - from: City
+      label: fn
+      to: State
+    - from: State
+      label: fn
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - date
+    - brand
+    - risk
+    - milestravelled
+    fp:
+    - dropoffoffice
+    - miles
+    - registrationdate
+    - pickupdate
+    - insuranceoffice
+    - car
+    - officelocation
+    - pickupoffice
+    - modelbrand
+    - modeloffice
+    - dropoffdate
+    - fueloffice
+    tp:
+    - state
+    - amount
+    - insurancecost
+    - discount
+    - model
+    - carplate
+    - office
+    - fueltype
+    - rental
+    - city
+    - category
+    - area
+    - country

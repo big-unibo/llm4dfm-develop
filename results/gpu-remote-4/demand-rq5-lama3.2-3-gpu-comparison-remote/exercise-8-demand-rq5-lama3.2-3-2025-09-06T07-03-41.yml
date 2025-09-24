@@ -1,0 +1,2008 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 12
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 3
+  dependencies:
+    extra: 323
+    missing: 23
+    reversed: 1
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: CheckIn
+    to: numberOfBags
+  - from: CheckIn
+    to: ticketAmount
+  - from: CheckIn
+    to: taxAmount
+  - from: CheckIn
+    to: totalAmount
+  - from: CheckIn
+    to: ticketNumber
+  - from: ticketNumber
+    role: purchase
+    to: date
+  - from: ticketNumber
+    to: passenger
+  - from: passenger
+    to: firstName
+  - from: passenger
+    to: lastName
+  - from: passenger
+    role: birth
+    to: date
+  - from: passenger
+    role: residence
+    to: city
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: CheckIn
+    to: seat
+  - from: CheckIn
+    to: time
+  - from: ticketNumber
+    to: ticketPriority
+  - from: ticketNumber
+    to: flight
+  - from: flight
+    to: flightDate
+  - from: flight
+    to: delayDeparture
+  - from: flight
+    to: delayArrival
+  - from: flight
+    to: cancelled
+  - from: flight
+    to: route
+  - from: route
+    role: departure
+    to: airportCode
+  - from: route
+    role: arrival
+    to: airportCode
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airlineCode
+    to: airlineName
+  - from: airlineCode
+    to: airlineNation
+  - from: route
+    to: airplaneType
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airportCode
+    to: airportName
+  - from: airportCode
+    to: city
+  - from: city
+    to: nation
+  fact:
+    name: CheckIn
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+metrics:
+- edges:
+    f1: 0.0695
+    fn: 24
+    fp: 324
+    precision: 0.0386
+    recall: 0.3514
+    tp: 13
+  nodes:
+    f1: 0.6761
+    fn: 11
+    fp: 12
+    precision: 0.6667
+    recall: 0.6857
+    tp: 24
+output:
+- dependencies:
+  - from: passenger
+    to: passengerName
+  - from: passenger
+    to: passengerSurname
+  - from: passenger
+    to: passengerBirthdate
+  - from: passenger
+    to: passengerCity
+  - from: passenger
+    to: documentId
+  - from: passenger
+    to: documentType
+  - from: passenger
+    to: telephoneNumber
+  - from: passenger
+    to: emailAddress
+  - from: passenger
+    to: gender
+  - from: passenger
+    to: checkinTime
+  - from: passenger
+    to: ticketNumber
+  - from: ticket
+    role: purchase
+    to: ticketDate
+  - from: ticket
+    to: flight
+  - from: ticket
+    to: flightDelay
+  - from: ticket
+    to: flightCancellation
+  - from: ticket
+    to: route
+  - from: ticket
+    to: airline
+  - from: ticket
+    to: airplaneType
+  - from: route
+    to: departureAirport
+  - from: route
+    to: arrivalAirport
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: airline
+    to: nation
+  - from: airline
+    to: airplaneTypeCode
+  - from: airplaneType
+    to: numberOfSeats
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: route
+    to: departureAirport
+  - from: route
+    to: arrivalAirport
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: airline
+    to: nation
+  - from: route
+    to: routeNumber
+  - from: route
+    to: departureAirport
+  - from: route
+    to: arrivalAirport
+  - from: route
+    to: departureTime
+  - from: route
+    to: arrivalTime
+  - from: route
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: airline
+    to: nation
+  - from: airplaneType
+    to: airplaneTypeCode
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airplaneType
+    to: airplaneTypeCode
+  - from: airplaneType
+    to: airlineCode
+  - from: airplaneType
+    to: airlineName
+  - from: airplaneType
+    to: nation
+  - from: airplaneType
+    to: airplaneTypeCode
+  - from: airplaneType
+    to: numberOfSeats
+  - from: airplaneType
+    to: airplaneTypeCode
+  - from: airplaneType
+    to: airlineCode
+  - from: airplaneType
+    to: airlineName
+  - from: airplaneType
+    to: nation
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: airline
+    to: nation
+  - from: airline
+    to: airlineCode
+  - from: airline
+    to: airlineName
+  - from: airline
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: delay
+  - from: flight
+    to: cancellation
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  - from: flight
+    to: arrivalAirport
+  - from: flight
+    to: departureTime
+  - from: flight
+    to: arrivalTime
+  - from: flight
+    to: airlineCode
+  - from: flight
+    to: airlineName
+  - from: flight
+    to: nation
+  - from: flight
+    to: flightNumber
+  - from: flight
+    to: route
+  - from: flight
+    to: airline
+  - from: flight
+    to: airplaneType
+  - from: flight
+    to: departureAirport
+  fact:
+    name: CHECKIN
+  measures:
+  - name: bagsBoarded
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+output_preprocessed:
+- dependencies:
+  - from: passenger
+    label: tp
+    to: firstName
+  - from: passenger
+    label: tp
+    to: lastName
+  - from: passenger
+    label: fp
+    to: passengerBirthdate
+  - from: passenger
+    label: fp
+    to: passengerCity
+  - from: passenger
+    label: tp
+    to: documentId
+  - from: passenger
+    label: tp
+    to: documentType
+  - from: passenger
+    label: tp
+    to: telephoneNumber
+  - from: passenger
+    label: tp
+    to: emailAddress
+  - from: passenger
+    label: tp
+    to: gender
+  - from: passenger
+    label: fp
+    to: time
+  - from: passenger
+    label: fp
+    to: ticketNumber
+  - from: ticketNumber
+    label: fp
+    role: purchase
+    to: ticketDate
+  - from: ticketNumber
+    label: tp
+    to: flight
+  - from: ticketNumber
+    label: fp
+    to: flightDelay
+  - from: ticketNumber
+    label: fp
+    to: flightCancellation
+  - from: ticketNumber
+    label: fp
+    to: route
+  - from: ticketNumber
+    label: fp
+    to: airline
+  - from: ticketNumber
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: departureAirport
+  - from: route
+    label: fp
+    to: arrivalAirport
+  - from: route
+    label: tp
+    to: departureTime
+  - from: route
+    label: tp
+    to: arrivalTime
+  - from: route
+    label: tp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airplaneTypeCode
+  - from: airplaneType
+    label: tp
+    to: numberOfSeats
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: tp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: route
+    label: fp
+    to: departureAirport
+  - from: route
+    label: fp
+    to: arrivalAirport
+  - from: route
+    label: fp
+    to: departureTime
+  - from: route
+    label: fp
+    to: arrivalTime
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airline
+    label: fp
+    to: nation
+  - from: route
+    label: fp
+    to: routeNumber
+  - from: route
+    label: fp
+    to: departureAirport
+  - from: route
+    label: fp
+    to: arrivalAirport
+  - from: route
+    label: fp
+    to: departureTime
+  - from: route
+    label: fp
+    to: arrivalTime
+  - from: route
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airline
+    label: fp
+    to: nation
+  - from: airplaneType
+    label: fp
+    to: airplaneTypeCode
+  - from: airplaneType
+    label: fp
+    to: numberOfSeats
+  - from: airplaneType
+    label: fp
+    to: airplaneTypeCode
+  - from: airplaneType
+    label: fp
+    to: airlineCode
+  - from: airplaneType
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: nation
+  - from: airplaneType
+    label: fp
+    to: airplaneTypeCode
+  - from: airplaneType
+    label: fp
+    to: numberOfSeats
+  - from: airplaneType
+    label: fp
+    to: airplaneTypeCode
+  - from: airplaneType
+    label: fp
+    to: airlineCode
+  - from: airplaneType
+    label: fp
+    to: airlineName
+  - from: airplaneType
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airline
+    label: fp
+    to: nation
+  - from: airline
+    label: fp
+    to: airlineCode
+  - from: airline
+    label: fp
+    to: airlineName
+  - from: airline
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: delay
+  - from: flight
+    label: fp
+    to: cancellation
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  - from: flight
+    label: fp
+    to: arrivalAirport
+  - from: flight
+    label: fp
+    to: departureTime
+  - from: flight
+    label: fp
+    to: arrivalTime
+  - from: flight
+    label: fp
+    to: airlineCode
+  - from: flight
+    label: fp
+    to: airlineName
+  - from: flight
+    label: fp
+    to: nation
+  - from: flight
+    label: fp
+    to: flight
+  - from: flight
+    label: fp
+    to: route
+  - from: flight
+    label: fp
+    to: airline
+  - from: flight
+    label: fp
+    to: airplaneType
+  - from: flight
+    label: fp
+    to: departureAirport
+  fact:
+    name: CheckIn
+  ground_truth_labels:
+    dependencies:
+    - from: CheckIn
+      label: fn
+      to: numberOfBags
+    - from: CheckIn
+      label: fn
+      to: ticketAmount
+    - from: CheckIn
+      label: fn
+      to: taxAmount
+    - from: CheckIn
+      label: fn
+      to: totalAmount
+    - from: CheckIn
+      label: fn
+      to: ticketNumber
+    - from: ticketNumber
+      label: fn
+      role: purchase
+      to: date
+    - from: ticketNumber
+      label: fn
+      to: passenger
+    - from: passenger
+      label: tp
+      to: firstName
+    - from: passenger
+      label: tp
+      to: lastName
+    - from: passenger
+      label: fn
+      role: birth
+      to: date
+    - from: passenger
+      label: fn
+      role: residence
+      to: city
+    - from: passenger
+      label: tp
+      to: documentId
+    - from: passenger
+      label: tp
+      to: documentType
+    - from: passenger
+      label: tp
+      to: telephoneNumber
+    - from: passenger
+      label: tp
+      to: emailAddress
+    - from: passenger
+      label: tp
+      to: gender
+    - from: CheckIn
+      label: fn
+      to: seat
+    - from: CheckIn
+      label: fn
+      to: time
+    - from: ticketNumber
+      label: fn
+      to: ticketPriority
+    - from: ticketNumber
+      label: tp
+      to: flight
+    - from: flight
+      label: fn
+      to: flightDate
+    - from: flight
+      label: fn
+      to: delayDeparture
+    - from: flight
+      label: fn
+      to: delayArrival
+    - from: flight
+      label: fn
+      to: cancelled
+    - from: flight
+      label: tp
+      to: route
+    - from: route
+      label: fn
+      role: departure
+      to: airportCode
+    - from: route
+      label: fn
+      role: arrival
+      to: airportCode
+    - from: route
+      label: tp
+      to: departureTime
+    - from: route
+      label: tp
+      to: arrivalTime
+    - from: route
+      label: tp
+      to: airlineCode
+    - from: airlineCode
+      label: fn
+      to: airlineName
+    - from: airlineCode
+      label: fn
+      to: airlineNation
+    - from: route
+      label: fn
+      to: airplaneType
+    - from: airplaneType
+      label: tp
+      to: numberOfSeats
+    - from: airportCode
+      label: fn
+      to: airportName
+    - from: airportCode
+      label: fn
+      to: city
+    - from: city
+      label: fn
+      to: nation
+    fact:
+      name: CheckIn
+    measures:
+    - name: numberOfBags
+    - name: ticketAmount
+    - name: taxAmount
+    - name: totalAmount
+  measures:
+  - name: numberOfBags
+  - name: ticketAmount
+  - name: taxAmount
+  - name: totalAmount
+  nodes:
+    fn:
+    - city
+    - airlinenation
+    - airportcode
+    - delayarrival
+    - ticketpriority
+    - delaydeparture
+    - seat
+    - date
+    - cancelled
+    - airportname
+    - flightdate
+    fp:
+    - departureairport
+    - flightcancellation
+    - routenumber
+    - delay
+    - cancellation
+    - airplanetypecode
+    - passengerbirthdate
+    - airline
+    - ticketdate
+    - arrivalairport
+    - passengercity
+    - flightdelay
+    tp:
+    - emailaddress
+    - time
+    - gender
+    - airlinename
+    - taxamount
+    - passenger
+    - checkin
+    - firstname
+    - ticketamount
+    - airlinecode
+    - lastname
+    - departuretime
+    - airplanetype
+    - numberofseats
+    - nation
+    - route
+    - flight
+    - arrivaltime
+    - ticketnumber
+    - telephonenumber
+    - documentid
+    - documenttype
+    - numberofbags
+    - totalamount

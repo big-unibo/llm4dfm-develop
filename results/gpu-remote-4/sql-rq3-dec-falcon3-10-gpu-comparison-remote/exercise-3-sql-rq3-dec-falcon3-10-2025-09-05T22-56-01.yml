@@ -1,0 +1,114 @@
+config:
+  label: falcon3-10
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: CREDITCARDS.CCNumber
+    to: CARDTYPES.TypeCode
+  - from: CREDITCARDS.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES
+    to: CREDITCARDS.CreditLimit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Address
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Color
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+metrics:
+- {}
+output:
+- "fact:\n  name: PURCHASES\nmeasures:\n  - name: PURCHASES.Amount\n  - name: PURCHASES.Exchange\n\
+  dependencies:\n  - from: CREDIT_CARDS.CCNumber\n    to: CREDIT_CARDS.ExpirationDate\n\
+  \  - from: CREDIT_CARDS.CCNumber\n    to: CREDIT_CARDS.CreditLimit\n  - from: CREDIT_CARDS.CCNumber\n\
+  \    to: CREDIT_CARDS.HolderCode\n  - from: CREDIT_CARDS.CCNumber\n    to: CREDIT_CARDS.TypeCode\n\
+  \  - from: CREDIT_CARDS.HolderCode\n    to: CREDIT_CARDS.CCNumber\n  - from: CREDIT_CARDS.HolderCode\n\
+  \    to: HOLDERS.FirstName\n  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.LastName\n\
+  \  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.BirthDate\n  - from: CREDIT_CARDS.HolderCode\n\
+  \    to: HOLDERS.Job\n  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.IncomeRange\n\
+  \  - from: CREDIT_CARDS.HolderCode\n    to: HOLDERS.Quality\n  - from: CREDIT_CARDS.TypeCode\n\
+  \    to: CREDIT_CARDS.CCNumber\n  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.Circuit\n\
+  \  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.IssuingBank\n  - from: CREDIT_CARDS.TypeCode\n\
+  \    to: CARD_TYPES.Address\n  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.Country\n\
+  \  - from: CREDIT_CARDS.TypeCode\n    to: CARD_TYPES.CardName\n  - from: CREDIT_CARDS.TypeCode\n\
+  \    to: CARD_TYPES.Color\n  - from: STORES.StoreCode\n    to: STORES.Name\n  -\
+  \ from: STORES.StoreCode\n    to: STORES.Address\n  - from: STORES.StoreCode\n \
+  \   to: STORES.Country\n  - from: STORES.StoreCode\n    to: STORES.Area\n  - from:\
+  \ STORES.StoreCode\n    to: STORES.WebSite\n  - from: STORES.StoreCode\n    to:\
+  \ STORES.Email\n  - from: STORES.StoreCode\n    to: STORES.Type\n  - from: PURCHASES\n\
+  \    to: STORES.StoreCode\n  - from: PURCHASES\n    to: CREDIT_CARDS.CCNumber\n\
+  \  - from: PURCHASES\n    to: PURCHASES.Date\n  - from: PURCHASES\n    to: PURCHASES.Amount\n\
+  \  - from: PURCHASES\n    to: PURCHASES.Currency\n  - from: PURCHASES\n    to: PURCHASES.Exchange\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<|"
+output_preprocessed: []

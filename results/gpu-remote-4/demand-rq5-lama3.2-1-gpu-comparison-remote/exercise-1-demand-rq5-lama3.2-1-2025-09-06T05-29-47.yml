@@ -1,0 +1,1731 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 18
+    shared_missing: 0
+    shared_with_fact_root_extra: 18
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 312
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.0123
+    fn: 8
+    fp: 312
+    precision: 0.0064
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0.2353
+    fn: 5
+    fp: 34
+    precision: 0.15
+    recall: 0.5455
+    tp: 6
+output:
+- dependencies:
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: state
+  - from: computer
+    to: country
+  - from: computer
+    to: software
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: quantity
+  - from: computer
+    to: cost
+  - from: computer
+    to: articleCode
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: date
+  - from: computer
+    to: softwareName
+  - from: computer
+    to: softwareDescription
+  - from: computer
+    to: computerName
+  - from: computer
+    to: computerAddress
+  - from: computer
+    to: computerCity
+  - from: computer
+    to: computerRegion
+  - from: computer
+    to: computerState
+  - from: computer
+    to: computerCountry
+  - from: computer
+    to: computerSoftware
+  - from: computer
+    to: computerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+    to: computerCost
+  - from: computer
+    to: computerArticleCode
+  - from: computer
+    to: computerSoftwareType
+  - from: computer
+    to: computerSoftwareName
+  - from: computer
+    to: computerSoftwareDescription
+  - from: computer
+    to: computerComputerName
+  - from: computer
+    to: computerComputerAddress
+  - from: computer
+    to: computerComputerCity
+  - from: computer
+    to: computerComputerRegion
+  - from: computer
+    to: computerComputerState
+  - from: computer
+    to: computerComputerCountry
+  - from: computer
+    to: computerComputerSoftware
+  - from: computer
+    to: computerComputerType
+  - from: computer
+    to: computerDate
+  - from: computer
+    to: computerQuantity
+  - from: computer
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: model
+  - name: brand
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: state
+  - from: computer
+    label: fp
+    to: country
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: quantity
+  - from: computer
+    label: fp
+    to: cost
+  - from: computer
+    label: fp
+    to: articleCode
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: softwareName
+  - from: computer
+    label: fp
+    to: description
+  - from: computer
+    label: fp
+    to: computerName
+  - from: computer
+    label: fp
+    to: computerAddress
+  - from: computer
+    label: fp
+    to: computerCity
+  - from: computer
+    label: fp
+    to: computerRegion
+  - from: computer
+    label: fp
+    to: computerState
+  - from: computer
+    label: fp
+    to: computerCountry
+  - from: computer
+    label: fp
+    to: computerSoftware
+  - from: computer
+    label: fp
+    to: computerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: computerCost
+  - from: computer
+    label: fp
+    to: computerArticleCode
+  - from: computer
+    label: fp
+    to: computerSoftwareType
+  - from: computer
+    label: fp
+    to: computerSoftwareName
+  - from: computer
+    label: fp
+    to: computerSoftwareDescription
+  - from: computer
+    label: fp
+    to: computerComputerName
+  - from: computer
+    label: fp
+    to: computerComputerAddress
+  - from: computer
+    label: fp
+    to: computerComputerCity
+  - from: computer
+    label: fp
+    to: computerComputerRegion
+  - from: computer
+    label: fp
+    to: computerComputerState
+  - from: computer
+    label: fp
+    to: computerComputerCountry
+  - from: computer
+    label: fp
+    to: computerComputerSoftware
+  - from: computer
+    label: fp
+    to: computerComputerType
+  - from: computer
+    label: fp
+    to: computerDate
+  - from: computer
+    label: fp
+    to: computerQuantity
+  - from: computer
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: model
+  - name: brand
+  nodes:
+    fn:
+    - software
+    - model
+    - supplier
+    - brand
+    - installation
+    fp:
+    - region
+    - computercity
+    - computersoftwarename
+    - computerdate
+    - computercomputercity
+    - computercost
+    - computersoftware
+    - articlecode
+    - computeraddress
+    - software
+    - computercomputertype
+    - computersoftwaredescription
+    - computerquantity
+    - quantity
+    - computercomputerstate
+    - softwarename
+    - computertype
+    - computercomputerregion
+    - country
+    - e,o,r
+    - cost
+    - computercountry
+    - computercomputeraddress
+    - computercomputercountry
+    - model
+    - computerarticlecode
+    - brand
+    - computercomputersoftware
+    - computerstate
+    - state
+    - computername
+    - computercomputername
+    - computerregion
+    - computersoftwaretype
+    tp:
+    - date
+    - type
+    - description
+    - computer
+    - address
+    - city

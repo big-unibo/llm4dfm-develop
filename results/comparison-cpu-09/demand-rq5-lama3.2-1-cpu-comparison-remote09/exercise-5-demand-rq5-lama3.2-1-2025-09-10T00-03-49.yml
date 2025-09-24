@@ -1,0 +1,1791 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 8
+    shared_missing: 0
+    shared_with_fact_root_extra: 8
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 238
+    missing: 12
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.0079
+    fn: 12
+    fp: 238
+    precision: 0.0042
+    recall: 0.0769
+    tp: 1
+  nodes:
+    f1: 0.5185
+    fn: 7
+    fp: 6
+    precision: 0.5385
+    recall: 0.5
+    tp: 7
+output:
+- dependencies:
+  - from: address
+    role: residence
+    to: city
+  - from: address
+    to: postalCode
+  - from: address
+    to: city
+  - from: address
+    to: region
+  - from: address
+    to: state
+  - from: address
+    to: country
+  - from: WOD
+    role: workout
+    to: day
+  - from: WOD
+    role: instructor
+    to: instructor
+  - from: WOD
+    role: instructor
+    to: day
+  - from: WOD
+    role: instructor
+    to: hour
+  - from: WOD
+    role: instructor
+    to: day
+  - from: WOD
+    role: instructor
+    to: instructor
+  - from: WOD
+    role: instructor
+    to: day
+  - from: WOD
+    role: instructor
+    to: day
+  - from: WOD
+    role: instructor
+    to: day
+  - from: WOD
+    role: instructor
+    to: day
+  - from: MEMBERS
+    to: weight
+  - from: MEMBERS
+    to: height
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    to: address
+  - from: MEMBERS
+    to: city
+  - from: MEMBERS
+    to: postalCode
+  - from: MEMBERS
+    to: region
+  - from: MEMBERS
+    to: state
+  - from: MEMBERS
+    to: country
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    to: WOD
+  - from: MEMBERS
+    to: instructor
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    to: hour
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    role: presence
+    to: day
+  - from: MEMBERS
+    to: day
+  fact:
+    name: MEMBERS
+  measures:
+  - name: weight
+  - name: height
+output_preprocessed:
+- dependencies:
+  - from: address
+    label: fp
+    role: residence
+    to: city
+  - from: address
+    label: tp
+    to: postalCode
+  - from: address
+    label: fp
+    to: city
+  - from: address
+    label: fp
+    to: region
+  - from: address
+    label: fp
+    to: state
+  - from: address
+    label: fp
+    to: country
+  - from: WOD
+    label: fp
+    role: workout
+    to: Date
+  - from: WOD
+    label: fp
+    role: instructor
+    to: instructor
+  - from: WOD
+    label: fp
+    role: instructor
+    to: Date
+  - from: WOD
+    label: fp
+    role: instructor
+    to: hour
+  - from: WOD
+    label: fp
+    role: instructor
+    to: Date
+  - from: WOD
+    label: fp
+    role: instructor
+    to: instructor
+  - from: WOD
+    label: fp
+    role: instructor
+    to: Date
+  - from: WOD
+    label: fp
+    role: instructor
+    to: Date
+  - from: WOD
+    label: fp
+    role: instructor
+    to: Date
+  - from: WOD
+    label: fp
+    role: instructor
+    to: Date
+  - from: MEMBERS
+    label: fp
+    to: weight
+  - from: MEMBERS
+    label: fp
+    to: height
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    to: address
+  - from: MEMBERS
+    label: fp
+    to: city
+  - from: MEMBERS
+    label: fp
+    to: postalCode
+  - from: MEMBERS
+    label: fp
+    to: region
+  - from: MEMBERS
+    label: fp
+    to: state
+  - from: MEMBERS
+    label: fp
+    to: country
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    to: WOD
+  - from: MEMBERS
+    label: fp
+    to: instructor
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    to: hour
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    role: presence
+    to: Date
+  - from: MEMBERS
+    label: fp
+    to: Date
+  fact:
+    name: MEMBERS
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: fn
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: tp
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: fn
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: weight
+  - name: height
+  nodes:
+    fn:
+    - name
+    - weight
+    - presence
+    - height
+    - member
+    - surname
+    - wodtype
+    fp:
+    - region
+    - weight
+    - height
+    - state
+    - country
+    - members
+    tp:
+    - hour
+    - city
+    - address
+    - instructor
+    - date
+    - wod
+    - postalcode

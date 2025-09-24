@@ -1,0 +1,1183 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 4
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 208
+    missing: 9
+    reversed: 1
+  fact:
+    false_fact: 4
+    incorrect: false
+  measures:
+    extra: 3
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 209
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.3478
+    fn: 7
+    fp: 8
+    precision: 0.3333
+    recall: 0.3636
+    tp: 4
+output:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: COMPUTER.Brand
+    to: SUPPLIES.Brand
+  - from: COMPUTER.Model
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.Type
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    to: SUPPLIES
+  fact:
+    name: INSTALLATIONS
+  measures:
+  - name: COMPUTER.CodComputer
+  - name: SOFTWARE.CodSoftw
+  - name: SUPPLIERS.SupplierName
+output_preprocessed:
+- dependencies:
+  - from: SUPPLIERS.SupplierName
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: COMPUTER.Brand
+    label: fp
+    to: SUPPLIES.Brand
+  - from: COMPUTER.Model
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.Type
+    label: fp
+    to: SUPPLIES.Brand
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierName
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierAddress
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES.SupplierCity
+  - from: SUPPLIES.Brand
+    label: fp
+    to: SUPPLIES
+  fact:
+    name: INSTALLATIONS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: COMPUTER.CodComputer
+  - name: SOFTWARE.CodSoftw
+  - name: SUPPLIERS.SupplierName
+  nodes:
+    fn:
+    - suppliers.suppliercity
+    - installations.installationdate
+    - software.codsoftw
+    - software.softwaredescription
+    - suppliers.suppliername
+    - suppliers.supplieraddress
+    - computer.codcomputer
+    fp:
+    - supplies
+    - software.codsoftw
+    - suppliers.suppliername
+    - supplies.suppliercity
+    - computer.brand
+    - supplies.suppliername
+    - computer.codcomputer
+    - supplies.supplieraddress
+    tp:
+    - computer.model
+    - supplies.brand
+    - installations
+    - software.type

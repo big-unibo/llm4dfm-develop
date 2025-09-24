@@ -80,9 +80,9 @@ def load_generate_import_function(name, model, tokenizer, config, debug_print, d
             )
 
             if debug_print:
-                log(f'Decoded_batch: {outputs[0]["generated_text"]}')
+                log(f'Decoded_batch: {outputs[0]["generated_text"].lstrip()}')
 
-            return outputs[0]["generated_text"]
+            return outputs[0]["generated_text"].lstrip()
 
         return generate_mistral
 

@@ -1,0 +1,224 @@
+config:
+  api_version: 2024-04-01-preview
+  deployment: gpt-4o
+  label: gpt4
+  max_tokens: null
+  n_responses: 1
+  name: gpt
+  stop: null
+  temperature: 0.1
+  top_k: 5
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 0
+    missing: 1
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: false
+  measures:
+    extra: 0
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- edges:
+    f1: 0.96
+    fn: 1
+    fp: 0
+    precision: 1.0
+    recall: 0.9231
+    tp: 12
+  nodes:
+    f1: 0.963
+    fn: 1
+    fp: 0
+    precision: 1.0
+    recall: 0.9286
+    tp: 13
+output:
+- dependencies:
+  - from: Purchases
+    to: Quantity
+  - from: Purchases
+    to: Revenue
+  - from: Purchases
+    to: Unit Price
+  - from: Purchases
+    to: Day
+  - from: Purchases
+    to: Article
+  - from: Purchases
+    to: Store
+  - from: Day
+    to: Month
+  - from: Month
+    to: Year
+  - from: Article
+    to: Article Type
+  - from: Store
+    to: Store Name
+  - from: Store
+    to: Address
+  - from: Store
+    to: Region
+  - from: Region
+    to: State
+  - from: State
+    to: Country
+  fact:
+    name: Purchases
+  measures:
+  - name: Quantity
+  - name: Revenue
+  - name: Unit Price
+output_preprocessed:
+- dependencies:
+  - from: PURCHASE
+    label: tp
+    to: Quantity
+  - from: PURCHASE
+    label: tp
+    to: Revenue
+  - from: PURCHASE
+    label: tp
+    to: UnitPrice
+  - from: PURCHASE
+    label: tp
+    to: Date
+  - from: PURCHASE
+    label: tp
+    to: Article
+  - from: PURCHASE
+    label: tp
+    to: Store
+  - from: Article
+    label: tp
+    to: type
+  - from: Store
+    label: tp
+    to: StoreName
+  - from: Store
+    label: tp
+    to: Address
+  - from: Store
+    label: tp
+    to: Region
+  - from: Region
+    label: tp
+    to: State
+  - from: State
+    label: tp
+    to: Country
+  fact:
+    name: PURCHASE
+  ground_truth_labels:
+    dependencies:
+    - from: article
+      label: fn
+      to: articleName
+    - from: article
+      label: tp
+      to: type
+    - from: store
+      label: tp
+      to: storeName
+    - from: store
+      label: tp
+      to: address
+    - from: store
+      label: tp
+      to: region
+    - from: region
+      label: tp
+      to: state
+    - from: state
+      label: tp
+      to: country
+    - from: PURCHASE
+      label: tp
+      to: quantity
+    - from: PURCHASE
+      label: tp
+      to: revenue
+    - from: PURCHASE
+      label: tp
+      to: unitPrice
+    - from: PURCHASE
+      label: tp
+      to: article
+    - from: PURCHASE
+      label: tp
+      to: store
+    - from: PURCHASE
+      label: tp
+      to: date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: quantity
+    - name: revenue
+    - name: unitPrice
+  measures:
+  - name: Quantity
+  - name: Revenue
+  - name: UnitPrice
+  nodes:
+    fn:
+    - articlename
+    fp: []
+    tp:
+    - purchase
+    - unitprice
+    - date
+    - state
+    - country
+    - address
+    - store
+    - type
+    - revenue
+    - region
+    - storename
+    - quantity
+    - article

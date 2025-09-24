@@ -1,0 +1,213 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- {}
+output:
+- "fact:\n  name: TRANSFER\nmeasures:\n  - name: reason\n  - name: date\ndependencies:\n\
+  \  - from: employee\n    to: department\n    role: transfer\n  - from: employee\n\
+  \    to: recruitmentDate\n  - from: employee\n    to: currentDepartment\n  - from:\
+  \ employee\n    to: division\n  - from: employee\n    to: manager\n  - from: department\n\
+  \    to: reason\n  - from: department\n    to: reason\n  - from: department\n  \
+  \  to: reason\n  - from: department\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to:\
+  \ reason\n  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n\
+  \  - from: employee\n    to: reason\n  - from: employee\n    to: reason\n  - from:\
+  \ employee\n    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n\
+  \    to: reason\n  - from: employee\n    to: reason\n  - from: employee\n    to"
+output_preprocessed: []
