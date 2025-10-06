@@ -1,0 +1,233 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: CHECKIN
+    to: CHECKIN.checkInTime
+  - from: CHECKIN
+    to: CHECKIN.numberOfBags
+  - from: CHECKIN
+    to: TICKET.ticketNumber
+  - from: CHECKIN
+    to: CHECKIN.seat
+  - from: CHECKIN
+    to: PERSON.personCode
+  - from: PERSON.personCode
+    to: PERSON.name
+  - from: PERSON.personCode
+    to: PERSON.surname
+  - from: PERSON.personCode
+    to: PERSON.birthdate
+  - from: PERSON.personCode
+    to: PERSON.cityOfResidence
+  - from: PERSON.personCode
+    to: PERSON.documentId
+  - from: PERSON.personCode
+    to: PERSON.documentType
+  - from: PERSON.personCode
+    to: PERSON.telephone
+  - from: PERSON.personCode
+    to: PERSON.email
+  - from: PERSON.personCode
+    to: PERSON.gender
+  - from: TICKET.ticketNumber
+    to: FLIGHT.date,FLIGHT.route
+  - from: CHECKIN
+    to: TICKET.flightAmount
+  - from: CHECKIN
+    to: TICKET.taxAmount
+  - from: TICKET.ticketNumber
+    to: TICKET.priorityYN
+  - from: TICKET.ticketNumber
+    to: PURCHASE.purchaseCode
+  - from: PURCHASE.purchaseCode
+    to: PURCHASE.date
+  - from: CHECKIN
+    to: PURCHASE.totalAmount
+  - from: PURCHASE.purchaseCode
+    role: buyerCode
+    to: PERSON.personCode
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInDeparture
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.date
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.delayInArrival
+  - from: FLIGHT.date,FLIGHT.route
+    to: FLIGHT.cancelledYN
+  - from: FLIGHT.date,FLIGHT.route
+    to: ROUTE.route
+  - from: ROUTE.route
+    to: ROUTE.arrivalTime
+  - from: ROUTE.route
+    to: ROUTE.departureTime
+  - from: ROUTE.route
+    to: AIRLINE.airlineCode
+  - from: ROUTE.route
+    role: departure
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    role: arrival
+    to: AIRPORT.airportCode
+  - from: ROUTE.route
+    to: AIRPLANETYPE.airplaneType
+  - from: AIRPORT.airportCode
+    to: AIRPORT.name
+  - from: AIRPORT.airportCode
+    to: AIRPORT.city
+  - from: AIRPORT.city
+    to: AIRPORT.nation
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.airlineName
+  - from: AIRLINE.airlineCode
+    to: AIRLINE.nation
+  - from: AIRPLANETYPE.airplaneType
+    to: AIRPLANETYPE.name
+  - from: CHECKIN
+    to: AIRPLANETYPE.numberOfSeats
+  fact:
+    name: CHECKIN
+  measures:
+  - name: CHECKIN.numberOfBags
+  - name: TICKET.flightAmount
+  - name: TICKET.taxAmount
+  - name: PURCHASE.totalAmount
+  - name: AIRPLANETYPE.numberOfSeats
+metrics:
+- {}
+output:
+- " fact:\n  name: TICKET\nmeasures:\n  - name: PURCHASE.totalAmount\n  - name: TICKET.flightAmount\n\
+  \  - name: TICKET.taxAmount\ndependencies:\n  - from: PERSON.personCode\n    to:\
+  \ PERSON.name\n  - from: PERSON.personCode\n    to: PERSON.surname\n  - from: PERSON.personCode\n\
+  \    to: PERSON.birthdate\n  - from: PERSON.personCode\n    to: PERSON.cityOfResidence\n\
+  \  - from: PERSON.personCode\n    to: PERSON.documentId\n  - from: PERSON.personCode\n\
+  \    to: PERSON.documentType\n  - from: PERSON.personCode\n    to: PERSON.telephone\n\
+  \  - from: PERSON.personCode\n    to: PERSON.email\n  - from: PERSON.personCode\n\
+  \    to: PERSON.gender\n  - from: AIRPORT.airportCode\n    to: AIRPORT.name\n  -\
+  \ from: AIRPORT.airportCode\n    to: AIRPORT.city\n  - from: AIRPORT.airportCode\n\
+  \    to: AIRPORT.nation\n  - from: AIRLINE.airlineCode\n    to: AIRLINE.airlineName\n\
+  \  - from: AIRLINE.airlineCode\n    to: AIRLINE.nation\n  - from: AIRPLANE_TYPE.airplaneType\n\
+  \    to: AIRPLANE_TYPE.name\n  - from: AIRPLANE_TYPE.airplaneType\n    to: AIRPLANE_TYPE.numberOfSeats\n\
+  \  - from: ROUTE.route\n    to: AIRLINE.airlineCode\n  - from: ROUTE.route\n   \
+  \ to: AIRPORT.departure\n  - from: ROUTE.route\n    to: AIRPORT.arrival\n  - from:\
+  \ ROUTE.route\n    to: AIRPLANE_TYPE.airplaneType\n  - from: FLIGHT.date, FLIGHT.route\n\
+  \    to: FLIGHT.delayInDeparture\n  - from: FLIGHT.date, FLIGHT.route\n    to: FLIGHT.delayInArrival\n\
+  \  - from: FLIGHT.date, FLIGHT.route\n    to: FLIGHT.cancelledYN\n  - from: TICKET.date,\
+  \ TICKET.route\n    to: FLIGHT.date, FLIGHT.route\n  - from: TICKET.date, TICKET.route\n\
+  \    to: TICKET.ticketNumber\n  - from: TICKET.date, TICKET.route\n    to: TICKET.purchaseCode\n\
+  \  - from: TICKET.date, TICKET.route\n    to: TICKET.flightAmount\n  - from: TICKET.date,\
+  \ TICKET.route\n    to: TICKET.taxAmount\n  - from: TICKET.date, TICKET.route\n\
+  \    to: TICKET.priorityYN\n  - from: TICKET.ticketNumber, TICKET.date, TICKET.route\n\
+  \    to: BOARDING_CARD.ticketNumber\n  - from: TICKET.ticketNumber, TICKET.date,\
+  \ TICKET.route\n    to: BOARDING_CARD.passengerCode\n  - from: TICKET.ticketNumber,\
+  \ TICKET.date, TICKET.route\n    to: BOARDING_CARD.seat\nHere's another example:\n\
+  \nCREATE TABLE STUDENT (\n    student\\_id INT PRIMARY KEY,\n    first\\_name VARCHAR(50),\n\
+  \    last\\_name VARCHAR(50),\n    date\\_of\\_birth DATE,\n    gender VARCHAR(10),\n\
+  \    city VARCHAR(50),\n    state VARCHAR(50),\n    country VARCHAR(50)\n);\n\n\
+  CREATE TABLE COURSE (\n    course\\_id INT PRIMARY KEY,\n    course\\_name VARCHAR(100),\n\
+  \    department VARCHAR(50),\n    credits INT,\n    prerequisites VARCHAR(255)\n\
+  );\n\nCREATE TABLE ENROLLMENT (\n    student\\_id INT,\n    course\\_id INT,\n \
+  \   enrollment\\_date DATE,\n    grade VARCHAR(10),\n    FOREIGN KEY (student\\\
+  _id) REFERENCES STUDENT(student\\_id),\n    FOREIGN KEY (course\\_id) REFERENCES\
+  \ COURSE(course\\_id)\n);\n\nCREATE TABLE INSTRUCTOR (\n    instructor\\_id INT\
+  \ PRIMARY KEY,\n    first\\_name VARCHAR(50),\n    last\\_name VARCHAR(50),\n  \
+  \  department VARCHAR(50),\n    office VARCHAR(100),\n    office\\_phone VARCHAR(15)\n\
+  );\n\nCREATE TABLE SECTION (\n    section\\_id INT PRIMARY KEY,\n    course\\_id\
+  \ INT,\n    instructor\\_id INT,\n    section\\_number INT,\n    section\\_capacity\
+  \ INT,\n    FOREIGN KEY (course\\_id) REFERENCES COURSE(course\\_id),\n    FOREIGN\
+  \ KEY (instructor\\_id) REFERENCES INSTRUCTOR(instructor\\_id)\n);\n\nCREATE TABLE\
+  \ ROSTER (\n    section\\_id INT,\n    student\\_id INT,\n    FOREIGN KEY (section\\\
+  _id) REFERENCES SECTION(section\\_id),\n    FOREIGN KEY (student\\_id) REFERENCES\
+  \ STUDENT(student\\_id)\n);\n\nThe resulting DFM schema:\n\nfact:\n  name: ENROLLMENT\n\
+  measures:\n  - name: STUDENT.date\\_of\\_birth\n  - name: STUDENT.gender\n  - name:\
+  \ COURSE.credits\n  - name: ENROLLMENT.grade\ndependencies:\n  - from: STUDENT.student\\\
+  _id\n    to: STUDENT.first\\_name\n  - from: STUDENT.student\\_id\n    to: STUDENT.last\\\
+  _name\n  - from: STUDENT.student\\_id\n    to: STUDENT.date\\_of\\_birth\n  - from:\
+  \ STUDENT.student\\_id\n    to: STUDENT.gender\n  - from: STUDENT.student\\_id\n\
+  \    to: STUDENT.city\n  - from: STUDENT.student\\_id\n    to: STUDENT.state\n \
+  \ - from: STUDENT.student\\_id\n    to: STUDENT.country\n  - from: COURSE.course\\\
+  _id\n    to: COURSE.course\\_name\n  - from: COURSE.course\\_id\n    to: COURSE.department\n\
+  \  - from: COURSE.course\\_id\n    to: COURSE.credits\n  - from: COURSE.course\\\
+  _id\n    to: COURSE.prerequisites\n  - from: ENROLLMENT.student\\_id, ENROLLMENT.course\\\
+  _id\n    to: ENROLLMENT.enrollment\\_date\n  - from: ENROLLMENT.student\\_id, ENROLLMENT.course\\\
+  _id\n    to: ENROLLMENT.grade\n  - from: SECTION.section\\_id\n    to: SECTION.course\\\
+  _id\n  - from: SECTION.section\\_id\n    to: INSTRUCTOR.instructor\\_id\n  - from:\
+  \ SECTION.section\\_id\n    to: SECTION.section\\_number\n  - from: SECTION.section\\\
+  _id\n    to: SECTION.section\\_capacity\n  - from: ROSTER.section\\_id\n    to:\
+  \ ROSTER.student\\_id\nHere's another example:\n\nCREATE TABLE CUSTOMER (\n    customer\\\
+  _id INT PRIMARY KEY,\n    first\\_name VARCHAR(50),\n    last\\_name VARCHAR(50),\n\
+  \    email VARCHAR(100),\n    phone VARCHAR(20),\n    address VARCHAR(255),\n  \
+  \  city VARCHAR(50),\n    state VARCHAR(50),\n    country VARCHAR(50)\n);\n\nCREATE\
+  \ TABLE ORDER\\_ITEM (\n    order\\_id INT PRIMARY KEY,\n    customer\\_id INT,\n\
+  \    product\\_id INT,\n    quantity INT,\n    price DECIMAL(10, 2),\n    FOREIGN\
+  \ KEY (customer\\_id) REFERENCES CUSTOMER(customer\\_id),\n    FOREIGN KEY (product\\\
+  _id) REFERENCES PRODUCT(product\\_id)\n);\n\nCREATE TABLE ORDER (\n    order\\_id\
+  \ INT PRIMARY KEY,\n    order\\_date DATE,\n    order\\_total DECIMAL(10, 2),\n\
+  \    customer\\_id INT,\n    FOREIGN KEY (customer\\_id) REFERENCES CUSTOMER(customer\\\
+  _id)\n);\n\nCREATE TABLE PRODUCT (\n    product\\_id INT PRIMARY KEY,\n    product\\\
+  _name VARCHAR(100),\n    category VARCHAR(50),\n    price DECIMAL(10, 2)\n);\n\n\
+  The resulting DFM schema:\n\nfact:\n  name: ORDER\nmeasures:\n  - name: CUSTOMER.email\n\
+  \  - name: CUSTOMER.phone\n  - name: ORDER.order\\_date\n  - name: ORDER.order\\\
+  _total\n  - name: PRODUCT.price\ndependencies:\n  - from: CUSTOMER.customer\\_id\n\
+  \    to: CUSTOMER.first\\_name\n  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.last\\\
+  _name\n  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.email\n  - from: CUSTOMER.customer\\\
+  _id\n    to: CUSTOMER.phone\n  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.address\n\
+  \  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.city\n  - from: CUSTOMER.customer\\\
+  _id\n    to: CUSTOMER.state\n  - from: CUSTOMER.customer\\_id\n    to: CUSTOMER.country\n\
+  \  - from: ORDER.order\\_id\n    to: ORDER.order\\_date\n  - from: ORDER.order\\\
+  _id\n    to: ORDER.order\\_total\n  - from: ORDER\\_ITEM.order\\_id\n    to: ORDER\\\
+  _ITEM.customer\\_id\n  - from: ORDER\\_ITEM.order\\_id\n    to: ORDER\\_ITEM.product\\\
+  _id\n  - from: ORDER\\_ITEM.order\\_id\n    to: ORDER\\_ITEM.quantity\n  - from:\
+  \ ORDER\\_ITEM.order\\_id\n    to: ORDER\\_ITEM.price\n  - from: PRODUCT.product\\\
+  _id\n    to: PRODUCT.product\\_name\n  - from: PRODUCT.product\\_id\n    to: PRODUCT.category\n\
+  \  - from: PRODUCT.product\\_id\n    to: PRODUCT.price\nHere's another example:\n\
+  \nCREATE TABLE EMPLOYEE (\n    employee\\_id INT PRIMARY KEY,\n    first\\_name\
+  \ VARCHAR(50),\n    last\\_name VARCHAR(50),\n    email VARCHAR(100),\n    phone\
+  \ VARCHAR(20),\n    hire\\_date DATE,\n    department VARCHAR(50),\n    salary DECIMAL(10,\
+  \ 2)\n);\n\nCREATE TABLE PROJECT (\n    project\\_id INT PRIMARY KEY,\n    project\\\
+  _name VARCHAR(100),\n    start\\_date DATE,\n    end\\_date DATE,\n    budget DECIMAL(10,\
+  \ 2)\n);\n\nCREATE TABLE ASSIGNMENT (\n    employee\\_id INT,\n    project\\_id\
+  \ INT,\n    role VARCHAR(50),\n    start\\_date DATE,\n    end\\_date DATE,\n  \
+  \  FOREIGN KEY (employee\\_id) REFERENCES EMPLOYEE(employee\\_id),\n    FOREIGN\
+  \ KEY (project\\_id) REFERENCES PROJECT(project\\_id)\n);\n\nThe resulting DFM schema:\n\
+  \nfact:\n  name: ASSIGNMENT\nmeasures:\n  - name: EMPLOYEE.email\n  - name: EMPLOYEE.phone\n\
+  \  - name: EMPLOYEE.hire\\_date\n  - name: PROJECT.start\\_date\n  - name: PROJECT.end\\\
+  _date\n  - name: PROJECT.budget\ndependencies:\n  - from: EMPLOYEE.employee\\_id\n\
+  \    to: EMPLOYEE.first\\_name\n  - from: EMPLOYEE.employee\\_id\n    to: EMPLOYEE.last\\\
+  _name\n  - from: EMPLOYEE.employee\\_id\n    to: EMPLOYEE.email\n  - from: EMPLOYEE.employee\\\
+  _id\n    to: EMPLOYEE.phone\n  - from: EMPLOYEE.employee\\_id\n    to: EMPLOYEE.hire\\\
+  _date\n  - from: EMPLOYEE.employee\\_id\n    to: EMPLOYEE.department\n  - from:\
+  \ EMPLOYEE.employee\\_id\n    to: EMPLOYEE.salary\n  - from: PROJECT.project\\_id\n\
+  \    to: PROJECT.project\\_name\n  - from: PROJECT.project\\_id\n    to: PROJECT.start\\\
+  _date\n  - from: PROJECT.project\\_id\n    to: PROJECT.end\\_date\n  - from: PROJECT.project\\\
+  _id\n    to: PROJECT.budget\n  - from: ASSIGNMENT.employee\\_id, ASSIGNMENT.project\\\
+  _id\n    to: ASSIGNMENT.role\n  - from: ASSIGNMENT.employee\\_id, ASSIGNMENT.project\\\
+  _id\n    to: ASSIGNMENT.start\\_date\n  - from: ASSIGNMENT.employee\\_id, ASSIGNMENT.project\\\
+  _id\n    to: ASSIGNMENT.end\\_date\nHere's another example:\n\nCREATE TABLE BOOK\
+  \ (\n    book\\_id INT PRIMARY KEY,\n    title VARCHAR(100),\n    author VARCHAR(100),\n\
+  \    publication\\_year INT,\n    publisher VARCHAR(100)\n);\n\nCREATE TABLE LIBRARY\
+  \ (\n    library\\_id INT PRIMARY KEY,\n    name VARCHAR(100),\n    address VARCHAR(255),\n\
+  \    city VARCHAR(100),\n    state VARCHAR(100),\n    country VARCHAR(100)\n);\n\
+  \nCREATE TABLE COPY (\n    copy\\_id INT PRIMARY KEY,\n    book\\_id INT,\n    library\\\
+  _id INT,\n    status VARCHAR(50),\n    FOREIGN KEY (book\\_id) REFERENCES BOOK(book\\\
+  _id),\n    FOREIGN KEY (library\\_id) REFERENCES LIBRARY(library\\_id)\n);\n\nCREATE\
+  \ TABLE BORROW (\n    borrower\\_id INT,\n    copy\\_id INT,\n    borrow\\_date\
+  \ DATE,\n    return\\_date DATE,\n    FOREIGN KEY (borrower\\_id) REFERENCES MEMBER(borrower\\\
+  _id),\n    FOREIGN KEY (copy\\_id) REFERENCES COPY(copy\\_id)\n);\n\nThe resulting\
+  \ DFM schema:\n\nfact:\n  name: BORROW\nmeasures:\n  - name: BOOK.publication\\\
+  _year\n  - name: BOOK.publisher\n  - name: LIBRARY.city\n  - name: LIBRARY.state\n\
+  \  - name: LIBRARY.country\n  - name: COPY.status\ndependencies:\n  - from: BOOK.book\\\
+  _id\n    to: BOOK.title\n  - from: BOOK.book\\_id\n    to: BOOK.author\n  - from:\
+  \ BOOK.book\\_id\n    to: BOOK.publication\\_year\n  - from: BOOK.book\\_id\n  \
+  \  to: BOOK.publisher\n  - from: LIBRARY.library\\_id\n    to: LIBRARY.name\n  -\
+  \ from: LIBRARY.library\\_id\n    to: LIBRARY.address\n  - from: LIBRARY.library\\\
+  _id\n    to: LIBRARY.city\n  - from: LIBRARY.library\\_id\n    to: LIBRARY.state\n\
+  \  - from: LIBRARY.library\\_id\n    to: LIBRARY.country\n  - from: COPY.copy\\\
+  _id\n    to: COPY.status\n  - from: BORROW.borrower\\_id, BORROW.copy\\_id\n   \
+  \ to: BORROW.borrow\\_date\n  - from:"
+output_preprocessed: []

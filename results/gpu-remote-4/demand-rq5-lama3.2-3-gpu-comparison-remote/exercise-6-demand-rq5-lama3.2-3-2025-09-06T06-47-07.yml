@@ -1,0 +1,127 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: TRANSFER
+    to: Date
+  - from: TRANSFER
+    role: to
+    to: DepartmentCode
+  - from: TRANSFER
+    role: from
+    to: DepartmentCode
+  - from: TRANSFER
+    to: Reason
+  - from: TRANSFER
+    to: EmployeeCode
+  - from: DepartmentCode
+    to: DepartmentName
+  - from: DepartmentCode
+    to: DivisionCode
+  - from: DivisionCode
+    to: DivisionName
+  - from: DivisionCode
+    role: manager
+    to: EmployeeCode
+  - from: EmployeeCode
+    to: EmployeeName
+  - from: EmployeeCode
+    to: EmployeeSurname
+  - from: EmployeeCode
+    to: Gender
+  - from: EmployeeCode
+    to: Qualification
+  - from: EmployeeCode
+    role: Recruitment
+    to: Date
+  - from: EmployeeCode
+    role: current
+    to: DepartmentCode
+  fact:
+    name: TRANSFER
+  measures: []
+metrics:
+- {}
+output:
+- dependencies:
+  - from: employee
+    to: employeeCode
+  - from: employee
+    to: name
+  - from: employee
+    to: surname
+  - from: employee
+    to: gender
+  - from: employee
+    to: qualification
+  - from: employee
+    to: recruitmentDate
+  - from: employee
+    to: currentDepartment
+  - from: department
+    to: departmentCode
+  - from: department
+    to: departmentName
+  - from: division
+    to: divisionCode
+  - from: division
+    to: divisionName
+  - from: division
+    to: manager
+  - from: transfer
+    to: quantity
+  - from: transfer
+    to: reason
+  - from: transfer
+    role: from
+    to: employee
+  - from: transfer
+    role: to
+    to: employee
+  - from: transfer
+    to: date
+  - from: transfer
+    to: fiscalCode
+  - from: transfer
+    to: city
+  - from: transfer
+    to: region
+  - from: transfer
+    to: nation
+  - from: transfer
+    role: date
+    to: employee
+  - from: transfer
+    role: date
+    to: department
+  - from: transfer
+    to: transferDate
+  - from: transfer
+    to: fiscalCode
+  - from: transfer
+    to: city
+  - from: transfer
+    to: region
+  - from: transfer
+    to: nation
+  - from: transfer
+    role: fiscalCode
+    to: employee
+  - from: transfer
+    role: fiscalCode
+    to: department
+  - from: transfer
+    to: transferDate
+  - from: transfer
+    to: fiscalCode
+  - from
+  fact:
+    name: TRANSFER
+  measures:
+  - name: quantity
+output_preprocessed: []

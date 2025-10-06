@@ -1,0 +1,1813 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 6
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 236
+    missing: 12
+    reversed: 1
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 2
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 13
+    fp: 237
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0.4375
+    fn: 7
+    fp: 11
+    precision: 0.3889
+    recall: 0.5
+    tp: 7
+output:
+- dependencies:
+  - from: member
+    role: address
+    to: address
+  - from: member
+    role: postalCode
+    to: postalCode
+  - from: member
+    role: city
+    to: city
+  - from: member
+    role: weight
+    to: weight
+  - from: member
+    role: height
+    to: height
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: instructor
+    to: instructor
+  - from: member
+    role: day
+    to: day
+  - from: member
+    role: workoutDay
+    to: workoutDay
+  - from: member
+    role: type
+    to: type
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: instructorType
+    to: instructorType
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: trainingType
+    to: trainingType
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: instructorType
+    to: instructorType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+    role: workout
+    to: workout
+  - from: member
+    role: workoutType
+    to: workoutType
+  - from: member
+    role: training
+    to: training
+  - from: member
+    role: date
+    to: date
+  - from: member
+    role: presences
+    to: presences
+  - from: member
+  fact:
+    name: CROSSFIT
+  measures:
+  - name: weight
+  - name: height
+output_preprocessed:
+- dependencies:
+  - from: member
+    label: fp
+    role: address
+    to: address
+  - from: member
+    label: fp
+    role: postalCode
+    to: postalCode
+  - from: member
+    label: fp
+    role: city
+    to: city
+  - from: member
+    label: fp
+    role: weight
+    to: weight
+  - from: member
+    label: fp
+    role: height
+    to: height
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: instructor
+    to: instructor
+  - from: member
+    label: fp
+    role: day
+    to: Date
+  - from: member
+    label: fp
+    role: workoutDay
+    to: workoutDay
+  - from: member
+    label: fp
+    role: type
+    to: WODType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: instructorType
+    to: instructorType
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: trainingType
+    to: trainingType
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: instructorType
+    to: instructorType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    role: workout
+    to: workout
+  - from: member
+    label: fp
+    role: workoutType
+    to: workoutType
+  - from: member
+    label: fp
+    role: training
+    to: training
+  - from: member
+    label: fp
+    role: date
+    to: date
+  - from: member
+    label: fp
+    role: presences
+    to: PRESENCE
+  - from: member
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: CROSSFIT
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: fn
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: fn
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: weight
+  - name: height
+  nodes:
+    fn:
+    - hour
+    - name
+    - presence
+    - surname
+    - weight
+    - wod
+    - height
+    fp:
+    - crossfit
+    - instructortype
+    - e,o,r
+    - training
+    - presence
+    - weight
+    - workout
+    - workouttype
+    - height
+    - trainingtype
+    - workoutday
+    tp:
+    - date
+    - wodtype
+    - postalcode
+    - member
+    - address
+    - city
+    - instructor

@@ -1,0 +1,180 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- {}
+output:
+- " fact:\n  name: PRESENCE\nmeasures:\n  - name: MEMBERS.height\n  - name: MEMBERS.weight\n\
+  dependencies:\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.name\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.surname\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.gender\n\
+  \  - from: MEMBERS.FiscalCode\n    to: MEMBERS.address\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.postalCode\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.city\n\
+  \  - from: EXERCISES.exerciseId\n    to: EXERCISES.name\n  - from: EXERCISES.exerciseId\n\
+  \    to: EXERCISES.exerciseType\n  - from: MAXIMUM_WEIGHTS.FiscalCode, MAXIMUM_WEIGHTS.exerciseId,\
+  \ MAXIMUM_WEIGHTS.date\n    to: MAXIMUM_WEIGHTS.weight\n  - from: WOD.date\n   \
+  \ to: WOD.name\n  - from: WOD.date\n    to: WOD.WODtype\n  - from: WOD.date\n  \
+  \  to: WOD.numberOfRounds\n  - from: EXERCISE_IN_WOD.date, EXERCISE_IN_WOD.exerciseId,\
+  \ EXERCISE_IN_WOD.positionInSequence\n    to: EXERCISE_IN_WOD.numberOfRepetitions\n\
+  \  - from: WORKOUTS.date\n    to: WORKOUTS.time\n  - from: WORKOUTS.date\n    to:\
+  \ WORKOUTS.instructor\n  - from: PRESENCE.FiscalCode, PRESENCE.date, PRESENCE.time\n\
+  \    to: PRESENCE.time\n  - from: PRESENCE.FiscalCode, PRESENCE.date, PRESENCE.time\n\
+  \    to: MEMBERS.height\n  - from: PRESENCE.FiscalCode, PRESENCE.date, PRESENCE.time\n\
+  \    to: MEMBERS.weight\nHere's another example for a source schema describing an\
+  \ online bookstore.\n\nCREATE TABLE BOOKS (\n    bookId INT PRIMARY KEY,\n    title\
+  \ VARCHAR(100),\n    author VARCHAR(100),\n    publisher VARCHAR(100),\n    publicationYear\
+  \ INT,\n    genre VARCHAR(50),\n    price DECIMAL(5, 2)\n);\n\nCREATE TABLE CUSTOMERS\
+  \ (\n    customerId INT PRIMARY KEY,\n    firstName VARCHAR(50),\n    lastName VARCHAR(50),\n\
+  \    email VARCHAR(100),\n    address VARCHAR(100),\n    city VARCHAR(50),\n   \
+  \ state VARCHAR(50),\n    zipCode VARCHAR(10),\n    phone VARCHAR(15)\n);\n\nCREATE\
+  \ TABLE ORDERS (\n    orderId INT PRIMARY KEY,\n    customerId INT,\n    orderDate\
+  \ DATE,\n    totalPrice DECIMAL(10, 2),\n    FOREIGN KEY (customerId) REFERENCES\
+  \ CUSTOMERS(customerId)\n);\n\nCREATE TABLE ORDER_ITEMS (\n    orderId INT,\n  \
+  \  bookId INT,\n    quantity INT,\n    price DECIMAL(5, 2),\n    FOREIGN KEY (orderId)\
+  \ REFERENCES ORDERS(orderId),\n    FOREIGN KEY (bookId) REFERENCES BOOKS(bookId)\n\
+  );\n\nCREATE TABLE REVIEWS (\n    reviewId INT PRIMARY KEY,\n    customerId INT,\n\
+  \    bookId INT,\n    rating INT,\n    reviewText TEXT,\n    FOREIGN KEY (customerId)\
+  \ REFERENCES CUSTOMERS(customerId),\n    FOREIGN KEY (bookId) REFERENCES BOOKS(bookId)\n\
+  );\n\nAfter applying the steps, the resulting DFM schema is as follows:\n\nfact:\n\
+  \  name: ORDER_ITEMS\nmeasures:\n  - name: BOOKS.price\ndependencies:\n  - from:\
+  \ BOOKS.bookId\n    to: BOOKS.title\n  - from: BOOKS.bookId\n    to: BOOKS.author\n\
+  \  - from: BOOKS.bookId\n    to: BOOKS.publisher\n  - from: BOOKS.bookId\n    to:\
+  \ BOOKS.publicationYear\n  - from: BOOKS.bookId\n    to: BOOKS.genre\n  - from:\
+  \ CUSTOMERS.customerId\n    to: CUSTOMERS.firstName\n  - from: CUSTOMERS.customerId\n\
+  \    to: CUSTOMERS.lastName\n  - from: CUSTOMERS.customerId\n    to: CUSTOMERS.email\n\
+  \  - from: CUSTOMERS.customerId\n    to: CUSTOMERS.address\n  - from: CUSTOMERS.customerId\n\
+  \    to: CUSTOMERS.city\n  - from: CUSTOMERS.customerId\n    to: CUSTOMERS.state\n\
+  \  - from: CUSTOMERS.customerId\n    to: CUSTOMERS.zipCode\n  - from: CUSTOMERS.customerId\n\
+  \    to: CUSTOMERS.phone\n  - from: ORDERS.orderId\n    to: ORDERS.orderDate\n \
+  \ - from: ORDERS.orderId\n    to: ORDERS.totalPrice\n  - from: ORDER_ITEMS.orderId\n\
+  \    to: ORDER_ITEMS.bookId\n  - from: ORDER_ITEMS.orderId\n    to: ORDER_ITEMS.quantity\n\
+  \  - from: ORDER_ITEMS.orderId\n    to: ORDER_ITEMS.price\n  - from: REVIEWS.reviewId\n\
+  \    to: REVIEWS.rating\n  - from: REVIEWS.reviewId\n    to: REVIEWS.reviewText\n\
+  \  - from: REVIEWS.customerId\n    to: CUSTOMERS.customerId\n  - from: REVIEWS.bookId\n\
+  \    to: BOOKS.bookId\n\nHere's another example for a source schema describing a\
+  \ university's student management system.\n\nCREATE TABLE STUDENTS (\n    studentId\
+  \ INT PRIMARY KEY,\n    firstName VARCHAR(50),\n    lastName VARCHAR(50),\n    email\
+  \ VARCHAR(100),\n    address VARCHAR(100),\n    city VARCHAR(50),\n    state VARCHAR(50),\n\
+  \    zipCode VARCHAR(10),\n    phone VARCHAR(15)\n);\n\nCREATE TABLE COURSES (\n\
+  \    courseId INT PRIMARY KEY,\n    courseName VARCHAR(100),\n    department VARCHAR(50),\n\
+  \    credits INT\n);\n\nCREATE TABLE ENROLLMENTS (\n    studentId INT,\n    courseId\
+  \ INT,\n    enrollmentDate DATE,\n    FOREIGN KEY (studentId) REFERENCES STUDENTS(studentId),\n\
+  \    FOREIGN KEY (courseId) REFERENCES COURSES(courseId)\n);\n\nCREATE TABLE GRADES\
+  \ (\n    studentId INT,\n    courseId INT,\n    grade INT,\n    FOREIGN KEY (studentId)\
+  \ REFERENCES STUDENTS(studentId),\n    FOREIGN KEY (courseId) REFERENCES COURSES(courseId)\n\
+  );\n\nCREATE TABLE ADVISORS (\n    advisorId INT PRIMARY KEY,\n    firstName VARCHAR(50),\n\
+  \    lastName VARCHAR(50),\n    department VARCHAR(50)\n);\n\nCREATE TABLE ADVISEES\
+  \ (\n    studentId INT,\n    advisorId INT,\n    startDate DATE,\n    endDate DATE,\n\
+  \    FOREIGN KEY (studentId) REFERENCES STUDENTS(studentId),\n    FOREIGN KEY (advisorId)\
+  \ REFERENCES ADVISORS(advisorId)\n);\n\nAfter applying the steps, the resulting\
+  \ DFM schema is as follows:\n\nfact:\n  name: ENROLLMENTS\nmeasures:\n  - name:\
+  \ COURSES.credits\ndependencies:\n  - from: STUDENTS.studentId\n    to: STUDENTS.firstName\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.lastName\n  - from: STUDENTS.studentId\n\
+  \    to: STUDENTS.email\n  - from: STUDENTS.studentId\n    to: STUDENTS.address\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.city\n  - from: STUDENTS.studentId\n\
+  \    to: STUDENTS.state\n  - from: STUDENTS.studentId\n    to: STUDENTS.zipCode\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.phone\n  - from: COURSES.courseId\n\
+  \    to: COURSES.courseName\n  - from: COURSES.courseId\n    to: COURSES.department\n\
+  \  - from: ENROLLMENTS.studentId\n    to: ENROLLMENTS.enrollmentDate\n  - from:\
+  \ ENROLLMENTS.courseId\n    to: ENROLLMENTS.credits\n  - from: GRADES.studentId\n\
+  \    to: GRADES.grade\n  - from: GRADES.courseId\n    to: GRADES.courseId\n  - from:\
+  \ ADVISORS.advisorId\n    to: ADVISORS.firstName\n  - from: ADVISORS.advisorId\n\
+  \    to: ADVISORS.lastName\n  - from: ADVISORS.advisorId\n    to: ADVISORS.department\n\
+  \  - from: ADVISEES.studentId\n    to: ADVISEES.startDate\n  - from: ADVISEES.studentId\n\
+  \    to: ADVISEES.endDate\n  - from: ADVISEES.advisorId\n    to: ADVISORS.advisorId\n\
+  Here's another example for a source schema describing a university's student management\
+  \ system.\n\nCREATE TABLE STUDENTS (\n    studentId INT PRIMARY KEY,\n    firstName\
+  \ VARCHAR(50),\n    lastName VARCHAR(50),\n    email VARCHAR(100),\n    address\
+  \ VARCHAR(100),\n    city VARCHAR(50),\n    state VARCHAR(50),\n    zipCode VARCHAR(10),\n\
+  \    phone VARCHAR(15)\n);\n\nCREATE TABLE COURSES (\n    courseId INT PRIMARY KEY,\n\
+  \    courseName VARCHAR(100),\n    department VARCHAR(50),\n    credits INT\n);\n\
+  \nCREATE TABLE ENROLLMENTS (\n    studentId INT,\n    courseId INT,\n    enrollmentDate\
+  \ DATE,\n    FOREIGN KEY (studentId) REFERENCES STUDENTS(studentId),\n    FOREIGN\
+  \ KEY (courseId) REFERENCES COURSES(courseId)\n);\n\nCREATE TABLE GRADES (\n   \
+  \ studentId INT,\n    courseId INT,\n    grade INT,\n    FOREIGN KEY (studentId)\
+  \ REFERENCES STUDENTS(studentId),\n    FOREIGN KEY (courseId) REFERENCES COURSES(courseId)\n\
+  );\n\nCREATE TABLE ADVISORS (\n    advisorId INT PRIMARY KEY,\n    firstName VARCHAR(50),\n\
+  \    lastName VARCHAR(50),\n    department VARCHAR(50)\n);\n\nCREATE TABLE ADVISEES\
+  \ (\n    studentId INT,\n    advisorId INT,\n    startDate DATE,\n    endDate DATE,\n\
+  \    FOREIGN KEY (studentId) REFERENCES STUDENTS(studentId),\n    FOREIGN KEY (advisorId)\
+  \ REFERENCES ADVISORS(advisorId)\n);\n\nAfter applying the steps, the resulting\
+  \ DFM schema is as follows:\n\nfact:\n  name: ENROLLMENTS\nmeasures:\n  - name:\
+  \ COURSES.credits\ndependencies:\n  - from: STUDENTS.studentId\n    to: STUDENTS.firstName\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.lastName\n  - from: STUDENTS.studentId\n\
+  \    to: STUDENTS.email\n  - from: STUDENTS.studentId\n    to: STUDENTS.address\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.city\n  - from: STUDENTS.studentId\n\
+  \    to: STUDENTS.state\n  - from: STUDENTS.studentId\n    to: STUDENTS.zipCode\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.phone\n  - from: COURSES.courseId\n\
+  \    to: COURSES.courseName\n  - from: COURSES.courseId\n    to: COURSES.department\n\
+  \  - from: ENROLLMENTS.studentId\n    to: ENROLLMENTS.enrollmentDate\n  - from:\
+  \ ENROLLMENTS.courseId\n    to: ENROLLMENTS.credits\n  - from: GRADES.studentId\n\
+  \    to: GRADES.grade\n  - from: GRADES.courseId\n    to: GRADES.courseId\n  - from:\
+  \ ADVISORS.advisorId\n    to: ADVISORS.firstName\n  - from: ADVISORS.advisorId\n\
+  \    to: ADVISORS.lastName\n  - from: ADVISORS.advisorId\n    to: ADVISORS.department\n\
+  \  - from: ADVISEES.studentId\n    to: ADVISEES.startDate\n  - from: ADVISEES.studentId\n\
+  \    to: ADVISEES.endDate\n  - from: ADVISEES.advisorId\n    to: ADVISORS.advisorId\n\
+  \nHere's another example for a source schema describing a university's student management\
+  \ system.\n\nCREATE TABLE STUDENTS (\n    studentId INT PRIMARY KEY,\n    firstName\
+  \ VARCHAR(50),\n    lastName VARCHAR(50),\n    email VARCHAR(100),\n    address\
+  \ VARCHAR(100),\n    city VARCHAR(50),\n    state VARCHAR(50),\n    zipCode VARCHAR(10),\n\
+  \    phone VARCHAR(15)\n);\n\nCREATE TABLE COURSES (\n    courseId INT PRIMARY KEY,\n\
+  \    courseName VARCHAR(100),\n    department VARCHAR(50),\n    credits INT\n);\n\
+  \nCREATE TABLE SECTIONS (\n    sectionId INT PRIMARY KEY,\n    courseId INT,\n \
+  \   instructorId INT,\n    enrollmentCapacity INT,\n    FOREIGN KEY (courseId) REFERENCES\
+  \ COURSES(courseId),\n    FOREIGN KEY (instructorId) REFERENCES INSTRUCTORS(instructorId)\n\
+  );\n\nCREATE TABLE ENROLLMENTS (\n    studentId INT,\n    sectionId INT,\n    enrollmentDate\
+  \ DATE,\n    FOREIGN KEY (studentId) REFERENCES STUDENTS(studentId),\n    FOREIGN\
+  \ KEY (sectionId) REFERENCES SECTIONS(sectionId)\n);\n\nCREATE TABLE GRADES (\n\
+  \    studentId INT,\n    sectionId INT,\n    grade INT,\n    FOREIGN KEY (studentId)\
+  \ REFERENCES STUDENTS(studentId),\n    FOREIGN KEY (sectionId) REFERENCES SECTIONS(sectionId)\n\
+  );\n\nCREATE TABLE INSTRUCTORS (\n    instructorId INT PRIMARY KEY,\n    firstName\
+  \ VARCHAR(50),\n    lastName VARCHAR(50),\n    department VARCHAR(50)\n);\n\nAfter\
+  \ applying the steps, the resulting DFM schema is as follows:\n\nfact:\n  name:\
+  \ ENROLLMENTS\nmeasures:\n  - name: COURSES.credits\ndependencies:\n  - from: STUDENTS.studentId\n\
+  \    to: STUDENTS.firstName\n  - from: STUDENTS.studentId\n    to: STUDENTS.lastName\n\
+  \  - from: STUDENTS.studentId\n    to: STUDENTS.email\n  - from: STUDENTS.studentId\n\
+  \    to: STUDENTS.address\n  - from"
+output_preprocessed: []

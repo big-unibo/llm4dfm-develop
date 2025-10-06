@@ -1,0 +1,187 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 3
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 2
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: article
+    to: articleName
+  - from: article
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: address
+  - from: store
+    to: region
+  - from: region
+    to: state
+  - from: state
+    to: country
+  - from: PURCHASE
+    to: quantity
+  - from: PURCHASE
+    to: revenue
+  - from: PURCHASE
+    to: unitPrice
+  - from: PURCHASE
+    to: article
+  - from: PURCHASE
+    to: store
+  - from: PURCHASE
+    to: date
+  fact:
+    name: PURCHASE
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPrice
+metrics:
+- edges:
+    f1: 0.3158
+    fn: 10
+    fp: 3
+    precision: 0.5
+    recall: 0.2308
+    tp: 3
+  nodes:
+    f1: 0.6154
+    fn: 6
+    fp: 4
+    precision: 0.6667
+    recall: 0.5714
+    tp: 8
+output:
+- dependencies:
+  - from: articleCode
+    to: articleName
+  - from: articleCode
+    to: type
+  - from: store
+    to: storeName
+  - from: store
+    to: storeAddress
+  - from: store
+    to: region
+  - from: region
+  fact:
+    name: PURCHASEassistant
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPriceassistant
+output_preprocessed:
+- dependencies:
+  - from: articleCode
+    label: fp
+    to: articleName
+  - from: articleCode
+    label: fp
+    to: type
+  - from: store
+    label: tp
+    to: storeName
+  - from: store
+    label: tp
+    to: address
+  - from: store
+    label: tp
+    to: region
+  - from: region
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: PURCHASEassistant
+  ground_truth_labels:
+    dependencies:
+    - from: article
+      label: fn
+      to: articleName
+    - from: article
+      label: fn
+      to: type
+    - from: store
+      label: tp
+      to: storeName
+    - from: store
+      label: tp
+      to: address
+    - from: store
+      label: tp
+      to: region
+    - from: region
+      label: fn
+      to: state
+    - from: state
+      label: fn
+      to: country
+    - from: PURCHASE
+      label: fn
+      to: quantity
+    - from: PURCHASE
+      label: fn
+      to: revenue
+    - from: PURCHASE
+      label: fn
+      to: unitPrice
+    - from: PURCHASE
+      label: fn
+      to: article
+    - from: PURCHASE
+      label: fn
+      to: store
+    - from: PURCHASE
+      label: fn
+      to: date
+    fact:
+      name: PURCHASE
+    measures:
+    - name: quantity
+    - name: revenue
+    - name: unitPrice
+  measures:
+  - name: quantity
+  - name: revenue
+  - name: unitPriceassistant
+  nodes:
+    fn:
+    - country
+    - state
+    - purchase
+    - date
+    - article
+    - unitprice
+    fp:
+    - unitpriceassistant
+    - purchaseassistant
+    - articlecode
+    - o,e,r
+    tp:
+    - region
+    - store
+    - type
+    - address
+    - revenue
+    - quantity
+    - storename
+    - articlename

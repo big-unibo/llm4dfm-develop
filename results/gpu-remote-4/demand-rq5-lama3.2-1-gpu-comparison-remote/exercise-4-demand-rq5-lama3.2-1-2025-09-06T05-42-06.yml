@@ -1,0 +1,721 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: ARRIVAL
+    to: NumberOfLaps
+  - from: ARRIVAL
+    to: Time
+  - from: ARRIVAL
+    to: Score
+  - from: ARRIVAL
+    to: Position
+  - from: ARRIVAL
+    to: Circuit
+  - from: ARRIVAL
+    to: Driver
+  - from: ARRIVAL
+    to: Date
+  - from: ARRIVAL
+    to: CarNumber
+  - from: Circuit
+    to: City
+  - from: Circuit
+    to: mileage
+  - from: Driver
+    to: firstName
+  - from: Driver
+    to: lastName
+  - from: Driver
+    to: Age
+  - from: CarNumber
+    to: Stable
+  - from: Stable
+    to: MainAddress
+  - from: Stable
+    to: Manager
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: Position
+  - name: Time
+  - name: Score
+  - name: NumberOfLaps
+metrics:
+- {}
+output:
+- dependencies:
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: car
+    to: carNumber
+  - from: car
+    to: circuit
+  - from: car
+    to: length
+  - from: driver
+    to: stable
+  - from: driver
+    to: stableManager
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from: driver
+    to: driverName
+  - from: driver
+    to: driverSurname
+  - from: driver
+    to: driverAge
+  - from
+  fact:
+    name: ARRIVAL
+  measures:
+  - name: position
+  - name: score
+  - name: number_of_laps
+  - name: time
+output_preprocessed: []

@@ -1,0 +1,1887 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 8
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 346
+    missing: 12
+    reversed: 0
+  fact:
+    false_fact: 0
+    incorrect: true
+  measures:
+    extra: 3
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 0
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: Member
+  - from: PRESENCE
+    to: WOD
+  - from: PRESENCE
+    to: Hour
+  - from: PRESENCE
+    to: Date
+  - from: PRESENCE
+    to: Instructor
+  - from: Member
+    to: Name
+  - from: Member
+    to: Surname
+  - from: Member
+    to: Weight
+  - from: Member
+    to: Height
+  - from: Member
+    to: Address
+  - from: Address
+    to: PostalCode
+  - from: PostalCode
+    to: City
+  - from: WOD
+    to: WODType
+  fact:
+    name: PRESENCE
+  measures: []
+metrics:
+- edges:
+    f1: 0.0056
+    fn: 12
+    fp: 346
+    precision: 0.0029
+    recall: 0.0769
+    tp: 1
+  nodes:
+    f1: 0.4348
+    fn: 9
+    fp: 4
+    precision: 0.5556
+    recall: 0.3571
+    tp: 5
+output:
+- dependencies:
+  - from: WOD
+    to: WODType
+  - from: WOD
+    to: day
+  - from: WOD
+    to: hour
+  - from: WOD
+    to: instructor
+  - from: WOD
+    to: members
+  - from: WOD
+    to: weight
+  - from: WOD
+    to: height
+  - from: DAY
+    to: day
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: members
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  - from: DAY
+    to: height
+  - from: DAY
+    to: WOD
+  - from: DAY
+    to: WODType
+  - from: DAY
+    to: hour
+  - from: DAY
+    to: instructor
+  - from: DAY
+    to: members
+  - from: DAY
+    to: weight
+  fact:
+    name: CROSSFIT
+  measures:
+  - name: members
+  - name: weight
+  - name: height
+output_preprocessed:
+- dependencies:
+  - from: WOD
+    label: tp
+    to: WODType
+  - from: WOD
+    label: fp
+    to: Date
+  - from: WOD
+    label: fp
+    to: hour
+  - from: WOD
+    label: fp
+    to: instructor
+  - from: WOD
+    label: fp
+    to: members
+  - from: WOD
+    label: fp
+    to: weight
+  - from: WOD
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: Date
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  - from: Date
+    label: fp
+    to: height
+  - from: Date
+    label: fp
+    to: WOD
+  - from: Date
+    label: fp
+    to: WODType
+  - from: Date
+    label: fp
+    to: hour
+  - from: Date
+    label: fp
+    to: instructor
+  - from: Date
+    label: fp
+    to: members
+  - from: Date
+    label: fp
+    to: weight
+  fact:
+    name: CROSSFIT
+  ground_truth_labels:
+    dependencies:
+    - from: PRESENCE
+      label: fn
+      to: Member
+    - from: PRESENCE
+      label: fn
+      to: WOD
+    - from: PRESENCE
+      label: fn
+      to: Hour
+    - from: PRESENCE
+      label: fn
+      to: Date
+    - from: PRESENCE
+      label: fn
+      to: Instructor
+    - from: Member
+      label: fn
+      to: Name
+    - from: Member
+      label: fn
+      to: Surname
+    - from: Member
+      label: fn
+      to: Weight
+    - from: Member
+      label: fn
+      to: Height
+    - from: Member
+      label: fn
+      to: Address
+    - from: Address
+      label: fn
+      to: PostalCode
+    - from: PostalCode
+      label: fn
+      to: City
+    - from: WOD
+      label: tp
+      to: WODType
+    fact:
+      name: PRESENCE
+    measures: []
+  measures:
+  - name: members
+  - name: weight
+  - name: height
+  nodes:
+    fn:
+    - city
+    - surname
+    - name
+    - height
+    - weight
+    - address
+    - presence
+    - member
+    - postalcode
+    fp:
+    - height
+    - weight
+    - members
+    - crossfit
+    tp:
+    - wodtype
+    - wod
+    - date
+    - instructor
+    - hour

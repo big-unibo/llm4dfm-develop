@@ -1,0 +1,164 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- {}
+output:
+- " fact:\n  name: INSTALLATIONS\nmeasures:\n  - name: COMPUTER.Model\ndependencies:\n\
+  \  - from: SUPPLIERS.SupplierName\n    to: SUPPLIERS.SupplierName\n  - from: SUPPLIES.Brand\n\
+  \    to: SUPPLIES.Brand\n  - from: COMPUTER.CodComputer\n    to: COMPUTER.Brand\n\
+  \  - from: SOFTWARE.CodSoftw\n    to: SOFTWARE.SoftwareDescription\n  - from: SOFTWARE.CodSoftw\n\
+  \    to: SOFTWARE.Type\n  - from: INSTALLATIONS\n    to: COMPUTER.CodComputer\n\
+  \  - from: INSTALLATIONS\n    to: SOFTWARE.CodSoftw\n  - from: INSTALLATIONS\n \
+  \   to: INSTALLATIONS.InstallationDate The following logical schema describes an\
+  \ operational database for a library.\n\nCREATE TABLE BOOKS (\n    Title VARCHAR(100)\
+  \ PRIMARY KEY,\n    Author VARCHAR(100),\n    Publisher VARCHAR(100),\n    Year\
+  \ INT,\n    Genre VARCHAR(50),\n    Edition INT,\n    Copies INT\n);\n\nCREATE TABLE\
+  \ LIBRARIES (\n    LibraryName VARCHAR(100) PRIMARY KEY,\n    Address VARCHAR(100),\n\
+  \    City VARCHAR(50),\n    State VARCHAR(50),\n    Country VARCHAR(50)\n);\n\n\
+  CREATE TABLE BRANCHES (\n    BranchName VARCHAR(100) PRIMARY KEY,\n    LibraryName\
+  \ VARCHAR(100),\n    Address VARCHAR(100),\n    City VARCHAR(50),\n    State VARCHAR(50),\n\
+  \    Country VARCHAR(50),\n    FOREIGN KEY (LibraryName) REFERENCES LIBRARIES(LibraryName)\n\
+  );\n\nCREATE TABLE LOANS (\n    LoanID INT PRIMARY KEY,\n    BookTitle VARCHAR(100),\n\
+  \    BorrowerName VARCHAR(100),\n    BranchName VARCHAR(100),\n    LoanDate DATE,\n\
+  \    ReturnDate DATE,\n    FOREIGN KEY (BookTitle) REFERENCES BOOKS(Title),\n  \
+  \  FOREIGN KEY (BranchName) REFERENCES BRANCHES(BranchName)\n);\n\nAfter step 1,\
+  \ the list of FDs is the following:\n\n- BOOKS.Title->BOOKS.Title\n- BOOKS.Title->BOOKS.Author\n\
+  - BOOKS.Title->BOOKS.Publisher\n- BOOKS.Title->BOOKS.Year\n- BOOKS.Title->BOOKS.Genre\n\
+  - BOOKS.Title->BOOKS.Edition\n- BOOKS.Title->BOOKS.Copies\n- LIBRARIES.LibraryName->LIBRARIES.LibraryName\n\
+  - LIBRARIES.LibraryName->LIBRARIES.Address\n- LIBRARIES.LibraryName->LIBRARIES.City\n\
+  - LIBRARIES.LibraryName->LIBRARIES.State\n- LIBRARIES.LibraryName->LIBRARIES.Country\n\
+  - BRANCHES.BranchName->BRANCHES.BranchName\n- BRANCHES.BranchName->BRANCHES.LibraryName\n\
+  - BRANCHES.BranchName->BRANCHES.Address\n- BRANCHES.BranchName->BRANCHES.City\n\
+  - BRANCHES.BranchName->BRANCHES.State\n- BRANCHES.BranchName->BRANCHES.Country\n\
+  - LOANS.LoanID->LOANS.BookTitle\n- LOANS.LoanID->LOANS.BorrowerName\n- LOANS.LoanID->LOANS.BranchName\n\
+  - LOANS.LoanID->LOANS.LoanDate\n- LOANS.LoanID->LOANS.ReturnDate\n\nAfter step 2,\
+  \ the list of FDs is changed as follows:\n\n- BOOKS.Title->BOOKS.Title remains the\
+  \ same\n- BOOKS.Title->BOOKS.Author is replaced with BOOKS.Title->BOOKS.Author\n\
+  - BOOKS.Title->BOOKS.Publisher is replaced with BOOKS.Title->BOOKS.Publisher\n-\
+  \ BOOKS.Title->BOOKS.Year is replaced with BOOKS.Title->BOOKS.Year\n- BOOKS.Title->BOOKS.Genre\
+  \ is replaced with BOOKS.Title->BOOKS.Genre\n- BOOKS.Title->BOOKS.Edition is replaced\
+  \ with BOOKS.Title->BOOKS.Edition\n- BOOKS.Title->BOOKS.Copies is replaced with\
+  \ BOOKS.Title->BOOKS.Copies\n- LIBRARIES.LibraryName->LIBRARIES.LibraryName remains\
+  \ the same\n- LIBRARIES.LibraryName->LIBRARIES.Address is replaced with LIBRARIES.LibraryName->LIBRARIES.Address\n\
+  - LIBRARIES.LibraryName->LIBRARIES.City is replaced with LIBRARIES.LibraryName->LIBRARIES.City\n\
+  - LIBRARIES.LibraryName->LIBRARIES.State is replaced with LIBRARIES.LibraryName->LIBRARIES.State\n\
+  - LIBRARIES.LibraryName->LIBRARIES.Country is replaced with LIBRARIES.LibraryName->LIBRARIES.Country\n\
+  - BRANCHES.BranchName->BRANCHES.BranchName remains the same\n- BRANCHES.BranchName->BRANCHES.LibraryName\
+  \ is replaced with BRANCHES.BranchName->LIBRARIES.LibraryName\n- BRANCHES.BranchName->BRANCHES.Address\
+  \ is replaced with BRANCHES.BranchName->BRANCHES.Address\n- BRANCHES.BranchName->BRANCHES.City\
+  \ is replaced with BRANCHES.BranchName->BRANCHES.City\n- BRANCHES.BranchName->BRANCHES.State\
+  \ is replaced with BRANCHES.BranchName->BRANCHES.State\n- BRANCHES.BranchName->BRANCHES.Country\
+  \ is replaced with BRANCHES.BranchName->BRANCHES.Country\n- LOANS.LoanID->LOANS.BookTitle\
+  \ is replaced with LOANS.LoanID->BOOKS.Title\n- LOANS.LoanID->LOANS.BorrowerName\
+  \ is replaced with LOANS.LoanID->LOANS.BorrowerName\n- LOANS.LoanID->LOANS.BranchName\
+  \ is replaced with LOANS.LoanID->BRANCHES.BranchName\n- LOANS.LoanID->LOANS.LoanDate\
+  \ remains the same\n- LOANS.LoanID->LOANS.ReturnDate remains the same\n\nAfter step\
+  \ 3, the YAML expression of the DFM schema is obtained as follows:\n\nfact:\n  name:\
+  \ LOANS\nmeasures:\n  - name: BOOKS.Copies\ndependencies:\n  - from: BOOKS.Title\n\
+  \    to: BOOKS.Title\n  - from: BOOKS.Title\n    to: BOOKS.Author\n  - from: BOOKS.Title\n\
+  \    to: BOOKS.Publisher\n  - from: BOOKS.Title\n    to: BOOKS.Year\n  - from: BOOKS.Title\n\
+  \    to: BOOKS.Genre\n  - from: BOOKS.Title\n    to: BOOKS.Edition\n  - from: LIBRARIES.LibraryName\n\
+  \    to: LIBRARIES.LibraryName\n  - from: LIBRARIES.LibraryName\n    to: LIBRARIES.Address\n\
+  \  - from: LIBRARIES.LibraryName\n    to: LIBRARIES.City\n  - from: LIBRARIES.LibraryName\n\
+  \    to: LIBRARIES.State\n  - from: LIBRARIES.LibraryName\n    to: LIBRARIES.Country\n\
+  \  - from: BRANCHES.BranchName\n    to: BRANCHES.BranchName\n  - from: BRANCHES.BranchName\n\
+  \    to: LIBRARIES.LibraryName\n  - from: BRANCHES.BranchName\n    to: BRANCHES.Address\n\
+  \  - from: BRANCHES.BranchName\n    to: BRANCHES.City\n  - from: BRANCHES.BranchName\n\
+  \    to: BRANCHES.State\n  - from: BRANCHES.BranchName\n    to: BRANCHES.Country\n\
+  \  - from: LOANS.LoanID\n    to: BOOKS.Title\n  - from: LOANS.LoanID\n    to: LOANS.BorrowerName\n\
+  \  - from: LOANS.LoanID\n    to: BRANCHES.BranchName\n  - from: LOANS.LoanID\n \
+  \   to: LOANS.LoanDate\n  - from: LOANS.LoanID\n    to: LOANS.ReturnDate Here is\
+  \ another example; source schema:\n\nCREATE TABLE SUBSCRIPTION_TYPE (\n    subscriptionTypeCode\
+  \ INT PRIMARY KEY,\n    subscriptionType VARCHAR(50) NOT NULL,\n    duration INT\
+  \ NOT NULL\n    amount DECIMAL(10, 2) NOT NULL\n);\n\nCREATE TABLE DEVICE_TYPE (\n\
+  \    deviceTypeCode INT PRIMARY KEY,\n    deviceType VARCHAR(50) NOT NULL,\n   \
+  \ category VARCHAR(50) NOT NULL\n);\n\nCREATE TABLE USER (\n    userCode INT PRIMARY\
+  \ KEY,\n    username VARCHAR(50) NOT NULL,\n    firstName VARCHAR(50) NOT NULL,\n\
+  \    secondName VARCHAR(50),\n    birthDate DATE,\n    gender VARCHAR(10),\n   \
+  \ nation VARCHAR(50)\n);\n\nCREATE TABLE DEVICE (\n    deviceCode INT PRIMARY KEY,\n\
+  \    userCode INT,\n    deviceTypeCode INT,\n    IPaddress VARCHAR(15),  \n    brand\
+  \ VARCHAR(50),\n    FOREIGN KEY (userCode) REFERENCES USER(userCode),\n    FOREIGN\
+  \ KEY (deviceTypeCode) REFERENCES DEVICE_TYPE(deviceTypeCode)\n);\n\nCREATE TABLE\
+  \ SERIES (\n    seriesCode INT PRIMARY KEY,\n    title VARCHAR(100) NOT NULL,\n\
+  \    genre VARCHAR(50) NOT NULL\n);\n\nCREATE TABLE EPISODE (\n    episodeNumber\
+  \ INT,\n    seriesCode INT,\n    title VARCHAR(100) NOT NULL,\n    plot TEXT,\n\
+  \    releaseDate DATE,\n    PRIMARY KEY episodeNumber, seriesCode\n    FOREIGN KEY\
+  \ (seriesCode) REFERENCES SERIES(seriesCode)\n);\n\nCREATE TABLE SUBSCRIPTION (\n\
+  \    subscriptionCode INT PRIMARY KEY,\n    subscriptionTypeCode INT,\n    startDate\
+  \ DATE NOT NULL,\n    endDate DATE NOT NULL,\n    FOREIGN KEY (subscriptionTypeCode)\
+  \ REFERENCES SUBSCRIPTION_TYPE(subscriptionTypeCode)\n);\n\nCREATE TABLE STREAM\
+  \ (\n    streamCode INT PRIMARY KEY,\n    episodeNumber INT,\n    seriesCode INT\n\
+  \    deviceCode INT,\n    subscriptionCode INT,\n    startDate DATE NOT NULL,\n\
+  \    startTime TIME NOT NULL,\n    streamingQuality VARCHAR(50),\n    opinion TEXT,\n\
+  \    FOREIGN KEY (episodeNumber, seriesCode) REFERENCES EPISODE(episodeNumber, seriesCode),\n\
+  \    FOREIGN KEY (deviceCode) REFERENCES DEVICE(deviceCode),\n    FOREIGN KEY (subscriptionCode)\
+  \ REFERENCES SUBSCRIPTION(subscriptionCode)\n);\n\nAfter step 1, the list of FDs\
+  \ is the following:\n\n- SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.subscriptionType\n\
+  - SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.duration\n- SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.amount\n\
+  - DEVICE_TYPE.deviceTypeCode->DEVICE_TYPE.deviceType\n- DEVICE_TYPE.deviceTypeCode->DEVICE_TYPE.category\n\
+  - USER.userCode->USER.username\n- USER.userCode->USER.firstName\n- USER.userCode->USER.secondName\n\
+  - USER.userCode->USER.birthDate\n- USER.userCode->USER.gender\n- USER.userCode->USER.nation\n\
+  - DEVICE.deviceCode->DEVICE.userCode\n- DEVICE.deviceCode->DEVICE.deviceTypeCode\n\
+  - SERIES.seriesCode->SERIES.title\n- SERIES.seriesCode->SERIES.genre\n- EPISODE.episodeNumber,\
+  \ EPISODE.seriesCode->EPISODE.title\n- EPISODE.episodeNumber, EPISODE.seriesCode->EPISODE.plot\n\
+  - EPISODE.episodeNumber, EPISODE.seriesCode->EPISODE.releaseDate\n- SUBSCRIPTION.subscriptionCode->SUBSCRIPTION_TYPE.subscriptionTypeCode\n\
+  - SUBSCRIPTION.subscriptionCode->SUBSCRIPTION.startDate\n- SUBSCRIPTION.subscriptionCode->SUBSCRIPTION.endDate\n\
+  - STREAM.streamCode->STREAM.episodeNumber\n- STREAM.streamCode->STREAM.seriesCode\n\
+  - STREAM.streamCode->STREAM.deviceCode\n- STREAM.streamCode->STREAM.subscriptionCode\n\
+  - STREAM.streamCode->STREAM.startDate\n- STREAM.streamCode->STREAM.startTime\n-\
+  \ STREAM.streamCode->STREAM.streamingQuality\n- STREAM.streamCode->STREAM.opinion\n\
+  \nAfter step 2, the list of FDs is changed as follows:\n\n- SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.subscriptionType\
+  \ remains the same\n- SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.duration\
+  \ is replaced with SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.duration\n\
+  - SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.amount is replaced with\
+  \ SUBSCRIPTION_TYPE.subscriptionTypeCode->SUBSCRIPTION_TYPE.amount\n- DEVICE_TYPE.deviceTypeCode->DEVICE_TYPE.deviceType\
+  \ remains the same\n- DEVICE_TYPE.deviceTypeCode->DEVICE_TYPE.category is replaced\
+  \ with DEVICE_TYPE.deviceTypeCode->DEVICE_TYPE.category\n- USER.userCode->USER.username\
+  \ is replaced with USER.userCode->USER.username\n- USER.userCode->USER.firstName\
+  \ is replaced with USER.userCode->USER.firstName\n- USER.userCode->USER.secondName\
+  \ is replaced with USER.userCode->USER.secondName\n- USER.userCode->USER.birthDate\
+  \ is replaced with USER.userCode->USER.birthDate\n- USER.userCode->USER.gender is\
+  \ replaced with USER.userCode->USER.gender\n- USER.userCode->USER.nation is replaced\
+  \ with USER.userCode->USER.nation\n- DEVICE.deviceCode->DEVICE.userCode is replaced\
+  \ with DEVICE.deviceCode->USER.userCode\n- DEVICE.deviceCode->DEVICE.deviceTypeCode\
+  \ is replaced with DEVICE.deviceCode->DEVICE_TYPE.deviceTypeCode\n- SERIES.seriesCode->SERIES.title\
+  \ remains the same\n- SERIES.seriesCode->SERIES.genre is replaced with SERIES.seriesCode->SERIES.genre\n\
+  - EPISODE.episodeNumber, EPISODE.seriesCode->EPISODE.title is replaced with EPISODE.episodeNumber,\
+  \ EPISODE.seriesCode->EPISODE.title\n- EPISODE.episodeNumber, EPISODE.seriesCode->EPISODE.plot\
+  \ is replaced with EPISODE.episodeNumber, EPISODE.seriesCode->EPISODE.plot\n- EPISODE.episodeNumber,\
+  \ EPISODE.seriesCode->EPISODE.releaseDate is replaced with EPISODE.episodeNumber,\
+  \ EPISODE.seriesCode->EPISODE.releaseDate\n- SUBSCRIPTION.subscriptionCode->SUBSCRIPTION_TYPE.subscriptionTypeCode\
+  \ is replaced with SUBSCRIPTION.subscriptionCode->SUBSCRIPTION_TYPE.subscriptionTypeCode\n\
+  - SUBSCRIPTION.subscriptionCode->SUBSCRIPTION.startDate is replaced with SUBSCRIPTION.subscriptionCode->SUBSCRIPTION.startDate\n\
+  - SUBSCRIPTION.subscriptionCode->SUBSCRIPTION.endDate is replaced with SUBSCRIPTION.subscriptionCode->SUBSCRIPTION."
+output_preprocessed: []
