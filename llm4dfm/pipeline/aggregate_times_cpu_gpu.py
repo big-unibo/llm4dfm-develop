@@ -31,6 +31,7 @@ def collect_csv_data(root_dir: str):
                 for _, row in df.iterrows():
                     rows.append({
                         "config_label": row["config_label"],
+                        'prompt': row['ex_prompt_version'],
                         "device": device,
                         "time": float(row["time"]),
                         "edges_f1": float(row["edges_f1"]),
