@@ -77,14 +77,12 @@ def plot_time_f1(data, file_name, label):
                  [exercise_stats["nodes_f1"], exercise_stats["edges_f1"]],  # y goes from nodes_f1 to edges_f1
                  color='black', linewidth=1, alpha=0.5)
 
-    offset = 0.1
+    offset = 0.05
 
     # Annotate each point with exercise name
     for i, row in exercise_stats.iterrows():
-        plt.text(row["time"], row["edges_f1"] - offset, row["ex_name"],
-                 fontsize=6, ha="right", va="bottom", color=f1_edges_color, rotation=45)
-        plt.text(row["time"], row["nodes_f1"] + offset, row["ex_name"],
-                 fontsize=6, ha="right", va="top", color=f1_nodes_color, rotation=45)
+        plt.text(row["time"] - offset, row["nodes_f1"] + offset, row["ex_name"][-1],
+                 fontsize=12, ha="right", va="top", color=f1_nodes_color)
 
     # Labels and title
     plt.xlabel("Average Elapsed Time (s)")

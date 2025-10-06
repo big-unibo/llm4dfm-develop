@@ -1,0 +1,258 @@
+config:
+  label: mistral-7
+  name: mistral-7B-inst-v0.3-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 0
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 21
+    missing: 10
+    reversed: 0
+  fact:
+    false_fact: 5
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 4
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATIONS
+    to: INSTALLATIONS.InstallationDate
+  - from: INSTALLATIONS
+    to: COMPUTER.CodComputer
+  - from: INSTALLATIONS
+    to: SOFTWARE.CodSoftw
+  - from: COMPUTER.CodComputer
+    to: COMPUTER.Model
+  - from: COMPUTER.CodComputer
+    to: SUPPLIES.Brand
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.SoftwareDescription
+  - from: SOFTWARE.CodSoftw
+    to: SOFTWARE.Type
+  - from: SUPPLIES.Brand
+    to: SUPPLIERS.SupplierName
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierCity
+  - from: SUPPLIERS.SupplierName
+    to: SUPPLIERS.SupplierAddress
+  fact:
+    name: INSTALLATIONS
+  measures: []
+metrics:
+- edges:
+    f1: 0
+    fn: 10
+    fp: 21
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+  nodes:
+    f1: 0
+    fn: 11
+    fp: 27
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: BOOKS.BookId
+    to: BOOKS.Title
+  - from: BOOKS.BookId
+    to: BOOKS.Author
+  - from: BOOKS.BookId
+    to: BOOKS.Publisher
+  - from: BOOKS.BookId
+    to: BOOKS.PublicationYear
+  - from: BOOKS.BookId
+    to: BOOKS.Genre
+  - from: LIBRARIES.LibraryId
+    to: LIBRARIES.LibraryName
+  - from: LIBRARIES.LibraryId
+    to: LIBRARIES.City
+  - from: LIBRARIES.LibraryId
+    to: LIBRARIES.Country
+  - from: BRANCHES.BranchId
+    to: BRANCHES.BranchName
+  - from: BRANCHES.BranchId
+    to: BRANCHES.City
+  - from: BRANCHES.BranchId
+    to: BRANCHES.Country
+  - from: MEMBERS.MemberId
+    to: MEMBERS.FirstName
+  - from: MEMBERS.MemberId
+    to: MEMBERS.LastName
+  - from: MEMBERS.MemberId
+    to: MEMBERS.Address
+  - from: MEMBERS.MemberId
+    to: MEMBERS.City
+  - from: MEMBERS.MemberId
+    to: MEMBERS.Country
+  - from: LOANS.LoanId
+    to: LOANS.LoanDate
+  - from: LOANS.LoanId
+    to: LOANS.ReturnDate
+  - from: LOANS.BookId
+    to: BOOKS.BookId
+  - from: LOANS.MemberId
+    to: MEMBERS.MemberId
+  - from: LOANS.BranchId
+    to: BRANCHES.BranchId
+  fact:
+    name: LOANS
+  measures:
+  - name: BOOKS.PublicationYear
+output_preprocessed:
+- dependencies:
+  - from: BOOKS.BookId
+    label: fp
+    to: BOOKS.Title
+  - from: BOOKS.BookId
+    label: fp
+    to: BOOKS.Author
+  - from: BOOKS.BookId
+    label: fp
+    to: BOOKS.Publisher
+  - from: BOOKS.BookId
+    label: fp
+    to: BOOKS.PublicationYear
+  - from: BOOKS.BookId
+    label: fp
+    to: BOOKS.Genre
+  - from: LIBRARIES.LibraryId
+    label: fp
+    to: LIBRARIES.LibraryName
+  - from: LIBRARIES.LibraryId
+    label: fp
+    to: LIBRARIES.City
+  - from: LIBRARIES.LibraryId
+    label: fp
+    to: LIBRARIES.Country
+  - from: BRANCHES.BranchId
+    label: fp
+    to: BRANCHES.BranchName
+  - from: BRANCHES.BranchId
+    label: fp
+    to: BRANCHES.City
+  - from: BRANCHES.BranchId
+    label: fp
+    to: BRANCHES.Country
+  - from: MEMBERS.MemberId
+    label: fp
+    to: MEMBERS.FirstName
+  - from: MEMBERS.MemberId
+    label: fp
+    to: MEMBERS.LastName
+  - from: MEMBERS.MemberId
+    label: fp
+    to: MEMBERS.Address
+  - from: MEMBERS.MemberId
+    label: fp
+    to: MEMBERS.City
+  - from: MEMBERS.MemberId
+    label: fp
+    to: MEMBERS.Country
+  - from: LOANS.LoanId
+    label: fp
+    to: LOANS.LoanDate
+  - from: LOANS.LoanId
+    label: fp
+    to: LOANS.ReturnDate
+  - from: LOANS.BookId
+    label: fp
+    to: BOOKS.BookId
+  - from: LOANS.MemberId
+    label: fp
+    to: MEMBERS.MemberId
+  - from: LOANS.BranchId
+    label: fp
+    to: BRANCHES.BranchId
+  fact:
+    name: LOANS
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATIONS
+      label: fn
+      to: INSTALLATIONS.InstallationDate
+    - from: INSTALLATIONS
+      label: fn
+      to: COMPUTER.CodComputer
+    - from: INSTALLATIONS
+      label: fn
+      to: SOFTWARE.CodSoftw
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: COMPUTER.Model
+    - from: COMPUTER.CodComputer
+      label: fn
+      to: SUPPLIES.Brand
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.SoftwareDescription
+    - from: SOFTWARE.CodSoftw
+      label: fn
+      to: SOFTWARE.Type
+    - from: SUPPLIES.Brand
+      label: fn
+      to: SUPPLIERS.SupplierName
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierCity
+    - from: SUPPLIERS.SupplierName
+      label: fn
+      to: SUPPLIERS.SupplierAddress
+    fact:
+      name: INSTALLATIONS
+    measures: []
+  measures:
+  - name: BOOKS.PublicationYear
+  nodes:
+    fn:
+    - software.softwaredescription
+    - computer.model
+    - suppliers.supplieraddress
+    - installations
+    - suppliers.suppliercity
+    - software.type
+    - suppliers.suppliername
+    - software.codsoftw
+    - supplies.brand
+    - installations.installationdate
+    - computer.codcomputer
+    fp:
+    - loans.returndate
+    - loans
+    - books.author
+    - books.publisher
+    - members.memberid
+    - branches.country
+    - libraries.libraryname
+    - books.bookid
+    - members.country
+    - loans.bookid
+    - books.title
+    - members.lastname
+    - loans.loanid
+    - libraries.country
+    - branches.city
+    - branches.branchname
+    - libraries.libraryid
+    - members.address
+    - books.genre
+    - libraries.city
+    - members.firstname
+    - loans.branchid
+    - members.city
+    - loans.loandate
+    - books.publicationyear
+    - loans.memberid
+    - branches.branchid
+    tp: []

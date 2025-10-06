@@ -1,0 +1,1221 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 7
+    shared_missing: 0
+    shared_with_fact_root_extra: 0
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 184
+    missing: 23
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 2
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: PURCHASES
+    to: PURCHASES.Amount
+  - from: PURCHASES
+    to: PURCHASES.Exchange
+  - from: PURCHASES
+    to: CREDITCARDS.CCNumber
+  - from: PURCHASES
+    to: STORES.StoreCode
+  - from: PURCHASES
+    to: PURCHASES.Currency
+  - from: PURCHASES
+    to: PURCHASES.Date
+  - from: CREDITCARDS.CCNumber
+    to: CARDTYPES.TypeCode
+  - from: CREDITCARDS.CCNumber
+    to: HOLDERS.HolderCode
+  - from: CREDITCARDS.CCNumber
+    to: CREDITCARDS.ExpirationDate
+  - from: PURCHASES
+    to: CREDITCARDS.CreditLimit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Circuit
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.IssuingBank
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Address
+  - from: CARDTYPES.IssuingBank
+    to: CARDTYPES.Country
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.CardName
+  - from: CARDTYPES.TypeCode
+    to: CARDTYPES.Color
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: STORES.StoreCode
+    to: STORES.Name
+  - from: STORES.StoreCode
+    to: STORES.Address
+  - from: STORES.StoreCode
+    to: STORES.Country
+  - from: STORES.Country
+    to: STORES.Area
+  - from: STORES.StoreCode
+    to: STORES.WebSite
+  - from: STORES.StoreCode
+    to: STORES.Email
+  - from: STORES.StoreCode
+    to: STORES.Type
+  fact:
+    name: PURCHASES
+  measures:
+  - name: PURCHASES.Amount
+  - name: PURCHASES.Exchange
+  - name: CREDITCARDS.CreditLimit
+metrics:
+- edges:
+    f1: 0.0548
+    fn: 23
+    fp: 184
+    precision: 0.0316
+    recall: 0.2069
+    tp: 6
+  nodes:
+    f1: 0.2951
+    fn: 21
+    fp: 22
+    precision: 0.2903
+    recall: 0.3
+    tp: 9
+output:
+- dependencies:
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    to: HOLDERS.Quality
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Circuit
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.IssuingBank
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Address
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Country
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.CardName
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.Color
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.TypeCode
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.HolderCode
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.ExpirationDate
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.CreditLimit
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCode
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreName
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreAddress
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCountry
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreWebsite
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreEmail
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreType
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreArea
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreWebSite
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreEmail
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StorePhone
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreAddress
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreState
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreState
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StorePhone
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreAddress
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreState
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StorePhone
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreAddress
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreState
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreState
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreCity
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - from: CREDIT_CARDS.TypeCode
+    to: CREDIT_CARDS.StoreZip
+  - null
+  fact:
+    name: CREDIT_CARDS
+  measures:
+  - name: CREDIT_CARDS.amount
+  - name: CREDIT_CARDS.creditLimit
+output_preprocessed:
+- dependencies:
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.FirstName
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.LastName
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.BirthDate
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.Job
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.IncomeRange
+  - from: HOLDERS.HolderCode
+    label: tp
+    to: HOLDERS.Quality
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Circuit
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.IssuingBank
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Address
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Country
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.CardName
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.Color
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.TypeCode
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.HolderCode
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.ExpirationDate
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.CreditLimit
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCode
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreName
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreAddress
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCountry
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreWebsite
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreEmail
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreType
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreArea
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreWebSite
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreEmail
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StorePhone
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreAddress
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreState
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreState
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StorePhone
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreAddress
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreState
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StorePhone
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreAddress
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreState
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreState
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreCity
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  - from: CREDITCARDS.TypeCode
+    label: fp
+    to: CREDITCARDS.StoreZip
+  fact:
+    name: CREDITCARDS
+  ground_truth_labels:
+    dependencies:
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Amount
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Exchange
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CCNumber
+    - from: PURCHASES
+      label: fn
+      to: STORES.StoreCode
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Currency
+    - from: PURCHASES
+      label: fn
+      to: PURCHASES.Date
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CARDTYPES.TypeCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: HOLDERS.HolderCode
+    - from: CREDITCARDS.CCNumber
+      label: fn
+      to: CREDITCARDS.ExpirationDate
+    - from: PURCHASES
+      label: fn
+      to: CREDITCARDS.CreditLimit
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.Circuit
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.IssuingBank
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Address
+    - from: CARDTYPES.IssuingBank
+      label: fn
+      to: CARDTYPES.Country
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.CardName
+    - from: CARDTYPES.TypeCode
+      label: fn
+      to: CARDTYPES.Color
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.FirstName
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.LastName
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.BirthDate
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.Job
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.IncomeRange
+    - from: HOLDERS.HolderCode
+      label: tp
+      to: HOLDERS.Quality
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Name
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Address
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Country
+    - from: STORES.Country
+      label: fn
+      to: STORES.Area
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.WebSite
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Email
+    - from: STORES.StoreCode
+      label: fn
+      to: STORES.Type
+    fact:
+      name: PURCHASES
+    measures:
+    - name: PURCHASES.Amount
+    - name: PURCHASES.Exchange
+    - name: CREDITCARDS.CreditLimit
+  measures:
+  - name: CREDITCARDS.amount
+  - name: CREDITCARDS.creditLimit
+  nodes:
+    fn:
+    - cardtypes.color
+    - cardtypes.issuingbank
+    - stores.area
+    - stores.address
+    - stores.website
+    - purchases.exchange
+    - cardtypes.country
+    - stores.email
+    - creditcards.ccnumber
+    - cardtypes.address
+    - stores.type
+    - cardtypes.typecode
+    - purchases
+    - stores.country
+    - purchases.amount
+    - stores.storecode
+    - cardtypes.circuit
+    - purchases.currency
+    - stores.name
+    - purchases.date
+    - cardtypes.cardname
+    fp:
+    - creditcards.storewebsite
+    - creditcards.amount
+    - creditcards.color
+    - creditcards.storephone
+    - creditcards.storeemail
+    - creditcards.issuingbank
+    - creditcards.storestate
+    - creditcards.storecountry
+    - creditcards.storearea
+    - creditcards.storetype
+    - creditcards
+    - creditcards.storecity
+    - creditcards.cardname
+    - creditcards.storename
+    - creditcards.address
+    - creditcards.circuit
+    - creditcards.typecode
+    - creditcards.country
+    - creditcards.storezip
+    - creditcards.storeaddress
+    - creditcards.holdercode
+    - creditcards.storecode
+    tp:
+    - holders.holdercode
+    - holders.incomerange
+    - holders.quality
+    - holders.firstname
+    - holders.job
+    - holders.lastname
+    - creditcards.expirationdate
+    - holders.birthdate
+    - creditcards.creditlimit

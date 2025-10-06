@@ -1,0 +1,75 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- {}
+output:
+- I made a mistake, I will output the correct YAML response: null
+  I will output the correct YAML response: null
+  dependencies:
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: computerBrand
+  - from: computerBrand
+    to: supplier
+  - from: supplier
+    to: city
+  - from: supplier
+    to: address
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: software
+    to: description
+  - from: SOFTWARE
+    to: quantity
+  - from: SOFTWARE
+    to: computer
+  - from: SOFTWARE
+    role: from
+    to: computerBrand
+  - from: SOFTWARE
+    role: to
+    to: computerBrand
+  - from: SOFTWARE
+    role: treatment
+    to: date
+  - from: SOFTWARE
+    role: releaseassistant
+    to: date
+  fact:
+    name: SOFTWARE
+  measures:
+  - null
+output_preprocessed: []

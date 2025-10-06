@@ -1,0 +1,480 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 8
+    shared_missing: 0
+    shared_with_fact_root_extra: 8
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 59
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 10
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.0563
+    fn: 8
+    fp: 59
+    precision: 0.0328
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0
+    fn: 11
+    fp: 20
+    precision: 0.0
+    recall: 0.0
+    tp: 0
+output:
+- dependencies:
+  - from: computer
+    to: model
+  - from: computer
+    to: brand
+  - from: computer
+    to: address
+  - from: computer
+    to: city
+  - from: computer
+    to: region
+  - from: computer
+    to: state
+  - from: computer
+    to: country
+  - from: computer
+    to: software
+  - from: computer
+    to: type
+  - from: computer
+    to: date
+  - from: computer
+    to: quantity
+  - from: computer
+    to: cost
+  - from: computer
+    to: articleCode
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: device
+  - from: computer
+    to: deviceType
+  - from: computer
+    to: user
+  - from: computer
+    to: userFirstName
+  - from: computer
+    to: userSecondName
+  - from: computer
+    role: daily
+    to: date
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: device
+  - from: computer
+    to: deviceType
+  - from: computer
+    to: user
+  - from: computer
+    to: userFirstName
+  - from: computer
+    to: userSecondName
+  - from: computer
+    role: daily
+    to: date
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: device
+  - from: computer
+    to: deviceType
+  - from: computer
+    to: user
+  - from: computer
+    to: userFirstName
+  - from: computer
+    to: userSecondName
+  - from: computer
+    role: daily
+    to: date
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: device
+  - from: computer
+    to: deviceType
+  - from: computer
+    to: user
+  - from: computer
+    to: userFirstName
+  - from: computer
+    to: userSecondName
+  - from: computer
+    role: daily
+    to: date
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: device
+  - from: computer
+    to: deviceType
+  - from: computer
+    to: user
+  - from: computer
+    to: userFirstName
+  - from: computer
+    to: userSecondName
+  - from: computer
+    role: daily
+    to: date
+  - from: computer
+    to: software
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: device
+  - from: computer
+    to: deviceType
+  - from: computer
+    to: user
+  - from: computer
+    to: userFirstName
+  - from: computer
+    to: userSecondName
+  - from: computer
+    role: daily
+    to: date
+  - from: null
+  fact:
+    name: COMPUTER
+  measures:
+  - name: model
+  - name: brand
+  - name: address
+  - name: city
+  - name: region
+  - name: state
+  - name: country
+  - name: software
+  - name: type
+  - name: date
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: computer
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: city
+  - from: computer
+    label: fp
+    to: region
+  - from: computer
+    label: fp
+    to: state
+  - from: computer
+    label: fp
+    to: country
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: date
+  - from: computer
+    label: fp
+    to: quantity
+  - from: computer
+    label: fp
+    to: cost
+  - from: computer
+    label: fp
+    to: articleCode
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: device
+  - from: computer
+    label: fp
+    to: deviceType
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userFirstName
+  - from: computer
+    label: fp
+    to: userSecondName
+  - from: computer
+    label: fp
+    role: daily
+    to: date
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: device
+  - from: computer
+    label: fp
+    to: deviceType
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userFirstName
+  - from: computer
+    label: fp
+    to: userSecondName
+  - from: computer
+    label: fp
+    role: daily
+    to: date
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: device
+  - from: computer
+    label: fp
+    to: deviceType
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userFirstName
+  - from: computer
+    label: fp
+    to: userSecondName
+  - from: computer
+    label: fp
+    role: daily
+    to: date
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: device
+  - from: computer
+    label: fp
+    to: deviceType
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userFirstName
+  - from: computer
+    label: fp
+    to: userSecondName
+  - from: computer
+    label: fp
+    role: daily
+    to: date
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: device
+  - from: computer
+    label: fp
+    to: deviceType
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userFirstName
+  - from: computer
+    label: fp
+    to: userSecondName
+  - from: computer
+    label: fp
+    role: daily
+    to: date
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: device
+  - from: computer
+    label: fp
+    to: deviceType
+  - from: computer
+    label: fp
+    to: user
+  - from: computer
+    label: fp
+    to: userFirstName
+  - from: computer
+    label: fp
+    to: userSecondName
+  - from: computer
+    label: fp
+    role: daily
+    to: date
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: COMPUTER
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: model
+  - name: brand
+  - name: address
+  - name: city
+  - name: region
+  - name: state
+  - name: country
+  - name: software
+  - name: type
+  - name: date
+  nodes:
+    fn:
+    - date
+    - type
+    - software
+    - model
+    - description
+    - supplier
+    - computer
+    - brand
+    - address
+    - city
+    - installation
+    fp:
+    - region
+    - computer
+    - city
+    - usersecondname
+    - articlecode
+    - software
+    - type
+    - date
+    - quantity
+    - address
+    - country
+    - e,o,r
+    - cost
+    - model
+    - brand
+    - userfirstname
+    - state
+    - user
+    - devicetype
+    - device
+    tp: []

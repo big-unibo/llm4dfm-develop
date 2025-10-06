@@ -1,0 +1,185 @@
+config:
+  label: lama3.2-3
+  name: llama-3.2-3B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 2
+    shared_missing: 0
+    shared_with_fact_root_extra: 2
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 8
+    missing: 8
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: true
+  measures:
+    extra: 1
+    missing: 0
+  miscellaneous:
+    extra_disconnected_components: 1
+    extra_tags: true
+gt_preprocessed:
+  dependencies:
+  - from: INSTALLATION
+    to: Date
+  - from: INSTALLATION
+    to: Computer
+  - from: INSTALLATION
+    to: Software
+  - from: Computer
+    to: Model
+  - from: Computer
+    to: Brand
+  - from: Brand
+    to: Supplier
+  - from: Supplier
+    to: City
+  - from: Supplier
+    to: Address
+  - from: Software
+    to: Description
+  - from: Software
+    to: Type
+  fact:
+    name: INSTALLATION
+  measures: []
+metrics:
+- edges:
+    f1: 0.2
+    fn: 8
+    fp: 8
+    precision: 0.2
+    recall: 0.2
+    tp: 2
+  nodes:
+    f1: 0.6
+    fn: 5
+    fp: 3
+    precision: 0.6667
+    recall: 0.5455
+    tp: 6
+output:
+- I made a mistake, I should have generated a different YAML response. Here is the correct one: null
+  I made another mistake, I should have generated a different YAML response. Here is the correct one: null
+  I will make sure to correct the output. Here is the corrected YAML response: null
+  dependencies:
+  - from: computer
+    to: computerModel
+  - from: computer
+    to: computerBrand
+  - from: computerBrand
+    to: supplierCity
+  - from: computerBrand
+    to: supplierAddress
+  - from: computer
+    to: softwareType
+  - from: computer
+    to: software
+  - from: computer
+    to: quantity
+  - from: computer
+    role: from
+    to: computerModel
+  - from: computer
+    role: to
+    to: computerBrand
+  - from: null
+  fact:
+    name: SOFTWARE
+  measures:
+  - name: quantity
+output_preprocessed:
+- dependencies:
+  - from: computer
+    label: tp
+    to: model
+  - from: computer
+    label: tp
+    to: brand
+  - from: brand
+    label: fp
+    to: city
+  - from: brand
+    label: fp
+    to: address
+  - from: computer
+    label: fp
+    to: type
+  - from: computer
+    label: fp
+    to: software
+  - from: computer
+    label: fp
+    to: quantity
+  - from: computer
+    label: fp
+    role: from
+    to: model
+  - from: computer
+    label: fp
+    role: to
+    to: brand
+  - from: E,R,R,O,R
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: SOFTWARE
+  ground_truth_labels:
+    dependencies:
+    - from: INSTALLATION
+      label: fn
+      to: Date
+    - from: INSTALLATION
+      label: fn
+      to: Computer
+    - from: INSTALLATION
+      label: fn
+      to: Software
+    - from: Computer
+      label: tp
+      to: Model
+    - from: Computer
+      label: tp
+      to: Brand
+    - from: Brand
+      label: fn
+      to: Supplier
+    - from: Supplier
+      label: fn
+      to: City
+    - from: Supplier
+      label: fn
+      to: Address
+    - from: Software
+      label: fn
+      to: Description
+    - from: Software
+      label: fn
+      to: Type
+    fact:
+      name: INSTALLATION
+    measures: []
+  measures:
+  - name: quantity
+  nodes:
+    fn:
+    - supplier
+    - date
+    - installation
+    - software
+    - description
+    fp:
+    - quantity
+    - software
+    - o,e,r
+    tp:
+    - city
+    - type
+    - model
+    - address
+    - computer
+    - brand

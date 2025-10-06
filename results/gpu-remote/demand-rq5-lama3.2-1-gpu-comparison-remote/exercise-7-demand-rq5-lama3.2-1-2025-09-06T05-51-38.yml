@@ -1,0 +1,1726 @@
+config:
+  label: lama3.2-1
+  name: llama-3.2-1B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- attributes:
+    shared_extra: 12
+    shared_missing: 0
+    shared_with_fact_root_extra: 12
+    shared_with_fact_root_missing: 0
+  dependencies:
+    extra: 298
+    missing: 13
+    reversed: 0
+  fact:
+    false_fact: 1
+    incorrect: false
+  measures:
+    extra: 1
+    missing: 1
+  miscellaneous:
+    extra_disconnected_components: 2
+    extra_tags: false
+gt_preprocessed:
+  dependencies:
+  - from: Rental
+    to: CarPlate
+  - from: Rental
+    to: Risk
+  - from: Rental
+    role: Pickup
+    to: Date
+  - from: Rental
+    role: Dropoff
+    to: Date
+  - from: Rental
+    role: Pickup
+    to: Office
+  - from: Rental
+    role: Dropoff
+    to: Office
+  - from: Rental
+    to: Amount
+  - from: Rental
+    to: Discount
+  - from: Rental
+    to: InsuranceCost
+  - from: Rental
+    to: MilesTravelled
+  - from: CarPlate
+    role: Registration
+    to: Date
+  - from: CarPlate
+    to: FuelType
+  - from: CarPlate
+    to: Category
+  - from: CarPlate
+    to: Model
+  - from: Model
+    to: Brand
+  - from: Office
+    to: City
+  - from: City
+    to: State
+  - from: State
+    to: Country
+  - from: Country
+    to: Area
+  fact:
+    name: Rental
+  measures:
+  - name: Amount
+  - name: Discount
+  - name: InsuranceCost
+  - name: MilesTravelled
+metrics:
+- edges:
+    f1: 0.0372
+    fn: 13
+    fp: 298
+    precision: 0.0197
+    recall: 0.3158
+    tp: 6
+  nodes:
+    f1: 0.6857
+    fn: 5
+    fp: 6
+    precision: 0.6667
+    recall: 0.7059
+    tp: 12
+output:
+- dependencies:
+  - from: plate
+    to: plate
+  - from: pickup
+    to: pickup
+  - from: pickup
+    to: dropoff
+  - from: dropoff
+    to: dropoff
+  - from: registration
+    to: registration
+  - from: fuelType
+    to: fuelType
+  - from: model
+    to: model
+  - from: category
+    to: category
+  - from: office
+    to: office
+  - from: office
+    to: city
+  - from: city
+    to: state
+  - from: state
+    to: country
+  - from: rental
+    to: amount
+  - from: rental
+    to: discount
+  - from: rental
+    to: insuranceCost
+  - from: rental
+    to: miles
+  - from: rental
+    to: pickup
+  - from: rental
+    to: dropoff
+  - from: rental
+    to: registration
+  - from: rental
+    to: fuelType
+  - from: rental
+    to: model
+  - from: rental
+    to: category
+  - from: rental
+    to: office
+  - from: rental
+    to: city
+  - from: rental
+    to: state
+  - from: rental
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENTAL
+    to: city
+  - from: RENTAL
+    to: state
+  - from: RENTAL
+    to: country
+  - from: RENTAL
+    to: amount
+  - from: RENTAL
+    to: discount
+  - from: RENTAL
+    to: insuranceCost
+  - from: RENTAL
+    to: miles
+  - from: RENTAL
+    to: pickup
+  - from: RENTAL
+    to: dropoff
+  - from: RENTAL
+    to: registration
+  - from: RENTAL
+    to: fuelType
+  - from: RENTAL
+    to: model
+  - from: RENTAL
+    to: category
+  - from: RENTAL
+    to: office
+  - from: RENT
+  fact:
+    name: RENTAL
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+output_preprocessed:
+- dependencies:
+  - from: carPlate
+    label: fp
+    to: carPlate
+  - from: pickup
+    label: fp
+    to: pickup
+  - from: pickup
+    label: fp
+    to: dropoff
+  - from: dropoff
+    label: fp
+    to: dropoff
+  - from: registration
+    label: fp
+    to: registration
+  - from: fuelType
+    label: fp
+    to: fuelType
+  - from: model
+    label: fp
+    to: model
+  - from: category
+    label: fp
+    to: category
+  - from: office
+    label: fp
+    to: office
+  - from: office
+    label: tp
+    to: city
+  - from: city
+    label: tp
+    to: state
+  - from: state
+    label: tp
+    to: country
+  - from: rental
+    label: tp
+    to: amount
+  - from: rental
+    label: tp
+    to: discount
+  - from: rental
+    label: tp
+    to: insuranceCost
+  - from: rental
+    label: fp
+    to: miles
+  - from: rental
+    label: fp
+    to: pickup
+  - from: rental
+    label: fp
+    to: dropoff
+  - from: rental
+    label: fp
+    to: registration
+  - from: rental
+    label: fp
+    to: fuelType
+  - from: rental
+    label: fp
+    to: model
+  - from: rental
+    label: fp
+    to: category
+  - from: rental
+    label: fp
+    to: office
+  - from: rental
+    label: fp
+    to: city
+  - from: rental
+    label: fp
+    to: state
+  - from: rental
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENTAL
+    label: fp
+    to: city
+  - from: RENTAL
+    label: fp
+    to: state
+  - from: RENTAL
+    label: fp
+    to: country
+  - from: RENTAL
+    label: fp
+    to: amount
+  - from: RENTAL
+    label: fp
+    to: discount
+  - from: RENTAL
+    label: fp
+    to: insuranceCost
+  - from: RENTAL
+    label: fp
+    to: miles
+  - from: RENTAL
+    label: fp
+    to: pickup
+  - from: RENTAL
+    label: fp
+    to: dropoff
+  - from: RENTAL
+    label: fp
+    to: registration
+  - from: RENTAL
+    label: fp
+    to: fuelType
+  - from: RENTAL
+    label: fp
+    to: model
+  - from: RENTAL
+    label: fp
+    to: category
+  - from: RENTAL
+    label: fp
+    to: office
+  - from: RENT
+    label: fp
+    to: E,R,R,O,R
+  fact:
+    name: RENTAL
+  ground_truth_labels:
+    dependencies:
+    - from: Rental
+      label: fn
+      to: CarPlate
+    - from: Rental
+      label: fn
+      to: Risk
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Date
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Date
+    - from: Rental
+      label: fn
+      role: Pickup
+      to: Office
+    - from: Rental
+      label: fn
+      role: Dropoff
+      to: Office
+    - from: Rental
+      label: tp
+      to: Amount
+    - from: Rental
+      label: tp
+      to: Discount
+    - from: Rental
+      label: tp
+      to: InsuranceCost
+    - from: Rental
+      label: fn
+      to: MilesTravelled
+    - from: CarPlate
+      label: fn
+      role: Registration
+      to: Date
+    - from: CarPlate
+      label: fn
+      to: FuelType
+    - from: CarPlate
+      label: fn
+      to: Category
+    - from: CarPlate
+      label: fn
+      to: Model
+    - from: Model
+      label: fn
+      to: Brand
+    - from: Office
+      label: tp
+      to: City
+    - from: City
+      label: tp
+      to: State
+    - from: State
+      label: tp
+      to: Country
+    - from: Country
+      label: fn
+      to: Area
+    fact:
+      name: Rental
+    measures:
+    - name: Amount
+    - name: Discount
+    - name: InsuranceCost
+    - name: MilesTravelled
+  measures:
+  - name: amount
+  - name: discount
+  - name: insuranceCost
+  - name: miles
+  nodes:
+    fn:
+    - date
+    - brand
+    - risk
+    - area
+    - milestravelled
+    fp:
+    - pickup
+    - dropoff
+    - miles
+    - registration
+    - e,o,r
+    - rent
+    tp:
+    - state
+    - amount
+    - insurancecost
+    - discount
+    - model
+    - office
+    - carplate
+    - fueltype
+    - rental
+    - city
+    - category
+    - country

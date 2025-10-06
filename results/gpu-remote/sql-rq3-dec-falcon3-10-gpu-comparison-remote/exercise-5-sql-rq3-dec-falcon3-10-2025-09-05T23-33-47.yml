@@ -1,0 +1,87 @@
+config:
+  label: falcon3-10
+  name: falcon-3-10B-inst-hf
+  temperature: 0.2
+  top_p: 0.9
+errors:
+- {}
+gt_preprocessed:
+  dependencies:
+  - from: PRESENCE
+    to: WOD.numberOfRounds
+  - from: PRESENCE
+    to: MEMBERS.FiscalCode
+  - from: PRESENCE
+    to: WORKOUTS.date,WORKOUTS.time
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.name
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.surname
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.gender
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.address
+  - from: MEMBERS.FiscalCode
+    to: MEMBERS.postalCode
+  - from: MEMBERS.postalCode
+    to: MEMBERS.city
+  - from: PRESENCE
+    to: MEMBERS.height
+  - from: PRESENCE
+    to: MEMBERS.weight
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.time
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WORKOUTS.instructor
+  - from: WORKOUTS.date,WORKOUTS.time
+    to: WOD.date
+  - from: WOD.date
+    to: WOD.name
+  - from: WOD.date
+    to: WOD.WODtype
+  fact:
+    name: PRESENCE
+  measures:
+  - name: WOD.numberOfRounds
+  - name: MEMBERS.weight
+  - name: MEMBERS.height
+metrics:
+- {}
+output:
+- "fact:\n  name: PRESENCE\nmeasures:\n  - name: MEMBERS.height\n  - name: MEMBERS.weight\n\
+  dependencies:\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.name\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.surname\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.gender\n\
+  \  - from: MEMBERS.FiscalCode\n    to: MEMBERS.address\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.postalCode\n  - from: MEMBERS.FiscalCode\n    to: MEMBERS.city\n\
+  \  - from: MEMBERS.FiscalCode\n    to: MEMBERS.height\n  - from: MEMBERS.FiscalCode\n\
+  \    to: MEMBERS.weight\n  - from: EXERCISES.exerciseId\n    to: EXERCISES.name\n\
+  \  - from: EXERCISES.exerciseId\n    to: EXERCISES.exerciseType\n  - from: MAXIMUM_WEIGHTS.FiscalCode,\
+  \ MAXIMUM_WEIGHTS.exerciseId\n    to: MAXIMUM_WEIGHTS.weight\n  - from: MAXIMUM_WEIGHTS.FiscalCode,\
+  \ MAXIMUM_WEIGHTS.exerciseId\n    to: MAXIMUM_WEIGHTS.date\n  - from: MAXIMUM_WEIGHTS.FiscalCode,\
+  \ MAXIMUM_WEIGHTS.exerciseId\n    to: MEMBERS.FiscalCode\n  - from: MAXIMUM_WEIGHTS.FiscalCode,\
+  \ MAXIMUM_WEIGHTS.exerciseId\n    to: EXERCISES.exerciseId\n  - from: WOD.date\n\
+  \    to: WOD.name\n  - from: WOD.date\n    to: WOD.WODtype\n  - from: WOD.date\n\
+  \    to: WOD.numberOfRounds\n  - from: EXERCISE_IN_WOD.date, EXERCISE_IN_WOD.exerciseId\n\
+  \    to: EXERCISE_IN_WOD.positionInSequence\n  - from: EXERCISE_IN_WOD.date, EXERCISE_IN_WOD.exerciseId\n\
+  \    to: EXERCISE_IN_WOD.numberOfRepetitions\n  - from: EXERCISE_IN_WOD.date, EXERCISE_IN_WOD.exerciseId\n\
+  \    to: WOD.date\n  - from: EXERCISE_IN_WOD.date, EXERCISE_IN_WOD.exerciseId\n\
+  \    to: EXERCISES.exerciseId\n  - from: WORKOUTS.date, WORKOUTS.time\n    to: WORKOUTS.instructor\n\
+  \  - from: WORKOUTS.date, WORKOUTS.time\n    to: WOD.date\n  - from: PRESENCE\n\
+  \    to: MEMBERS.FiscalCode\n  - from: PRESENCE\n    to: WORKOUTS.date, WORKOUTS.time\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<|"
+output_preprocessed: []
