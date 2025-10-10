@@ -107,6 +107,9 @@ df["x_label"] = pd.Categorical(
     ordered=True
 )
 
+if not start_dir_path.endswith("/"):
+    start_dir_path += "/"
+
 output_file = f'{start_dir_path}aggregate_times.pdf'
 
 # Plot
