@@ -9,7 +9,7 @@ authors = ["Luca Rubboli <luca.rubboli2@studio.unibo.it>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "3.12.5"
 numpy = "2.3.3"
 pandas = "2.3.3"
 scikit-learn = "1.7.2"
@@ -21,10 +21,11 @@ tqdm = "^4.66.5"
 python-dotenv = "^1.0.1"
 PyYAML = "^6.0.2"
 openai = "2.1.0"
-transformers = "4.57.0"
-google-generativeai = "^0.8.3"
+optax = "^0.2.3"
+transformers = "4.56.2"
+google-generativeai = "^0.8.4"
 networkx = "^3.4.1"
-torch = "^2.5.1"
+torch = "2.5.1"
 sentencepiece = "^0.2.1"
 accelerate = "^1.10.1"
 

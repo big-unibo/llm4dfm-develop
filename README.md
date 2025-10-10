@@ -557,6 +557,31 @@ Example of run:
 Output:
 File preprocess, metrics calculation and error detection will be executed, results will be overridden in same file.
 
+### Aggregate results
+
+In order to aggregate results, `llm4dfm/pipeline/[aggregate_times.py, aggregate_times_cpu_gpu.py, aggregate_times_gpts.py]`, scripts have been provided.
+
+For the `llm4dfm/pipeline/aggregate_times.py` one, a `root` parameter should be supplied to state where the recursive search for `csv` files begins;
+once found, these are loaded and aggregated for a boxplot for each couple model - device, calculating average F1 for edges and nodes (differing on cpu and gpu execution) and plotting boxplot based on execution times, saved in `{root}/aggregate_times.pdf`
+An example of run is `poetry run python llm4dfm/pipeline/aggregate_times.py --root results`.
+
+For the `llm4dfm/pipeline/aggregate_times_cpu_gpu.py` one, a `root` parameter should be supplied to state where the recursive search for `csv` files begins;
+once found, these are loaded and aggregated for a boxplot for each couple model - device, calculating average F1 for edges and nodes (considering cpu and gpu execution the same) and plotting boxplot based on execution times, saved in `{root}/aggregate_times_cpu_gpu.pdf`
+An example of run is `poetry run python llm4dfm/pipeline/aggregate_times_cpu_gpu.py --root results`.
+
+For the `llm4dfm/pipeline/aggregate_times_gpts.py` one, a `root` parameter should be supplied to state where the recursive search for `csv` files involving gpt4 and gpt5 begins;
+once found, these are loaded and aggregated for each couple model - prompt version, calculating average F1 for edges and nodes on y-axis and execution times on x-axis, saved in `{root}/aggregate_times_gpts.pdf`
+An example of run is `poetry run python llm4dfm/pipeline/aggregate_times_gpts.py --root results`.
+
+### Deployment on Portainer
+
+To enable deploy for container management platforms such as Portainer, `Dockerfile` and `setup-container.sh` have been provided.
+
+The first one is used for image building, provided via `docker buildx build --platform linux/amd64,linux/arm64 -t llm4dfm:latest .` and once built, it has to be pushed in a container registry.
+An example is provided via Github registry ghcr, by means of tagging with `docker tag llm4dfm:latest ghcr.io/{my-github-username}/llm4dfm:{my-version-tag}` and then pushed via `docker push ghcr.io/{my-github-username}/llm4dfm:{my-version-tag}`.
+Then, in the platform, the image has to be specified as `ghcr.io/{my-github-username}/llm4dfm:{my-version-tag}` and once the container is configured and running, credentials in `llm4dfm/resources/credentials.yml` has to be specified and then setup script `setup-container.sh` has to be executed.
+After this setup, the scripts can be executed as stated before.
+
 ### Tests
 
 To execute the tests' suite, inside `llm4dfm` root directory, run 

@@ -100,7 +100,9 @@ config_order = (
 
 # 2. Build pair order: for each config, list cpu first, then gpu
 devices = ["cpu", "gpu"]
-order = [(cl, dev) for cl in config_order for dev in devices if (cl, dev) in df.set_index(["config_label","device"]).index]
+
+index = df.set_index(["config_label", "device"]).sort_index().index
+order = [(cl, dev) for cl in config_order for dev in devices if (cl, dev) in index]
 
 # Build a mapping (config_label, device) -> enriched label
 label_map = df.set_index(["config_label", "device"])["x_label"].to_dict()
@@ -112,31 +114,10 @@ df["x_label"] = pd.Categorical(
     ordered=True
 )
 
+if not start_dir_path.endswith("/"):
+    start_dir_path += "/"
+
 output_file = f'{start_dir_path}aggregate_times_cpu_gpu.pdf'
-
-# Plot
-
-# plt.figure(figsize=(12, 6))
-#
-# # Get categories in order
-# categories = df["x_label"].cat.categories
-# positions = range(1, len(categories) * 2, 2)  # leave a gap of 1 unit between boxes
-#
-# # Draw boxplots manually
-# data = [df.loc[df["x_label"] == cat, "time"] for cat in categories]
-# plt.boxplot(data, positions=positions, widths=0.6, patch_artist=True)
-#
-# # Replace x ticks with categories
-# plt.xticks(positions, categories, ha="right")
-#
-# plt.xlabel("Model")
-# plt.ylabel("Time")
-# plt.title("Execution Times by Model and Device (sorted by avg F1)")
-# plt.tight_layout()
-#
-# plt.savefig(output_file, dpi=300)
-# plt.close()
-# print(f"Saved boxplot to {output_file}.")
 
 plt.figure(figsize=(12, 6))
 
@@ -182,3 +163,4 @@ plt.tight_layout()
 
 plt.savefig(output_file, dpi=300)
 plt.close()
+print(f"Saved plot to {output_file}.")

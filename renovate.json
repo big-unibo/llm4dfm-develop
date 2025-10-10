@@ -1,14 +1,16 @@
 {
-  "extends": [
-    "config:base", ":rebaseStalePrs", ":semanticCommits"
-  ],
+  "extends": ["config:base", ":rebaseStalePrs", ":semanticCommits"],
   "assignees": ["w4bo"],
   "automerge": true,
+  "automergeType": "branch-push",
   "dependencyDashboard": true,
-  "git-submodules": {
-    "enabled": true
-  },
+  "git-submodules": { "enabled": true },
   "includeForks": true,
+  "prConcurrentLimit": 25,
+  "prHourlyLimit": 0,
+  "separateMajorMinor": true,
+  "separateMinorPatch": true,
+  "separateMultipleMajor": true,
   "packageRules": [
     {
       "description": "Updates to GitHub Actions should be tagged as 'ci'",
@@ -16,9 +18,5 @@
       "semanticCommitType": "ci"
     }
   ],
-  "prConcurrentLimit": 25,
-  "prHourlyLimit": 0,
-  "separateMajorMinor": true,
-  "separateMinorPatch": true,
-  "separateMultipleMajor": true 
+  "requiredStatusChecks": ["test-and-check"]
 }
